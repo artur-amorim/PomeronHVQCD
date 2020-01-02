@@ -1,0 +1,200 @@
+#ifndef HVQCD_H
+#define HVQCD_H
+
+#include <boost/numeric/ublas/matrix.hpp>
+#include "background.h"
+
+class HVQCD : public Background
+{
+    private:
+        // Matrix type definition
+        typedef boost::numeric::ublas::matrix<double> matrix_type;
+        // Parameters of the Vf and k potentials
+        double ksc, kU1, W0, WIR, kIR, W1, k1, xf, tau0;
+        // Parameters of the w potential
+        double wsc, wU1, w0, wIR, w1;
+        // Parameters of the Z(lambda) function
+        double Za, ca;
+        // Quark mass value
+        double mq;
+        // flags useful to fit HVQCD to the spectrum
+        bool add_mass, add_tensor_glueball, add_scalars, add_singlet_vector, add_singlet_axial;
+        // Containers of the values of tau, dtau/dA, d2q/dA2, d2tau/dA2, d3tau/dA3 and u
+        std::vector<double> taus, dtaus, d2qs, d2taus, d3taus, us;
+        // Containers with the values of the background fields in the YM regime
+        std::vector<double> AYM2, zYM2, uYM2, qYM2, PhiYM2, tauYM2, dqYM2, dPhiYM2, dtauYM2, d2qYM2, d2PhiYM2, d2tauYM2, d3tauYM2;
+        // Containers of the values of lambdaUV, taun = exp(A) tau, dlambdaUV/dA, dtaun/dA and AUV
+        std::vector<double> lUVs, tauns, dlUVs, dtauns, AUVs;
+        static const std::vector<double> mrhos;         // Non-Singlet Vector Mesons
+        static const std::vector<double> ma1s;          // Non-Singlet Axial Vector Mesons
+        static const std::vector<double> mpis;          // Non-Singlet Pseudoscalar Mesons
+        static const std::vector<double> a0s;           // Non-Singlet Scalar Mesons
+        static const std::vector<double> mTG;           // Singlet Tensor glueballs
+        static const std::vector<double> momegas;       // Singlet Vector Mesons
+        static const std::vector<double> mf1s;          // Singlet Axial Vector Mesons
+        // Ratios with pseudoscalar pi meson
+        static const std::vector<double> RTG_pi;        // Ratio of 2++ with pi
+        static const std::vector<double> Rrho_pi;       // Ratios of the vector meson's tower with pi
+        static const std::vector<double> Ra1_pi;        // Ratios of the axial vector meson's tower with pi
+        static const std::vector<double> Rpi_pi;        // Ratios of the pi meson tower with pi
+        static const std::vector<double> Ra0_pi;        // Ratios of the a0 meson tower with pi
+        static const std::vector<double> Romega_pi;     // Ratios of the omega meson tower with pi
+        static const std::vector<double> Rf1_pi;        // Ratios of the Singlet axial vector meson tower with pi
+        // Ratios with the rho vector meson rho
+        static const std::vector<double> RTG_rho;
+        static const std::vector<double> Rrho_rho;
+        static const std::vector<double> Ra1_rho;
+        static const std::vector<double> Romega_rho;
+        static const std::vector<double> Rf1_rho;
+        // Declaration of Vf0 as a function of lambda
+        double Vf0l(const double l);
+        // Declaration of dVf0/dlambda
+        double dVf0dlambda(const double l);
+        // Declaration of d2Vf0/dlambda2
+        double d2Vf0dlambda2(const double l);
+        // Declaration of the Vf0 potential as a function of Phi
+        double Vf0(const double phi);
+        // Declaration of dVf0/dPhi potential
+        double dVf0dPhi(const double phi);
+        // Declaration of the d2Vf0dPhi2 potential
+        double d2Vf0dPhi2(const double phi);
+        // Declaration of the Vf potential as a funciton of lambda
+        double Vfl(const double l, const double tau);
+        // Declaration of dVf/dlamda
+        double dVfldlambda(const double l, const double tau);
+        // Declaration of the Vf = Vf0 exp(-tau^2) potential as a funtion of Phi
+        double Vf(const double phi, const double tau);
+        // Declaration of the dVfdPhi = dVf0dPhi exp(-tau^2) potential
+        double dVfdPhi(const double phi, const double tau);
+        // Declaration of the dVfdtau = Vf0 (-2tau)exp(-tau^2) potential
+        double dVfdtau(const double phi, const double tau);
+        // Declaration of the d2VfdPhi2 potential
+        double d2VfdPhi2(const double phi, const double tau);
+        // Declaration of the d2VfdPhidtau = dVf0dPhi (-2tau)exp(-tau^2) potential
+        double d2VfdPhidtau(const double phi, const double tau);
+        // Declaration of the k potential as a function of lambda
+        double klambda(const double l);
+        // Declaration of the k potential as a function of Phi
+        double k(const double phi);
+        // Declaration of dk/dlambda potential
+        double dkdlambda(const double l);
+        // Declaration of dk/dPhi potential
+        double dkdPhi(const double phi);
+        // Declaration of d2k/dPhi2 potential
+        double d2kdPhi2(const double phi);
+        // Declaration of d2k/dlambda2
+        double d2kdlambda2(const double l);
+        // Declaration of w potential as a function of Phi
+        double w(const double phi);
+        // Declaration of dw/dPhi
+        double dwdPhi(const double phi);
+        // Declaration of the dw/dlambda potential
+        double dwdlambda(const double l);
+        // Declaration of the d2w/dPhi2 potential
+        double d2wdPhi2(const double phi);
+        // Declaration of G and its derivatives
+        double G(const double q, const double phi, const double dt);
+        double dG(const double q, const double phi, const double dq, const double dphi, const double dt, const double d2t);
+        double d2G(const double q, const double phi,
+                   const double dq, const double dphi,
+                   const double dtau, const double d2q,
+                   const double d2phi, const double d2tau,
+                   const double d3tau);
+        // Declaration of Z(lambda)
+        double Z(const double l);
+        // Declaration of du/dA
+        double dudA(const double q, const double phi, const double dtau, const double A);
+        // Declaration of dtau/dA when tau > tcut
+        double dtauYangMills1(const double q, const double phi, const double tau, const double dphi);
+        // Declaration of d2tau/dA2 when tau > tcut
+        double d2tauYangMills1(const double q, const double phi, const double tau, const double dq, const double dphi, const double d2phi);
+        // Declaration of d2tau/dA2 in the IR
+        double d2tauYM2dA2(const double q, const double phi, const double tau, const double dq, const double dphi, const double dtau);
+        // Declaration of d3tau/dA3 in the IR
+        double d3tauYM(const double q, const double phi, const double tau,
+                       const double dq, const double dphi, const double dtau,
+                       const double d2q, const double d2phi, const double d2tau);
+        // Declaration of the EOMs when tau > tcut
+        void eomYangMills1(const state &X, state &dXdA, const double A);
+        // Declaration of the EOMs in the IR 
+        void eomYangMills2(const state &X, state &dXdA, const double A);
+        // Declaration of the observerCoupled function
+        void observerYangMills2(const state &X , const double A);
+        // Declaration of d2tau/dA2 in the coupled regime
+        double d2tauCoupled(const double q, const double phi,const double tau, const double dphi, const double dtau);
+        // Declaration of d3tau/dA3 in the coupled regime
+        double d3tauCoupled(const double q, const double phi, const double tau, const double dq, const double dphi,
+                            const double dtau, const double d2phi, const double d2tau);
+        // Declaration of dq/dA in the coupled regime
+        double dqCoupled(const double q, const double phi, const double tau, const double dphi, const double dtau);
+        // Declaration of d2q/dA2 in the coupled regime
+        double d2qCoupled(const double q, const double phi, const double tau,  const double dq, const double dphi,
+                          const double dtau, const double d2tau);
+        // Declaration of d2Phi/dA2 in the coupled regime
+        double d2PhiCoupled(const double q, const double phi, const double tau, const double dphi, const double dtau);
+        // Declaration of the constraint equation
+        double dPhiConstr(const double q, const double phi, const double tau, const double dtau);
+        // Declaration of the jacobian function
+        void jacobian(const state &X , matrix_type &jac , const double A, state &dfdt);
+        // Declaration of the system of coupled EOMs
+        void eomCoupled(const state &X , state &dXdA , const double A);
+        // Declaration of the observerCoupled function
+        void observerCoupled(const state &X , const double A);
+        // Declaration of dq/dA in the UV regime
+        double dqUV(const double q, const double lambda , const double dlambda);
+        // Declaration of d2q/dA2 in the UV regime
+        double d2qUV(const double q, const double lambda , const double dq, const double dlambda, const double d2lambda);
+        // Declaration of d2lambda/dA2 in the UV regime
+        double d2lambdaUV(const double q, const double lambda , const double dq, const double dlambda);
+        // Declaration of d2taun/dA2 in the UV regime
+        double d2taunUV(const double q, const double lambda, const double tau, const double dq, const double dlambda, const double dtau);
+        // Declaration of d3taun/dA3 in the UV regime
+        double d3taunUV(const double q, const double lambda, const double tau, const double dq, const double dlambda, const double dtau,
+                        const double d2q, const double d2lambda, const double d2tau);
+        // Declaration of the EOMs in the UV
+        void eomUV(const state &X, state &dXdA, const double A);
+        // Declaration of the observerUV function
+        void observerUV(const state &X , const double A);
+        // Function that processes the final background
+        void finalizeBackground();
+    public:
+        // Class Constructor
+        HVQCD(const double ssc = 3.0, const double kksc = 3.0, const double wwsc = 1.56,
+             const double WW0 = 2.5, const double ww0 = 1.26,
+             const double kkU1 = 11./9, const double wwU1 = 0.0,
+             const double VVgIR = 2.05, const double WWIR = 0.9, const double kkIR = 1.8, const double wwIR = 5.0,
+             const double WW1 = 0.0, const double kk1 = -0.23, const double ww1 = 0.0,
+             const double xxf = 1.0, const double ttau0 = 1.0,
+             const double za = 133, const double c = 0.26,
+             const bool add_m = false, const bool add_tg = true, const bool add_scals = false,
+             const bool add_sing_v = false, const bool add_sing_av = false);
+        // Declaration of the solve function.
+        void solve();
+        // Declaration of the function that computes the potential of Flavour Non-Singlet Vector Mesons
+        std::vector<double> computeVectorMesonPotential();
+        // Declaration of the function that computes the potential of Flavour Non-Singlet Axial Vector Mesons
+        std::vector<double> computeAxialVectorMesonNonSingletPotential(const std::vector<double> &VVectorMeson);
+        // Declaration of the function that computes the potential of Flavour Non-Singlet Pseudoscalar Mesons
+        std::vector<double> computePseudoScalarMesonPotential();
+        // Declaration of the function that computes the potential of Flavour Non-Singlet Scalar Mesons
+        std::vector<double> computeScalarMesonPotential();
+        // Declaration of the function that computes the potential of Flavour Singlet Axial Vector Mesons
+        std::vector<double> computeAxialVectorMesonSingletPotential(const std::vector<double> &VAxialVectorMeson);
+        // Declaration of computeSpectrum function of HVQCD class
+        void computeSpectrum();
+        // Declaration of printQuarkMass
+        void printQuarkMass();
+        // Declaration of saveBackgroundFields
+        void saveBackgroundFields(std::string path = "HVQCD_backgrounds.txt");
+        // Declaration of savePotentials
+        void savePotentials(std::string path = "Potentials.txt");
+        // Declaration of saveSchrodingerPotentials
+        void saveSchrodingerPotentials(std::string path = "SchrodingerPotentials.txt");
+        // Declaration of saveZandUprofiles
+        void saveZandUprofiles(std::string path = "z_and_u_Profile.txt");
+        // Declaration of showRatioValues
+        void showRatioValues();
+        // Declaration of the cost function used in the spectrum fit
+        double J();
+};
+#endif
