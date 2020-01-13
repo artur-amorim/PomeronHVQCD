@@ -1001,7 +1001,7 @@ void HVQCD::solve()
    return ;
 }
 
-void HVQCD::computeSpectrum()
+void HVQCD::computeSpectrum(std::string method)
 {
     /*
         Computes the lowest 2++ glueball, first 6 Nonsinglet Vector Meson, first 5 Nonsinglet Axial Vector Meson,
@@ -1023,15 +1023,15 @@ void HVQCD::computeSpectrum()
     if (add_singlet_axial) VSingletAVM = computeAxialVectorMesonSingletPotential(VAVM);
     // Compute the masses
     std::vector<double> TGMasses, VMMasses, AVMMasses, PSMMasses, SMMasses, SingletAVMMasses;
-    if (add_tensor_glueball) TGMasses = computeMasses(zs, V2G, 1, "cheb");
-    VMMasses = computeMasses(us, VVM, 6, "cheb");
-    AVMMasses = computeMasses(us, VAVM, 5, "cheb");
+    if (add_tensor_glueball) TGMasses = computeMasses(zs, V2G, 1, method);
+    VMMasses = computeMasses(us, VVM, 6, method);
+    AVMMasses = computeMasses(us, VAVM, 5, method);
     if(add_scalars)
     {
-        PSMMasses = computeMasses(us, VPSM, 5, "cheb");
-        SMMasses = computeMasses(us, VSM, 2, "cheb");
+        PSMMasses = computeMasses(us, VPSM, 5, method);
+        SMMasses = computeMasses(us, VSM, 2, method);
     }
-    if(add_singlet_axial) SingletAVMMasses = computeMasses(us, VSingletAVM, 2, "cheb");
+    if(add_singlet_axial) SingletAVMMasses = computeMasses(us, VSingletAVM, 2, method);
     // Display the mass values
     // Tensor glueball ratio
     if(add_tensor_glueball)
@@ -1284,7 +1284,7 @@ void HVQCD::saveSchrodingerPotentials(std::string path)
 
 }
 
-void HVQCD::showRatioValues()
+void HVQCD::showRatioValues(std::string method)
 {
     /*
         This function starts by checking that the profile of the background fields has been computed.
@@ -1307,15 +1307,15 @@ void HVQCD::showRatioValues()
     if(add_singlet_axial) VSingletAVM = computeAxialVectorMesonSingletPotential(VAVM);
     // Compute the masses
     std::vector<double> TGMasses, VMMasses, AVMMasses, PSMMasses, SMMasses, SingletAVMMasses;
-    if(add_tensor_glueball) TGMasses = computeMasses(zs, V2G, 1, "cheb");
-    VMMasses = computeMasses(us, VVM, 6, "cheb");
-    AVMMasses = computeMasses(us, VAVM, 5, "cheb");
+    if(add_tensor_glueball) TGMasses = computeMasses(zs, V2G, 1, method);
+    VMMasses = computeMasses(us, VVM, 6, method);
+    AVMMasses = computeMasses(us, VAVM, 5, method);
     if(add_scalars)
     {
-        PSMMasses = computeMasses(us, VPSM, 5, "cheb");
-        SMMasses = computeMasses(us,VSM, 2, "cheb");
+        PSMMasses = computeMasses(us, VPSM, 5, method);
+        SMMasses = computeMasses(us,VSM, 2, method);
     }
-    if(add_singlet_axial) SingletAVMMasses = computeMasses(us, VSingletAVM, 2);
+    if(add_singlet_axial) SingletAVMMasses = computeMasses(us, VSingletAVM, 2, method);
     // Compute the predicted ratios
     std::vector<double> RTGPred, RrhoPred, Ra1Pred, RpiPred, Ra0Pred, RomegaPred, Rf1Pred;
     if(add_tensor_glueball) 

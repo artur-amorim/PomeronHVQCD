@@ -181,7 +181,7 @@ class HVQCD : public Background
         // Declaration of the function that computes the potential of Flavour Singlet Axial Vector Mesons
         std::vector<double> computeAxialVectorMesonSingletPotential(const std::vector<double> &VAxialVectorMeson);
         // Declaration of computeSpectrum function of HVQCD class
-        void computeSpectrum();
+        void computeSpectrum(std::string method = "cheb");
         // Declaration of printQuarkMass
         void printQuarkMass();
         // Declaration of saveBackgroundFields
@@ -193,7 +193,7 @@ class HVQCD : public Background
         // Declaration of saveZandUprofiles
         void saveZandUprofiles(std::string path = "z_and_u_Profile.txt");
         // Declaration of showRatioValues
-        void showRatioValues();
+        void showRatioValues(std::string method = "cheb");
         // Declaration of the cost function used in the spectrum fit
         double J();
 };
