@@ -1200,10 +1200,12 @@ double HVQCD::J()
         std::cout << "mq: " << mq << " erms: " << erms << std::endl;
     }
     // Now we impose the constraint (12-x W0) kIR/VgIR/6>1
-    erms += std::exp(- ( (12-xf*W0)*kIR/(VgIR*6) - 1) ); // The more the constraint is satisfied the smaller the penalty
+    double constr = (12-xf*W0)*kIR/(VgIR*6);
+    erms += std::exp(- ( constr - 1) ); // The more the constraint is satisfied the smaller the penalty
     // We also impose the tachyo mass squared to be larger than 3.5
     double tmass2 = TachyonMassSquareIR();
     erms += std::exp( - (tmass2 - 3.5)) ;
+    std::cout << "(12 - xf) W0 kIR / (6 VgIR) = " << constr << " TachyonMassSquaredIR = " << tmass2 << std::endl;
     return erms;
 }
 
