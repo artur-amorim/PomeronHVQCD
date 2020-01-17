@@ -14,19 +14,13 @@ const std::vector<double> HVQCD::a0s = {1474, 2025};                            
 const std::vector<double> HVQCD::mTG = {2150};                                          // Singlet Tensor glueballs
 const std::vector<double> HVQCD::momegas = {782.65, 1420, 1670};                        // Singlet Vector Mesons
 const std::vector<double> HVQCD::mf1s = {1281.9, 1426.4};                               // Singlet Axial Vector Mesons
-// Ratios with pseudoscalar pi meson
-const std::vector<double> HVQCD::RTG_pi = {15.93};                                      // Ratio of 2++ with pi
-const std::vector<double> HVQCD::Rrho_pi = {5.74, 10.85, 12.74, 14.14, 15.92, 16.78};   // Ratios of the vector meson's tower with pi
-const std::vector<double> HVQCD::Ra1_pi = {9.11, 12.2, 14.30, 15.53, 16.81};            // Ratios of the axial vector meson's tower with pi
-const std::vector<double> HVQCD::Rpi_pi = {9.63, 13.42, 15.33, 17.48};                  // Ratios of the pi meson tower with pi
-const std::vector<double> HVQCD::Ra0_pi = {10.92, 15.00};                               // Ratios of the a0 meson tower with pi
-const std::vector<double> HVQCD::Romega_pi = {5.80, 10.52, 12.37};                      // Ratios of the omega meson tower with pi
-const std::vector<double> HVQCD::Rf1_pi = {9.50, 10.57};                                // Ratios of the Singlet axial vector meson tower with pi
 
 // Ratios with the rho vector meson rho
 const std::vector<double> HVQCD::RTG_rho = {2.7724};
 const std::vector<double> HVQCD::Rrho_rho = {1.8891, 2.2179, 2.4616, 2.7711, 2.9207};
 const std::vector<double> HVQCD::Ra1_rho = {1.5861, 2.1238, 2.48872, 2.70277, 2.92714};
+const std::vector<double> HVQCD::Rpi_rho = {0.1741,1.6763,2.3366,2.6692, 3.0432};
+const std::vector<double> HVQCD::Ra0_rho = {1.9007, 2.6112};
 const std::vector<double> HVQCD::Romega_rho = {1.01, 1.83, 2.15};
 const std::vector<double> HVQCD::Rf1_rho = {1.65, 1.84};
 
@@ -1136,38 +1130,24 @@ double HVQCD::J()
     }
     double erms = 0;
     // Chi2 contribution due to the tensor glueball ratio
-    if (add_tensor_glueball)
-    {
-        if(add_scalars) erms += pow((TGMasses[0]/PSMMasses[0]-RTG_pi[0])/RTG_pi[0],2);
-        else erms += pow((TGMasses[0]/VMMasses[0] - RTG_rho[0])/RTG_rho[0], 2);
-    }
+    if (add_tensor_glueball) erms += std::pow((TGMasses[0]/VMMasses[0] - RTG_rho[0])/RTG_rho[0], 2);
     // Contributions from the Meson ratios
+    // Contributions from the ratios m_{\rho_n}/m_{\rho}
+    for(int i = 0; i < Rrho_rho.size(); i++) erms += std::pow((VMMasses[i+1]/VMMasses[0]-Rrho_rho[i])/Rrho_rho[i],2);
+    // Contributions from the ratios m_{\a1_n}/m_{\rho}
+    for(int i = 0; i < Ra1_rho.size(); i++) erms += std::pow((AVMMasses[i]/VMMasses[0]-Ra1_rho[i])/Ra1_rho[i],2);
     if(add_scalars)
     {
-        // Contributions from the ratios m_{\rho_n}/m_{\pi}
-        for(int i = 0; i < Rrho_pi.size(); i++) erms += pow((VMMasses[i]/PSMMasses[0]-Rrho_pi[i])/Rrho_pi[i],2);
-        // Contributions from the ratios m_{\a1_n}/m_{\pi}
-        for(int i = 0; i < Ra1_pi.size(); i++) erms += pow((AVMMasses[i]/PSMMasses[0]-Ra1_pi[i])/Ra1_pi[i],2);
-        // Contributions from the ratios m_{\pi_n}/m_{\pi}
-        for(int i = 0; i < Rpi_pi.size(); i++) erms += pow((PSMMasses[i+1]/PSMMasses[0] - Rpi_pi[i])/Rpi_pi[i],2);
-        // Contributions from the ratios m_{a_0} / m_{\pi}
-        for(int i = 0; i < Ra0_pi.size(); i++) erms += pow((SMMasses[i]/PSMMasses[0]-Ra0_pi[i])/Ra0_pi[i],2);
-        // Contribution from the ratios m_{\omega_n} / m_{\pi}
-        if (add_singlet_vector) for(int i = 0; i < Romega_pi.size(); i++) erms += pow((VMMasses[i]/PSMMasses[0]-Romega_pi[i])/Romega_pi[i],2);
-        if (add_singlet_axial) for(int i = 0; i < Rf1_pi.size(); i++) erms += pow((SingletAVMMasses[i]/PSMMasses[0]-Rf1_pi[i])/Rf1_pi[i],2);
+        // Contributions from the ratios m_{\pi_n} / m_{\rho}
+        for(int i = 0; i < Rpi_rho.size(); i++) erms += std::pow((PSMMasses[i]/VMMasses[0]-Rpi_rho[i])/Rpi_rho[i],2);
+        // Contributions from the ratios m_{a0_n} / m_{\rho}
+        for(int i = 0; i < Ra0_rho.size(); i++) erms += std::pow((SMMasses[i]/VMMasses[0]- Ra0_rho[i])/Ra0_rho[i], 2);
     }
-    else
-    {
-        // Contributions from the ratios m_{\rho_n}/m_{\rho}
-        for(int i = 0; i < Rrho_rho.size(); i++) erms += pow((VMMasses[i+1]/VMMasses[0]-Rrho_rho[i])/Rrho_rho[i],2);
-        // Contributions from the ratios m_{\a1_n}/m_{\rho}
-        for(int i = 0; i < Ra1_rho.size(); i++) erms += pow((AVMMasses[i]/VMMasses[0]-Ra1_rho[i])/Ra1_rho[i],2);
-        // Contribution from the ratios m_{\omega_n} / m_{\rho}
-        if (add_singlet_vector) for(int i = 0; i < Romega_rho.size(); i++) erms += pow((VMMasses[i]/VMMasses[0]-Romega_rho[i])/Romega_rho[i],2);
-        if (add_singlet_axial) for(int i = 0; i < Rf1_rho.size(); i++) erms += pow((SingletAVMMasses[i]/VMMasses[0]-Rf1_rho[i])/Rf1_rho[i],2);
-    }
+    // Singlet vector and axial vector meson sector
+    if (add_singlet_vector) for(int i = 0; i < Romega_rho.size(); i++) erms += std::pow((VMMasses[i]/VMMasses[0]-Romega_rho[i])/Romega_rho[i],2);
+    if (add_singlet_axial) for(int i = 0; i < Rf1_rho.size(); i++) erms += std::pow((SingletAVMMasses[i]/VMMasses[0]-Rf1_rho[i])/Rf1_rho[i],2);
     // We want to penalize backgrounds with mq != 0
-    if (add_mass) erms += pow(mq,2.0) ;
+    if (add_mass) erms += std::pow(mq,2.0) ;
     int nRatios = 0;
     if(add_tensor_glueball) nRatios += 1;
     if(add_scalars) nRatios += 17;
@@ -1318,94 +1298,48 @@ void HVQCD::showRatioValues(std::string method)
     if(add_singlet_axial) SingletAVMMasses = computeMasses(us, VSingletAVM, 2, method);
     // Compute the predicted ratios
     std::vector<double> RTGPred, RrhoPred, Ra1Pred, RpiPred, Ra0Pred, RomegaPred, Rf1Pred;
-    if(add_tensor_glueball) 
-    {
-        if (add_scalars) RTGPred = {TGMasses[0] / PSMMasses[0]};
-        else RTGPred = {TGMasses[0]/ VMMasses[0]};
-    }
-    if(add_scalars)
-    {
-        RrhoPred = {VMMasses[0]/PSMMasses[0], VMMasses[1]/PSMMasses[0], VMMasses[2]/PSMMasses[0], VMMasses[3]/PSMMasses[0], VMMasses[4]/PSMMasses[0], VMMasses[5]/PSMMasses[0]};
-        Ra1Pred = { AVMMasses[0]/PSMMasses[0], AVMMasses[1]/PSMMasses[0], AVMMasses[2]/PSMMasses[0], AVMMasses[3]/PSMMasses[0], AVMMasses[4]/PSMMasses[0]};
-        RpiPred = {PSMMasses[1]/PSMMasses[0], PSMMasses[2]/PSMMasses[0], PSMMasses[3]/PSMMasses[0], PSMMasses[4]/PSMMasses[0], PSMMasses[4]/PSMMasses[0]};
-        Ra0Pred = {SMMasses[0]/PSMMasses[0], SMMasses[1]/PSMMasses[0]};
-        if(add_singlet_vector) RomegaPred = {VMMasses[0]/PSMMasses[0], VMMasses[1]/PSMMasses[0], VMMasses[2]/PSMMasses[0]};
-        if(add_singlet_axial) Rf1Pred = {SingletAVMMasses[0]/PSMMasses[0], SingletAVMMasses[1]/PSMMasses[0]};
-    }
-    else
-    {
-        RrhoPred = {VMMasses[1]/VMMasses[0], VMMasses[2]/VMMasses[0], VMMasses[3]/VMMasses[0], VMMasses[4]/VMMasses[0], VMMasses[5]/VMMasses[0]};
-        Ra1Pred = { AVMMasses[0]/VMMasses[0], AVMMasses[1]/VMMasses[0], AVMMasses[2]/VMMasses[0], AVMMasses[3]/VMMasses[0], AVMMasses[4]/VMMasses[0]};
-        if(add_singlet_vector) RomegaPred = {VMMasses[0]/VMMasses[0], VMMasses[1]/VMMasses[0], VMMasses[2]/VMMasses[0]};
-        if(add_singlet_axial) Rf1Pred = {SingletAVMMasses[0]/VMMasses[0], SingletAVMMasses[1]/VMMasses[0]};
-    }
+    if(add_tensor_glueball) RTGPred = {TGMasses[0]/ VMMasses[0]};
+    RrhoPred = {VMMasses[1]/VMMasses[0], VMMasses[2]/VMMasses[0], VMMasses[3]/VMMasses[0], VMMasses[4]/VMMasses[0], VMMasses[5]/VMMasses[0]};
+    Ra1Pred = { AVMMasses[0]/VMMasses[0], AVMMasses[1]/VMMasses[0], AVMMasses[2]/VMMasses[0], AVMMasses[3]/VMMasses[0], AVMMasses[4]/VMMasses[0]};
+    RpiPred = {PSMMasses[0]/VMMasses[0], PSMMasses[1]/VMMasses[0], PSMMasses[2]/VMMasses[0], PSMMasses[3]/VMMasses[0], PSMMasses[4]/VMMasses[0]};
+    Ra0Pred = {SMMasses[0] / VMMasses[0], SMMasses[1] / VMMasses[0]};
+    if(add_singlet_vector) RomegaPred = {VMMasses[0]/VMMasses[0], VMMasses[1]/VMMasses[0], VMMasses[2]/VMMasses[0]};
+    if(add_singlet_axial) Rf1Pred = {SingletAVMMasses[0]/VMMasses[0], SingletAVMMasses[1]/VMMasses[0]};
     // Compare the predicted ratios with the known ones
     std::cout << "Predicted Ratios" << '\t' << "Measured Ratios" << '\t' << "(Rpred - Robs) / Robs" << std::endl;
     // Tensor glueball ratio
-    if(add_tensor_glueball)
-    {
-        std::cout << "TENSOR GLUEBALL SECTOR" << std::endl;
-        if(add_scalars) std::cout << RTGPred[0] << '\t' << RTG_pi[0] << '\t' << (RTGPred[0] - RTG_pi[0]) / RTG_pi[0] << std::endl;
-        else std::cout << RTGPred[0] << '\t' << RTG_rho[0] << '\t' << (RTGPred[0] - RTG_rho[0]) / RTG_rho[0] << std::endl;
-        std::cout << std::endl;
-    }
+     std::cout << "TENSOR GLUEBALL SECTOR" << std::endl;
+    if(add_tensor_glueball) std::cout << RTGPred[0] << '\t' << RTG_rho[0] << '\t' << (RTGPred[0] - RTG_rho[0]) / RTG_rho[0] << std::endl;
+    std::cout << std::endl;
     // Vector meson ratios
     std::cout << "VECTOR MESON NONSINGLET SECTOR" << std::endl;
-    if (add_scalars)
-    {
-        for(int i = 0; i < Rrho_pi.size(); i++) std::cout << RrhoPred[i] << '\t' << Rrho_pi[i] << '\t' << (RrhoPred[i] - Rrho_pi[i]) / Rrho_pi[i] << std::endl;
-    }
-    else
-    {
-        for(int i = 0; i < Rrho_rho.size(); i++) std::cout << RrhoPred[i] << '\t' << Rrho_rho[i] << '\t' << (RrhoPred[i] - Rrho_rho[i]) / Rrho_rho[i] << std::endl;
-    }
+    for(int i = 0; i < Rrho_rho.size(); i++) std::cout << RrhoPred[i] << '\t' << Rrho_rho[i] << '\t' << (RrhoPred[i] - Rrho_rho[i]) / Rrho_rho[i] << std::endl;
     std::cout << std::endl;
     // Axial vector meson ratios
     std::cout << "AXIAL VECTOR MESON NONSINGLET SECTOR" << std::endl;
-    if(add_scalars)
-    {
-        for(int i = 0; i < Ra1_pi.size(); i++) std::cout << Ra1Pred[i] << '\t' << Ra1_pi[i] << '\t' << (Ra1Pred[i] - Ra1_pi[i]) / Ra1_pi[i] << std::endl;
-    }
-    else
-    {
-        for(int i = 0; i < Ra1_rho.size(); i++) std::cout << Ra1Pred[i] << '\t' << Ra1_rho[i] << '\t' << (Ra1Pred[i] - Ra1_rho[i]) / Ra1_rho[i] << std::endl;
-    }
+    for(int i = 0; i < Ra1_rho.size(); i++) std::cout << Ra1Pred[i] << '\t' << Ra1_rho[i] << '\t' << (Ra1Pred[i] - Ra1_rho[i]) / Ra1_rho[i] << std::endl;
     std::cout << std::endl;
     if(add_scalars)
     {
         std::cout << "PSEUDOSCALAR MESON NONSINGLET SECTOR" << std::endl;
-        for(int i = 0; i < Rpi_pi.size(); i++) std::cout << RpiPred[i] << '\t' << Rpi_pi[i] << '\t' << (RpiPred[i] - Rpi_pi[i]) / Rpi_pi[i] << std::endl;
+        for(int i = 0; i < Rpi_rho.size(); i++) std::cout << RpiPred[i] << '\t' << Rpi_rho[i] << '\t' << (RpiPred[i] - Rpi_rho[i]) / Rpi_rho[i] << std::endl;
         std::cout << std::endl;
         std::cout << "SCALAR MESON NONSINGLET SECTOR" << std::endl;
-        for(int i = 0; i < Ra0_pi.size(); i++) std::cout << Ra0Pred[i] << '\t' << Ra0_pi[i] << '\t' << (Ra0Pred[i] - Ra0_pi[i]) / Ra0_pi[i] << std::endl;
+        for(int i = 0; i < Ra0_rho.size(); i++) std::cout << Ra0Pred[i] << '\t' << Ra0_rho[i] << '\t' << (Ra0Pred[i] - Ra0_rho[i]) / Ra0_rho[i] << std::endl;
         std::cout << std::endl;
     }
     // Singlet Vector meson ratios
     if(add_singlet_vector)
     {
         std::cout << "VECTOR MESON SINGLET SECTOR" << std::endl;
-        if (add_scalars)
-        {
-            for(int i = 0; i < Romega_pi.size(); i++) std::cout << RomegaPred[i] << '\t' << Romega_pi[i] << '\t' << (RomegaPred[i] - Romega_pi[i]) / Romega_pi[i] << std::endl;
-        }
-        else
-        {
-            for(int i = 0; i < Romega_rho.size(); i++) std::cout << RomegaPred[i] << '\t' << Romega_rho[i] << '\t' << (RomegaPred[i] - Romega_rho[i]) / Romega_rho[i] << std::endl;
-        }
+        for(int i = 0; i < Romega_rho.size(); i++) std::cout << RomegaPred[i] << '\t' << Romega_rho[i] << '\t' << (RomegaPred[i] - Romega_rho[i]) / Romega_rho[i] << std::endl;
         std::cout << std::endl;
     }
     // Singlet Axial vector meson ratios
     if(add_singlet_axial)
     {
         std::cout << "AXIAL VECTOR MESON SINGLET SECTOR" << std::endl;
-        if (add_scalars)
-        {
-            for(int i = 0; i < Rf1_pi.size(); i++) std::cout << Rf1Pred[i] << '\t' << Rf1_pi[i] << '\t' << (Rf1Pred[i] - Rf1_pi[i]) / Rf1_pi[i] << std::endl;
-        }
-        else
-        {
-            for(int i = 0; i < Rf1_rho.size(); i++) std::cout << Rf1Pred[i] << '\t' << Rf1_rho[i] << '\t' << (Rf1Pred[i] - Rf1_rho[i]) / Rf1_rho[i] << std::endl;
-        }
+        for(int i = 0; i < Rf1_rho.size(); i++) std::cout << Rf1Pred[i] << '\t' << Rf1_rho[i] << '\t' << (Rf1Pred[i] - Rf1_rho[i]) / Rf1_rho[i] << std::endl;
         std::cout << std::endl;
     }
     printQuarkMass();

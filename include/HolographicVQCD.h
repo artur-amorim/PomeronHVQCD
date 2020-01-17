@@ -32,18 +32,12 @@ class HVQCD : public Background
         static const std::vector<double> mTG;           // Singlet Tensor glueballs
         static const std::vector<double> momegas;       // Singlet Vector Mesons
         static const std::vector<double> mf1s;          // Singlet Axial Vector Mesons
-        // Ratios with pseudoscalar pi meson
-        static const std::vector<double> RTG_pi;        // Ratio of 2++ with pi
-        static const std::vector<double> Rrho_pi;       // Ratios of the vector meson's tower with pi
-        static const std::vector<double> Ra1_pi;        // Ratios of the axial vector meson's tower with pi
-        static const std::vector<double> Rpi_pi;        // Ratios of the pi meson tower with pi
-        static const std::vector<double> Ra0_pi;        // Ratios of the a0 meson tower with pi
-        static const std::vector<double> Romega_pi;     // Ratios of the omega meson tower with pi
-        static const std::vector<double> Rf1_pi;        // Ratios of the Singlet axial vector meson tower with pi
         // Ratios with the rho vector meson rho
         static const std::vector<double> RTG_rho;
         static const std::vector<double> Rrho_rho;
         static const std::vector<double> Ra1_rho;
+        static const std::vector<double> Rpi_rho;
+        static const std::vector<double> Ra0_rho;
         static const std::vector<double> Romega_rho;
         static const std::vector<double> Rf1_rho;
         // Declaration of Vf0 as a function of lambda
