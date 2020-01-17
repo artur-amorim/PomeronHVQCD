@@ -1301,8 +1301,11 @@ void HVQCD::showRatioValues(std::string method)
     if(add_tensor_glueball) RTGPred = {TGMasses[0]/ VMMasses[0]};
     RrhoPred = {VMMasses[1]/VMMasses[0], VMMasses[2]/VMMasses[0], VMMasses[3]/VMMasses[0], VMMasses[4]/VMMasses[0], VMMasses[5]/VMMasses[0]};
     Ra1Pred = { AVMMasses[0]/VMMasses[0], AVMMasses[1]/VMMasses[0], AVMMasses[2]/VMMasses[0], AVMMasses[3]/VMMasses[0], AVMMasses[4]/VMMasses[0]};
-    RpiPred = {PSMMasses[0]/VMMasses[0], PSMMasses[1]/VMMasses[0], PSMMasses[2]/VMMasses[0], PSMMasses[3]/VMMasses[0], PSMMasses[4]/VMMasses[0]};
-    Ra0Pred = {SMMasses[0] / VMMasses[0], SMMasses[1] / VMMasses[0]};
+    if(add_scalars)
+    {
+        RpiPred = {PSMMasses[0]/VMMasses[0], PSMMasses[1]/VMMasses[0], PSMMasses[2]/VMMasses[0], PSMMasses[3]/VMMasses[0], PSMMasses[4]/VMMasses[0]};
+        Ra0Pred = {SMMasses[0] / VMMasses[0], SMMasses[1] / VMMasses[0]};
+    }
     if(add_singlet_vector) RomegaPred = {VMMasses[0]/VMMasses[0], VMMasses[1]/VMMasses[0], VMMasses[2]/VMMasses[0]};
     if(add_singlet_axial) Rf1Pred = {SingletAVMMasses[0]/VMMasses[0], SingletAVMMasses[1]/VMMasses[0]};
     // Compare the predicted ratios with the known ones
