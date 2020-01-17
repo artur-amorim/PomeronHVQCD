@@ -51,9 +51,9 @@ int main(int argc, char ** argv)
     hvqcd.showRatioValues();
 
     // Save background field values
-    hvqcd.saveBackgroundFields("plots/HVQCD/BackgroundFields.txt");
+    hvqcd.saveBackgroundFields("plots/BackgroundFields.txt");
     // Now let's save the values of w, k, Vg, W and so on
-    hvqcd.savePotentials("plots/HVQCD/Potentials.txt");
+    hvqcd.savePotentials("plots/Potentials.txt");
 
     return 0;
 }
