@@ -36,5 +36,9 @@ int main(int argc, char ** argv)
     hvqcd.computeSpectrum();
     hvqcd.showRatioValues();
 
+    double tmass2 = hvqcd.TachyonMassSquareIR();
+
+    cout << "Tau Mass Squered IR: " << tmass2 << endl;
+
     return 0;
 }
