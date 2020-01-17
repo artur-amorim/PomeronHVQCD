@@ -1064,6 +1064,38 @@ void HVQCD::computeSpectrum(std::string method)
     }
 }
 
+double HVQCD::TachyonMassSquareIR()
+{
+    /* 
+        This function computes the bulk tachyon mass squared in the IR.
+        We use the formula of Matti's notebook.
+    */
+   // Compute lambda_max
+   std::function<double(double)> funcA = [this] (double z) { return this->AIR(z) +150 ;} ;
+   double zIRYM = zbrent(funcA, 0.1, 100.0, 1e-9, true);
+   double lambda_max = std::exp(PhiIR(zIRYM));
+
+    // Computing the fixed point lambda_star
+    std::function<double(double)> func = [this] (double l) 
+    { 
+        
+        double dvg = dVgldlambda(l), dvf0 = dVf0dlambda(l);
+        double ans = dvg - xf * dvf0 ;
+        return ans;
+    };
+    double lambda_star = zbrent(func, 0.0001, lambda_max, 1e-9, true);
+
+    // Compute Veff(lambda*) = Vg(lambda*) - xf Vf0(lambda*)
+    double Veff_star = Vgl(lambda_star) - xf * Vf0l(lambda_star);
+    // Value of Veff(0) = Vg(0) - xf Vf0(0)
+    double Veff0 = 12 - xf * W0;
+
+    double aih = 1 + kU1 * sc * lambda_star / lambda0 + std::exp(-lambda0/(ksc*lambda_star)) * kIR * (1+lambda0*k1/(ksc*lambda_star)) * std::pow(ksc*lambda_star, 4./3) / (16*std::pow(M_PI, 8./3) * std::sqrt(std::log(1+ksc*lambda_star/lambda0)));
+    double tmass2 = 3 * aih * Veff0 / Veff_star ;
+
+    return tmass2;
+}
+
 double HVQCD::J()
 {
     std::cout << "sc: " << sc << " ksc: " << ksc << " wsc: " << wsc << " W0: " << W0 << " w0: " << w0 << " kU1: " << kU1;
@@ -1167,7 +1199,11 @@ double HVQCD::J()
     {
         std::cout << "mq: " << mq << " erms: " << erms << std::endl;
     }
-    
+    // Now we impose the constraint (12-x W0) kIR/VgIR/6>1
+    erms += std::exp(- ( (12-xf*W0)*kIR/(VgIR*6) - 1) ); // The more the constraint is satisfied the smaller the penalty
+    // We also impose the tachyo mass squared to be larger than 3.5
+    double tmass2 = TachyonMassSquareIR();
+    erms += std::exp( - (tmass2 - 3.5)) ;
     return erms;
 }
 

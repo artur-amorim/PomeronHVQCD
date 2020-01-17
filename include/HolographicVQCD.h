@@ -190,5 +190,7 @@ class HVQCD : public Background
         void showRatioValues(std::string method = "cheb");
         // Declaration of the cost function used in the spectrum fit
         double J();
+        // Declaration of the mass squared of the bulk tachyon in the IR
+        double TachyonMassSquareIR();
 };
 #endif
