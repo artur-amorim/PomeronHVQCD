@@ -1194,10 +1194,7 @@ double HVQCD::J()
         erms = 1e99;
         std::cout << "None erms" << std::endl;
         std::cout << "erms: " << erms << std::endl;
-    }
-    else
-    {
-        std::cout << "mq: " << mq << " erms: " << erms << std::endl;
+        return erms;
     }
     // Now we impose the constraint (12-x W0) kIR/VgIR/6>1
     double constr = (12-xf*W0)*kIR/(VgIR*6);
@@ -1206,6 +1203,7 @@ double HVQCD::J()
     double tmass2 = TachyonMassSquareIR();
     erms += std::exp( - (tmass2 - 3.5)) ;
     std::cout << "(12 - xf) W0 kIR / (6 VgIR) = " << constr << " TachyonMassSquaredIR = " << tmass2 << std::endl;
+     std::cout << "mq: " << mq << " erms: " << erms << std::endl;
     return erms;
 }
 

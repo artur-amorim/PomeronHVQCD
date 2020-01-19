@@ -53,8 +53,11 @@ int main(int argc, char ** argv)
     vector<double> x_guess = {sc, ksc, wsc, W0, w0, kU1, wU1, VgIR, WIR, kIR, wIR, W1, k1, w1, tau0, Za, ca};
 
     optmFunc func(add_quark, add_tensor_glueball, add_scalars, add_singlet_vector, add_singlet_axial);
+
+    vector<double> deltas(x_guess.size(), 0.5);
+    deltas[16] = 10; deltas[17] = 0.1;
     
-    Fit bestFit = optimFunction(x_guess, func, 0.5);
+    Fit bestFit = optimFunction(x_guess, func, deltas);
     vector<double> xop = bestFit.bestFitPars;
     
     // Show the optimum values found
