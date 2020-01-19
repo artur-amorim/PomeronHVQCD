@@ -26,9 +26,9 @@ struct optmFunc
 
 int main(int argc, char ** argv)
 {
-    double sc, ksc, wsc, W0, w0, wU1;
+    double sc, ksc, wsc, W0, w0, kU1, wU1;
     double VgIR, WIR, kIR, wIR, W1, k1, w1;
-    double kU1, xf = 2.0/3, tau0, Za, ca;
+    double xf = 2.0/3, tau0, Za, ca;
     bool add_quark = false, add_tensor_glueball = true, add_scalars = true;
     bool add_singlet_vector = true, add_singlet_axial = true;
     if (argc < 18)
@@ -54,8 +54,7 @@ int main(int argc, char ** argv)
 
     optmFunc func(add_quark, add_tensor_glueball, add_scalars, add_singlet_vector, add_singlet_axial);
 
-    vector<double> deltas(x_guess.size(), 0.5);
-    deltas[16] = 10; deltas[17] = 0.1;
+    vector<double> deltas = {0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 10, 0.1};
     
     Fit bestFit = optimFunction(x_guess, func, deltas);
     vector<double> xop = bestFit.bestFitPars;
