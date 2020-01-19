@@ -18,7 +18,7 @@ struct optmFunc
     double operator()(const std::vector<double> &x)
     {
         HVQCD hvqcd(x[0], x[1], x[2], x[3], x[4], x[5], x[6], x[7], x[8], x[9], x[10],
-                x[11], x[12], x[13], 2./3, x[14], x[15], x[16], add_quark, add_tensor_glueball, add_scalars, add_singlet_vector, add_singlet_axial);
+                x[11], x[12], x[13], 2./3, x[14], 0, 0, add_quark, add_tensor_glueball, add_scalars, add_singlet_vector, add_singlet_axial);
         double j = hvqcd.J();
         return j;
     }
@@ -29,8 +29,8 @@ int main(int argc, char ** argv)
     double sc, ksc, wsc, W0, w0, kU1, wU1;
     double VgIR, WIR, kIR, wIR, W1, k1, w1;
     double xf = 2.0/3, tau0, Za, ca;
-    bool add_quark = false, add_tensor_glueball = true, add_scalars = true;
-    bool add_singlet_vector = true, add_singlet_axial = true;
+    bool add_quark = false, add_tensor_glueball = true, add_scalars = false;
+    bool add_singlet_vector = true, add_singlet_axial = false;
     if (argc < 18)
     {
         cout << "Starting fit with default values" << endl;
@@ -50,11 +50,11 @@ int main(int argc, char ** argv)
     // Fit the model to the spectrum
     chebSetN(800);
 
-    vector<double> x_guess = {sc, ksc, wsc, W0, w0, kU1, wU1, VgIR, WIR, kIR, wIR, W1, k1, w1, tau0, Za, ca};
+    vector<double> x_guess = {sc, ksc, wsc, W0, w0, kU1, wU1, VgIR, WIR, kIR, wIR, W1, k1, w1, tau0};
 
     optmFunc func(add_quark, add_tensor_glueball, add_scalars, add_singlet_vector, add_singlet_axial);
 
-    vector<double> deltas = {0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 10, 0.1};
+    vector<double> deltas = {0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5};
     
     Fit bestFit = optimFunction(x_guess, func, deltas);
     vector<double> xop = bestFit.bestFitPars;
@@ -63,7 +63,7 @@ int main(int argc, char ** argv)
     sc = xop[0]; ksc = xop[1]; wsc = xop[2]; W0 = xop[3]; w0 = xop[4]; kU1 = xop[5];
     wU1 = xop[6]; VgIR = xop[7]; WIR = xop[8]; kIR = xop[9]; wIR = xop[10];
     W1 = xop[11]; k1 = xop[12]; w1 = xop[13]; xf = 2./3; tau0 = xop[14];
-    Za = xop[15]; ca = xop[16];
+    //Za = xop[15]; ca = xop[16];
 
     HVQCD hvqcd(sc, ksc, wsc, W0, w0, kU1, wU1, VgIR, WIR, kIR, wIR, W1, k1, w1, xf, tau0, Za, ca,
             add_quark, add_tensor_glueball, add_scalars, add_singlet_vector, add_singlet_axial);
