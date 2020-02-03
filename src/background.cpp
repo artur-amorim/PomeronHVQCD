@@ -2,7 +2,34 @@
 #include "background.h"
 #include "schrodinger/schrodinger.h"
 
+// Definition of Background constructor
 Background::Background(const double ssc, const double VVgIR): sc(ssc), VgIR(VVgIR){}
+
+// Definition of Background copy constructor
+Background::Background(const Background &bck):
+    sc(bck.sc), VgIR(bck.VgIR), qs(bck.qs), Phis(bck.Phis),
+    dqs(bck.dqs), dPhis(bck.dPhis), d2Phis(bck.d2Phis),
+    As(bck.As), zs(bck.zs) {}
+
+// Definition of the assignment operator of Background class
+Background& Background::operator=(const Background &rhs)
+{   
+    if (this == &rhs) return *this;
+    // Copy all the data
+    sc = rhs.sc;
+    VgIR = rhs.VgIR;
+    qs = rhs.qs;
+    Phis = rhs.Phis;
+    dqs = rhs.dqs;
+    dPhis = rhs.dPhis;
+    d2Phis = rhs.d2Phis;
+    As = rhs.As;
+    zs = rhs.zs;
+    return *this ;
+}
+
+// Definition of Background class destructor
+Background::~Background() {}
 
 const double Background::lambda0 = 8 * M_PI * M_PI;
 const double Background::V1 = 44. / (9. * M_PI * M_PI);
@@ -112,52 +139,49 @@ double Background::d2PhiYM(const double q, const double phi)
 
 void Background::eom(const state &X, state &dXdA, const double A)
 {
-    std::cout << "eom function of Background class." << std::endl;
+    std::cout << "eom member function of Background class." << std::endl;
 }
 
 void Background::observer(const state &X, const double A)
 {
-    std::cout << "observer function of Background class." << std::endl;
+    std::cout << "observer member function of Background class." << std::endl;
 }
 
 void Background::finalizeBackground()
 {
-    std::cout << "finalizeBackground function of Background class." << std::endl;
-}
-
-double Background::J(const state &x)
-{
-    std::cout << "J function of Background class. Returning 1e99" << std::endl;
-    return 1e99;
+    std::cout << "finalizeBackground member function of Background class." << std::endl;
 }
 
 void Background::solve()
 {
-    std::cout << "solve function of Background class called. Doing nothing." << std::endl; 
+    std::cout << "solve member function of Background class called. Doing nothing." << std::endl; 
 }
 
-std::vector<std::vector<double> > Background::getBackgroundFields()
-{
-    std::vector<std::vector<double> > ans(0);
-    std::cout << "getBackgroundFields function of Background class. Returning 0 size vector" << std::endl;
-    return ans;
-}
+double Background::get_sc() const {return this->sc;}
 
-std::vector< double > Background::getBackgroundPars()
-{
-    std::vector<double> ans(0);
-    std::cout << "getBackgroundPars function of Background class. Returning 0 size vector" << std::endl;
-    return ans;
-}
+double Background::get_VgIR() const {return this->VgIR;}
 
-void Background::computeSpectrum()
-{
-    std::cout << "computeSpectrum function of Background class. Doing nothing." << std::endl;
-}
+std::vector<double> Background::q() const {return this->qs;}
 
-std::vector<double> Background::computeV2GPotential()
+std::vector<double> Background::Phi() const {return this->Phis;}
+
+std::vector<double> Background::dq() const {return this->dqs;}
+
+std::vector<double> Background::dPhi() const {return this->dPhis;}
+
+std::vector<double> Background::d2Phi() const {return this->d2Phis;}
+
+std::vector<double> Background::A() const {return this->As;}
+
+std::vector<double> Background::z() const {return this->zs;}
+
+std::vector<double> computeV2GPotential(const Background &bck)
 {
     // Compute the Schrodinger potential of the 2^{++} glueballs
+    // Get A, q and dq values
+    std::vector<double> As = bck.A(), qs = bck.q(), dqs = bck.dq();
+    if (As.size() == 0) throw(std::runtime_error("Solve the holographic QCD vacuum first!"));
+    // Compute V2G
     std::vector<double> V2G(As.size());
     for(int i = 0; i < As.size(); i++)
     {

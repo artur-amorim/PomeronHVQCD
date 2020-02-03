@@ -41,15 +41,28 @@ class Background
         virtual void observer(const state &X, const double A );
         virtual void finalizeBackground();
     public:
+        // Class constructor
         Background(const double ssc = 3.0, const double VVgIR = 2.05);
+        // Class copy constructor
+        Background(const Background & bck);
+        // Class assignment opertor
+        Background& operator=(const Background &rhs);
+        virtual ~Background();
         virtual void solve();
-        virtual std::vector<std::vector<double> > getBackgroundFields();
-        virtual std::vector< double > getBackgroundPars();
-        std::vector<double> computeV2GPotential();
-        // Declaration of computeSpectrum function of Background class
-        virtual void computeSpectrum();
-        virtual double J(const state &x);
+        // Getters of sc, VgIR, qs, Phis, dqs, dPhis, d2Phis, As and zs
+        double get_sc() const;
+        double get_VgIR() const;
+        std::vector<double> q() const;
+        std::vector<double> Phi() const;
+        std::vector<double> dq() const;
+        std::vector<double> dPhi() const;
+        std::vector<double> d2Phi() const;
+        std::vector<double> A() const;
+        std::vector<double> z() const;
 };
+
+// Function that computes the potential of 2^{++} glueballs
+std::vector<double> computeV2GPotential(const Background &bck);
 
 std::vector<double> computeMasses(const std::vector<double> &z, const std::vector<double> &V, int nMasses, std::string method = "cheb");
 #endif
