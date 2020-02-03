@@ -35,6 +35,8 @@ class Background
         double d2qYM(const double q, const double phi);
         double dPhiYM(const double q, const double phi);
         double d2PhiYM(const double q, const double phi);
+        // virtual copy function
+        virtual void copy(const Background &bck);
         // operator() relevant for the EOMs
         virtual void eom(const state &X, state &dXdA, const double A);
         // operator() relevant for the observer

@@ -11,10 +11,9 @@ Background::Background(const Background &bck):
     dqs(bck.dqs), dPhis(bck.dPhis), d2Phis(bck.d2Phis),
     As(bck.As), zs(bck.zs) {}
 
-// Definition of the assignment operator of Background class
-Background& Background::operator=(const Background &rhs)
-{   
-    if (this == &rhs) return *this;
+
+void Background::copy(const Background &rhs)
+{
     // Copy all the data
     sc = rhs.sc;
     VgIR = rhs.VgIR;
@@ -25,6 +24,14 @@ Background& Background::operator=(const Background &rhs)
     d2Phis = rhs.d2Phis;
     As = rhs.As;
     zs = rhs.zs;
+}
+
+// Definition of the assignment operator of Background class
+Background& Background::operator=(const Background &rhs)
+{   
+    if (this == &rhs) return *this;
+    // Copy all the data
+    copy(rhs);
     return *this ;
 }
 
