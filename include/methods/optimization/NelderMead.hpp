@@ -137,84 +137,9 @@ struct NelderMead {
 	}
 };
 
-struct Fit
-{
-	std::vector<double> bestFitPars;
-	std::vector<double> bestFitParsUncert;
-	Fit(const std::vector<double> &pars, const std::vector<double> &uncert):
-		bestFitPars(pars), bestFitParsUncert(uncert) {}
-};
-
-std::vector<double> Pij(std::vector<double> &Pi, std::vector<double> &Pj)
-{
-	if (Pi.size() != Pj.size()) throw std::runtime_error("Vectors Pi and Pj with different sizes in Pij function in NelderMead.hpp");
-	const int n = Pi.size();
-	std::vector<double> ans(n,0);
-	// Perform the sum
-	for(int k = 0; k < n; k++) ans[k] = 0.5 * (Pi[k] + Pj[k]);
-	return ans;
-}
 
 template<class T>
-std::vector<double> parameterUncertainties(T &func, const NelderMead &NM)
-{
-	// Computes the parameter uncertainties
-	// Get the simplex and its function values
-	arma::mat simp = NM.p;
-	const int nSimPts = simp.n_rows;
-	const int n = simp.n_cols;
-	std::vector<std::vector<double> > simplex;
-	for(int i = 0; i < nSimPts; i++)
-	{
-		std::vector<double> row(n,0);
-		for (int j = 0; j < n; j++) row[j] = simp(i,j);
-		simplex.push_back(row);
-	}
-	std::vector<double> simplexFuncVals = NM.y;
-	// Compute B matrix
-	arma::mat B(n, n);
-	for(int i = 1; i <= n; i++)
-	{
-		for(int j = 1; j <= n; j++)
-		{
-			if (i > j) B(i-1,j-1) = B(j-1,i-1);
-			else if (i == j)
-			{
-				double yi = simplexFuncVals[i];
-				double y0 = simplexFuncVals[0];
-				std::vector<double> p0i = Pij(simplex[0], simplex[i]);
-				double yi0 = func(p0i);
-				B(i-1,i-1) = 2 * (yi + y0 - 2 * yi0);
-			}
-			else
-			{
-				double y0 = simplexFuncVals[0];
-				std::vector<double> pij = Pij(simplex[i], simplex[j]);
-				double yij = func(pij);
-				std::vector<double> p0i = Pij(simplex[0], simplex[i]);
-				double y0i = func(p0i);
-				std::vector<double> p0j = Pij(simplex[0], simplex[j]);
-				double y0j = func(p0j);
-				B(i-1, j-1) = 2 * (yij + y0 - y0i - y0j);
-			}
-		}
-	}
-	// Compute Q matrix
-	arma::mat Q(n, n);
-	for(int i = 0; i < n; i++)
-	{
-		for(int j = 0; j < n; j++) Q(i,j) = simplex[j+1][i] - simplex[0][i];
-	}
-	// We can now build the covariance matrix from B and Q
-	arma::mat CovMat = Q * arma::inv(B) * Q.t();
-	// The parameters uncertainties are the square roots of the diagonal elements of CovMat
-	std::vector<double> parUncert(n, 0);
-	for(int i = 0; i < n; i++) parUncert[i] = std::sqrt(CovMat(i,i));
-	return parUncert;
-}
-
-template<class T>
-Fit optimFunction(const std::vector<double> &x, T &func, double delta)
+std::vector<double> optimFunction(const std::vector<double> &x, T &func, double delta)
 {
     // Given an initial guess of parameters X,
     // prints the value for which the function or functor f has a minimum
@@ -222,13 +147,11 @@ Fit optimFunction(const std::vector<double> &x, T &func, double delta)
 	// Start the optimization process
 	std::vector<double> xguess = x;
 	std::vector<double> optParams = NM.minimize(xguess, delta, func);
-	// Compute the parameterUncertainties
-	std::vector<double> parUncert = parameterUncertainties(func, NM);
-    return Fit(optParams, parUncert);
+    return optParams;
 };
 
 template<class T>
-Fit optimFunction(const std::vector<double> &x, T &func, std::vector<double> deltas)
+std::vector<double> optimFunction(const std::vector<double> &x, T &func, std::vector<double> deltas)
 {
     // Given an initial guess of parameters X,
     // prints the value for which the function or functor f has a minimum
@@ -236,10 +159,8 @@ Fit optimFunction(const std::vector<double> &x, T &func, std::vector<double> del
 	// Start the optimization process
 	std::vector<double> xguess = x;
 	std::vector<double> optParams = NM.minimize(xguess, deltas, func);
-	// Compute the parameterUncertainties
-	std::vector<double> parUncert = parameterUncertainties(func, NM);
 	// Return the optimal set of parameters
-    return Fit(optParams, parUncert);
+    return optParams;
 };
 
 #endif
