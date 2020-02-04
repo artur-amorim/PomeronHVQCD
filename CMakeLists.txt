@@ -1,8 +1,6 @@
 # Specify the minimum CMAKE version required
 cmake_minimum_required(VERSION 2.8.0)
 
-project(PomeronHVQCD VERSION 0.0.1)
-
 set(CMAKE_CXX_FLAGS "-std=c++11 -O3")
 set(OS_INCLUDE_DIRS "/usr/include" "/usr/local/include")
 set(OS_LIB_DIRS "/usr/lib" "/usr/local/lib")
@@ -28,8 +26,9 @@ set(HVQCD src/background.cpp src/HolographicVQCD.cpp)
 add_executable(fitYangMills.exe physics/fitYangMills.cpp ${YANGMILLS} ${SCHRODINGER})
 target_link_libraries(fitYangMills.exe armadillo)
 
-# add_executable(fitBackground.exe physics/fitBackground.cpp ${HVQCD} ${SCHRODINGER})
-# target_link_libraries(fitBackground.exe armadillo)
+# Fit HVQCD Gloabl
+add_executable(fitHVQCDGlobal.exe physics/fitHVQCDGlobal.cpp ${HVQCD} ${SCHRODINGER})
+target_link_libraries(fitHVQCDGlobal.exe armadillo)
 
 # Print HVQCD mass ratios
 #add_executable(HVQCD_mass_ratios.exe physics/HVQCD_mass_ratios.cpp ${HVQCD} ${SCHRODINGER})
