@@ -27,18 +27,19 @@ int main(int argc, char ** argv)
         za = stod(argv[17]); ca = stod(argv[18]);
     }
     // Create HVQCD object with default values
-    HVQCD hvqcd(sc, ksc, wsc, W0, w0, kU1, wU1, VgIR, WIR, kIR, wIR, W1, k1, w1, xf, tau0, za, ca, false, true, true, true, true);
+    HVQCD hvqcd(sc, ksc, wsc, W0, w0, kU1, wU1, VgIR, WIR, kIR, wIR, W1, k1, w1, xf, tau0, za, ca);
     // Solve the background
     hvqcd.solve();
-    hvqcd.printQuarkMass();
-    // Print the ratio values
-    chebSetN(800);
-    hvqcd.computeSpectrum();
-    hvqcd.showRatioValues();
-
+    
+    double mq = hvqcd.QuarkMass();
     double tmass2 = hvqcd.TachyonMassSquareIR();
 
+    cout << "Quark Mass: " << mq << endl;
     cout << "Tau Mass Squered IR: " << tmass2 << endl;
+
+    chebSetN(800);
+    computeHVQCDSpectrum(hvqcd);
+    computeHVQCDRatios(hvqcd);
 
     return 0;
 }

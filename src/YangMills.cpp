@@ -17,6 +17,7 @@ YangMills& YangMills::operator=(const YangMills &rhs)
     if (this == &rhs) return *this;
     // Copy all the data
     copy(rhs);
+    d3Phis = rhs.d3Phis;
     return *this ;
 }
 

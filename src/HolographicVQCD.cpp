@@ -7,41 +7,30 @@
 #include "schrodinger/common.h"
 #include "methods/interpolation/Spline_Interp.hpp"
 
-const std::vector<double> HVQCD::mrhos = {775.5, 1465, 1720, 1909, 2149, 2265};         // Non-Singlet Vector Mesons
-const std::vector<double> HVQCD::ma1s = {1230, 1647, 1930, 2096, 2270};                 // Non-Singlet Axial Vector Mesons
-const std::vector<double> HVQCD::mpis = {135, 1300, 1812, 2070, 2360};                  // Non-Singlet Pseudoscalar Mesons
-const std::vector<double> HVQCD::a0s = {1474, 2025};                                    // Non-Singlet Scalar Mesons
-const std::vector<double> HVQCD::mTG = {2150};                                          // Singlet Tensor glueballs
-const std::vector<double> HVQCD::momegas = {782.65, 1420, 1670};                        // Singlet Vector Mesons
-const std::vector<double> HVQCD::mf1s = {1281.9, 1426.4};                               // Singlet Axial Vector Mesons
-
-// Ratios with the rho vector meson rho
-const std::vector<double> HVQCD::RTG_rho = {2.7724};
-const std::vector<double> HVQCD::Rrho_rho = {1.8891, 2.2179, 2.4616, 2.7711, 2.9207};
-const std::vector<double> HVQCD::Ra1_rho = {1.5861, 2.1238, 2.48872, 2.70277, 2.92714};
-const std::vector<double> HVQCD::Rpi_rho = {0.1741,1.6763,2.3366,2.6692, 3.0432};
-const std::vector<double> HVQCD::Ra0_rho = {1.9007, 2.6112};
-const std::vector<double> HVQCD::Romega_rho = {1.01, 1.83, 2.15};
-const std::vector<double> HVQCD::Rf1_rho = {1.65, 1.84};
-
-
 HVQCD::HVQCD(const double ssc, const double kksc, const double wwsc,
              const double WW0, const double ww0,
              const double kkU1, const double wwU1,
              const double VVgIR, const double WWIR, const double kkIR, const double wwIR,
              const double WW1, const double kk1, const double ww1,
              const double xxf, const double ttau0, 
-             const double za, const double c,
-             const bool add_m, const bool add_tg, const bool add_scals,
-             const bool add_sing_v, const bool add_sing_av):
+             const double za, const double c):
              Background(ssc, VVgIR), ksc(kksc), wsc(wwsc), W0(WW0), w0(ww0), 
              kU1(kkU1), wU1(wwU1), WIR(WWIR), kIR(kkIR), wIR(wwIR), W1(WW1),
              k1(kk1), w1(ww1), xf(xxf), tau0(ttau0),
-             Za(za), ca(c),
-             add_mass(add_m), add_tensor_glueball(add_tg), add_scalars(add_scals),
-             add_singlet_vector(add_sing_v), add_singlet_axial(add_sing_av) {}
+             Za(za), ca(c) {}
 
-double HVQCD::Vf0l(const double l)
+HVQCD::HVQCD(const HVQCD &hvqcd):
+    Background(hvqcd), ksc(hvqcd.ksc), wsc(hvqcd.wsc),
+    W0(hvqcd.W0), w0(hvqcd.w0), kU1(hvqcd.kU1), wU1(hvqcd.wU1), WIR(hvqcd.WIR),
+    kIR(hvqcd.kIR), wIR(hvqcd.wIR), W1(hvqcd.W1), k1(hvqcd.k1), w1(hvqcd.w1),
+    xf(hvqcd.xf), tau0(hvqcd.tau0), Za(hvqcd.Za), ca(hvqcd.ca), mq(hvqcd.mq),
+    taus(hvqcd.taus), dtaus(hvqcd.dtaus), d2qs(hvqcd.d2qs),
+    d2taus(hvqcd.d2taus), d3taus(hvqcd.d3taus), us(hvqcd.us) {}
+
+
+HVQCD::~HVQCD(){}
+
+double HVQCD::Vf0l(const double l) const
 {
     // Definition of Vf0 as a function of lambda
     double coeff1 = (24 + 11 * W0 - 2 * W0 * xf) / (27 * M_PI * M_PI);
@@ -50,7 +39,7 @@ double HVQCD::Vf0l(const double l)
     return ans;
 }
 
-double HVQCD::dVf0dlambda(const double l)
+double HVQCD::dVf0dlambda(const double l) const
 {
     // Definition of dVf0/dlambda
     double v1 = (24 + 11 * W0 - 2 * W0 * xf)/(27*M_PI*M_PI);
@@ -60,14 +49,14 @@ double HVQCD::dVf0dlambda(const double l)
     return ans;
 }
 
-double HVQCD::Vf0(const double phi)
+double HVQCD::Vf0(const double phi) const
 {
     // Definition of Vf0 as a function of Phi, lambda = exp(Phi)
     double l = exp(phi);
     return Vf0l(l);
 }
 
-double HVQCD::dVf0dPhi(const double phi)
+double HVQCD::dVf0dPhi(const double phi) const
 {
     // Definition of dVf0/dPhi
     double l = exp(phi);
@@ -78,7 +67,7 @@ double HVQCD::dVf0dPhi(const double phi)
 }
 
 // Definition of the d2Vf0dPhi2 potential
-double HVQCD::d2Vf0dPhi2(const double phi)
+double HVQCD::d2Vf0dPhi2(const double phi) const
 {
     // Definition of d2Vf0/dPhi2
     double coeff1 = (24 + 11 * W0 - 2 * W0 * xf) / (27 * M_PI * M_PI);
@@ -93,57 +82,57 @@ double HVQCD::d2Vf0dPhi2(const double phi)
     return ans;
 }
 
-double HVQCD::d2Vf0dlambda2(const double l)
+double HVQCD::d2Vf0dlambda2(const double l) const
 {
     // Definition of the d2Vf0/dlambda2 potential
     double ans = (d2Vf0dPhi2(log(l)) - dVf0dPhi(log(l)))/pow(l,2);
     return ans;
 }
 
-double HVQCD::Vfl(const double l, const double tau)
+double HVQCD::Vfl(const double l, const double tau) const
 {
     // Definition of the Vf = Vf0 exp(-tau^2) potential
     return xf * Vf0l(l) * exp(-tau*tau);
 }
 
-double HVQCD::dVfldlambda(const double l, const double tau)
+double HVQCD::dVfldlambda(const double l, const double tau) const
 {
     // Definition of the dVfdl = dVf0dl exp(-tau^2) potential
     return xf * dVf0dlambda(l) * exp(-tau*tau);
 }
 
-double HVQCD::Vf(const double phi, const double tau)
+double HVQCD::Vf(const double phi, const double tau) const
 {
     // Definition of the Vf = Vf0(Phi) exp(-tau^2) potential vs phi
     return xf * Vf0(phi) * exp(-tau * tau);
 }
 
-double HVQCD::dVfdPhi(const double phi, const double tau)
+double HVQCD::dVfdPhi(const double phi, const double tau) const
 {
     // Definition of the dVfdPhi = dVf0dPhi exp(-tau^2) potential
     return xf * dVf0dPhi(phi) * exp(-tau*tau);
 }
 
 // Declaration of the dVfdtau = Vf0 (-2tau)exp(-tau^2) potential
-double HVQCD::dVfdtau(const double phi, const double tau)
+double HVQCD::dVfdtau(const double phi, const double tau) const
 {
     // Definition of the dVfdtau = Vf0 (-2tau)exp(-tau^2) potential
     return xf * Vf0(phi) * (-2 * tau) * exp(-tau*tau);
 }
 
-double HVQCD::d2VfdPhi2(const double phi, const double tau)
+double HVQCD::d2VfdPhi2(const double phi, const double tau) const
 {
     // Definition of d2Vf/dPhi2 potential
     return xf * d2Vf0dPhi2(phi) * exp(-tau*tau);
 }
 
-double HVQCD::d2VfdPhidtau(const double phi, const double tau)
+double HVQCD::d2VfdPhidtau(const double phi, const double tau) const
 {
     // Definition of d2Vf/dPhidtau = dVf0dPhi (-2tau)exp(-tau^2)
     return xf * dVf0dPhi(phi) * (-2 * tau) * exp(-tau*tau);
 }
 
-double HVQCD::klambda(const double l)
+double HVQCD::klambda(const double l) const
 {
     // Definition of the k potential as a function of lambda = exp(Phi)
     double ans = 1.5 - W0 * xf / 8;
@@ -151,7 +140,7 @@ double HVQCD::klambda(const double l)
     return 1 / ans ;
 }
 
-double HVQCD::k(const double phi)
+double HVQCD::k(const double phi) const
 {
     // Definition of the k potential as a function of Phi
     double l = exp(phi);
@@ -159,7 +148,7 @@ double HVQCD::k(const double phi)
 }
 
 // Definition of dk/dl potential
-double HVQCD::dkdlambda(const double l)
+double HVQCD::dkdlambda(const double l) const
 {
     // Computes dk/dlambda
     double k0 = 1.5 - W0 * xf / 8.0;
@@ -172,7 +161,7 @@ double HVQCD::dkdlambda(const double l)
     return ans;
 }
 
-double HVQCD::dkdPhi(const double phi)
+double HVQCD::dkdPhi(const double phi) const 
 {
     // Computes dk/dPhi = lambda dk/dlambda
     double l = exp(phi);
@@ -182,7 +171,7 @@ double HVQCD::dkdPhi(const double phi)
     return l * ans;
 }
 
-double HVQCD::d2kdPhi2(const double phi)
+double HVQCD::d2kdPhi2(const double phi) const 
 {
     /* Definition of d2k/dPhi2 potential
        Given that k(Phi) = 1 / f(Phi), d2k/dPhi2 = 2 dkdPhi^2/k - k^2 f''(Phi)
@@ -203,14 +192,14 @@ double HVQCD::d2kdPhi2(const double phi)
     return ans;
 }
 
-double HVQCD::d2kdlambda2(const double l)
+double HVQCD::d2kdlambda2(const double l) const
 {
     // Compute d2k/dlambda2
     double ans = (d2kdPhi2(log(l)) - dkdPhi(log(l)))/pow(l,2);
     return ans;
 }
 
-double HVQCD::w(const double phi)
+double HVQCD::w(const double phi) const 
 {
     // Returns w(Phi) potential
     double l = exp(phi);
@@ -218,7 +207,7 @@ double HVQCD::w(const double phi)
     return 1 / ans;
 }
 
-double HVQCD::dwdPhi(const double phi)
+double HVQCD::dwdPhi(const double phi) const
 {
     /* Definition of the dw/dPhi potential
        Given that w(Phi) = 1 / f(Phi), dw/dPhi = -f'(Phi)w(Phi)^2
@@ -234,7 +223,7 @@ double HVQCD::dwdPhi(const double phi)
     return ans;
 }
 
-double HVQCD::dwdlambda(const double l)
+double HVQCD::dwdlambda(const double l) const
 {
     // Returns dw/dlambda = dw/dPhi / lambda
     double ans = dwdPhi(log(l));
@@ -242,7 +231,7 @@ double HVQCD::dwdlambda(const double l)
 }
 
 // Definition of the d2w/dPhi2 potential
-double HVQCD::d2wdPhi2(const double phi)
+double HVQCD::d2wdPhi2(const double phi) const 
 {
     // Given that w(Phi) = 1 / f(Phi), d2w/dPhi2 = 2 dwdPhi^2/w - w^2 f''(Phi)
     double wPhi = w(phi);
@@ -261,12 +250,12 @@ double HVQCD::d2wdPhi2(const double phi)
     return ans;
 }
 
-double HVQCD::G(const double q, const double phi, const double dt)
+double HVQCD::G(const double q, const double phi, const double dt) const
 {
     return sqrt(1 + k(phi) * pow(dt / q, 2.0));
 }
 
-double HVQCD::dG(const double q, const double phi, const double dq, const double dphi, const double dt, const double d2t)
+double HVQCD::dG(const double q, const double phi, const double dq, const double dphi, const double dt, const double d2t) const
 {
     // Returns dG/dA
     double kPhi = k(phi);
@@ -278,7 +267,7 @@ double HVQCD::dG(const double q, const double phi, const double dq, const double
 
 double HVQCD::d2G(const double q, const double phi, const double dq,
                   const double dphi, const double dtau, const double d2q,
-                  const double d2phi, const double d2tau, const double d3tau)
+                  const double d2phi, const double d2tau, const double d3tau) const
 {
     // Returns d2G/dA2
     double g = G(q, phi, dtau);
@@ -292,14 +281,14 @@ double HVQCD::d2G(const double q, const double phi, const double dq,
     return ans;
 }
 
-double HVQCD::Z(const double l)
+double HVQCD::Z(const double l) const
 {
     // Returns Z(lambda) = Za(1 + ca * l ^ 4)
     return Za*(1 + ca * std::pow(l,4));
 }
 
 double HVQCD::dudA(const double q, const double phi,
-                   const double dtau, const double A)
+                   const double dtau, const double A) const
 {
     // Returns du/dA = G(A) q(A) exp(-A)
     return G(q, phi, dtau)*q*exp(-A);
@@ -696,115 +685,6 @@ void HVQCD::observerUV(const state &X , double A)
     AUVs.push_back(A);
 }
 
-std::vector<double> HVQCD::computeVectorMesonPotential()
-{
-    // Returns the potential of the Flavour Non-Singlet Vector Mesons
-    std::vector<double> V(As.size());
-    for(int i = 0; i < As.size(); i++)
-    {
-        double e2A = exp(2*As[i]);
-        double g = G(qs[i], Phis[i], dtaus[i]);
-        double dg = dG(qs[i], Phis[i], dqs[i], dPhis[i], dtaus[i], d2taus[i]);
-        double wPhi = w(Phis[i]);
-        double dwPhi = dwdPhi(Phis[i]);
-        double d2wPhi = d2wdPhi2(Phis[i]);
-        double vf0 = Vf0(Phis[i]);
-        double dvf0 = dVf0dPhi(Phis[i]);
-        double d2vf0 = d2Vf0dPhi2(Phis[i]);
-        V[i] = 0.75 - 0.5 * dg/g - 0.5*dqs[i]/qs[i] -2*taus[i]*dtaus[i]+taus[i]*dg*dtaus[i]/g+taus[i]*dqs[i]*dtaus[i]/qs[i];
-        V[i] = V[i] - pow(dtaus[i],2) + pow(taus[i]*dtaus[i],2) + dvf0*dPhis[i]/vf0 - 0.5*dg*dvf0*dPhis[i]/(g*vf0)-0.5*dqs[i]*dvf0*dPhis[i]/(qs[i]*vf0);
-        V[i] += 2*dwPhi*dPhis[i]/wPhi - dg*dwPhi*dPhis[i]/(g*wPhi) - dqs[i]*dwPhi*dPhis[i]/(qs[i]*wPhi)-taus[i]*dvf0*dtaus[i]*dPhis[i]/vf0;
-        V[i] += -2*taus[i]*dwPhi*dtaus[i]*dPhis[i]/wPhi - 0.25*pow(dvf0*dPhis[i]/vf0,2)+dvf0*dwPhi*pow(dPhis[i],2)/(vf0*wPhi);
-        V[i] += 0.5*pow(dPhis[i],2)*d2vf0/vf0 + pow(dPhis[i],2)*d2wPhi/wPhi-taus[i]*d2taus[i]+0.5*dvf0*d2Phis[i]/vf0 + dwPhi*d2Phis[i]/wPhi;
-        V[i] = e2A*V[i]/pow(g*qs[i],2);
-    }
-    return V;
-}
-
-std::vector<double> HVQCD::computeAxialVectorMesonNonSingletPotential(const std::vector<double> &VVectorMeson)
-{
-    // Computation of the flavour Non-singlet axial mesons' potential
-    std::vector<double> VAxialMesonsNonSinglet(As.size());
-    for(int i = 0; i < As.size(); i++)
-    {
-        double wPhi = w(Phis[i]);
-        double kPhi = k(Phis[i]);
-        VAxialMesonsNonSinglet[i] = VVectorMeson[i] + pow(2*taus[i]*exp(As[i])/wPhi,2)*kPhi ;
-    }
-    return VAxialMesonsNonSinglet;
-}
-
-std::vector<double> HVQCD::computePseudoScalarMesonPotential()
-{
-    // Computes the Pseudoscalar Meson potential
-    std::vector<double> V(As.size());
-    for(int i = 0; i < As.size(); i++)
-    {
-        double e2A = exp(2*As[i]);
-        double g = G(qs[i], Phis[i], dtaus[i]);
-        double dg = dG(qs[i], Phis[i], dqs[i], dPhis[i], dtaus[i], d2taus[i]);
-        double kPhi = k(Phis[i]);
-        double dkPhi = dkdPhi(Phis[i]);
-        double d2kPhi = d2kdPhi2(Phis[i]);
-        double wPhi = w(Phis[i]);
-        double vf0 = Vf0(Phis[i]);
-        double dvf0 = dVf0dPhi(Phis[i]);
-        double d2vf0 = d2Vf0dPhi2(Phis[i]);
-        V[i] = 0.75+1.5*dg/g+1.5*dqs[i]/qs[i]+2*dtaus[i]/taus[i]-2*taus[i]*dtaus[i]+dg*dtaus[i]/(g*taus[i])-taus[i]*dg*dtaus[i]/g;
-        V[i] += dqs[i]*dtaus[i]/(qs[i]*taus[i])-taus[i]*dqs[i]*dtaus[i]/qs[i]-pow(dtaus[i],2)+2*pow(dtaus[i]/taus[i],2)+pow(taus[i]*dtaus[i],2)+dkPhi*dPhis[i]/kPhi;
-        V[i] += dg*dkPhi*dPhis[i]/(2*g*kPhi)+dkPhi*dqs[i]*dPhis[i]/(2*kPhi*qs[i])+dvf0*dPhis[i]/vf0+dg*dvf0*dPhis[i]/(2*g*vf0);
-        V[i] += dqs[i]*dvf0*dPhis[i]/(2*qs[i]*vf0)+dkPhi*dtaus[i]*dPhis[i]/(kPhi*taus[i])-taus[i]*dkPhi*dtaus[i]*dPhis[i]/kPhi;
-        V[i] += dvf0*dtaus[i]*dPhis[i]/(vf0*taus[i])-taus[i]*dvf0*dtaus[i]*dPhis[i]/vf0+0.75*pow(dkPhi*dPhis[i]/kPhi,2);
-        V[i] += dkPhi*dvf0*pow(dPhis[i],2)/(2*kPhi*vf0)+0.75*pow(dvf0*dPhis[i]/vf0,2)-pow(dPhis[i],2)*d2kPhi/(2*kPhi)-pow(dPhis[i],2)*d2vf0/(2*vf0);
-        V[i] += -d2taus[i]/taus[i] + taus[i]*d2taus[i]-dkPhi*d2Phis[i]/(2*kPhi)-dvf0*d2Phis[i]/(2*vf0);
-        V[i] = e2A*V[i]/pow(g*qs[i],2) + pow(2*taus[i]*exp(As[i])/wPhi,2)*kPhi;
-    }
-    return V;   
-}
-
-std::vector<double> HVQCD::computeScalarMesonPotential()
-{
-    std::vector<double> V(As.size());
-    for(int i = 0; i < As.size(); i++)
-    {
-        double e2A = exp(2*As[i]);
-        double g = G(qs[i], Phis[i], dtaus[i]);
-        double dg = dG(qs[i], Phis[i], dqs[i], dPhis[i], dtaus[i], d2taus[i]);
-        double d2g = d2G(qs[i], Phis[i], dqs[i], dPhis[i], dtaus[i], d2qs[i], d2Phis[i], d2taus[i], d3taus[i]);
-        double kPhi = k(Phis[i]);
-        double dkPhi = dkdPhi(Phis[i]);
-        double d2kPhi = d2kdPhi2(Phis[i]);
-        double wPhi = w(Phis[i]);
-        double vf0 = Vf0(Phis[i]);
-        double dvf0 = dVf0dPhi(Phis[i]);
-        double d2vf0 = d2Vf0dPhi2(Phis[i]);
-        V[i] = 3.75 - 5.5*dg/g + 3*pow(dg/g,2) -1.5*dqs[i]/qs[i] + dg*dqs[i]/(g*qs[i])-4*taus[i]*dtaus[i];
-        V[i] += 3*taus[i]*dg*dtaus[i]/g + taus[i]*dqs[i]*dtaus[i]/qs[i]-pow(dtaus[i],2)+pow(taus[i]*dtaus[i],2)+2*dkPhi*dPhis[i]/kPhi;
-        V[i] += -1.5*dg*dkPhi*dPhis[i]/(g*kPhi)-dkPhi*dqs[i]*dPhis[i]/(2*kPhi*qs[i])+2*dvf0*dPhis[i]/vf0-1.5*dg*dvf0*dPhis[i]/(g*vf0);
-        V[i] += -dqs[i]*dvf0*dPhis[i]/(2*qs[i]*vf0)-taus[i]*dkPhi*dtaus[i]*dPhis[i]/kPhi-taus[i]*dvf0*dtaus[i]*dPhis[i]/vf0;
-        V[i] += -0.25*pow(dkPhi*dPhis[i]/kPhi,2) + dkPhi*dvf0*pow(dPhis[i],2)/(2*kPhi*vf0)-0.25*pow(dvf0*dPhis[i]/vf0,2)-d2g/g;
-        V[i] += pow(dPhis[i],2)*d2kPhi/(2*kPhi)+pow(dPhis[i],2)*d2vf0/(2*vf0)-taus[i]*d2taus[i]+dkPhi*d2Phis[i]/(2*kPhi)+dvf0*d2Phis[i]/(2*vf0);
-        V[i] = e2A*V[i]/pow(qs[i]*g,2) -2*e2A/kPhi;
-    }
-    return V;
-}
-
-std::vector<double> HVQCD::computeAxialVectorMesonSingletPotential(const std::vector<double> &VAxialVectorMeson)
-{
-    std::vector<double> V(As.size());
-    for(int i = 0; i < As.size(); i++)
-    {
-        double e2A = exp(2*As[i]);
-        double l = std::exp(Phis[i]);
-        double z = Z(l);
-        double vf0 = Vf0(Phis[i]);
-        double g = G(qs[i], Phis[i], dtaus[i]);
-        double wPhi = w(Phis[i]);
-        V[i] = VAxialVectorMeson[i] + 4.0 * xf * e2A * z * std::exp(-taus[i]*taus[i])/(vf0 * g * wPhi * wPhi);
-    }
-    return V;
-}
-
 void HVQCD::finalizeBackground()
 {
     // Selects the relevant values to compute the potentials later
@@ -995,73 +875,65 @@ void HVQCD::solve()
    return ;
 }
 
-void HVQCD::computeSpectrum(std::string method)
+double HVQCD::get_xf() const {return xf;}
+
+std::vector<double> HVQCD::tau() const {return this->taus;}
+
+std::vector<double> HVQCD::dtaudA() const {return this->dtaus;}
+
+std::vector<double> HVQCD::d2qdA2() const {return this->d2qs;}
+
+std::vector<double> HVQCD::d2taudA2() const {return this->d2taus;}
+
+std::vector<double> HVQCD::d3taudA3() const {return this->d3taus;}
+
+std::vector<double> HVQCD::u() const {return this->us;}
+
+double HVQCD::QuarkMass() const
+{
+    // Prints the quark mass mq
+    if (As.size()!= 0) return mq;
+    else
+    {
+        std::cout << "Solve the background first. Returning mq = 0" << std::endl;
+        return 0.0;
+    }
+}
+
+void HVQCD::saveBackgroundFields(std::string path)
+{
+    // Saves the background fields in a file at path
+    std::ofstream myfile;
+    myfile.open(path);
+    myfile << "A" << '\t' << "q" << '\t' << "Phi" << '\t' << "tau" << '\t' << "dq/dA" << '\t' << "dPhi/dA" << '\t' << "dtau/dA" << '\t';
+    myfile << "d2q/dA2" << '\t' << "d2Phi/dA2" << '\t' << "d2tau/dA2" << '\t' << "d3tau/dA3" << std::endl;
+    if(As.size() == 0) solve();
+    for(int i = 0; i < As.size(); i++)
+    {
+        myfile << As[i] << '\t' << qs[i] << '\t' << Phis[i] << '\t' << taus[i] << '\t' << dqs[i] << '\t' << dPhis[i] << '\t' << dtaus[i] << '\t';
+        myfile << d2qs[i] << '\t' << d2Phis[i] << '\t' << d2taus[i] << '\t' << d3taus[i] << std::endl; 
+    }
+    myfile.close();
+}
+
+void HVQCD::savePotentials(std::string path)
 {
     /*
-        Computes the lowest 2++ glueball, first 6 Nonsinglet Vector Meson, first 5 Nonsinglet Axial Vector Meson,
-        first 5 Nonsinglet Pseudoscalar Meson and first 2 Nonsinglet scalar meson masses of HVQCD.
-        If HVQCD is not solved this function solves it first and then computes the spectrum. The results are then printed.
+        Saves the values of the potentials Vg, Vf, k and w in as a function of A in the file
+        specified by path.
+        The data organized in columns in the following way: A  Vg  Vf  k  w
     */
-    // Check if the theory is solved
-    if (As.size() == 0) this->solve();
-    // Compute the Schrodinger potential of the fluctuations
-    std::vector<double> V2G, VVM, VAVM, VPSM, VSM, VSingletAVM;
-    if (add_tensor_glueball) V2G = computeV2GPotential();
-    VVM = computeVectorMesonPotential();
-    VAVM = computeAxialVectorMesonNonSingletPotential(VVM);
-    if (add_scalars)
+    std::ofstream myfile;
+    myfile.open(path);
+    myfile << "A\tVg\tVf\tk\tw" << std::endl;
+    // If the background has not been solved, solve it first
+    if(As.size() == 0) solve();
+    // Write the data into the file
+    for(int i = 0; i < As.size(); i++)
     {
-        VPSM = computePseudoScalarMesonPotential();
-        VSM = computeScalarMesonPotential();
+        myfile << As[i] << '\t' << Vg(Phis[i]) << '\t' <<  Vf(Phis[i], taus[i]) << '\t' << k(Phis[i]) << '\t' << w(Phis[i]) << std::endl;
     }
-    if (add_singlet_axial) VSingletAVM = computeAxialVectorMesonSingletPotential(VAVM);
-    // Compute the masses
-    std::vector<double> TGMasses, VMMasses, AVMMasses, PSMMasses, SMMasses, SingletAVMMasses;
-    if (add_tensor_glueball) TGMasses = computeMasses(zs, V2G, 1, method);
-    VMMasses = computeMasses(us, VVM, 6, method);
-    AVMMasses = computeMasses(us, VAVM, 5, method);
-    if(add_scalars)
-    {
-        PSMMasses = computeMasses(us, VPSM, 5, method);
-        SMMasses = computeMasses(us, VSM, 2, method);
-    }
-    if(add_singlet_axial) SingletAVMMasses = computeMasses(us, VSingletAVM, 2, method);
-    // Display the mass values
-    // Tensor glueball ratio
-    if(add_tensor_glueball)
-    {
-        std::cout << "TENSOR GLUEBALL SECTOR" << std::endl;
-        std::cout << TGMasses[0] << std::endl;
-        std::cout << std::endl;
-    }
-    std::cout << "VECTOR MESON NONSINGLET SECTOR" << std::endl;
-    for(int i = 0; i < VMMasses.size(); i++) std::cout << VMMasses[i] << '\t';
-    std::cout << std::endl << std::endl;
-    std::cout << "AXIAL VECTOR MESON NONSINGLET SECTOR" << std::endl;
-    for(int i = 0; i < AVMMasses.size(); i++) std::cout << AVMMasses[i] << '\t';
-    std::cout << std::endl << std::endl;
-    if(add_scalars)
-    {
-        std::cout << "PSEUDOSCALAR MESON NONSINGLET SECTOR" << std::endl;
-        for(int i = 0; i < PSMMasses.size(); i++) std::cout << PSMMasses[i] << '\t' ;
-        std::cout << std::endl << std::endl;
-        std::cout << "SCALAR MESON NONSINGLET SECTOR" << std::endl;
-        for(int i = 0; i < SMMasses.size(); i++) std::cout << SMMasses[i] << '\t';
-        std::cout << std::endl << std::endl;
-    }
-    // In this model the Singlet and Nonsinglet Vector Mesons have the same mass
-    if(add_singlet_vector)
-    {
-        std::cout << "VECTOR MESON SINGLET SECTOR" << std::endl;
-        for(int i = 0; i < VMMasses.size(); i++) std::cout << VMMasses[i] << '\t';
-        std::cout << std::endl << std::endl;
-    }
-    if(add_singlet_axial)
-    {
-        std::cout << "AXIAL VECTOR MESON SINGLET SECTOR" << std::endl;
-        for(int i = 0; i < SingletAVMMasses.size(); i++) std::cout << SingletAVMMasses[i] << '\t';
-        std::cout << std::endl << std::endl;
-    }
+    myfile.close();
 }
 
 double HVQCD::TachyonMassSquareIR()
@@ -1096,211 +968,179 @@ double HVQCD::TachyonMassSquareIR()
     return tmass2;
 }
 
-double HVQCD::J()
+std::vector<double> computeVectorMesonPotential(const HVQCD &hvqcd)
 {
-    std::cout << "sc: " << sc << " ksc: " << ksc << " wsc: " << wsc << " W0: " << W0 << " w0: " << w0 << " kU1: " << kU1;
-    std::cout << " wU1: " << wU1 <<  " VgIR: " << VgIR << " WIR: " << WIR << " kIR: " << kIR << " wIR: " << wIR << " W1: " << W1;
-    std::cout << " k1: " << k1 << " w1: " << w1 << " xf: " << xf << " tau0: " << tau0 << " Za: " << Za << " ca: " << ca << std::endl;
-    // Solve the background
-    try
-    {
-        this->solve();
-    }
-    catch(...)
-    {
-        std::cout << "Bad background:" << std::endl;
-        std::cout << "erms: " << 1e99 << std::endl;
-        return 1e99;
-    }
-    // Compute the potentials
-    std::vector<double> V2G, VVM, VAVM, VPSM, VSM, VSingletAVM;
-    try
-    {
-        if(add_tensor_glueball) V2G = computeV2GPotential();
-        VVM = computeVectorMesonPotential();
-        VAVM = computeAxialVectorMesonNonSingletPotential(VVM);
-        if (add_scalars)
-        {
-            VPSM = computePseudoScalarMesonPotential();
-            VSM = computeScalarMesonPotential();
-        }
-        if (add_singlet_axial) VSingletAVM = computeAxialVectorMesonSingletPotential(VAVM);
-    }
-    catch(...)
-    {
-        std::cout << "Potentials not computed, check these values" << std::endl;
-        std::cout << "erms: " << 1e99 << std::endl;
-        return 1e99;
-    }
-    // Compute the masses
-    std::vector<double> TGMasses, VMMasses, AVMMasses, PSMMasses, SMMasses, SingletAVMMasses;
-    try
-    {
-        if (add_tensor_glueball) TGMasses = computeMasses(zs, V2G, 1, "cheb");
-        VMMasses = computeMasses(us, VVM, 6, "cheb");
-        AVMMasses = computeMasses(us, VAVM, 5, "cheb");
-        if (add_scalars)
-        {
-            PSMMasses = computeMasses(us, VPSM, 5, "cheb");
-            SMMasses = computeMasses(us,VSM, 2, "cheb");
-        }
-        if(add_singlet_axial)
-        {
-            SingletAVMMasses = computeMasses(us, VSingletAVM, 2, "cheb");
-            if(SingletAVMMasses.size() == 0)
-            {
-                std::cout << "Only negative values for Singlet AVM masses" << std::endl;
-                throw "error";
-            }
-        }
-    }
-    catch(...)
-    {
-        std::cout << "Unable to compute spectrum. Check these values" << std::endl;
-        std::cout << "erms: " << 1e99 << std::endl;
-        return 1e99;
-    }
-    double erms = 0;
-    // Chi2 contribution due to the tensor glueball ratio
-    if (add_tensor_glueball) erms += std::pow((TGMasses[0]/VMMasses[0] - RTG_rho[0])/RTG_rho[0], 2);
-    // Contributions from the Meson ratios
-    // Contributions from the ratios m_{\rho_n}/m_{\rho}
-    for(int i = 0; i < Rrho_rho.size(); i++) erms += std::pow((VMMasses[i+1]/VMMasses[0]-Rrho_rho[i])/Rrho_rho[i],2);
-    // Contributions from the ratios m_{\a1_n}/m_{\rho}
-    for(int i = 0; i < Ra1_rho.size(); i++) erms += std::pow((AVMMasses[i]/VMMasses[0]-Ra1_rho[i])/Ra1_rho[i],2);
-    if(add_scalars)
-    {
-        // Contributions from the ratios m_{\pi_n} / m_{\rho}
-        for(int i = 0; i < Rpi_rho.size(); i++) erms += std::pow((PSMMasses[i]/VMMasses[0]-Rpi_rho[i])/Rpi_rho[i],2);
-        // Contributions from the ratios m_{a0_n} / m_{\rho}
-        for(int i = 0; i < Ra0_rho.size(); i++) erms += std::pow((SMMasses[i]/VMMasses[0]- Ra0_rho[i])/Ra0_rho[i], 2);
-    }
-    // Singlet vector and axial vector meson sector
-    if (add_singlet_vector) for(int i = 0; i < Romega_rho.size(); i++) erms += std::pow((VMMasses[i]/VMMasses[0]-Romega_rho[i])/Romega_rho[i],2);
-    if (add_singlet_axial) for(int i = 0; i < Rf1_rho.size(); i++) erms += std::pow((SingletAVMMasses[i]/VMMasses[0]-Rf1_rho[i])/Rf1_rho[i],2);
-    // We want to penalize backgrounds with mq != 0
-    if (add_mass) erms += std::pow(mq,2.0) ;
-    int nRatios = 0;
-    if(add_tensor_glueball) nRatios += 1;
-    if(add_scalars) nRatios += 17;
-    else nRatios += 10;
-    if(add_singlet_vector) nRatios += 3;
-    if(add_singlet_axial) nRatios += 2;
-
-    erms = sqrt(erms)/nRatios;
-
-    if (std::isnan(erms))
-    {
-        erms = 1e99;
-        std::cout << "None erms" << std::endl;
-        std::cout << "erms: " << erms << std::endl;
-        return erms;
-    }
-    // Now we impose the constraint (12-x W0) kIR/VgIR/6>1
-    double constr = (12-xf*W0)*kIR/(VgIR*6);
-    erms += std::exp(- ( constr - 1) ); // The more the constraint is satisfied the smaller the penalty
-    // We also impose the tachyo mass squared to be larger than 3.5
-    double tmass2 = TachyonMassSquareIR();
-    erms += std::exp( - (tmass2 - 3.5)) ;
-    std::cout << "(12 - xf) W0 kIR / (6 VgIR) = " << constr << " TachyonMassSquaredIR = " << tmass2 << std::endl;
-     std::cout << "mq: " << mq << " erms: " << erms << std::endl;
-    return erms;
-}
-
-void HVQCD::printQuarkMass()
-{
-    // Prints the quark mass mq
-    if (As.size()!= 0) std::cout << "mq: " << mq << std::endl;
-    else std::cout << "Solve the background first" << std::endl;
-}
-
-void HVQCD::saveBackgroundFields(std::string path)
-{
-    // Saves the background fields in a file at path
-    std::ofstream myfile;
-    myfile.open(path);
-    /*myfile << "sc" << '\t' << "ksc" << '\t' << "wsc" << '\t';
-    myfile << "W0" << '\t' << "w0" << '\t' << "kU1" << '\t' << "wU1" << '\t';
-    myfile << "VgIR" << '\t' << "WIR" << '\t' << "kIR" << '\t' << "wIR" << '\t';
-    myfile << "W1" << '\t' << "k1" << '\t' << "w1" << '\t' << "xf" << '\t' << "tau0" << std::endl;
-    myfile << sc << '\t' << ksc << '\t' << wsc << '\t';
-    myfile << W0 << '\t' << w0 << '\t' << kU1 << '\t' << wU1 << '\t';
-    myfile << VgIR << '\t' << WIR << '\t' << kIR << '\t' << wIR << '\t';
-    myfile << W1 << '\t' << k1 << '\t' << w1 << '\t' << xf << '\t' << tau0 << std::endl;
-    myfile << std::endl;*/
-    myfile << "A" << '\t' << "q" << '\t' << "Phi" << '\t' << "tau" << '\t' << "dq/dA" << '\t' << "dPhi/dA" << '\t' << "dtau/dA" << '\t';
-    myfile << "d2q/dA2" << '\t' << "d2Phi/dA2" << '\t' << "d2tau/dA2" << '\t' << "d3tau/dA3" << std::endl;
-    if(As.size() == 0) solve();
+    // Returns the potential of the Flavour Non-Singlet Vector Mesons
+    std::vector<double> As = hvqcd.A(), qs = hvqcd.q(), Phis = hvqcd.Phi(), taus = hvqcd.tau();
+    std::vector<double> dqs = hvqcd.dq(), dPhis = hvqcd.dPhi(), d2Phis = hvqcd.d2Phi(), dtaus = hvqcd.dtaudA(), d2taus = hvqcd.d2taudA2();
+    std::vector<double> V(As.size());
     for(int i = 0; i < As.size(); i++)
     {
-        myfile << As[i] << '\t' << qs[i] << '\t' << Phis[i] << '\t' << taus[i] << '\t' << dqs[i] << '\t' << dPhis[i] << '\t' << dtaus[i] << '\t';
-        myfile << d2qs[i] << '\t' << d2Phis[i] << '\t' << d2taus[i] << '\t' << d3taus[i] << std::endl; 
+        double e2A = exp(2*As[i]);
+        double g = hvqcd.G(qs[i], Phis[i], dtaus[i]);
+        double dg = hvqcd.dG(qs[i], Phis[i], dqs[i], dPhis[i], dtaus[i], d2taus[i]);
+        double wPhi = hvqcd.w(Phis[i]);
+        double dwPhi = hvqcd.dwdPhi(Phis[i]);
+        double d2wPhi = hvqcd.d2wdPhi2(Phis[i]);
+        double vf0 = hvqcd.Vf0(Phis[i]);
+        double dvf0 = hvqcd.dVf0dPhi(Phis[i]);
+        double d2vf0 = hvqcd.d2Vf0dPhi2(Phis[i]);
+        V[i] = 0.75 - 0.5 * dg/g - 0.5*dqs[i]/qs[i] -2*taus[i]*dtaus[i]+taus[i]*dg*dtaus[i]/g+taus[i]*dqs[i]*dtaus[i]/qs[i];
+        V[i] = V[i] - pow(dtaus[i],2) + pow(taus[i]*dtaus[i],2) + dvf0*dPhis[i]/vf0 - 0.5*dg*dvf0*dPhis[i]/(g*vf0)-0.5*dqs[i]*dvf0*dPhis[i]/(qs[i]*vf0);
+        V[i] += 2*dwPhi*dPhis[i]/wPhi - dg*dwPhi*dPhis[i]/(g*wPhi) - dqs[i]*dwPhi*dPhis[i]/(qs[i]*wPhi)-taus[i]*dvf0*dtaus[i]*dPhis[i]/vf0;
+        V[i] += -2*taus[i]*dwPhi*dtaus[i]*dPhis[i]/wPhi - 0.25*pow(dvf0*dPhis[i]/vf0,2)+dvf0*dwPhi*pow(dPhis[i],2)/(vf0*wPhi);
+        V[i] += 0.5*pow(dPhis[i],2)*d2vf0/vf0 + pow(dPhis[i],2)*d2wPhi/wPhi-taus[i]*d2taus[i]+0.5*dvf0*d2Phis[i]/vf0 + dwPhi*d2Phis[i]/wPhi;
+        V[i] = e2A*V[i]/pow(g*qs[i],2);
     }
-    myfile.close();
+    return V;
 }
 
-void HVQCD::savePotentials(std::string path)
+std::vector<double> computeAxialVectorMesonNonSingletPotential(const HVQCD &hvqcd, const std::vector<double> &VVectorMeson)
+{
+    // Computation of the flavour Non-singlet axial mesons' potential
+    std::vector<double> As = hvqcd.A(), Phis = hvqcd.Phi(), taus = hvqcd.tau();
+    std::vector<double> VAxialMesonsNonSinglet(As.size());
+    for(int i = 0; i < As.size(); i++)
+    {
+        double wPhi = hvqcd.w(Phis[i]);
+        double kPhi = hvqcd.k(Phis[i]);
+        VAxialMesonsNonSinglet[i] = VVectorMeson[i] + pow(2*taus[i]*exp(As[i])/wPhi,2)*kPhi ;
+    }
+    return VAxialMesonsNonSinglet;
+}
+
+std::vector<double> computePseudoScalarMesonPotential(const HVQCD &hvqcd)
+{
+    // Computes the Pseudoscalar Meson potential
+    std::vector<double> As = hvqcd.A(), qs = hvqcd.q(), Phis = hvqcd.Phi(), taus = hvqcd.tau();
+    std::vector<double> dqs = hvqcd.dq(), dPhis = hvqcd.dPhi(), dtaus = hvqcd.dtaudA();
+    std::vector<double> d2Phis = hvqcd.d2Phi(), d2taus = hvqcd.d2taudA2();
+    std::vector<double> V(As.size());
+    for(int i = 0; i < As.size(); i++)
+    {
+        double e2A = exp(2*As[i]);
+        double g = hvqcd.G(qs[i], Phis[i], dtaus[i]);
+        double dg = hvqcd.dG(qs[i], Phis[i], dqs[i], dPhis[i], dtaus[i], d2taus[i]);
+        double kPhi = hvqcd.k(Phis[i]);
+        double dkPhi = hvqcd.dkdPhi(Phis[i]);
+        double d2kPhi = hvqcd.d2kdPhi2(Phis[i]);
+        double wPhi = hvqcd.w(Phis[i]);
+        double vf0 = hvqcd.Vf0(Phis[i]);
+        double dvf0 = hvqcd.dVf0dPhi(Phis[i]);
+        double d2vf0 = hvqcd.d2Vf0dPhi2(Phis[i]);
+        V[i] = 0.75+1.5*dg/g+1.5*dqs[i]/qs[i]+2*dtaus[i]/taus[i]-2*taus[i]*dtaus[i]+dg*dtaus[i]/(g*taus[i])-taus[i]*dg*dtaus[i]/g;
+        V[i] += dqs[i]*dtaus[i]/(qs[i]*taus[i])-taus[i]*dqs[i]*dtaus[i]/qs[i]-pow(dtaus[i],2)+2*pow(dtaus[i]/taus[i],2)+pow(taus[i]*dtaus[i],2)+dkPhi*dPhis[i]/kPhi;
+        V[i] += dg*dkPhi*dPhis[i]/(2*g*kPhi)+dkPhi*dqs[i]*dPhis[i]/(2*kPhi*qs[i])+dvf0*dPhis[i]/vf0+dg*dvf0*dPhis[i]/(2*g*vf0);
+        V[i] += dqs[i]*dvf0*dPhis[i]/(2*qs[i]*vf0)+dkPhi*dtaus[i]*dPhis[i]/(kPhi*taus[i])-taus[i]*dkPhi*dtaus[i]*dPhis[i]/kPhi;
+        V[i] += dvf0*dtaus[i]*dPhis[i]/(vf0*taus[i])-taus[i]*dvf0*dtaus[i]*dPhis[i]/vf0+0.75*pow(dkPhi*dPhis[i]/kPhi,2);
+        V[i] += dkPhi*dvf0*pow(dPhis[i],2)/(2*kPhi*vf0)+0.75*pow(dvf0*dPhis[i]/vf0,2)-pow(dPhis[i],2)*d2kPhi/(2*kPhi)-pow(dPhis[i],2)*d2vf0/(2*vf0);
+        V[i] += -d2taus[i]/taus[i] + taus[i]*d2taus[i]-dkPhi*d2Phis[i]/(2*kPhi)-dvf0*d2Phis[i]/(2*vf0);
+        V[i] = e2A*V[i]/pow(g*qs[i],2) + pow(2*taus[i]*exp(As[i])/wPhi,2)*kPhi;
+    }
+    return V;   
+}
+
+std::vector<double> computeScalarMesonPotential(const HVQCD &hvqcd)
+{
+    std::vector<double> As = hvqcd.A(), qs = hvqcd.q(), Phis = hvqcd.Phi(), taus = hvqcd.tau();
+    std::vector<double> dqs = hvqcd.dq(), dPhis = hvqcd.dPhi(), dtaus = hvqcd.dtaudA(), d2Phis = hvqcd.d2Phi();
+    std::vector<double> d2qs = hvqcd.d2qdA2(), d2taus = hvqcd.d2taudA2(), d3taus = hvqcd.d3taudA3();
+    std::vector<double> V(As.size());
+    for(int i = 0; i < As.size(); i++)
+    {
+        double e2A = exp(2*As[i]);
+        double g = hvqcd.G(qs[i], Phis[i], dtaus[i]);
+        double dg = hvqcd.dG(qs[i], Phis[i], dqs[i], dPhis[i], dtaus[i], d2taus[i]);
+        double d2g = hvqcd.d2G(qs[i], Phis[i], dqs[i], dPhis[i], dtaus[i], d2qs[i], d2Phis[i], d2taus[i], d3taus[i]);
+        double kPhi = hvqcd.k(Phis[i]);
+        double dkPhi = hvqcd.dkdPhi(Phis[i]);
+        double d2kPhi = hvqcd.d2kdPhi2(Phis[i]);
+        double wPhi = hvqcd.w(Phis[i]);
+        double vf0 = hvqcd.Vf0(Phis[i]);
+        double dvf0 = hvqcd.dVf0dPhi(Phis[i]);
+        double d2vf0 = hvqcd.d2Vf0dPhi2(Phis[i]);
+        V[i] = 3.75 - 5.5*dg/g + 3*pow(dg/g,2) -1.5*dqs[i]/qs[i] + dg*dqs[i]/(g*qs[i])-4*taus[i]*dtaus[i];
+        V[i] += 3*taus[i]*dg*dtaus[i]/g + taus[i]*dqs[i]*dtaus[i]/qs[i]-pow(dtaus[i],2)+pow(taus[i]*dtaus[i],2)+2*dkPhi*dPhis[i]/kPhi;
+        V[i] += -1.5*dg*dkPhi*dPhis[i]/(g*kPhi)-dkPhi*dqs[i]*dPhis[i]/(2*kPhi*qs[i])+2*dvf0*dPhis[i]/vf0-1.5*dg*dvf0*dPhis[i]/(g*vf0);
+        V[i] += -dqs[i]*dvf0*dPhis[i]/(2*qs[i]*vf0)-taus[i]*dkPhi*dtaus[i]*dPhis[i]/kPhi-taus[i]*dvf0*dtaus[i]*dPhis[i]/vf0;
+        V[i] += -0.25*pow(dkPhi*dPhis[i]/kPhi,2) + dkPhi*dvf0*pow(dPhis[i],2)/(2*kPhi*vf0)-0.25*pow(dvf0*dPhis[i]/vf0,2)-d2g/g;
+        V[i] += pow(dPhis[i],2)*d2kPhi/(2*kPhi)+pow(dPhis[i],2)*d2vf0/(2*vf0)-taus[i]*d2taus[i]+dkPhi*d2Phis[i]/(2*kPhi)+dvf0*d2Phis[i]/(2*vf0);
+        V[i] = e2A*V[i]/pow(qs[i]*g,2) -2*e2A/kPhi;
+    }
+    return V;
+}
+
+std::vector<double> computeAxialVectorMesonSingletPotential(const HVQCD &hvqcd, const std::vector<double> &VAxialVectorMeson)
+{
+    std::vector<double> As = hvqcd.A(), qs = hvqcd.q(), Phis = hvqcd.Phi(), taus = hvqcd.tau();
+    std::vector<double> dtaus = hvqcd.dtaudA();
+    std::vector<double> V(As.size());
+    for(int i = 0; i < As.size(); i++)
+    {
+        double e2A = exp(2*As[i]);
+        double l = std::exp(Phis[i]);
+        double z = hvqcd.Z(l);
+        double vf0 = hvqcd.Vf0(Phis[i]);
+        double g = hvqcd.G(qs[i], Phis[i], dtaus[i]);
+        double wPhi = hvqcd.w(Phis[i]);
+        V[i] = VAxialVectorMeson[i] + 4.0 * hvqcd.get_xf() * e2A * z * std::exp(-taus[i]*taus[i])/(vf0 * g * wPhi * wPhi);
+    }
+    return V;
+}
+
+void computeHVQCDSpectrum(const HVQCD &hvqcd)
 {
     /*
-        Saves the values of the potentials Vg, Vf, k and w in as a function of A in the file
-        specified by path.
-        The data organized in columns in the following way: A  Vg  Vf  k  w
+        Computes the lowest 2++ glueball, first 6 Nonsinglet Vector Meson, first 5 Nonsinglet Axial Vector Meson,
+        first 5 Nonsinglet Pseudoscalar Meson and first 2 Nonsinglet scalar meson masses of HVQCD.
+        If HVQCD is not solved this function solves it first and then computes the spectrum. The results are then printed.
     */
-    std::ofstream myfile;
-    myfile.open(path);
-    myfile << "A\tVg\tVf\tk\tw" << std::endl;
-    // If the background has not been solved, solve it first
-    if(As.size() == 0) solve();
-    // Write the data into the file
-    for(int i = 0; i < As.size(); i++)
-    {
-        myfile << As[i] << '\t' << Vg(Phis[i]) << '\t' <<  Vf(Phis[i], taus[i]) << '\t' << k(Phis[i]) << '\t' << w(Phis[i]) << std::endl;
-    }
-    myfile.close();
+    // Check if the theory is solved
+    std::vector<double> zs = hvqcd.z(), us = hvqcd.u();
+    if (zs.size() == 0) throw(std::runtime_error("Exception thrown in computeHVQCDSpectrum: solve HVQCD first."));
+    // Compute the Schrodinger potential of the fluctuations
+    std::vector<double> V2G, VVM, VAVM, VPSM, VSM, VSingletAVM;
+    V2G = computeV2GPotential(hvqcd);
+    VVM = computeVectorMesonPotential(hvqcd);
+    VAVM = computeAxialVectorMesonNonSingletPotential(hvqcd, VVM);
+    VPSM = computePseudoScalarMesonPotential(hvqcd);
+    VSM = computeScalarMesonPotential(hvqcd);
+    VSingletAVM = computeAxialVectorMesonSingletPotential(hvqcd, VAVM);
+    // Compute the masses
+    std::vector<double> TGMasses, VMMasses, AVMMasses, PSMMasses, SMMasses, SingletAVMMasses;
+    TGMasses = computeMasses(zs, V2G, 1);
+    VMMasses = computeMasses(us, VVM, 6);
+    AVMMasses = computeMasses(us, VAVM, 5);
+    PSMMasses = computeMasses(us, VPSM, 5);
+    SMMasses = computeMasses(us, VSM, 2);
+    SingletAVMMasses = computeMasses(us, VSingletAVM, 2);
+    // Display the mass values
+    // Tensor glueball ratio
+    std::cout << "TENSOR GLUEBALL SECTOR" << std::endl;
+    std::cout << TGMasses[0] << std::endl;
+    std::cout << std::endl;
+    std::cout << "VECTOR MESON NONSINGLET SECTOR" << std::endl;
+    for(int i = 0; i < VMMasses.size(); i++) std::cout << VMMasses[i] << '\t';
+    std::cout << std::endl << std::endl;
+    std::cout << "AXIAL VECTOR MESON NONSINGLET SECTOR" << std::endl;
+    for(int i = 0; i < AVMMasses.size(); i++) std::cout << AVMMasses[i] << '\t';
+    std::cout << std::endl << std::endl;
+    std::cout << "PSEUDOSCALAR MESON NONSINGLET SECTOR" << std::endl;
+    for(int i = 0; i < PSMMasses.size(); i++) std::cout << PSMMasses[i] << '\t' ;
+    std::cout << std::endl << std::endl;
+    std::cout << "SCALAR MESON NONSINGLET SECTOR" << std::endl;
+    for(int i = 0; i < SMMasses.size(); i++) std::cout << SMMasses[i] << '\t';
+    std::cout << std::endl << std::endl;
+    // In this model the Singlet and Nonsinglet Vector Mesons have the same mass
+    std::cout << "VECTOR MESON SINGLET SECTOR" << std::endl;
+    for(int i = 0; i < VMMasses.size(); i++) std::cout << VMMasses[i] << '\t';
+    std::cout << std::endl << std::endl;
+    std::cout << "AXIAL VECTOR MESON SINGLET SECTOR" << std::endl;
+    for(int i = 0; i < SingletAVMMasses.size(); i++) std::cout << SingletAVMMasses[i] << '\t';
+    std::cout << std::endl << std::endl;
 }
 
-void HVQCD::saveZandUprofiles(std::string path)
-{
-    // Saves z and u profile in the file located at path
-    std::ofstream myfile;
-    myfile.open(path);
-    myfile << "A" << '\t' << "z" << '\t' << "u" << std::endl;
-    if(As.size() == 0) solve();
-    for(int i = 0; i < As.size(); i++)
-    {
-        myfile << As[i] << '\t' << zs[i] << '\t' << us[i] << std::endl;
-    }
-    myfile.close();
-}
-
-void HVQCD::saveSchrodingerPotentials(std::string path)
-{
-    /* Computes and saves the Schrodinger potentials of Flavour Non-Singlet
-       Vector, Axial vector, Pseudoscalar and Scalar mesons in a file.
-       The text file is at path.
-    */
-    if(As.size() == 0) solve();
-    // Compute the Schrodinger potentials
-    std::vector<double> V2G = computeV2GPotential();
-    std::vector<double> VVM = computeVectorMesonPotential();
-    std::vector<double> VAVM = computeAxialVectorMesonNonSingletPotential(VVM);
-    std::vector<double> VPSM = computePseudoScalarMesonPotential();
-    std::vector<double> VSM = computeScalarMesonPotential();
-    std::vector<double> VSingletAVM = computeAxialVectorMesonSingletPotential(VAVM);
-
-    // Save the potentials in path
-    std::ofstream myfile;
-    myfile.open(path);
-    myfile << "A" << '\t' << "2G" << '\t' << "VM" << '\t' << "AVM" << '\t' << "PSM" << '\t' << "SM" << '\t' << "SingAVM" << std::endl;
-    for(int i = 0; i < As.size(); i++)
-    {
-        myfile << As[i] << '\t' << V2G[i] << '\t' << VVM[i] << '\t' << VAVM[i] << '\t' << VPSM[i] << '\t' << VSM[i] << '\t' << VSingletAVM[i] << std::endl;
-    }
-    myfile.close();
-
-}
-
-void HVQCD::showRatioValues(std::string method)
+void computeHVQCDRatios(const HVQCD &hvqcd)
 {
     /*
         This function starts by checking that the profile of the background fields has been computed.
@@ -1309,46 +1149,38 @@ void HVQCD::showRatioValues(std::string method)
         spectrum with respect to the mass of the lowest pseudoscalar (i.e. the pion)
     */
    // Check if the background fields have been computed
-   if (As.size() == 0) this->solve();
+   std::vector<double> zs = hvqcd.z(), us = hvqcd.u();
+    if (zs.size() == 0) throw(std::runtime_error("Exception thrown in computeHVQCDSpectrum: solve HVQCD first."));
    // Compute the Schrodinger potential of the fluctuations
     std::vector<double> V2G, VVM, VAVM, VPSM, VSM, VSingletAVM;
-    if(add_tensor_glueball) V2G = computeV2GPotential();
-    VVM = computeVectorMesonPotential();
-    VAVM = computeAxialVectorMesonNonSingletPotential(VVM);
-    if(add_scalars)
-    {
-        VPSM = computePseudoScalarMesonPotential();
-        VSM = computeScalarMesonPotential();
-    }
-    if(add_singlet_axial) VSingletAVM = computeAxialVectorMesonSingletPotential(VAVM);
+    V2G = computeV2GPotential(hvqcd);
+    VVM = computeVectorMesonPotential(hvqcd);
+    VAVM = computeAxialVectorMesonNonSingletPotential(hvqcd, VVM);
+    VPSM = computePseudoScalarMesonPotential(hvqcd);
+    VSM = computeScalarMesonPotential(hvqcd);
+    VSingletAVM = computeAxialVectorMesonSingletPotential(hvqcd, VAVM);
     // Compute the masses
     std::vector<double> TGMasses, VMMasses, AVMMasses, PSMMasses, SMMasses, SingletAVMMasses;
-    if(add_tensor_glueball) TGMasses = computeMasses(zs, V2G, 1, method);
-    VMMasses = computeMasses(us, VVM, 6, method);
-    AVMMasses = computeMasses(us, VAVM, 5, method);
-    if(add_scalars)
-    {
-        PSMMasses = computeMasses(us, VPSM, 5, method);
-        SMMasses = computeMasses(us,VSM, 2, method);
-    }
-    if(add_singlet_axial) SingletAVMMasses = computeMasses(us, VSingletAVM, 2, method);
+    TGMasses = computeMasses(zs, V2G, 1);
+    VMMasses = computeMasses(us, VVM, 6);
+    AVMMasses = computeMasses(us, VAVM, 5);
+    PSMMasses = computeMasses(us, VPSM, 5);
+    SMMasses = computeMasses(us,VSM, 2);
+    SingletAVMMasses = computeMasses(us, VSingletAVM, 2);
     // Compute the predicted ratios
     std::vector<double> RTGPred, RrhoPred, Ra1Pred, RpiPred, Ra0Pred, RomegaPred, Rf1Pred;
-    if(add_tensor_glueball) RTGPred = {TGMasses[0]/ VMMasses[0]};
+    RTGPred = {TGMasses[0]/ VMMasses[0]};
     RrhoPred = {VMMasses[1]/VMMasses[0], VMMasses[2]/VMMasses[0], VMMasses[3]/VMMasses[0], VMMasses[4]/VMMasses[0], VMMasses[5]/VMMasses[0]};
-    Ra1Pred = { AVMMasses[0]/VMMasses[0], AVMMasses[1]/VMMasses[0], AVMMasses[2]/VMMasses[0], AVMMasses[3]/VMMasses[0], AVMMasses[4]/VMMasses[0]};
-    if(add_scalars)
-    {
-        RpiPred = {PSMMasses[0]/VMMasses[0], PSMMasses[1]/VMMasses[0], PSMMasses[2]/VMMasses[0], PSMMasses[3]/VMMasses[0], PSMMasses[4]/VMMasses[0]};
-        Ra0Pred = {SMMasses[0] / VMMasses[0], SMMasses[1] / VMMasses[0]};
-    }
-    if(add_singlet_vector) RomegaPred = {VMMasses[0]/VMMasses[0], VMMasses[1]/VMMasses[0], VMMasses[2]/VMMasses[0]};
-    if(add_singlet_axial) Rf1Pred = {SingletAVMMasses[0]/VMMasses[0], SingletAVMMasses[1]/VMMasses[0]};
+    Ra1Pred = {AVMMasses[0]/VMMasses[0], AVMMasses[1]/VMMasses[0], AVMMasses[2]/VMMasses[0], AVMMasses[3]/VMMasses[0], AVMMasses[4]/VMMasses[0]};
+    RpiPred = {PSMMasses[0]/VMMasses[0], PSMMasses[1]/VMMasses[0], PSMMasses[2]/VMMasses[0], PSMMasses[3]/VMMasses[0], PSMMasses[4]/VMMasses[0]};
+    Ra0Pred = {SMMasses[0] / VMMasses[0], SMMasses[1] / VMMasses[0]};
+    RomegaPred = {VMMasses[0]/VMMasses[0], VMMasses[1]/VMMasses[0], VMMasses[2]/VMMasses[0]};
+    Rf1Pred = {SingletAVMMasses[0]/VMMasses[0], SingletAVMMasses[1]/VMMasses[0]};
     // Compare the predicted ratios with the known ones
     std::cout << "Predicted Ratios" << '\t' << "Measured Ratios" << '\t' << "(Rpred - Robs) / Robs" << std::endl;
     // Tensor glueball ratio
-     std::cout << "TENSOR GLUEBALL SECTOR" << std::endl;
-    if(add_tensor_glueball) std::cout << RTGPred[0] << '\t' << RTG_rho[0] << '\t' << (RTGPred[0] - RTG_rho[0]) / RTG_rho[0] << std::endl;
+    std::cout << "TENSOR GLUEBALL SECTOR" << std::endl;
+    std::cout << RTGPred[0] << '\t' << RTG_rho[0] << '\t' << (RTGPred[0] - RTG_rho[0]) / RTG_rho[0] << std::endl;
     std::cout << std::endl;
     // Vector meson ratios
     std::cout << "VECTOR MESON NONSINGLET SECTOR" << std::endl;
@@ -1358,28 +1190,18 @@ void HVQCD::showRatioValues(std::string method)
     std::cout << "AXIAL VECTOR MESON NONSINGLET SECTOR" << std::endl;
     for(int i = 0; i < Ra1_rho.size(); i++) std::cout << Ra1Pred[i] << '\t' << Ra1_rho[i] << '\t' << (Ra1Pred[i] - Ra1_rho[i]) / Ra1_rho[i] << std::endl;
     std::cout << std::endl;
-    if(add_scalars)
-    {
-        std::cout << "PSEUDOSCALAR MESON NONSINGLET SECTOR" << std::endl;
-        for(int i = 0; i < Rpi_rho.size(); i++) std::cout << RpiPred[i] << '\t' << Rpi_rho[i] << '\t' << (RpiPred[i] - Rpi_rho[i]) / Rpi_rho[i] << std::endl;
-        std::cout << std::endl;
-        std::cout << "SCALAR MESON NONSINGLET SECTOR" << std::endl;
-        for(int i = 0; i < Ra0_rho.size(); i++) std::cout << Ra0Pred[i] << '\t' << Ra0_rho[i] << '\t' << (Ra0Pred[i] - Ra0_rho[i]) / Ra0_rho[i] << std::endl;
-        std::cout << std::endl;
-    }
+    std::cout << "PSEUDOSCALAR MESON NONSINGLET SECTOR" << std::endl;
+    for(int i = 0; i < Rpi_rho.size(); i++) std::cout << RpiPred[i] << '\t' << Rpi_rho[i] << '\t' << (RpiPred[i] - Rpi_rho[i]) / Rpi_rho[i] << std::endl;
+    std::cout << std::endl;
+    std::cout << "SCALAR MESON NONSINGLET SECTOR" << std::endl;
+    for(int i = 0; i < Ra0_rho.size(); i++) std::cout << Ra0Pred[i] << '\t' << Ra0_rho[i] << '\t' << (Ra0Pred[i] - Ra0_rho[i]) / Ra0_rho[i] << std::endl;
+    std::cout << std::endl;
     // Singlet Vector meson ratios
-    if(add_singlet_vector)
-    {
-        std::cout << "VECTOR MESON SINGLET SECTOR" << std::endl;
-        for(int i = 0; i < Romega_rho.size(); i++) std::cout << RomegaPred[i] << '\t' << Romega_rho[i] << '\t' << (RomegaPred[i] - Romega_rho[i]) / Romega_rho[i] << std::endl;
-        std::cout << std::endl;
-    }
+    std::cout << "VECTOR MESON SINGLET SECTOR" << std::endl;
+    for(int i = 0; i < Romega_rho.size(); i++) std::cout << RomegaPred[i] << '\t' << Romega_rho[i] << '\t' << (RomegaPred[i] - Romega_rho[i]) / Romega_rho[i] << std::endl;
+    std::cout << std::endl;
     // Singlet Axial vector meson ratios
-    if(add_singlet_axial)
-    {
-        std::cout << "AXIAL VECTOR MESON SINGLET SECTOR" << std::endl;
-        for(int i = 0; i < Rf1_rho.size(); i++) std::cout << Rf1Pred[i] << '\t' << Rf1_rho[i] << '\t' << (Rf1Pred[i] - Rf1_rho[i]) / Rf1_rho[i] << std::endl;
-        std::cout << std::endl;
-    }
-    printQuarkMass();
+    std::cout << "AXIAL VECTOR MESON SINGLET SECTOR" << std::endl;
+    for(int i = 0; i < Rf1_rho.size(); i++) std::cout << Rf1Pred[i] << '\t' << Rf1_rho[i] << '\t' << (Rf1Pred[i] - Rf1_rho[i]) / Rf1_rho[i] << std::endl;
+    std::cout << std::endl;
 }

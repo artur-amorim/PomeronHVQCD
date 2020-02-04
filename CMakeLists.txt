@@ -1,5 +1,5 @@
 # Specify the minimum CMAKE version required
-cmake_minimum_required(VERSION 3.14.4)
+cmake_minimum_required(VERSION 2.8.0)
 
 project(PomeronHVQCD VERSION 0.0.1)
 
@@ -21,7 +21,7 @@ set(SCHRODINGER src/schrodinger/common.cpp src/schrodinger/solvspec.cpp src/schr
 set(YANGMILLS src/background.cpp src/YangMills.cpp)
 
 # Variable HVQCD
-# set(HVQCD src/background.cpp src/HolographicVQCD.cpp)
+set(HVQCD src/background.cpp src/HolographicVQCD.cpp)
 
 # Fit background routines
 # fitYangMills 
@@ -40,5 +40,5 @@ add_executable(test_schrodinger.exe  tests/test_schrodinger.cpp ${SCHRODINGER})
 target_link_libraries(test_schrodinger.exe armadillo)
 
 # Add test_HVQCD executable
-#add_executable(test_HVQCD.exe  tests/test_HVQCD.cpp ${HVQCD} ${SCHRODINGER})
-#target_link_libraries(test_HVQCD.exe armadillo)
+add_executable(test_HVQCD.exe  tests/test_HVQCD.cpp ${HVQCD} ${SCHRODINGER})
+target_link_libraries(test_HVQCD.exe armadillo)
