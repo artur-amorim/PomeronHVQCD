@@ -26,9 +26,29 @@ set(HVQCD src/background.cpp src/HolographicVQCD.cpp)
 add_executable(fitYangMills.exe physics/fitYangMills.cpp ${YANGMILLS} ${SCHRODINGER})
 target_link_libraries(fitYangMills.exe armadillo)
 
-# Fit HVQCD Gloabl
+# Fit HVQCD Global
 add_executable(fitHVQCDGlobal.exe physics/fitHVQCDGlobal.cpp ${HVQCD} ${SCHRODINGER})
 target_link_libraries(fitHVQCDGlobal.exe armadillo)
+
+# Fit HVQCD Without Scalars
+add_executable(fitHVQCDWithoutScalars.exe physics/fitHVQCDWithoutScalars.cpp ${HVQCD} ${SCHRODINGER})
+target_link_libraries(fitHVQCDWithoutScalars.exe armadillo)
+
+# Fit HVQCD Global sc and VgIR fixed
+add_executable(fitHVQCDGlobal_sc_VgIR_fixed.exe physics/fitHVQCDGlobal_sc_VgIR_fixed.cpp ${HVQCD} ${SCHRODINGER})
+target_link_libraries(fitHVQCDGlobal_sc_VgIR_fixed.exe armadillo)
+
+# Fit HVQCD Without Scalars sc and VgIR fixed
+add_executable(fitHVQCDWithoutScalars_sc_VgIR_fixed.exe physics/fitHVQCDWithoutScalars_sc_VgIR_fixed.cpp ${HVQCD} ${SCHRODINGER})
+target_link_libraries(fitHVQCDWithoutScalars_sc_VgIR_fixed.exe armadillo)
+
+# Fit HVQCD Without Glueball sc and VgIR fixed
+add_executable(fitHVQCDWithoutGlueball_sc_VgIR_fixed.exe physics/fitHVQCDWithoutGlueball_sc_VgIR_fixed.cpp ${HVQCD} ${SCHRODINGER})
+target_link_libraries(fitHVQCDWithoutGlueball_sc_VgIR_fixed.exe armadillo)
+
+# Fit HVQCD Without Glueball and Scalars sc and VgIR fixed
+add_executable(fitHVQCDWithoutGlueballScalars_sc_VgIR_fixed.exe physics/fitHVQCDWithoutGlueballScalars_sc_VgIR_fixed.cpp ${HVQCD} ${SCHRODINGER})
+target_link_libraries(fitHVQCDWithoutGlueballScalars_sc_VgIR_fixed.exe armadillo)
 
 # Print HVQCD mass ratios
 #add_executable(HVQCD_mass_ratios.exe physics/HVQCD_mass_ratios.cpp ${HVQCD} ${SCHRODINGER})

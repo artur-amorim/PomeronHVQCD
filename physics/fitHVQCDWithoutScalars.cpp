@@ -36,14 +36,12 @@ double J(const vector<double> X)
     }
 
     // Compute the potentials
-    vector<double> V2G, VVM, VAVM, VPSM, VSM, VSingletAVM;
+    vector<double> V2G, VVM, VAVM, VSingletAVM;
     try
     {
         V2G = computeV2GPotential(hvqcd);
         VVM = computeVectorMesonPotential(hvqcd);
         VAVM = computeAxialVectorMesonNonSingletPotential(hvqcd, VVM);
-        VPSM = computePseudoScalarMesonPotential(hvqcd);
-        VSM = computeScalarMesonPotential(hvqcd);
         VSingletAVM = computeAxialVectorMesonSingletPotential(hvqcd, VAVM);
     }
     catch(...)
@@ -54,15 +52,13 @@ double J(const vector<double> X)
     }
 
     // Compute the masses
-    vector<double> TGMasses, VMMasses, AVMMasses, PSMMasses, SMMasses, SingletAVMMasses;
+    vector<double> TGMasses, VMMasses, AVMMasses, SingletAVMMasses;
     try
     {
         vector<double> zs = hvqcd.z(), us = hvqcd.u();
         TGMasses = computeMasses(zs, V2G, 1, "cheb");
         VMMasses = computeMasses(us, VVM, 6, "cheb");
         AVMMasses = computeMasses(us, VAVM, 5, "cheb");
-        PSMMasses = computeMasses(us, VPSM, 5, "cheb");
-        SMMasses = computeMasses(us,VSM, 2, "cheb");
         SingletAVMMasses = computeMasses(us, VSingletAVM, 2, "cheb");
         if(SingletAVMMasses.size() == 0) throw(runtime_error("Only negative values for Singlet AVM masses"));
     }
@@ -80,14 +76,10 @@ double J(const vector<double> X)
     for(int i = 0; i < Rrho_rho.size(); i++) erms += pow((VMMasses[i+1]/VMMasses[0]-Rrho_rho[i])/Rrho_rho[i],2);
     // Contributions from the ratios m_{\a1_n}/m_{\rho}
     for(int i = 0; i < Ra1_rho.size(); i++) erms += pow((AVMMasses[i]/VMMasses[0]-Ra1_rho[i])/Ra1_rho[i],2);
-    // Contributions from the ratios m_{\pi_n} / m_{\rho}
-    for(int i = 0; i < Rpi_rho.size(); i++) erms += pow((PSMMasses[i]/VMMasses[0]-Rpi_rho[i])/Rpi_rho[i],2);
-    // Contributions from the ratios m_{a0_n} / m_{\rho}
-    for(int i = 0; i < Ra0_rho.size(); i++) erms += pow((SMMasses[i]/VMMasses[0]- Ra0_rho[i])/Ra0_rho[i], 2);
     // Singlet vector and axial vector meson sector
     for(int i = 0; i < Romega_rho.size(); i++) erms += pow((VMMasses[i]/VMMasses[0]-Romega_rho[i])/Romega_rho[i],2);
     for(int i = 0; i < Rf1_rho.size(); i++) erms += pow((SingletAVMMasses[i]/VMMasses[0]-Rf1_rho[i])/Rf1_rho[i],2);
-    int nRatios = 23;
+    int nRatios = 16;
    
     erms = sqrt(erms)/nRatios;
 
