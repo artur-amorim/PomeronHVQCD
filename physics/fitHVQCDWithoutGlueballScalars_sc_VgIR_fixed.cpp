@@ -77,7 +77,7 @@ double J(const vector<double> X)
    
     erms = sqrt(erms)/nRatios;
 
-    if (isnan(erms))
+    if (std::isnan(erms))
     {
         erms = 1e99;
         cout << "None erms" << endl;
