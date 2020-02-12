@@ -10,14 +10,14 @@ double J(const vector<double> X)
 {
     double sc = 2.50485, ksc, wsc, W0, w0, kU1, wU1;
     double VgIR = 3.47852, WIR, kIR, wIR, W1, k1, w1;
-    double xf = 2.0/3, tau0, Za, ca;
+    double xf = 2.0/3, tau0, Za = 133, ca = 0.26;
     ksc = X[0]; wsc = X[1]; W0 = X[2]; w0 = X[3]; kU1 = X[4];
     wU1 = X[5]; WIR = X[6]; kIR = X[7]; wIR = X[8]; W1 = X[9];
-    k1 = X[10]; w1 = X[11]; tau0 = X[12]; Za = X[13]; ca = X[14];
+    k1 = X[10]; w1 = X[11]; tau0 = X[12];
 
     cout << "sc: " << sc << " ksc: " << ksc << " wsc: " << wsc << " W0: " << W0 << " w0: " << w0 << " kU1: " << kU1;
     cout << " wU1: " << wU1 << " VgIR: " << VgIR << " WIR: " << WIR << " kIR: " << kIR << " wIR: " << wIR << " W1: " << W1;
-    cout << " k1: " << k1 << " w1: " << w1 << " tau0: " << tau0 <<  " Za: " << Za << " ca: " << ca << endl;
+    cout << " k1: " << k1 << " w1: " << w1 << " tau0: " << tau0 << endl;
     
     HVQCD hvqcd(sc, ksc, wsc, W0, w0, kU1, wU1, VgIR, WIR, kIR, wIR, W1, k1, w1, xf, tau0, Za, ca);
 
@@ -34,12 +34,12 @@ double J(const vector<double> X)
     }
 
     // Compute the potentials
-    vector<double> VVM, VAVM, VSingletAVM;
+    vector<double> VVM, VAVM;
     try
     {
         VVM = computeVectorMesonPotential(hvqcd);
         VAVM = computeAxialVectorMesonNonSingletPotential(hvqcd, VVM);
-        VSingletAVM = computeAxialVectorMesonSingletPotential(hvqcd, VAVM);
+        //VSingletAVM = computeAxialVectorMesonSingletPotential(hvqcd, VAVM);
     }
     catch(...)
     {
@@ -49,14 +49,14 @@ double J(const vector<double> X)
     }
 
     // Compute the masses
-    vector<double> VMMasses, AVMMasses, SingletAVMMasses;
+    vector<double> VMMasses, AVMMasses;
     try
     {
         vector<double> us = hvqcd.u();
         VMMasses = computeMasses(us, VVM, 6, "cheb");
         AVMMasses = computeMasses(us, VAVM, 5, "cheb");
-        SingletAVMMasses = computeMasses(us, VSingletAVM, 2, "cheb");
-        if(SingletAVMMasses.size() == 0) throw(runtime_error("Only negative values for Singlet AVM masses"));
+        //SingletAVMMasses = computeMasses(us, VSingletAVM, 2, "cheb");
+        //if(SingletAVMMasses.size() == 0) throw(runtime_error("Only negative values for Singlet AVM masses"));
     }
     catch(...)
     {
@@ -75,9 +75,9 @@ double J(const vector<double> X)
     for(int i = 0; i < Ra1_rho.size(); i++) erms += fabs((AVMMasses[i]/VMMasses[0]-Ra1_rho[i])/Ra1_rho[i]);
     // Singlet vector and axial vector meson sector
     for(int i = 0; i < Romega_rho.size(); i++) erms += fabs((VMMasses[i]/VMMasses[0]-Romega_rho[i])/Romega_rho[i]);
-    if( SingletAVMMasses.size() == 0) SingletAVMMasses = vector<double>(2,0);
-    for(int i = 0; i < Rf1_rho.size(); i++) erms += fabs((SingletAVMMasses[i]/VMMasses[0]-Rf1_rho[i])/Rf1_rho[i]);
-    int nRatios = 15;
+    //if( SingletAVMMasses.size() == 0) SingletAVMMasses = vector<double>(2,0);
+    //for(int i = 0; i < Rf1_rho.size(); i++) erms += fabs((SingletAVMMasses[i]/VMMasses[0]-Rf1_rho[i])/Rf1_rho[i]);
+    int nRatios = 13;
    
     erms = erms/nRatios;
 
@@ -90,10 +90,10 @@ double J(const vector<double> X)
     }
     // Now we impose the constraint (12-x W0) kIR/VgIR/6>1
     double constr = (12-xf*W0)*kIR/(VgIR*6);
-    erms += exp(- ( constr - 1) ); // The more the constraint is satisfied the smaller the penalty
+    erms += 0.5 * exp(- ( constr - 1) ); // The more the constraint is satisfied the smaller the penalty
     // We also impose the tachyo mass squared to be larger than 3.5
     double tmass2 = hvqcd.TachyonMassSquareIR();
-    erms += exp( - (tmass2 - 3.5)) ;
+    erms += 0.5 * exp( - (tmass2 - 3.5)) ;
     double mq = hvqcd.QuarkMass();
     cout << "(12 - xf) W0 kIR / (6 VgIR) = " << constr << " TachyonMassSquaredIR = " << tmass2 << endl;
     cout << "mq: " << mq << " erms: " << erms << endl;
@@ -104,12 +104,12 @@ int main(int argc, char ** argv)
 {
     double sc = 2.50485, ksc, wsc, W0, w0, kU1, wU1;
     double VgIR = 3.47852, WIR, kIR, wIR, W1, k1, w1;
-    double xf = 2.0/3, tau0, Za, ca;
-    if (argc < 16)
+    double xf = 2.0/3, tau0, Za = 133, ca = 0.26;
+    if (argc < 14)
     {
         ksc = 3.0; wsc = 1.56; W0 = 2.5; w0 = 1.26; kU1 = 11./9; wU1 = 0.0;
         WIR = 0.9; kIR = 1.8; wIR = 5.0; W1 = 0.0; k1 = -0.23;
-        w1 = 0.0; tau0 = 1.; Za = 20; ca = 0.26;
+        w1 = 0.0; tau0 = 1.;
     }
     else
     {
@@ -117,20 +117,20 @@ int main(int argc, char ** argv)
         kU1 = stod(argv[5]);
         wU1 = stod(argv[6]); WIR = stod(argv[7]); kIR = stod(argv[8]); wIR = stod(argv[9]);
         W1 = stod(argv[10]); k1 = stod(argv[11]); w1 = stod(argv[12]); tau0 = stod(argv[13]);
-        Za = stod(argv[14]); ca = stod(argv[15]);
+        //Za = stod(argv[14]); ca = stod(argv[15]);
     }
     
     cout << "Starting fit with values" << endl;
     cout << "sc: " << sc << " ksc: " << ksc << " wsc: " << wsc << " W0: " << W0 << " w0: " << w0 << " kU1: " << kU1;
     cout << " wU1: " << wU1 << " VgIR: " << VgIR << " WIR: " << WIR << " kIR: " << kIR << " wIR: " << wIR << " W1: " << W1;
-    cout << " k1: " << k1 << " w1: " << w1 << " tau0: " << tau0 <<  " Za: " << Za << " ca: " << ca << endl;
+    cout << " k1: " << k1 << " w1: " << w1 << " tau0: " << tau0 << endl;
 
     // Fit the model to the spectrum
     chebSetN(800);
 
-    vector<double> x_guess = {ksc, wsc, W0, w0, kU1, wU1, WIR, kIR, wIR, W1, k1, w1, tau0, Za, ca};
+    vector<double> x_guess = {ksc, wsc, W0, w0, kU1, wU1, WIR, kIR, wIR, W1, k1, w1, tau0};
 
-    vector<double> deltas = {0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 10.0, 0.01};
+    vector<double> deltas = {0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5};
     
     vector<double> xop = optimFunction(x_guess, J, deltas);
     
@@ -138,7 +138,7 @@ int main(int argc, char ** argv)
     ksc = xop[0]; wsc = xop[1]; W0 = xop[2]; w0 = xop[3]; kU1 = xop[4];
     wU1 = xop[5]; WIR = xop[6]; kIR = xop[7]; wIR = xop[8];
     W1 = xop[9]; k1 = xop[10]; w1 = xop[11]; tau0 = xop[12];
-    Za = xop[13]; ca = xop[14];
+    //Za = xop[13]; ca = xop[14];
 
     HVQCD hvqcd(sc, ksc, wsc, W0, w0, kU1, wU1, VgIR, WIR, kIR, wIR, W1, k1, w1, xf, tau0, Za, ca);
     hvqcd.solve();
@@ -150,7 +150,7 @@ int main(int argc, char ** argv)
     cout << "Best Chi2 found for ";
     cout << "sc: " << sc << " ksc: " << ksc << " wsc: " << wsc << " W0: " << W0 << " w0: " << w0 << " kU1: " << kU1;
     cout << " wU1: " << wU1 << " VgIR: " << VgIR << " WIR: " << WIR << " kIR: " << kIR << " wIR: " << wIR << " W1: " << W1;
-    cout << " k1: " << k1 << " w1: " << w1 << " tau0: " << tau0 <<  " Za: " << Za << " ca: " << ca << endl;
+    cout << " k1: " << k1 << " w1: " << w1 << " tau0: " << tau0 << endl;
     cout << "chi2: " << chi2 << endl;
 
     return 0;
