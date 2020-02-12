@@ -115,6 +115,7 @@ int main(int argc, char ** argv)
         ksc = 3.0; wsc = 1.56; W0 = 2.5; w0 = 1.26; kU1 = 11./9; wU1 = 0.0;
         WIR = 0.9; kIR = 1.8; wIR = 5.0; W1 = 0.0; k1 = -0.23;
         w1 = 0.0; tau0 = 1.;
+    }
     else
     {
         ksc = stod(argv[1]); wsc = stod(argv[2]); W0 = stod(argv[3]); w0 = stod(argv[4]);
