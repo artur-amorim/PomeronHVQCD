@@ -16,9 +16,6 @@ struct List
 };
 
 SolvSpec* setSchroMethod(std::string method);
-std::vector< std::vector<double> > getPotential(SolvSpec* n);
-std::vector<double> getEnergies(SolvSpec* n);
-std::vector< std::vector< std::vector<double> > > getWavefunctions(SolvSpec* n);
 List computeSpectrum(const std::vector<double> &px , const std::vector<double> &py,
                      int nEigen = 3, std::string method = "cheb",
                      double dE = 0.1, double tol = 1e-9);
