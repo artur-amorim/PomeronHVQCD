@@ -877,6 +877,10 @@ void HVQCD::solve()
 
 double HVQCD::get_xf() const {return xf;}
 
+void HVQCD::setZa(const double za) {Za = za;}
+
+void HVQCD::setca(const double cca) {ca = cca;}
+
 std::vector<double> HVQCD::tau() const {return this->taus;}
 
 std::vector<double> HVQCD::dtaudA() const {return this->dtaus;}

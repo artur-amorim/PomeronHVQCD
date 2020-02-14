@@ -151,6 +151,9 @@ class HVQCD : public Background
         void solve();
         // xf getter
         double get_xf() const;
+        // Setter of Za and ca
+        void setZa(const double za);
+        void setca(const double cca);
         // Declaration of tau getter
         std::vector<double> tau() const;
         // Declaration of dtau/dA getter
