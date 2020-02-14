@@ -50,6 +50,9 @@ target_link_libraries(fitHVQCDWithoutGlueball_sc_VgIR_fixed.exe armadillo)
 add_executable(fitHVQCDWithoutGlueballScalars_sc_VgIR_fixed.exe physics/fitHVQCDWithoutGlueballScalars_sc_VgIR_fixed.cpp ${HVQCD} ${SCHRODINGER})
 target_link_libraries(fitHVQCDWithoutGlueballScalars_sc_VgIR_fixed.exe armadillo)
 
+add_executable(fitSingletAVM.exe physics/fitSingletAVM.cpp ${HVQCD} ${SCHRODINGER})
+target_link_libraries(fitSingletAVM.exe armadillo)
+
 # Print HVQCD mass ratios
 #add_executable(HVQCD_mass_ratios.exe physics/HVQCD_mass_ratios.cpp ${HVQCD} ${SCHRODINGER})
 #target_link_libraries(HVQCD_mass_ratios.exe armadillo)
