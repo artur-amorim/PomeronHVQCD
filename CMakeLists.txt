@@ -54,8 +54,8 @@ add_executable(fitSingletAVM.exe physics/fitSingletAVM.cpp ${HVQCD} ${SCHRODINGE
 target_link_libraries(fitSingletAVM.exe armadillo)
 
 # Print HVQCD mass ratios
-#add_executable(HVQCD_mass_ratios.exe physics/HVQCD_mass_ratios.cpp ${HVQCD} ${SCHRODINGER})
-#target_link_libraries(HVQCD_mass_ratios.exe armadillo)
+add_executable(HVQCDRatios.exe physics/HVQCDRatios.cpp ${HVQCD} ${SCHRODINGER})
+target_link_libraries(HVQCDRatios.exe armadillo)
 
 # Add test_schrodinger executable
 add_executable(test_schrodinger.exe  tests/test_schrodinger.cpp ${SCHRODINGER})
