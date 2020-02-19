@@ -88,7 +88,7 @@ double Function::operator() (const vector<double> &X)
         cout << "erms: " << erms << endl;
         return erms;
     }
-
+    cout << erms << endl;
     return erms;
 }
 
