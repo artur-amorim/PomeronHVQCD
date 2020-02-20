@@ -96,12 +96,12 @@ int main(int argc, char ** argv)
 {
     double sc, ksc, wsc, W0, w0, kU1, wU1;
     double VgIR, WIR, kIR, wIR, W1, k1, w1;
-    double xf = 2.0/3, tau0, Za = 1, ca = 1;
+    double xf = 2.0/3, tau0, Za, ca;
     if (argc < 16)
     {
         sc = 3.0; ksc = 3.0; wsc = 1.56; W0 = 2.5; w0 = 1.26; kU1 = 11./9; wU1 = 0.0;
         VgIR = 2.05; WIR = 0.9; kIR = 1.8; wIR = 5.0; W1 = 0.0; k1 = -0.23;
-        w1 = 0.0; tau0 = 1.;
+        w1 = 0.0; tau0 = 1.; Za = 1; ca = 1;
     }
     else
     {
@@ -109,6 +109,7 @@ int main(int argc, char ** argv)
         kU1 = stod(argv[6]);
         wU1 = stod(argv[7]); VgIR = stod(argv[8]); WIR = stod(argv[9]); kIR = stod(argv[10]); wIR = stod(argv[11]);
         W1 = stod(argv[12]); k1 = stod(argv[13]); w1 = stod(argv[14]); tau0 = stod(argv[15]);
+        Za = stod(argv[16]); ca = stod(argv[17]);
     }
     
     cout << "Starting fit with values" << endl;
