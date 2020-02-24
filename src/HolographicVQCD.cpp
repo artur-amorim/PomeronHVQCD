@@ -284,7 +284,7 @@ double HVQCD::d2G(const double q, const double phi, const double dq,
 double HVQCD::Z(const double l) const
 {
     // Returns Z(lambda) = Za(1 + ca * l ^ 4)
-    return Za*(1 + ca * std::pow(l,4));
+    return Za + ca * std::pow(l,4);
 }
 
 double HVQCD::dudA(const double q, const double phi,
