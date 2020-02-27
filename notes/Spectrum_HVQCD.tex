@@ -1,0 +1,493 @@
+\documentclass[10 pt]{article}
+
+\usepackage{graphicx}
+\usepackage[utf8]{inputenc}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage[T1]{fontenc}
+\usepackage[margin=0.5in]{geometry}
+
+
+\title{Spectrum of HVQCD}
+\author{Artur Amorim }
+\date{}
+
+\linespread{1.5}
+
+\begin{document}
+\maketitle
+
+\section{How do we compute the spectrum}
+
+In this section we review how we compute the spectrum of HVQCD in our fits.
+
+\subsection{HVQCD action}
+
+The theory in the bulk that we will consider in these notes is dual to QCD in the Veneziano limit. Its action can be divided in a gluon and flavour sector and in the Einstein frame takes the form
+\begin{align}
+&S = S_g + S_f, \\
+&S_g = - M_p^3 N_c^2 \int d^5X \sqrt{g} \left[ R - \frac{4}{3} \frac{{\left( \partial \lambda \right)}^2}{\lambda^2}+ V_g \left( \lambda\right) \right], \\
+&S_f = - x M_p^3 N_c^2 \int d^5 X V_f\left(\lambda, T\right) \sqrt{det\left(g_{ab} + k\left(\lambda\right) \partial_a \tau \partial_b \tau \right)},
+\label{eq: HVQCD action}
+\end{align}
+where $M_p$ is the Planck mass, $N_c$ is the number of colours, $x = N_f / N_c$ with $N_f$ being the number of quark flavours and $\lambda = e^{\Phi}$ with $\Phi$ being the dilaton field. In the Veneziano limit $N_c \to \infty, \, N_f \to \infty$ with $x$ fixed. It is assumed $X = \left(z, x^\mu \right)$ and a metric of the form
+\begin{equation}
+\label{eq: metric definition}
+ds^2 = e^{2 A} \left( d z^2 + \eta_{\mu \nu} dx^\mu dx^\nu \right),
+\end{equation}
+where $\eta_{\mu\nu}$ is the 4d Minkowski metric. Latin indices refer to general space-time indices and greek indices strictly mean boundary indices.
+
+We have three background fields whose profiles will be found by solving the equations of motion resulting from the action (\ref{eq: HVQCD action}): the warp factor $A$, the dilaton $\Phi$ and the tachyon $\tau$. Because the metric is invariant under translation in $x^\mu$ the background fields will depend only on the radial coordinate $z$.
+
+The action (\ref{eq: HVQCD action}) is not the most general one. The discussion that follows can be found, for example, in~\cite{Jarvinen:2011qe}. The reason we reproduce it here is because it will be useful to keep these ideas in mind when we derive the gravitational coupling between the graviton in this background and the $U(1)$ gauge field dual to the current operator $J^\mu$ in the boundary. The flavour action is motivated by considering bulk fields $T_{ij}$, $A^\mu_{L, i j}$ and $A^\mu_{R, i j}$ dual to the boundary operators $\bar{\psi}^i_R \psi^j_L$, $\bar{\psi}^i_L \sigma^\mu \psi^J_L$ and $\bar{\psi}^i_R \sigma^\mu \psi^J_R$, respectively. The field $T_{ij}$ transforms as $\left(N_f, \bar{N}_f \right)$ of the flavour symmetry $U\left(N_f\right)_R \times U \left(N_f\right)_L$ while the fields $A^\mu_{L, i j}$ and $A^\mu_{R, i j}$ transform in the adjoint representations of $U\left(N_f\right)_L$ and  $U \left(N_f\right)_R$ respectively. In string theory this is modelled by considering $N_f$ flavour branes (R) and $N_f$ flavour antibranes (L). In particular $A^\mu_R$ and $A^\mu_L$ are the lowest modes of open strings with both ends in the D branes and anti-D branes respectively. The $T_{ij}$ fields are the lowest modes of open strings with one end in a D brane and another end in the anti-D brane which corresponds to the tachyon. For our purposes such a system obeys a Dirac-Born-Infeld like action (let's ignore the WZ term for now)
+\begin{align}
+&S_{DBI} = - \frac{x}{2} M_p^3 N_c^2 \int dz d^4 x \, \bold{Str} \left[ V_f \left(\lambda, T^{\dagger} T\right) \sqrt{det\left( g_{ab} + k\left(\lambda\right)D_{(a}T^{\dagger}D_{b)}T + w\left(\lambda\right) F^{L}_{ab}\right)} + \right. \\ \notag
+&\left. + V_f \left(\lambda, T T^{\dagger} \right) \sqrt{det\left( g_{ab} + k\left(\lambda\right)D_{(a}TD_{b)}T^{\dagger} + w\left(\lambda\right) F^{R}_{ab}\right)}  \right]
+\label{eq: DBI action}
+\end{align}
+where $\bold{Str}$ is the symmetric trace over the gauge indices while the determinant is taken with respect to the Minkowski indices (since we are going to work up to quadratic order we can treat the symmetric trace as the trace with respect to the gauge indices). $T_{ij}$ is a complex $N_f \times N_f$ matrix and $A^{L,R}_a$ are the world-volume gauge fields of the $U(N_f)_L \times U(N_f)_R$ group. The covariant derivative terms are given by
+\begin{equation}
+D_a T = \partial_a T - i T A^L_a + i A^R_a T \, , \, D_a T^{\dagger} = \partial_a T^{\dagger} - i  A^L_a T^{\dagger}+ i T^{\dagger} A^R_a 
+\end{equation}
+and the field strengths by
+\begin{align}
+F^{L,R} = d A^{L,R} - i A^{L,R} \wedge A^{L,R}
+\end{align}
+In this work we are assuming that the light quark masses are equal and under this assumption the tachyon is just $T = \tau \mathbf{1}$. Furthermore for the QCD vacuum $A^R_a = 0 = A^L_a$. Using these conditions the action (\ref{eq: DBI action}) reduces to (\ref{eq: HVQCD action}).
+
+\subsection{Potentials definitions}
+
+To compute the profile of the background fields as well the spectrum of their fluctuations it is necessary to define the potentials $Vg$, $Vf$, $k$ and $w$ that appear in the previous actions:
+\begin{align}
+&V_g(\lambda) = 12 + V_1 \lambda + V_2 \frac{\lambda^2}{1 + \frac{sc \lambda}{\lambda_0}} + 3 e^{-\frac{\lambda_0}{sc \lambda}} V_gIR \frac{\lambda^{4/3}}{4 \pi^{8/3}}\sqrt{\log\left(1+\frac{sc \lambda}{\lambda_0}\right)}, \\ \notag
+& V_1 = \frac{44}{9 \pi^2}, \, V_2 = \frac{4619}{3888 \pi^4}, \, \lambda_0 = 8 \pi^2 \\
+& V_f(\lambda, \tau) = V_{f0} \left(\lambda\right) e^{-\tau^2}, \\ \notag
+& V_{f0}\left(\lambda\right) = W_0 + \frac{24 + \left(11- 2 x\right) W_0}{27 \pi^2} \lambda + \frac{24 (857 - 46 x) + W_0 (4619 - 1714 x + 92 x^2)}{46656 \pi^4} \frac{\lambda^2}{1+ \frac{sc \lambda}{\lambda_0}} + \\ \notag
+& + \frac{3 W_{IR}}{16 \pi^4} {\left(sc \lambda \right)}^2 e^{- \frac{\lambda_0}{sc \lambda}} \left( 1 + \frac{\lambda_0 W_1}{sc \lambda}\right) \\
+& \frac{1}{k(\lambda)} =  \left( \frac{3}{2} - \frac{W_0 x}{8} \right) \left( 1+ \frac{sc k_{U1} \lambda}{\lambda_0} + k_{IR} e^{-\frac{\lambda_0}{ksc \lambda}} \left( 1 + \frac{\lambda_0 k_1}{ksc \lambda}\right) \frac{{\left(\frac{ksc \lambda}{\lambda_0}\right)}^{4/3}}{\sqrt{\log\left(1 + \frac{ksc \lambda}{\lambda_0}\right)}}\right), \\
+& \frac{1}{w\left(\lambda\right)} = w_0 \left(1 + \frac{sc w_{U1} \lambda}{\lambda_0 \left( 1+ \frac{sc \lambda}{\lambda_0}\right)} + w_{IR} e^{- \frac{\lambda_0}{wsc \lambda}} \left(1+\frac{\lambda_0 w_1}{wsc \lambda}\right)\frac{{\left( \frac{wsc \lambda}{\lambda_0}\right)}^{4/3}}{\log\left(1+\frac{wsc \lambda}{\lambda_0}\right)}) \right)
+\end{align}
+
+Althogh $w\left(\lambda\right)$ will not be important for determination of the profile of $A$, $\Phi$ and $\tau$, it will be necessary to the evaluation of the spectrum of the mesons as it enters the expressions of the Schrodinger potentials.  Hence we need to provide the numerical values of the parameters $sc$, $ksc$, $wsc$, $W_0$, $w_0$, $k_{U1}$, $w_{U1}$, $V_{gIR}$, $W_{IR}$, $k_{IR}$,  $w_{IR}$, $W_1$, $k_1$ and $w_1$ to compute the spectrum. In our fits we will use $x = 2/3$ and as such we will look only at the mesons with quarks up and down in their composition. There is only one parameter to specify in order to compute numerically the spectrum. We will present it in the next section.
+
+\subsection{Solving the Equatios of Motion}
+
+In this section we give details on how the equations of motion are solved. It turns out to be convenient to write the resulting equations in terms of $A$ instead of the radial coordinate $z$. To do this one introduces the variable
+\begin{equation}
+q\left(A\right) = \frac{dz}{dA} e^{A};
+\label{eq: q definition}
+\end{equation}
+From now on all the background fields will be functions of $A$ and the differential equations we present are all with respect to A being the independent variable.
+
+\subsubsection{Yang-Mills Equations of Motion}
+
+If we make $x = 0$ we get the action of the IHQCD model and hence we are dealing with a pure Yang-Mills theory in the large $N_c$ limit. The equations of motion are then
+\begin{align}
+	&\frac{dq}{dA} = \frac{1}{3} \left( 12 q - q^3 V_g \left(\Phi\right) \right) \\
+	&\frac{d\Phi}{dA} = - \frac{\sqrt{3}}{2} \sqrt{12 - q^2 V_g\left(\Phi\right)}
+	\label{eq: YM equations}
+\end{align}
+We will solve this coupled differential equations from the IR to the UV. We set $A_{IR} = -150$ and $A_{UVYM} = 50$ as the lower and upper bound on A. In the IR $A$ and $\Phi$ take the asymptotic form
+\begin{align}
+&A_{IR} \left(z\right) = \frac{23}{24} - \frac{173}{3456 z^2} - z^2 + 0.25 \log(6 z^2) - \frac{\log(Vg_{IR})}{2} \\
+&\Phi_{IR} \left(z \right) = - \frac{23}{16} - \frac{151}{2304 z^2} + \frac{3}{2} z^2 - \log(\frac{sc}{\lambda_0})
+\label{eq: YM fields IR asymptotics}
+\end{align}
+This allows us to determine $z_{IRYM}$ such that $A_{IR}\left(z_{IRYM}\right) = -150$ and use its numerical value to compute $\Phi\left(A_{IR}\right) = \Phi_{IR} \left( z_{IRYM}\right)$ and $q\left(A_{IR}\right) = e^{A_{IR}} / \frac{dA_{IR}}{d z} $ and hence defining boundary conditions to solve equations~\ref{eq: YM equations}. Note that $sc$ and $V_{gIR}$ determine uniquely both the initial conditions as well the evolution of the background fields in pure YM.
+
+After we solve the YM equations we can determine $z\left(A\right)$ by using equation (\ref{eq: q definition}). We solve this numerically by taking $z(A_{IRYM})$ = $z_{IRYM}$ as initial condition and at the end we perform the shift $z\left(A\right) \to z\left(A\right) - z\left(A_{UVYM} \right) $ in order to have the UV singularity at $z = 0$. For the spectrum we will consider only  $A$ values that satisfy $z\left(A\right) > 10^{-6}$ and $\Phi\left(A\right) < 120$.
+
+We finish this section by specifying which algorithms we have used to find the numerical YM background. To compute $z_{IRYM}$ we have used the root finding Van Wijngaarden-Dekker-Brent method described in~\cite{10.5555/1403886}. The differential equations (\ref{eq: YM equations}) were solved using $integrate\_const$ with a Runge-Kutta-Dormand-Prince stepper from the Boost $C++$ library.
+
+\subsubsection{Solving HVQCD equations of motion}
+
+The solution of HVQCD equations is done in four stages. In the first two we are deep in the IR and the tachyon is decoupled from the other background fields and $q\left(A\right)$ and $\Phi\left(A\right)$ obey equations (\ref{eq: YM equations}). In the third stage the tachyon will couple to the other background fields until it reaches the UV where it decouples again and we are in the fourth and last stage of the solution of the EOMs.
+
+As in the YM case we start by first specifying the IR boundary conditions. We first define $A_{IR} = -150$, $A_{UVYM} = 50$, $A_{UVc} = 100$ and $A_{UVf} = 1000$.
+Again  we compute $z_{IRYM}$ as in the YM case and we use it to compute $q\left(A_{IR}\right)$ and $\Phi\left(A_{IR}\right)$ as in YM and $\tau\left(A_{IR}\right)$ using the tachyon IR asymptotics
+\begin{equation}
+\tau_{IR} \left(z \right) = \tau_0 z^{\frac{(12 - x W_0) k_{IR}}{6 V_{gIR}}}
+\end{equation}
+where $\tau_0$ is a paremter that is gonna be fitted by the spectrum. This is the last parameter to be introduced.
+The constants $\tau_{cut} = 1000$ and $V_{f cut} = 10^{-8}$ are defined and they signal the end of the first and second stages of the construction of the numerical background, respectively.
+
+We start the construction of the background by computing the YM profile of $q\left(A\right)$ and $\Phi\left(A\right)$ from $A_{IR}$ to $A_{UVYM}$. If $\tau_{IR} > \tau_{cut}$ the tachyon profile will be given by the solution of the differential equation
+\begin{equation}
+	\frac{d\tau}{dA} = - 4 \frac{q^2 V_{f0}\left(\Phi\right) \tau}{8 V_{f0}\left( \Phi\right) k\left(\Phi\right) + 2 k\left(\Phi\right) \frac{d V_{f0}}{d\Phi} \frac{d\Phi}{dA} + V_{f0} \left(\Phi\right) \frac{dk}{d\Phi} \frac{d\Phi}{dA} }
+\end{equation}
+until $\tau < \tau_{cut}$, marking the end of the first stage. The value of $A$ such that this condition is met is called $A_{UV1}$ The values of $q$ and $\Phi$ used are the ones given by YM.
+
+In the second stage we solve the tachyon differential equation
+\begin{align}
+&\frac{d^2\tau}{d A^2} = - 2 \frac{q^2 \tau}{k\left(\Phi\right)} - 4 \frac{d \tau}{dA} + \frac{d \log q}{dA} \frac{d\tau}{dA} - 2 \tau {\left(\frac{d\tau}{dA}\right)}^2 - 4 k\left(\Phi\right) \frac{{\left( \frac{d\tau}{dA}\right)}^3}{q^2} - \\ \notag
+& - \frac{d \log V_{f0}}{d\Phi} \frac{d\tau}{dA} \frac{d\Phi}{dA} - \frac{d \log k}{d\Phi} \frac{d\tau}{dA} \frac{d\Phi}{dA} - k\left(\Phi\right) \frac{d \log V_{f0}}{d\Phi} {\left(\frac{d\tau}{dA}\right)}^3 \frac{\frac{d\Phi}{dA}}{q^2} - \frac{d k}{d\Phi} \frac{d\Phi}{dA} \frac{{\left(\frac{d\tau}{dA}\right)}^3}{2 q^2}
+\label{eq: tau YM 2}
+\end{align}
+from the value of $A_{UV1}$ to $A_{UVYM}$. Using the profiles of $q$, $\Phi$ and $\tau$ we compute $A_{UV2}$ such that $A_{UV1} < A_{UV2} < A_{UVYM}$ and $V_{f0}\left(\Phi\right) e^{-\tau^2} = V_{fcut} V_g \left(\Phi\right)$ are satisfied. This condition marks when the tachyon starts to couple with $q$ and $\Phi$ from the IR to the UV.\footnote{Matti's code rejects such backgrounds while my code just takes them as valid backgrounds. This, I think, explains why Matti could not get the same results for the spectrum as me in that fit. This also means that in the numerical background I have obtained the tachyon never couples to $q$ and $\Phi$. }
+
+In the stage where the tachyon is coupled the backgroud fields' dynamics obeys
+\begin{align}
+& \frac{dq}{dA} = \frac{4}{9} q {\left(\frac{d\Phi}{dA}\right)}^2 + q V_f \left(\Phi, \tau\right) k\left(\Phi\right) \frac{{\left(\frac{d\tau}{dA}\right)}^2}{6\sqrt{1+ k\left(\Phi\right) {\left(\frac{\frac{d\tau}{dA}}{q}\right)}^2}} \\
+& \frac{d^2 \Phi}{d^2A} = - \frac{3}{8} q^2 \frac{d V_g}{d\Phi} + \frac{9}{\frac{d\Phi}{dA}} + \frac{3}{4} \frac{q^2}{\frac{d\Phi}{dA}} \left( \frac{V_f \left(\Phi, \tau\right)}{\sqrt{1+ k \frac{{\left(\frac{d\tau}{dA}\right)}^2}{q^2}}} - V_g \left(\Phi\right) \right) - \\ \notag
+& - 5 \frac{d\Phi}{d A} + V_f \left(\Phi, \tau\right) k \left(\Phi\right) \frac{{\left(\frac{d\tau}{dA}\right)}^2 \frac{d\Phi}{dA}}{6 \sqrt{1+ k\left(\Phi\right) {\left(\frac{\frac{d\tau}{dA}}{q}\right)}^2 }} + \frac{4}{9} {\left(\frac{d\Phi}{dA}\right)}^3 + \\ \notag
+& + \frac{3}{8} q^2 \frac{\frac{d V_f}{d\Phi}}{\sqrt{1+ k\left(\Phi\right) {\left(\frac{\frac{d\tau}{dA}}{q}\right)}^2}} + \frac{3}{8} k\left(\Phi\right) {\left( \frac{d\tau}{dA}\right)}^2 \frac{\frac{dV_f}{d\Phi}}{\sqrt{1+ k\left(\Phi\right) {\left(\frac{\frac{d\tau}{dA}}{q}\right)}^2}} + \\ \notag
+& + \frac{3}{16} V_f\left(\Phi, \tau\right) {\left( \frac{d\tau}{dA}\right)}^2 \frac{\frac{dk}{d \Phi}}{\sqrt{1+ k\left(\Phi\right) {\left(\frac{\frac{d\tau}{dA}}{q}\right)}^2}} \\ \notag
+& \frac{d^2 \tau}{d A^2} = -2 q^2 \frac{\tau}{k\left(\Phi\right)} - 4 \frac{d\tau}{d A} -2 \tau {\left(\frac{d\tau}{dA}\right)}^2 - 4\frac{k\left(\Phi\right)}{q^2} {\left(\frac{d\tau}{dA}\right)}^3 + k\left(\Phi\right) V_f \left(\Phi, \tau \right) \frac{{\left(\frac{d\tau}{dA}\right)}^3}{6 \sqrt{1+ k\left(\Phi\right) {\left(\frac{\frac{d\tau}{dA}}{q}\right)}^2}} - \\
+& - \frac{d \log(V_{f0})}{dA} \frac{d\Phi}{dA} \frac{d\tau}{dA} - k \left(\Phi\right) \frac{d\log(V_{f0}}{dA} \frac{d\Phi}{dA}\frac{{\left(\frac{d\tau}{d A}\right)}^3}{q^2} + \frac{4}{9} {\left(\frac{d\Phi}{dA}\right)}^2 \frac{d\tau}{dA} - \frac{d \log(k)}{d\Phi} \frac{d\Phi}{dA} \frac{d\tau}{dA} - \\ \notag
+& - \frac{1}{2} \frac{d k}{d\Phi} \frac{d\Phi}{dA} \frac{{\left( \frac{d\tau}{dA}\right)}^3}{q^2}
+\end{align}
+This is a stiff system of differential equations and for this reason we had used the function integrate\_adaptive with the rosenbrock4 stepper from Boost. This system is solved from $A_{UV2}$ to $A_{UCc}$. Because $A_{UVc} = 50$ we believe that at this point we are in the UV and here the tachyon decouples again from $q$ and $\Phi$.
+
+The UV equations of motion are
+\begin{align}
+&\frac{dq}{dA} =  \frac{4}{9} q {\left(\frac{\frac{d\lambda}{dA}}{\lambda}\right)}^2 \\
+&\frac{d^2\lambda}{dA^2} = -\frac{3}{8}  {\left(q \lambda \right)}^2 \frac{d V_g}{d\lambda} + 9 \frac{\lambda^2}{\frac{d\lambda}{dA}} + \frac{3}{4} \frac{{\left(q \lambda \right)}^2}{\frac{d\lambda}{dA}} \left( V_f\left(\lambda, 0\right) - V_g \left(\lambda\right) \right) - 5 \frac{d\lambda}{dA}  + \\
+& + \frac{d \log q}{dA} \frac{d\lambda}{d A} + \frac{{\left( \frac{d\lambda}{dA}\right)}^2}{\lambda} + \frac{3}{8} {\left( q \lambda \right)}^2 \frac{d V_f}{d\lambda} \left(\lambda, 0 \right) \\ \notag
+& \frac{d^2 \tau_n}{dA^2} = 3 \tau_n - 2 \frac{q^2 \tau_n}{k\left(\lambda\right)} - \tau_n \frac{d \log q}{dA} + \tau_n \frac{d \log V_{f0}}{d\lambda} \frac{d\lambda}{dA} - 2 \frac{d\tau_n}{d A} + \frac{d\log q}{d A} \frac{d \tau_n}{dA} - \\
+& - \frac{d \log V_{f0}}{d\lambda} \frac{d\lambda}{dA} \frac{d\tau_n}{dA} + \tau_n \frac{d\lambda}{dA} \frac{d \log k}{d\lambda} - \frac{d\lambda}{dA} \frac{d\tau_n}{dA} \frac{d \log k}{d\lambda}
+\end{align}
+where $\tau_n = e^A \tau$. This system is solved from $A_{UVc}$ to $A_{UVf}$. With the profile of $\tau_n$ and $\lambda$ in this region we can compute the quark mass $m_q$ through the formula
+\begin{align}
+&m_q = \frac{\lambda \left(A_{UVf} - 10\right) \tau_n\left(A_{UVf}\right)e^{- \log l_{UV} - \tau_{corr}\left(\lambda\left(A_{UVf}\right)\right)} - \lambda \left(A_{UVf} \right) \tau_n\left(A_{UVf} - 10\right)e^{- \log l_{UV} - \tau_{corr}\left(\lambda\left(A_{UVf} - 10\right)\right)} }{\lambda\left(A_{UVf} - 10\right) - \lambda\left(A_{UVf}\right)}, \\
+& \tau_{corr} = \frac{\left(-88 + 16 x + 27 sc k_{U1}\right) \log\left( \frac{24 \pi^2}{\left(11 - 2 x\right) \lambda}\right)}{12 x - 66}
+\end{align}
+
+As in the YM case we can determine $z\left(A\right)$ by using equation (\ref{eq: q definition}) and perform the shift $z\left(A\right) \to z\left(A\right) - z\left(A_{UVYM} \right) $ in order to have the UV singularity at $z = 0$. For the spectrum we will consider only  $A$ values that satisfy $z\left(A\right) > 10^{-6}$ and $\Phi\left(A\right) < 120$.
+
+
+
+
+
+
+
+
+
+
+
+\section{Spectrum computation}
+We will simply use the formulas given in~\cite{Arean:2013tja} to solve the Schrodinger problem associated with each kind of fluctuation. A detail in my C++ code is worth mentioning. Basically I expand the $\Xi$ expressions in terms of the background fields and potentials as well their derivatives. This is done in Mathematica. The resulting expression in Mathematica is then coded in C++ in order to compute the Schrodinger potential for each kind of fluctuation.
+
+
+
+\section{Fits}
+
+In the last sections we discussed how to compute the numerical backgrounds of a bulk theory dual to QCD in the Veneziano limit. We also saw how these backgrounds depend on a given set of parameters. Here we describe how those parameters can be fixed by using ratios of masses of particles that have been detected experimentally or in lattice simulations of QCD. The fluctuations of our backgrounds fields can be classified in flavour singlet and non-singlet fluctuations. We can also divide the different  fluctuations by using the quantum numbers $J^{PC}$.  Each of this classes of fluctuations will be identified with a group of mesons or glueballs. To simplify this identification we will consider only mesons with up and down quarks in their quark content. This means that in our fits $x = 2 / 3$.
+
+Our background fields are determined by 15 parameters: sc, ksc, wsc, $W_0$, $w_0$, $k_{U1}$, $w_{U1}$, $V_{gIR}$, $W_{IR}$, $k_{IR}$, $w_{IR}$, $W_1$, $k_1$, $w_1$ and $\tau_0$. We are then in presence of non-trivial problem of finding the best set of parameters that describes the spectrum of observed mesons and glueballs. To simplify a bit the search for such set we can start by considering the spectrum of pure YM ($x = 0$) and fit sc and $V_{gIR}$ to the ratios $m_{0^{++}*} / m_{0^{++}}$ and $m_{2^{++}}/m_{0^{++}}$. If we do that we find that $sc = 2.50485$ and $V_{gIR} = 3.47852$ are the best set of values. Having said this we will perform fits with and without sc and $V_{gIR}$ fixed.
+
+For the tensor glueball $2^{++}$ we will use the pure YM value of 2.150 GeV. The flavour non-singlet mesons and flavour singlet mesons used in the fits are displayed in table~\ref{table: ns mesons} and table~\ref{table: s mesons}, respectively.
+
+\begin{table}
+\centering
+\begin{tabular}{ | c | c | c | }
+
+\hline
+$J^{PC}$ & Meson & Mass Measured (GeV) \\
+\hline
+$1^{--}$ & $\rho$ & 0.7755 \\
+\hline
+$1^{--}$ &  $\rho(1450)$ & 1.465 \\
+\hline
+$1^{--}$ & $\rho(1700)$ & 1.720 \\
+\hline
+$1^{--}$ & $\rho(1900)$ & 1.909 \\
+\hline
+$1^{--}$ & $\rho(2150)$ & 2.149 \\
+\hline
+$1^{--}$ & $\rho(2270)$ & 2.265\\
+\hline
+$1^{++}$ & $a_1(1260)$ & 1.230\\
+\hline
+$1^{++}$ & $a_1(1640)$ & 1.647 \\
+\hline
+$1^{++}$ & $a_1(1930)$ & 1.930 \\
+\hline
+$1^{++}$ & $a_1(2096)$ & 2.096 \\
+\hline
+$1^{++}$ & $a_1(2270)$ & 2.270 \\
+\hline
+$0^{++}$ &  $a_0(1450)$ & 1.474 \\
+\hline
+$0^{++}$ &  $a_0(2020)$ & 2.025 \\
+\hline
+$0^{-+}$ &  $\pi_0$ & 0.135 \\
+\hline
+$0^{-+}$ &  $\pi_0(1300)$ & 1.300 \\
+\hline
+$0^{-+}$ &  $\pi_0(1800)$ & 1.812 \\
+\hline
+$0^{-+}$ &  $\pi_0(2070)$ & 2.070 \\
+\hline
+$0^{-+}$ &  $\pi_0(2360)$ & 2.360 \\
+\hline
+\end{tabular}
+\caption{Non-singlet mesons used in the fits.}
+\label{table: ns mesons} 
+\end{table}
+
+\begin{table}
+\centering
+\begin{tabular}{ | c | c | c | }
+
+\hline
+$J^{PC}$ & Meson & Mass Measured (GeV) \\
+\hline
+$1^{--}$ & $\omega(782)$ & 0.78265 \\
+\hline
+$1^{--}$ &  $\omega(1420)$ & 1.420\\
+\hline
+$1^{--}$ & $\omega(1650)$ & 1.670 \\
+\hline
+$1^{++}$ & $f_1(1285)$ & 1.2819\\
+\hline
+$1^{++}$ & $f_1(1420)$ & 1.4264 \\
+\hline
+\end{tabular}
+\caption{Singlet mesons used in the fits.}
+\label{table: s mesons} 
+\end{table}
+
+
+The cost function that we use for the fits is
+\begin{align}
+J = \sum_{i} \frac{|R_{pred_i} - R_{obs_i}|}{R_{obs_i}} + \lambda e^{- \left(\frac{12-x W_0)k_{IR}}{6 V_{gIR}} - 1\right)} + \lambda e^{-\left( \tau_M^2 - 3.5 \right)},
+\end{align}
+where $\tau_M^2$ is the square of the tachyon mass in the IR. Here $R_{obs_i}$ is the experimental observed ratio between one of the particles in the tables~\ref{table: ns mesons} and~\ref{table: s mesons} and the $\rho$ meson and $R_{pred_i}$ is the same ratio predicted by our model. The exponential terms are included in order to impose the constraints $\frac{\left(12-x W_0\right)k_{IR}}{6 V_{gIR}} > 1$ and $\tau_M^2 > 3.5$. The results presented were obtained with $\lambda = 0.5$ but I will redo the fits with $\lambda = 0.1$ or even smaller values. Maybe this way we can find a set of parameters that satisfy the constraints and with better ratio values.
+
+\subsection{Global fit}
+
+In the global fit we use the tensor glueball  and all the mesons in tables~\ref{table: ns mesons} and~\ref{table: s mesons} while varying all parameters. The best fit parameters are found in table~\ref{table: global fit parameters} and the ratios are shown in figure~\ref{figure: global fit ratios}.
+
+\begin{table}
+\centering
+\begin{tabular}{ | c | c | c | c |}
+\hline
+sc & 3.25546 & ksc & 4.12754 \\
+\hline
+wsc & 1.31668& $W_0$ & 2.868 \\
+\hline
+$w_0$ & 1.8009 & $k_{U1}$ & 0.533949 \\
+\hline
+$w_{U1}$ & -0.766744 & $V_{gIR}$ & 1.54926 \\
+\hline
+$W_{IR}$ & 0.502304 & $k_{IR}$ & 2.8191 \\
+\hline
+$w_{IR}$ & 7.74607 & $W_1$ & 0.986571 \\
+\hline
+$k_1$ & -1.36173 & $w_1$ & 0.815957 \\
+\hline
+x & $2/3$ & $\tau_0$ & 0.457303\\
+\hline
+$Z_a$ & -0.513725 & $c_a$ & $4.58782 \times 10^{-9} $\\
+\hline
+\end{tabular}
+\caption{Best fit parameters for global fit.}
+\label{table: global fit parameters} 
+\end{table}
+
+\begin{figure}
+  \center
+  \includegraphics[scale = 0.5]{images/HVQCDGlobal_WithSAVM.png} 
+  \caption{Ratios for the best fit parameters for global fit.}
+  \label{figure: global fit ratios}
+\end{figure}
+
+\subsection{Global fit with sc and VgIR fixed}
+
+In this fit we also use the tensor glueball  and all the mesons in tables~\ref{table: ns mesons} and~\ref{table: s mesons} while varying all parameters except sc and $V_{gIR}$. The best fit parameters are found in table~\ref{table: global fit parameters sc VgIR fixed} and the ratios are shown in figure~\ref{figure: global fit ratios sc VgIR fixed}.
+
+\begin{table}
+\centering
+\begin{tabular}{ | c | c | c | c |}
+\hline
+sc & 2.50485 & ksc & 2.80494 \\
+\hline
+wsc & 4.75507 & $W_0$ & 2.04542 \\
+\hline
+$w_0$ & 0.635567 & $k_{U1}$ & 0.898244 \\
+\hline
+$w_{U1}$ & -4.79273 & $V_{gIR}$ & 3.47852 \\
+\hline
+$W_{IR}$ & 2.10562 & $k_{IR}$ & 2.81353 \\
+\hline
+$w_{IR}$ & 6.93792 & $W_1$ & 1.90077 \\
+\hline
+$k_1$ & -0.0484519 & $w_1$ & 0.767193 \\
+\hline
+x & 2/3 & $\tau_0$ & 0.351475\\
+\hline
+$Z_a$ & 0.187512 & $c_a$ & $1.13332 \times 10^{-13}$ \\
+\hline
+\end{tabular}
+\caption{Best fit parameters for global fit with sc and VgIR fixed.}
+\label{table: global fit parameters sc VgIR fixed} 
+\end{table}
+
+\begin{figure}
+  \center
+  \includegraphics[scale = 0.5]{images/HVQCDGlobal_sc_VgIR_fixed_WithSAVM.png} 
+  \caption{Ratios for the best fit parameters for global fit with sc and VgIR fixed.}
+  \label{figure: global fit ratios sc VgIR fixed}
+\end{figure}
+
+\subsection{Fit Without Glueballs but with sc and VgIR fixed}
+
+In this fit we also use all the mesons in tables~\ref{table: ns mesons} and~\ref{table: s mesons} while varying all parameters except sc and $V_{gIR}$. The best fit parameters are found in table~\ref{table: fit without glueball sc VgIR fixed parameters} and the ratios are shown in figure~\ref{figure: fit without glueball sc VgIR fixed}.
+
+\begin{table}
+\centering
+\begin{tabular}{ | c | c | c | c |}
+\hline
+sc & 2.50485 & ksc & 3.04602 \\
+\hline
+wsc & 1.93123 & $W_0$ & 2.18834 \\
+\hline
+$w_0$ & 2.33377 & $k_{U1}$ & 0.463568 \\
+\hline
+$w_{U1}$ & -2.73495 & $V_{gIR}$ & 3.47852 \\
+\hline
+$W_{IR}$ & 2.83069 & $k_{IR}$ & 2.53127 \\
+\hline
+$w_{IR}$ & 4.94608 & $W_1$ & 1.15435\\
+\hline
+$k_1$ & 0.151849 & $w_1$ & 0.0495368\\
+\hline
+x & 2/3 & $\tau_0$ & 0.519466\\
+\hline
+$Z_a$ & 0.107029 & $c_a$ & $8.72313 \times 10^{-13}$\\
+\hline
+\end{tabular}
+\caption{Best fit parameters for fit without glueball but with sc and VgIR fixed.}
+\label{table: fit without glueball sc VgIR fixed parameters} 
+\end{table}
+
+\begin{figure}
+  \center
+  \includegraphics[scale = 0.5]{images/HVQCDWithoutGlueball_sc_VgIR_fixed_WithSAVM.png} 
+  \caption{Ratios for the best fit parameters for fit without glueball but with sc and VgIR fixed.}
+  \label{figure: fit without glueball sc VgIR fixed}
+\end{figure}
+
+
+\subsection{Fit Without Scalars}
+
+In this fit we also use the tensor glueball and the mesons in tables~\ref{table: ns mesons} and~\ref{table: s mesons} except the scalars and pseudoscalar mesons. We vary all parameters. The best fit parameters are found in table~\ref{table: fit without scalars parameters} and the ratios are shown in figure~\ref{figure: fit without scalars}.
+
+\begin{table}
+\centering
+\begin{tabular}{ | c | c | c | c |}
+\hline
+sc & 2.75988 & ksc & 3.16245 \\
+\hline
+wsc &1.86214 & $W_0$ & 2.67223 \\
+\hline
+$w_0$ & 1.2902 & $k_{U1}$ & 1.20368 \\
+\hline
+$w_{U1}$ & 0.28155 & $V_{gIR}$ & 1.40383 \\
+\hline
+$W_{IR}$ & 1.06798 & $k_{IR}$ & 2.44736 \\
+\hline
+$w_{IR}$ & 5.30943 & $W_1$ & 0.392724 \\
+\hline
+$k_1$ & 0.305196 & $w_1$ & -0.47342 \\
+\hline
+x & 2/3 & $\tau_0$ & 0.424401\\
+\hline
+$Z_a$ & -1.21038 & $c_a$ & $1.11625 \times 10^{-7}$ \\
+\hline
+\end{tabular}
+\caption{Best fit parameters for fit without scalars.}
+\label{table: fit without scalars parameters} 
+\end{table}
+
+\begin{figure}
+  \center
+  \includegraphics[scale = 0.5]{images/HVQCDWithoutScalars_WithSAVM.png} 
+  \caption{Ratios for the best fit parameters for fit without scalars.}
+  \label{figure: fit without scalars}
+\end{figure}
+
+
+\subsection{Fit Without Scalars but sc and VgIR fixed}
+
+In this fit we also use the tensor glueball and the mesons in tables~\ref{table: ns mesons} and~\ref{table: s mesons} except the scalars and pseudoscalar mesons. We vary all parameters except sc and $V_{gIR}$. The best fit parameters are found in table~\ref{table: fit without scalars sc VgIR fixed} and the ratios are shown in figure~\ref{figure: fit without scalars sc VgIR fixed}.
+
+\begin{table}
+\centering
+\begin{tabular}{ | c | c | c | c |}
+\hline
+sc & 2.50485 & ksc & 1.29058 \\
+\hline
+wsc & 0.0603466 & $W_0$ & 0.0110914 \\
+\hline
+$w_0$ & 2.57011 & $k_{U1}$ & 2.66727  \\
+\hline
+$w_{U1}$ & -1.71986 & $V_{gIR}$ & 3.47852 \\
+\hline
+$W_{IR}$ & 1.73027 & $k_{IR}$ & 4.26511 \\
+\hline
+$w_{IR}$ & 4.72176 & $W_1$ & 2.65188 \\
+\hline
+$k_1$ & 0.572573 & $w_1$ & 0.580926 \\
+\hline
+x & 2/3& $\tau_0$ & 0.574017\\
+\hline
+$Z_a$ & -0.0790245 & $c_a$ & 0.000172359 \\
+\hline
+\end{tabular}
+\caption{Best fit parameters for fit without scalars but with sc and VgIR fixed.}
+\label{table: fit without scalars sc VgIR fixed} 
+\end{table}
+
+\begin{figure}
+  \center
+  \includegraphics[scale = 0.5]{images/HVQCDWithoutScalars_sc_VgIR_fixed_WithSAVM.png} 
+  \caption{Ratios for the best fit parameters for fit without scalars but with sc and VgIR fixed.}
+  \label{figure: fit without scalars sc VgIR fixed}
+\end{figure}
+
+
+\subsection{Fit Without Glueball and Scalars but with sc and VgIR fixed}
+
+In this fit we don't use the tensor glueball and the scalar and pseudoscalar mesons. We vary all parameters except sc and $V_{gIR}$. The best fit parameters are found in table~\ref{table: fit without glueball scalars sc VgIR fixed} and the ratios are shown in figure~\ref{figure: fit without glueball scalars sc VgIR fixed}.
+
+\begin{table}
+\centering
+\begin{tabular}{ | c | c | c | c |}
+\hline
+sc & 2.50485 & ksc & 4.28812 \\
+\hline
+wsc & 5.10253 & $W_0$ & 1.24218 \\
+\hline
+$w_0$ & 2.02123 & $k_{U1}$ & -2.80363  \\
+\hline
+$w_{U1}$ & 4.11302 & $V_{gIR}$ & 3.47852 \\
+\hline
+$W_{IR}$ & 1.65571 & $k_{IR}$ & 12.5991 \\
+\hline
+$w_{IR}$ & 4.04552 & $W_1$ & -0.377037 \\
+\hline
+$k_1$ & -7.68695 & $w_1$ & - 0.674825 \\
+\hline
+x & 2/3 & $\tau_0$ & $2.2559 \times 10^{-7}$\\
+\hline
+$Z_a$ & 0.0500001 & $c_a$ & $8.9016 \times 10^{-22}$ \\
+\hline
+\end{tabular}
+\caption{Best fit parameters for fit without glueball and scalars but with sc and VgIR fixed.}
+\label{table: fit without glueball scalars sc VgIR fixed} 
+\end{table}
+
+
+
+\begin{figure}
+  \center
+  \includegraphics[scale = 0.5]{images/HVQCDWithoutGlueballsScalars_sc_VgIR_fixed_WithSAVM.png} 
+  \caption{Ratios for the best fit parameters for fit without glueball and scalars but with sc and VgIR fixed.}
+   \label{figure: fit without glueball scalars sc VgIR fixed}
+\end{figure}
+
+
+
+\end{document}
