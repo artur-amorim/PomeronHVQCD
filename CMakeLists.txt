@@ -50,6 +50,15 @@ target_link_libraries(fitHVQCDWithoutGlueball_sc_VgIR_fixed.exe armadillo)
 add_executable(fitHVQCDWithoutGlueballScalars_sc_VgIR_fixed.exe physics/fitHVQCDWithoutGlueballScalars_sc_VgIR_fixed.cpp ${HVQCD} ${SCHRODINGER})
 target_link_libraries(fitHVQCDWithoutGlueballScalars_sc_VgIR_fixed.exe armadillo)
 
+# Fit HVQCD Without Glueball and Scalars
+add_executable(fitHVQCDWithoutGlueballScalars.exe physics/fitHVQCDWithoutGlueballScalars.cpp ${HVQCD} ${SCHRODINGER})
+target_link_libraries(fitHVQCDWithoutGlueballScalars.exe armadillo)
+
+# Fit HVQCD Without Glueball
+add_executable(fitHVQCDWithoutGlueball.exe physics/fitHVQCDWithoutGlueball.cpp ${HVQCD} ${SCHRODINGER})
+target_link_libraries(fitHVQCDWithoutGlueball.exe armadillo)
+
+# Fit the Singlet Axial Vector Mesons
 add_executable(fitSingletAVM.exe physics/fitSingletAVM.cpp ${HVQCD} ${SCHRODINGER})
 target_link_libraries(fitSingletAVM.exe armadillo)
 
