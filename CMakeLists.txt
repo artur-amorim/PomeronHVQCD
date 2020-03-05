@@ -66,6 +66,10 @@ target_link_libraries(fitSingletAVM.exe armadillo)
 add_executable(HVQCDRatios.exe physics/HVQCDRatios.cpp ${HVQCD} ${SCHRODINGER})
 target_link_libraries(HVQCDRatios.exe armadillo)
 
+# Save background fields, potentials and schrodinger potentials of the fluctuations
+add_executable(savePotentials.exe physics/savePotentials.cpp ${HVQCD} ${SCHRODINGER})
+target_link_libraries(savePotentials.exe armadillo)
+
 # Add test_schrodinger executable
 add_executable(test_schrodinger.exe  tests/test_schrodinger.cpp ${SCHRODINGER})
 target_link_libraries(test_schrodinger.exe armadillo)

@@ -1092,6 +1092,33 @@ std::vector<double> computeAxialVectorMesonSingletPotential(const HVQCD &hvqcd, 
     return V;
 }
 
+void saveSchrodingerPotentials(const HVQCD &hvqcd, std::string path)
+{
+    /*
+        Computes the Schrodinger potential of the fluctuations of the background fields
+        and saves them in a txt file in path
+    */
+    // Compute the Schrodinger potentials
+    std::vector<double> VVM, VAVM, VPSM, VSM, VSAVM;
+    VVM = computeVectorMesonPotential(hvqcd);
+    VAVM = computeAxialVectorMesonNonSingletPotential(hvqcd, VVM);
+    VPSM = computePseudoScalarMesonPotential(hvqcd);
+    VSM = computeScalarMesonPotential(hvqcd);
+    VSAVM = computeAxialVectorMesonSingletPotential(hvqcd, VAVM);
+    // Get the u and z profiles
+    std::vector<double> u = hvqcd.u(), z = hvqcd.z();
+    // write z, u, and the Schrodinger potentials in the txt file
+    std::ofstream myfile;
+    myfile.open(path);
+    myfile << "z\tu\tVVM\tVAVM\tVPSM\tVSM\tVSAVM" << std::endl;
+    for(int i = 0; i < u.size(); i++)
+    {
+        myfile << z[i] << '\t' << u[i] << '\t';
+        myfile << VVM[i] << '\t' << VAVM[i] << '\t' << VPSM[i] << '\t' << VSM[i] << '\t' << VSAVM[i] << std::endl;
+    }
+
+}
+
 void computeHVQCDSpectrum(const HVQCD &hvqcd)
 {
     /*
