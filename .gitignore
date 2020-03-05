@@ -19,3 +19,6 @@ Makefile
 
 # Ignore png files
 *.png
+
+# Ignore Jupyter notebook checkpoints
+*/.ipynb_checkpoints/*

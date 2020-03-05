@@ -187,6 +187,9 @@ std::vector<double> computeScalarMesonPotential(const HVQCD &hvqcd);
 // Declaration of the function that computes the potential of Flavour Singlet Axial Vector Mesons
 std::vector<double> computeAxialVectorMesonSingletPotential(const HVQCD &hvqcd, const std::vector<double> &VAxialVectorMeson);
 
+// Save Schrodinger potentials in a given file
+void saveSchrodingerPotentials(const HVQCD &hvqcd, std::string path = "SchrodingerPotentials.txt");
+
 // Declaration of computeHVQCDSpectrum function
 void computeHVQCDSpectrum(const HVQCD &hvqcd);
 
