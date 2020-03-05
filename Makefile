@@ -111,6 +111,19 @@ depend:
 .PHONY : depend
 
 #=============================================================================
+# Target rules for targets named test_HVQCD.exe
+
+# Build rule for target.
+test_HVQCD.exe: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 test_HVQCD.exe
+.PHONY : test_HVQCD.exe
+
+# fast build rule for target.
+test_HVQCD.exe/fast:
+	$(MAKE) -f CMakeFiles/test_HVQCD.exe.dir/build.make CMakeFiles/test_HVQCD.exe.dir/build
+.PHONY : test_HVQCD.exe/fast
+
+#=============================================================================
 # Target rules for targets named test_schrodinger.exe
 
 # Build rule for target.
@@ -137,19 +150,6 @@ HVQCDRatios.exe/fast:
 .PHONY : HVQCDRatios.exe/fast
 
 #=============================================================================
-# Target rules for targets named test_HVQCD.exe
-
-# Build rule for target.
-test_HVQCD.exe: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 test_HVQCD.exe
-.PHONY : test_HVQCD.exe
-
-# fast build rule for target.
-test_HVQCD.exe/fast:
-	$(MAKE) -f CMakeFiles/test_HVQCD.exe.dir/build.make CMakeFiles/test_HVQCD.exe.dir/build
-.PHONY : test_HVQCD.exe/fast
-
-#=============================================================================
 # Target rules for targets named fitSingletAVM.exe
 
 # Build rule for target.
@@ -161,6 +161,19 @@ fitSingletAVM.exe: cmake_check_build_system
 fitSingletAVM.exe/fast:
 	$(MAKE) -f CMakeFiles/fitSingletAVM.exe.dir/build.make CMakeFiles/fitSingletAVM.exe.dir/build
 .PHONY : fitSingletAVM.exe/fast
+
+#=============================================================================
+# Target rules for targets named fitHVQCDWithoutGlueball.exe
+
+# Build rule for target.
+fitHVQCDWithoutGlueball.exe: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 fitHVQCDWithoutGlueball.exe
+.PHONY : fitHVQCDWithoutGlueball.exe
+
+# fast build rule for target.
+fitHVQCDWithoutGlueball.exe/fast:
+	$(MAKE) -f CMakeFiles/fitHVQCDWithoutGlueball.exe.dir/build.make CMakeFiles/fitHVQCDWithoutGlueball.exe.dir/build
+.PHONY : fitHVQCDWithoutGlueball.exe/fast
 
 #=============================================================================
 # Target rules for targets named fitHVQCDGlobal_sc_VgIR_fixed.exe
@@ -239,6 +252,19 @@ fitHVQCDWithoutScalars.exe: cmake_check_build_system
 fitHVQCDWithoutScalars.exe/fast:
 	$(MAKE) -f CMakeFiles/fitHVQCDWithoutScalars.exe.dir/build.make CMakeFiles/fitHVQCDWithoutScalars.exe.dir/build
 .PHONY : fitHVQCDWithoutScalars.exe/fast
+
+#=============================================================================
+# Target rules for targets named fitHVQCDWithoutGlueballScalars.exe
+
+# Build rule for target.
+fitHVQCDWithoutGlueballScalars.exe: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 fitHVQCDWithoutGlueballScalars.exe
+.PHONY : fitHVQCDWithoutGlueballScalars.exe
+
+# fast build rule for target.
+fitHVQCDWithoutGlueballScalars.exe/fast:
+	$(MAKE) -f CMakeFiles/fitHVQCDWithoutGlueballScalars.exe.dir/build.make CMakeFiles/fitHVQCDWithoutGlueballScalars.exe.dir/build
+.PHONY : fitHVQCDWithoutGlueballScalars.exe/fast
 
 #=============================================================================
 # Target rules for targets named fitYangMills.exe
@@ -333,6 +359,60 @@ physics/fitHVQCDGlobal_sc_VgIR_fixed.s: physics/fitHVQCDGlobal_sc_VgIR_fixed.cpp
 physics/fitHVQCDGlobal_sc_VgIR_fixed.cpp.s:
 	$(MAKE) -f CMakeFiles/fitHVQCDGlobal_sc_VgIR_fixed.exe.dir/build.make CMakeFiles/fitHVQCDGlobal_sc_VgIR_fixed.exe.dir/physics/fitHVQCDGlobal_sc_VgIR_fixed.cpp.s
 .PHONY : physics/fitHVQCDGlobal_sc_VgIR_fixed.cpp.s
+
+physics/fitHVQCDWithoutGlueball.o: physics/fitHVQCDWithoutGlueball.cpp.o
+
+.PHONY : physics/fitHVQCDWithoutGlueball.o
+
+# target to build an object file
+physics/fitHVQCDWithoutGlueball.cpp.o:
+	$(MAKE) -f CMakeFiles/fitHVQCDWithoutGlueball.exe.dir/build.make CMakeFiles/fitHVQCDWithoutGlueball.exe.dir/physics/fitHVQCDWithoutGlueball.cpp.o
+.PHONY : physics/fitHVQCDWithoutGlueball.cpp.o
+
+physics/fitHVQCDWithoutGlueball.i: physics/fitHVQCDWithoutGlueball.cpp.i
+
+.PHONY : physics/fitHVQCDWithoutGlueball.i
+
+# target to preprocess a source file
+physics/fitHVQCDWithoutGlueball.cpp.i:
+	$(MAKE) -f CMakeFiles/fitHVQCDWithoutGlueball.exe.dir/build.make CMakeFiles/fitHVQCDWithoutGlueball.exe.dir/physics/fitHVQCDWithoutGlueball.cpp.i
+.PHONY : physics/fitHVQCDWithoutGlueball.cpp.i
+
+physics/fitHVQCDWithoutGlueball.s: physics/fitHVQCDWithoutGlueball.cpp.s
+
+.PHONY : physics/fitHVQCDWithoutGlueball.s
+
+# target to generate assembly for a file
+physics/fitHVQCDWithoutGlueball.cpp.s:
+	$(MAKE) -f CMakeFiles/fitHVQCDWithoutGlueball.exe.dir/build.make CMakeFiles/fitHVQCDWithoutGlueball.exe.dir/physics/fitHVQCDWithoutGlueball.cpp.s
+.PHONY : physics/fitHVQCDWithoutGlueball.cpp.s
+
+physics/fitHVQCDWithoutGlueballScalars.o: physics/fitHVQCDWithoutGlueballScalars.cpp.o
+
+.PHONY : physics/fitHVQCDWithoutGlueballScalars.o
+
+# target to build an object file
+physics/fitHVQCDWithoutGlueballScalars.cpp.o:
+	$(MAKE) -f CMakeFiles/fitHVQCDWithoutGlueballScalars.exe.dir/build.make CMakeFiles/fitHVQCDWithoutGlueballScalars.exe.dir/physics/fitHVQCDWithoutGlueballScalars.cpp.o
+.PHONY : physics/fitHVQCDWithoutGlueballScalars.cpp.o
+
+physics/fitHVQCDWithoutGlueballScalars.i: physics/fitHVQCDWithoutGlueballScalars.cpp.i
+
+.PHONY : physics/fitHVQCDWithoutGlueballScalars.i
+
+# target to preprocess a source file
+physics/fitHVQCDWithoutGlueballScalars.cpp.i:
+	$(MAKE) -f CMakeFiles/fitHVQCDWithoutGlueballScalars.exe.dir/build.make CMakeFiles/fitHVQCDWithoutGlueballScalars.exe.dir/physics/fitHVQCDWithoutGlueballScalars.cpp.i
+.PHONY : physics/fitHVQCDWithoutGlueballScalars.cpp.i
+
+physics/fitHVQCDWithoutGlueballScalars.s: physics/fitHVQCDWithoutGlueballScalars.cpp.s
+
+.PHONY : physics/fitHVQCDWithoutGlueballScalars.s
+
+# target to generate assembly for a file
+physics/fitHVQCDWithoutGlueballScalars.cpp.s:
+	$(MAKE) -f CMakeFiles/fitHVQCDWithoutGlueballScalars.exe.dir/build.make CMakeFiles/fitHVQCDWithoutGlueballScalars.exe.dir/physics/fitHVQCDWithoutGlueballScalars.cpp.s
+.PHONY : physics/fitHVQCDWithoutGlueballScalars.cpp.s
 
 physics/fitHVQCDWithoutGlueballScalars_sc_VgIR_fixed.o: physics/fitHVQCDWithoutGlueballScalars_sc_VgIR_fixed.cpp.o
 
@@ -502,15 +582,17 @@ src/HolographicVQCD.o: src/HolographicVQCD.cpp.o
 
 # target to build an object file
 src/HolographicVQCD.cpp.o:
-	$(MAKE) -f CMakeFiles/HVQCDRatios.exe.dir/build.make CMakeFiles/HVQCDRatios.exe.dir/src/HolographicVQCD.cpp.o
 	$(MAKE) -f CMakeFiles/test_HVQCD.exe.dir/build.make CMakeFiles/test_HVQCD.exe.dir/src/HolographicVQCD.cpp.o
+	$(MAKE) -f CMakeFiles/HVQCDRatios.exe.dir/build.make CMakeFiles/HVQCDRatios.exe.dir/src/HolographicVQCD.cpp.o
 	$(MAKE) -f CMakeFiles/fitSingletAVM.exe.dir/build.make CMakeFiles/fitSingletAVM.exe.dir/src/HolographicVQCD.cpp.o
+	$(MAKE) -f CMakeFiles/fitHVQCDWithoutGlueball.exe.dir/build.make CMakeFiles/fitHVQCDWithoutGlueball.exe.dir/src/HolographicVQCD.cpp.o
 	$(MAKE) -f CMakeFiles/fitHVQCDGlobal_sc_VgIR_fixed.exe.dir/build.make CMakeFiles/fitHVQCDGlobal_sc_VgIR_fixed.exe.dir/src/HolographicVQCD.cpp.o
 	$(MAKE) -f CMakeFiles/fitHVQCDWithoutGlueballScalars_sc_VgIR_fixed.exe.dir/build.make CMakeFiles/fitHVQCDWithoutGlueballScalars_sc_VgIR_fixed.exe.dir/src/HolographicVQCD.cpp.o
 	$(MAKE) -f CMakeFiles/fitHVQCDWithoutScalars_sc_VgIR_fixed.exe.dir/build.make CMakeFiles/fitHVQCDWithoutScalars_sc_VgIR_fixed.exe.dir/src/HolographicVQCD.cpp.o
 	$(MAKE) -f CMakeFiles/fitHVQCDWithoutGlueball_sc_VgIR_fixed.exe.dir/build.make CMakeFiles/fitHVQCDWithoutGlueball_sc_VgIR_fixed.exe.dir/src/HolographicVQCD.cpp.o
 	$(MAKE) -f CMakeFiles/fitHVQCDGlobal.exe.dir/build.make CMakeFiles/fitHVQCDGlobal.exe.dir/src/HolographicVQCD.cpp.o
 	$(MAKE) -f CMakeFiles/fitHVQCDWithoutScalars.exe.dir/build.make CMakeFiles/fitHVQCDWithoutScalars.exe.dir/src/HolographicVQCD.cpp.o
+	$(MAKE) -f CMakeFiles/fitHVQCDWithoutGlueballScalars.exe.dir/build.make CMakeFiles/fitHVQCDWithoutGlueballScalars.exe.dir/src/HolographicVQCD.cpp.o
 .PHONY : src/HolographicVQCD.cpp.o
 
 src/HolographicVQCD.i: src/HolographicVQCD.cpp.i
@@ -519,15 +601,17 @@ src/HolographicVQCD.i: src/HolographicVQCD.cpp.i
 
 # target to preprocess a source file
 src/HolographicVQCD.cpp.i:
-	$(MAKE) -f CMakeFiles/HVQCDRatios.exe.dir/build.make CMakeFiles/HVQCDRatios.exe.dir/src/HolographicVQCD.cpp.i
 	$(MAKE) -f CMakeFiles/test_HVQCD.exe.dir/build.make CMakeFiles/test_HVQCD.exe.dir/src/HolographicVQCD.cpp.i
+	$(MAKE) -f CMakeFiles/HVQCDRatios.exe.dir/build.make CMakeFiles/HVQCDRatios.exe.dir/src/HolographicVQCD.cpp.i
 	$(MAKE) -f CMakeFiles/fitSingletAVM.exe.dir/build.make CMakeFiles/fitSingletAVM.exe.dir/src/HolographicVQCD.cpp.i
+	$(MAKE) -f CMakeFiles/fitHVQCDWithoutGlueball.exe.dir/build.make CMakeFiles/fitHVQCDWithoutGlueball.exe.dir/src/HolographicVQCD.cpp.i
 	$(MAKE) -f CMakeFiles/fitHVQCDGlobal_sc_VgIR_fixed.exe.dir/build.make CMakeFiles/fitHVQCDGlobal_sc_VgIR_fixed.exe.dir/src/HolographicVQCD.cpp.i
 	$(MAKE) -f CMakeFiles/fitHVQCDWithoutGlueballScalars_sc_VgIR_fixed.exe.dir/build.make CMakeFiles/fitHVQCDWithoutGlueballScalars_sc_VgIR_fixed.exe.dir/src/HolographicVQCD.cpp.i
 	$(MAKE) -f CMakeFiles/fitHVQCDWithoutScalars_sc_VgIR_fixed.exe.dir/build.make CMakeFiles/fitHVQCDWithoutScalars_sc_VgIR_fixed.exe.dir/src/HolographicVQCD.cpp.i
 	$(MAKE) -f CMakeFiles/fitHVQCDWithoutGlueball_sc_VgIR_fixed.exe.dir/build.make CMakeFiles/fitHVQCDWithoutGlueball_sc_VgIR_fixed.exe.dir/src/HolographicVQCD.cpp.i
 	$(MAKE) -f CMakeFiles/fitHVQCDGlobal.exe.dir/build.make CMakeFiles/fitHVQCDGlobal.exe.dir/src/HolographicVQCD.cpp.i
 	$(MAKE) -f CMakeFiles/fitHVQCDWithoutScalars.exe.dir/build.make CMakeFiles/fitHVQCDWithoutScalars.exe.dir/src/HolographicVQCD.cpp.i
+	$(MAKE) -f CMakeFiles/fitHVQCDWithoutGlueballScalars.exe.dir/build.make CMakeFiles/fitHVQCDWithoutGlueballScalars.exe.dir/src/HolographicVQCD.cpp.i
 .PHONY : src/HolographicVQCD.cpp.i
 
 src/HolographicVQCD.s: src/HolographicVQCD.cpp.s
@@ -536,15 +620,17 @@ src/HolographicVQCD.s: src/HolographicVQCD.cpp.s
 
 # target to generate assembly for a file
 src/HolographicVQCD.cpp.s:
-	$(MAKE) -f CMakeFiles/HVQCDRatios.exe.dir/build.make CMakeFiles/HVQCDRatios.exe.dir/src/HolographicVQCD.cpp.s
 	$(MAKE) -f CMakeFiles/test_HVQCD.exe.dir/build.make CMakeFiles/test_HVQCD.exe.dir/src/HolographicVQCD.cpp.s
+	$(MAKE) -f CMakeFiles/HVQCDRatios.exe.dir/build.make CMakeFiles/HVQCDRatios.exe.dir/src/HolographicVQCD.cpp.s
 	$(MAKE) -f CMakeFiles/fitSingletAVM.exe.dir/build.make CMakeFiles/fitSingletAVM.exe.dir/src/HolographicVQCD.cpp.s
+	$(MAKE) -f CMakeFiles/fitHVQCDWithoutGlueball.exe.dir/build.make CMakeFiles/fitHVQCDWithoutGlueball.exe.dir/src/HolographicVQCD.cpp.s
 	$(MAKE) -f CMakeFiles/fitHVQCDGlobal_sc_VgIR_fixed.exe.dir/build.make CMakeFiles/fitHVQCDGlobal_sc_VgIR_fixed.exe.dir/src/HolographicVQCD.cpp.s
 	$(MAKE) -f CMakeFiles/fitHVQCDWithoutGlueballScalars_sc_VgIR_fixed.exe.dir/build.make CMakeFiles/fitHVQCDWithoutGlueballScalars_sc_VgIR_fixed.exe.dir/src/HolographicVQCD.cpp.s
 	$(MAKE) -f CMakeFiles/fitHVQCDWithoutScalars_sc_VgIR_fixed.exe.dir/build.make CMakeFiles/fitHVQCDWithoutScalars_sc_VgIR_fixed.exe.dir/src/HolographicVQCD.cpp.s
 	$(MAKE) -f CMakeFiles/fitHVQCDWithoutGlueball_sc_VgIR_fixed.exe.dir/build.make CMakeFiles/fitHVQCDWithoutGlueball_sc_VgIR_fixed.exe.dir/src/HolographicVQCD.cpp.s
 	$(MAKE) -f CMakeFiles/fitHVQCDGlobal.exe.dir/build.make CMakeFiles/fitHVQCDGlobal.exe.dir/src/HolographicVQCD.cpp.s
 	$(MAKE) -f CMakeFiles/fitHVQCDWithoutScalars.exe.dir/build.make CMakeFiles/fitHVQCDWithoutScalars.exe.dir/src/HolographicVQCD.cpp.s
+	$(MAKE) -f CMakeFiles/fitHVQCDWithoutGlueballScalars.exe.dir/build.make CMakeFiles/fitHVQCDWithoutGlueballScalars.exe.dir/src/HolographicVQCD.cpp.s
 .PHONY : src/HolographicVQCD.cpp.s
 
 src/YangMills.o: src/YangMills.cpp.o
@@ -580,15 +666,17 @@ src/background.o: src/background.cpp.o
 
 # target to build an object file
 src/background.cpp.o:
-	$(MAKE) -f CMakeFiles/HVQCDRatios.exe.dir/build.make CMakeFiles/HVQCDRatios.exe.dir/src/background.cpp.o
 	$(MAKE) -f CMakeFiles/test_HVQCD.exe.dir/build.make CMakeFiles/test_HVQCD.exe.dir/src/background.cpp.o
+	$(MAKE) -f CMakeFiles/HVQCDRatios.exe.dir/build.make CMakeFiles/HVQCDRatios.exe.dir/src/background.cpp.o
 	$(MAKE) -f CMakeFiles/fitSingletAVM.exe.dir/build.make CMakeFiles/fitSingletAVM.exe.dir/src/background.cpp.o
+	$(MAKE) -f CMakeFiles/fitHVQCDWithoutGlueball.exe.dir/build.make CMakeFiles/fitHVQCDWithoutGlueball.exe.dir/src/background.cpp.o
 	$(MAKE) -f CMakeFiles/fitHVQCDGlobal_sc_VgIR_fixed.exe.dir/build.make CMakeFiles/fitHVQCDGlobal_sc_VgIR_fixed.exe.dir/src/background.cpp.o
 	$(MAKE) -f CMakeFiles/fitHVQCDWithoutGlueballScalars_sc_VgIR_fixed.exe.dir/build.make CMakeFiles/fitHVQCDWithoutGlueballScalars_sc_VgIR_fixed.exe.dir/src/background.cpp.o
 	$(MAKE) -f CMakeFiles/fitHVQCDWithoutScalars_sc_VgIR_fixed.exe.dir/build.make CMakeFiles/fitHVQCDWithoutScalars_sc_VgIR_fixed.exe.dir/src/background.cpp.o
 	$(MAKE) -f CMakeFiles/fitHVQCDWithoutGlueball_sc_VgIR_fixed.exe.dir/build.make CMakeFiles/fitHVQCDWithoutGlueball_sc_VgIR_fixed.exe.dir/src/background.cpp.o
 	$(MAKE) -f CMakeFiles/fitHVQCDGlobal.exe.dir/build.make CMakeFiles/fitHVQCDGlobal.exe.dir/src/background.cpp.o
 	$(MAKE) -f CMakeFiles/fitHVQCDWithoutScalars.exe.dir/build.make CMakeFiles/fitHVQCDWithoutScalars.exe.dir/src/background.cpp.o
+	$(MAKE) -f CMakeFiles/fitHVQCDWithoutGlueballScalars.exe.dir/build.make CMakeFiles/fitHVQCDWithoutGlueballScalars.exe.dir/src/background.cpp.o
 	$(MAKE) -f CMakeFiles/fitYangMills.exe.dir/build.make CMakeFiles/fitYangMills.exe.dir/src/background.cpp.o
 .PHONY : src/background.cpp.o
 
@@ -598,15 +686,17 @@ src/background.i: src/background.cpp.i
 
 # target to preprocess a source file
 src/background.cpp.i:
-	$(MAKE) -f CMakeFiles/HVQCDRatios.exe.dir/build.make CMakeFiles/HVQCDRatios.exe.dir/src/background.cpp.i
 	$(MAKE) -f CMakeFiles/test_HVQCD.exe.dir/build.make CMakeFiles/test_HVQCD.exe.dir/src/background.cpp.i
+	$(MAKE) -f CMakeFiles/HVQCDRatios.exe.dir/build.make CMakeFiles/HVQCDRatios.exe.dir/src/background.cpp.i
 	$(MAKE) -f CMakeFiles/fitSingletAVM.exe.dir/build.make CMakeFiles/fitSingletAVM.exe.dir/src/background.cpp.i
+	$(MAKE) -f CMakeFiles/fitHVQCDWithoutGlueball.exe.dir/build.make CMakeFiles/fitHVQCDWithoutGlueball.exe.dir/src/background.cpp.i
 	$(MAKE) -f CMakeFiles/fitHVQCDGlobal_sc_VgIR_fixed.exe.dir/build.make CMakeFiles/fitHVQCDGlobal_sc_VgIR_fixed.exe.dir/src/background.cpp.i
 	$(MAKE) -f CMakeFiles/fitHVQCDWithoutGlueballScalars_sc_VgIR_fixed.exe.dir/build.make CMakeFiles/fitHVQCDWithoutGlueballScalars_sc_VgIR_fixed.exe.dir/src/background.cpp.i
 	$(MAKE) -f CMakeFiles/fitHVQCDWithoutScalars_sc_VgIR_fixed.exe.dir/build.make CMakeFiles/fitHVQCDWithoutScalars_sc_VgIR_fixed.exe.dir/src/background.cpp.i
 	$(MAKE) -f CMakeFiles/fitHVQCDWithoutGlueball_sc_VgIR_fixed.exe.dir/build.make CMakeFiles/fitHVQCDWithoutGlueball_sc_VgIR_fixed.exe.dir/src/background.cpp.i
 	$(MAKE) -f CMakeFiles/fitHVQCDGlobal.exe.dir/build.make CMakeFiles/fitHVQCDGlobal.exe.dir/src/background.cpp.i
 	$(MAKE) -f CMakeFiles/fitHVQCDWithoutScalars.exe.dir/build.make CMakeFiles/fitHVQCDWithoutScalars.exe.dir/src/background.cpp.i
+	$(MAKE) -f CMakeFiles/fitHVQCDWithoutGlueballScalars.exe.dir/build.make CMakeFiles/fitHVQCDWithoutGlueballScalars.exe.dir/src/background.cpp.i
 	$(MAKE) -f CMakeFiles/fitYangMills.exe.dir/build.make CMakeFiles/fitYangMills.exe.dir/src/background.cpp.i
 .PHONY : src/background.cpp.i
 
@@ -616,15 +706,17 @@ src/background.s: src/background.cpp.s
 
 # target to generate assembly for a file
 src/background.cpp.s:
-	$(MAKE) -f CMakeFiles/HVQCDRatios.exe.dir/build.make CMakeFiles/HVQCDRatios.exe.dir/src/background.cpp.s
 	$(MAKE) -f CMakeFiles/test_HVQCD.exe.dir/build.make CMakeFiles/test_HVQCD.exe.dir/src/background.cpp.s
+	$(MAKE) -f CMakeFiles/HVQCDRatios.exe.dir/build.make CMakeFiles/HVQCDRatios.exe.dir/src/background.cpp.s
 	$(MAKE) -f CMakeFiles/fitSingletAVM.exe.dir/build.make CMakeFiles/fitSingletAVM.exe.dir/src/background.cpp.s
+	$(MAKE) -f CMakeFiles/fitHVQCDWithoutGlueball.exe.dir/build.make CMakeFiles/fitHVQCDWithoutGlueball.exe.dir/src/background.cpp.s
 	$(MAKE) -f CMakeFiles/fitHVQCDGlobal_sc_VgIR_fixed.exe.dir/build.make CMakeFiles/fitHVQCDGlobal_sc_VgIR_fixed.exe.dir/src/background.cpp.s
 	$(MAKE) -f CMakeFiles/fitHVQCDWithoutGlueballScalars_sc_VgIR_fixed.exe.dir/build.make CMakeFiles/fitHVQCDWithoutGlueballScalars_sc_VgIR_fixed.exe.dir/src/background.cpp.s
 	$(MAKE) -f CMakeFiles/fitHVQCDWithoutScalars_sc_VgIR_fixed.exe.dir/build.make CMakeFiles/fitHVQCDWithoutScalars_sc_VgIR_fixed.exe.dir/src/background.cpp.s
 	$(MAKE) -f CMakeFiles/fitHVQCDWithoutGlueball_sc_VgIR_fixed.exe.dir/build.make CMakeFiles/fitHVQCDWithoutGlueball_sc_VgIR_fixed.exe.dir/src/background.cpp.s
 	$(MAKE) -f CMakeFiles/fitHVQCDGlobal.exe.dir/build.make CMakeFiles/fitHVQCDGlobal.exe.dir/src/background.cpp.s
 	$(MAKE) -f CMakeFiles/fitHVQCDWithoutScalars.exe.dir/build.make CMakeFiles/fitHVQCDWithoutScalars.exe.dir/src/background.cpp.s
+	$(MAKE) -f CMakeFiles/fitHVQCDWithoutGlueballScalars.exe.dir/build.make CMakeFiles/fitHVQCDWithoutGlueballScalars.exe.dir/src/background.cpp.s
 	$(MAKE) -f CMakeFiles/fitYangMills.exe.dir/build.make CMakeFiles/fitYangMills.exe.dir/src/background.cpp.s
 .PHONY : src/background.cpp.s
 
@@ -634,16 +726,18 @@ src/schrodinger/chebspec.o: src/schrodinger/chebspec.cpp.o
 
 # target to build an object file
 src/schrodinger/chebspec.cpp.o:
+	$(MAKE) -f CMakeFiles/test_HVQCD.exe.dir/build.make CMakeFiles/test_HVQCD.exe.dir/src/schrodinger/chebspec.cpp.o
 	$(MAKE) -f CMakeFiles/test_schrodinger.exe.dir/build.make CMakeFiles/test_schrodinger.exe.dir/src/schrodinger/chebspec.cpp.o
 	$(MAKE) -f CMakeFiles/HVQCDRatios.exe.dir/build.make CMakeFiles/HVQCDRatios.exe.dir/src/schrodinger/chebspec.cpp.o
-	$(MAKE) -f CMakeFiles/test_HVQCD.exe.dir/build.make CMakeFiles/test_HVQCD.exe.dir/src/schrodinger/chebspec.cpp.o
 	$(MAKE) -f CMakeFiles/fitSingletAVM.exe.dir/build.make CMakeFiles/fitSingletAVM.exe.dir/src/schrodinger/chebspec.cpp.o
+	$(MAKE) -f CMakeFiles/fitHVQCDWithoutGlueball.exe.dir/build.make CMakeFiles/fitHVQCDWithoutGlueball.exe.dir/src/schrodinger/chebspec.cpp.o
 	$(MAKE) -f CMakeFiles/fitHVQCDGlobal_sc_VgIR_fixed.exe.dir/build.make CMakeFiles/fitHVQCDGlobal_sc_VgIR_fixed.exe.dir/src/schrodinger/chebspec.cpp.o
 	$(MAKE) -f CMakeFiles/fitHVQCDWithoutGlueballScalars_sc_VgIR_fixed.exe.dir/build.make CMakeFiles/fitHVQCDWithoutGlueballScalars_sc_VgIR_fixed.exe.dir/src/schrodinger/chebspec.cpp.o
 	$(MAKE) -f CMakeFiles/fitHVQCDWithoutScalars_sc_VgIR_fixed.exe.dir/build.make CMakeFiles/fitHVQCDWithoutScalars_sc_VgIR_fixed.exe.dir/src/schrodinger/chebspec.cpp.o
 	$(MAKE) -f CMakeFiles/fitHVQCDWithoutGlueball_sc_VgIR_fixed.exe.dir/build.make CMakeFiles/fitHVQCDWithoutGlueball_sc_VgIR_fixed.exe.dir/src/schrodinger/chebspec.cpp.o
 	$(MAKE) -f CMakeFiles/fitHVQCDGlobal.exe.dir/build.make CMakeFiles/fitHVQCDGlobal.exe.dir/src/schrodinger/chebspec.cpp.o
 	$(MAKE) -f CMakeFiles/fitHVQCDWithoutScalars.exe.dir/build.make CMakeFiles/fitHVQCDWithoutScalars.exe.dir/src/schrodinger/chebspec.cpp.o
+	$(MAKE) -f CMakeFiles/fitHVQCDWithoutGlueballScalars.exe.dir/build.make CMakeFiles/fitHVQCDWithoutGlueballScalars.exe.dir/src/schrodinger/chebspec.cpp.o
 	$(MAKE) -f CMakeFiles/fitYangMills.exe.dir/build.make CMakeFiles/fitYangMills.exe.dir/src/schrodinger/chebspec.cpp.o
 .PHONY : src/schrodinger/chebspec.cpp.o
 
@@ -653,16 +747,18 @@ src/schrodinger/chebspec.i: src/schrodinger/chebspec.cpp.i
 
 # target to preprocess a source file
 src/schrodinger/chebspec.cpp.i:
+	$(MAKE) -f CMakeFiles/test_HVQCD.exe.dir/build.make CMakeFiles/test_HVQCD.exe.dir/src/schrodinger/chebspec.cpp.i
 	$(MAKE) -f CMakeFiles/test_schrodinger.exe.dir/build.make CMakeFiles/test_schrodinger.exe.dir/src/schrodinger/chebspec.cpp.i
 	$(MAKE) -f CMakeFiles/HVQCDRatios.exe.dir/build.make CMakeFiles/HVQCDRatios.exe.dir/src/schrodinger/chebspec.cpp.i
-	$(MAKE) -f CMakeFiles/test_HVQCD.exe.dir/build.make CMakeFiles/test_HVQCD.exe.dir/src/schrodinger/chebspec.cpp.i
 	$(MAKE) -f CMakeFiles/fitSingletAVM.exe.dir/build.make CMakeFiles/fitSingletAVM.exe.dir/src/schrodinger/chebspec.cpp.i
+	$(MAKE) -f CMakeFiles/fitHVQCDWithoutGlueball.exe.dir/build.make CMakeFiles/fitHVQCDWithoutGlueball.exe.dir/src/schrodinger/chebspec.cpp.i
 	$(MAKE) -f CMakeFiles/fitHVQCDGlobal_sc_VgIR_fixed.exe.dir/build.make CMakeFiles/fitHVQCDGlobal_sc_VgIR_fixed.exe.dir/src/schrodinger/chebspec.cpp.i
 	$(MAKE) -f CMakeFiles/fitHVQCDWithoutGlueballScalars_sc_VgIR_fixed.exe.dir/build.make CMakeFiles/fitHVQCDWithoutGlueballScalars_sc_VgIR_fixed.exe.dir/src/schrodinger/chebspec.cpp.i
 	$(MAKE) -f CMakeFiles/fitHVQCDWithoutScalars_sc_VgIR_fixed.exe.dir/build.make CMakeFiles/fitHVQCDWithoutScalars_sc_VgIR_fixed.exe.dir/src/schrodinger/chebspec.cpp.i
 	$(MAKE) -f CMakeFiles/fitHVQCDWithoutGlueball_sc_VgIR_fixed.exe.dir/build.make CMakeFiles/fitHVQCDWithoutGlueball_sc_VgIR_fixed.exe.dir/src/schrodinger/chebspec.cpp.i
 	$(MAKE) -f CMakeFiles/fitHVQCDGlobal.exe.dir/build.make CMakeFiles/fitHVQCDGlobal.exe.dir/src/schrodinger/chebspec.cpp.i
 	$(MAKE) -f CMakeFiles/fitHVQCDWithoutScalars.exe.dir/build.make CMakeFiles/fitHVQCDWithoutScalars.exe.dir/src/schrodinger/chebspec.cpp.i
+	$(MAKE) -f CMakeFiles/fitHVQCDWithoutGlueballScalars.exe.dir/build.make CMakeFiles/fitHVQCDWithoutGlueballScalars.exe.dir/src/schrodinger/chebspec.cpp.i
 	$(MAKE) -f CMakeFiles/fitYangMills.exe.dir/build.make CMakeFiles/fitYangMills.exe.dir/src/schrodinger/chebspec.cpp.i
 .PHONY : src/schrodinger/chebspec.cpp.i
 
@@ -672,16 +768,18 @@ src/schrodinger/chebspec.s: src/schrodinger/chebspec.cpp.s
 
 # target to generate assembly for a file
 src/schrodinger/chebspec.cpp.s:
+	$(MAKE) -f CMakeFiles/test_HVQCD.exe.dir/build.make CMakeFiles/test_HVQCD.exe.dir/src/schrodinger/chebspec.cpp.s
 	$(MAKE) -f CMakeFiles/test_schrodinger.exe.dir/build.make CMakeFiles/test_schrodinger.exe.dir/src/schrodinger/chebspec.cpp.s
 	$(MAKE) -f CMakeFiles/HVQCDRatios.exe.dir/build.make CMakeFiles/HVQCDRatios.exe.dir/src/schrodinger/chebspec.cpp.s
-	$(MAKE) -f CMakeFiles/test_HVQCD.exe.dir/build.make CMakeFiles/test_HVQCD.exe.dir/src/schrodinger/chebspec.cpp.s
 	$(MAKE) -f CMakeFiles/fitSingletAVM.exe.dir/build.make CMakeFiles/fitSingletAVM.exe.dir/src/schrodinger/chebspec.cpp.s
+	$(MAKE) -f CMakeFiles/fitHVQCDWithoutGlueball.exe.dir/build.make CMakeFiles/fitHVQCDWithoutGlueball.exe.dir/src/schrodinger/chebspec.cpp.s
 	$(MAKE) -f CMakeFiles/fitHVQCDGlobal_sc_VgIR_fixed.exe.dir/build.make CMakeFiles/fitHVQCDGlobal_sc_VgIR_fixed.exe.dir/src/schrodinger/chebspec.cpp.s
 	$(MAKE) -f CMakeFiles/fitHVQCDWithoutGlueballScalars_sc_VgIR_fixed.exe.dir/build.make CMakeFiles/fitHVQCDWithoutGlueballScalars_sc_VgIR_fixed.exe.dir/src/schrodinger/chebspec.cpp.s
 	$(MAKE) -f CMakeFiles/fitHVQCDWithoutScalars_sc_VgIR_fixed.exe.dir/build.make CMakeFiles/fitHVQCDWithoutScalars_sc_VgIR_fixed.exe.dir/src/schrodinger/chebspec.cpp.s
 	$(MAKE) -f CMakeFiles/fitHVQCDWithoutGlueball_sc_VgIR_fixed.exe.dir/build.make CMakeFiles/fitHVQCDWithoutGlueball_sc_VgIR_fixed.exe.dir/src/schrodinger/chebspec.cpp.s
 	$(MAKE) -f CMakeFiles/fitHVQCDGlobal.exe.dir/build.make CMakeFiles/fitHVQCDGlobal.exe.dir/src/schrodinger/chebspec.cpp.s
 	$(MAKE) -f CMakeFiles/fitHVQCDWithoutScalars.exe.dir/build.make CMakeFiles/fitHVQCDWithoutScalars.exe.dir/src/schrodinger/chebspec.cpp.s
+	$(MAKE) -f CMakeFiles/fitHVQCDWithoutGlueballScalars.exe.dir/build.make CMakeFiles/fitHVQCDWithoutGlueballScalars.exe.dir/src/schrodinger/chebspec.cpp.s
 	$(MAKE) -f CMakeFiles/fitYangMills.exe.dir/build.make CMakeFiles/fitYangMills.exe.dir/src/schrodinger/chebspec.cpp.s
 .PHONY : src/schrodinger/chebspec.cpp.s
 
@@ -691,16 +789,18 @@ src/schrodinger/common.o: src/schrodinger/common.cpp.o
 
 # target to build an object file
 src/schrodinger/common.cpp.o:
+	$(MAKE) -f CMakeFiles/test_HVQCD.exe.dir/build.make CMakeFiles/test_HVQCD.exe.dir/src/schrodinger/common.cpp.o
 	$(MAKE) -f CMakeFiles/test_schrodinger.exe.dir/build.make CMakeFiles/test_schrodinger.exe.dir/src/schrodinger/common.cpp.o
 	$(MAKE) -f CMakeFiles/HVQCDRatios.exe.dir/build.make CMakeFiles/HVQCDRatios.exe.dir/src/schrodinger/common.cpp.o
-	$(MAKE) -f CMakeFiles/test_HVQCD.exe.dir/build.make CMakeFiles/test_HVQCD.exe.dir/src/schrodinger/common.cpp.o
 	$(MAKE) -f CMakeFiles/fitSingletAVM.exe.dir/build.make CMakeFiles/fitSingletAVM.exe.dir/src/schrodinger/common.cpp.o
+	$(MAKE) -f CMakeFiles/fitHVQCDWithoutGlueball.exe.dir/build.make CMakeFiles/fitHVQCDWithoutGlueball.exe.dir/src/schrodinger/common.cpp.o
 	$(MAKE) -f CMakeFiles/fitHVQCDGlobal_sc_VgIR_fixed.exe.dir/build.make CMakeFiles/fitHVQCDGlobal_sc_VgIR_fixed.exe.dir/src/schrodinger/common.cpp.o
 	$(MAKE) -f CMakeFiles/fitHVQCDWithoutGlueballScalars_sc_VgIR_fixed.exe.dir/build.make CMakeFiles/fitHVQCDWithoutGlueballScalars_sc_VgIR_fixed.exe.dir/src/schrodinger/common.cpp.o
 	$(MAKE) -f CMakeFiles/fitHVQCDWithoutScalars_sc_VgIR_fixed.exe.dir/build.make CMakeFiles/fitHVQCDWithoutScalars_sc_VgIR_fixed.exe.dir/src/schrodinger/common.cpp.o
 	$(MAKE) -f CMakeFiles/fitHVQCDWithoutGlueball_sc_VgIR_fixed.exe.dir/build.make CMakeFiles/fitHVQCDWithoutGlueball_sc_VgIR_fixed.exe.dir/src/schrodinger/common.cpp.o
 	$(MAKE) -f CMakeFiles/fitHVQCDGlobal.exe.dir/build.make CMakeFiles/fitHVQCDGlobal.exe.dir/src/schrodinger/common.cpp.o
 	$(MAKE) -f CMakeFiles/fitHVQCDWithoutScalars.exe.dir/build.make CMakeFiles/fitHVQCDWithoutScalars.exe.dir/src/schrodinger/common.cpp.o
+	$(MAKE) -f CMakeFiles/fitHVQCDWithoutGlueballScalars.exe.dir/build.make CMakeFiles/fitHVQCDWithoutGlueballScalars.exe.dir/src/schrodinger/common.cpp.o
 	$(MAKE) -f CMakeFiles/fitYangMills.exe.dir/build.make CMakeFiles/fitYangMills.exe.dir/src/schrodinger/common.cpp.o
 .PHONY : src/schrodinger/common.cpp.o
 
@@ -710,16 +810,18 @@ src/schrodinger/common.i: src/schrodinger/common.cpp.i
 
 # target to preprocess a source file
 src/schrodinger/common.cpp.i:
+	$(MAKE) -f CMakeFiles/test_HVQCD.exe.dir/build.make CMakeFiles/test_HVQCD.exe.dir/src/schrodinger/common.cpp.i
 	$(MAKE) -f CMakeFiles/test_schrodinger.exe.dir/build.make CMakeFiles/test_schrodinger.exe.dir/src/schrodinger/common.cpp.i
 	$(MAKE) -f CMakeFiles/HVQCDRatios.exe.dir/build.make CMakeFiles/HVQCDRatios.exe.dir/src/schrodinger/common.cpp.i
-	$(MAKE) -f CMakeFiles/test_HVQCD.exe.dir/build.make CMakeFiles/test_HVQCD.exe.dir/src/schrodinger/common.cpp.i
 	$(MAKE) -f CMakeFiles/fitSingletAVM.exe.dir/build.make CMakeFiles/fitSingletAVM.exe.dir/src/schrodinger/common.cpp.i
+	$(MAKE) -f CMakeFiles/fitHVQCDWithoutGlueball.exe.dir/build.make CMakeFiles/fitHVQCDWithoutGlueball.exe.dir/src/schrodinger/common.cpp.i
 	$(MAKE) -f CMakeFiles/fitHVQCDGlobal_sc_VgIR_fixed.exe.dir/build.make CMakeFiles/fitHVQCDGlobal_sc_VgIR_fixed.exe.dir/src/schrodinger/common.cpp.i
 	$(MAKE) -f CMakeFiles/fitHVQCDWithoutGlueballScalars_sc_VgIR_fixed.exe.dir/build.make CMakeFiles/fitHVQCDWithoutGlueballScalars_sc_VgIR_fixed.exe.dir/src/schrodinger/common.cpp.i
 	$(MAKE) -f CMakeFiles/fitHVQCDWithoutScalars_sc_VgIR_fixed.exe.dir/build.make CMakeFiles/fitHVQCDWithoutScalars_sc_VgIR_fixed.exe.dir/src/schrodinger/common.cpp.i
 	$(MAKE) -f CMakeFiles/fitHVQCDWithoutGlueball_sc_VgIR_fixed.exe.dir/build.make CMakeFiles/fitHVQCDWithoutGlueball_sc_VgIR_fixed.exe.dir/src/schrodinger/common.cpp.i
 	$(MAKE) -f CMakeFiles/fitHVQCDGlobal.exe.dir/build.make CMakeFiles/fitHVQCDGlobal.exe.dir/src/schrodinger/common.cpp.i
 	$(MAKE) -f CMakeFiles/fitHVQCDWithoutScalars.exe.dir/build.make CMakeFiles/fitHVQCDWithoutScalars.exe.dir/src/schrodinger/common.cpp.i
+	$(MAKE) -f CMakeFiles/fitHVQCDWithoutGlueballScalars.exe.dir/build.make CMakeFiles/fitHVQCDWithoutGlueballScalars.exe.dir/src/schrodinger/common.cpp.i
 	$(MAKE) -f CMakeFiles/fitYangMills.exe.dir/build.make CMakeFiles/fitYangMills.exe.dir/src/schrodinger/common.cpp.i
 .PHONY : src/schrodinger/common.cpp.i
 
@@ -729,16 +831,18 @@ src/schrodinger/common.s: src/schrodinger/common.cpp.s
 
 # target to generate assembly for a file
 src/schrodinger/common.cpp.s:
+	$(MAKE) -f CMakeFiles/test_HVQCD.exe.dir/build.make CMakeFiles/test_HVQCD.exe.dir/src/schrodinger/common.cpp.s
 	$(MAKE) -f CMakeFiles/test_schrodinger.exe.dir/build.make CMakeFiles/test_schrodinger.exe.dir/src/schrodinger/common.cpp.s
 	$(MAKE) -f CMakeFiles/HVQCDRatios.exe.dir/build.make CMakeFiles/HVQCDRatios.exe.dir/src/schrodinger/common.cpp.s
-	$(MAKE) -f CMakeFiles/test_HVQCD.exe.dir/build.make CMakeFiles/test_HVQCD.exe.dir/src/schrodinger/common.cpp.s
 	$(MAKE) -f CMakeFiles/fitSingletAVM.exe.dir/build.make CMakeFiles/fitSingletAVM.exe.dir/src/schrodinger/common.cpp.s
+	$(MAKE) -f CMakeFiles/fitHVQCDWithoutGlueball.exe.dir/build.make CMakeFiles/fitHVQCDWithoutGlueball.exe.dir/src/schrodinger/common.cpp.s
 	$(MAKE) -f CMakeFiles/fitHVQCDGlobal_sc_VgIR_fixed.exe.dir/build.make CMakeFiles/fitHVQCDGlobal_sc_VgIR_fixed.exe.dir/src/schrodinger/common.cpp.s
 	$(MAKE) -f CMakeFiles/fitHVQCDWithoutGlueballScalars_sc_VgIR_fixed.exe.dir/build.make CMakeFiles/fitHVQCDWithoutGlueballScalars_sc_VgIR_fixed.exe.dir/src/schrodinger/common.cpp.s
 	$(MAKE) -f CMakeFiles/fitHVQCDWithoutScalars_sc_VgIR_fixed.exe.dir/build.make CMakeFiles/fitHVQCDWithoutScalars_sc_VgIR_fixed.exe.dir/src/schrodinger/common.cpp.s
 	$(MAKE) -f CMakeFiles/fitHVQCDWithoutGlueball_sc_VgIR_fixed.exe.dir/build.make CMakeFiles/fitHVQCDWithoutGlueball_sc_VgIR_fixed.exe.dir/src/schrodinger/common.cpp.s
 	$(MAKE) -f CMakeFiles/fitHVQCDGlobal.exe.dir/build.make CMakeFiles/fitHVQCDGlobal.exe.dir/src/schrodinger/common.cpp.s
 	$(MAKE) -f CMakeFiles/fitHVQCDWithoutScalars.exe.dir/build.make CMakeFiles/fitHVQCDWithoutScalars.exe.dir/src/schrodinger/common.cpp.s
+	$(MAKE) -f CMakeFiles/fitHVQCDWithoutGlueballScalars.exe.dir/build.make CMakeFiles/fitHVQCDWithoutGlueballScalars.exe.dir/src/schrodinger/common.cpp.s
 	$(MAKE) -f CMakeFiles/fitYangMills.exe.dir/build.make CMakeFiles/fitYangMills.exe.dir/src/schrodinger/common.cpp.s
 .PHONY : src/schrodinger/common.cpp.s
 
@@ -748,16 +852,18 @@ src/schrodinger/numerov.o: src/schrodinger/numerov.cpp.o
 
 # target to build an object file
 src/schrodinger/numerov.cpp.o:
+	$(MAKE) -f CMakeFiles/test_HVQCD.exe.dir/build.make CMakeFiles/test_HVQCD.exe.dir/src/schrodinger/numerov.cpp.o
 	$(MAKE) -f CMakeFiles/test_schrodinger.exe.dir/build.make CMakeFiles/test_schrodinger.exe.dir/src/schrodinger/numerov.cpp.o
 	$(MAKE) -f CMakeFiles/HVQCDRatios.exe.dir/build.make CMakeFiles/HVQCDRatios.exe.dir/src/schrodinger/numerov.cpp.o
-	$(MAKE) -f CMakeFiles/test_HVQCD.exe.dir/build.make CMakeFiles/test_HVQCD.exe.dir/src/schrodinger/numerov.cpp.o
 	$(MAKE) -f CMakeFiles/fitSingletAVM.exe.dir/build.make CMakeFiles/fitSingletAVM.exe.dir/src/schrodinger/numerov.cpp.o
+	$(MAKE) -f CMakeFiles/fitHVQCDWithoutGlueball.exe.dir/build.make CMakeFiles/fitHVQCDWithoutGlueball.exe.dir/src/schrodinger/numerov.cpp.o
 	$(MAKE) -f CMakeFiles/fitHVQCDGlobal_sc_VgIR_fixed.exe.dir/build.make CMakeFiles/fitHVQCDGlobal_sc_VgIR_fixed.exe.dir/src/schrodinger/numerov.cpp.o
 	$(MAKE) -f CMakeFiles/fitHVQCDWithoutGlueballScalars_sc_VgIR_fixed.exe.dir/build.make CMakeFiles/fitHVQCDWithoutGlueballScalars_sc_VgIR_fixed.exe.dir/src/schrodinger/numerov.cpp.o
 	$(MAKE) -f CMakeFiles/fitHVQCDWithoutScalars_sc_VgIR_fixed.exe.dir/build.make CMakeFiles/fitHVQCDWithoutScalars_sc_VgIR_fixed.exe.dir/src/schrodinger/numerov.cpp.o
 	$(MAKE) -f CMakeFiles/fitHVQCDWithoutGlueball_sc_VgIR_fixed.exe.dir/build.make CMakeFiles/fitHVQCDWithoutGlueball_sc_VgIR_fixed.exe.dir/src/schrodinger/numerov.cpp.o
 	$(MAKE) -f CMakeFiles/fitHVQCDGlobal.exe.dir/build.make CMakeFiles/fitHVQCDGlobal.exe.dir/src/schrodinger/numerov.cpp.o
 	$(MAKE) -f CMakeFiles/fitHVQCDWithoutScalars.exe.dir/build.make CMakeFiles/fitHVQCDWithoutScalars.exe.dir/src/schrodinger/numerov.cpp.o
+	$(MAKE) -f CMakeFiles/fitHVQCDWithoutGlueballScalars.exe.dir/build.make CMakeFiles/fitHVQCDWithoutGlueballScalars.exe.dir/src/schrodinger/numerov.cpp.o
 	$(MAKE) -f CMakeFiles/fitYangMills.exe.dir/build.make CMakeFiles/fitYangMills.exe.dir/src/schrodinger/numerov.cpp.o
 .PHONY : src/schrodinger/numerov.cpp.o
 
@@ -767,16 +873,18 @@ src/schrodinger/numerov.i: src/schrodinger/numerov.cpp.i
 
 # target to preprocess a source file
 src/schrodinger/numerov.cpp.i:
+	$(MAKE) -f CMakeFiles/test_HVQCD.exe.dir/build.make CMakeFiles/test_HVQCD.exe.dir/src/schrodinger/numerov.cpp.i
 	$(MAKE) -f CMakeFiles/test_schrodinger.exe.dir/build.make CMakeFiles/test_schrodinger.exe.dir/src/schrodinger/numerov.cpp.i
 	$(MAKE) -f CMakeFiles/HVQCDRatios.exe.dir/build.make CMakeFiles/HVQCDRatios.exe.dir/src/schrodinger/numerov.cpp.i
-	$(MAKE) -f CMakeFiles/test_HVQCD.exe.dir/build.make CMakeFiles/test_HVQCD.exe.dir/src/schrodinger/numerov.cpp.i
 	$(MAKE) -f CMakeFiles/fitSingletAVM.exe.dir/build.make CMakeFiles/fitSingletAVM.exe.dir/src/schrodinger/numerov.cpp.i
+	$(MAKE) -f CMakeFiles/fitHVQCDWithoutGlueball.exe.dir/build.make CMakeFiles/fitHVQCDWithoutGlueball.exe.dir/src/schrodinger/numerov.cpp.i
 	$(MAKE) -f CMakeFiles/fitHVQCDGlobal_sc_VgIR_fixed.exe.dir/build.make CMakeFiles/fitHVQCDGlobal_sc_VgIR_fixed.exe.dir/src/schrodinger/numerov.cpp.i
 	$(MAKE) -f CMakeFiles/fitHVQCDWithoutGlueballScalars_sc_VgIR_fixed.exe.dir/build.make CMakeFiles/fitHVQCDWithoutGlueballScalars_sc_VgIR_fixed.exe.dir/src/schrodinger/numerov.cpp.i
 	$(MAKE) -f CMakeFiles/fitHVQCDWithoutScalars_sc_VgIR_fixed.exe.dir/build.make CMakeFiles/fitHVQCDWithoutScalars_sc_VgIR_fixed.exe.dir/src/schrodinger/numerov.cpp.i
 	$(MAKE) -f CMakeFiles/fitHVQCDWithoutGlueball_sc_VgIR_fixed.exe.dir/build.make CMakeFiles/fitHVQCDWithoutGlueball_sc_VgIR_fixed.exe.dir/src/schrodinger/numerov.cpp.i
 	$(MAKE) -f CMakeFiles/fitHVQCDGlobal.exe.dir/build.make CMakeFiles/fitHVQCDGlobal.exe.dir/src/schrodinger/numerov.cpp.i
 	$(MAKE) -f CMakeFiles/fitHVQCDWithoutScalars.exe.dir/build.make CMakeFiles/fitHVQCDWithoutScalars.exe.dir/src/schrodinger/numerov.cpp.i
+	$(MAKE) -f CMakeFiles/fitHVQCDWithoutGlueballScalars.exe.dir/build.make CMakeFiles/fitHVQCDWithoutGlueballScalars.exe.dir/src/schrodinger/numerov.cpp.i
 	$(MAKE) -f CMakeFiles/fitYangMills.exe.dir/build.make CMakeFiles/fitYangMills.exe.dir/src/schrodinger/numerov.cpp.i
 .PHONY : src/schrodinger/numerov.cpp.i
 
@@ -786,16 +894,18 @@ src/schrodinger/numerov.s: src/schrodinger/numerov.cpp.s
 
 # target to generate assembly for a file
 src/schrodinger/numerov.cpp.s:
+	$(MAKE) -f CMakeFiles/test_HVQCD.exe.dir/build.make CMakeFiles/test_HVQCD.exe.dir/src/schrodinger/numerov.cpp.s
 	$(MAKE) -f CMakeFiles/test_schrodinger.exe.dir/build.make CMakeFiles/test_schrodinger.exe.dir/src/schrodinger/numerov.cpp.s
 	$(MAKE) -f CMakeFiles/HVQCDRatios.exe.dir/build.make CMakeFiles/HVQCDRatios.exe.dir/src/schrodinger/numerov.cpp.s
-	$(MAKE) -f CMakeFiles/test_HVQCD.exe.dir/build.make CMakeFiles/test_HVQCD.exe.dir/src/schrodinger/numerov.cpp.s
 	$(MAKE) -f CMakeFiles/fitSingletAVM.exe.dir/build.make CMakeFiles/fitSingletAVM.exe.dir/src/schrodinger/numerov.cpp.s
+	$(MAKE) -f CMakeFiles/fitHVQCDWithoutGlueball.exe.dir/build.make CMakeFiles/fitHVQCDWithoutGlueball.exe.dir/src/schrodinger/numerov.cpp.s
 	$(MAKE) -f CMakeFiles/fitHVQCDGlobal_sc_VgIR_fixed.exe.dir/build.make CMakeFiles/fitHVQCDGlobal_sc_VgIR_fixed.exe.dir/src/schrodinger/numerov.cpp.s
 	$(MAKE) -f CMakeFiles/fitHVQCDWithoutGlueballScalars_sc_VgIR_fixed.exe.dir/build.make CMakeFiles/fitHVQCDWithoutGlueballScalars_sc_VgIR_fixed.exe.dir/src/schrodinger/numerov.cpp.s
 	$(MAKE) -f CMakeFiles/fitHVQCDWithoutScalars_sc_VgIR_fixed.exe.dir/build.make CMakeFiles/fitHVQCDWithoutScalars_sc_VgIR_fixed.exe.dir/src/schrodinger/numerov.cpp.s
 	$(MAKE) -f CMakeFiles/fitHVQCDWithoutGlueball_sc_VgIR_fixed.exe.dir/build.make CMakeFiles/fitHVQCDWithoutGlueball_sc_VgIR_fixed.exe.dir/src/schrodinger/numerov.cpp.s
 	$(MAKE) -f CMakeFiles/fitHVQCDGlobal.exe.dir/build.make CMakeFiles/fitHVQCDGlobal.exe.dir/src/schrodinger/numerov.cpp.s
 	$(MAKE) -f CMakeFiles/fitHVQCDWithoutScalars.exe.dir/build.make CMakeFiles/fitHVQCDWithoutScalars.exe.dir/src/schrodinger/numerov.cpp.s
+	$(MAKE) -f CMakeFiles/fitHVQCDWithoutGlueballScalars.exe.dir/build.make CMakeFiles/fitHVQCDWithoutGlueballScalars.exe.dir/src/schrodinger/numerov.cpp.s
 	$(MAKE) -f CMakeFiles/fitYangMills.exe.dir/build.make CMakeFiles/fitYangMills.exe.dir/src/schrodinger/numerov.cpp.s
 .PHONY : src/schrodinger/numerov.cpp.s
 
@@ -805,16 +915,18 @@ src/schrodinger/schrodinger.o: src/schrodinger/schrodinger.cpp.o
 
 # target to build an object file
 src/schrodinger/schrodinger.cpp.o:
+	$(MAKE) -f CMakeFiles/test_HVQCD.exe.dir/build.make CMakeFiles/test_HVQCD.exe.dir/src/schrodinger/schrodinger.cpp.o
 	$(MAKE) -f CMakeFiles/test_schrodinger.exe.dir/build.make CMakeFiles/test_schrodinger.exe.dir/src/schrodinger/schrodinger.cpp.o
 	$(MAKE) -f CMakeFiles/HVQCDRatios.exe.dir/build.make CMakeFiles/HVQCDRatios.exe.dir/src/schrodinger/schrodinger.cpp.o
-	$(MAKE) -f CMakeFiles/test_HVQCD.exe.dir/build.make CMakeFiles/test_HVQCD.exe.dir/src/schrodinger/schrodinger.cpp.o
 	$(MAKE) -f CMakeFiles/fitSingletAVM.exe.dir/build.make CMakeFiles/fitSingletAVM.exe.dir/src/schrodinger/schrodinger.cpp.o
+	$(MAKE) -f CMakeFiles/fitHVQCDWithoutGlueball.exe.dir/build.make CMakeFiles/fitHVQCDWithoutGlueball.exe.dir/src/schrodinger/schrodinger.cpp.o
 	$(MAKE) -f CMakeFiles/fitHVQCDGlobal_sc_VgIR_fixed.exe.dir/build.make CMakeFiles/fitHVQCDGlobal_sc_VgIR_fixed.exe.dir/src/schrodinger/schrodinger.cpp.o
 	$(MAKE) -f CMakeFiles/fitHVQCDWithoutGlueballScalars_sc_VgIR_fixed.exe.dir/build.make CMakeFiles/fitHVQCDWithoutGlueballScalars_sc_VgIR_fixed.exe.dir/src/schrodinger/schrodinger.cpp.o
 	$(MAKE) -f CMakeFiles/fitHVQCDWithoutScalars_sc_VgIR_fixed.exe.dir/build.make CMakeFiles/fitHVQCDWithoutScalars_sc_VgIR_fixed.exe.dir/src/schrodinger/schrodinger.cpp.o
 	$(MAKE) -f CMakeFiles/fitHVQCDWithoutGlueball_sc_VgIR_fixed.exe.dir/build.make CMakeFiles/fitHVQCDWithoutGlueball_sc_VgIR_fixed.exe.dir/src/schrodinger/schrodinger.cpp.o
 	$(MAKE) -f CMakeFiles/fitHVQCDGlobal.exe.dir/build.make CMakeFiles/fitHVQCDGlobal.exe.dir/src/schrodinger/schrodinger.cpp.o
 	$(MAKE) -f CMakeFiles/fitHVQCDWithoutScalars.exe.dir/build.make CMakeFiles/fitHVQCDWithoutScalars.exe.dir/src/schrodinger/schrodinger.cpp.o
+	$(MAKE) -f CMakeFiles/fitHVQCDWithoutGlueballScalars.exe.dir/build.make CMakeFiles/fitHVQCDWithoutGlueballScalars.exe.dir/src/schrodinger/schrodinger.cpp.o
 	$(MAKE) -f CMakeFiles/fitYangMills.exe.dir/build.make CMakeFiles/fitYangMills.exe.dir/src/schrodinger/schrodinger.cpp.o
 .PHONY : src/schrodinger/schrodinger.cpp.o
 
@@ -824,16 +936,18 @@ src/schrodinger/schrodinger.i: src/schrodinger/schrodinger.cpp.i
 
 # target to preprocess a source file
 src/schrodinger/schrodinger.cpp.i:
+	$(MAKE) -f CMakeFiles/test_HVQCD.exe.dir/build.make CMakeFiles/test_HVQCD.exe.dir/src/schrodinger/schrodinger.cpp.i
 	$(MAKE) -f CMakeFiles/test_schrodinger.exe.dir/build.make CMakeFiles/test_schrodinger.exe.dir/src/schrodinger/schrodinger.cpp.i
 	$(MAKE) -f CMakeFiles/HVQCDRatios.exe.dir/build.make CMakeFiles/HVQCDRatios.exe.dir/src/schrodinger/schrodinger.cpp.i
-	$(MAKE) -f CMakeFiles/test_HVQCD.exe.dir/build.make CMakeFiles/test_HVQCD.exe.dir/src/schrodinger/schrodinger.cpp.i
 	$(MAKE) -f CMakeFiles/fitSingletAVM.exe.dir/build.make CMakeFiles/fitSingletAVM.exe.dir/src/schrodinger/schrodinger.cpp.i
+	$(MAKE) -f CMakeFiles/fitHVQCDWithoutGlueball.exe.dir/build.make CMakeFiles/fitHVQCDWithoutGlueball.exe.dir/src/schrodinger/schrodinger.cpp.i
 	$(MAKE) -f CMakeFiles/fitHVQCDGlobal_sc_VgIR_fixed.exe.dir/build.make CMakeFiles/fitHVQCDGlobal_sc_VgIR_fixed.exe.dir/src/schrodinger/schrodinger.cpp.i
 	$(MAKE) -f CMakeFiles/fitHVQCDWithoutGlueballScalars_sc_VgIR_fixed.exe.dir/build.make CMakeFiles/fitHVQCDWithoutGlueballScalars_sc_VgIR_fixed.exe.dir/src/schrodinger/schrodinger.cpp.i
 	$(MAKE) -f CMakeFiles/fitHVQCDWithoutScalars_sc_VgIR_fixed.exe.dir/build.make CMakeFiles/fitHVQCDWithoutScalars_sc_VgIR_fixed.exe.dir/src/schrodinger/schrodinger.cpp.i
 	$(MAKE) -f CMakeFiles/fitHVQCDWithoutGlueball_sc_VgIR_fixed.exe.dir/build.make CMakeFiles/fitHVQCDWithoutGlueball_sc_VgIR_fixed.exe.dir/src/schrodinger/schrodinger.cpp.i
 	$(MAKE) -f CMakeFiles/fitHVQCDGlobal.exe.dir/build.make CMakeFiles/fitHVQCDGlobal.exe.dir/src/schrodinger/schrodinger.cpp.i
 	$(MAKE) -f CMakeFiles/fitHVQCDWithoutScalars.exe.dir/build.make CMakeFiles/fitHVQCDWithoutScalars.exe.dir/src/schrodinger/schrodinger.cpp.i
+	$(MAKE) -f CMakeFiles/fitHVQCDWithoutGlueballScalars.exe.dir/build.make CMakeFiles/fitHVQCDWithoutGlueballScalars.exe.dir/src/schrodinger/schrodinger.cpp.i
 	$(MAKE) -f CMakeFiles/fitYangMills.exe.dir/build.make CMakeFiles/fitYangMills.exe.dir/src/schrodinger/schrodinger.cpp.i
 .PHONY : src/schrodinger/schrodinger.cpp.i
 
@@ -843,16 +957,18 @@ src/schrodinger/schrodinger.s: src/schrodinger/schrodinger.cpp.s
 
 # target to generate assembly for a file
 src/schrodinger/schrodinger.cpp.s:
+	$(MAKE) -f CMakeFiles/test_HVQCD.exe.dir/build.make CMakeFiles/test_HVQCD.exe.dir/src/schrodinger/schrodinger.cpp.s
 	$(MAKE) -f CMakeFiles/test_schrodinger.exe.dir/build.make CMakeFiles/test_schrodinger.exe.dir/src/schrodinger/schrodinger.cpp.s
 	$(MAKE) -f CMakeFiles/HVQCDRatios.exe.dir/build.make CMakeFiles/HVQCDRatios.exe.dir/src/schrodinger/schrodinger.cpp.s
-	$(MAKE) -f CMakeFiles/test_HVQCD.exe.dir/build.make CMakeFiles/test_HVQCD.exe.dir/src/schrodinger/schrodinger.cpp.s
 	$(MAKE) -f CMakeFiles/fitSingletAVM.exe.dir/build.make CMakeFiles/fitSingletAVM.exe.dir/src/schrodinger/schrodinger.cpp.s
+	$(MAKE) -f CMakeFiles/fitHVQCDWithoutGlueball.exe.dir/build.make CMakeFiles/fitHVQCDWithoutGlueball.exe.dir/src/schrodinger/schrodinger.cpp.s
 	$(MAKE) -f CMakeFiles/fitHVQCDGlobal_sc_VgIR_fixed.exe.dir/build.make CMakeFiles/fitHVQCDGlobal_sc_VgIR_fixed.exe.dir/src/schrodinger/schrodinger.cpp.s
 	$(MAKE) -f CMakeFiles/fitHVQCDWithoutGlueballScalars_sc_VgIR_fixed.exe.dir/build.make CMakeFiles/fitHVQCDWithoutGlueballScalars_sc_VgIR_fixed.exe.dir/src/schrodinger/schrodinger.cpp.s
 	$(MAKE) -f CMakeFiles/fitHVQCDWithoutScalars_sc_VgIR_fixed.exe.dir/build.make CMakeFiles/fitHVQCDWithoutScalars_sc_VgIR_fixed.exe.dir/src/schrodinger/schrodinger.cpp.s
 	$(MAKE) -f CMakeFiles/fitHVQCDWithoutGlueball_sc_VgIR_fixed.exe.dir/build.make CMakeFiles/fitHVQCDWithoutGlueball_sc_VgIR_fixed.exe.dir/src/schrodinger/schrodinger.cpp.s
 	$(MAKE) -f CMakeFiles/fitHVQCDGlobal.exe.dir/build.make CMakeFiles/fitHVQCDGlobal.exe.dir/src/schrodinger/schrodinger.cpp.s
 	$(MAKE) -f CMakeFiles/fitHVQCDWithoutScalars.exe.dir/build.make CMakeFiles/fitHVQCDWithoutScalars.exe.dir/src/schrodinger/schrodinger.cpp.s
+	$(MAKE) -f CMakeFiles/fitHVQCDWithoutGlueballScalars.exe.dir/build.make CMakeFiles/fitHVQCDWithoutGlueballScalars.exe.dir/src/schrodinger/schrodinger.cpp.s
 	$(MAKE) -f CMakeFiles/fitYangMills.exe.dir/build.make CMakeFiles/fitYangMills.exe.dir/src/schrodinger/schrodinger.cpp.s
 .PHONY : src/schrodinger/schrodinger.cpp.s
 
@@ -862,16 +978,18 @@ src/schrodinger/solvspec.o: src/schrodinger/solvspec.cpp.o
 
 # target to build an object file
 src/schrodinger/solvspec.cpp.o:
+	$(MAKE) -f CMakeFiles/test_HVQCD.exe.dir/build.make CMakeFiles/test_HVQCD.exe.dir/src/schrodinger/solvspec.cpp.o
 	$(MAKE) -f CMakeFiles/test_schrodinger.exe.dir/build.make CMakeFiles/test_schrodinger.exe.dir/src/schrodinger/solvspec.cpp.o
 	$(MAKE) -f CMakeFiles/HVQCDRatios.exe.dir/build.make CMakeFiles/HVQCDRatios.exe.dir/src/schrodinger/solvspec.cpp.o
-	$(MAKE) -f CMakeFiles/test_HVQCD.exe.dir/build.make CMakeFiles/test_HVQCD.exe.dir/src/schrodinger/solvspec.cpp.o
 	$(MAKE) -f CMakeFiles/fitSingletAVM.exe.dir/build.make CMakeFiles/fitSingletAVM.exe.dir/src/schrodinger/solvspec.cpp.o
+	$(MAKE) -f CMakeFiles/fitHVQCDWithoutGlueball.exe.dir/build.make CMakeFiles/fitHVQCDWithoutGlueball.exe.dir/src/schrodinger/solvspec.cpp.o
 	$(MAKE) -f CMakeFiles/fitHVQCDGlobal_sc_VgIR_fixed.exe.dir/build.make CMakeFiles/fitHVQCDGlobal_sc_VgIR_fixed.exe.dir/src/schrodinger/solvspec.cpp.o
 	$(MAKE) -f CMakeFiles/fitHVQCDWithoutGlueballScalars_sc_VgIR_fixed.exe.dir/build.make CMakeFiles/fitHVQCDWithoutGlueballScalars_sc_VgIR_fixed.exe.dir/src/schrodinger/solvspec.cpp.o
 	$(MAKE) -f CMakeFiles/fitHVQCDWithoutScalars_sc_VgIR_fixed.exe.dir/build.make CMakeFiles/fitHVQCDWithoutScalars_sc_VgIR_fixed.exe.dir/src/schrodinger/solvspec.cpp.o
 	$(MAKE) -f CMakeFiles/fitHVQCDWithoutGlueball_sc_VgIR_fixed.exe.dir/build.make CMakeFiles/fitHVQCDWithoutGlueball_sc_VgIR_fixed.exe.dir/src/schrodinger/solvspec.cpp.o
 	$(MAKE) -f CMakeFiles/fitHVQCDGlobal.exe.dir/build.make CMakeFiles/fitHVQCDGlobal.exe.dir/src/schrodinger/solvspec.cpp.o
 	$(MAKE) -f CMakeFiles/fitHVQCDWithoutScalars.exe.dir/build.make CMakeFiles/fitHVQCDWithoutScalars.exe.dir/src/schrodinger/solvspec.cpp.o
+	$(MAKE) -f CMakeFiles/fitHVQCDWithoutGlueballScalars.exe.dir/build.make CMakeFiles/fitHVQCDWithoutGlueballScalars.exe.dir/src/schrodinger/solvspec.cpp.o
 	$(MAKE) -f CMakeFiles/fitYangMills.exe.dir/build.make CMakeFiles/fitYangMills.exe.dir/src/schrodinger/solvspec.cpp.o
 .PHONY : src/schrodinger/solvspec.cpp.o
 
@@ -881,16 +999,18 @@ src/schrodinger/solvspec.i: src/schrodinger/solvspec.cpp.i
 
 # target to preprocess a source file
 src/schrodinger/solvspec.cpp.i:
+	$(MAKE) -f CMakeFiles/test_HVQCD.exe.dir/build.make CMakeFiles/test_HVQCD.exe.dir/src/schrodinger/solvspec.cpp.i
 	$(MAKE) -f CMakeFiles/test_schrodinger.exe.dir/build.make CMakeFiles/test_schrodinger.exe.dir/src/schrodinger/solvspec.cpp.i
 	$(MAKE) -f CMakeFiles/HVQCDRatios.exe.dir/build.make CMakeFiles/HVQCDRatios.exe.dir/src/schrodinger/solvspec.cpp.i
-	$(MAKE) -f CMakeFiles/test_HVQCD.exe.dir/build.make CMakeFiles/test_HVQCD.exe.dir/src/schrodinger/solvspec.cpp.i
 	$(MAKE) -f CMakeFiles/fitSingletAVM.exe.dir/build.make CMakeFiles/fitSingletAVM.exe.dir/src/schrodinger/solvspec.cpp.i
+	$(MAKE) -f CMakeFiles/fitHVQCDWithoutGlueball.exe.dir/build.make CMakeFiles/fitHVQCDWithoutGlueball.exe.dir/src/schrodinger/solvspec.cpp.i
 	$(MAKE) -f CMakeFiles/fitHVQCDGlobal_sc_VgIR_fixed.exe.dir/build.make CMakeFiles/fitHVQCDGlobal_sc_VgIR_fixed.exe.dir/src/schrodinger/solvspec.cpp.i
 	$(MAKE) -f CMakeFiles/fitHVQCDWithoutGlueballScalars_sc_VgIR_fixed.exe.dir/build.make CMakeFiles/fitHVQCDWithoutGlueballScalars_sc_VgIR_fixed.exe.dir/src/schrodinger/solvspec.cpp.i
 	$(MAKE) -f CMakeFiles/fitHVQCDWithoutScalars_sc_VgIR_fixed.exe.dir/build.make CMakeFiles/fitHVQCDWithoutScalars_sc_VgIR_fixed.exe.dir/src/schrodinger/solvspec.cpp.i
 	$(MAKE) -f CMakeFiles/fitHVQCDWithoutGlueball_sc_VgIR_fixed.exe.dir/build.make CMakeFiles/fitHVQCDWithoutGlueball_sc_VgIR_fixed.exe.dir/src/schrodinger/solvspec.cpp.i
 	$(MAKE) -f CMakeFiles/fitHVQCDGlobal.exe.dir/build.make CMakeFiles/fitHVQCDGlobal.exe.dir/src/schrodinger/solvspec.cpp.i
 	$(MAKE) -f CMakeFiles/fitHVQCDWithoutScalars.exe.dir/build.make CMakeFiles/fitHVQCDWithoutScalars.exe.dir/src/schrodinger/solvspec.cpp.i
+	$(MAKE) -f CMakeFiles/fitHVQCDWithoutGlueballScalars.exe.dir/build.make CMakeFiles/fitHVQCDWithoutGlueballScalars.exe.dir/src/schrodinger/solvspec.cpp.i
 	$(MAKE) -f CMakeFiles/fitYangMills.exe.dir/build.make CMakeFiles/fitYangMills.exe.dir/src/schrodinger/solvspec.cpp.i
 .PHONY : src/schrodinger/solvspec.cpp.i
 
@@ -900,16 +1020,18 @@ src/schrodinger/solvspec.s: src/schrodinger/solvspec.cpp.s
 
 # target to generate assembly for a file
 src/schrodinger/solvspec.cpp.s:
+	$(MAKE) -f CMakeFiles/test_HVQCD.exe.dir/build.make CMakeFiles/test_HVQCD.exe.dir/src/schrodinger/solvspec.cpp.s
 	$(MAKE) -f CMakeFiles/test_schrodinger.exe.dir/build.make CMakeFiles/test_schrodinger.exe.dir/src/schrodinger/solvspec.cpp.s
 	$(MAKE) -f CMakeFiles/HVQCDRatios.exe.dir/build.make CMakeFiles/HVQCDRatios.exe.dir/src/schrodinger/solvspec.cpp.s
-	$(MAKE) -f CMakeFiles/test_HVQCD.exe.dir/build.make CMakeFiles/test_HVQCD.exe.dir/src/schrodinger/solvspec.cpp.s
 	$(MAKE) -f CMakeFiles/fitSingletAVM.exe.dir/build.make CMakeFiles/fitSingletAVM.exe.dir/src/schrodinger/solvspec.cpp.s
+	$(MAKE) -f CMakeFiles/fitHVQCDWithoutGlueball.exe.dir/build.make CMakeFiles/fitHVQCDWithoutGlueball.exe.dir/src/schrodinger/solvspec.cpp.s
 	$(MAKE) -f CMakeFiles/fitHVQCDGlobal_sc_VgIR_fixed.exe.dir/build.make CMakeFiles/fitHVQCDGlobal_sc_VgIR_fixed.exe.dir/src/schrodinger/solvspec.cpp.s
 	$(MAKE) -f CMakeFiles/fitHVQCDWithoutGlueballScalars_sc_VgIR_fixed.exe.dir/build.make CMakeFiles/fitHVQCDWithoutGlueballScalars_sc_VgIR_fixed.exe.dir/src/schrodinger/solvspec.cpp.s
 	$(MAKE) -f CMakeFiles/fitHVQCDWithoutScalars_sc_VgIR_fixed.exe.dir/build.make CMakeFiles/fitHVQCDWithoutScalars_sc_VgIR_fixed.exe.dir/src/schrodinger/solvspec.cpp.s
 	$(MAKE) -f CMakeFiles/fitHVQCDWithoutGlueball_sc_VgIR_fixed.exe.dir/build.make CMakeFiles/fitHVQCDWithoutGlueball_sc_VgIR_fixed.exe.dir/src/schrodinger/solvspec.cpp.s
 	$(MAKE) -f CMakeFiles/fitHVQCDGlobal.exe.dir/build.make CMakeFiles/fitHVQCDGlobal.exe.dir/src/schrodinger/solvspec.cpp.s
 	$(MAKE) -f CMakeFiles/fitHVQCDWithoutScalars.exe.dir/build.make CMakeFiles/fitHVQCDWithoutScalars.exe.dir/src/schrodinger/solvspec.cpp.s
+	$(MAKE) -f CMakeFiles/fitHVQCDWithoutGlueballScalars.exe.dir/build.make CMakeFiles/fitHVQCDWithoutGlueballScalars.exe.dir/src/schrodinger/solvspec.cpp.s
 	$(MAKE) -f CMakeFiles/fitYangMills.exe.dir/build.make CMakeFiles/fitYangMills.exe.dir/src/schrodinger/solvspec.cpp.s
 .PHONY : src/schrodinger/solvspec.cpp.s
 
@@ -975,16 +1097,18 @@ help:
 	@echo "... depend"
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
+	@echo "... test_HVQCD.exe"
 	@echo "... test_schrodinger.exe"
 	@echo "... HVQCDRatios.exe"
-	@echo "... test_HVQCD.exe"
 	@echo "... fitSingletAVM.exe"
+	@echo "... fitHVQCDWithoutGlueball.exe"
 	@echo "... fitHVQCDGlobal_sc_VgIR_fixed.exe"
 	@echo "... fitHVQCDWithoutGlueballScalars_sc_VgIR_fixed.exe"
 	@echo "... fitHVQCDWithoutScalars_sc_VgIR_fixed.exe"
 	@echo "... fitHVQCDWithoutGlueball_sc_VgIR_fixed.exe"
 	@echo "... fitHVQCDGlobal.exe"
 	@echo "... fitHVQCDWithoutScalars.exe"
+	@echo "... fitHVQCDWithoutGlueballScalars.exe"
 	@echo "... fitYangMills.exe"
 	@echo "... physics/HVQCDRatios.o"
 	@echo "... physics/HVQCDRatios.i"
@@ -995,6 +1119,12 @@ help:
 	@echo "... physics/fitHVQCDGlobal_sc_VgIR_fixed.o"
 	@echo "... physics/fitHVQCDGlobal_sc_VgIR_fixed.i"
 	@echo "... physics/fitHVQCDGlobal_sc_VgIR_fixed.s"
+	@echo "... physics/fitHVQCDWithoutGlueball.o"
+	@echo "... physics/fitHVQCDWithoutGlueball.i"
+	@echo "... physics/fitHVQCDWithoutGlueball.s"
+	@echo "... physics/fitHVQCDWithoutGlueballScalars.o"
+	@echo "... physics/fitHVQCDWithoutGlueballScalars.i"
+	@echo "... physics/fitHVQCDWithoutGlueballScalars.s"
 	@echo "... physics/fitHVQCDWithoutGlueballScalars_sc_VgIR_fixed.o"
 	@echo "... physics/fitHVQCDWithoutGlueballScalars_sc_VgIR_fixed.i"
 	@echo "... physics/fitHVQCDWithoutGlueballScalars_sc_VgIR_fixed.s"
