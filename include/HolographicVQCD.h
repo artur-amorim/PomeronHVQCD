@@ -10,7 +10,7 @@ class HVQCD : public Background
         // Matrix type definition
         typedef boost::numeric::ublas::matrix<double> matrix_type;
         // Parameters of the Vf and k potentials
-        double ksc, kU1, W0, WIR, kIR, W1, k1, xf, tau0;
+        double ksc, tausc, kU1, W0, WIR, kIR, W1, k1, xf, tau0;
         // Parameters of the w potential
         double wsc, wU1, w0, wIR, w1;
         // Parameters of the Z(lambda) function
@@ -109,7 +109,7 @@ class HVQCD : public Background
     public:
         // Class Constructor
         HVQCD(const double ssc = 3.0, const double kksc = 3.0, const double wwsc = 1.56,
-             const double WW0 = 2.5, const double ww0 = 1.26,
+             const double tausc = 0.0, const double WW0 = 2.5, const double ww0 = 1.26,
              const double kkU1 = 11./9, const double wwU1 = 0.0,
              const double VVgIR = 2.05, const double WWIR = 0.9, const double kkIR = 1.8, const double wwIR = 5.0,
              const double WW1 = 0.0, const double kk1 = -0.23, const double ww1 = 0.0,
