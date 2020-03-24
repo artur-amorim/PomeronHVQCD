@@ -77,3 +77,6 @@ target_link_libraries(test_schrodinger.exe armadillo)
 # Add test_HVQCD executable
 add_executable(test_HVQCD.exe  tests/test_HVQCD.cpp ${HVQCD} ${SCHRODINGER})
 target_link_libraries(test_HVQCD.exe armadillo)
+
+# Add test_EfficientNelderMead
+add_executable(test_EfficientNelderMead.exe  tests/test_EfficientNelderMead.cpp)

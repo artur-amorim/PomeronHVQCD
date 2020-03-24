@@ -111,6 +111,19 @@ depend:
 .PHONY : depend
 
 #=============================================================================
+# Target rules for targets named test_EfficientNelderMead.exe
+
+# Build rule for target.
+test_EfficientNelderMead.exe: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 test_EfficientNelderMead.exe
+.PHONY : test_EfficientNelderMead.exe
+
+# fast build rule for target.
+test_EfficientNelderMead.exe/fast:
+	$(MAKE) -f CMakeFiles/test_EfficientNelderMead.exe.dir/build.make CMakeFiles/test_EfficientNelderMead.exe.dir/build
+.PHONY : test_EfficientNelderMead.exe/fast
+
+#=============================================================================
 # Target rules for targets named test_HVQCD.exe
 
 # Build rule for target.
@@ -135,6 +148,19 @@ test_schrodinger.exe: cmake_check_build_system
 test_schrodinger.exe/fast:
 	$(MAKE) -f CMakeFiles/test_schrodinger.exe.dir/build.make CMakeFiles/test_schrodinger.exe.dir/build
 .PHONY : test_schrodinger.exe/fast
+
+#=============================================================================
+# Target rules for targets named savePotentials.exe
+
+# Build rule for target.
+savePotentials.exe: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 savePotentials.exe
+.PHONY : savePotentials.exe
+
+# fast build rule for target.
+savePotentials.exe/fast:
+	$(MAKE) -f CMakeFiles/savePotentials.exe.dir/build.make CMakeFiles/savePotentials.exe.dir/build
+.PHONY : savePotentials.exe/fast
 
 #=============================================================================
 # Target rules for targets named HVQCDRatios.exe
@@ -576,6 +602,33 @@ physics/fitYangMills.cpp.s:
 	$(MAKE) -f CMakeFiles/fitYangMills.exe.dir/build.make CMakeFiles/fitYangMills.exe.dir/physics/fitYangMills.cpp.s
 .PHONY : physics/fitYangMills.cpp.s
 
+physics/savePotentials.o: physics/savePotentials.cpp.o
+
+.PHONY : physics/savePotentials.o
+
+# target to build an object file
+physics/savePotentials.cpp.o:
+	$(MAKE) -f CMakeFiles/savePotentials.exe.dir/build.make CMakeFiles/savePotentials.exe.dir/physics/savePotentials.cpp.o
+.PHONY : physics/savePotentials.cpp.o
+
+physics/savePotentials.i: physics/savePotentials.cpp.i
+
+.PHONY : physics/savePotentials.i
+
+# target to preprocess a source file
+physics/savePotentials.cpp.i:
+	$(MAKE) -f CMakeFiles/savePotentials.exe.dir/build.make CMakeFiles/savePotentials.exe.dir/physics/savePotentials.cpp.i
+.PHONY : physics/savePotentials.cpp.i
+
+physics/savePotentials.s: physics/savePotentials.cpp.s
+
+.PHONY : physics/savePotentials.s
+
+# target to generate assembly for a file
+physics/savePotentials.cpp.s:
+	$(MAKE) -f CMakeFiles/savePotentials.exe.dir/build.make CMakeFiles/savePotentials.exe.dir/physics/savePotentials.cpp.s
+.PHONY : physics/savePotentials.cpp.s
+
 src/HolographicVQCD.o: src/HolographicVQCD.cpp.o
 
 .PHONY : src/HolographicVQCD.o
@@ -583,6 +636,7 @@ src/HolographicVQCD.o: src/HolographicVQCD.cpp.o
 # target to build an object file
 src/HolographicVQCD.cpp.o:
 	$(MAKE) -f CMakeFiles/test_HVQCD.exe.dir/build.make CMakeFiles/test_HVQCD.exe.dir/src/HolographicVQCD.cpp.o
+	$(MAKE) -f CMakeFiles/savePotentials.exe.dir/build.make CMakeFiles/savePotentials.exe.dir/src/HolographicVQCD.cpp.o
 	$(MAKE) -f CMakeFiles/HVQCDRatios.exe.dir/build.make CMakeFiles/HVQCDRatios.exe.dir/src/HolographicVQCD.cpp.o
 	$(MAKE) -f CMakeFiles/fitSingletAVM.exe.dir/build.make CMakeFiles/fitSingletAVM.exe.dir/src/HolographicVQCD.cpp.o
 	$(MAKE) -f CMakeFiles/fitHVQCDWithoutGlueball.exe.dir/build.make CMakeFiles/fitHVQCDWithoutGlueball.exe.dir/src/HolographicVQCD.cpp.o
@@ -602,6 +656,7 @@ src/HolographicVQCD.i: src/HolographicVQCD.cpp.i
 # target to preprocess a source file
 src/HolographicVQCD.cpp.i:
 	$(MAKE) -f CMakeFiles/test_HVQCD.exe.dir/build.make CMakeFiles/test_HVQCD.exe.dir/src/HolographicVQCD.cpp.i
+	$(MAKE) -f CMakeFiles/savePotentials.exe.dir/build.make CMakeFiles/savePotentials.exe.dir/src/HolographicVQCD.cpp.i
 	$(MAKE) -f CMakeFiles/HVQCDRatios.exe.dir/build.make CMakeFiles/HVQCDRatios.exe.dir/src/HolographicVQCD.cpp.i
 	$(MAKE) -f CMakeFiles/fitSingletAVM.exe.dir/build.make CMakeFiles/fitSingletAVM.exe.dir/src/HolographicVQCD.cpp.i
 	$(MAKE) -f CMakeFiles/fitHVQCDWithoutGlueball.exe.dir/build.make CMakeFiles/fitHVQCDWithoutGlueball.exe.dir/src/HolographicVQCD.cpp.i
@@ -621,6 +676,7 @@ src/HolographicVQCD.s: src/HolographicVQCD.cpp.s
 # target to generate assembly for a file
 src/HolographicVQCD.cpp.s:
 	$(MAKE) -f CMakeFiles/test_HVQCD.exe.dir/build.make CMakeFiles/test_HVQCD.exe.dir/src/HolographicVQCD.cpp.s
+	$(MAKE) -f CMakeFiles/savePotentials.exe.dir/build.make CMakeFiles/savePotentials.exe.dir/src/HolographicVQCD.cpp.s
 	$(MAKE) -f CMakeFiles/HVQCDRatios.exe.dir/build.make CMakeFiles/HVQCDRatios.exe.dir/src/HolographicVQCD.cpp.s
 	$(MAKE) -f CMakeFiles/fitSingletAVM.exe.dir/build.make CMakeFiles/fitSingletAVM.exe.dir/src/HolographicVQCD.cpp.s
 	$(MAKE) -f CMakeFiles/fitHVQCDWithoutGlueball.exe.dir/build.make CMakeFiles/fitHVQCDWithoutGlueball.exe.dir/src/HolographicVQCD.cpp.s
@@ -667,6 +723,7 @@ src/background.o: src/background.cpp.o
 # target to build an object file
 src/background.cpp.o:
 	$(MAKE) -f CMakeFiles/test_HVQCD.exe.dir/build.make CMakeFiles/test_HVQCD.exe.dir/src/background.cpp.o
+	$(MAKE) -f CMakeFiles/savePotentials.exe.dir/build.make CMakeFiles/savePotentials.exe.dir/src/background.cpp.o
 	$(MAKE) -f CMakeFiles/HVQCDRatios.exe.dir/build.make CMakeFiles/HVQCDRatios.exe.dir/src/background.cpp.o
 	$(MAKE) -f CMakeFiles/fitSingletAVM.exe.dir/build.make CMakeFiles/fitSingletAVM.exe.dir/src/background.cpp.o
 	$(MAKE) -f CMakeFiles/fitHVQCDWithoutGlueball.exe.dir/build.make CMakeFiles/fitHVQCDWithoutGlueball.exe.dir/src/background.cpp.o
@@ -687,6 +744,7 @@ src/background.i: src/background.cpp.i
 # target to preprocess a source file
 src/background.cpp.i:
 	$(MAKE) -f CMakeFiles/test_HVQCD.exe.dir/build.make CMakeFiles/test_HVQCD.exe.dir/src/background.cpp.i
+	$(MAKE) -f CMakeFiles/savePotentials.exe.dir/build.make CMakeFiles/savePotentials.exe.dir/src/background.cpp.i
 	$(MAKE) -f CMakeFiles/HVQCDRatios.exe.dir/build.make CMakeFiles/HVQCDRatios.exe.dir/src/background.cpp.i
 	$(MAKE) -f CMakeFiles/fitSingletAVM.exe.dir/build.make CMakeFiles/fitSingletAVM.exe.dir/src/background.cpp.i
 	$(MAKE) -f CMakeFiles/fitHVQCDWithoutGlueball.exe.dir/build.make CMakeFiles/fitHVQCDWithoutGlueball.exe.dir/src/background.cpp.i
@@ -707,6 +765,7 @@ src/background.s: src/background.cpp.s
 # target to generate assembly for a file
 src/background.cpp.s:
 	$(MAKE) -f CMakeFiles/test_HVQCD.exe.dir/build.make CMakeFiles/test_HVQCD.exe.dir/src/background.cpp.s
+	$(MAKE) -f CMakeFiles/savePotentials.exe.dir/build.make CMakeFiles/savePotentials.exe.dir/src/background.cpp.s
 	$(MAKE) -f CMakeFiles/HVQCDRatios.exe.dir/build.make CMakeFiles/HVQCDRatios.exe.dir/src/background.cpp.s
 	$(MAKE) -f CMakeFiles/fitSingletAVM.exe.dir/build.make CMakeFiles/fitSingletAVM.exe.dir/src/background.cpp.s
 	$(MAKE) -f CMakeFiles/fitHVQCDWithoutGlueball.exe.dir/build.make CMakeFiles/fitHVQCDWithoutGlueball.exe.dir/src/background.cpp.s
@@ -728,6 +787,7 @@ src/schrodinger/chebspec.o: src/schrodinger/chebspec.cpp.o
 src/schrodinger/chebspec.cpp.o:
 	$(MAKE) -f CMakeFiles/test_HVQCD.exe.dir/build.make CMakeFiles/test_HVQCD.exe.dir/src/schrodinger/chebspec.cpp.o
 	$(MAKE) -f CMakeFiles/test_schrodinger.exe.dir/build.make CMakeFiles/test_schrodinger.exe.dir/src/schrodinger/chebspec.cpp.o
+	$(MAKE) -f CMakeFiles/savePotentials.exe.dir/build.make CMakeFiles/savePotentials.exe.dir/src/schrodinger/chebspec.cpp.o
 	$(MAKE) -f CMakeFiles/HVQCDRatios.exe.dir/build.make CMakeFiles/HVQCDRatios.exe.dir/src/schrodinger/chebspec.cpp.o
 	$(MAKE) -f CMakeFiles/fitSingletAVM.exe.dir/build.make CMakeFiles/fitSingletAVM.exe.dir/src/schrodinger/chebspec.cpp.o
 	$(MAKE) -f CMakeFiles/fitHVQCDWithoutGlueball.exe.dir/build.make CMakeFiles/fitHVQCDWithoutGlueball.exe.dir/src/schrodinger/chebspec.cpp.o
@@ -749,6 +809,7 @@ src/schrodinger/chebspec.i: src/schrodinger/chebspec.cpp.i
 src/schrodinger/chebspec.cpp.i:
 	$(MAKE) -f CMakeFiles/test_HVQCD.exe.dir/build.make CMakeFiles/test_HVQCD.exe.dir/src/schrodinger/chebspec.cpp.i
 	$(MAKE) -f CMakeFiles/test_schrodinger.exe.dir/build.make CMakeFiles/test_schrodinger.exe.dir/src/schrodinger/chebspec.cpp.i
+	$(MAKE) -f CMakeFiles/savePotentials.exe.dir/build.make CMakeFiles/savePotentials.exe.dir/src/schrodinger/chebspec.cpp.i
 	$(MAKE) -f CMakeFiles/HVQCDRatios.exe.dir/build.make CMakeFiles/HVQCDRatios.exe.dir/src/schrodinger/chebspec.cpp.i
 	$(MAKE) -f CMakeFiles/fitSingletAVM.exe.dir/build.make CMakeFiles/fitSingletAVM.exe.dir/src/schrodinger/chebspec.cpp.i
 	$(MAKE) -f CMakeFiles/fitHVQCDWithoutGlueball.exe.dir/build.make CMakeFiles/fitHVQCDWithoutGlueball.exe.dir/src/schrodinger/chebspec.cpp.i
@@ -770,6 +831,7 @@ src/schrodinger/chebspec.s: src/schrodinger/chebspec.cpp.s
 src/schrodinger/chebspec.cpp.s:
 	$(MAKE) -f CMakeFiles/test_HVQCD.exe.dir/build.make CMakeFiles/test_HVQCD.exe.dir/src/schrodinger/chebspec.cpp.s
 	$(MAKE) -f CMakeFiles/test_schrodinger.exe.dir/build.make CMakeFiles/test_schrodinger.exe.dir/src/schrodinger/chebspec.cpp.s
+	$(MAKE) -f CMakeFiles/savePotentials.exe.dir/build.make CMakeFiles/savePotentials.exe.dir/src/schrodinger/chebspec.cpp.s
 	$(MAKE) -f CMakeFiles/HVQCDRatios.exe.dir/build.make CMakeFiles/HVQCDRatios.exe.dir/src/schrodinger/chebspec.cpp.s
 	$(MAKE) -f CMakeFiles/fitSingletAVM.exe.dir/build.make CMakeFiles/fitSingletAVM.exe.dir/src/schrodinger/chebspec.cpp.s
 	$(MAKE) -f CMakeFiles/fitHVQCDWithoutGlueball.exe.dir/build.make CMakeFiles/fitHVQCDWithoutGlueball.exe.dir/src/schrodinger/chebspec.cpp.s
@@ -791,6 +853,7 @@ src/schrodinger/common.o: src/schrodinger/common.cpp.o
 src/schrodinger/common.cpp.o:
 	$(MAKE) -f CMakeFiles/test_HVQCD.exe.dir/build.make CMakeFiles/test_HVQCD.exe.dir/src/schrodinger/common.cpp.o
 	$(MAKE) -f CMakeFiles/test_schrodinger.exe.dir/build.make CMakeFiles/test_schrodinger.exe.dir/src/schrodinger/common.cpp.o
+	$(MAKE) -f CMakeFiles/savePotentials.exe.dir/build.make CMakeFiles/savePotentials.exe.dir/src/schrodinger/common.cpp.o
 	$(MAKE) -f CMakeFiles/HVQCDRatios.exe.dir/build.make CMakeFiles/HVQCDRatios.exe.dir/src/schrodinger/common.cpp.o
 	$(MAKE) -f CMakeFiles/fitSingletAVM.exe.dir/build.make CMakeFiles/fitSingletAVM.exe.dir/src/schrodinger/common.cpp.o
 	$(MAKE) -f CMakeFiles/fitHVQCDWithoutGlueball.exe.dir/build.make CMakeFiles/fitHVQCDWithoutGlueball.exe.dir/src/schrodinger/common.cpp.o
@@ -812,6 +875,7 @@ src/schrodinger/common.i: src/schrodinger/common.cpp.i
 src/schrodinger/common.cpp.i:
 	$(MAKE) -f CMakeFiles/test_HVQCD.exe.dir/build.make CMakeFiles/test_HVQCD.exe.dir/src/schrodinger/common.cpp.i
 	$(MAKE) -f CMakeFiles/test_schrodinger.exe.dir/build.make CMakeFiles/test_schrodinger.exe.dir/src/schrodinger/common.cpp.i
+	$(MAKE) -f CMakeFiles/savePotentials.exe.dir/build.make CMakeFiles/savePotentials.exe.dir/src/schrodinger/common.cpp.i
 	$(MAKE) -f CMakeFiles/HVQCDRatios.exe.dir/build.make CMakeFiles/HVQCDRatios.exe.dir/src/schrodinger/common.cpp.i
 	$(MAKE) -f CMakeFiles/fitSingletAVM.exe.dir/build.make CMakeFiles/fitSingletAVM.exe.dir/src/schrodinger/common.cpp.i
 	$(MAKE) -f CMakeFiles/fitHVQCDWithoutGlueball.exe.dir/build.make CMakeFiles/fitHVQCDWithoutGlueball.exe.dir/src/schrodinger/common.cpp.i
@@ -833,6 +897,7 @@ src/schrodinger/common.s: src/schrodinger/common.cpp.s
 src/schrodinger/common.cpp.s:
 	$(MAKE) -f CMakeFiles/test_HVQCD.exe.dir/build.make CMakeFiles/test_HVQCD.exe.dir/src/schrodinger/common.cpp.s
 	$(MAKE) -f CMakeFiles/test_schrodinger.exe.dir/build.make CMakeFiles/test_schrodinger.exe.dir/src/schrodinger/common.cpp.s
+	$(MAKE) -f CMakeFiles/savePotentials.exe.dir/build.make CMakeFiles/savePotentials.exe.dir/src/schrodinger/common.cpp.s
 	$(MAKE) -f CMakeFiles/HVQCDRatios.exe.dir/build.make CMakeFiles/HVQCDRatios.exe.dir/src/schrodinger/common.cpp.s
 	$(MAKE) -f CMakeFiles/fitSingletAVM.exe.dir/build.make CMakeFiles/fitSingletAVM.exe.dir/src/schrodinger/common.cpp.s
 	$(MAKE) -f CMakeFiles/fitHVQCDWithoutGlueball.exe.dir/build.make CMakeFiles/fitHVQCDWithoutGlueball.exe.dir/src/schrodinger/common.cpp.s
@@ -854,6 +919,7 @@ src/schrodinger/numerov.o: src/schrodinger/numerov.cpp.o
 src/schrodinger/numerov.cpp.o:
 	$(MAKE) -f CMakeFiles/test_HVQCD.exe.dir/build.make CMakeFiles/test_HVQCD.exe.dir/src/schrodinger/numerov.cpp.o
 	$(MAKE) -f CMakeFiles/test_schrodinger.exe.dir/build.make CMakeFiles/test_schrodinger.exe.dir/src/schrodinger/numerov.cpp.o
+	$(MAKE) -f CMakeFiles/savePotentials.exe.dir/build.make CMakeFiles/savePotentials.exe.dir/src/schrodinger/numerov.cpp.o
 	$(MAKE) -f CMakeFiles/HVQCDRatios.exe.dir/build.make CMakeFiles/HVQCDRatios.exe.dir/src/schrodinger/numerov.cpp.o
 	$(MAKE) -f CMakeFiles/fitSingletAVM.exe.dir/build.make CMakeFiles/fitSingletAVM.exe.dir/src/schrodinger/numerov.cpp.o
 	$(MAKE) -f CMakeFiles/fitHVQCDWithoutGlueball.exe.dir/build.make CMakeFiles/fitHVQCDWithoutGlueball.exe.dir/src/schrodinger/numerov.cpp.o
@@ -875,6 +941,7 @@ src/schrodinger/numerov.i: src/schrodinger/numerov.cpp.i
 src/schrodinger/numerov.cpp.i:
 	$(MAKE) -f CMakeFiles/test_HVQCD.exe.dir/build.make CMakeFiles/test_HVQCD.exe.dir/src/schrodinger/numerov.cpp.i
 	$(MAKE) -f CMakeFiles/test_schrodinger.exe.dir/build.make CMakeFiles/test_schrodinger.exe.dir/src/schrodinger/numerov.cpp.i
+	$(MAKE) -f CMakeFiles/savePotentials.exe.dir/build.make CMakeFiles/savePotentials.exe.dir/src/schrodinger/numerov.cpp.i
 	$(MAKE) -f CMakeFiles/HVQCDRatios.exe.dir/build.make CMakeFiles/HVQCDRatios.exe.dir/src/schrodinger/numerov.cpp.i
 	$(MAKE) -f CMakeFiles/fitSingletAVM.exe.dir/build.make CMakeFiles/fitSingletAVM.exe.dir/src/schrodinger/numerov.cpp.i
 	$(MAKE) -f CMakeFiles/fitHVQCDWithoutGlueball.exe.dir/build.make CMakeFiles/fitHVQCDWithoutGlueball.exe.dir/src/schrodinger/numerov.cpp.i
@@ -896,6 +963,7 @@ src/schrodinger/numerov.s: src/schrodinger/numerov.cpp.s
 src/schrodinger/numerov.cpp.s:
 	$(MAKE) -f CMakeFiles/test_HVQCD.exe.dir/build.make CMakeFiles/test_HVQCD.exe.dir/src/schrodinger/numerov.cpp.s
 	$(MAKE) -f CMakeFiles/test_schrodinger.exe.dir/build.make CMakeFiles/test_schrodinger.exe.dir/src/schrodinger/numerov.cpp.s
+	$(MAKE) -f CMakeFiles/savePotentials.exe.dir/build.make CMakeFiles/savePotentials.exe.dir/src/schrodinger/numerov.cpp.s
 	$(MAKE) -f CMakeFiles/HVQCDRatios.exe.dir/build.make CMakeFiles/HVQCDRatios.exe.dir/src/schrodinger/numerov.cpp.s
 	$(MAKE) -f CMakeFiles/fitSingletAVM.exe.dir/build.make CMakeFiles/fitSingletAVM.exe.dir/src/schrodinger/numerov.cpp.s
 	$(MAKE) -f CMakeFiles/fitHVQCDWithoutGlueball.exe.dir/build.make CMakeFiles/fitHVQCDWithoutGlueball.exe.dir/src/schrodinger/numerov.cpp.s
@@ -917,6 +985,7 @@ src/schrodinger/schrodinger.o: src/schrodinger/schrodinger.cpp.o
 src/schrodinger/schrodinger.cpp.o:
 	$(MAKE) -f CMakeFiles/test_HVQCD.exe.dir/build.make CMakeFiles/test_HVQCD.exe.dir/src/schrodinger/schrodinger.cpp.o
 	$(MAKE) -f CMakeFiles/test_schrodinger.exe.dir/build.make CMakeFiles/test_schrodinger.exe.dir/src/schrodinger/schrodinger.cpp.o
+	$(MAKE) -f CMakeFiles/savePotentials.exe.dir/build.make CMakeFiles/savePotentials.exe.dir/src/schrodinger/schrodinger.cpp.o
 	$(MAKE) -f CMakeFiles/HVQCDRatios.exe.dir/build.make CMakeFiles/HVQCDRatios.exe.dir/src/schrodinger/schrodinger.cpp.o
 	$(MAKE) -f CMakeFiles/fitSingletAVM.exe.dir/build.make CMakeFiles/fitSingletAVM.exe.dir/src/schrodinger/schrodinger.cpp.o
 	$(MAKE) -f CMakeFiles/fitHVQCDWithoutGlueball.exe.dir/build.make CMakeFiles/fitHVQCDWithoutGlueball.exe.dir/src/schrodinger/schrodinger.cpp.o
@@ -938,6 +1007,7 @@ src/schrodinger/schrodinger.i: src/schrodinger/schrodinger.cpp.i
 src/schrodinger/schrodinger.cpp.i:
 	$(MAKE) -f CMakeFiles/test_HVQCD.exe.dir/build.make CMakeFiles/test_HVQCD.exe.dir/src/schrodinger/schrodinger.cpp.i
 	$(MAKE) -f CMakeFiles/test_schrodinger.exe.dir/build.make CMakeFiles/test_schrodinger.exe.dir/src/schrodinger/schrodinger.cpp.i
+	$(MAKE) -f CMakeFiles/savePotentials.exe.dir/build.make CMakeFiles/savePotentials.exe.dir/src/schrodinger/schrodinger.cpp.i
 	$(MAKE) -f CMakeFiles/HVQCDRatios.exe.dir/build.make CMakeFiles/HVQCDRatios.exe.dir/src/schrodinger/schrodinger.cpp.i
 	$(MAKE) -f CMakeFiles/fitSingletAVM.exe.dir/build.make CMakeFiles/fitSingletAVM.exe.dir/src/schrodinger/schrodinger.cpp.i
 	$(MAKE) -f CMakeFiles/fitHVQCDWithoutGlueball.exe.dir/build.make CMakeFiles/fitHVQCDWithoutGlueball.exe.dir/src/schrodinger/schrodinger.cpp.i
@@ -959,6 +1029,7 @@ src/schrodinger/schrodinger.s: src/schrodinger/schrodinger.cpp.s
 src/schrodinger/schrodinger.cpp.s:
 	$(MAKE) -f CMakeFiles/test_HVQCD.exe.dir/build.make CMakeFiles/test_HVQCD.exe.dir/src/schrodinger/schrodinger.cpp.s
 	$(MAKE) -f CMakeFiles/test_schrodinger.exe.dir/build.make CMakeFiles/test_schrodinger.exe.dir/src/schrodinger/schrodinger.cpp.s
+	$(MAKE) -f CMakeFiles/savePotentials.exe.dir/build.make CMakeFiles/savePotentials.exe.dir/src/schrodinger/schrodinger.cpp.s
 	$(MAKE) -f CMakeFiles/HVQCDRatios.exe.dir/build.make CMakeFiles/HVQCDRatios.exe.dir/src/schrodinger/schrodinger.cpp.s
 	$(MAKE) -f CMakeFiles/fitSingletAVM.exe.dir/build.make CMakeFiles/fitSingletAVM.exe.dir/src/schrodinger/schrodinger.cpp.s
 	$(MAKE) -f CMakeFiles/fitHVQCDWithoutGlueball.exe.dir/build.make CMakeFiles/fitHVQCDWithoutGlueball.exe.dir/src/schrodinger/schrodinger.cpp.s
@@ -980,6 +1051,7 @@ src/schrodinger/solvspec.o: src/schrodinger/solvspec.cpp.o
 src/schrodinger/solvspec.cpp.o:
 	$(MAKE) -f CMakeFiles/test_HVQCD.exe.dir/build.make CMakeFiles/test_HVQCD.exe.dir/src/schrodinger/solvspec.cpp.o
 	$(MAKE) -f CMakeFiles/test_schrodinger.exe.dir/build.make CMakeFiles/test_schrodinger.exe.dir/src/schrodinger/solvspec.cpp.o
+	$(MAKE) -f CMakeFiles/savePotentials.exe.dir/build.make CMakeFiles/savePotentials.exe.dir/src/schrodinger/solvspec.cpp.o
 	$(MAKE) -f CMakeFiles/HVQCDRatios.exe.dir/build.make CMakeFiles/HVQCDRatios.exe.dir/src/schrodinger/solvspec.cpp.o
 	$(MAKE) -f CMakeFiles/fitSingletAVM.exe.dir/build.make CMakeFiles/fitSingletAVM.exe.dir/src/schrodinger/solvspec.cpp.o
 	$(MAKE) -f CMakeFiles/fitHVQCDWithoutGlueball.exe.dir/build.make CMakeFiles/fitHVQCDWithoutGlueball.exe.dir/src/schrodinger/solvspec.cpp.o
@@ -1001,6 +1073,7 @@ src/schrodinger/solvspec.i: src/schrodinger/solvspec.cpp.i
 src/schrodinger/solvspec.cpp.i:
 	$(MAKE) -f CMakeFiles/test_HVQCD.exe.dir/build.make CMakeFiles/test_HVQCD.exe.dir/src/schrodinger/solvspec.cpp.i
 	$(MAKE) -f CMakeFiles/test_schrodinger.exe.dir/build.make CMakeFiles/test_schrodinger.exe.dir/src/schrodinger/solvspec.cpp.i
+	$(MAKE) -f CMakeFiles/savePotentials.exe.dir/build.make CMakeFiles/savePotentials.exe.dir/src/schrodinger/solvspec.cpp.i
 	$(MAKE) -f CMakeFiles/HVQCDRatios.exe.dir/build.make CMakeFiles/HVQCDRatios.exe.dir/src/schrodinger/solvspec.cpp.i
 	$(MAKE) -f CMakeFiles/fitSingletAVM.exe.dir/build.make CMakeFiles/fitSingletAVM.exe.dir/src/schrodinger/solvspec.cpp.i
 	$(MAKE) -f CMakeFiles/fitHVQCDWithoutGlueball.exe.dir/build.make CMakeFiles/fitHVQCDWithoutGlueball.exe.dir/src/schrodinger/solvspec.cpp.i
@@ -1022,6 +1095,7 @@ src/schrodinger/solvspec.s: src/schrodinger/solvspec.cpp.s
 src/schrodinger/solvspec.cpp.s:
 	$(MAKE) -f CMakeFiles/test_HVQCD.exe.dir/build.make CMakeFiles/test_HVQCD.exe.dir/src/schrodinger/solvspec.cpp.s
 	$(MAKE) -f CMakeFiles/test_schrodinger.exe.dir/build.make CMakeFiles/test_schrodinger.exe.dir/src/schrodinger/solvspec.cpp.s
+	$(MAKE) -f CMakeFiles/savePotentials.exe.dir/build.make CMakeFiles/savePotentials.exe.dir/src/schrodinger/solvspec.cpp.s
 	$(MAKE) -f CMakeFiles/HVQCDRatios.exe.dir/build.make CMakeFiles/HVQCDRatios.exe.dir/src/schrodinger/solvspec.cpp.s
 	$(MAKE) -f CMakeFiles/fitSingletAVM.exe.dir/build.make CMakeFiles/fitSingletAVM.exe.dir/src/schrodinger/solvspec.cpp.s
 	$(MAKE) -f CMakeFiles/fitHVQCDWithoutGlueball.exe.dir/build.make CMakeFiles/fitHVQCDWithoutGlueball.exe.dir/src/schrodinger/solvspec.cpp.s
@@ -1034,6 +1108,33 @@ src/schrodinger/solvspec.cpp.s:
 	$(MAKE) -f CMakeFiles/fitHVQCDWithoutGlueballScalars.exe.dir/build.make CMakeFiles/fitHVQCDWithoutGlueballScalars.exe.dir/src/schrodinger/solvspec.cpp.s
 	$(MAKE) -f CMakeFiles/fitYangMills.exe.dir/build.make CMakeFiles/fitYangMills.exe.dir/src/schrodinger/solvspec.cpp.s
 .PHONY : src/schrodinger/solvspec.cpp.s
+
+tests/test_EfficientNelderMead.o: tests/test_EfficientNelderMead.cpp.o
+
+.PHONY : tests/test_EfficientNelderMead.o
+
+# target to build an object file
+tests/test_EfficientNelderMead.cpp.o:
+	$(MAKE) -f CMakeFiles/test_EfficientNelderMead.exe.dir/build.make CMakeFiles/test_EfficientNelderMead.exe.dir/tests/test_EfficientNelderMead.cpp.o
+.PHONY : tests/test_EfficientNelderMead.cpp.o
+
+tests/test_EfficientNelderMead.i: tests/test_EfficientNelderMead.cpp.i
+
+.PHONY : tests/test_EfficientNelderMead.i
+
+# target to preprocess a source file
+tests/test_EfficientNelderMead.cpp.i:
+	$(MAKE) -f CMakeFiles/test_EfficientNelderMead.exe.dir/build.make CMakeFiles/test_EfficientNelderMead.exe.dir/tests/test_EfficientNelderMead.cpp.i
+.PHONY : tests/test_EfficientNelderMead.cpp.i
+
+tests/test_EfficientNelderMead.s: tests/test_EfficientNelderMead.cpp.s
+
+.PHONY : tests/test_EfficientNelderMead.s
+
+# target to generate assembly for a file
+tests/test_EfficientNelderMead.cpp.s:
+	$(MAKE) -f CMakeFiles/test_EfficientNelderMead.exe.dir/build.make CMakeFiles/test_EfficientNelderMead.exe.dir/tests/test_EfficientNelderMead.cpp.s
+.PHONY : tests/test_EfficientNelderMead.cpp.s
 
 tests/test_HVQCD.o: tests/test_HVQCD.cpp.o
 
@@ -1097,8 +1198,10 @@ help:
 	@echo "... depend"
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
+	@echo "... test_EfficientNelderMead.exe"
 	@echo "... test_HVQCD.exe"
 	@echo "... test_schrodinger.exe"
+	@echo "... savePotentials.exe"
 	@echo "... HVQCDRatios.exe"
 	@echo "... fitSingletAVM.exe"
 	@echo "... fitHVQCDWithoutGlueball.exe"
@@ -1143,6 +1246,9 @@ help:
 	@echo "... physics/fitYangMills.o"
 	@echo "... physics/fitYangMills.i"
 	@echo "... physics/fitYangMills.s"
+	@echo "... physics/savePotentials.o"
+	@echo "... physics/savePotentials.i"
+	@echo "... physics/savePotentials.s"
 	@echo "... src/HolographicVQCD.o"
 	@echo "... src/HolographicVQCD.i"
 	@echo "... src/HolographicVQCD.s"
@@ -1167,6 +1273,9 @@ help:
 	@echo "... src/schrodinger/solvspec.o"
 	@echo "... src/schrodinger/solvspec.i"
 	@echo "... src/schrodinger/solvspec.s"
+	@echo "... tests/test_EfficientNelderMead.o"
+	@echo "... tests/test_EfficientNelderMead.i"
+	@echo "... tests/test_EfficientNelderMead.s"
 	@echo "... tests/test_HVQCD.o"
 	@echo "... tests/test_HVQCD.i"
 	@echo "... tests/test_HVQCD.s"
