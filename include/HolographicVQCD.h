@@ -213,4 +213,6 @@ const std::vector<double> Ra0_rho = {1.9007, 2.6112};
 const std::vector<double> Romega_rho = {1.01, 1.83, 2.15};
 const std::vector<double> Rf1_rho = {1.65, 1.84};
 
+HVQCD& hvqcd();
+
 #endif

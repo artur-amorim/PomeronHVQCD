@@ -1236,3 +1236,9 @@ void computeHVQCDRatios(const HVQCD &hvqcd)
     for(int i = 0; i < Rf1_rho.size(); i++) std::cout << Rf1Pred[i] << '\t' << Rf1_rho[i] << '\t' << (Rf1Pred[i] - Rf1_rho[i]) / Rf1_rho[i] << std::endl;
     std::cout << std::endl;
 }
+
+HVQCD& hvqcd()
+{
+    static HVQCD bck;
+    return bck;
+}
