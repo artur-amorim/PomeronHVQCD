@@ -100,7 +100,7 @@ double J(const vector<double> X)
     }
     // Now we impose the constraint (12-x W0) kIR/VgIR/6>1
     double constr = (12-xf*W0)*kIR/(VgIR*6);
-    erms += 0.01 * exp(- ( constr - 1) ); // The more the constraint is satisfied the smaller the penalty
+    erms += 0.1 * exp(- ( constr - 1) ); // The more the constraint is satisfied the smaller the penalty
     // We also impose the tachyo mass squared to be larger than 3.5
     double tmass2 = hvqcd.TachyonMassSquareIR();
     erms += 0.01 * exp( - (tmass2 - 3.5)) ;
@@ -115,7 +115,7 @@ int main(int argc, char ** argv)
     double sc, ksc, wsc, W0, w0, kU1, wU1;
     double VgIR, WIR, kIR, wIR, W1, k1, w1;
     double xf = 2.0/3, tau0, Za = 133, ca = 0.26;
-    if (argc < 14)
+    if (argc < 16)
     {
         sc = 2.50485; ksc = 3.0; wsc = 1.56; W0 = 2.5; w0 = 1.26; kU1 = 11./9; wU1 = 0.0;
         VgIR = 3.47852; WIR = 0.9; kIR = 1.8; wIR = 5.0; W1 = 0.0; k1 = -0.23;
