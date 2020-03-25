@@ -125,6 +125,10 @@ class HVQCD : public Background
         double dVf0dPhi(const double phi) const;
         // Declaration of the d2Vf0dPhi2 potential
         double d2Vf0dPhi2(const double phi) const;
+        // Declaration of the Vtau potential;
+        double Vtau(const double tau) const;
+        // Declaration of the dVtau potential;
+        double dVtau(const double tau) const;
         // Declaration of the k potential as a function of Phi
         double k(const double phi) const;
         // Declaration of dk/dPhi potential
@@ -166,6 +170,8 @@ class HVQCD : public Background
         std::vector<double> d3taudA3() const;
         // Declaration of u
         std::vector<double> u() const;
+        // Declaration of GVec
+        std::vector<double> G() const;
         // Declaration of QuarkMass
         double QuarkMass() const;
         // Declaration of saveBackgroundFields

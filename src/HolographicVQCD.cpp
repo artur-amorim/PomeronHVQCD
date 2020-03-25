@@ -82,6 +82,18 @@ double HVQCD::d2Vf0dPhi2(const double phi) const
     return ans;
 }
 
+// Definition of the Vtau potential
+double HVQCD::Vtau(const double tau) const
+{
+    return 1;
+}
+
+// Definition of the dVtau potential
+double HVQCD::dVtau(const double tau) const
+{
+    return 0;
+}
+
 double HVQCD::d2Vf0dlambda2(const double l) const
 {
     // Definition of the d2Vf0/dlambda2 potential
@@ -892,6 +904,16 @@ std::vector<double> HVQCD::d2taudA2() const {return this->d2taus;}
 std::vector<double> HVQCD::d3taudA3() const {return this->d3taus;}
 
 std::vector<double> HVQCD::u() const {return this->us;}
+
+std::vector<double> HVQCD::G() const
+{
+    /*
+        Returns a std::vector<double> whose elements are the values of G
+    */
+    std::vector<double> g_vals(As.size());
+    for(int i = 0; i < As.size(); i++) g_vals[i] = G(qs[i], Phis[i], dtaus[i]);
+    return g_vals;
+}
 
 double HVQCD::QuarkMass() const
 {
