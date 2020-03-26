@@ -17,7 +17,10 @@ HVQCD::HVQCD(const double ssc, const double kksc, const double wwsc,
              Background(ssc, VVgIR), ksc(kksc), wsc(wwsc), W0(WW0), w0(ww0), 
              kU1(kkU1), wU1(wwU1), WIR(WWIR), kIR(kkIR), wIR(wwIR), W1(WW1),
              k1(kk1), w1(ww1), xf(xxf), tau0(ttau0),
-             Za(za), ca(c) {}
+             Za(za), ca(c), taus({}), dtaus({}), d2qs({}),
+            d2taus({}), d3taus({}), us({}), Astrings({}),
+            dAstrings({}), d2Astrings({}), U2s({}), aFs({}),
+            bFs({}), cFs({}), dFs({}), e2As({}), e2Astrings({}) {}
 
 HVQCD::HVQCD(const HVQCD &hvqcd):
     Background(hvqcd), ksc(hvqcd.ksc), wsc(hvqcd.wsc),
@@ -25,7 +28,12 @@ HVQCD::HVQCD(const HVQCD &hvqcd):
     kIR(hvqcd.kIR), wIR(hvqcd.wIR), W1(hvqcd.W1), k1(hvqcd.k1), w1(hvqcd.w1),
     xf(hvqcd.xf), tau0(hvqcd.tau0), Za(hvqcd.Za), ca(hvqcd.ca), mq(hvqcd.mq),
     taus(hvqcd.taus), dtaus(hvqcd.dtaus), d2qs(hvqcd.d2qs),
-    d2taus(hvqcd.d2taus), d3taus(hvqcd.d3taus), us(hvqcd.us) {}
+    d2taus(hvqcd.d2taus), d3taus(hvqcd.d3taus), us(hvqcd.us),
+    Astrings(hvqcd.Astrings), dAstrings(hvqcd.dAstrings),
+    d2Astrings(hvqcd.d2Astrings),
+    U2s(hvqcd.U2s), aFs(hvqcd.aFs), bFs(hvqcd.bFs),
+    cFs(hvqcd.cFs), dFs(hvqcd.dFs), e2As(hvqcd.e2As),
+    e2Astrings(hvqcd.e2Astrings) {}
 
 
 HVQCD::~HVQCD(){}
@@ -716,6 +724,36 @@ void HVQCD::finalizeBackground()
     As = A; zs = z; us = u; qs = q; Phis = Phi, taus = tau; dqs = dq; dPhis = dPhi; dtaus = dtau;
     d2qs = d2q; d2Phis = d2Phi; d2taus = d2tau;
     d3taus = d3tau;
+
+    // Compute Astring, dAstring and d2Astring
+    for(int i = 0; i < As.size(); i++)
+    {
+        Astrings[i] = As[i] + 2 * Phis[i] / 3.0 ;
+        dAstrings[i] = std::exp(As[i]) / qs[i] + 2 * (std::exp(As[i]) * dPhis[i] / qs[i]) / 3.0 ;
+        d2Astrings[i] = std::exp(2*As[i]) * (1 - dqs[i] / qs[i]) / std::pow(qs[i], 2);          
+        d2Astrings[i] += 2 * std::exp(2 * As[i]) * (dPhis[i] - dqs[i] * dPhis[i] /qs[i] + d2Phis[i]) / (3 * std::pow(qs[i], 2));
+    }
+    // Now we compute U2s, aFs, bFs, cFs and dFs
+    U2s.resize(As.size()); aFs.resize(As.size());
+    bFs.resize(As.size()); cFs.resize(As.size());
+    dFs.resize(As.size());
+    for(int i = 0; i < As.size(); i++)
+    {
+        // Compute U2s
+        U2s[i] = (15.0/4) * std::exp(2*As[i]) / std::pow(qs[i],2.0) - 1.5 * std::exp(2 * As[i]) * dqs[i] / std::pow(qs[i], 3.0);
+        aFs[i] = std::exp(2 * As[i]) * (dPhis[i] - dqs[i] * dPhis[i] /qs[i] + d2Phis[i]) / std::pow(qs[i], 2);
+        bFs[i] = d2Astrings[i] - dAstrings[i] * dAstrings[i];
+        cFs[i] = std::pow(std::exp(As[i]) * dPhis[i] / qs[i], 2);
+        dFs[i] = std::pow( std::exp(As[i]) * dtaus[i] / qs[i], 2);
+    }
+
+    // Compute e2As and e2Astrings
+    e2As.resize(As.size()); e2Astrings.resize(As.size());
+    for(int i = 0; i < As.size(); i++)
+    {
+        e2As[i] = std::exp(2*As[i]);
+        e2Astrings[i] = std::exp(2 * Astrings[i]);
+    }
 }
 
 void HVQCD::solve()
@@ -893,6 +931,12 @@ void HVQCD::setZa(const double za) {Za = za;}
 
 void HVQCD::setca(const double cca) {ca = cca;}
 
+std::vector<double> HVQCD::Astring() const {return this->Astrings;}
+
+std::vector<double> HVQCD::dAstring() const {return this->dAstrings;}
+
+std::vector<double> HVQCD::d2Astring() const {return this->d2Astrings;}
+
 std::vector<double> HVQCD::tau() const {return this->taus;}
 
 std::vector<double> HVQCD::dtaudA() const {return this->dtaus;}
@@ -914,6 +958,20 @@ std::vector<double> HVQCD::G() const
     for(int i = 0; i < As.size(); i++) g_vals[i] = G(qs[i], Phis[i], dtaus[i]);
     return g_vals;
 }
+
+std::vector<double> HVQCD::U2() const {return this->U2s;}
+
+std::vector<double> HVQCD::aF() const {return this->aFs;}
+
+std::vector<double> HVQCD::bF() const {return this->bFs;}
+
+std::vector<double> HVQCD::cF() const {return this->cFs;}
+
+std::vector<double> HVQCD::dF() const {return this->dFs;}
+
+std::vector<double> HVQCD::e2A() const {return this->e2As;}
+
+std::vector<double> HVQCD::e2Astring() const  {return this->e2Astrings;}
 
 double HVQCD::QuarkMass() const
 {

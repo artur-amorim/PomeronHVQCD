@@ -23,6 +23,12 @@ class HVQCD : public Background
         std::vector<double> AYM2, zYM2, uYM2, qYM2, PhiYM2, tauYM2, dqYM2, dPhiYM2, dtauYM2, d2qYM2, d2PhiYM2, d2tauYM2, d3tauYM2;
         // Containers of the values of lambdaUV, taun = exp(A) tau, dlambdaUV/dA, dtaun/dA and AUV
         std::vector<double> lUVs, tauns, dlUVs, dtauns, AUVs;
+        // Containers of Astring, dAstring, d2Astring
+        std::vector<double> Astrings, dAstrings, d2Astrings;
+        // Containers that will be useful latter for Regge theory
+        std::vector<double> U2s, aFs, bFs, cFs, dFs;
+        // Containers which contain e^(2 A) and e^(2Astring)
+        std::vector<double> e2As, e2Astrings;
         // Declaration of Vf0 as a function of lambda
         double Vf0l(const double l) const;
         // Declaration of dVf0/dlambda
@@ -158,6 +164,12 @@ class HVQCD : public Background
         // Setter of Za and ca
         void setZa(const double za);
         void setca(const double cca);
+        // Declaration of Astring getter
+        std::vector<double> Astring() const;
+        // Declaration of dAstringdz getter
+        std::vector<double> dAstring() const;
+        // Declaratio of d2Astringdz2 getter
+        std::vector<double> d2Astring() const;
         // Declaration of tau getter
         std::vector<double> tau() const;
         // Declaration of dtau/dA getter
@@ -170,8 +182,22 @@ class HVQCD : public Background
         std::vector<double> d3taudA3() const;
         // Declaration of u
         std::vector<double> u() const;
-        // Declaration of GVec
+        // Declaration of G
         std::vector<double> G() const;
+        // Declaration of U2 getter
+        std::vector<double> U2() const;
+        // Declaration of aF getter
+        std::vector<double> aF() const;
+        // Declaration of bF getter
+        std::vector<double> bF() const;
+        // Declaration of cF getter
+        std::vector<double> cF() const;
+        // Declaration of dF getter
+        std::vector<double> dF() const;
+        // Declaration of e2A getter
+        std::vector<double> e2A() const;
+        // Declaration of e2Astring getter
+        std::vector<double> e2Astring() const;
         // Declaration of QuarkMass
         double QuarkMass() const;
         // Declaration of saveBackgroundFields
