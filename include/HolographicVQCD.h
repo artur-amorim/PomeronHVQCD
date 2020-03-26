@@ -27,8 +27,8 @@ class HVQCD : public Background
         std::vector<double> Astrings, dAstrings, d2Astrings;
         // Containers that will be useful latter for Regge theory
         std::vector<double> U2s, aFs, bFs, cFs, dFs;
-        // Containers which contain e^(2 A) and e^(2Astring)
-        std::vector<double> e2As, e2Astrings;
+        // Containers which contain e^(2 A), e^(2Astring) and l1_2
+        std::vector<double> e2As, e2Astrings, l1_2s;
         // Declaration of Vf0 as a function of lambda
         double Vf0l(const double l) const;
         // Declaration of dVf0/dlambda
@@ -198,6 +198,8 @@ class HVQCD : public Background
         std::vector<double> e2A() const;
         // Declaration of e2Astring getter
         std::vector<double> e2Astring() const;
+        // Declaration of l1_2 = sqrt(exp(Phi))
+        std::vector<double> l1_2() const;
         // Declaration of QuarkMass
         double QuarkMass() const;
         // Declaration of saveBackgroundFields

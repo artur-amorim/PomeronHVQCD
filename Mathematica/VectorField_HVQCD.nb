@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[   1147482,      30442]
-NotebookOptionsPosition[   1135965,      30263]
-NotebookOutlinePosition[   1136331,      30279]
-CellTagsIndexPosition[   1136288,      30276]
+NotebookDataLength[   1151445,      30562]
+NotebookOptionsPosition[   1139461,      30375]
+NotebookOutlinePosition[   1139827,      30391]
+CellTagsIndexPosition[   1139784,      30388]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -30258,6 +30258,118 @@ Cell[BoxData[
   3.794093830972086*^9, {3.7940938624583683`*^9, 3.7940938735946608`*^9}, 
    3.79409392718013*^9},
  CellLabel->"Out[92]=",ExpressionUUID->"990d3bd8-e5b4-4dad-8a20-14102f981469"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", " ", 
+   RowBox[{"Compute", " ", 
+    FractionBox[
+     RowBox[{
+      SuperscriptBox["d", "2"], "\[CapitalPhi]"}], 
+     SuperscriptBox["dz", "2"]], " ", "in", " ", "terms", " ", "of", " ", 
+    "derivatives", " ", "of", " ", "A"}], "*)"}], "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    FractionBox[
+     RowBox[{"Exp", "[", "A", "]"}], 
+     RowBox[{"q", "[", "A", "]"}]], 
+    RowBox[{"D", "[", 
+     RowBox[{
+      RowBox[{
+       FractionBox[
+        RowBox[{"Exp", "[", "A", "]"}], 
+        RowBox[{"q", "[", "A", "]"}]], 
+       RowBox[{
+        RowBox[{"\[CapitalPhi]", "'"}], "[", "A", "]"}]}], ",", "A"}], 
+     "]"}]}], "//", "Expand"}]}]], "Input",
+ CellChangeTimes->{{3.7941939121951323`*^9, 3.794193924979783*^9}, {
+  3.7941941245002203`*^9, 3.794194146457264*^9}},
+ CellLabel->"In[46]:=",ExpressionUUID->"c0d7a3a9-de97-412f-b0ea-9a383f83669f"],
+
+Cell[BoxData[
+ RowBox[{
+  FractionBox[
+   RowBox[{
+    SuperscriptBox["\[ExponentialE]", 
+     RowBox[{"2", " ", "A"}]], " ", 
+    RowBox[{
+     SuperscriptBox["\[CapitalPhi]", "\[Prime]",
+      MultilineFunction->None], "[", "A", "]"}]}], 
+   SuperscriptBox[
+    RowBox[{"q", "[", "A", "]"}], "2"]], "-", 
+  FractionBox[
+   RowBox[{
+    SuperscriptBox["\[ExponentialE]", 
+     RowBox[{"2", " ", "A"}]], " ", 
+    RowBox[{
+     SuperscriptBox["q", "\[Prime]",
+      MultilineFunction->None], "[", "A", "]"}], " ", 
+    RowBox[{
+     SuperscriptBox["\[CapitalPhi]", "\[Prime]",
+      MultilineFunction->None], "[", "A", "]"}]}], 
+   SuperscriptBox[
+    RowBox[{"q", "[", "A", "]"}], "3"]], "+", 
+  FractionBox[
+   RowBox[{
+    SuperscriptBox["\[ExponentialE]", 
+     RowBox[{"2", " ", "A"}]], " ", 
+    RowBox[{
+     SuperscriptBox["\[CapitalPhi]", "\[Prime]\[Prime]",
+      MultilineFunction->None], "[", "A", "]"}]}], 
+   SuperscriptBox[
+    RowBox[{"q", "[", "A", "]"}], "2"]]}]], "Output",
+ CellChangeTimes->{{3.7941939214046297`*^9, 3.794193925250855*^9}, 
+   3.794194203279854*^9},
+ CellLabel->"Out[46]=",ExpressionUUID->"50f3cef6-ca5a-4f1b-a4d0-08ed603759b8"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", " ", 
+   RowBox[{"Compute", " ", 
+    FractionBox[
+     RowBox[{
+      SuperscriptBox["d", "2"], "A"}], 
+     SuperscriptBox["dz", "2"]], " ", "in", " ", "terms", " ", "of", " ", 
+    "derivatives", " ", "of", " ", "A"}], " ", "*)"}], "\[IndentingNewLine]", 
+  
+  RowBox[{
+   RowBox[{
+    FractionBox[
+     RowBox[{"Exp", "[", "A", "]"}], 
+     RowBox[{"q", "[", "A", "]"}]], 
+    RowBox[{"D", "[", 
+     RowBox[{
+      FractionBox[
+       RowBox[{"Exp", "[", "A", "]"}], 
+       RowBox[{"q", "[", "A", "]"}]], ",", "A"}], "]"}]}], "//", 
+   "Expand"}]}]], "Input",
+ CellChangeTimes->{{3.794194112146152*^9, 3.7941942074822683`*^9}},
+ CellLabel->"In[47]:=",ExpressionUUID->"43447d1a-d272-4e21-9ebd-8dda10fd508b"],
+
+Cell[BoxData[
+ RowBox[{
+  FractionBox[
+   SuperscriptBox["\[ExponentialE]", 
+    RowBox[{"2", " ", "A"}]], 
+   SuperscriptBox[
+    RowBox[{"q", "[", "A", "]"}], "2"]], "-", 
+  FractionBox[
+   RowBox[{
+    SuperscriptBox["\[ExponentialE]", 
+     RowBox[{"2", " ", "A"}]], " ", 
+    RowBox[{
+     SuperscriptBox["q", "\[Prime]",
+      MultilineFunction->None], "[", "A", "]"}]}], 
+   SuperscriptBox[
+    RowBox[{"q", "[", "A", "]"}], "3"]]}]], "Output",
+ CellChangeTimes->{3.7941941193705397`*^9, 3.794194207843814*^9},
+ CellLabel->"Out[47]=",ExpressionUUID->"18b31829-9394-4a93-bf9e-d1bd451a466d"]
 }, Open  ]]
 }, Open  ]]
 },
@@ -30442,6 +30554,14 @@ Cell[CellGroupData[{
 Cell[1132677, 30159, 2255, 70, 191, "Input",ExpressionUUID->"0820e963-f0bd-40a3-832b-0ae119bf60f9"],
 Cell[1134935, 30231, 549, 15, 74, "Output",ExpressionUUID->"d0b2eb83-bb08-4444-9a11-d3207e0301b8"],
 Cell[1135487, 30248, 450, 11, 74, "Output",ExpressionUUID->"990d3bd8-e5b4-4dad-8a20-14102f981469"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[1135974, 30264, 903, 25, 121, "Input",ExpressionUUID->"c0d7a3a9-de97-412f-b0ea-9a383f83669f"],
+Cell[1136880, 30291, 1165, 34, 78, "Output",ExpressionUUID->"50f3cef6-ca5a-4f1b-a4d0-08ed603759b8"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[1138082, 30330, 752, 22, 121, "Input",ExpressionUUID->"43447d1a-d272-4e21-9ebd-8dda10fd508b"],
+Cell[1138837, 30354, 596, 17, 78, "Output",ExpressionUUID->"18b31829-9394-4a93-bf9e-d1bd451a466d"]
 }, Open  ]]
 }, Open  ]]
 }

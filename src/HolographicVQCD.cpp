@@ -748,11 +748,12 @@ void HVQCD::finalizeBackground()
     }
 
     // Compute e2As and e2Astrings
-    e2As.resize(As.size()); e2Astrings.resize(As.size());
+    e2As.resize(As.size()); e2Astrings.resize(As.size()); l1_2s.resize(As.size());
     for(int i = 0; i < As.size(); i++)
     {
         e2As[i] = std::exp(2*As[i]);
         e2Astrings[i] = std::exp(2 * Astrings[i]);
+        l1_2s[i] = std::exp(0.5 * Phis[i]);
     }
 }
 
@@ -972,6 +973,8 @@ std::vector<double> HVQCD::dF() const {return this->dFs;}
 std::vector<double> HVQCD::e2A() const {return this->e2As;}
 
 std::vector<double> HVQCD::e2Astring() const  {return this->e2Astrings;}
+
+std::vector<double> HVQCD::l1_2() const {return this->l1_2s;}
 
 double HVQCD::QuarkMass() const
 {
