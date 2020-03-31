@@ -10,7 +10,7 @@ class HVQCD : public Background
         // Matrix type definition
         typedef boost::numeric::ublas::matrix<double> matrix_type;
         // Parameters of the Vf and k potentials
-        double ksc, kU1, W0, WIR, kIR, W1, k1, xf, tau0;
+        double ksc, kU1, W0, WIR, kIR, W1, k1, tausc, xf, tau0;
         // Parameters of the w potential
         double wsc, wU1, w0, wIR, w1;
         // Parameters of the Z(lambda) function
@@ -39,7 +39,7 @@ class HVQCD : public Background
         double Vfl(const double l, const double tau) const;
         // Declaration of dVf/dlamda
         double dVfldlambda(const double l, const double tau) const;
-        // Declaration of the Vf = Vf0 exp(-tau^2) potential as a funtion of Phi
+        // Declaration of the Vf = Vf0 (1 + tausc tau^2) exp(-tau^2) potential as a funtion of Phi
         double Vf(const double phi, const double tau) const;
         // Declaration of the dVfdPhi = dVf0dPhi exp(-tau^2) potential
         double dVfdPhi(const double phi, const double tau) const;
@@ -115,12 +115,11 @@ class HVQCD : public Background
     public:
         // Class Constructor
         HVQCD(const double ssc = 3.0, const double kksc = 3.0, const double wwsc = 1.56,
-             const double WW0 = 2.5, const double ww0 = 1.26,
-             const double kkU1 = 11./9, const double wwU1 = 0.0,
-             const double VVgIR = 2.05, const double WWIR = 0.9, const double kkIR = 1.8, const double wwIR = 5.0,
-             const double WW1 = 0.0, const double kk1 = -0.23, const double ww1 = 0.0,
-             const double xxf = 1.0, const double ttau0 = 1.0,
-             const double za = 133, const double c = 0.26);
+             const double WW0 = 2.5, const double ww0 = 1.26, const double kkU1 = 11./9,
+             const double wwU1 = 0.0, const double VVgIR = 2.05, const double WWIR = 0.9,
+             const double kkIR = 1.8, const double wwIR = 5.0, const double WW1 = 0.0,
+             const double kk1 = -0.23, const double ww1 = 0.0, const double ttausc = 0,
+             const double xxf = 1.0, const double ttau0 = 1.0, const double za = 133, const double c = 0.26);
         // Class copy constructor
         HVQCD(const HVQCD &hvqcd);
         // Class destructor
@@ -131,7 +130,7 @@ class HVQCD : public Background
         double dVf0dPhi(const double phi) const;
         // Declaration of the d2Vf0dPhi2 potential
         double d2Vf0dPhi2(const double phi) const;
-        // Declaration of the Vtau potential;
+        // Declaration of the Vtau potential = (1+ tausc tau^2)e^(-tau^2);
         double Vtau(const double tau) const;
         // Declaration of the dVtau potential;
         double dVtau(const double tau) const;
