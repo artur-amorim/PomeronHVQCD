@@ -27,7 +27,7 @@ In this section we review how we compute the spectrum of HVQCD in our fits.
 The theory in the bulk that we will consider in these notes is dual to QCD in the Veneziano limit. Its action can be divided in a gluon and flavour sector and in the Einstein frame takes the form
 \begin{align}
 &S = S_g + S_f, \\
-&S_g = - M_p^3 N_c^2 \int d^5X \sqrt{g} \left[ R - \frac{4}{3} \frac{{\left( \partial \lambda \right)}^2}{\lambda^2}+ V_g \left( \lambda\right) \right], \\
+&S_g =  M_p^3 N_c^2 \int d^5X \sqrt{g} \left[ R - \frac{4}{3} \frac{{\left( \partial \lambda \right)}^2}{\lambda^2}+ V_g \left( \lambda\right) \right], \\
 &S_f = - x M_p^3 N_c^2 \int d^5 X V_f\left(\lambda, T\right) \sqrt{det\left(g_{ab} + k\left(\lambda\right) \partial_a \tau \partial_b \tau \right)},
 \label{eq: HVQCD action}
 \end{align}
@@ -566,6 +566,217 @@ $Z_a$ & 1.86124 & $c_a$ & $6.22234 \times 10^{-07}$ \\
   \caption{Ratios for the best fit parameters for fit without glueball and scalars.}
    \label{figure: fit without glueball scalars}
 \end{figure}
+
+
+\section{Spin J field EOM}
+
+In this section we will propose a phenomenological equation of motion for the spin J fields. First we will derive the equation of motion of the graviton in the Einstein frame which, as we shall see, is the same as in the Improved Holographic QCD model. This result is consistent with equation (A.108) from 1309.2286 which is the same result found in IHQCD.
+
+To find the equation of motion of the graviton we ned to perturb the actions (\ref{eq: HVQCD action}) with respect to the metric. The $S_g$ term contributes with
+\begin{align}
+&\delta S_g = M^3 N_c^2 \int d^5X \sqrt{-g} \left[ R_{ab} - \frac{1}{2} g_{ab} \left( R -\frac{4}{3} \nabla_a \Phi \nabla^a \Phi + V_g \left(\lambda\right) \right)- \frac{4}{3} \nabla_a \Phi \nabla_b \Phi \right],  \notag \\
+& \delta S_f = - M^3 N_c N_f \int d^5 X V_f \left( \lambda, \tau \right) \delta \sqrt{- \text{det} \left( g_{MN} + k\left(\lambda\right) \partial_M \tau \partial_N \tau \right)}.
+\end{align}
+To make further progress we define $g_{eff. MN} = g_{MN} +  k\left(\lambda\right) \partial_M \tau \partial_N \tau $ and its matrix inverse $g_{eff.}^{MA}g_{eff. AN} = \delta^M_N$. The following identity will be useful
+\begin{align}
+\left( g_{eff}^{AB} + \delta  g_{eff}^{AB}\right) \left( g_{eff. BC} + \delta g_{BC}\right) = \delta^A_C \Leftrightarrow \delta g_{eff.}^{AD} = - g_{eff}^{AB} g_{eff.}^{DC} \delta g_{BC}.
+\end{align}
+From Jacobi's formula it follows
+\begin{align}
+\delta \sqrt{-\text{det} \left(g_{eff. MN}\right)} = -\frac{1}{2} \sqrt{-\text{det} \left(g_{eff. MN}\right)} g_{eff. MN} \delta g_{eff.}^{MN} = \frac{1}{2} \sqrt{-\text{det} \left(g_{eff. MN}\right)} g_{eff.}^{AB} \delta g_{AB}
+\end{align}
+Furthermore $\delta g_{AB} = - g_{AC} g_{BD} \delta g^{CD}$ and the contribution from $S_f$ is
+\begin{align}
+\delta S_f = \frac{1}{2} M^3 N_c N_f \int d^5X V_f\left(\lambda, \tau\right) \sqrt{-\text{det} g_{eff. MN}} g_{eff.}^{AB}g_{AC}g_{BD} \delta g^{CD}.
+\end{align}
+
+The Einstein equations are then
+\begin{align}
+R_{CD} - \frac{1}{2} g_{CD} \left( R - \frac{4}{3} {\left( \nabla \Phi \right)}^2 + V_g \left(\lambda\right) \right) - \frac{4}{3} \nabla_C \Phi \nabla_D \Phi + \frac{1}{2} x_f V_f \frac{\sqrt{-g_{eff.}}}{\sqrt{-g}} g_{eff.}^{AB} g_{AC} g_{BD} = 0.
+\end{align}
+Taking the trace of this equation we find that the Ricci scalar is given by
+\begin{equation}
+R = \frac{4}{3} {\left( \nabla \Phi \right)}^2 - \frac{5}{3} V_g \left( \lambda \right) + \frac{1}{3} x V_f \frac{\sqrt{-g_{eff.}}}{\sqrt{-g}} g_{eff.}^{AB} g_{AB},
+\end{equation}
+and substituting it in the Einstein equations we have
+\begin{align}
+R_{CD} - \frac{1}{2} g_{CD} \left(-\frac{2}{3} V_g \left(\lambda\right) + \frac{1}{3} x V_f \frac{\sqrt{-g_{eff.}}}{\sqrt{-g}} g_{eff.}^{AB} g_{AB} \right) - \frac{4}{3} \nabla_C \Phi \nabla_D \Phi + \frac{1}{2} x_f V_f \frac{\sqrt{-g_{eff.}}}{\sqrt{-g}} g_{eff.}^{AB} g_{AC} g_{BD} = 0.
+\end{align}
+Moreover $g_{eff.} = g + k\left( \lambda \right) d \tau \otimes d \tau$ meaning that $\sqrt{-g_{eff.}} = \sqrt{-g} \sqrt{\text{det} \left( 1+ k \left( \lambda \right) g^{-1} d \tau \otimes d \tau \right)}$ resultin in equation
+\begin{align}
+&R_{CD} - \frac{1}{2} g_{CD} \left( - \frac{2}{3} V_g \left( \lambda \right)  + \frac{1}{3} x V_f \sqrt{\text{det} \left( 1+ k \left( \lambda \right) g^{-1} d \tau \otimes d \tau \right)} g_{eff.}^{AB} g_{AB} \right) - \frac{4}{3} \nabla_C \Phi \nabla_D \Phi + \notag \\\ 
+&+ \frac{1}{2} x V_f \sqrt{\text{det} \left( 1+ k \left( \lambda \right) g^{-1} d \tau \otimes d \tau \right)} g_{eff.}^{AB} g_{AC} g_{BD} = 0
+\end{align}
+
+The linearized Einstein equations are
+\begin{align}
+& \delta R_{CD} - \frac{1}{2} h_{CD} \left( - \frac{2}{3} V_g \left(\lambda\right) + \frac{1}{3} x V_f \sqrt{1 + k\left(\lambda\right) e^{-2A} \dot{\tau}^2} g_{eff.}^{AB} g_{AB} \right) - \frac{1}{2} g_{CD} \frac{1}{3} x V_f \times \notag \\
+& \times \left( \delta  \sqrt{1 + k\left(\lambda\right) g^{-1} d \tau \otimes d \tau} g_{eff.}^{AB}g_{AB} +  \sqrt{1 + k\left(\lambda\right) e^{-2A} \dot{\tau}^2} \delta g_{eff.}^{AB} g_{AB} +  \sqrt{1 + k\left(\lambda\right) e^{-2A} \dot{\tau}^2} g^{AB}_{eff.} h_{AB} \right) + \notag \\
+& + \frac{1}{2} x V_f \left(  \delta  \sqrt{1 + k\left(\lambda\right) g^{-1} d \tau \otimes d \tau} g_{eff.}^{AB} g_{AC} g_{BD} +  \sqrt{1 + k\left(\lambda\right) e^{-2A} \dot{\tau}^2} \delta g_{eff.}^{AB} g_{AC} g_{BD} + \right. \notag \\
+&\left. +  \sqrt{1 + k\left(\lambda\right) e^{-2A} \dot{\tau}^2} g_{eff.}^{AB} h_{AC} g_{BD} +  \sqrt{1 + k\left(\lambda\right) e^{-2A} \dot{\tau}^2} g_{eff.}^{AB} g_{AC} h_{BD}\right) = 0.
+\end{align}
+In order to make progress we first compute
+\begin{align}
+&g_{eff.}^{AB} g_{AB} = 4 + \frac{1}{1 + k\left( \lambda \right) e^{-2A} {\dot{\tau}}^2} \\
+& \delta g_{eff}^{AB} = - g_{eff}^{AM} g_{eff.}^{BN} h_{MN} \\
+& \delta  \sqrt{1 + k\left(\lambda\right) g^{-1} d \tau \otimes d \tau} = - \frac{1}{2} \frac{k\left( \lambda \right) {\dot{\tau}}^2}{\sqrt{1+e^{-2A} k\left(\lambda\right) {\dot{\tau}}^2}} h^{zz} \\
+& g_{eff}^{AB}h_{AC}g_{BD} + g_{eff.}^{AB} g_{AC} h_{BD} = 2 g_{eff.}^{AB} h_{A\left(C\right.}g_{\left.D\right)B}
+\end{align}
+and define $G = \sqrt{1+e^{-2A} k\left(\lambda\right) {\dot{\tau}}^2}$. The linearized Einstein equations are then
+\begin{align}
+&\delta R_{CD} - \frac{1}{2} h_{CD} \left[ -\frac{2}{3} V_g + \frac{1}{3} x V_f G \left(4 + \frac{1}{G^2} \right)\right] - \frac{1}{6} g_{CD} x V_f \left[ -\frac{1}{2} \frac{k\left(\lambda\right) {\dot{\tau}}^2}{G^2} h^{zz} \left(4 + \frac{1}{G^2}\right) - \right. \notag \\
+& \left. - G g_{eff}^{AM} g_{eff}^{BN} g_{AB} h_{MN} + G g_{eff}^{AB} h_{AB}  \right]  + \frac{1}{2} x V_f \left[ - \frac{1}{2} \frac{k\left(\lambda\right) {\dot{\tau}}^2}{G} h^{zz} g_{eff}^{AB} g_{AC} g_{BD}  - \right. \notag \\
+&\left. - G g_{eff}^{AM} g_{eff}^{BN} h_{MN} g_{AC} g_{BD} + 2 G g_{eff}^{AB} h_{A(C}g_{D)B} \right] = 0
+\end{align}
+The perturbed Ricci tensor is given by
+\begin{align}
+&\delta R_{CD} = R_{P(C}h_{D)}^P - R_{CPDQ}h^{PQ} - \frac{1}{2} \nabla^2 h_{CD} \\
+&R_{P(C}h_{D)}^P = \frac{1}{2} h_{CD} \left[ - \frac{2}{3} V_g + \frac{1}{3} x V_f G \left( 4 + \frac{1}{G^2}\right) \right] + \frac{4}{3} \nabla_P \Phi \nabla_{(C}\Phi h_{D)}^P - \frac{1}{2} x V_f G g_{eff}^{AB} h_{A(C}g_{D)B}
+\end{align}
+where in the last equation we have used Einstein equations.
+Putting everything together we get
+\begin{align}
+&\nabla^2 h_{CD} + 2 R_{CPDQ} h^{PQ} - \frac{8}{3} \nabla_P \Phi \nabla_{(C} \Phi h_{D)}^P + \frac{1}{3} x V_f g_{CD} \left[ - \frac{1}{2} \frac{k\left(\lambda\right) {\dot{\tau}}^2}{G} h^{zz} \left( 4 + \frac{1}{G^2} \right) - \right.  \notag \\
+&\left. - G g_{eff}^{AM} g_{eff}^{BN} g_{AB} h_{MN} + G g_{eff}^{AB} h_{AB}  \right] - x V_f \left[ - \frac{1}{2} \frac{k\left(\lambda\right) {\dot{\tau}}^2}{G} h^{zz} g_{eff.}^{AB} g_{AC} g_{BD}  - \right. \notag \\
+& \left. - G g_{eff}^{AM} g_{eff}^{BN} g_{AC} g_{BD} h_{MN} + G g_{eff}^{AB} h_{A(C} g_{D)B} \right] = 0
+\end{align}
+We can make further progress by computing
+\begin{align}
+&g_{eff}^{AM} g_{eff}^{BN} g_{AB} h_{MN}  = e^{-2A} \left( \frac{h^{zz}}{G^4} + \eta^{\alpha \beta} h_{\alpha \beta} \right) \\
+&g_{eff}^{AB}h_{AB} = e^{-2A} \left( \frac{h_{zz}}{G^2} + \eta^{\alpha \beta} h_{\alpha \beta} \right)
+\end{align}
+Using the definition of G and the above equations one can show that
+\begin{align}
+- \frac{1}{2} \frac{k\left(\lambda\right) {\dot{\tau}}^2}{G} h^{zz} \left( 4 + \frac{1}{G^2} \right) - G g_{eff}^{AM} g_{eff}^{BN} g_{AB} h_{MN} + G g_{eff}^{AB} h_{AB} = e^{-2A} h_{zz} \frac{5 G^2 - 4 G^4 - 1}{2 G^3}
+\end{align}
+We can now write the equation of motion for $h_{CD}$:
+\begin{align}
+&\nabla^2 h_{CD} + 2 R_{CPDQ}h^{PQ} - \frac{8}{3} \nabla_P \Phi \nabla_{(C}\Phi h_{D)}^P + \frac{1}{3} x V_f g_{CD} e^{-2A} h_{zz} \frac{5 G^2 - 4 G^4 -1}{2G^3} - \notag \\
+& - x V_f \left( - \frac{1}{2} \frac{k\left(\lambda\right) {\dot{\tau}}^2}{G} h^{zz} g_{eff}^{AB}g_{AC} g_{BD} - G g_{eff}^{AM} g_{eff}^{BN} g_{AC} g_{BD} h_{MN} + G g_{eff}^{AB} h_{A(C}g_{D)B} \right) = 0
+\end{align}
+
+We now wish to analyse the EOM of $h_{CD}$, that is, study it when $CD = zz$, $CD = z\mu$ and $CD = \mu \nu$. The equations for these cases are respectively
+\begin{align}
+&\nabla^2 h_{zz} + 2 R_{zPzQ} h^{PQ} - \frac{8}{3} {\dot{\Phi}}^2 e^{-2A} h_{zz} + x V_f h_{zz} \frac{G^2 - 2 G^4 +1}{3 G^3} = 0 \\
+& \nabla^2 h_{z\mu} + 2 R_{zP\mu Q} h^{PQ} - \frac{4}{3} {\dot{\Phi}}^2 e^{-2A} h_{z \mu} + x V_f \frac{h_{z\mu}}{G} = 0 \\
+& \nabla^2 h_{\mu \nu} + 2 R_{\mu P \nu Q} h^{PQ} + \frac{1}{2} x V_f \frac{G^2 - 1}{G} h_{zz} \eta_{\mu \nu} + \frac{1}{3} x V_f \eta_{\mu \nu} h_{zz} \frac{5 G^2 - 4 G^4 -1}{2 G^3} = 0
+\end{align}
+If we compute the Riemann tensor components in this background we find
+\begin{align}
+&R_{zPzQ} h^{PQ} = - e^{-2A} h_{\alpha}^\alpha \ddot{A} \\
+&R_{zP\mu Q} h^{PQ} = e^{-2A} h_{z \mu} \ddot{A} \\
+& R_{\mu P \nu Q} h^{PQ} = e^{-2A} h_{\mu \nu} {\dot{A}}^2 - e^{-2A} h_{\alpha}^\alpha \eta_{\mu \nu} {\dot{A}}^2 - e^{-2A} h_{zz} \eta_{\mu \nu} \ddot{A}
+\end{align}
+and for the divergence terms we get
+\begin{align}
+& \nabla^2 h_{zz} = 2 e^{-2A} h_{\alpha}^\alpha {\dot{A}}^2 - 10 e^{-2A} h_{zz}  {\dot{A}}^2  - e^{-2A} \dot{A} \partial_z h_{zz} - 2 e^{-2A} h_{zz} \ddot{A} + e^{-2A} \partial_z^2{h_{zz}} - 4 e^{-2A} \dot{A} \partial_\alpha h_{z}^\alpha + e^{-2A} \partial_\alpha \partial^\alpha h_{zz} \\
+& \nabla^2 h_{z \mu} = - 9 e^{-2A} h_{z\mu} {\dot{A}}^2 - e^{-2A} \dot{A} \partial_z h_{z \mu} - 2 e^{-2A} h_{z \mu} \ddot{A} + e^{-2A} \partial_z^2 h_{z\mu} - 2 e^{-2A} \dot{A} \partial_\alpha h_{\mu}^\alpha + e^{-2A} \partial_\alpha \partial^\alpha h_{z\mu} + 2 e^{-2A} \dot{A} \partial_\mu h_{zz} \\
+& \nabla^2 h_{\mu \nu} = e^{-2A} \left( -4 h_{\mu\nu} {\dot{A}}^2 + 2 h_{zz} \eta_{\mu\nu} {\dot{A}}^2 - \dot{A} \partial_z h_{\mu \nu} -2 h_{\mu \nu} \ddot{A} + \partial_z^2 h_{\mu \nu} + \partial_\alpha \partial^\alpha h_{\mu \nu} + 2 \dot{A} \partial_\mu h_{z \nu} + 2 \dot{A} \partial_\nu h_{z \mu}\right).
+\end{align}
+
+We are interested in solution with $h_{zz} = 0 = h_{z\mu}$. Then from the equations of $h_{zz}$ and $h_{z\mu}$ we can conclude that
+\begin{align}
+2 e^{-2A}  \left({\dot{A}}^2 - \ddot{A}\right) h_{\alpha}^\alpha = 0 \Leftrightarrow h_{\alpha}^\alpha = 0 \\
+-2 e^{-2 A} \dot{A} \partial_\alpha h^{\alpha}_\mu = 0 \Leftrightarrow \partial^\alpha h_{\alpha \mu} = 0 \\
+\nabla^2 h_{\mu \nu} + 2 {\dot{A}}^2 e^{-2A} h_{\mu \nu} = 0
+\end{align}
+where the last equation is the IHQCD result. So we have show, that in the Einstein frame the EOM of the TT components of the graviton in this family of backgrounds is the same as in IHQCD.
+
+The last result means that in the string frame the equation of motion of the graviton will also be the same as in IHQCD. This follows from the fact that $h^E_{\alpha \beta} = e^{- 4 \Phi / 3} h^S_{\alpha \beta}$ and $A = A_E = A_S - 2 \Phi / 3$. Hence all the phenomenological machinery for the spin J fields in IHQCD can be reproduced here. Having said this,
+the proposed equation of motion for the spin J fields in the graviton Regge trajectory is
+\begin{align}
+&\left( \nabla^2 - 2 e^{-2A_s} \dot{\Phi} \nabla_z - \frac{\Delta ( \Delta - 4 )}{L^2} + J {\dot{A}}^2 e^{-2A_s} + \left( J - 2\right) e^{-2A_s} \left( a \ddot{\Phi} + b \left( \ddot{A} - {\dot{A}}^2 \right) + c {\dot{\Phi}}^2 + d \dot{A} \dot{\Phi} + e {\dot{\tau}}^2  \right)\right) h^{TT}_{\alpha_1 \dots \alpha_J} = 0, \\
+&\frac{\Delta ( \Delta - 4 )}{L^2}  = \frac{2}{ls^2} \left(J - 2 \right) \left( 1 + \frac{f}{\sqrt{\lambda}} \right) + \frac{J^2 -4}{\lambda^{4/3}}
+\end{align}
+This equation is almost the same as the one derived for IHQCD except for the following: i) in the IHQCD case the term $\dot{A} \dot{\Phi}$ does not appear because it can be removed through the use of the equations of motion. Here that is not the case; ii) we have not included the terms $\ddot{\tau}$, $\dot{\tau} \dot{A}$ and $\dot{\tau} \dot{\Phi}$ because the background is symmetric through $\tau \rightarrow - \tau$; iii) I have checked in the Mathematica notebook SpinJ EOMs the spin J fields behave as $h^{TT}_{\alpha_1 \dots \alpha_J} \sim c_1 z^2 + c_2 z^{2-2 J}$ which is the same as  $h^{TT}_{\alpha_1 \dots \alpha_J} \sim c_1 z^{\Delta - J} + c_2 z^{4 - \Delta -J}$ for $\Delta = 2 + J$, i.e. the free theory result.
+
+\section{EOM and gravitational coupling of the $U(1)$ gauge field}
+
+As mentioned previously, for the QCD vacuum we set $A^R_a = 0 = A^L_a$. Here we turn on those fields and derive their action up to quadratic order. The resulting action is already known in the Einstein frame and is the one that Matti and Kiritsis have in their papers. I will do such a derivation in order to understand how to compute the gravitation coupling between a $U(1)$ gauge field and the spin J fields in the graviton's Regge trajectory.
+
+\subsection{The EOM of the vector $U(1)$ gauge field}
+
+When we turn on the gauge fields, the flavour action becomes
+\begin{align}
+S_f = 
+\end{align}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 \end{document}
