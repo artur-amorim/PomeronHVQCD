@@ -42,7 +42,7 @@ We have three background fields whose profiles will be found by solving the equa
 
 The action (\ref{eq: HVQCD action}) is not the most general one. The discussion that follows can be found, for example, in~\cite{Jarvinen:2011qe}. The reason we reproduce it here is because it will be useful to keep these ideas in mind when we derive the gravitational coupling between the graviton in this background and the $U(1)$ gauge field dual to the current operator $J^\mu$ in the boundary. The flavour action is motivated by considering bulk fields $T_{ij}$, $A^\mu_{L, i j}$ and $A^\mu_{R, i j}$ dual to the boundary operators $\bar{\psi}^i_R \psi^j_L$, $\bar{\psi}^i_L \sigma^\mu \psi^J_L$ and $\bar{\psi}^i_R \sigma^\mu \psi^J_R$, respectively. The field $T_{ij}$ transforms as $\left(N_f, \bar{N}_f \right)$ of the flavour symmetry $U\left(N_f\right)_R \times U \left(N_f\right)_L$ while the fields $A^\mu_{L, i j}$ and $A^\mu_{R, i j}$ transform in the adjoint representations of $U\left(N_f\right)_L$ and  $U \left(N_f\right)_R$ respectively. In string theory this is modelled by considering $N_f$ flavour branes (R) and $N_f$ flavour antibranes (L). In particular $A^\mu_R$ and $A^\mu_L$ are the lowest modes of open strings with both ends in the D branes and anti-D branes respectively. The $T_{ij}$ fields are the lowest modes of open strings with one end in a D brane and another end in the anti-D brane which corresponds to the tachyon. For our purposes such a system obeys a Dirac-Born-Infeld like action (let's ignore the WZ term for now)
 \begin{align}
-&S_{DBI} = - \frac{x}{2} M_p^3 N_c^2 \int dz d^4 x \, \bold{Str} \left[ V_f \left(\lambda, T^{\dagger} T\right) \sqrt{det\left( g_{ab} + k\left(\lambda\right)D_{(a}T^{\dagger}D_{b)}T + w\left(\lambda\right) F^{L}_{ab}\right)} + \right. \\ \notag
+&S_{DBI} = - \frac{1}{2} M_p^3 N_c N_f \int dz d^4 x \, \bold{Str} \left[ V_f \left(\lambda, T^{\dagger} T\right) \sqrt{det\left( g_{ab} + k\left(\lambda\right)D_{(a}T^{\dagger}D_{b)}T + w\left(\lambda\right) F^{L}_{ab}\right)} + \right. \\ \notag
 &\left. + V_f \left(\lambda, T T^{\dagger} \right) \sqrt{det\left( g_{ab} + k\left(\lambda\right)D_{(a}TD_{b)}T^{\dagger} + w\left(\lambda\right) F^{R}_{ab}\right)}  \right]
 \label{eq: DBI action}
 \end{align}
@@ -694,31 +694,140 @@ This equation is almost the same as the one derived for IHQCD except for the fol
 
 As mentioned previously, for the QCD vacuum we set $A^R_a = 0 = A^L_a$. Here we turn on those fields and derive their action up to quadratic order. The resulting action is already known in the Einstein frame and is the one that Matti and Kiritsis have in their papers. I will do such a derivation in order to understand how to compute the gravitation coupling between a $U(1)$ gauge field and the spin J fields in the graviton's Regge trajectory.
 
-\subsection{The EOM of the vector $U(1)$ gauge field}
+\subsection{The action of the vector $U(1)$ gauge field}
 
 When we turn on the gauge fields, the flavour action becomes
 \begin{align}
-S_f = 
+&S_f = - \frac{1}{2} M^3 N_c \int dz d^4 x V_f \left( \lambda, \tau \right) \bold{Tr} \left[ \sqrt{\text{det} \left(g_{eff. AB} + T^{L}_{AB}\right)} + \sqrt{\text{det} \left(g_{eff. AB} + T^{R}_{AB}\right)} \right], \\
+&T^{L}_{AB} = w\left(\lambda\right) F^{L}_{AB} + k\left(\lambda\right)D_{(A}\tau D_{B)}\tau -   k\left(\lambda\right) \partial_A \tau \partial_B \tau , \\
+&T^{R}_{AB} = w\left(\lambda\right) F^{R}_{AB} + k\left(\lambda\right)D_{(A}\tau D_{B)}\tau - k\left(\lambda\right) \partial_A \tau \partial_B \tau .
+\end{align}
+Here we remember that $\bold{Tr}$ is a trace over the gauge indices while the determinant is computed with respect to the space-time indices. We note that
+\begin{align}
+\text{det}\left(g_{eff. AB} + T^{L/R}_{AB} \right) = \text{det}{g_{eff}}  \text{det} \left( 1 + g_{eff}^{-1} T^{L/R} \right).
+\end{align}
+To compute $\text{det} \left( 1 + g_{eff}^{-1} T^{L/R} \right)$ we will define $C^{L/R} = g_{eff}^{-1} T^{L/R}$ and use the identity
+\begin{align}
+\ln \text{det} \left(1+C^{L/R}\right) = \text{tr} \ln\left(1 + C^{L/R}\right) = \text{tr} C^{L/R} - \frac{1}{2} \text{tr} {\left(C^{L/R}\right)}^2 + \cdots
+\end{align}
+From this it follows that
+\begin{align}
+&\sqrt{\text{det}  \left(1+C^{L/R}\right)} = 1 + \frac{1}{2} \text{tr} C^{L/R} - \frac{1}{4} \text{tr} {\left(C^{L/R}\right)}^2, \\
+& \text{tr} C^{L/R} = \sum_A C^{L/R}_{AA} = \sum _{A,B}  \left(g^{-1}_eff\right)_{AB} T^{L/R}_{AB}, \\
+& \text{tr} {\left(C^{L/R}\right)}^2 =  \sum_A \left(C^{L/R} C^{L/R} \right)_{AA} = \sum_{A,B} C^{L/R}_{AB} C^{L/R}_{BA} = \sum_{A,B,C,D}  \left(g^{-1}_{eff}\right)_{AC} T^{L/R}_{CB} \left(g^{-1}_{eff}\right)_{BD} T^{L/R}_{DA}.
 \end{align}
 
+Before we proceed with the calculation let us give expressions for $g^{-1}_{eff}$ and $T^{L/R}$
+\begin{align}
+&\left(g^{-1}_{eff}\right)_{zz} = \frac{e^{-2A}}{G^2}, \\
+&\left(g^{-1}_{eff}\right)_{z\mu} = \left(g^{-1}_{eff}\right)_{\mu z} = 0, \\
+&\left(g^{-1}_{eff}\right)_{\mu \nu} = \eta^{\mu \nu} e^{-2A}, \\
+& T^{L/R}_{zz} = 0, \\
+& T^{L/R}_{z \mu} =  w\left(\lambda \right) \left(  \pm \partial_z A_\mu + \partial_z V_\mu \right), \\
+& T^{L/R}_{\mu z} = -  w\left(\lambda \right) \left(  \pm \partial_z A_\mu + \partial_z V_\mu \right), \\
+& T^{L/R}_{\mu \nu} = 4 k\left(\lambda\right) \tau^2 A_\mu A_\nu + w\left(\lambda \right) \left( \pm A_{\mu \nu} + V_{\mu \nu} \right)
+\end{align}
+where the vector and axial gauge fields $V_M$ and $A_M$ are linear combinations of the left and right gauge fields
+\begin{align}
+V_M = \frac{A^L_M + A^R_M}{2}, \, A_M = \frac{A^L_M - A^R_M}{2}
+\end{align}
+in the gauge $V_z = 0 = A_z$, $V_{\mu \nu} = \partial_\mu V_\nu  - \partial_\nu V_\mu$ and $A_{\mu \nu} = \partial_\mu A_\nu  - \partial_\nu A_\mu$.
 
+Using the expressions for $g^{-1}_{eff}$ and $T^{L/R}$ we get
+\begin{align}
+\text{tr} C^{L/R} = 4 e^{-2A} k \left( \lambda \right) \tau^2 A_\mu A^\mu
+\end{align}
+and
+\begin{align}
+\text{tr} \left( {C^{L/R}}^2\right) = - 2 \left( g^{-1}_{eff} \right)_{zz} \left( g^{-1}_{eff} \right)_{\mu \nu} T^{L/R}_{z \mu} T^{L/R}_{z \nu} +  \left( g^{-1}_{eff} \right)_{\mu \nu} \left( g^{-1}_{eff} \right)_{\alpha \beta} T^{L/R}_{\nu \alpha} T^{L/R}_{\beta \mu} 
+\end{align}
+The expressions for each term in the last equation are
+\begin{align}
+&\sum_{\mu, \nu} \left( g^{-1}_{eff} \right)_{zz} \left( g^{-1}_{eff} \right)_{\mu \nu} T^{L/R}_{z \mu} T^{L/R}_{z \nu} = \frac{{w\left(\lambda\right)}^2}{G^2} e^{-4 A} \left( \partial_z A_\mu \partial_z A^\mu \pm 2 \partial_z A_\mu \partial_z V^\mu + \partial_z V_\mu \partial_z V^\mu \right) , \\
+& \sum_{\alpha, \beta, \mu, \nu} \left( g^{-1}_{eff} \right)_{\mu \nu} \left( g^{-1}_{eff} \right)_{\alpha \beta} T^{L/R}_{\nu \alpha} T^{L/R}_{\beta \mu} = - e^{-4A} {w\left(\lambda\right)}^2 \left( V_{\mu \nu} V^{\mu \nu} \mp 2 V_{\mu \nu} A^{\mu \nu} + A_{\mu \nu} A^{\mu \nu} \right)
+\end{align}
 
+Putting all these results together, after a tedious amount of algebra one gets
+\begin{align}
+&S_f = - \frac{1}{2} M^3 N_c \int dz d^4 x V_f \left(\lambda, \tau \right) \sqrt{- g_{eff}} \bold{Tr} \left[ 2 + 4 e^{-2A} k\left( \lambda \right) \tau^2 A_\mu A^\mu + \frac{{w\left(\lambda\right)}^2 e^{-4A}}{G^2} \left( \partial_z A_\mu \partial_z A^\mu +  \partial_z V_\mu \partial_z V^\mu \right) + \right. \\
+&\left. + \frac{1}{2} e^{-4A} {w\left(\lambda\right)}^2 \left( V_{\mu \nu}V^{\mu \nu} + A_{\mu \nu} A^{\mu \nu} \right) \right]
+\end{align}
+The first term is the background term. There are two extra terms:
+\begin{align}
+&S_V = - \frac{1}{2} M^3 N_c \bold{Tr} \int dz d^4x V_{f} \left( \lambda, \tau \right) {w\left(\lambda\right)}^2 G^{-1} e^{A} \left( \partial_z V_\mu \partial_z V^\mu + \frac{1}{2} G^2 V_{\mu \nu} V^{\mu \nu} \right), \\
+& S_A = - \frac{1}{2} M^3 N_c \bold{Tr} \int dz d^4 x V_{f} \left( \lambda, \tau \right) {w\left(\lambda\right)}^2 G^{-1} e^{A} \left( \partial_z A_\mu \partial_z A^\mu + \frac{1}{2} G^2 A_{\mu \nu} A^{\mu \nu} + 4 e^{2A} \frac{k\left(\lambda\right) G^2 \tau^2}{{w\left(\lambda\right)}^2} A_\mu A^\mu \right)
+\end{align}
+which are the actions for the Non-singlet Vector and Axial-Vector mesons presented in Matti and Kiritsis papers.
 
+\subsection{From Einstein frame to string frame}
 
+In our computations we wish to work in the string frame. Hence it is desirable to write $S_f$ in the string frame. As we have seen the square roots of the determinantes present in $S_f$ can be computed as
+\begin{align}
+\sqrt{-\det \left( g + T^{L/R} \right)} = \sqrt{-g} \left[ 1 + \frac{1}{2} \text{tr} X - \frac{1}{4} \text{tr} X^2 + \frac{1}{8} {\left( \text{tr} X \right)}^2 + \dots \right]
+\end{align}
+with $X = g^{-1} T^{L/R}$ for some tensor $T^{L/R}$.
 
+The Einstein and string frame are related through $g^s_{MN} = e^{ 4 \Phi / 3}g^{E}_{MN}$. From this it follows that $\sqrt{-g} = e^{- 10 \Phi / 3} \sqrt{-g_s}$ and the matrix $X$ in the previous equation can be written as $X = g_s^{-1} T^{L/R}_s$ with $T^{L/R}_s = e^{4 \Phi / 3} T^{L/R}_E$. This implies that
+\begin{align}
+\sqrt{-\det \left( g + T^{L/R} \right)} = e^{- 10 \Phi / 3} \sqrt{-\det \left( g_s + T^{L/R}_s \right)}
+\end{align}
+This implies that $S_f$ in the string frame is obtained by simply substituting the metric by the string frame metric $g_s$, substitute $k\left(\lambda\right)$ and $w\left(\lambda\right)$ by $k_s \left(\lambda\right) = e^{4 \Phi / 3} k\left(\lambda\right) $ and $w_s \left(\lambda\right) = e^{4 \Phi / 3} w\left(\lambda\right) $ and multiply $V_f$ by the factor $e^{-10 \Phi / 3}$. The derivation of $S_V$ and $S_A$ in the string frame will be formally the same and hence the results equal to the Einstein frame ones but with $w_s$, $k_s$ and $e^{-10 \Phi / 3} V_f$ in place of $w$, $k$ and $V_f$ respectively.
 
+\subsection{Coupling between the graviton and the U(1) vector gauge field}
+In the last subsection we learned that we can translate directly results in the Einstein frame to results in the string frame by substituting $w$, $k$ and $V_f$ for $w_s$, $k_s$ and $e^{-10 \Phi / 3} V_f$ respectively. In this section we will derive the coupling between the graviton and the U(1) vector gauge field in the Einstein frame. After we have it, it is straightforward writing it in the string frame.
 
+We start by writing the square roots of the determinants as
+\begin{align}
+	\sqrt{-\det g_{eff}} \left[ 1 + \frac{1}{2} \text{tr} \left( g^{-1}_{eff} T^{L/R}\right) - \frac{1}{4} \text{tr} \left( g^{-1}_{eff} T^{L/R} g^{-1}_{eff} T^{L/R} \right) + \dots \right]
+\end{align}
+We now wish to perturb this expression with respect to the metric in order to get the desired gravitational coupling. For our purposes we can ignore the perturbation of $\sqrt{-\det g_{eff}}$ and consider and make $A_{\mu} = 0$ since we are only interested in the coupling of $V_\mu$. We wish then to compute $\delta \text{tr} \left( g^{-1}_{eff} T^{L/R}\right)$ and $\delta \text{tr} \left( g^{-1}_{eff} T^{L/R} g^{-1}_{eff} T^{L/R} \right)$. Using the fact that $\delta g^{AB}_{eff} = - g_{eff}^{AM} g_{eff}^{BN} h_{MN}$ one can show
+\begin{align}
+&\delta \text{tr} \left( g^{-1}_{eff} T^{L/R}\right) = -  g_{eff}^{AM} g_{eff}^{BN} h_{MN} T^{L/R}_{AB}, \\
+&\delta \text{tr} \left( g^{-1}_{eff} T^{L/R} g^{-1}_{eff} T^{L/R} \right) = - 2 g^{AM}_{eff.} g^{BN}_{eff.} g^{CD}_{eff.} T^{L/R}_{BC} T^{L/R}_{DA} h_{MN}
+\end{align}
+Using the expressions for $g^{1}_{eff}$ and $T^{L/R}$ we get
+\begin{align}
+&\delta \text{tr} \left( g^{-1}_{eff} T^{L/R}\right) = - 4 e^{-4A} k\left(\lambda\right) \tau^2 h^{\alpha \beta} A_\alpha A_\beta = 0 , \\
+& \delta \text{tr} \left( g^{-1}_{eff} T^{L/R} g^{-1}_{eff} T^{L/R} \right)  = 2 e^{-6A} {w\left( \lambda \right)}^2 h^{\mu \nu} \left( V_{\mu \sigma} \eta^{\sigma \rho} V_{\nu \rho} + \frac{1}{G^2} \partial_z V_\mu \partial_z V_\nu \right)
+\end{align}
+Hence the coupling between the vector $U(1)$ gauge field and the graviton is given by
+\begin{align}
+\frac{1}{2} M^3 N_c N_f \int d^5 X \sqrt{-\det g_{eff}} V_{f} \left(\lambda, \tau \right) e^{-6 A} {w\left(\lambda\right)}^2 h^{\mu \nu} \left( V_{\mu \sigma} \eta^{\sigma \rho} V_{\nu \rho} + \frac{1}{G^2} \partial_z V_\mu \partial_z V_\nu \right)
+\end{align}
 
+From this result we wish to generalise to any spin J field. The coupling came from the term $\delta \text{tr} \left( g^{-1}_{eff} T^{L/R} g^{-1}_{eff} T^{L/R} \right)$ wich can be written as
+\begin{align}
+2 g^{\alpha \mu} g^{\beta \nu} g_{eff}^{AB} T^{L/R}_{A \alpha} T^{L/R}_{B \beta} h_{\mu \nu}
+\end{align}
+Here $T^{L/R}_{AB} = w\left(\lambda\right) F^V_{AB}, \, F^V_{AB} = \nabla_A V_B - \nabla_B V_A$ since $A_M = 0$ for all space-time indices. The left and right contributions for the coupling are equal to
+\begin{align}
+2 g^{\alpha \mu} g^{\beta \nu} g_{eff}^{AB} {w\left(\lambda\right)}^2 F^{V}_{A \alpha} F^{V}_{B \beta} h_{\mu \nu}
+\end{align}
+and the coupling is given by
+\begin{align}
+\frac{1}{2} M^3 N_c \bold{Tr} \int d^5 X \sqrt{-\det g_{eff}} V_{f} \left(\lambda, \tau \right)  {w\left(\lambda\right)}^2 g^{\alpha \mu} g^{\beta \nu} g_{eff}^{AB} F^V_{A \alpha} F^V_{B \beta} h_{\mu \nu}
+\end{align}
+For a spin J field we propose the coupling
+\begin{align}
+k_J \int d^5X \sqrt{-\det g_{eff}} V_f \left( \lambda, \tau \right) {w\left(\lambda \right)}^2 g^{\alpha \mu} g^{\beta \nu} g_{eff}^{AB} F^V_{A\alpha} \nabla^{\alpha_1} \dots \nabla^{\alpha_{J-2}} F^V_{B \beta} h_{\mu \nu \alpha_1 \dots \alpha_{J-2}}
+\end{align}
 
+\subsection{Regge limit analysis of the spin J coupling}
+Now that we have an ansatz for the coupling between the vector $U(1)$ gauge field and the spin J fields in the graviton's Regge trajectory we wish to study it's amplitude in the Regge limit. In this limit the covariant derivatives can be substituted by partial derivatives because of powers of $\sqrt{s}$. The coupling reduces to
+\begin{align}
+&g^{\alpha \mu} g^{\beta \nu} g^{\alpha_1 \beta_1} \dots g^{\alpha_{J-2} \beta_{J-2}} g^{AB}_{eff} F^{V}_{A \alpha} \partial_{\beta_1} \dots \partial_{\beta_{J-2}} F^{V}_{B \beta} h_{\mu \nu \alpha_1 \dots \alpha_{J_2}} = \\
+& = g^{\alpha \mu} g^{\beta \nu} g^{\alpha_1 \beta_1} \dots g^{\alpha_{J-2} \beta_{J-2}} e^{-2A} \left( \frac{1}{G^2} \partial_z V_\alpha \partial_{\beta_1} \dots \partial_{\beta_{J-2}} \partial_z V_\beta + \eta^{\rho \sigma} V_{\rho \alpha} \partial_{\beta_1} \dots \partial_{\beta_{J-2}} V_{\sigma \beta} \right) h_{\mu \nu \alpha_1 \dots \alpha_{J_2}}
+\end{align}
+Since $V \propto e^{i k \cdot x}$, $\partial_\mu V = i k_\mu V$ and then
+\begin{align}
+g^{\alpha \mu} g^{\beta \nu} g^{\alpha_1 \beta_1} \dots g^{\alpha_{J-2} \beta_{J-2}} \left( i k_{\beta_1}\right) \dots  \left( i k_{\beta_{J-2}}\right) e^{-2A} \left( \frac{1}{G^2} \partial_z V_\alpha  \partial_z V_\beta + \eta^{\rho \sigma} V_{\rho \alpha} V_{\sigma \beta} \right) h_{\mu \nu \alpha_1 \dots \alpha_{J_2}}
+\end{align}
 
-
-
-
-
-
-
-
-
+In DIS we will be interested in incoming and outgoing  off-shell photons with the same polarisation. For both photons with perpendicular polarisation and both with longitudinal polarisation we have respectively:
+\begin{align}
+&g^{\alpha \mu} g^{\beta \nu} e^{-2 A} \left( \frac{1}{G^2} \partial_z V_\alpha \partial_z V_\beta + \eta^{\rho \sigma} V_{\rho \alpha} V_{\sigma \beta} \right) h_{\mu \nu \alpha_1 \dots \alpha_{J-2}} = \frac{1}{4} s e^{-6A} {f_Q}^2 h^{--}_{\alpha_1 \dots \alpha_{J-2}}, \\
+&g^{\alpha \mu} g^{\beta \nu} e^{-2 A} \left( \frac{1}{G^2} \partial_z V_\alpha \partial_z V_\beta + \eta^{\rho \sigma} V_{\rho \alpha} V_{\sigma \beta} \right) h_{\mu \nu \alpha_1 \dots \alpha_{J-2}} = \frac{1}{4} s e^{-6A} \frac{{\partial_z f_Q}^2}{Q^2 G^2} h^{--}_{\alpha_1 \dots \alpha_{J-2}}
+\end{align}
 
 
 
