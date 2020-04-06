@@ -111,19 +111,6 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named test_EfficientNelderMead.exe
-
-# Build rule for target.
-test_EfficientNelderMead.exe: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 test_EfficientNelderMead.exe
-.PHONY : test_EfficientNelderMead.exe
-
-# fast build rule for target.
-test_EfficientNelderMead.exe/fast:
-	$(MAKE) -f CMakeFiles/test_EfficientNelderMead.exe.dir/build.make CMakeFiles/test_EfficientNelderMead.exe.dir/build
-.PHONY : test_EfficientNelderMead.exe/fast
-
-#=============================================================================
 # Target rules for targets named test_HVQCD.exe
 
 # Build rule for target.
@@ -252,6 +239,19 @@ fitHVQCDWithoutGlueball_sc_VgIR_fixed.exe: cmake_check_build_system
 fitHVQCDWithoutGlueball_sc_VgIR_fixed.exe/fast:
 	$(MAKE) -f CMakeFiles/fitHVQCDWithoutGlueball_sc_VgIR_fixed.exe.dir/build.make CMakeFiles/fitHVQCDWithoutGlueball_sc_VgIR_fixed.exe.dir/build
 .PHONY : fitHVQCDWithoutGlueball_sc_VgIR_fixed.exe/fast
+
+#=============================================================================
+# Target rules for targets named test_NelderMead.exe
+
+# Build rule for target.
+test_NelderMead.exe: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 test_NelderMead.exe
+.PHONY : test_NelderMead.exe
+
+# fast build rule for target.
+test_NelderMead.exe/fast:
+	$(MAKE) -f CMakeFiles/test_NelderMead.exe.dir/build.make CMakeFiles/test_NelderMead.exe.dir/build
+.PHONY : test_NelderMead.exe/fast
 
 #=============================================================================
 # Target rules for targets named fitHVQCDGlobal.exe
@@ -1109,33 +1109,6 @@ src/schrodinger/solvspec.cpp.s:
 	$(MAKE) -f CMakeFiles/fitYangMills.exe.dir/build.make CMakeFiles/fitYangMills.exe.dir/src/schrodinger/solvspec.cpp.s
 .PHONY : src/schrodinger/solvspec.cpp.s
 
-tests/test_EfficientNelderMead.o: tests/test_EfficientNelderMead.cpp.o
-
-.PHONY : tests/test_EfficientNelderMead.o
-
-# target to build an object file
-tests/test_EfficientNelderMead.cpp.o:
-	$(MAKE) -f CMakeFiles/test_EfficientNelderMead.exe.dir/build.make CMakeFiles/test_EfficientNelderMead.exe.dir/tests/test_EfficientNelderMead.cpp.o
-.PHONY : tests/test_EfficientNelderMead.cpp.o
-
-tests/test_EfficientNelderMead.i: tests/test_EfficientNelderMead.cpp.i
-
-.PHONY : tests/test_EfficientNelderMead.i
-
-# target to preprocess a source file
-tests/test_EfficientNelderMead.cpp.i:
-	$(MAKE) -f CMakeFiles/test_EfficientNelderMead.exe.dir/build.make CMakeFiles/test_EfficientNelderMead.exe.dir/tests/test_EfficientNelderMead.cpp.i
-.PHONY : tests/test_EfficientNelderMead.cpp.i
-
-tests/test_EfficientNelderMead.s: tests/test_EfficientNelderMead.cpp.s
-
-.PHONY : tests/test_EfficientNelderMead.s
-
-# target to generate assembly for a file
-tests/test_EfficientNelderMead.cpp.s:
-	$(MAKE) -f CMakeFiles/test_EfficientNelderMead.exe.dir/build.make CMakeFiles/test_EfficientNelderMead.exe.dir/tests/test_EfficientNelderMead.cpp.s
-.PHONY : tests/test_EfficientNelderMead.cpp.s
-
 tests/test_HVQCD.o: tests/test_HVQCD.cpp.o
 
 .PHONY : tests/test_HVQCD.o
@@ -1162,6 +1135,33 @@ tests/test_HVQCD.s: tests/test_HVQCD.cpp.s
 tests/test_HVQCD.cpp.s:
 	$(MAKE) -f CMakeFiles/test_HVQCD.exe.dir/build.make CMakeFiles/test_HVQCD.exe.dir/tests/test_HVQCD.cpp.s
 .PHONY : tests/test_HVQCD.cpp.s
+
+tests/test_NelderMead.o: tests/test_NelderMead.cpp.o
+
+.PHONY : tests/test_NelderMead.o
+
+# target to build an object file
+tests/test_NelderMead.cpp.o:
+	$(MAKE) -f CMakeFiles/test_NelderMead.exe.dir/build.make CMakeFiles/test_NelderMead.exe.dir/tests/test_NelderMead.cpp.o
+.PHONY : tests/test_NelderMead.cpp.o
+
+tests/test_NelderMead.i: tests/test_NelderMead.cpp.i
+
+.PHONY : tests/test_NelderMead.i
+
+# target to preprocess a source file
+tests/test_NelderMead.cpp.i:
+	$(MAKE) -f CMakeFiles/test_NelderMead.exe.dir/build.make CMakeFiles/test_NelderMead.exe.dir/tests/test_NelderMead.cpp.i
+.PHONY : tests/test_NelderMead.cpp.i
+
+tests/test_NelderMead.s: tests/test_NelderMead.cpp.s
+
+.PHONY : tests/test_NelderMead.s
+
+# target to generate assembly for a file
+tests/test_NelderMead.cpp.s:
+	$(MAKE) -f CMakeFiles/test_NelderMead.exe.dir/build.make CMakeFiles/test_NelderMead.exe.dir/tests/test_NelderMead.cpp.s
+.PHONY : tests/test_NelderMead.cpp.s
 
 tests/test_schrodinger.o: tests/test_schrodinger.cpp.o
 
@@ -1198,7 +1198,6 @@ help:
 	@echo "... depend"
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
-	@echo "... test_EfficientNelderMead.exe"
 	@echo "... test_HVQCD.exe"
 	@echo "... test_schrodinger.exe"
 	@echo "... savePotentials.exe"
@@ -1209,6 +1208,7 @@ help:
 	@echo "... fitHVQCDWithoutGlueballScalars_sc_VgIR_fixed.exe"
 	@echo "... fitHVQCDWithoutScalars_sc_VgIR_fixed.exe"
 	@echo "... fitHVQCDWithoutGlueball_sc_VgIR_fixed.exe"
+	@echo "... test_NelderMead.exe"
 	@echo "... fitHVQCDGlobal.exe"
 	@echo "... fitHVQCDWithoutScalars.exe"
 	@echo "... fitHVQCDWithoutGlueballScalars.exe"
@@ -1273,12 +1273,12 @@ help:
 	@echo "... src/schrodinger/solvspec.o"
 	@echo "... src/schrodinger/solvspec.i"
 	@echo "... src/schrodinger/solvspec.s"
-	@echo "... tests/test_EfficientNelderMead.o"
-	@echo "... tests/test_EfficientNelderMead.i"
-	@echo "... tests/test_EfficientNelderMead.s"
 	@echo "... tests/test_HVQCD.o"
 	@echo "... tests/test_HVQCD.i"
 	@echo "... tests/test_HVQCD.s"
+	@echo "... tests/test_NelderMead.o"
+	@echo "... tests/test_NelderMead.i"
+	@echo "... tests/test_NelderMead.s"
 	@echo "... tests/test_schrodinger.o"
 	@echo "... tests/test_schrodinger.i"
 	@echo "... tests/test_schrodinger.s"

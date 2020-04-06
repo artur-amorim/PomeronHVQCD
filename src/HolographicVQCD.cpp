@@ -724,8 +724,9 @@ void HVQCD::finalizeBackground()
     As = A; zs = z; us = u; qs = q; Phis = Phi, taus = tau; dqs = dq; dPhis = dPhi; dtaus = dtau;
     d2qs = d2q; d2Phis = d2Phi; d2taus = d2tau;
     d3taus = d3tau;
-
     // Compute Astring, dAstring and d2Astring
+    Astrings.resize(As.size()); dAstrings.resize(As.size());
+    d2Astrings.resize(As.size());
     for(int i = 0; i < As.size(); i++)
     {
         Astrings[i] = As[i] + 2 * Phis[i] / 3.0 ;
