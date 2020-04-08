@@ -1,6 +1,9 @@
 #ifndef ROOT_FIND_H
 #define ROOT_FIND_H
 
+#include <vector>
+#include "../schrodinger/common.h"
+
 template<typename T>
 inline T SIGN(const T& a, const T &b)
 {
@@ -76,6 +79,36 @@ double zbrent(T& func, double x1, double x2, double tol, bool silent = false)
 	}
 	std::cout << "[WARN] Maximum number of iterations exceeded in zbrent, returning biggest value"<< std::endl;
 	return x2;
+}
+
+template<class T>
+std::vector<Range> bracketZeros(T & func, const int n_zeros, const double delta = 0.1)
+{
+    /*
+        This function searches for the first n_zeros of the function func in steps of delta
+        The first guessed interval is [0, delta] and is updated in steps of delta
+        until we have n_zeros such ranges.
+    */
+    std::vector<Range> intervals;
+    double x0 = 0, x1 = delta;
+    int n = 0;
+    // Start to search for zeros
+    while(n < n_zeros)
+    {
+        if( func(x0) * func(x1) < 0)        // If there is a zero the function values at both ends have opposite signs
+        {
+            intervals.push_back(Range(x0, x1));     // append the interval
+            x0 = x1;                                // Update x0 and x1
+            x1 += delta;
+            n++;
+        }
+        else
+        {
+            x0 = x1;                        // Didn't find zero, just update x0 and x1
+            x1 += delta;
+        }
+    }
+    return intervals;
 }
 
 #endif
