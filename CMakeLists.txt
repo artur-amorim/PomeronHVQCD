@@ -70,6 +70,10 @@ target_link_libraries(HVQCDRatios.exe armadillo)
 add_executable(savePotentials.exe physics/savePotentials.cpp ${HVQCD} ${SCHRODINGER})
 target_link_libraries(savePotentials.exe armadillo)
 
+# Save background fields, potentials and schrodinger potentials of the fluctuations
+add_executable(comparePotentialsWithMatti.exe physics/comparePotentialsWithMatti.cpp ${HVQCD} ${SCHRODINGER})
+target_link_libraries(comparePotentialsWithMatti.exe armadillo)
+
 # Add test_schrodinger executable
 add_executable(test_schrodinger.exe  tests/test_schrodinger.cpp ${SCHRODINGER})
 target_link_libraries(test_schrodinger.exe armadillo)

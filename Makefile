@@ -137,6 +137,19 @@ test_schrodinger.exe/fast:
 .PHONY : test_schrodinger.exe/fast
 
 #=============================================================================
+# Target rules for targets named comparePotentialsWithMatti.exe
+
+# Build rule for target.
+comparePotentialsWithMatti.exe: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 comparePotentialsWithMatti.exe
+.PHONY : comparePotentialsWithMatti.exe
+
+# fast build rule for target.
+comparePotentialsWithMatti.exe/fast:
+	$(MAKE) -f CMakeFiles/comparePotentialsWithMatti.exe.dir/build.make CMakeFiles/comparePotentialsWithMatti.exe.dir/build
+.PHONY : comparePotentialsWithMatti.exe/fast
+
+#=============================================================================
 # Target rules for targets named savePotentials.exe
 
 # Build rule for target.
@@ -331,6 +344,33 @@ physics/HVQCDRatios.s: physics/HVQCDRatios.cpp.s
 physics/HVQCDRatios.cpp.s:
 	$(MAKE) -f CMakeFiles/HVQCDRatios.exe.dir/build.make CMakeFiles/HVQCDRatios.exe.dir/physics/HVQCDRatios.cpp.s
 .PHONY : physics/HVQCDRatios.cpp.s
+
+physics/comparePotentialsWithMatti.o: physics/comparePotentialsWithMatti.cpp.o
+
+.PHONY : physics/comparePotentialsWithMatti.o
+
+# target to build an object file
+physics/comparePotentialsWithMatti.cpp.o:
+	$(MAKE) -f CMakeFiles/comparePotentialsWithMatti.exe.dir/build.make CMakeFiles/comparePotentialsWithMatti.exe.dir/physics/comparePotentialsWithMatti.cpp.o
+.PHONY : physics/comparePotentialsWithMatti.cpp.o
+
+physics/comparePotentialsWithMatti.i: physics/comparePotentialsWithMatti.cpp.i
+
+.PHONY : physics/comparePotentialsWithMatti.i
+
+# target to preprocess a source file
+physics/comparePotentialsWithMatti.cpp.i:
+	$(MAKE) -f CMakeFiles/comparePotentialsWithMatti.exe.dir/build.make CMakeFiles/comparePotentialsWithMatti.exe.dir/physics/comparePotentialsWithMatti.cpp.i
+.PHONY : physics/comparePotentialsWithMatti.cpp.i
+
+physics/comparePotentialsWithMatti.s: physics/comparePotentialsWithMatti.cpp.s
+
+.PHONY : physics/comparePotentialsWithMatti.s
+
+# target to generate assembly for a file
+physics/comparePotentialsWithMatti.cpp.s:
+	$(MAKE) -f CMakeFiles/comparePotentialsWithMatti.exe.dir/build.make CMakeFiles/comparePotentialsWithMatti.exe.dir/physics/comparePotentialsWithMatti.cpp.s
+.PHONY : physics/comparePotentialsWithMatti.cpp.s
 
 physics/fitHVQCDGlobal.o: physics/fitHVQCDGlobal.cpp.o
 
@@ -636,6 +676,7 @@ src/HolographicVQCD.o: src/HolographicVQCD.cpp.o
 # target to build an object file
 src/HolographicVQCD.cpp.o:
 	$(MAKE) -f CMakeFiles/test_HVQCD.exe.dir/build.make CMakeFiles/test_HVQCD.exe.dir/src/HolographicVQCD.cpp.o
+	$(MAKE) -f CMakeFiles/comparePotentialsWithMatti.exe.dir/build.make CMakeFiles/comparePotentialsWithMatti.exe.dir/src/HolographicVQCD.cpp.o
 	$(MAKE) -f CMakeFiles/savePotentials.exe.dir/build.make CMakeFiles/savePotentials.exe.dir/src/HolographicVQCD.cpp.o
 	$(MAKE) -f CMakeFiles/HVQCDRatios.exe.dir/build.make CMakeFiles/HVQCDRatios.exe.dir/src/HolographicVQCD.cpp.o
 	$(MAKE) -f CMakeFiles/fitSingletAVM.exe.dir/build.make CMakeFiles/fitSingletAVM.exe.dir/src/HolographicVQCD.cpp.o
@@ -656,6 +697,7 @@ src/HolographicVQCD.i: src/HolographicVQCD.cpp.i
 # target to preprocess a source file
 src/HolographicVQCD.cpp.i:
 	$(MAKE) -f CMakeFiles/test_HVQCD.exe.dir/build.make CMakeFiles/test_HVQCD.exe.dir/src/HolographicVQCD.cpp.i
+	$(MAKE) -f CMakeFiles/comparePotentialsWithMatti.exe.dir/build.make CMakeFiles/comparePotentialsWithMatti.exe.dir/src/HolographicVQCD.cpp.i
 	$(MAKE) -f CMakeFiles/savePotentials.exe.dir/build.make CMakeFiles/savePotentials.exe.dir/src/HolographicVQCD.cpp.i
 	$(MAKE) -f CMakeFiles/HVQCDRatios.exe.dir/build.make CMakeFiles/HVQCDRatios.exe.dir/src/HolographicVQCD.cpp.i
 	$(MAKE) -f CMakeFiles/fitSingletAVM.exe.dir/build.make CMakeFiles/fitSingletAVM.exe.dir/src/HolographicVQCD.cpp.i
@@ -676,6 +718,7 @@ src/HolographicVQCD.s: src/HolographicVQCD.cpp.s
 # target to generate assembly for a file
 src/HolographicVQCD.cpp.s:
 	$(MAKE) -f CMakeFiles/test_HVQCD.exe.dir/build.make CMakeFiles/test_HVQCD.exe.dir/src/HolographicVQCD.cpp.s
+	$(MAKE) -f CMakeFiles/comparePotentialsWithMatti.exe.dir/build.make CMakeFiles/comparePotentialsWithMatti.exe.dir/src/HolographicVQCD.cpp.s
 	$(MAKE) -f CMakeFiles/savePotentials.exe.dir/build.make CMakeFiles/savePotentials.exe.dir/src/HolographicVQCD.cpp.s
 	$(MAKE) -f CMakeFiles/HVQCDRatios.exe.dir/build.make CMakeFiles/HVQCDRatios.exe.dir/src/HolographicVQCD.cpp.s
 	$(MAKE) -f CMakeFiles/fitSingletAVM.exe.dir/build.make CMakeFiles/fitSingletAVM.exe.dir/src/HolographicVQCD.cpp.s
@@ -723,6 +766,7 @@ src/background.o: src/background.cpp.o
 # target to build an object file
 src/background.cpp.o:
 	$(MAKE) -f CMakeFiles/test_HVQCD.exe.dir/build.make CMakeFiles/test_HVQCD.exe.dir/src/background.cpp.o
+	$(MAKE) -f CMakeFiles/comparePotentialsWithMatti.exe.dir/build.make CMakeFiles/comparePotentialsWithMatti.exe.dir/src/background.cpp.o
 	$(MAKE) -f CMakeFiles/savePotentials.exe.dir/build.make CMakeFiles/savePotentials.exe.dir/src/background.cpp.o
 	$(MAKE) -f CMakeFiles/HVQCDRatios.exe.dir/build.make CMakeFiles/HVQCDRatios.exe.dir/src/background.cpp.o
 	$(MAKE) -f CMakeFiles/fitSingletAVM.exe.dir/build.make CMakeFiles/fitSingletAVM.exe.dir/src/background.cpp.o
@@ -744,6 +788,7 @@ src/background.i: src/background.cpp.i
 # target to preprocess a source file
 src/background.cpp.i:
 	$(MAKE) -f CMakeFiles/test_HVQCD.exe.dir/build.make CMakeFiles/test_HVQCD.exe.dir/src/background.cpp.i
+	$(MAKE) -f CMakeFiles/comparePotentialsWithMatti.exe.dir/build.make CMakeFiles/comparePotentialsWithMatti.exe.dir/src/background.cpp.i
 	$(MAKE) -f CMakeFiles/savePotentials.exe.dir/build.make CMakeFiles/savePotentials.exe.dir/src/background.cpp.i
 	$(MAKE) -f CMakeFiles/HVQCDRatios.exe.dir/build.make CMakeFiles/HVQCDRatios.exe.dir/src/background.cpp.i
 	$(MAKE) -f CMakeFiles/fitSingletAVM.exe.dir/build.make CMakeFiles/fitSingletAVM.exe.dir/src/background.cpp.i
@@ -765,6 +810,7 @@ src/background.s: src/background.cpp.s
 # target to generate assembly for a file
 src/background.cpp.s:
 	$(MAKE) -f CMakeFiles/test_HVQCD.exe.dir/build.make CMakeFiles/test_HVQCD.exe.dir/src/background.cpp.s
+	$(MAKE) -f CMakeFiles/comparePotentialsWithMatti.exe.dir/build.make CMakeFiles/comparePotentialsWithMatti.exe.dir/src/background.cpp.s
 	$(MAKE) -f CMakeFiles/savePotentials.exe.dir/build.make CMakeFiles/savePotentials.exe.dir/src/background.cpp.s
 	$(MAKE) -f CMakeFiles/HVQCDRatios.exe.dir/build.make CMakeFiles/HVQCDRatios.exe.dir/src/background.cpp.s
 	$(MAKE) -f CMakeFiles/fitSingletAVM.exe.dir/build.make CMakeFiles/fitSingletAVM.exe.dir/src/background.cpp.s
@@ -787,6 +833,7 @@ src/schrodinger/chebspec.o: src/schrodinger/chebspec.cpp.o
 src/schrodinger/chebspec.cpp.o:
 	$(MAKE) -f CMakeFiles/test_HVQCD.exe.dir/build.make CMakeFiles/test_HVQCD.exe.dir/src/schrodinger/chebspec.cpp.o
 	$(MAKE) -f CMakeFiles/test_schrodinger.exe.dir/build.make CMakeFiles/test_schrodinger.exe.dir/src/schrodinger/chebspec.cpp.o
+	$(MAKE) -f CMakeFiles/comparePotentialsWithMatti.exe.dir/build.make CMakeFiles/comparePotentialsWithMatti.exe.dir/src/schrodinger/chebspec.cpp.o
 	$(MAKE) -f CMakeFiles/savePotentials.exe.dir/build.make CMakeFiles/savePotentials.exe.dir/src/schrodinger/chebspec.cpp.o
 	$(MAKE) -f CMakeFiles/HVQCDRatios.exe.dir/build.make CMakeFiles/HVQCDRatios.exe.dir/src/schrodinger/chebspec.cpp.o
 	$(MAKE) -f CMakeFiles/fitSingletAVM.exe.dir/build.make CMakeFiles/fitSingletAVM.exe.dir/src/schrodinger/chebspec.cpp.o
@@ -809,6 +856,7 @@ src/schrodinger/chebspec.i: src/schrodinger/chebspec.cpp.i
 src/schrodinger/chebspec.cpp.i:
 	$(MAKE) -f CMakeFiles/test_HVQCD.exe.dir/build.make CMakeFiles/test_HVQCD.exe.dir/src/schrodinger/chebspec.cpp.i
 	$(MAKE) -f CMakeFiles/test_schrodinger.exe.dir/build.make CMakeFiles/test_schrodinger.exe.dir/src/schrodinger/chebspec.cpp.i
+	$(MAKE) -f CMakeFiles/comparePotentialsWithMatti.exe.dir/build.make CMakeFiles/comparePotentialsWithMatti.exe.dir/src/schrodinger/chebspec.cpp.i
 	$(MAKE) -f CMakeFiles/savePotentials.exe.dir/build.make CMakeFiles/savePotentials.exe.dir/src/schrodinger/chebspec.cpp.i
 	$(MAKE) -f CMakeFiles/HVQCDRatios.exe.dir/build.make CMakeFiles/HVQCDRatios.exe.dir/src/schrodinger/chebspec.cpp.i
 	$(MAKE) -f CMakeFiles/fitSingletAVM.exe.dir/build.make CMakeFiles/fitSingletAVM.exe.dir/src/schrodinger/chebspec.cpp.i
@@ -831,6 +879,7 @@ src/schrodinger/chebspec.s: src/schrodinger/chebspec.cpp.s
 src/schrodinger/chebspec.cpp.s:
 	$(MAKE) -f CMakeFiles/test_HVQCD.exe.dir/build.make CMakeFiles/test_HVQCD.exe.dir/src/schrodinger/chebspec.cpp.s
 	$(MAKE) -f CMakeFiles/test_schrodinger.exe.dir/build.make CMakeFiles/test_schrodinger.exe.dir/src/schrodinger/chebspec.cpp.s
+	$(MAKE) -f CMakeFiles/comparePotentialsWithMatti.exe.dir/build.make CMakeFiles/comparePotentialsWithMatti.exe.dir/src/schrodinger/chebspec.cpp.s
 	$(MAKE) -f CMakeFiles/savePotentials.exe.dir/build.make CMakeFiles/savePotentials.exe.dir/src/schrodinger/chebspec.cpp.s
 	$(MAKE) -f CMakeFiles/HVQCDRatios.exe.dir/build.make CMakeFiles/HVQCDRatios.exe.dir/src/schrodinger/chebspec.cpp.s
 	$(MAKE) -f CMakeFiles/fitSingletAVM.exe.dir/build.make CMakeFiles/fitSingletAVM.exe.dir/src/schrodinger/chebspec.cpp.s
@@ -853,6 +902,7 @@ src/schrodinger/common.o: src/schrodinger/common.cpp.o
 src/schrodinger/common.cpp.o:
 	$(MAKE) -f CMakeFiles/test_HVQCD.exe.dir/build.make CMakeFiles/test_HVQCD.exe.dir/src/schrodinger/common.cpp.o
 	$(MAKE) -f CMakeFiles/test_schrodinger.exe.dir/build.make CMakeFiles/test_schrodinger.exe.dir/src/schrodinger/common.cpp.o
+	$(MAKE) -f CMakeFiles/comparePotentialsWithMatti.exe.dir/build.make CMakeFiles/comparePotentialsWithMatti.exe.dir/src/schrodinger/common.cpp.o
 	$(MAKE) -f CMakeFiles/savePotentials.exe.dir/build.make CMakeFiles/savePotentials.exe.dir/src/schrodinger/common.cpp.o
 	$(MAKE) -f CMakeFiles/HVQCDRatios.exe.dir/build.make CMakeFiles/HVQCDRatios.exe.dir/src/schrodinger/common.cpp.o
 	$(MAKE) -f CMakeFiles/fitSingletAVM.exe.dir/build.make CMakeFiles/fitSingletAVM.exe.dir/src/schrodinger/common.cpp.o
@@ -875,6 +925,7 @@ src/schrodinger/common.i: src/schrodinger/common.cpp.i
 src/schrodinger/common.cpp.i:
 	$(MAKE) -f CMakeFiles/test_HVQCD.exe.dir/build.make CMakeFiles/test_HVQCD.exe.dir/src/schrodinger/common.cpp.i
 	$(MAKE) -f CMakeFiles/test_schrodinger.exe.dir/build.make CMakeFiles/test_schrodinger.exe.dir/src/schrodinger/common.cpp.i
+	$(MAKE) -f CMakeFiles/comparePotentialsWithMatti.exe.dir/build.make CMakeFiles/comparePotentialsWithMatti.exe.dir/src/schrodinger/common.cpp.i
 	$(MAKE) -f CMakeFiles/savePotentials.exe.dir/build.make CMakeFiles/savePotentials.exe.dir/src/schrodinger/common.cpp.i
 	$(MAKE) -f CMakeFiles/HVQCDRatios.exe.dir/build.make CMakeFiles/HVQCDRatios.exe.dir/src/schrodinger/common.cpp.i
 	$(MAKE) -f CMakeFiles/fitSingletAVM.exe.dir/build.make CMakeFiles/fitSingletAVM.exe.dir/src/schrodinger/common.cpp.i
@@ -897,6 +948,7 @@ src/schrodinger/common.s: src/schrodinger/common.cpp.s
 src/schrodinger/common.cpp.s:
 	$(MAKE) -f CMakeFiles/test_HVQCD.exe.dir/build.make CMakeFiles/test_HVQCD.exe.dir/src/schrodinger/common.cpp.s
 	$(MAKE) -f CMakeFiles/test_schrodinger.exe.dir/build.make CMakeFiles/test_schrodinger.exe.dir/src/schrodinger/common.cpp.s
+	$(MAKE) -f CMakeFiles/comparePotentialsWithMatti.exe.dir/build.make CMakeFiles/comparePotentialsWithMatti.exe.dir/src/schrodinger/common.cpp.s
 	$(MAKE) -f CMakeFiles/savePotentials.exe.dir/build.make CMakeFiles/savePotentials.exe.dir/src/schrodinger/common.cpp.s
 	$(MAKE) -f CMakeFiles/HVQCDRatios.exe.dir/build.make CMakeFiles/HVQCDRatios.exe.dir/src/schrodinger/common.cpp.s
 	$(MAKE) -f CMakeFiles/fitSingletAVM.exe.dir/build.make CMakeFiles/fitSingletAVM.exe.dir/src/schrodinger/common.cpp.s
@@ -919,6 +971,7 @@ src/schrodinger/matrixNumerov.o: src/schrodinger/matrixNumerov.cpp.o
 src/schrodinger/matrixNumerov.cpp.o:
 	$(MAKE) -f CMakeFiles/test_HVQCD.exe.dir/build.make CMakeFiles/test_HVQCD.exe.dir/src/schrodinger/matrixNumerov.cpp.o
 	$(MAKE) -f CMakeFiles/test_schrodinger.exe.dir/build.make CMakeFiles/test_schrodinger.exe.dir/src/schrodinger/matrixNumerov.cpp.o
+	$(MAKE) -f CMakeFiles/comparePotentialsWithMatti.exe.dir/build.make CMakeFiles/comparePotentialsWithMatti.exe.dir/src/schrodinger/matrixNumerov.cpp.o
 	$(MAKE) -f CMakeFiles/savePotentials.exe.dir/build.make CMakeFiles/savePotentials.exe.dir/src/schrodinger/matrixNumerov.cpp.o
 	$(MAKE) -f CMakeFiles/HVQCDRatios.exe.dir/build.make CMakeFiles/HVQCDRatios.exe.dir/src/schrodinger/matrixNumerov.cpp.o
 	$(MAKE) -f CMakeFiles/fitSingletAVM.exe.dir/build.make CMakeFiles/fitSingletAVM.exe.dir/src/schrodinger/matrixNumerov.cpp.o
@@ -941,6 +994,7 @@ src/schrodinger/matrixNumerov.i: src/schrodinger/matrixNumerov.cpp.i
 src/schrodinger/matrixNumerov.cpp.i:
 	$(MAKE) -f CMakeFiles/test_HVQCD.exe.dir/build.make CMakeFiles/test_HVQCD.exe.dir/src/schrodinger/matrixNumerov.cpp.i
 	$(MAKE) -f CMakeFiles/test_schrodinger.exe.dir/build.make CMakeFiles/test_schrodinger.exe.dir/src/schrodinger/matrixNumerov.cpp.i
+	$(MAKE) -f CMakeFiles/comparePotentialsWithMatti.exe.dir/build.make CMakeFiles/comparePotentialsWithMatti.exe.dir/src/schrodinger/matrixNumerov.cpp.i
 	$(MAKE) -f CMakeFiles/savePotentials.exe.dir/build.make CMakeFiles/savePotentials.exe.dir/src/schrodinger/matrixNumerov.cpp.i
 	$(MAKE) -f CMakeFiles/HVQCDRatios.exe.dir/build.make CMakeFiles/HVQCDRatios.exe.dir/src/schrodinger/matrixNumerov.cpp.i
 	$(MAKE) -f CMakeFiles/fitSingletAVM.exe.dir/build.make CMakeFiles/fitSingletAVM.exe.dir/src/schrodinger/matrixNumerov.cpp.i
@@ -963,6 +1017,7 @@ src/schrodinger/matrixNumerov.s: src/schrodinger/matrixNumerov.cpp.s
 src/schrodinger/matrixNumerov.cpp.s:
 	$(MAKE) -f CMakeFiles/test_HVQCD.exe.dir/build.make CMakeFiles/test_HVQCD.exe.dir/src/schrodinger/matrixNumerov.cpp.s
 	$(MAKE) -f CMakeFiles/test_schrodinger.exe.dir/build.make CMakeFiles/test_schrodinger.exe.dir/src/schrodinger/matrixNumerov.cpp.s
+	$(MAKE) -f CMakeFiles/comparePotentialsWithMatti.exe.dir/build.make CMakeFiles/comparePotentialsWithMatti.exe.dir/src/schrodinger/matrixNumerov.cpp.s
 	$(MAKE) -f CMakeFiles/savePotentials.exe.dir/build.make CMakeFiles/savePotentials.exe.dir/src/schrodinger/matrixNumerov.cpp.s
 	$(MAKE) -f CMakeFiles/HVQCDRatios.exe.dir/build.make CMakeFiles/HVQCDRatios.exe.dir/src/schrodinger/matrixNumerov.cpp.s
 	$(MAKE) -f CMakeFiles/fitSingletAVM.exe.dir/build.make CMakeFiles/fitSingletAVM.exe.dir/src/schrodinger/matrixNumerov.cpp.s
@@ -985,6 +1040,7 @@ src/schrodinger/numerov.o: src/schrodinger/numerov.cpp.o
 src/schrodinger/numerov.cpp.o:
 	$(MAKE) -f CMakeFiles/test_HVQCD.exe.dir/build.make CMakeFiles/test_HVQCD.exe.dir/src/schrodinger/numerov.cpp.o
 	$(MAKE) -f CMakeFiles/test_schrodinger.exe.dir/build.make CMakeFiles/test_schrodinger.exe.dir/src/schrodinger/numerov.cpp.o
+	$(MAKE) -f CMakeFiles/comparePotentialsWithMatti.exe.dir/build.make CMakeFiles/comparePotentialsWithMatti.exe.dir/src/schrodinger/numerov.cpp.o
 	$(MAKE) -f CMakeFiles/savePotentials.exe.dir/build.make CMakeFiles/savePotentials.exe.dir/src/schrodinger/numerov.cpp.o
 	$(MAKE) -f CMakeFiles/HVQCDRatios.exe.dir/build.make CMakeFiles/HVQCDRatios.exe.dir/src/schrodinger/numerov.cpp.o
 	$(MAKE) -f CMakeFiles/fitSingletAVM.exe.dir/build.make CMakeFiles/fitSingletAVM.exe.dir/src/schrodinger/numerov.cpp.o
@@ -1007,6 +1063,7 @@ src/schrodinger/numerov.i: src/schrodinger/numerov.cpp.i
 src/schrodinger/numerov.cpp.i:
 	$(MAKE) -f CMakeFiles/test_HVQCD.exe.dir/build.make CMakeFiles/test_HVQCD.exe.dir/src/schrodinger/numerov.cpp.i
 	$(MAKE) -f CMakeFiles/test_schrodinger.exe.dir/build.make CMakeFiles/test_schrodinger.exe.dir/src/schrodinger/numerov.cpp.i
+	$(MAKE) -f CMakeFiles/comparePotentialsWithMatti.exe.dir/build.make CMakeFiles/comparePotentialsWithMatti.exe.dir/src/schrodinger/numerov.cpp.i
 	$(MAKE) -f CMakeFiles/savePotentials.exe.dir/build.make CMakeFiles/savePotentials.exe.dir/src/schrodinger/numerov.cpp.i
 	$(MAKE) -f CMakeFiles/HVQCDRatios.exe.dir/build.make CMakeFiles/HVQCDRatios.exe.dir/src/schrodinger/numerov.cpp.i
 	$(MAKE) -f CMakeFiles/fitSingletAVM.exe.dir/build.make CMakeFiles/fitSingletAVM.exe.dir/src/schrodinger/numerov.cpp.i
@@ -1029,6 +1086,7 @@ src/schrodinger/numerov.s: src/schrodinger/numerov.cpp.s
 src/schrodinger/numerov.cpp.s:
 	$(MAKE) -f CMakeFiles/test_HVQCD.exe.dir/build.make CMakeFiles/test_HVQCD.exe.dir/src/schrodinger/numerov.cpp.s
 	$(MAKE) -f CMakeFiles/test_schrodinger.exe.dir/build.make CMakeFiles/test_schrodinger.exe.dir/src/schrodinger/numerov.cpp.s
+	$(MAKE) -f CMakeFiles/comparePotentialsWithMatti.exe.dir/build.make CMakeFiles/comparePotentialsWithMatti.exe.dir/src/schrodinger/numerov.cpp.s
 	$(MAKE) -f CMakeFiles/savePotentials.exe.dir/build.make CMakeFiles/savePotentials.exe.dir/src/schrodinger/numerov.cpp.s
 	$(MAKE) -f CMakeFiles/HVQCDRatios.exe.dir/build.make CMakeFiles/HVQCDRatios.exe.dir/src/schrodinger/numerov.cpp.s
 	$(MAKE) -f CMakeFiles/fitSingletAVM.exe.dir/build.make CMakeFiles/fitSingletAVM.exe.dir/src/schrodinger/numerov.cpp.s
@@ -1051,6 +1109,7 @@ src/schrodinger/schrodinger.o: src/schrodinger/schrodinger.cpp.o
 src/schrodinger/schrodinger.cpp.o:
 	$(MAKE) -f CMakeFiles/test_HVQCD.exe.dir/build.make CMakeFiles/test_HVQCD.exe.dir/src/schrodinger/schrodinger.cpp.o
 	$(MAKE) -f CMakeFiles/test_schrodinger.exe.dir/build.make CMakeFiles/test_schrodinger.exe.dir/src/schrodinger/schrodinger.cpp.o
+	$(MAKE) -f CMakeFiles/comparePotentialsWithMatti.exe.dir/build.make CMakeFiles/comparePotentialsWithMatti.exe.dir/src/schrodinger/schrodinger.cpp.o
 	$(MAKE) -f CMakeFiles/savePotentials.exe.dir/build.make CMakeFiles/savePotentials.exe.dir/src/schrodinger/schrodinger.cpp.o
 	$(MAKE) -f CMakeFiles/HVQCDRatios.exe.dir/build.make CMakeFiles/HVQCDRatios.exe.dir/src/schrodinger/schrodinger.cpp.o
 	$(MAKE) -f CMakeFiles/fitSingletAVM.exe.dir/build.make CMakeFiles/fitSingletAVM.exe.dir/src/schrodinger/schrodinger.cpp.o
@@ -1073,6 +1132,7 @@ src/schrodinger/schrodinger.i: src/schrodinger/schrodinger.cpp.i
 src/schrodinger/schrodinger.cpp.i:
 	$(MAKE) -f CMakeFiles/test_HVQCD.exe.dir/build.make CMakeFiles/test_HVQCD.exe.dir/src/schrodinger/schrodinger.cpp.i
 	$(MAKE) -f CMakeFiles/test_schrodinger.exe.dir/build.make CMakeFiles/test_schrodinger.exe.dir/src/schrodinger/schrodinger.cpp.i
+	$(MAKE) -f CMakeFiles/comparePotentialsWithMatti.exe.dir/build.make CMakeFiles/comparePotentialsWithMatti.exe.dir/src/schrodinger/schrodinger.cpp.i
 	$(MAKE) -f CMakeFiles/savePotentials.exe.dir/build.make CMakeFiles/savePotentials.exe.dir/src/schrodinger/schrodinger.cpp.i
 	$(MAKE) -f CMakeFiles/HVQCDRatios.exe.dir/build.make CMakeFiles/HVQCDRatios.exe.dir/src/schrodinger/schrodinger.cpp.i
 	$(MAKE) -f CMakeFiles/fitSingletAVM.exe.dir/build.make CMakeFiles/fitSingletAVM.exe.dir/src/schrodinger/schrodinger.cpp.i
@@ -1095,6 +1155,7 @@ src/schrodinger/schrodinger.s: src/schrodinger/schrodinger.cpp.s
 src/schrodinger/schrodinger.cpp.s:
 	$(MAKE) -f CMakeFiles/test_HVQCD.exe.dir/build.make CMakeFiles/test_HVQCD.exe.dir/src/schrodinger/schrodinger.cpp.s
 	$(MAKE) -f CMakeFiles/test_schrodinger.exe.dir/build.make CMakeFiles/test_schrodinger.exe.dir/src/schrodinger/schrodinger.cpp.s
+	$(MAKE) -f CMakeFiles/comparePotentialsWithMatti.exe.dir/build.make CMakeFiles/comparePotentialsWithMatti.exe.dir/src/schrodinger/schrodinger.cpp.s
 	$(MAKE) -f CMakeFiles/savePotentials.exe.dir/build.make CMakeFiles/savePotentials.exe.dir/src/schrodinger/schrodinger.cpp.s
 	$(MAKE) -f CMakeFiles/HVQCDRatios.exe.dir/build.make CMakeFiles/HVQCDRatios.exe.dir/src/schrodinger/schrodinger.cpp.s
 	$(MAKE) -f CMakeFiles/fitSingletAVM.exe.dir/build.make CMakeFiles/fitSingletAVM.exe.dir/src/schrodinger/schrodinger.cpp.s
@@ -1117,6 +1178,7 @@ src/schrodinger/solvspec.o: src/schrodinger/solvspec.cpp.o
 src/schrodinger/solvspec.cpp.o:
 	$(MAKE) -f CMakeFiles/test_HVQCD.exe.dir/build.make CMakeFiles/test_HVQCD.exe.dir/src/schrodinger/solvspec.cpp.o
 	$(MAKE) -f CMakeFiles/test_schrodinger.exe.dir/build.make CMakeFiles/test_schrodinger.exe.dir/src/schrodinger/solvspec.cpp.o
+	$(MAKE) -f CMakeFiles/comparePotentialsWithMatti.exe.dir/build.make CMakeFiles/comparePotentialsWithMatti.exe.dir/src/schrodinger/solvspec.cpp.o
 	$(MAKE) -f CMakeFiles/savePotentials.exe.dir/build.make CMakeFiles/savePotentials.exe.dir/src/schrodinger/solvspec.cpp.o
 	$(MAKE) -f CMakeFiles/HVQCDRatios.exe.dir/build.make CMakeFiles/HVQCDRatios.exe.dir/src/schrodinger/solvspec.cpp.o
 	$(MAKE) -f CMakeFiles/fitSingletAVM.exe.dir/build.make CMakeFiles/fitSingletAVM.exe.dir/src/schrodinger/solvspec.cpp.o
@@ -1139,6 +1201,7 @@ src/schrodinger/solvspec.i: src/schrodinger/solvspec.cpp.i
 src/schrodinger/solvspec.cpp.i:
 	$(MAKE) -f CMakeFiles/test_HVQCD.exe.dir/build.make CMakeFiles/test_HVQCD.exe.dir/src/schrodinger/solvspec.cpp.i
 	$(MAKE) -f CMakeFiles/test_schrodinger.exe.dir/build.make CMakeFiles/test_schrodinger.exe.dir/src/schrodinger/solvspec.cpp.i
+	$(MAKE) -f CMakeFiles/comparePotentialsWithMatti.exe.dir/build.make CMakeFiles/comparePotentialsWithMatti.exe.dir/src/schrodinger/solvspec.cpp.i
 	$(MAKE) -f CMakeFiles/savePotentials.exe.dir/build.make CMakeFiles/savePotentials.exe.dir/src/schrodinger/solvspec.cpp.i
 	$(MAKE) -f CMakeFiles/HVQCDRatios.exe.dir/build.make CMakeFiles/HVQCDRatios.exe.dir/src/schrodinger/solvspec.cpp.i
 	$(MAKE) -f CMakeFiles/fitSingletAVM.exe.dir/build.make CMakeFiles/fitSingletAVM.exe.dir/src/schrodinger/solvspec.cpp.i
@@ -1161,6 +1224,7 @@ src/schrodinger/solvspec.s: src/schrodinger/solvspec.cpp.s
 src/schrodinger/solvspec.cpp.s:
 	$(MAKE) -f CMakeFiles/test_HVQCD.exe.dir/build.make CMakeFiles/test_HVQCD.exe.dir/src/schrodinger/solvspec.cpp.s
 	$(MAKE) -f CMakeFiles/test_schrodinger.exe.dir/build.make CMakeFiles/test_schrodinger.exe.dir/src/schrodinger/solvspec.cpp.s
+	$(MAKE) -f CMakeFiles/comparePotentialsWithMatti.exe.dir/build.make CMakeFiles/comparePotentialsWithMatti.exe.dir/src/schrodinger/solvspec.cpp.s
 	$(MAKE) -f CMakeFiles/savePotentials.exe.dir/build.make CMakeFiles/savePotentials.exe.dir/src/schrodinger/solvspec.cpp.s
 	$(MAKE) -f CMakeFiles/HVQCDRatios.exe.dir/build.make CMakeFiles/HVQCDRatios.exe.dir/src/schrodinger/solvspec.cpp.s
 	$(MAKE) -f CMakeFiles/fitSingletAVM.exe.dir/build.make CMakeFiles/fitSingletAVM.exe.dir/src/schrodinger/solvspec.cpp.s
@@ -1266,6 +1330,7 @@ help:
 	@echo "... edit_cache"
 	@echo "... test_HVQCD.exe"
 	@echo "... test_schrodinger.exe"
+	@echo "... comparePotentialsWithMatti.exe"
 	@echo "... savePotentials.exe"
 	@echo "... HVQCDRatios.exe"
 	@echo "... fitSingletAVM.exe"
@@ -1282,6 +1347,9 @@ help:
 	@echo "... physics/HVQCDRatios.o"
 	@echo "... physics/HVQCDRatios.i"
 	@echo "... physics/HVQCDRatios.s"
+	@echo "... physics/comparePotentialsWithMatti.o"
+	@echo "... physics/comparePotentialsWithMatti.i"
+	@echo "... physics/comparePotentialsWithMatti.s"
 	@echo "... physics/fitHVQCDGlobal.o"
 	@echo "... physics/fitHVQCDGlobal.i"
 	@echo "... physics/fitHVQCDGlobal.s"
