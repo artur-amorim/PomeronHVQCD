@@ -711,8 +711,9 @@ void HVQCD::finalizeBackground()
     std::vector<double> A, z, u, q, Phi, tau, dq, dPhi, dtau, d2q, d2Phi, d2tau, d3tau;
     for(int i = 0; i < As.size(); i++)
     {
-        // For the spectrum we are only interested in -50 < A < 20
-        if ((zs[i]-zs.back()> 1e-6) && (Phis[i] < 120))
+        // For the spectrum we are only interested in -10 < A < 10
+        //if ((zs[i]-zs.back()> 1e-6) && (Phis[i] < 120))
+        if ((As[i] > -6) && (As[i] < 6))
         {
             A.push_back(As[i]); z.push_back(zs[i]-zs.back()); u.push_back(us[i]-us.back());
             q.push_back(qs[i]); Phi.push_back(Phis[i]); tau.push_back(taus[i]);
@@ -1274,12 +1275,17 @@ void computeHVQCDRatios(const HVQCD &hvqcd)
     VPSM = computePseudoScalarMesonPotential(hvqcd);
     VSM = computeScalarMesonPotential(hvqcd);
     VSingletAVM = computeAxialVectorMesonSingletPotential(hvqcd, VAVM);
+    // Reverse the vectors
+    std::reverse(std::begin(zs), std::end(zs)); std::reverse(std::begin(us), std::end(us));
+    std::reverse(std::begin(V2G), std::end(V2G)); std::reverse(std::begin(VVM), std::end(VVM));
+    std::reverse(std::begin(VAVM), std::end(VAVM)); std::reverse(std::begin(VPSM), std::end(VPSM));
+    std::reverse(std::begin(VSM), std::end(VSM)); std::reverse(std::begin(VSingletAVM), std::end(VSingletAVM));
     // Compute the masses
     std::vector<double> TGMasses, VMMasses, AVMMasses, PSMMasses, SMMasses, SingletAVMMasses;
     TGMasses = computeMasses(zs, V2G, 1);
     VMMasses = computeMasses(us, VVM, 6);
     AVMMasses = computeMasses(us, VAVM, 5);
-    PSMMasses = computeMasses(us, VPSM, 5);
+    PSMMasses = computeMasses(us, VPSM, 5, "matrix_numerov");
     SMMasses = computeMasses(us,VSM, 2);
     SingletAVMMasses = computeMasses(us, VSingletAVM, 2);
     // Compute the predicted ratios

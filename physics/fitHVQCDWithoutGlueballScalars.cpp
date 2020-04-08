@@ -1,6 +1,7 @@
 #include <iostream>
 #include <exception>
 #include "HolographicVQCD.h"
+#include "schrodinger/chebspec.h"
 #include "schrodinger/schrodinger.h"
 #include "methods/optimization/NelderMead.hpp"
 

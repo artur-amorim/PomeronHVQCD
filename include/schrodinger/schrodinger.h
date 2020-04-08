@@ -1,8 +1,9 @@
 #ifndef SCHRODINGER_H
 #define SCHRODINGER_H
 
-#include "chebspec.h"
-#include "numerov.h"
+#include <vector>
+
+class SolvSpec;
 
 struct List
 {

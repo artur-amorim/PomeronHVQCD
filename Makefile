@@ -911,6 +911,72 @@ src/schrodinger/common.cpp.s:
 	$(MAKE) -f CMakeFiles/fitYangMills.exe.dir/build.make CMakeFiles/fitYangMills.exe.dir/src/schrodinger/common.cpp.s
 .PHONY : src/schrodinger/common.cpp.s
 
+src/schrodinger/matrixNumerov.o: src/schrodinger/matrixNumerov.cpp.o
+
+.PHONY : src/schrodinger/matrixNumerov.o
+
+# target to build an object file
+src/schrodinger/matrixNumerov.cpp.o:
+	$(MAKE) -f CMakeFiles/test_HVQCD.exe.dir/build.make CMakeFiles/test_HVQCD.exe.dir/src/schrodinger/matrixNumerov.cpp.o
+	$(MAKE) -f CMakeFiles/test_schrodinger.exe.dir/build.make CMakeFiles/test_schrodinger.exe.dir/src/schrodinger/matrixNumerov.cpp.o
+	$(MAKE) -f CMakeFiles/savePotentials.exe.dir/build.make CMakeFiles/savePotentials.exe.dir/src/schrodinger/matrixNumerov.cpp.o
+	$(MAKE) -f CMakeFiles/HVQCDRatios.exe.dir/build.make CMakeFiles/HVQCDRatios.exe.dir/src/schrodinger/matrixNumerov.cpp.o
+	$(MAKE) -f CMakeFiles/fitSingletAVM.exe.dir/build.make CMakeFiles/fitSingletAVM.exe.dir/src/schrodinger/matrixNumerov.cpp.o
+	$(MAKE) -f CMakeFiles/fitHVQCDWithoutGlueball.exe.dir/build.make CMakeFiles/fitHVQCDWithoutGlueball.exe.dir/src/schrodinger/matrixNumerov.cpp.o
+	$(MAKE) -f CMakeFiles/fitHVQCDGlobal_sc_VgIR_fixed.exe.dir/build.make CMakeFiles/fitHVQCDGlobal_sc_VgIR_fixed.exe.dir/src/schrodinger/matrixNumerov.cpp.o
+	$(MAKE) -f CMakeFiles/fitHVQCDWithoutGlueballScalars_sc_VgIR_fixed.exe.dir/build.make CMakeFiles/fitHVQCDWithoutGlueballScalars_sc_VgIR_fixed.exe.dir/src/schrodinger/matrixNumerov.cpp.o
+	$(MAKE) -f CMakeFiles/fitHVQCDWithoutScalars_sc_VgIR_fixed.exe.dir/build.make CMakeFiles/fitHVQCDWithoutScalars_sc_VgIR_fixed.exe.dir/src/schrodinger/matrixNumerov.cpp.o
+	$(MAKE) -f CMakeFiles/fitHVQCDWithoutGlueball_sc_VgIR_fixed.exe.dir/build.make CMakeFiles/fitHVQCDWithoutGlueball_sc_VgIR_fixed.exe.dir/src/schrodinger/matrixNumerov.cpp.o
+	$(MAKE) -f CMakeFiles/fitHVQCDGlobal.exe.dir/build.make CMakeFiles/fitHVQCDGlobal.exe.dir/src/schrodinger/matrixNumerov.cpp.o
+	$(MAKE) -f CMakeFiles/fitHVQCDWithoutScalars.exe.dir/build.make CMakeFiles/fitHVQCDWithoutScalars.exe.dir/src/schrodinger/matrixNumerov.cpp.o
+	$(MAKE) -f CMakeFiles/fitHVQCDWithoutGlueballScalars.exe.dir/build.make CMakeFiles/fitHVQCDWithoutGlueballScalars.exe.dir/src/schrodinger/matrixNumerov.cpp.o
+	$(MAKE) -f CMakeFiles/fitYangMills.exe.dir/build.make CMakeFiles/fitYangMills.exe.dir/src/schrodinger/matrixNumerov.cpp.o
+.PHONY : src/schrodinger/matrixNumerov.cpp.o
+
+src/schrodinger/matrixNumerov.i: src/schrodinger/matrixNumerov.cpp.i
+
+.PHONY : src/schrodinger/matrixNumerov.i
+
+# target to preprocess a source file
+src/schrodinger/matrixNumerov.cpp.i:
+	$(MAKE) -f CMakeFiles/test_HVQCD.exe.dir/build.make CMakeFiles/test_HVQCD.exe.dir/src/schrodinger/matrixNumerov.cpp.i
+	$(MAKE) -f CMakeFiles/test_schrodinger.exe.dir/build.make CMakeFiles/test_schrodinger.exe.dir/src/schrodinger/matrixNumerov.cpp.i
+	$(MAKE) -f CMakeFiles/savePotentials.exe.dir/build.make CMakeFiles/savePotentials.exe.dir/src/schrodinger/matrixNumerov.cpp.i
+	$(MAKE) -f CMakeFiles/HVQCDRatios.exe.dir/build.make CMakeFiles/HVQCDRatios.exe.dir/src/schrodinger/matrixNumerov.cpp.i
+	$(MAKE) -f CMakeFiles/fitSingletAVM.exe.dir/build.make CMakeFiles/fitSingletAVM.exe.dir/src/schrodinger/matrixNumerov.cpp.i
+	$(MAKE) -f CMakeFiles/fitHVQCDWithoutGlueball.exe.dir/build.make CMakeFiles/fitHVQCDWithoutGlueball.exe.dir/src/schrodinger/matrixNumerov.cpp.i
+	$(MAKE) -f CMakeFiles/fitHVQCDGlobal_sc_VgIR_fixed.exe.dir/build.make CMakeFiles/fitHVQCDGlobal_sc_VgIR_fixed.exe.dir/src/schrodinger/matrixNumerov.cpp.i
+	$(MAKE) -f CMakeFiles/fitHVQCDWithoutGlueballScalars_sc_VgIR_fixed.exe.dir/build.make CMakeFiles/fitHVQCDWithoutGlueballScalars_sc_VgIR_fixed.exe.dir/src/schrodinger/matrixNumerov.cpp.i
+	$(MAKE) -f CMakeFiles/fitHVQCDWithoutScalars_sc_VgIR_fixed.exe.dir/build.make CMakeFiles/fitHVQCDWithoutScalars_sc_VgIR_fixed.exe.dir/src/schrodinger/matrixNumerov.cpp.i
+	$(MAKE) -f CMakeFiles/fitHVQCDWithoutGlueball_sc_VgIR_fixed.exe.dir/build.make CMakeFiles/fitHVQCDWithoutGlueball_sc_VgIR_fixed.exe.dir/src/schrodinger/matrixNumerov.cpp.i
+	$(MAKE) -f CMakeFiles/fitHVQCDGlobal.exe.dir/build.make CMakeFiles/fitHVQCDGlobal.exe.dir/src/schrodinger/matrixNumerov.cpp.i
+	$(MAKE) -f CMakeFiles/fitHVQCDWithoutScalars.exe.dir/build.make CMakeFiles/fitHVQCDWithoutScalars.exe.dir/src/schrodinger/matrixNumerov.cpp.i
+	$(MAKE) -f CMakeFiles/fitHVQCDWithoutGlueballScalars.exe.dir/build.make CMakeFiles/fitHVQCDWithoutGlueballScalars.exe.dir/src/schrodinger/matrixNumerov.cpp.i
+	$(MAKE) -f CMakeFiles/fitYangMills.exe.dir/build.make CMakeFiles/fitYangMills.exe.dir/src/schrodinger/matrixNumerov.cpp.i
+.PHONY : src/schrodinger/matrixNumerov.cpp.i
+
+src/schrodinger/matrixNumerov.s: src/schrodinger/matrixNumerov.cpp.s
+
+.PHONY : src/schrodinger/matrixNumerov.s
+
+# target to generate assembly for a file
+src/schrodinger/matrixNumerov.cpp.s:
+	$(MAKE) -f CMakeFiles/test_HVQCD.exe.dir/build.make CMakeFiles/test_HVQCD.exe.dir/src/schrodinger/matrixNumerov.cpp.s
+	$(MAKE) -f CMakeFiles/test_schrodinger.exe.dir/build.make CMakeFiles/test_schrodinger.exe.dir/src/schrodinger/matrixNumerov.cpp.s
+	$(MAKE) -f CMakeFiles/savePotentials.exe.dir/build.make CMakeFiles/savePotentials.exe.dir/src/schrodinger/matrixNumerov.cpp.s
+	$(MAKE) -f CMakeFiles/HVQCDRatios.exe.dir/build.make CMakeFiles/HVQCDRatios.exe.dir/src/schrodinger/matrixNumerov.cpp.s
+	$(MAKE) -f CMakeFiles/fitSingletAVM.exe.dir/build.make CMakeFiles/fitSingletAVM.exe.dir/src/schrodinger/matrixNumerov.cpp.s
+	$(MAKE) -f CMakeFiles/fitHVQCDWithoutGlueball.exe.dir/build.make CMakeFiles/fitHVQCDWithoutGlueball.exe.dir/src/schrodinger/matrixNumerov.cpp.s
+	$(MAKE) -f CMakeFiles/fitHVQCDGlobal_sc_VgIR_fixed.exe.dir/build.make CMakeFiles/fitHVQCDGlobal_sc_VgIR_fixed.exe.dir/src/schrodinger/matrixNumerov.cpp.s
+	$(MAKE) -f CMakeFiles/fitHVQCDWithoutGlueballScalars_sc_VgIR_fixed.exe.dir/build.make CMakeFiles/fitHVQCDWithoutGlueballScalars_sc_VgIR_fixed.exe.dir/src/schrodinger/matrixNumerov.cpp.s
+	$(MAKE) -f CMakeFiles/fitHVQCDWithoutScalars_sc_VgIR_fixed.exe.dir/build.make CMakeFiles/fitHVQCDWithoutScalars_sc_VgIR_fixed.exe.dir/src/schrodinger/matrixNumerov.cpp.s
+	$(MAKE) -f CMakeFiles/fitHVQCDWithoutGlueball_sc_VgIR_fixed.exe.dir/build.make CMakeFiles/fitHVQCDWithoutGlueball_sc_VgIR_fixed.exe.dir/src/schrodinger/matrixNumerov.cpp.s
+	$(MAKE) -f CMakeFiles/fitHVQCDGlobal.exe.dir/build.make CMakeFiles/fitHVQCDGlobal.exe.dir/src/schrodinger/matrixNumerov.cpp.s
+	$(MAKE) -f CMakeFiles/fitHVQCDWithoutScalars.exe.dir/build.make CMakeFiles/fitHVQCDWithoutScalars.exe.dir/src/schrodinger/matrixNumerov.cpp.s
+	$(MAKE) -f CMakeFiles/fitHVQCDWithoutGlueballScalars.exe.dir/build.make CMakeFiles/fitHVQCDWithoutGlueballScalars.exe.dir/src/schrodinger/matrixNumerov.cpp.s
+	$(MAKE) -f CMakeFiles/fitYangMills.exe.dir/build.make CMakeFiles/fitYangMills.exe.dir/src/schrodinger/matrixNumerov.cpp.s
+.PHONY : src/schrodinger/matrixNumerov.cpp.s
+
 src/schrodinger/numerov.o: src/schrodinger/numerov.cpp.o
 
 .PHONY : src/schrodinger/numerov.o
@@ -1264,6 +1330,9 @@ help:
 	@echo "... src/schrodinger/common.o"
 	@echo "... src/schrodinger/common.i"
 	@echo "... src/schrodinger/common.s"
+	@echo "... src/schrodinger/matrixNumerov.o"
+	@echo "... src/schrodinger/matrixNumerov.i"
+	@echo "... src/schrodinger/matrixNumerov.s"
 	@echo "... src/schrodinger/numerov.o"
 	@echo "... src/schrodinger/numerov.i"
 	@echo "... src/schrodinger/numerov.s"

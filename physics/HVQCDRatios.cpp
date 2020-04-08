@@ -1,6 +1,7 @@
 #include <iostream>
 #include <exception>
 #include "HolographicVQCD.h"
+#include "schrodinger/chebspec.h"
 #include "schrodinger/schrodinger.h"
 #include "methods/optimization/NelderMead.hpp"
 
@@ -32,7 +33,7 @@ int main(int argc, char ** argv)
     cout << " k1: " << k1 << " w1: " << w1 << " tau0: " << tau0 << " Za: " << Za << " ca: " << ca << endl;
 
     // Fit the model to the spectrum
-    chebSetN(800);
+    chebSetN(1600);
 
     HVQCD hvqcd(sc, ksc, wsc, W0, w0, kU1, wU1, VgIR, WIR, kIR, wIR, W1, k1, w1, xf, tau0, Za, ca);
     hvqcd.solve();
