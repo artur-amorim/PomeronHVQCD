@@ -2,6 +2,7 @@
 #include <boost/numeric/ublas/assignment.hpp>
 #include "YangMills.h"
 #include "schrodinger/common.h"
+#include "methods/rootFind.hpp"
 #include "methods/optimization/NelderMead.hpp"
 
 

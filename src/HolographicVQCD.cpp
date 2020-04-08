@@ -6,6 +6,7 @@
 #include "HolographicVQCD.h"
 #include "schrodinger/common.h"
 #include "methods/interpolation/Spline_Interp.hpp"
+#include "methods/rootFind.hpp"
 
 HVQCD::HVQCD(const double ssc, const double kksc, const double wwsc,
              const double WW0, const double ww0,
