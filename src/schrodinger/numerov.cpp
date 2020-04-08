@@ -1,6 +1,7 @@
 #include <algorithm>
 #include <stdexcept>
 #include "schrodinger/numerov.h"
+#include "methods/rootFind.hpp"
 
 Numerov::Numerov(){}
 
