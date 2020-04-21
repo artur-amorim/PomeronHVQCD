@@ -109,6 +109,8 @@ void HQCDP::computeSpectrum(const std::vector< std::vector<double> > &kernelPars
             std::vector<Reggeon> ker_reggeons = computeReggeons(*ker, t, n_regs);
             for(int k = 0; k < ker_reggeons.size(); k++) reggeons.push_back(ker_reggeons[k]);
        }
+       // Now we need to get the indices of the reggeons right
+       for(int i = 0; i < reggeons.size(); i++) reggeons[i].setIndex(i+1);
        Spectra spec(t, reggeons);
        spectrum.push_back(spec);
    }

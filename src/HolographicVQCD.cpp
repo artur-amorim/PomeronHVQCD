@@ -20,7 +20,7 @@ HVQCD::HVQCD(const double ssc, const double kksc, const double wwsc,
              Za(za), ca(c), taus({}), dtaus({}), d2qs({}),
             d2taus({}), d3taus({}), us({}), Astrings({}),
             dAstrings({}), d2Astrings({}), U2s({}), aFs({}),
-            bFs({}), cFs({}), dFs({}), e2As({}), e2Astrings({}) {}
+            bFs({}), cFs({}), dFs({}), eFs({}), e2As({}), e2Astrings({}) {}
 
 HVQCD::HVQCD(const HVQCD &hvqcd):
     Background(hvqcd), ksc(hvqcd.ksc), wsc(hvqcd.wsc),
@@ -32,8 +32,8 @@ HVQCD::HVQCD(const HVQCD &hvqcd):
     Astrings(hvqcd.Astrings), dAstrings(hvqcd.dAstrings),
     d2Astrings(hvqcd.d2Astrings),
     U2s(hvqcd.U2s), aFs(hvqcd.aFs), bFs(hvqcd.bFs),
-    cFs(hvqcd.cFs), dFs(hvqcd.dFs), e2As(hvqcd.e2As),
-    e2Astrings(hvqcd.e2Astrings) {}
+    cFs(hvqcd.cFs), dFs(hvqcd.dFs), eFs(hvqcd.eFs),
+    e2As(hvqcd.e2As), e2Astrings(hvqcd.e2Astrings) {}
 
 
 HVQCD::~HVQCD(){}
@@ -737,7 +737,7 @@ void HVQCD::finalizeBackground()
     // Now we compute U2s, aFs, bFs, cFs and dFs
     U2s.resize(As.size()); aFs.resize(As.size());
     bFs.resize(As.size()); cFs.resize(As.size());
-    dFs.resize(As.size());
+    dFs.resize(As.size()); eFs.resize(As.size());
     for(int i = 0; i < As.size(); i++)
     {
         // Compute U2s
@@ -745,7 +745,9 @@ void HVQCD::finalizeBackground()
         aFs[i] = std::exp(2 * As[i]) * (dPhis[i] - dqs[i] * dPhis[i] /qs[i] + d2Phis[i]) / std::pow(qs[i], 2);
         bFs[i] = d2Astrings[i] - dAstrings[i] * dAstrings[i];
         cFs[i] = std::pow(std::exp(As[i]) * dPhis[i] / qs[i], 2);
-        dFs[i] = std::pow( std::exp(As[i]) * dtaus[i] / qs[i], 2);
+        dFs[i] = dAstrings[i] * std::exp(As[i]) * dPhis[i] / qs[i] ;
+        eFs[i] = std::pow( std::exp(As[i]) * dtaus[i] / qs[i], 2);
+
     }
 
     // Compute e2As and e2Astrings
@@ -970,6 +972,8 @@ std::vector<double> HVQCD::bF() const {return this->bFs;}
 std::vector<double> HVQCD::cF() const {return this->cFs;}
 
 std::vector<double> HVQCD::dF() const {return this->dFs;}
+
+std::vector<double> HVQCD::eF() const {return this->eFs;}
 
 std::vector<double> HVQCD::e2A() const {return this->e2As;}
 
