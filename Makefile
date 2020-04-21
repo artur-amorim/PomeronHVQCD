@@ -736,6 +736,33 @@ src/FL.cpp.s:
 	$(MAKE) -f CMakeFiles/hvqcd_lib.dir/build.make CMakeFiles/hvqcd_lib.dir/src/FL.cpp.s
 .PHONY : src/FL.cpp.s
 
+src/GluonKernel.o: src/GluonKernel.cpp.o
+
+.PHONY : src/GluonKernel.o
+
+# target to build an object file
+src/GluonKernel.cpp.o:
+	$(MAKE) -f CMakeFiles/hvqcd_lib.dir/build.make CMakeFiles/hvqcd_lib.dir/src/GluonKernel.cpp.o
+.PHONY : src/GluonKernel.cpp.o
+
+src/GluonKernel.i: src/GluonKernel.cpp.i
+
+.PHONY : src/GluonKernel.i
+
+# target to preprocess a source file
+src/GluonKernel.cpp.i:
+	$(MAKE) -f CMakeFiles/hvqcd_lib.dir/build.make CMakeFiles/hvqcd_lib.dir/src/GluonKernel.cpp.i
+.PHONY : src/GluonKernel.cpp.i
+
+src/GluonKernel.s: src/GluonKernel.cpp.s
+
+.PHONY : src/GluonKernel.s
+
+# target to generate assembly for a file
+src/GluonKernel.cpp.s:
+	$(MAKE) -f CMakeFiles/hvqcd_lib.dir/build.make CMakeFiles/hvqcd_lib.dir/src/GluonKernel.cpp.s
+.PHONY : src/GluonKernel.cpp.s
+
 src/HQCDP.o: src/HQCDP.cpp.o
 
 .PHONY : src/HQCDP.o
@@ -789,6 +816,33 @@ src/HolographicVQCD.s: src/HolographicVQCD.cpp.s
 src/HolographicVQCD.cpp.s:
 	$(MAKE) -f CMakeFiles/hvqcd_lib.dir/build.make CMakeFiles/hvqcd_lib.dir/src/HolographicVQCD.cpp.s
 .PHONY : src/HolographicVQCD.cpp.s
+
+src/Kernel.o: src/Kernel.cpp.o
+
+.PHONY : src/Kernel.o
+
+# target to build an object file
+src/Kernel.cpp.o:
+	$(MAKE) -f CMakeFiles/hvqcd_lib.dir/build.make CMakeFiles/hvqcd_lib.dir/src/Kernel.cpp.o
+.PHONY : src/Kernel.cpp.o
+
+src/Kernel.i: src/Kernel.cpp.i
+
+.PHONY : src/Kernel.i
+
+# target to preprocess a source file
+src/Kernel.cpp.i:
+	$(MAKE) -f CMakeFiles/hvqcd_lib.dir/build.make CMakeFiles/hvqcd_lib.dir/src/Kernel.cpp.i
+.PHONY : src/Kernel.cpp.i
+
+src/Kernel.s: src/Kernel.cpp.s
+
+.PHONY : src/Kernel.s
+
+# target to generate assembly for a file
+src/Kernel.cpp.s:
+	$(MAKE) -f CMakeFiles/hvqcd_lib.dir/build.make CMakeFiles/hvqcd_lib.dir/src/Kernel.cpp.s
+.PHONY : src/Kernel.cpp.s
 
 src/ProcessObservable.o: src/ProcessObservable.cpp.o
 
@@ -1238,12 +1292,18 @@ help:
 	@echo "... src/FL.o"
 	@echo "... src/FL.i"
 	@echo "... src/FL.s"
+	@echo "... src/GluonKernel.o"
+	@echo "... src/GluonKernel.i"
+	@echo "... src/GluonKernel.s"
 	@echo "... src/HQCDP.o"
 	@echo "... src/HQCDP.i"
 	@echo "... src/HQCDP.s"
 	@echo "... src/HolographicVQCD.o"
 	@echo "... src/HolographicVQCD.i"
 	@echo "... src/HolographicVQCD.s"
+	@echo "... src/Kernel.o"
+	@echo "... src/Kernel.i"
+	@echo "... src/Kernel.s"
 	@echo "... src/ProcessObservable.o"
 	@echo "... src/ProcessObservable.i"
 	@echo "... src/ProcessObservable.s"

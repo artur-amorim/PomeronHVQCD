@@ -26,7 +26,7 @@ set(HVQCD src/background.cpp src/HolographicVQCD.cpp)
 set(U1NNMODE src/U1NNMode.cpp)
 
 # Spectra and Reggeon classes
-set(SPECTRA src/Spectra.cpp src/Reggeon.cpp)
+set(SPECTRA src/Spectra.cpp src/Reggeon.cpp src/Kernel.cpp src/GluonKernel.cpp)
 
 # ProcessObservable and its derived classes
 set(PROCESS src/ProcessObservable.cpp src/DeepInelasticScattering.cpp src/F2.cpp src/FL.cpp)

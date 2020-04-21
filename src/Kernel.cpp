@@ -83,7 +83,7 @@ void Kernel::computeReggeTrajectories(const std::vector<double> &pars)
             // Compute the potential
             std::vector<double> VSch = this->computePotential(j);
             // Compute all the tn(J)s
-            List  spectrum = computeSpectrum(ihqcd().getZ(), VSch, this->NTrajectories(), "cheb");
+            List  spectrum = computeSpectrum(hvqcd().z(), VSch, this->NTrajectories(), "cheb");
             for(int k = 0; k < this->NTrajectories(); k++) ts[k][i] = spectrum.Es[k];
         }
         return;
@@ -100,7 +100,7 @@ void Kernel::computeReggeTrajectories(const std::vector<double> &pars)
         // Compute the potential
         std::vector<double> VSch = this->computePotential(j);
         // Compute all the tn(J)s
-        List  spectrum = computeSpectrum(ihqcd().getZ(), VSch, this->NTrajectories(), "cheb");
+        List  spectrum = computeSpectrum(hvqcd().z(), VSch, this->NTrajectories(), "cheb");
         for(int k = 0; k < this->NTrajectories(); k++) ts[k][i] = spectrum.Es[k]; 
         return;
     };
@@ -157,7 +157,7 @@ std::vector<Reggeon> computeReggeons(const Kernel &kernel, const double t, const
         const double dJdt = reggeTraj.der1(t);
         std::vector<double> VSch = kernel.computePotential(jn);
         // Compute the wavefunction
-        const List spectrum = computeSpectrum(ihqcd().getZ(), VSch, i+1);
+        const List spectrum = computeSpectrum(hvqcd().z(), VSch, i+1);
         std::vector< std::vector<double> > wf = spectrum.wfs[i];
         // We need to normalize the wavefunction
         Spline_Interp<double> wf2(wf[0], wf[1] * wf[1], 0, 0);
