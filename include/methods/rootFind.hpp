@@ -82,7 +82,7 @@ double zbrent(T& func, double x1, double x2, double tol, bool silent = false)
 }
 
 template<class T>
-std::vector<Range> bracketZeros(T & func, const int n_zeros, const double delta = 0.1)
+std::vector<Range> bracketZeros(T & func, const int n_zeros, const double x_start = 0, const double delta = 0.1)
 {
     /*
         This function searches for the first n_zeros of the function func in steps of delta
@@ -90,22 +90,27 @@ std::vector<Range> bracketZeros(T & func, const int n_zeros, const double delta 
         until we have n_zeros such ranges.
     */
     std::vector<Range> intervals;
-    double x0 = 0, x1 = delta;
+    double x0 = x_start, x1 = x_start + delta;
+	double f0 = func(x0), f1 = func(x1);
     int n = 0;
     // Start to search for zeros
     while(n < n_zeros)
     {
-        if( func(x0) * func(x1) < 0)        // If there is a zero the function values at both ends have opposite signs
+        if( f0 * f1 < 0)        // If there is a zero the function values at both ends have opposite signs
         {
             intervals.push_back(Range(x0, x1));     // append the interval
             x0 = x1;                                // Update x0 and x1
             x1 += delta;
+			f0 = f1;
+			f1 = func(x1);
             n++;
         }
         else
         {
             x0 = x1;                        // Didn't find zero, just update x0 and x1
             x1 += delta;
+			f0 = f1;
+			f1 = func(x1);
         }
     }
     return intervals;

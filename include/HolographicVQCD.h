@@ -4,11 +4,11 @@
 #include <boost/numeric/ublas/matrix.hpp>
 #include "background.h"
 
+typedef boost::numeric::ublas::matrix<double> matrix_type;
+
 class HVQCD : public Background
 {
     private:
-        // Matrix type definition
-        typedef boost::numeric::ublas::matrix<double> matrix_type;
         // Parameters of the Vf and k potentials
         double ksc, kU1, W0, WIR, kIR, W1, k1, xf, tau0;
         // Parameters of the w potential
@@ -220,6 +220,10 @@ std::vector<double> computePseudoScalarMesonPotential(const HVQCD &hvqcd);
 std::vector<double> computeScalarMesonPotential(const HVQCD &hvqcd);
 // Declaration of the function that computes the potential of Flavour Singlet Axial Vector Mesons
 std::vector<double> computeAxialVectorMesonSingletPotential(const HVQCD &hvqcd, const std::vector<double> &VAxialVectorMeson);
+
+// Declaration of function that computes the Pseudodoscalar spectrum
+std::vector<double> computePseudoScalarMasses(const HVQCD &hvqcd, const int n_masses);
+
 
 // Save Schrodinger potentials in a given file
 void saveSchrodingerPotentials(const HVQCD &hvqcd, std::string path = "SchrodingerPotentials.txt");
