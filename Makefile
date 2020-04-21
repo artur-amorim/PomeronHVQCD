@@ -655,6 +655,87 @@ physics/savePotentials.cpp.s:
 	$(MAKE) -f CMakeFiles/savePotentials.exe.dir/build.make CMakeFiles/savePotentials.exe.dir/physics/savePotentials.cpp.s
 .PHONY : physics/savePotentials.cpp.s
 
+src/DeepInelasticScattering.o: src/DeepInelasticScattering.cpp.o
+
+.PHONY : src/DeepInelasticScattering.o
+
+# target to build an object file
+src/DeepInelasticScattering.cpp.o:
+	$(MAKE) -f CMakeFiles/hvqcd_lib.dir/build.make CMakeFiles/hvqcd_lib.dir/src/DeepInelasticScattering.cpp.o
+.PHONY : src/DeepInelasticScattering.cpp.o
+
+src/DeepInelasticScattering.i: src/DeepInelasticScattering.cpp.i
+
+.PHONY : src/DeepInelasticScattering.i
+
+# target to preprocess a source file
+src/DeepInelasticScattering.cpp.i:
+	$(MAKE) -f CMakeFiles/hvqcd_lib.dir/build.make CMakeFiles/hvqcd_lib.dir/src/DeepInelasticScattering.cpp.i
+.PHONY : src/DeepInelasticScattering.cpp.i
+
+src/DeepInelasticScattering.s: src/DeepInelasticScattering.cpp.s
+
+.PHONY : src/DeepInelasticScattering.s
+
+# target to generate assembly for a file
+src/DeepInelasticScattering.cpp.s:
+	$(MAKE) -f CMakeFiles/hvqcd_lib.dir/build.make CMakeFiles/hvqcd_lib.dir/src/DeepInelasticScattering.cpp.s
+.PHONY : src/DeepInelasticScattering.cpp.s
+
+src/F2.o: src/F2.cpp.o
+
+.PHONY : src/F2.o
+
+# target to build an object file
+src/F2.cpp.o:
+	$(MAKE) -f CMakeFiles/hvqcd_lib.dir/build.make CMakeFiles/hvqcd_lib.dir/src/F2.cpp.o
+.PHONY : src/F2.cpp.o
+
+src/F2.i: src/F2.cpp.i
+
+.PHONY : src/F2.i
+
+# target to preprocess a source file
+src/F2.cpp.i:
+	$(MAKE) -f CMakeFiles/hvqcd_lib.dir/build.make CMakeFiles/hvqcd_lib.dir/src/F2.cpp.i
+.PHONY : src/F2.cpp.i
+
+src/F2.s: src/F2.cpp.s
+
+.PHONY : src/F2.s
+
+# target to generate assembly for a file
+src/F2.cpp.s:
+	$(MAKE) -f CMakeFiles/hvqcd_lib.dir/build.make CMakeFiles/hvqcd_lib.dir/src/F2.cpp.s
+.PHONY : src/F2.cpp.s
+
+src/FL.o: src/FL.cpp.o
+
+.PHONY : src/FL.o
+
+# target to build an object file
+src/FL.cpp.o:
+	$(MAKE) -f CMakeFiles/hvqcd_lib.dir/build.make CMakeFiles/hvqcd_lib.dir/src/FL.cpp.o
+.PHONY : src/FL.cpp.o
+
+src/FL.i: src/FL.cpp.i
+
+.PHONY : src/FL.i
+
+# target to preprocess a source file
+src/FL.cpp.i:
+	$(MAKE) -f CMakeFiles/hvqcd_lib.dir/build.make CMakeFiles/hvqcd_lib.dir/src/FL.cpp.i
+.PHONY : src/FL.cpp.i
+
+src/FL.s: src/FL.cpp.s
+
+.PHONY : src/FL.s
+
+# target to generate assembly for a file
+src/FL.cpp.s:
+	$(MAKE) -f CMakeFiles/hvqcd_lib.dir/build.make CMakeFiles/hvqcd_lib.dir/src/FL.cpp.s
+.PHONY : src/FL.cpp.s
+
 src/HolographicVQCD.o: src/HolographicVQCD.cpp.o
 
 .PHONY : src/HolographicVQCD.o
@@ -681,6 +762,114 @@ src/HolographicVQCD.s: src/HolographicVQCD.cpp.s
 src/HolographicVQCD.cpp.s:
 	$(MAKE) -f CMakeFiles/hvqcd_lib.dir/build.make CMakeFiles/hvqcd_lib.dir/src/HolographicVQCD.cpp.s
 .PHONY : src/HolographicVQCD.cpp.s
+
+src/ProcessObservable.o: src/ProcessObservable.cpp.o
+
+.PHONY : src/ProcessObservable.o
+
+# target to build an object file
+src/ProcessObservable.cpp.o:
+	$(MAKE) -f CMakeFiles/hvqcd_lib.dir/build.make CMakeFiles/hvqcd_lib.dir/src/ProcessObservable.cpp.o
+.PHONY : src/ProcessObservable.cpp.o
+
+src/ProcessObservable.i: src/ProcessObservable.cpp.i
+
+.PHONY : src/ProcessObservable.i
+
+# target to preprocess a source file
+src/ProcessObservable.cpp.i:
+	$(MAKE) -f CMakeFiles/hvqcd_lib.dir/build.make CMakeFiles/hvqcd_lib.dir/src/ProcessObservable.cpp.i
+.PHONY : src/ProcessObservable.cpp.i
+
+src/ProcessObservable.s: src/ProcessObservable.cpp.s
+
+.PHONY : src/ProcessObservable.s
+
+# target to generate assembly for a file
+src/ProcessObservable.cpp.s:
+	$(MAKE) -f CMakeFiles/hvqcd_lib.dir/build.make CMakeFiles/hvqcd_lib.dir/src/ProcessObservable.cpp.s
+.PHONY : src/ProcessObservable.cpp.s
+
+src/Reggeon.o: src/Reggeon.cpp.o
+
+.PHONY : src/Reggeon.o
+
+# target to build an object file
+src/Reggeon.cpp.o:
+	$(MAKE) -f CMakeFiles/hvqcd_lib.dir/build.make CMakeFiles/hvqcd_lib.dir/src/Reggeon.cpp.o
+.PHONY : src/Reggeon.cpp.o
+
+src/Reggeon.i: src/Reggeon.cpp.i
+
+.PHONY : src/Reggeon.i
+
+# target to preprocess a source file
+src/Reggeon.cpp.i:
+	$(MAKE) -f CMakeFiles/hvqcd_lib.dir/build.make CMakeFiles/hvqcd_lib.dir/src/Reggeon.cpp.i
+.PHONY : src/Reggeon.cpp.i
+
+src/Reggeon.s: src/Reggeon.cpp.s
+
+.PHONY : src/Reggeon.s
+
+# target to generate assembly for a file
+src/Reggeon.cpp.s:
+	$(MAKE) -f CMakeFiles/hvqcd_lib.dir/build.make CMakeFiles/hvqcd_lib.dir/src/Reggeon.cpp.s
+.PHONY : src/Reggeon.cpp.s
+
+src/Spectra.o: src/Spectra.cpp.o
+
+.PHONY : src/Spectra.o
+
+# target to build an object file
+src/Spectra.cpp.o:
+	$(MAKE) -f CMakeFiles/hvqcd_lib.dir/build.make CMakeFiles/hvqcd_lib.dir/src/Spectra.cpp.o
+.PHONY : src/Spectra.cpp.o
+
+src/Spectra.i: src/Spectra.cpp.i
+
+.PHONY : src/Spectra.i
+
+# target to preprocess a source file
+src/Spectra.cpp.i:
+	$(MAKE) -f CMakeFiles/hvqcd_lib.dir/build.make CMakeFiles/hvqcd_lib.dir/src/Spectra.cpp.i
+.PHONY : src/Spectra.cpp.i
+
+src/Spectra.s: src/Spectra.cpp.s
+
+.PHONY : src/Spectra.s
+
+# target to generate assembly for a file
+src/Spectra.cpp.s:
+	$(MAKE) -f CMakeFiles/hvqcd_lib.dir/build.make CMakeFiles/hvqcd_lib.dir/src/Spectra.cpp.s
+.PHONY : src/Spectra.cpp.s
+
+src/U1NNMode.o: src/U1NNMode.cpp.o
+
+.PHONY : src/U1NNMode.o
+
+# target to build an object file
+src/U1NNMode.cpp.o:
+	$(MAKE) -f CMakeFiles/hvqcd_lib.dir/build.make CMakeFiles/hvqcd_lib.dir/src/U1NNMode.cpp.o
+.PHONY : src/U1NNMode.cpp.o
+
+src/U1NNMode.i: src/U1NNMode.cpp.i
+
+.PHONY : src/U1NNMode.i
+
+# target to preprocess a source file
+src/U1NNMode.cpp.i:
+	$(MAKE) -f CMakeFiles/hvqcd_lib.dir/build.make CMakeFiles/hvqcd_lib.dir/src/U1NNMode.cpp.i
+.PHONY : src/U1NNMode.cpp.i
+
+src/U1NNMode.s: src/U1NNMode.cpp.s
+
+.PHONY : src/U1NNMode.s
+
+# target to generate assembly for a file
+src/U1NNMode.cpp.s:
+	$(MAKE) -f CMakeFiles/hvqcd_lib.dir/build.make CMakeFiles/hvqcd_lib.dir/src/U1NNMode.cpp.s
+.PHONY : src/U1NNMode.cpp.s
 
 src/YangMills.o: src/YangMills.cpp.o
 
@@ -1013,9 +1202,30 @@ help:
 	@echo "... physics/savePotentials.o"
 	@echo "... physics/savePotentials.i"
 	@echo "... physics/savePotentials.s"
+	@echo "... src/DeepInelasticScattering.o"
+	@echo "... src/DeepInelasticScattering.i"
+	@echo "... src/DeepInelasticScattering.s"
+	@echo "... src/F2.o"
+	@echo "... src/F2.i"
+	@echo "... src/F2.s"
+	@echo "... src/FL.o"
+	@echo "... src/FL.i"
+	@echo "... src/FL.s"
 	@echo "... src/HolographicVQCD.o"
 	@echo "... src/HolographicVQCD.i"
 	@echo "... src/HolographicVQCD.s"
+	@echo "... src/ProcessObservable.o"
+	@echo "... src/ProcessObservable.i"
+	@echo "... src/ProcessObservable.s"
+	@echo "... src/Reggeon.o"
+	@echo "... src/Reggeon.i"
+	@echo "... src/Reggeon.s"
+	@echo "... src/Spectra.o"
+	@echo "... src/Spectra.i"
+	@echo "... src/Spectra.s"
+	@echo "... src/U1NNMode.o"
+	@echo "... src/U1NNMode.i"
+	@echo "... src/U1NNMode.s"
 	@echo "... src/YangMills.o"
 	@echo "... src/YangMills.i"
 	@echo "... src/YangMills.s"

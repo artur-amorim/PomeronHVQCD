@@ -21,7 +21,17 @@ set(YANGMILLS src/background.cpp src/YangMills.cpp)
 
 # Variable HVQCD
 set(HVQCD src/background.cpp src/HolographicVQCD.cpp)
-add_library(hvqcd_lib ${YANGMILLS} ${HVQCD})
+
+# U1NNMode
+set(U1NNMODE src/U1NNMode.cpp)
+
+# Spectra and Reggeon classes
+set(SPECTRA src/Spectra.cpp src/Reggeon.cpp)
+
+# ProcessObservable and its derived classes
+set(PROCESS src/ProcessObservable.cpp src/DeepInelasticScattering.cpp src/F2.cpp src/FL.cpp)
+
+add_library(hvqcd_lib ${YANGMILLS} ${HVQCD} ${SPECTRA} ${PROCESS} ${U1NNMODE})
 
 # Fit background routines
 # fitYangMills 
