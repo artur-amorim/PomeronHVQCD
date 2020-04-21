@@ -5,6 +5,8 @@
 #include <string>
 #include "methods/interpolation/Poly_Interp.hpp"
 
+void setupU1NNcomputation();
+
 class U1NNMode
 {
     private:
@@ -23,7 +25,7 @@ class U1NNMode
         static Poly_Interp<double> t1;
         static const int IFDIM = 5000;
         static const  int IIDIM = 5000;
-        void setupU1NNcomputation();
+        friend void setupU1NNcomputation();
     public:
         U1NNMode(const double q2 = 1.0);                     // Class constructor
         U1NNMode(const U1NNMode &mode);                      // Copy constructor
@@ -31,6 +33,7 @@ class U1NNMode
         double fQ(const double x) const;
         double dfQ(const double x) const ;
         double factor(const double x) const ;
+        double Gsquared(const double x) const;
         void computeMode();                                 // Compute the non-normalizable modex
         void saveMode(std::string file_path = "") const;    // Crates a txt file with columns x, fQ, dfQ and fQ^2 + (dfQ/dx)^2
         U1NNMode& operator= (const U1NNMode &mode);         // Assignment operator

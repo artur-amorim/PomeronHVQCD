@@ -25,11 +25,11 @@ std::vector<double> U1NNMode::z = {};
 Poly_Interp<double> U1NNMode::t0 = {};
 Poly_Interp<double> U1NNMode::t1 = {};
 
-void U1NNMode::setupU1NNcomputation()
+void setupU1NNcomputation()
 {
     // Get z and reverse it
     U1NNMode::z = hvqcd().z();
-    std::reverse(std::begin(z), std::end(z));
+    std::reverse(std::begin(U1NNMode::z), std::end(U1NNMode::z));
     const int n = U1NNMode::z.size();
 
     // t0Y = G^2. Don't forget to reverse it
@@ -141,7 +141,7 @@ double U1NNMode::dfQ(const double x) const
 double U1NNMode::factor(const double x) const
 {
     /*
-        Returns the value of fQ^2 + (dfQ/dz)^2/Q2 given x <= 10. If x > 10 throw runtime_error
+        Returns the value of fQ^2 + (dfQ/dz)^2/(G^2 Q2) given x <= 10. If x > 10 throw runtime_error
     */
     if (x > 10) std::runtime_error("U1NNMode::fQ: x must be <= 10");
     double * X = new double(x);
@@ -154,6 +154,16 @@ double U1NNMode::factor(const double x) const
     delete X;
     delete[] Z;
     return fact;
+}
+
+double U1NNMode::Gsquared(const double x) const
+{
+    /*
+        Returns the value of G^2. Useful for computing F_2 and F_L
+        t0 is a Poly_Interp<double> object that interpolates G^2
+    */
+    if (x > 10) std::runtime_error("U1NNMode::Gsquared: x must be <= 10");
+    return t0.interp(x);
 }
 
 void U1NNMode::f(double * X, double * Z, double *F, double * PARS)
