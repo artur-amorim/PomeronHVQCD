@@ -1,3 +1,6 @@
+# Ignore library
+*.a
+
 #Ignore all object code and executables
 *.o
 *.exe
