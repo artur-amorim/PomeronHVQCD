@@ -736,6 +736,33 @@ src/FL.cpp.s:
 	$(MAKE) -f CMakeFiles/hvqcd_lib.dir/build.make CMakeFiles/hvqcd_lib.dir/src/FL.cpp.s
 .PHONY : src/FL.cpp.s
 
+src/HQCDP.o: src/HQCDP.cpp.o
+
+.PHONY : src/HQCDP.o
+
+# target to build an object file
+src/HQCDP.cpp.o:
+	$(MAKE) -f CMakeFiles/hvqcd_lib.dir/build.make CMakeFiles/hvqcd_lib.dir/src/HQCDP.cpp.o
+.PHONY : src/HQCDP.cpp.o
+
+src/HQCDP.i: src/HQCDP.cpp.i
+
+.PHONY : src/HQCDP.i
+
+# target to preprocess a source file
+src/HQCDP.cpp.i:
+	$(MAKE) -f CMakeFiles/hvqcd_lib.dir/build.make CMakeFiles/hvqcd_lib.dir/src/HQCDP.cpp.i
+.PHONY : src/HQCDP.cpp.i
+
+src/HQCDP.s: src/HQCDP.cpp.s
+
+.PHONY : src/HQCDP.s
+
+# target to generate assembly for a file
+src/HQCDP.cpp.s:
+	$(MAKE) -f CMakeFiles/hvqcd_lib.dir/build.make CMakeFiles/hvqcd_lib.dir/src/HQCDP.cpp.s
+.PHONY : src/HQCDP.cpp.s
+
 src/HolographicVQCD.o: src/HolographicVQCD.cpp.o
 
 .PHONY : src/HolographicVQCD.o
@@ -1211,6 +1238,9 @@ help:
 	@echo "... src/FL.o"
 	@echo "... src/FL.i"
 	@echo "... src/FL.s"
+	@echo "... src/HQCDP.o"
+	@echo "... src/HQCDP.i"
+	@echo "... src/HQCDP.s"
 	@echo "... src/HolographicVQCD.o"
 	@echo "... src/HolographicVQCD.i"
 	@echo "... src/HolographicVQCD.s"

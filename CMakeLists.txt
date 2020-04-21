@@ -31,7 +31,10 @@ set(SPECTRA src/Spectra.cpp src/Reggeon.cpp)
 # ProcessObservable and its derived classes
 set(PROCESS src/ProcessObservable.cpp src/DeepInelasticScattering.cpp src/F2.cpp src/FL.cpp)
 
-add_library(hvqcd_lib ${YANGMILLS} ${HVQCD} ${SPECTRA} ${PROCESS} ${U1NNMODE})
+# HQCDP class
+set(HQCDP src/HQCDP.cpp)
+
+add_library(hvqcd_lib ${YANGMILLS} ${HVQCD} ${SPECTRA} ${PROCESS} ${U1NNMODE} ${HQCDP})
 
 # Fit background routines
 # fitYangMills 
