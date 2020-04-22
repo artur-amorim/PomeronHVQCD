@@ -119,7 +119,7 @@ class HVQCD : public Background
              const double kkU1 = 11./9, const double wwU1 = 0.0,
              const double VVgIR = 2.05, const double WWIR = 0.9, const double kkIR = 1.8, const double wwIR = 5.0,
              const double WW1 = 0.0, const double kk1 = -0.23, const double ww1 = 0.0,
-             const double xxf = 1.0, const double ttau0 = 1.0,
+             const double xxf = 2.0/3, const double ttau0 = 1.0,
              const double za = 133, const double c = 0.26);
         // Class copy constructor
         HVQCD(const HVQCD &hvqcd);

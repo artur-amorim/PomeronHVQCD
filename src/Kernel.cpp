@@ -1,5 +1,6 @@
 #include <functional>
 #include <thread>
+#include <mutex>
 #include "HolographicVQCD.h"
 #include "Kernel.h"
 #include "Reggeon.h"
@@ -64,7 +65,7 @@ void Kernel::computeReggeTrajectories(const std::vector<double> &pars)
     // Define the js and ts vectors
     const double jmax = 2.1;
     const double h = 0.025;
-    int n_js = jmax / h ;
+    const int n_js = jmax / h ;
     std::vector<double> js(n_js, 0.0);
     std::vector<std::vector<double> > ts(nTrajectories,std::vector<double>(n_js,0.0));
     // Get the number of threads and number of js to compute per thread
@@ -83,7 +84,11 @@ void Kernel::computeReggeTrajectories(const std::vector<double> &pars)
             // Compute the potential
             std::vector<double> VSch = this->computePotential(j);
             // Compute all the tn(J)s
-            List  spectrum = computeSpectrum(hvqcd().z(), VSch, this->NTrajectories(), "cheb");
+            std::vector<double> z = hvqcd().z();
+            // We need to reverse z because it is given from the IR to the UV
+            // while VSch is given from the UV to the IR
+            std::reverse(std::begin(z), std::end(z));
+            List  spectrum = computeSpectrum(z, VSch, this->NTrajectories(), "cheb");
             for(int k = 0; k < this->NTrajectories(); k++) ts[k][i] = spectrum.Es[k];
         }
         return;
@@ -100,7 +105,11 @@ void Kernel::computeReggeTrajectories(const std::vector<double> &pars)
         // Compute the potential
         std::vector<double> VSch = this->computePotential(j);
         // Compute all the tn(J)s
-        List  spectrum = computeSpectrum(hvqcd().z(), VSch, this->NTrajectories(), "cheb");
+        std::vector<double> z = hvqcd().z();
+        // We need to reverse z because it is given from the IR to the UV
+        // while VSch is given from the UV to the IR
+        std::reverse(std::begin(z), std::end(z));
+        List  spectrum = computeSpectrum(z, VSch, this->NTrajectories(), "cheb");
         for(int k = 0; k < this->NTrajectories(); k++) ts[k][i] = spectrum.Es[k]; 
         return;
     };
