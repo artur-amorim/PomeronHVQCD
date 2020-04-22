@@ -166,7 +166,9 @@ std::vector<Reggeon> computeReggeons(const Kernel &kernel, const double t, const
         const double dJdt = reggeTraj.der1(t);
         std::vector<double> VSch = kernel.computePotential(jn);
         // Compute the wavefunction
-        const List spectrum = computeSpectrum(hvqcd().z(), VSch, i+1);
+        std::vector<double> z = hvqcd().z();
+        std::reverse(std::begin(z), std::end(z));
+        const List spectrum = computeSpectrum(z, VSch, i+1);
         std::vector< std::vector<double> > wf = spectrum.wfs[i];
         // We need to normalize the wavefunction
         Spline_Interp<double> wf2(wf[0], wf[1] * wf[1], 0, 0);

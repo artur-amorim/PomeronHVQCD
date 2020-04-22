@@ -1,5 +1,6 @@
 #include <iostream>
 #include <vector>
+#include "HolographicVQCD.h"
 #include "F2.h"
 #include "FL.h"
 #include "GluonKernel.h"
@@ -30,6 +31,8 @@ int main(int argc, char ** argv)
     cout << " e: " << e <<  " f: " << f << endl;
     cout << " g1: " << g1 << " g2: " << g2 << " g3: " << g3 << " g4: " << g4 << endl;
 
+    double mq = hvqcd().QuarkMass();
+    cout << "mq: " << mq << endl;
     F2 f2(false, "expdata/F2_data.txt");
     FL fl(false, "expdata/FL_data.txt");
 

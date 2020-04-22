@@ -88,6 +88,7 @@ void HQCDP::computeSpectrum(const std::vector< std::vector<double> > &kernelPars
        {
            std::vector<double> pars = kernelPars[ker_idx];
            kernels[ker_idx]->setKernelPars(pars);
+           kernels[ker_idx]->computeReggeTrajectories(pars);
        }
    }
    // Compute all the needed tvals if not computed
@@ -105,7 +106,6 @@ void HQCDP::computeSpectrum(const std::vector< std::vector<double> > &kernelPars
        {
             Kernel * ker = kernels[j];
             const int n_regs = ker->NTrajectories();
-            ker->computeReggeTrajectories();
             std::vector<Reggeon> ker_reggeons = computeReggeons(*ker, t, n_regs);
             for(int k = 0; k < ker_reggeons.size(); k++) reggeons.push_back(ker_reggeons[k]);
        }
@@ -168,12 +168,12 @@ double HQCDP::operator()(const std::vector<double> &x)
         After that we compute the new chi2 value and it is returned
     */
     // Kernel pars correspond to x(0), x(1), x(2), x(3), x(4)
-    std::vector<double> gluon_pars = {x[0], x[1], x[2], x[3], x[4]};
+    std::vector<double> gluon_pars = {x[0], x[1], x[2], x[3], x[4], x[5], x[6]};
     std::vector<std::vector<double> > kernels_pars = {gluon_pars};
     // GNs correspond to x(5), ..., x(n_Kernel_regs+4)
     const int n_Kernel_regs = kernels[0]->NTrajectories();
     std::vector<double> gpars(n_Kernel_regs, 0);
-    for(int i = 0; i < n_Kernel_regs; i++) gpars[i] = x[5+i];
+    for(int i = 0; i < n_Kernel_regs; i++) gpars[i] = x[7+i];
     // Update the spectrum
     computeSpectrum(kernels_pars);
     // Update the GNs
@@ -181,7 +181,8 @@ double HQCDP::operator()(const std::vector<double> &x)
     // Compute chi2
     double CHI2 = chi2();
     std::cout << "invls: " << x[0] << " a: " << x[1] << " b: " << x[2] << " c: " << x[3] << " d: " << x[4];
-    std::cout << "g1: " << x[5] << " g2: " << x[6] << " g3: " << x[7] <<  " g4: " << x[8] << std::endl;
+    std::cout << " e: " << x[5] << " f: " << x[6];
+    std::cout << " g1: " << x[7] << " g2: " << x[8] << " g3: " << x[9] <<  " g4: " << x[10] << std::endl;
     std::cout << "chi2: " << CHI2 << std::endl;
     // Return chi2
     return CHI2;
@@ -204,13 +205,13 @@ void HQCDP::fit(const std::vector<double> &xguess, const double delta)
     std::function<double(std::vector<double>)> f = [this] (const std::vector<double> x) {return this->operator()(x);};
     std::vector<double> xopt = optimFunction(xguess, f, delta);
     // Compute chi2
-    // Kernel pars correspond to xopt(0), xopt(1), xopt(2), xopt(3), xopt(4)
-    std::vector<double> gluon_pars = {xopt[0], xopt[1], xopt[2], xopt[3], xopt[4]};
+    // Kernel pars correspond to xopt(0), xopt(1), xopt(2), xopt(3), xopt(4), xopt(5), xopt(6)
+    std::vector<double> gluon_pars = {xopt[0], xopt[1], xopt[2], xopt[3], xopt[4], xopt[5], xopt[6]};
     std::vector<std::vector<double> > kernels_pars = {gluon_pars};
-    // GNs correspond to x(5), ..., x(n_Kernel_regs+4)
+    // GNs correspond to x(7), ..., x(n_Kernel_regs+6)
     const int n_Kernel_regs = kernels[0]->NTrajectories();
     std::vector<double> gpars(n_Kernel_regs, 0);
-    for(int i = 0; i < n_Kernel_regs; i++) gpars[i] = xopt[5+i];
+    for(int i = 0; i < n_Kernel_regs; i++) gpars[i] = xopt[7+i];
     // Update the spectrum
     computeSpectrum(kernels_pars);
     // Update the GNs
@@ -224,6 +225,8 @@ void HQCDP::fit(const std::vector<double> &xguess, const double delta)
    std::cout << "b:\t"     << gluon_pars[2] << std::endl;
    std::cout << "c:\t"     << gluon_pars[3] << std::endl;
    std::cout << "d:\t"     << gluon_pars[4] << std::endl;
+   std::cout << "e:\t"     << gluon_pars[5] << std::endl;
+   std::cout << "f:\t"     << gluon_pars[6] << std::endl;
    // Print the GNs
    for(int i = 0; i < gpars.size(); i++) std::cout << "g" << std::to_string(i+1) << '\t' << gpars[i] << std::endl;
    std::cout << "chi2:\t"  << CHI2 << std::endl;
