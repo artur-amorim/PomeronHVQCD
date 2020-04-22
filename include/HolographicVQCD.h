@@ -17,6 +17,8 @@ class HVQCD : public Background
         double Za, ca;
         // Quark mass value
         double mq;
+        // Flag that says if the background has been computed or not
+        bool solved;
         // Containers of the values of tau, dtau/dA, d2q/dA2, d2tau/dA2, d3tau/dA3 and u
         std::vector<double> taus, dtaus, d2qs, d2taus, d3taus, us;
         // Containers with the values of the background fields in the YM regime
@@ -164,6 +166,8 @@ class HVQCD : public Background
         // Setter of Za and ca
         void setZa(const double za);
         void setca(const double cca);
+        // Declaration of solved getter
+        bool isSolved() const;
         // Declaration of Astring getter
         std::vector<double> Astring() const;
         // Declaration of dAstringdz getter

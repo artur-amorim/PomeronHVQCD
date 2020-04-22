@@ -20,7 +20,8 @@ HVQCD::HVQCD(const double ssc, const double kksc, const double wwsc,
              Za(za), ca(c), taus({}), dtaus({}), d2qs({}),
             d2taus({}), d3taus({}), us({}), Astrings({}),
             dAstrings({}), d2Astrings({}), U2s({}), aFs({}),
-            bFs({}), cFs({}), dFs({}), eFs({}), e2As({}), e2Astrings({}) {}
+            bFs({}), cFs({}), dFs({}), eFs({}), e2As({}),
+            e2Astrings({}), solved(false) {}
 
 HVQCD::HVQCD(const HVQCD &hvqcd):
     Background(hvqcd), ksc(hvqcd.ksc), wsc(hvqcd.wsc),
@@ -33,7 +34,8 @@ HVQCD::HVQCD(const HVQCD &hvqcd):
     d2Astrings(hvqcd.d2Astrings),
     U2s(hvqcd.U2s), aFs(hvqcd.aFs), bFs(hvqcd.bFs),
     cFs(hvqcd.cFs), dFs(hvqcd.dFs), eFs(hvqcd.eFs),
-    e2As(hvqcd.e2As), e2Astrings(hvqcd.e2Astrings) {}
+    e2As(hvqcd.e2As), e2Astrings(hvqcd.e2Astrings),
+    solved(hvqcd.solved) {}
 
 
 HVQCD::~HVQCD(){}
@@ -758,6 +760,7 @@ void HVQCD::finalizeBackground()
         e2Astrings[i] = std::exp(2 * Astrings[i]);
         l1_2s[i] = std::exp(0.5 * Phis[i]);
     }
+    solved = true;
 }
 
 void HVQCD::solve()
@@ -934,6 +937,8 @@ double HVQCD::get_xf() const {return xf;}
 void HVQCD::setZa(const double za) {Za = za;}
 
 void HVQCD::setca(const double cca) {ca = cca;}
+
+bool HVQCD::isSolved() const {return this->solved;}
 
 std::vector<double> HVQCD::Astring() const {return this->Astrings;}
 
@@ -1328,5 +1333,10 @@ void computeHVQCDRatios(const HVQCD &hvqcd)
 HVQCD& hvqcd()
 {
     static HVQCD bck;
-    return bck;
+    if(bck.isSolved()) return bck;
+    else
+    {
+        bck.solve();
+        return bck;
+    }
 }
