@@ -7,6 +7,11 @@
 #include "methods/vectorOperators.hpp"
 #include "methods/interpolation/Spline_Interp.hpp"
 
+std::vector<double> DeepInelasticScattering::z = {};
+std::vector<double> DeepInelasticScattering::Vfw2fac = {};
+Poly_Interp<double> DeepInelasticScattering::potFactor({},{},4);
+
+
 DeepInelasticScattering::DeepInelasticScattering(const bool rrsslog, std::string file_path): ProcessObservable(rrsslog), modes({})
 {
     // Load data
