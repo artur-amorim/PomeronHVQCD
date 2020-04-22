@@ -124,6 +124,19 @@ fitDISHVQCD.exe/fast:
 .PHONY : fitDISHVQCD.exe/fast
 
 #=============================================================================
+# Target rules for targets named test_HVQCD.exe
+
+# Build rule for target.
+test_HVQCD.exe: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 test_HVQCD.exe
+.PHONY : test_HVQCD.exe
+
+# fast build rule for target.
+test_HVQCD.exe/fast:
+	$(MAKE) -f CMakeFiles/test_HVQCD.exe.dir/build.make CMakeFiles/test_HVQCD.exe.dir/build
+.PHONY : test_HVQCD.exe/fast
+
+#=============================================================================
 # Target rules for targets named test_schrodinger.exe
 
 # Build rule for target.
@@ -202,19 +215,6 @@ fitHVQCDWithoutGlueball.exe/fast:
 .PHONY : fitHVQCDWithoutGlueball.exe/fast
 
 #=============================================================================
-# Target rules for targets named fitHVQCDWithoutGlueballScalars_sc_VgIR_fixed.exe
-
-# Build rule for target.
-fitHVQCDWithoutGlueballScalars_sc_VgIR_fixed.exe: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 fitHVQCDWithoutGlueballScalars_sc_VgIR_fixed.exe
-.PHONY : fitHVQCDWithoutGlueballScalars_sc_VgIR_fixed.exe
-
-# fast build rule for target.
-fitHVQCDWithoutGlueballScalars_sc_VgIR_fixed.exe/fast:
-	$(MAKE) -f CMakeFiles/fitHVQCDWithoutGlueballScalars_sc_VgIR_fixed.exe.dir/build.make CMakeFiles/fitHVQCDWithoutGlueballScalars_sc_VgIR_fixed.exe.dir/build
-.PHONY : fitHVQCDWithoutGlueballScalars_sc_VgIR_fixed.exe/fast
-
-#=============================================================================
 # Target rules for targets named fitHVQCDGlobal_sc_VgIR_fixed.exe
 
 # Build rule for target.
@@ -228,17 +228,30 @@ fitHVQCDGlobal_sc_VgIR_fixed.exe/fast:
 .PHONY : fitHVQCDGlobal_sc_VgIR_fixed.exe/fast
 
 #=============================================================================
-# Target rules for targets named fitHVQCDWithoutScalars.exe
+# Target rules for targets named fitHVQCDWithoutGlueballScalars_sc_VgIR_fixed.exe
 
 # Build rule for target.
-fitHVQCDWithoutScalars.exe: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 fitHVQCDWithoutScalars.exe
-.PHONY : fitHVQCDWithoutScalars.exe
+fitHVQCDWithoutGlueballScalars_sc_VgIR_fixed.exe: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 fitHVQCDWithoutGlueballScalars_sc_VgIR_fixed.exe
+.PHONY : fitHVQCDWithoutGlueballScalars_sc_VgIR_fixed.exe
 
 # fast build rule for target.
-fitHVQCDWithoutScalars.exe/fast:
-	$(MAKE) -f CMakeFiles/fitHVQCDWithoutScalars.exe.dir/build.make CMakeFiles/fitHVQCDWithoutScalars.exe.dir/build
-.PHONY : fitHVQCDWithoutScalars.exe/fast
+fitHVQCDWithoutGlueballScalars_sc_VgIR_fixed.exe/fast:
+	$(MAKE) -f CMakeFiles/fitHVQCDWithoutGlueballScalars_sc_VgIR_fixed.exe.dir/build.make CMakeFiles/fitHVQCDWithoutGlueballScalars_sc_VgIR_fixed.exe.dir/build
+.PHONY : fitHVQCDWithoutGlueballScalars_sc_VgIR_fixed.exe/fast
+
+#=============================================================================
+# Target rules for targets named fitHVQCDWithoutScalars_sc_VgIR_fixed.exe
+
+# Build rule for target.
+fitHVQCDWithoutScalars_sc_VgIR_fixed.exe: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 fitHVQCDWithoutScalars_sc_VgIR_fixed.exe
+.PHONY : fitHVQCDWithoutScalars_sc_VgIR_fixed.exe
+
+# fast build rule for target.
+fitHVQCDWithoutScalars_sc_VgIR_fixed.exe/fast:
+	$(MAKE) -f CMakeFiles/fitHVQCDWithoutScalars_sc_VgIR_fixed.exe.dir/build.make CMakeFiles/fitHVQCDWithoutScalars_sc_VgIR_fixed.exe.dir/build
+.PHONY : fitHVQCDWithoutScalars_sc_VgIR_fixed.exe/fast
 
 #=============================================================================
 # Target rules for targets named fitHVQCDWithoutGlueball_sc_VgIR_fixed.exe
@@ -267,19 +280,6 @@ test_NelderMead.exe/fast:
 .PHONY : test_NelderMead.exe/fast
 
 #=============================================================================
-# Target rules for targets named quadpack_lib
-
-# Build rule for target.
-quadpack_lib: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 quadpack_lib
-.PHONY : quadpack_lib
-
-# fast build rule for target.
-quadpack_lib/fast:
-	$(MAKE) -f CMakeFiles/quadpack_lib.dir/build.make CMakeFiles/quadpack_lib.dir/build
-.PHONY : quadpack_lib/fast
-
-#=============================================================================
 # Target rules for targets named fitHVQCDGlobal.exe
 
 # Build rule for target.
@@ -291,6 +291,19 @@ fitHVQCDGlobal.exe: cmake_check_build_system
 fitHVQCDGlobal.exe/fast:
 	$(MAKE) -f CMakeFiles/fitHVQCDGlobal.exe.dir/build.make CMakeFiles/fitHVQCDGlobal.exe.dir/build
 .PHONY : fitHVQCDGlobal.exe/fast
+
+#=============================================================================
+# Target rules for targets named fitHVQCDWithoutScalars.exe
+
+# Build rule for target.
+fitHVQCDWithoutScalars.exe: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 fitHVQCDWithoutScalars.exe
+.PHONY : fitHVQCDWithoutScalars.exe
+
+# fast build rule for target.
+fitHVQCDWithoutScalars.exe/fast:
+	$(MAKE) -f CMakeFiles/fitHVQCDWithoutScalars.exe.dir/build.make CMakeFiles/fitHVQCDWithoutScalars.exe.dir/build
+.PHONY : fitHVQCDWithoutScalars.exe/fast
 
 #=============================================================================
 # Target rules for targets named fitHVQCDWithoutGlueballScalars.exe
@@ -319,45 +332,6 @@ fitYangMills.exe/fast:
 .PHONY : fitYangMills.exe/fast
 
 #=============================================================================
-# Target rules for targets named fitHVQCDWithoutScalars_sc_VgIR_fixed.exe
-
-# Build rule for target.
-fitHVQCDWithoutScalars_sc_VgIR_fixed.exe: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 fitHVQCDWithoutScalars_sc_VgIR_fixed.exe
-.PHONY : fitHVQCDWithoutScalars_sc_VgIR_fixed.exe
-
-# fast build rule for target.
-fitHVQCDWithoutScalars_sc_VgIR_fixed.exe/fast:
-	$(MAKE) -f CMakeFiles/fitHVQCDWithoutScalars_sc_VgIR_fixed.exe.dir/build.make CMakeFiles/fitHVQCDWithoutScalars_sc_VgIR_fixed.exe.dir/build
-.PHONY : fitHVQCDWithoutScalars_sc_VgIR_fixed.exe/fast
-
-#=============================================================================
-# Target rules for targets named test_HVQCD.exe
-
-# Build rule for target.
-test_HVQCD.exe: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 test_HVQCD.exe
-.PHONY : test_HVQCD.exe
-
-# fast build rule for target.
-test_HVQCD.exe/fast:
-	$(MAKE) -f CMakeFiles/test_HVQCD.exe.dir/build.make CMakeFiles/test_HVQCD.exe.dir/build
-.PHONY : test_HVQCD.exe/fast
-
-#=============================================================================
-# Target rules for targets named schrodinger_lib
-
-# Build rule for target.
-schrodinger_lib: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 schrodinger_lib
-.PHONY : schrodinger_lib
-
-# fast build rule for target.
-schrodinger_lib/fast:
-	$(MAKE) -f CMakeFiles/schrodinger_lib.dir/build.make CMakeFiles/schrodinger_lib.dir/build
-.PHONY : schrodinger_lib/fast
-
-#=============================================================================
 # Target rules for targets named hvqcd_lib
 
 # Build rule for target.
@@ -369,19 +343,6 @@ hvqcd_lib: cmake_check_build_system
 hvqcd_lib/fast:
 	$(MAKE) -f CMakeFiles/hvqcd_lib.dir/build.make CMakeFiles/hvqcd_lib.dir/build
 .PHONY : hvqcd_lib/fast
-
-#=============================================================================
-# Target rules for targets named colnew_lib
-
-# Build rule for target.
-colnew_lib: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 colnew_lib
-.PHONY : colnew_lib
-
-# fast build rule for target.
-colnew_lib/fast:
-	$(MAKE) -f CMakeFiles/colnew_lib.dir/build.make CMakeFiles/colnew_lib.dir/build
-.PHONY : colnew_lib/fast
 
 physics/HVQCDRatios.o: physics/HVQCDRatios.cpp.o
 
@@ -821,7 +782,7 @@ src/Fortran/colnew.o: src/Fortran/colnew.f.o
 
 # target to build an object file
 src/Fortran/colnew.f.o:
-	$(MAKE) -f CMakeFiles/colnew_lib.dir/build.make CMakeFiles/colnew_lib.dir/src/Fortran/colnew.f.o
+	$(MAKE) -f CMakeFiles/hvqcd_lib.dir/build.make CMakeFiles/hvqcd_lib.dir/src/Fortran/colnew.f.o
 .PHONY : src/Fortran/colnew.f.o
 
 src/Fortran/colnew.i: src/Fortran/colnew.f.i
@@ -830,7 +791,7 @@ src/Fortran/colnew.i: src/Fortran/colnew.f.i
 
 # target to preprocess a source file
 src/Fortran/colnew.f.i:
-	$(MAKE) -f CMakeFiles/colnew_lib.dir/build.make CMakeFiles/colnew_lib.dir/src/Fortran/colnew.f.i
+	$(MAKE) -f CMakeFiles/hvqcd_lib.dir/build.make CMakeFiles/hvqcd_lib.dir/src/Fortran/colnew.f.i
 .PHONY : src/Fortran/colnew.f.i
 
 src/Fortran/colnew.s: src/Fortran/colnew.f.s
@@ -839,7 +800,7 @@ src/Fortran/colnew.s: src/Fortran/colnew.f.s
 
 # target to generate assembly for a file
 src/Fortran/colnew.f.s:
-	$(MAKE) -f CMakeFiles/colnew_lib.dir/build.make CMakeFiles/colnew_lib.dir/src/Fortran/colnew.f.s
+	$(MAKE) -f CMakeFiles/hvqcd_lib.dir/build.make CMakeFiles/hvqcd_lib.dir/src/Fortran/colnew.f.s
 .PHONY : src/Fortran/colnew.f.s
 
 src/Fortran/dgefa.o: src/Fortran/dgefa.f.o
@@ -848,7 +809,7 @@ src/Fortran/dgefa.o: src/Fortran/dgefa.f.o
 
 # target to build an object file
 src/Fortran/dgefa.f.o:
-	$(MAKE) -f CMakeFiles/colnew_lib.dir/build.make CMakeFiles/colnew_lib.dir/src/Fortran/dgefa.f.o
+	$(MAKE) -f CMakeFiles/hvqcd_lib.dir/build.make CMakeFiles/hvqcd_lib.dir/src/Fortran/dgefa.f.o
 .PHONY : src/Fortran/dgefa.f.o
 
 src/Fortran/dgefa.i: src/Fortran/dgefa.f.i
@@ -857,7 +818,7 @@ src/Fortran/dgefa.i: src/Fortran/dgefa.f.i
 
 # target to preprocess a source file
 src/Fortran/dgefa.f.i:
-	$(MAKE) -f CMakeFiles/colnew_lib.dir/build.make CMakeFiles/colnew_lib.dir/src/Fortran/dgefa.f.i
+	$(MAKE) -f CMakeFiles/hvqcd_lib.dir/build.make CMakeFiles/hvqcd_lib.dir/src/Fortran/dgefa.f.i
 .PHONY : src/Fortran/dgefa.f.i
 
 src/Fortran/dgefa.s: src/Fortran/dgefa.f.s
@@ -866,7 +827,7 @@ src/Fortran/dgefa.s: src/Fortran/dgefa.f.s
 
 # target to generate assembly for a file
 src/Fortran/dgefa.f.s:
-	$(MAKE) -f CMakeFiles/colnew_lib.dir/build.make CMakeFiles/colnew_lib.dir/src/Fortran/dgefa.f.s
+	$(MAKE) -f CMakeFiles/hvqcd_lib.dir/build.make CMakeFiles/hvqcd_lib.dir/src/Fortran/dgefa.f.s
 .PHONY : src/Fortran/dgefa.f.s
 
 src/Fortran/dgesl.o: src/Fortran/dgesl.f.o
@@ -875,7 +836,7 @@ src/Fortran/dgesl.o: src/Fortran/dgesl.f.o
 
 # target to build an object file
 src/Fortran/dgesl.f.o:
-	$(MAKE) -f CMakeFiles/colnew_lib.dir/build.make CMakeFiles/colnew_lib.dir/src/Fortran/dgesl.f.o
+	$(MAKE) -f CMakeFiles/hvqcd_lib.dir/build.make CMakeFiles/hvqcd_lib.dir/src/Fortran/dgesl.f.o
 .PHONY : src/Fortran/dgesl.f.o
 
 src/Fortran/dgesl.i: src/Fortran/dgesl.f.i
@@ -884,7 +845,7 @@ src/Fortran/dgesl.i: src/Fortran/dgesl.f.i
 
 # target to preprocess a source file
 src/Fortran/dgesl.f.i:
-	$(MAKE) -f CMakeFiles/colnew_lib.dir/build.make CMakeFiles/colnew_lib.dir/src/Fortran/dgesl.f.i
+	$(MAKE) -f CMakeFiles/hvqcd_lib.dir/build.make CMakeFiles/hvqcd_lib.dir/src/Fortran/dgesl.f.i
 .PHONY : src/Fortran/dgesl.f.i
 
 src/Fortran/dgesl.s: src/Fortran/dgesl.f.s
@@ -893,7 +854,7 @@ src/Fortran/dgesl.s: src/Fortran/dgesl.f.s
 
 # target to generate assembly for a file
 src/Fortran/dgesl.f.s:
-	$(MAKE) -f CMakeFiles/colnew_lib.dir/build.make CMakeFiles/colnew_lib.dir/src/Fortran/dgesl.f.s
+	$(MAKE) -f CMakeFiles/hvqcd_lib.dir/build.make CMakeFiles/hvqcd_lib.dir/src/Fortran/dgesl.f.s
 .PHONY : src/Fortran/dgesl.f.s
 
 src/GluonKernel.o: src/GluonKernel.cpp.o
@@ -1172,7 +1133,7 @@ src/quadpack/d1mach.o: src/quadpack/d1mach.f.o
 
 # target to build an object file
 src/quadpack/d1mach.f.o:
-	$(MAKE) -f CMakeFiles/quadpack_lib.dir/build.make CMakeFiles/quadpack_lib.dir/src/quadpack/d1mach.f.o
+	$(MAKE) -f CMakeFiles/hvqcd_lib.dir/build.make CMakeFiles/hvqcd_lib.dir/src/quadpack/d1mach.f.o
 .PHONY : src/quadpack/d1mach.f.o
 
 src/quadpack/d1mach.i: src/quadpack/d1mach.f.i
@@ -1181,7 +1142,7 @@ src/quadpack/d1mach.i: src/quadpack/d1mach.f.i
 
 # target to preprocess a source file
 src/quadpack/d1mach.f.i:
-	$(MAKE) -f CMakeFiles/quadpack_lib.dir/build.make CMakeFiles/quadpack_lib.dir/src/quadpack/d1mach.f.i
+	$(MAKE) -f CMakeFiles/hvqcd_lib.dir/build.make CMakeFiles/hvqcd_lib.dir/src/quadpack/d1mach.f.i
 .PHONY : src/quadpack/d1mach.f.i
 
 src/quadpack/d1mach.s: src/quadpack/d1mach.f.s
@@ -1190,7 +1151,7 @@ src/quadpack/d1mach.s: src/quadpack/d1mach.f.s
 
 # target to generate assembly for a file
 src/quadpack/d1mach.f.s:
-	$(MAKE) -f CMakeFiles/quadpack_lib.dir/build.make CMakeFiles/quadpack_lib.dir/src/quadpack/d1mach.f.s
+	$(MAKE) -f CMakeFiles/hvqcd_lib.dir/build.make CMakeFiles/hvqcd_lib.dir/src/quadpack/d1mach.f.s
 .PHONY : src/quadpack/d1mach.f.s
 
 src/quadpack/dqags.o: src/quadpack/dqags.f.o
@@ -1199,7 +1160,7 @@ src/quadpack/dqags.o: src/quadpack/dqags.f.o
 
 # target to build an object file
 src/quadpack/dqags.f.o:
-	$(MAKE) -f CMakeFiles/quadpack_lib.dir/build.make CMakeFiles/quadpack_lib.dir/src/quadpack/dqags.f.o
+	$(MAKE) -f CMakeFiles/hvqcd_lib.dir/build.make CMakeFiles/hvqcd_lib.dir/src/quadpack/dqags.f.o
 .PHONY : src/quadpack/dqags.f.o
 
 src/quadpack/dqags.i: src/quadpack/dqags.f.i
@@ -1208,7 +1169,7 @@ src/quadpack/dqags.i: src/quadpack/dqags.f.i
 
 # target to preprocess a source file
 src/quadpack/dqags.f.i:
-	$(MAKE) -f CMakeFiles/quadpack_lib.dir/build.make CMakeFiles/quadpack_lib.dir/src/quadpack/dqags.f.i
+	$(MAKE) -f CMakeFiles/hvqcd_lib.dir/build.make CMakeFiles/hvqcd_lib.dir/src/quadpack/dqags.f.i
 .PHONY : src/quadpack/dqags.f.i
 
 src/quadpack/dqags.s: src/quadpack/dqags.f.s
@@ -1217,7 +1178,7 @@ src/quadpack/dqags.s: src/quadpack/dqags.f.s
 
 # target to generate assembly for a file
 src/quadpack/dqags.f.s:
-	$(MAKE) -f CMakeFiles/quadpack_lib.dir/build.make CMakeFiles/quadpack_lib.dir/src/quadpack/dqags.f.s
+	$(MAKE) -f CMakeFiles/hvqcd_lib.dir/build.make CMakeFiles/hvqcd_lib.dir/src/quadpack/dqags.f.s
 .PHONY : src/quadpack/dqags.f.s
 
 src/quadpack/dqagse.o: src/quadpack/dqagse.f.o
@@ -1226,7 +1187,7 @@ src/quadpack/dqagse.o: src/quadpack/dqagse.f.o
 
 # target to build an object file
 src/quadpack/dqagse.f.o:
-	$(MAKE) -f CMakeFiles/quadpack_lib.dir/build.make CMakeFiles/quadpack_lib.dir/src/quadpack/dqagse.f.o
+	$(MAKE) -f CMakeFiles/hvqcd_lib.dir/build.make CMakeFiles/hvqcd_lib.dir/src/quadpack/dqagse.f.o
 .PHONY : src/quadpack/dqagse.f.o
 
 src/quadpack/dqagse.i: src/quadpack/dqagse.f.i
@@ -1235,7 +1196,7 @@ src/quadpack/dqagse.i: src/quadpack/dqagse.f.i
 
 # target to preprocess a source file
 src/quadpack/dqagse.f.i:
-	$(MAKE) -f CMakeFiles/quadpack_lib.dir/build.make CMakeFiles/quadpack_lib.dir/src/quadpack/dqagse.f.i
+	$(MAKE) -f CMakeFiles/hvqcd_lib.dir/build.make CMakeFiles/hvqcd_lib.dir/src/quadpack/dqagse.f.i
 .PHONY : src/quadpack/dqagse.f.i
 
 src/quadpack/dqagse.s: src/quadpack/dqagse.f.s
@@ -1244,7 +1205,7 @@ src/quadpack/dqagse.s: src/quadpack/dqagse.f.s
 
 # target to generate assembly for a file
 src/quadpack/dqagse.f.s:
-	$(MAKE) -f CMakeFiles/quadpack_lib.dir/build.make CMakeFiles/quadpack_lib.dir/src/quadpack/dqagse.f.s
+	$(MAKE) -f CMakeFiles/hvqcd_lib.dir/build.make CMakeFiles/hvqcd_lib.dir/src/quadpack/dqagse.f.s
 .PHONY : src/quadpack/dqagse.f.s
 
 src/quadpack/dqelg.o: src/quadpack/dqelg.f.o
@@ -1253,7 +1214,7 @@ src/quadpack/dqelg.o: src/quadpack/dqelg.f.o
 
 # target to build an object file
 src/quadpack/dqelg.f.o:
-	$(MAKE) -f CMakeFiles/quadpack_lib.dir/build.make CMakeFiles/quadpack_lib.dir/src/quadpack/dqelg.f.o
+	$(MAKE) -f CMakeFiles/hvqcd_lib.dir/build.make CMakeFiles/hvqcd_lib.dir/src/quadpack/dqelg.f.o
 .PHONY : src/quadpack/dqelg.f.o
 
 src/quadpack/dqelg.i: src/quadpack/dqelg.f.i
@@ -1262,7 +1223,7 @@ src/quadpack/dqelg.i: src/quadpack/dqelg.f.i
 
 # target to preprocess a source file
 src/quadpack/dqelg.f.i:
-	$(MAKE) -f CMakeFiles/quadpack_lib.dir/build.make CMakeFiles/quadpack_lib.dir/src/quadpack/dqelg.f.i
+	$(MAKE) -f CMakeFiles/hvqcd_lib.dir/build.make CMakeFiles/hvqcd_lib.dir/src/quadpack/dqelg.f.i
 .PHONY : src/quadpack/dqelg.f.i
 
 src/quadpack/dqelg.s: src/quadpack/dqelg.f.s
@@ -1271,7 +1232,7 @@ src/quadpack/dqelg.s: src/quadpack/dqelg.f.s
 
 # target to generate assembly for a file
 src/quadpack/dqelg.f.s:
-	$(MAKE) -f CMakeFiles/quadpack_lib.dir/build.make CMakeFiles/quadpack_lib.dir/src/quadpack/dqelg.f.s
+	$(MAKE) -f CMakeFiles/hvqcd_lib.dir/build.make CMakeFiles/hvqcd_lib.dir/src/quadpack/dqelg.f.s
 .PHONY : src/quadpack/dqelg.f.s
 
 src/quadpack/dqk21.o: src/quadpack/dqk21.f.o
@@ -1280,7 +1241,7 @@ src/quadpack/dqk21.o: src/quadpack/dqk21.f.o
 
 # target to build an object file
 src/quadpack/dqk21.f.o:
-	$(MAKE) -f CMakeFiles/quadpack_lib.dir/build.make CMakeFiles/quadpack_lib.dir/src/quadpack/dqk21.f.o
+	$(MAKE) -f CMakeFiles/hvqcd_lib.dir/build.make CMakeFiles/hvqcd_lib.dir/src/quadpack/dqk21.f.o
 .PHONY : src/quadpack/dqk21.f.o
 
 src/quadpack/dqk21.i: src/quadpack/dqk21.f.i
@@ -1289,7 +1250,7 @@ src/quadpack/dqk21.i: src/quadpack/dqk21.f.i
 
 # target to preprocess a source file
 src/quadpack/dqk21.f.i:
-	$(MAKE) -f CMakeFiles/quadpack_lib.dir/build.make CMakeFiles/quadpack_lib.dir/src/quadpack/dqk21.f.i
+	$(MAKE) -f CMakeFiles/hvqcd_lib.dir/build.make CMakeFiles/hvqcd_lib.dir/src/quadpack/dqk21.f.i
 .PHONY : src/quadpack/dqk21.f.i
 
 src/quadpack/dqk21.s: src/quadpack/dqk21.f.s
@@ -1298,7 +1259,7 @@ src/quadpack/dqk21.s: src/quadpack/dqk21.f.s
 
 # target to generate assembly for a file
 src/quadpack/dqk21.f.s:
-	$(MAKE) -f CMakeFiles/quadpack_lib.dir/build.make CMakeFiles/quadpack_lib.dir/src/quadpack/dqk21.f.s
+	$(MAKE) -f CMakeFiles/hvqcd_lib.dir/build.make CMakeFiles/hvqcd_lib.dir/src/quadpack/dqk21.f.s
 .PHONY : src/quadpack/dqk21.f.s
 
 src/quadpack/dqpsrt.o: src/quadpack/dqpsrt.f.o
@@ -1307,7 +1268,7 @@ src/quadpack/dqpsrt.o: src/quadpack/dqpsrt.f.o
 
 # target to build an object file
 src/quadpack/dqpsrt.f.o:
-	$(MAKE) -f CMakeFiles/quadpack_lib.dir/build.make CMakeFiles/quadpack_lib.dir/src/quadpack/dqpsrt.f.o
+	$(MAKE) -f CMakeFiles/hvqcd_lib.dir/build.make CMakeFiles/hvqcd_lib.dir/src/quadpack/dqpsrt.f.o
 .PHONY : src/quadpack/dqpsrt.f.o
 
 src/quadpack/dqpsrt.i: src/quadpack/dqpsrt.f.i
@@ -1316,7 +1277,7 @@ src/quadpack/dqpsrt.i: src/quadpack/dqpsrt.f.i
 
 # target to preprocess a source file
 src/quadpack/dqpsrt.f.i:
-	$(MAKE) -f CMakeFiles/quadpack_lib.dir/build.make CMakeFiles/quadpack_lib.dir/src/quadpack/dqpsrt.f.i
+	$(MAKE) -f CMakeFiles/hvqcd_lib.dir/build.make CMakeFiles/hvqcd_lib.dir/src/quadpack/dqpsrt.f.i
 .PHONY : src/quadpack/dqpsrt.f.i
 
 src/quadpack/dqpsrt.s: src/quadpack/dqpsrt.f.s
@@ -1325,7 +1286,7 @@ src/quadpack/dqpsrt.s: src/quadpack/dqpsrt.f.s
 
 # target to generate assembly for a file
 src/quadpack/dqpsrt.f.s:
-	$(MAKE) -f CMakeFiles/quadpack_lib.dir/build.make CMakeFiles/quadpack_lib.dir/src/quadpack/dqpsrt.f.s
+	$(MAKE) -f CMakeFiles/hvqcd_lib.dir/build.make CMakeFiles/hvqcd_lib.dir/src/quadpack/dqpsrt.f.s
 .PHONY : src/quadpack/dqpsrt.f.s
 
 src/quadpack/fdump.o: src/quadpack/fdump.f.o
@@ -1334,7 +1295,7 @@ src/quadpack/fdump.o: src/quadpack/fdump.f.o
 
 # target to build an object file
 src/quadpack/fdump.f.o:
-	$(MAKE) -f CMakeFiles/quadpack_lib.dir/build.make CMakeFiles/quadpack_lib.dir/src/quadpack/fdump.f.o
+	$(MAKE) -f CMakeFiles/hvqcd_lib.dir/build.make CMakeFiles/hvqcd_lib.dir/src/quadpack/fdump.f.o
 .PHONY : src/quadpack/fdump.f.o
 
 src/quadpack/fdump.i: src/quadpack/fdump.f.i
@@ -1343,7 +1304,7 @@ src/quadpack/fdump.i: src/quadpack/fdump.f.i
 
 # target to preprocess a source file
 src/quadpack/fdump.f.i:
-	$(MAKE) -f CMakeFiles/quadpack_lib.dir/build.make CMakeFiles/quadpack_lib.dir/src/quadpack/fdump.f.i
+	$(MAKE) -f CMakeFiles/hvqcd_lib.dir/build.make CMakeFiles/hvqcd_lib.dir/src/quadpack/fdump.f.i
 .PHONY : src/quadpack/fdump.f.i
 
 src/quadpack/fdump.s: src/quadpack/fdump.f.s
@@ -1352,7 +1313,7 @@ src/quadpack/fdump.s: src/quadpack/fdump.f.s
 
 # target to generate assembly for a file
 src/quadpack/fdump.f.s:
-	$(MAKE) -f CMakeFiles/quadpack_lib.dir/build.make CMakeFiles/quadpack_lib.dir/src/quadpack/fdump.f.s
+	$(MAKE) -f CMakeFiles/hvqcd_lib.dir/build.make CMakeFiles/hvqcd_lib.dir/src/quadpack/fdump.f.s
 .PHONY : src/quadpack/fdump.f.s
 
 src/quadpack/i1mach.o: src/quadpack/i1mach.f.o
@@ -1361,7 +1322,7 @@ src/quadpack/i1mach.o: src/quadpack/i1mach.f.o
 
 # target to build an object file
 src/quadpack/i1mach.f.o:
-	$(MAKE) -f CMakeFiles/quadpack_lib.dir/build.make CMakeFiles/quadpack_lib.dir/src/quadpack/i1mach.f.o
+	$(MAKE) -f CMakeFiles/hvqcd_lib.dir/build.make CMakeFiles/hvqcd_lib.dir/src/quadpack/i1mach.f.o
 .PHONY : src/quadpack/i1mach.f.o
 
 src/quadpack/i1mach.i: src/quadpack/i1mach.f.i
@@ -1370,7 +1331,7 @@ src/quadpack/i1mach.i: src/quadpack/i1mach.f.i
 
 # target to preprocess a source file
 src/quadpack/i1mach.f.i:
-	$(MAKE) -f CMakeFiles/quadpack_lib.dir/build.make CMakeFiles/quadpack_lib.dir/src/quadpack/i1mach.f.i
+	$(MAKE) -f CMakeFiles/hvqcd_lib.dir/build.make CMakeFiles/hvqcd_lib.dir/src/quadpack/i1mach.f.i
 .PHONY : src/quadpack/i1mach.f.i
 
 src/quadpack/i1mach.s: src/quadpack/i1mach.f.s
@@ -1379,7 +1340,7 @@ src/quadpack/i1mach.s: src/quadpack/i1mach.f.s
 
 # target to generate assembly for a file
 src/quadpack/i1mach.f.s:
-	$(MAKE) -f CMakeFiles/quadpack_lib.dir/build.make CMakeFiles/quadpack_lib.dir/src/quadpack/i1mach.f.s
+	$(MAKE) -f CMakeFiles/hvqcd_lib.dir/build.make CMakeFiles/hvqcd_lib.dir/src/quadpack/i1mach.f.s
 .PHONY : src/quadpack/i1mach.f.s
 
 src/quadpack/j4save.o: src/quadpack/j4save.f.o
@@ -1388,7 +1349,7 @@ src/quadpack/j4save.o: src/quadpack/j4save.f.o
 
 # target to build an object file
 src/quadpack/j4save.f.o:
-	$(MAKE) -f CMakeFiles/quadpack_lib.dir/build.make CMakeFiles/quadpack_lib.dir/src/quadpack/j4save.f.o
+	$(MAKE) -f CMakeFiles/hvqcd_lib.dir/build.make CMakeFiles/hvqcd_lib.dir/src/quadpack/j4save.f.o
 .PHONY : src/quadpack/j4save.f.o
 
 src/quadpack/j4save.i: src/quadpack/j4save.f.i
@@ -1397,7 +1358,7 @@ src/quadpack/j4save.i: src/quadpack/j4save.f.i
 
 # target to preprocess a source file
 src/quadpack/j4save.f.i:
-	$(MAKE) -f CMakeFiles/quadpack_lib.dir/build.make CMakeFiles/quadpack_lib.dir/src/quadpack/j4save.f.i
+	$(MAKE) -f CMakeFiles/hvqcd_lib.dir/build.make CMakeFiles/hvqcd_lib.dir/src/quadpack/j4save.f.i
 .PHONY : src/quadpack/j4save.f.i
 
 src/quadpack/j4save.s: src/quadpack/j4save.f.s
@@ -1406,7 +1367,7 @@ src/quadpack/j4save.s: src/quadpack/j4save.f.s
 
 # target to generate assembly for a file
 src/quadpack/j4save.f.s:
-	$(MAKE) -f CMakeFiles/quadpack_lib.dir/build.make CMakeFiles/quadpack_lib.dir/src/quadpack/j4save.f.s
+	$(MAKE) -f CMakeFiles/hvqcd_lib.dir/build.make CMakeFiles/hvqcd_lib.dir/src/quadpack/j4save.f.s
 .PHONY : src/quadpack/j4save.f.s
 
 src/quadpack/s88fmt.o: src/quadpack/s88fmt.f.o
@@ -1415,7 +1376,7 @@ src/quadpack/s88fmt.o: src/quadpack/s88fmt.f.o
 
 # target to build an object file
 src/quadpack/s88fmt.f.o:
-	$(MAKE) -f CMakeFiles/quadpack_lib.dir/build.make CMakeFiles/quadpack_lib.dir/src/quadpack/s88fmt.f.o
+	$(MAKE) -f CMakeFiles/hvqcd_lib.dir/build.make CMakeFiles/hvqcd_lib.dir/src/quadpack/s88fmt.f.o
 .PHONY : src/quadpack/s88fmt.f.o
 
 src/quadpack/s88fmt.i: src/quadpack/s88fmt.f.i
@@ -1424,7 +1385,7 @@ src/quadpack/s88fmt.i: src/quadpack/s88fmt.f.i
 
 # target to preprocess a source file
 src/quadpack/s88fmt.f.i:
-	$(MAKE) -f CMakeFiles/quadpack_lib.dir/build.make CMakeFiles/quadpack_lib.dir/src/quadpack/s88fmt.f.i
+	$(MAKE) -f CMakeFiles/hvqcd_lib.dir/build.make CMakeFiles/hvqcd_lib.dir/src/quadpack/s88fmt.f.i
 .PHONY : src/quadpack/s88fmt.f.i
 
 src/quadpack/s88fmt.s: src/quadpack/s88fmt.f.s
@@ -1433,7 +1394,7 @@ src/quadpack/s88fmt.s: src/quadpack/s88fmt.f.s
 
 # target to generate assembly for a file
 src/quadpack/s88fmt.f.s:
-	$(MAKE) -f CMakeFiles/quadpack_lib.dir/build.make CMakeFiles/quadpack_lib.dir/src/quadpack/s88fmt.f.s
+	$(MAKE) -f CMakeFiles/hvqcd_lib.dir/build.make CMakeFiles/hvqcd_lib.dir/src/quadpack/s88fmt.f.s
 .PHONY : src/quadpack/s88fmt.f.s
 
 src/quadpack/xerabt.o: src/quadpack/xerabt.f.o
@@ -1442,7 +1403,7 @@ src/quadpack/xerabt.o: src/quadpack/xerabt.f.o
 
 # target to build an object file
 src/quadpack/xerabt.f.o:
-	$(MAKE) -f CMakeFiles/quadpack_lib.dir/build.make CMakeFiles/quadpack_lib.dir/src/quadpack/xerabt.f.o
+	$(MAKE) -f CMakeFiles/hvqcd_lib.dir/build.make CMakeFiles/hvqcd_lib.dir/src/quadpack/xerabt.f.o
 .PHONY : src/quadpack/xerabt.f.o
 
 src/quadpack/xerabt.i: src/quadpack/xerabt.f.i
@@ -1451,7 +1412,7 @@ src/quadpack/xerabt.i: src/quadpack/xerabt.f.i
 
 # target to preprocess a source file
 src/quadpack/xerabt.f.i:
-	$(MAKE) -f CMakeFiles/quadpack_lib.dir/build.make CMakeFiles/quadpack_lib.dir/src/quadpack/xerabt.f.i
+	$(MAKE) -f CMakeFiles/hvqcd_lib.dir/build.make CMakeFiles/hvqcd_lib.dir/src/quadpack/xerabt.f.i
 .PHONY : src/quadpack/xerabt.f.i
 
 src/quadpack/xerabt.s: src/quadpack/xerabt.f.s
@@ -1460,7 +1421,7 @@ src/quadpack/xerabt.s: src/quadpack/xerabt.f.s
 
 # target to generate assembly for a file
 src/quadpack/xerabt.f.s:
-	$(MAKE) -f CMakeFiles/quadpack_lib.dir/build.make CMakeFiles/quadpack_lib.dir/src/quadpack/xerabt.f.s
+	$(MAKE) -f CMakeFiles/hvqcd_lib.dir/build.make CMakeFiles/hvqcd_lib.dir/src/quadpack/xerabt.f.s
 .PHONY : src/quadpack/xerabt.f.s
 
 src/quadpack/xerctl.o: src/quadpack/xerctl.f.o
@@ -1469,7 +1430,7 @@ src/quadpack/xerctl.o: src/quadpack/xerctl.f.o
 
 # target to build an object file
 src/quadpack/xerctl.f.o:
-	$(MAKE) -f CMakeFiles/quadpack_lib.dir/build.make CMakeFiles/quadpack_lib.dir/src/quadpack/xerctl.f.o
+	$(MAKE) -f CMakeFiles/hvqcd_lib.dir/build.make CMakeFiles/hvqcd_lib.dir/src/quadpack/xerctl.f.o
 .PHONY : src/quadpack/xerctl.f.o
 
 src/quadpack/xerctl.i: src/quadpack/xerctl.f.i
@@ -1478,7 +1439,7 @@ src/quadpack/xerctl.i: src/quadpack/xerctl.f.i
 
 # target to preprocess a source file
 src/quadpack/xerctl.f.i:
-	$(MAKE) -f CMakeFiles/quadpack_lib.dir/build.make CMakeFiles/quadpack_lib.dir/src/quadpack/xerctl.f.i
+	$(MAKE) -f CMakeFiles/hvqcd_lib.dir/build.make CMakeFiles/hvqcd_lib.dir/src/quadpack/xerctl.f.i
 .PHONY : src/quadpack/xerctl.f.i
 
 src/quadpack/xerctl.s: src/quadpack/xerctl.f.s
@@ -1487,7 +1448,7 @@ src/quadpack/xerctl.s: src/quadpack/xerctl.f.s
 
 # target to generate assembly for a file
 src/quadpack/xerctl.f.s:
-	$(MAKE) -f CMakeFiles/quadpack_lib.dir/build.make CMakeFiles/quadpack_lib.dir/src/quadpack/xerctl.f.s
+	$(MAKE) -f CMakeFiles/hvqcd_lib.dir/build.make CMakeFiles/hvqcd_lib.dir/src/quadpack/xerctl.f.s
 .PHONY : src/quadpack/xerctl.f.s
 
 src/quadpack/xerprt.o: src/quadpack/xerprt.f.o
@@ -1496,7 +1457,7 @@ src/quadpack/xerprt.o: src/quadpack/xerprt.f.o
 
 # target to build an object file
 src/quadpack/xerprt.f.o:
-	$(MAKE) -f CMakeFiles/quadpack_lib.dir/build.make CMakeFiles/quadpack_lib.dir/src/quadpack/xerprt.f.o
+	$(MAKE) -f CMakeFiles/hvqcd_lib.dir/build.make CMakeFiles/hvqcd_lib.dir/src/quadpack/xerprt.f.o
 .PHONY : src/quadpack/xerprt.f.o
 
 src/quadpack/xerprt.i: src/quadpack/xerprt.f.i
@@ -1505,7 +1466,7 @@ src/quadpack/xerprt.i: src/quadpack/xerprt.f.i
 
 # target to preprocess a source file
 src/quadpack/xerprt.f.i:
-	$(MAKE) -f CMakeFiles/quadpack_lib.dir/build.make CMakeFiles/quadpack_lib.dir/src/quadpack/xerprt.f.i
+	$(MAKE) -f CMakeFiles/hvqcd_lib.dir/build.make CMakeFiles/hvqcd_lib.dir/src/quadpack/xerprt.f.i
 .PHONY : src/quadpack/xerprt.f.i
 
 src/quadpack/xerprt.s: src/quadpack/xerprt.f.s
@@ -1514,7 +1475,7 @@ src/quadpack/xerprt.s: src/quadpack/xerprt.f.s
 
 # target to generate assembly for a file
 src/quadpack/xerprt.f.s:
-	$(MAKE) -f CMakeFiles/quadpack_lib.dir/build.make CMakeFiles/quadpack_lib.dir/src/quadpack/xerprt.f.s
+	$(MAKE) -f CMakeFiles/hvqcd_lib.dir/build.make CMakeFiles/hvqcd_lib.dir/src/quadpack/xerprt.f.s
 .PHONY : src/quadpack/xerprt.f.s
 
 src/quadpack/xerror.o: src/quadpack/xerror.f.o
@@ -1523,7 +1484,7 @@ src/quadpack/xerror.o: src/quadpack/xerror.f.o
 
 # target to build an object file
 src/quadpack/xerror.f.o:
-	$(MAKE) -f CMakeFiles/quadpack_lib.dir/build.make CMakeFiles/quadpack_lib.dir/src/quadpack/xerror.f.o
+	$(MAKE) -f CMakeFiles/hvqcd_lib.dir/build.make CMakeFiles/hvqcd_lib.dir/src/quadpack/xerror.f.o
 .PHONY : src/quadpack/xerror.f.o
 
 src/quadpack/xerror.i: src/quadpack/xerror.f.i
@@ -1532,7 +1493,7 @@ src/quadpack/xerror.i: src/quadpack/xerror.f.i
 
 # target to preprocess a source file
 src/quadpack/xerror.f.i:
-	$(MAKE) -f CMakeFiles/quadpack_lib.dir/build.make CMakeFiles/quadpack_lib.dir/src/quadpack/xerror.f.i
+	$(MAKE) -f CMakeFiles/hvqcd_lib.dir/build.make CMakeFiles/hvqcd_lib.dir/src/quadpack/xerror.f.i
 .PHONY : src/quadpack/xerror.f.i
 
 src/quadpack/xerror.s: src/quadpack/xerror.f.s
@@ -1541,7 +1502,7 @@ src/quadpack/xerror.s: src/quadpack/xerror.f.s
 
 # target to generate assembly for a file
 src/quadpack/xerror.f.s:
-	$(MAKE) -f CMakeFiles/quadpack_lib.dir/build.make CMakeFiles/quadpack_lib.dir/src/quadpack/xerror.f.s
+	$(MAKE) -f CMakeFiles/hvqcd_lib.dir/build.make CMakeFiles/hvqcd_lib.dir/src/quadpack/xerror.f.s
 .PHONY : src/quadpack/xerror.f.s
 
 src/quadpack/xerrwv.o: src/quadpack/xerrwv.f.o
@@ -1550,7 +1511,7 @@ src/quadpack/xerrwv.o: src/quadpack/xerrwv.f.o
 
 # target to build an object file
 src/quadpack/xerrwv.f.o:
-	$(MAKE) -f CMakeFiles/quadpack_lib.dir/build.make CMakeFiles/quadpack_lib.dir/src/quadpack/xerrwv.f.o
+	$(MAKE) -f CMakeFiles/hvqcd_lib.dir/build.make CMakeFiles/hvqcd_lib.dir/src/quadpack/xerrwv.f.o
 .PHONY : src/quadpack/xerrwv.f.o
 
 src/quadpack/xerrwv.i: src/quadpack/xerrwv.f.i
@@ -1559,7 +1520,7 @@ src/quadpack/xerrwv.i: src/quadpack/xerrwv.f.i
 
 # target to preprocess a source file
 src/quadpack/xerrwv.f.i:
-	$(MAKE) -f CMakeFiles/quadpack_lib.dir/build.make CMakeFiles/quadpack_lib.dir/src/quadpack/xerrwv.f.i
+	$(MAKE) -f CMakeFiles/hvqcd_lib.dir/build.make CMakeFiles/hvqcd_lib.dir/src/quadpack/xerrwv.f.i
 .PHONY : src/quadpack/xerrwv.f.i
 
 src/quadpack/xerrwv.s: src/quadpack/xerrwv.f.s
@@ -1568,7 +1529,7 @@ src/quadpack/xerrwv.s: src/quadpack/xerrwv.f.s
 
 # target to generate assembly for a file
 src/quadpack/xerrwv.f.s:
-	$(MAKE) -f CMakeFiles/quadpack_lib.dir/build.make CMakeFiles/quadpack_lib.dir/src/quadpack/xerrwv.f.s
+	$(MAKE) -f CMakeFiles/hvqcd_lib.dir/build.make CMakeFiles/hvqcd_lib.dir/src/quadpack/xerrwv.f.s
 .PHONY : src/quadpack/xerrwv.f.s
 
 src/quadpack/xersav.o: src/quadpack/xersav.f.o
@@ -1577,7 +1538,7 @@ src/quadpack/xersav.o: src/quadpack/xersav.f.o
 
 # target to build an object file
 src/quadpack/xersav.f.o:
-	$(MAKE) -f CMakeFiles/quadpack_lib.dir/build.make CMakeFiles/quadpack_lib.dir/src/quadpack/xersav.f.o
+	$(MAKE) -f CMakeFiles/hvqcd_lib.dir/build.make CMakeFiles/hvqcd_lib.dir/src/quadpack/xersav.f.o
 .PHONY : src/quadpack/xersav.f.o
 
 src/quadpack/xersav.i: src/quadpack/xersav.f.i
@@ -1586,7 +1547,7 @@ src/quadpack/xersav.i: src/quadpack/xersav.f.i
 
 # target to preprocess a source file
 src/quadpack/xersav.f.i:
-	$(MAKE) -f CMakeFiles/quadpack_lib.dir/build.make CMakeFiles/quadpack_lib.dir/src/quadpack/xersav.f.i
+	$(MAKE) -f CMakeFiles/hvqcd_lib.dir/build.make CMakeFiles/hvqcd_lib.dir/src/quadpack/xersav.f.i
 .PHONY : src/quadpack/xersav.f.i
 
 src/quadpack/xersav.s: src/quadpack/xersav.f.s
@@ -1595,7 +1556,7 @@ src/quadpack/xersav.s: src/quadpack/xersav.f.s
 
 # target to generate assembly for a file
 src/quadpack/xersav.f.s:
-	$(MAKE) -f CMakeFiles/quadpack_lib.dir/build.make CMakeFiles/quadpack_lib.dir/src/quadpack/xersav.f.s
+	$(MAKE) -f CMakeFiles/hvqcd_lib.dir/build.make CMakeFiles/hvqcd_lib.dir/src/quadpack/xersav.f.s
 .PHONY : src/quadpack/xersav.f.s
 
 src/quadpack/xgetua.o: src/quadpack/xgetua.f.o
@@ -1604,7 +1565,7 @@ src/quadpack/xgetua.o: src/quadpack/xgetua.f.o
 
 # target to build an object file
 src/quadpack/xgetua.f.o:
-	$(MAKE) -f CMakeFiles/quadpack_lib.dir/build.make CMakeFiles/quadpack_lib.dir/src/quadpack/xgetua.f.o
+	$(MAKE) -f CMakeFiles/hvqcd_lib.dir/build.make CMakeFiles/hvqcd_lib.dir/src/quadpack/xgetua.f.o
 .PHONY : src/quadpack/xgetua.f.o
 
 src/quadpack/xgetua.i: src/quadpack/xgetua.f.i
@@ -1613,7 +1574,7 @@ src/quadpack/xgetua.i: src/quadpack/xgetua.f.i
 
 # target to preprocess a source file
 src/quadpack/xgetua.f.i:
-	$(MAKE) -f CMakeFiles/quadpack_lib.dir/build.make CMakeFiles/quadpack_lib.dir/src/quadpack/xgetua.f.i
+	$(MAKE) -f CMakeFiles/hvqcd_lib.dir/build.make CMakeFiles/hvqcd_lib.dir/src/quadpack/xgetua.f.i
 .PHONY : src/quadpack/xgetua.f.i
 
 src/quadpack/xgetua.s: src/quadpack/xgetua.f.s
@@ -1622,7 +1583,7 @@ src/quadpack/xgetua.s: src/quadpack/xgetua.f.s
 
 # target to generate assembly for a file
 src/quadpack/xgetua.f.s:
-	$(MAKE) -f CMakeFiles/quadpack_lib.dir/build.make CMakeFiles/quadpack_lib.dir/src/quadpack/xgetua.f.s
+	$(MAKE) -f CMakeFiles/hvqcd_lib.dir/build.make CMakeFiles/hvqcd_lib.dir/src/quadpack/xgetua.f.s
 .PHONY : src/quadpack/xgetua.f.s
 
 src/schrodinger/chebspec.o: src/schrodinger/chebspec.cpp.o
@@ -1631,7 +1592,7 @@ src/schrodinger/chebspec.o: src/schrodinger/chebspec.cpp.o
 
 # target to build an object file
 src/schrodinger/chebspec.cpp.o:
-	$(MAKE) -f CMakeFiles/schrodinger_lib.dir/build.make CMakeFiles/schrodinger_lib.dir/src/schrodinger/chebspec.cpp.o
+	$(MAKE) -f CMakeFiles/hvqcd_lib.dir/build.make CMakeFiles/hvqcd_lib.dir/src/schrodinger/chebspec.cpp.o
 .PHONY : src/schrodinger/chebspec.cpp.o
 
 src/schrodinger/chebspec.i: src/schrodinger/chebspec.cpp.i
@@ -1640,7 +1601,7 @@ src/schrodinger/chebspec.i: src/schrodinger/chebspec.cpp.i
 
 # target to preprocess a source file
 src/schrodinger/chebspec.cpp.i:
-	$(MAKE) -f CMakeFiles/schrodinger_lib.dir/build.make CMakeFiles/schrodinger_lib.dir/src/schrodinger/chebspec.cpp.i
+	$(MAKE) -f CMakeFiles/hvqcd_lib.dir/build.make CMakeFiles/hvqcd_lib.dir/src/schrodinger/chebspec.cpp.i
 .PHONY : src/schrodinger/chebspec.cpp.i
 
 src/schrodinger/chebspec.s: src/schrodinger/chebspec.cpp.s
@@ -1649,7 +1610,7 @@ src/schrodinger/chebspec.s: src/schrodinger/chebspec.cpp.s
 
 # target to generate assembly for a file
 src/schrodinger/chebspec.cpp.s:
-	$(MAKE) -f CMakeFiles/schrodinger_lib.dir/build.make CMakeFiles/schrodinger_lib.dir/src/schrodinger/chebspec.cpp.s
+	$(MAKE) -f CMakeFiles/hvqcd_lib.dir/build.make CMakeFiles/hvqcd_lib.dir/src/schrodinger/chebspec.cpp.s
 .PHONY : src/schrodinger/chebspec.cpp.s
 
 src/schrodinger/common.o: src/schrodinger/common.cpp.o
@@ -1658,7 +1619,7 @@ src/schrodinger/common.o: src/schrodinger/common.cpp.o
 
 # target to build an object file
 src/schrodinger/common.cpp.o:
-	$(MAKE) -f CMakeFiles/schrodinger_lib.dir/build.make CMakeFiles/schrodinger_lib.dir/src/schrodinger/common.cpp.o
+	$(MAKE) -f CMakeFiles/hvqcd_lib.dir/build.make CMakeFiles/hvqcd_lib.dir/src/schrodinger/common.cpp.o
 .PHONY : src/schrodinger/common.cpp.o
 
 src/schrodinger/common.i: src/schrodinger/common.cpp.i
@@ -1667,7 +1628,7 @@ src/schrodinger/common.i: src/schrodinger/common.cpp.i
 
 # target to preprocess a source file
 src/schrodinger/common.cpp.i:
-	$(MAKE) -f CMakeFiles/schrodinger_lib.dir/build.make CMakeFiles/schrodinger_lib.dir/src/schrodinger/common.cpp.i
+	$(MAKE) -f CMakeFiles/hvqcd_lib.dir/build.make CMakeFiles/hvqcd_lib.dir/src/schrodinger/common.cpp.i
 .PHONY : src/schrodinger/common.cpp.i
 
 src/schrodinger/common.s: src/schrodinger/common.cpp.s
@@ -1676,7 +1637,7 @@ src/schrodinger/common.s: src/schrodinger/common.cpp.s
 
 # target to generate assembly for a file
 src/schrodinger/common.cpp.s:
-	$(MAKE) -f CMakeFiles/schrodinger_lib.dir/build.make CMakeFiles/schrodinger_lib.dir/src/schrodinger/common.cpp.s
+	$(MAKE) -f CMakeFiles/hvqcd_lib.dir/build.make CMakeFiles/hvqcd_lib.dir/src/schrodinger/common.cpp.s
 .PHONY : src/schrodinger/common.cpp.s
 
 src/schrodinger/numerov.o: src/schrodinger/numerov.cpp.o
@@ -1685,7 +1646,7 @@ src/schrodinger/numerov.o: src/schrodinger/numerov.cpp.o
 
 # target to build an object file
 src/schrodinger/numerov.cpp.o:
-	$(MAKE) -f CMakeFiles/schrodinger_lib.dir/build.make CMakeFiles/schrodinger_lib.dir/src/schrodinger/numerov.cpp.o
+	$(MAKE) -f CMakeFiles/hvqcd_lib.dir/build.make CMakeFiles/hvqcd_lib.dir/src/schrodinger/numerov.cpp.o
 .PHONY : src/schrodinger/numerov.cpp.o
 
 src/schrodinger/numerov.i: src/schrodinger/numerov.cpp.i
@@ -1694,7 +1655,7 @@ src/schrodinger/numerov.i: src/schrodinger/numerov.cpp.i
 
 # target to preprocess a source file
 src/schrodinger/numerov.cpp.i:
-	$(MAKE) -f CMakeFiles/schrodinger_lib.dir/build.make CMakeFiles/schrodinger_lib.dir/src/schrodinger/numerov.cpp.i
+	$(MAKE) -f CMakeFiles/hvqcd_lib.dir/build.make CMakeFiles/hvqcd_lib.dir/src/schrodinger/numerov.cpp.i
 .PHONY : src/schrodinger/numerov.cpp.i
 
 src/schrodinger/numerov.s: src/schrodinger/numerov.cpp.s
@@ -1703,7 +1664,7 @@ src/schrodinger/numerov.s: src/schrodinger/numerov.cpp.s
 
 # target to generate assembly for a file
 src/schrodinger/numerov.cpp.s:
-	$(MAKE) -f CMakeFiles/schrodinger_lib.dir/build.make CMakeFiles/schrodinger_lib.dir/src/schrodinger/numerov.cpp.s
+	$(MAKE) -f CMakeFiles/hvqcd_lib.dir/build.make CMakeFiles/hvqcd_lib.dir/src/schrodinger/numerov.cpp.s
 .PHONY : src/schrodinger/numerov.cpp.s
 
 src/schrodinger/schrodinger.o: src/schrodinger/schrodinger.cpp.o
@@ -1712,7 +1673,7 @@ src/schrodinger/schrodinger.o: src/schrodinger/schrodinger.cpp.o
 
 # target to build an object file
 src/schrodinger/schrodinger.cpp.o:
-	$(MAKE) -f CMakeFiles/schrodinger_lib.dir/build.make CMakeFiles/schrodinger_lib.dir/src/schrodinger/schrodinger.cpp.o
+	$(MAKE) -f CMakeFiles/hvqcd_lib.dir/build.make CMakeFiles/hvqcd_lib.dir/src/schrodinger/schrodinger.cpp.o
 .PHONY : src/schrodinger/schrodinger.cpp.o
 
 src/schrodinger/schrodinger.i: src/schrodinger/schrodinger.cpp.i
@@ -1721,7 +1682,7 @@ src/schrodinger/schrodinger.i: src/schrodinger/schrodinger.cpp.i
 
 # target to preprocess a source file
 src/schrodinger/schrodinger.cpp.i:
-	$(MAKE) -f CMakeFiles/schrodinger_lib.dir/build.make CMakeFiles/schrodinger_lib.dir/src/schrodinger/schrodinger.cpp.i
+	$(MAKE) -f CMakeFiles/hvqcd_lib.dir/build.make CMakeFiles/hvqcd_lib.dir/src/schrodinger/schrodinger.cpp.i
 .PHONY : src/schrodinger/schrodinger.cpp.i
 
 src/schrodinger/schrodinger.s: src/schrodinger/schrodinger.cpp.s
@@ -1730,7 +1691,7 @@ src/schrodinger/schrodinger.s: src/schrodinger/schrodinger.cpp.s
 
 # target to generate assembly for a file
 src/schrodinger/schrodinger.cpp.s:
-	$(MAKE) -f CMakeFiles/schrodinger_lib.dir/build.make CMakeFiles/schrodinger_lib.dir/src/schrodinger/schrodinger.cpp.s
+	$(MAKE) -f CMakeFiles/hvqcd_lib.dir/build.make CMakeFiles/hvqcd_lib.dir/src/schrodinger/schrodinger.cpp.s
 .PHONY : src/schrodinger/schrodinger.cpp.s
 
 src/schrodinger/solvspec.o: src/schrodinger/solvspec.cpp.o
@@ -1739,7 +1700,7 @@ src/schrodinger/solvspec.o: src/schrodinger/solvspec.cpp.o
 
 # target to build an object file
 src/schrodinger/solvspec.cpp.o:
-	$(MAKE) -f CMakeFiles/schrodinger_lib.dir/build.make CMakeFiles/schrodinger_lib.dir/src/schrodinger/solvspec.cpp.o
+	$(MAKE) -f CMakeFiles/hvqcd_lib.dir/build.make CMakeFiles/hvqcd_lib.dir/src/schrodinger/solvspec.cpp.o
 .PHONY : src/schrodinger/solvspec.cpp.o
 
 src/schrodinger/solvspec.i: src/schrodinger/solvspec.cpp.i
@@ -1748,7 +1709,7 @@ src/schrodinger/solvspec.i: src/schrodinger/solvspec.cpp.i
 
 # target to preprocess a source file
 src/schrodinger/solvspec.cpp.i:
-	$(MAKE) -f CMakeFiles/schrodinger_lib.dir/build.make CMakeFiles/schrodinger_lib.dir/src/schrodinger/solvspec.cpp.i
+	$(MAKE) -f CMakeFiles/hvqcd_lib.dir/build.make CMakeFiles/hvqcd_lib.dir/src/schrodinger/solvspec.cpp.i
 .PHONY : src/schrodinger/solvspec.cpp.i
 
 src/schrodinger/solvspec.s: src/schrodinger/solvspec.cpp.s
@@ -1757,7 +1718,7 @@ src/schrodinger/solvspec.s: src/schrodinger/solvspec.cpp.s
 
 # target to generate assembly for a file
 src/schrodinger/solvspec.cpp.s:
-	$(MAKE) -f CMakeFiles/schrodinger_lib.dir/build.make CMakeFiles/schrodinger_lib.dir/src/schrodinger/solvspec.cpp.s
+	$(MAKE) -f CMakeFiles/hvqcd_lib.dir/build.make CMakeFiles/hvqcd_lib.dir/src/schrodinger/solvspec.cpp.s
 .PHONY : src/schrodinger/solvspec.cpp.s
 
 tests/test_HVQCD.o: tests/test_HVQCD.cpp.o
@@ -1877,26 +1838,23 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
 	@echo "... fitDISHVQCD.exe"
+	@echo "... test_HVQCD.exe"
 	@echo "... test_schrodinger.exe"
 	@echo "... savePotentials.exe"
 	@echo "... HVQCDRatios.exe"
 	@echo "... test_Kernel.exe"
 	@echo "... fitSingletAVM.exe"
 	@echo "... fitHVQCDWithoutGlueball.exe"
-	@echo "... fitHVQCDWithoutGlueballScalars_sc_VgIR_fixed.exe"
 	@echo "... fitHVQCDGlobal_sc_VgIR_fixed.exe"
-	@echo "... fitHVQCDWithoutScalars.exe"
+	@echo "... fitHVQCDWithoutGlueballScalars_sc_VgIR_fixed.exe"
+	@echo "... fitHVQCDWithoutScalars_sc_VgIR_fixed.exe"
 	@echo "... fitHVQCDWithoutGlueball_sc_VgIR_fixed.exe"
 	@echo "... test_NelderMead.exe"
-	@echo "... quadpack_lib"
 	@echo "... fitHVQCDGlobal.exe"
+	@echo "... fitHVQCDWithoutScalars.exe"
 	@echo "... fitHVQCDWithoutGlueballScalars.exe"
 	@echo "... fitYangMills.exe"
-	@echo "... fitHVQCDWithoutScalars_sc_VgIR_fixed.exe"
-	@echo "... test_HVQCD.exe"
-	@echo "... schrodinger_lib"
 	@echo "... hvqcd_lib"
-	@echo "... colnew_lib"
 	@echo "... physics/HVQCDRatios.o"
 	@echo "... physics/HVQCDRatios.i"
 	@echo "... physics/HVQCDRatios.s"
