@@ -115,3 +115,7 @@ add_executable(test_NelderMead.exe  tests/test_NelderMead.cpp)
 # Add DIS fit
 add_executable(fitDISHVQCD.exe physics/fitDISHVQCD.cpp)
 target_link_libraries(fitDISHVQCD.exe armadillo blas  hvqcd_lib)
+
+# Add HVQCD spectrum computation
+add_executable(HVQCDSpectrum.exe physics/HVQCDSpectrum.cpp)
+target_link_libraries(HVQCDSpectrum.exe armadillo hvqcd_lib)

@@ -1332,7 +1332,10 @@ void computeHVQCDRatios(const HVQCD &hvqcd)
 
 HVQCD& hvqcd()
 {
-    static HVQCD bck;
+    static HVQCD bck(3.25546, 4.12754, 1.31668, 2.868, 1.8009,
+                    0.533949, -0.766744, 1.54926, 0.502304, 2.8191,
+                    7.74607, 0.986571, -1.36173, 0.815957, 2.0/3,
+                    0.457303, -0.513725, 4.58782e-9);
     if(bck.isSolved()) return bck;
     else
     {

@@ -25,7 +25,7 @@ int main(int argc, char ** argv)
         Za = stod(argv[16]); ca = stod(argv[17]);
     }
     
-    cout << "Computing ratios with parameter values" << endl;
+    cout << "Computing spectrum with parameter values" << endl;
     cout << "sc: " << sc << " ksc: " << ksc << " wsc: " << wsc << " W0: " << W0 << " w0: " << w0 << " kU1: " << kU1;
     cout << " wU1: " << wU1 << " VgIR: " << VgIR << " WIR: " << WIR << " kIR: " << kIR << " wIR: " << wIR << " W1: " << W1;
     cout << " k1: " << k1 << " w1: " << w1 << " tau0: " << tau0 << " Za: " << Za << " ca: " << ca << endl;
@@ -37,7 +37,7 @@ int main(int argc, char ** argv)
     hvqcd.solve();
 
     // Computing the mass ratios
-    computeHVQCDRatios(hvqcd);
+    computeHVQCDSpectrum(hvqcd);
 
     return 0;
 }

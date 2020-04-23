@@ -45,12 +45,14 @@ void DeepInelasticScattering::loadData(std::string file_path)
     std::cout << "Loading DIS data" << std::endl;
     std::vector<double> Q2, x, Fi, Fierr;
     std::vector<std::string> result;
+    // Ratio of the rho mass in the model to the rho mass in GeV. Assuming we are using global fit results to HVQCD
+    const double mrho_U_mrho_GeV = 4.06789;
     while(getline(file, line))
     {
         boost::split(result, line, boost::is_any_of("\t") ) ;
-        Fi.push_back(stod(result[0])) ;
-        Q2.push_back(stod(result[1])) ;
-        x.push_back(stod(result[2])) ;
+        Fi.push_back(std::stod(result[0])) ;
+        Q2.push_back(std::stod(result[1]) * std::pow(mrho_U_mrho_GeV, 2) ) ;
+        x.push_back(std::stod(result[2])) ;
         Fierr.push_back(stod(result[3]));
     }
     // Check that all std::vector containers have the same side

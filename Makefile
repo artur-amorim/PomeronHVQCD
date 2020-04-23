@@ -267,6 +267,19 @@ fitHVQCDWithoutGlueball_sc_VgIR_fixed.exe/fast:
 .PHONY : fitHVQCDWithoutGlueball_sc_VgIR_fixed.exe/fast
 
 #=============================================================================
+# Target rules for targets named HVQCDSpectrum.exe
+
+# Build rule for target.
+HVQCDSpectrum.exe: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 HVQCDSpectrum.exe
+.PHONY : HVQCDSpectrum.exe
+
+# fast build rule for target.
+HVQCDSpectrum.exe/fast:
+	$(MAKE) -f CMakeFiles/HVQCDSpectrum.exe.dir/build.make CMakeFiles/HVQCDSpectrum.exe.dir/build
+.PHONY : HVQCDSpectrum.exe/fast
+
+#=============================================================================
 # Target rules for targets named test_NelderMead.exe
 
 # Build rule for target.
@@ -370,6 +383,33 @@ physics/HVQCDRatios.s: physics/HVQCDRatios.cpp.s
 physics/HVQCDRatios.cpp.s:
 	$(MAKE) -f CMakeFiles/HVQCDRatios.exe.dir/build.make CMakeFiles/HVQCDRatios.exe.dir/physics/HVQCDRatios.cpp.s
 .PHONY : physics/HVQCDRatios.cpp.s
+
+physics/HVQCDSpectrum.o: physics/HVQCDSpectrum.cpp.o
+
+.PHONY : physics/HVQCDSpectrum.o
+
+# target to build an object file
+physics/HVQCDSpectrum.cpp.o:
+	$(MAKE) -f CMakeFiles/HVQCDSpectrum.exe.dir/build.make CMakeFiles/HVQCDSpectrum.exe.dir/physics/HVQCDSpectrum.cpp.o
+.PHONY : physics/HVQCDSpectrum.cpp.o
+
+physics/HVQCDSpectrum.i: physics/HVQCDSpectrum.cpp.i
+
+.PHONY : physics/HVQCDSpectrum.i
+
+# target to preprocess a source file
+physics/HVQCDSpectrum.cpp.i:
+	$(MAKE) -f CMakeFiles/HVQCDSpectrum.exe.dir/build.make CMakeFiles/HVQCDSpectrum.exe.dir/physics/HVQCDSpectrum.cpp.i
+.PHONY : physics/HVQCDSpectrum.cpp.i
+
+physics/HVQCDSpectrum.s: physics/HVQCDSpectrum.cpp.s
+
+.PHONY : physics/HVQCDSpectrum.s
+
+# target to generate assembly for a file
+physics/HVQCDSpectrum.cpp.s:
+	$(MAKE) -f CMakeFiles/HVQCDSpectrum.exe.dir/build.make CMakeFiles/HVQCDSpectrum.exe.dir/physics/HVQCDSpectrum.cpp.s
+.PHONY : physics/HVQCDSpectrum.cpp.s
 
 physics/fitDISHVQCD.o: physics/fitDISHVQCD.cpp.o
 
@@ -1849,6 +1889,7 @@ help:
 	@echo "... fitHVQCDWithoutGlueballScalars_sc_VgIR_fixed.exe"
 	@echo "... fitHVQCDWithoutScalars_sc_VgIR_fixed.exe"
 	@echo "... fitHVQCDWithoutGlueball_sc_VgIR_fixed.exe"
+	@echo "... HVQCDSpectrum.exe"
 	@echo "... test_NelderMead.exe"
 	@echo "... fitHVQCDGlobal.exe"
 	@echo "... fitHVQCDWithoutScalars.exe"
@@ -1858,6 +1899,9 @@ help:
 	@echo "... physics/HVQCDRatios.o"
 	@echo "... physics/HVQCDRatios.i"
 	@echo "... physics/HVQCDRatios.s"
+	@echo "... physics/HVQCDSpectrum.o"
+	@echo "... physics/HVQCDSpectrum.i"
+	@echo "... physics/HVQCDSpectrum.s"
 	@echo "... physics/fitDISHVQCD.o"
 	@echo "... physics/fitDISHVQCD.i"
 	@echo "... physics/fitDISHVQCD.s"
