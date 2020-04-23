@@ -73,7 +73,12 @@ void Kernel::computeReggeTrajectories(const std::vector<double> &pars)
     int n_js_thread = n_js / nthreads;
     int r = n_js % nthreads; // Reminder of n_js divided by nthreads
     // Function that defines each thread
-    std::function<void(int)> f = [&js, &ts, this, h, n_js_thread] (const int th_id)
+    std::vector<double> z = hvqcd().z();
+    // We need to reverse z because it is given from the IR to the UV
+    // while VSch is given from the UV to the IR
+    std::reverse(std::begin(z), std::end(z));
+    std::cout << "z size: " << z.size() << std::endl;
+    std::function<void(int)> f = [&js, &ts, this, h, n_js_thread, &z] (const int th_id)
     {
         unsigned int imin = th_id * n_js_thread;
         unsigned int imax = (th_id+1) * n_js_thread;
@@ -84,10 +89,6 @@ void Kernel::computeReggeTrajectories(const std::vector<double> &pars)
             // Compute the potential
             std::vector<double> VSch = this->computePotential(j);
             // Compute all the tn(J)s
-            std::vector<double> z = hvqcd().z();
-            // We need to reverse z because it is given from the IR to the UV
-            // while VSch is given from the UV to the IR
-            std::reverse(std::begin(z), std::end(z));
             List  spectrum = computeSpectrum(z, VSch, this->NTrajectories(), "cheb");
             for(int k = 0; k < this->NTrajectories(); k++) ts[k][i] = spectrum.Es[k];
         }
@@ -97,7 +98,7 @@ void Kernel::computeReggeTrajectories(const std::vector<double> &pars)
     for(int i = 0; i < nthreads; i++) ths[i] = std::thread(f, i);
     for(int i = 0; i < nthreads; i++) ths[i].join();
     delete[] ths;
-    f = [&js, &ts, this, h, n_js_thread, nthreads] (const int th_id)
+    f = [&js, &ts, this, h, n_js_thread, nthreads, z] (const int th_id)
     {
         unsigned int i = n_js_thread * nthreads + th_id;
         const double j = i * h ;
@@ -105,10 +106,6 @@ void Kernel::computeReggeTrajectories(const std::vector<double> &pars)
         // Compute the potential
         std::vector<double> VSch = this->computePotential(j);
         // Compute all the tn(J)s
-        std::vector<double> z = hvqcd().z();
-        // We need to reverse z because it is given from the IR to the UV
-        // while VSch is given from the UV to the IR
-        std::reverse(std::begin(z), std::end(z));
         List  spectrum = computeSpectrum(z, VSch, this->NTrajectories(), "cheb");
         for(int k = 0; k < this->NTrajectories(); k++) ts[k][i] = spectrum.Es[k]; 
         return;
