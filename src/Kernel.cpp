@@ -77,7 +77,6 @@ void Kernel::computeReggeTrajectories(const std::vector<double> &pars)
     // We need to reverse z because it is given from the IR to the UV
     // while VSch is given from the UV to the IR
     std::reverse(std::begin(z), std::end(z));
-    std::cout << "z size: " << z.size() << std::endl;
     std::function<void(int)> f = [&js, &ts, this, h, n_js_thread, &z] (const int th_id)
     {
         unsigned int imin = th_id * n_js_thread;
