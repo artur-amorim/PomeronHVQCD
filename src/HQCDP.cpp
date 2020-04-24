@@ -88,9 +88,14 @@ void HQCDP::computeSpectrum(const std::vector< std::vector<double> > &kernelPars
        {
            std::vector<double> pars = kernelPars[ker_idx];
            kernels[ker_idx]->setKernelPars(pars);
-           kernels[ker_idx]->computeReggeTrajectories(pars);
+           kernels[ker_idx]->computeReggeTrajectories();
        }
    }
+   else
+   {
+       for(int ker_idx = 0; ker_idx < kernels.size(); ker_idx+=1) kernels[ker_idx]->computeReggeTrajectories();
+   }
+   
    // Compute all the needed tvals if not computed
    if(useTVals.size() == 0) computeNeededTVals();
    // for each value of t we are going to compute the Reggeons of each Kernel object in kernels
