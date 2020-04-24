@@ -25,3 +25,4 @@ Makefile
 
 # Ignore Jupyter notebook checkpoints
 */.ipynb_checkpoints/*
+*checkpoint.ipynb
