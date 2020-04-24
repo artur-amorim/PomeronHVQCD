@@ -124,6 +124,19 @@ fitDISHVQCD.exe/fast:
 .PHONY : fitDISHVQCD.exe/fast
 
 #=============================================================================
+# Target rules for targets named test_U1NNMode.exe
+
+# Build rule for target.
+test_U1NNMode.exe: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 test_U1NNMode.exe
+.PHONY : test_U1NNMode.exe
+
+# fast build rule for target.
+test_U1NNMode.exe/fast:
+	$(MAKE) -f CMakeFiles/test_U1NNMode.exe.dir/build.make CMakeFiles/test_U1NNMode.exe.dir/build
+.PHONY : test_U1NNMode.exe/fast
+
+#=============================================================================
 # Target rules for targets named test_HVQCD.exe
 
 # Build rule for target.
@@ -1842,6 +1855,33 @@ tests/test_NelderMead.cpp.s:
 	$(MAKE) -f CMakeFiles/test_NelderMead.exe.dir/build.make CMakeFiles/test_NelderMead.exe.dir/tests/test_NelderMead.cpp.s
 .PHONY : tests/test_NelderMead.cpp.s
 
+tests/test_U1NNMode.o: tests/test_U1NNMode.cpp.o
+
+.PHONY : tests/test_U1NNMode.o
+
+# target to build an object file
+tests/test_U1NNMode.cpp.o:
+	$(MAKE) -f CMakeFiles/test_U1NNMode.exe.dir/build.make CMakeFiles/test_U1NNMode.exe.dir/tests/test_U1NNMode.cpp.o
+.PHONY : tests/test_U1NNMode.cpp.o
+
+tests/test_U1NNMode.i: tests/test_U1NNMode.cpp.i
+
+.PHONY : tests/test_U1NNMode.i
+
+# target to preprocess a source file
+tests/test_U1NNMode.cpp.i:
+	$(MAKE) -f CMakeFiles/test_U1NNMode.exe.dir/build.make CMakeFiles/test_U1NNMode.exe.dir/tests/test_U1NNMode.cpp.i
+.PHONY : tests/test_U1NNMode.cpp.i
+
+tests/test_U1NNMode.s: tests/test_U1NNMode.cpp.s
+
+.PHONY : tests/test_U1NNMode.s
+
+# target to generate assembly for a file
+tests/test_U1NNMode.cpp.s:
+	$(MAKE) -f CMakeFiles/test_U1NNMode.exe.dir/build.make CMakeFiles/test_U1NNMode.exe.dir/tests/test_U1NNMode.cpp.s
+.PHONY : tests/test_U1NNMode.cpp.s
+
 tests/test_schrodinger.o: tests/test_schrodinger.cpp.o
 
 .PHONY : tests/test_schrodinger.o
@@ -1878,6 +1918,7 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
 	@echo "... fitDISHVQCD.exe"
+	@echo "... test_U1NNMode.exe"
 	@echo "... test_HVQCD.exe"
 	@echo "... test_schrodinger.exe"
 	@echo "... savePotentials.exe"
@@ -2061,6 +2102,9 @@ help:
 	@echo "... tests/test_NelderMead.o"
 	@echo "... tests/test_NelderMead.i"
 	@echo "... tests/test_NelderMead.s"
+	@echo "... tests/test_U1NNMode.o"
+	@echo "... tests/test_U1NNMode.i"
+	@echo "... tests/test_U1NNMode.s"
 	@echo "... tests/test_schrodinger.o"
 	@echo "... tests/test_schrodinger.i"
 	@echo "... tests/test_schrodinger.s"

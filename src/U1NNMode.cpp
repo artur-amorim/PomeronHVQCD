@@ -110,9 +110,9 @@ double U1NNMode::Q2() const
 double U1NNMode::fQ(const double x) const
 {
     /*
-        Returns the value of fQ given x <= 10. If x > 10 throw runtime_error
+        Returns the value of fQ given x <= z.back(). If x > z.back() throw runtime_error
     */
-    if (x > 10) std::runtime_error("U1NNMode::fQ: x must be <= 10");
+    if (x > z.back()) std::runtime_error("U1NNMode::fQ: x out of range");
     double * X = new double(x);
     double * Z = new double[2];
     appsln_(X, Z, FSPACE, ISPACE);
@@ -125,9 +125,9 @@ double U1NNMode::fQ(const double x) const
 double U1NNMode::dfQ(const double x) const
 {
     /*
-        Returns the value of dfQ/dz given x <= 10. If x > 10 throw runtime_error
+        Returns the value of dfQ/dz given x <= z.back(). If x > z.back() throw runtime_error
     */
-    if (x > 10) std::runtime_error("U1NNMode::fQ: x must be <= 10");
+    if (x > z.back()) std::runtime_error("U1NNMode::dfQ: x out of range");
     double * X = new double(x);
     double * Z = new double[2];
     appsln_(X, Z, FSPACE, ISPACE);
@@ -141,9 +141,9 @@ double U1NNMode::dfQ(const double x) const
 double U1NNMode::factor(const double x) const
 {
     /*
-        Returns the value of fQ^2 + (dfQ/dz)^2/(G^2 Q2) given x <= 10. If x > 10 throw runtime_error
+        Returns the value of fQ^2 + (dfQ/dz)^2/(G^2 Q2) given x <= z.back(). If x > z.back() throw runtime_error
     */
-    if (x > 10) std::runtime_error("U1NNMode::fQ: x must be <= 10");
+    if (x > z.back()) std::runtime_error("U1NNMode::factor: x is out of range");
     double * X = new double(x);
     double * Z = new double[2];
     appsln_(X, Z, FSPACE, ISPACE);
@@ -162,7 +162,7 @@ double U1NNMode::Gsquared(const double x) const
         Returns the value of G^2. Useful for computing F_2 and F_L
         t0 is a Poly_Interp<double> object that interpolates G^2
     */
-    if (x > 10) std::runtime_error("U1NNMode::Gsquared: x must be <= 10");
+    if (x > z.back()) std::runtime_error("U1NNMode::Gsquared: x is out of range");
     return t0.interp(x);
 }
 
@@ -189,14 +189,22 @@ void U1NNMode::df(double * X, double * Z, double * DF, double * PARS)
 void U1NNMode::g(int * I, double * Z, double * G, double * PARS)
 {
     if(*I == 1) *G = Z[0] - 1.0;
-    if(*I == 2) *G = Z[0] ;
+    if(*I == 2) *G = Z[1] ;
     return ;
 }
 
 void U1NNMode::dg(int * I, double * Z, double * DG, double * PARS)
 {
-    DG[0] = 1.0;
-    DG[1] = 0.0;
+    if (*I == 1)
+    {
+        DG[0] = 1.0;
+        DG[1] = 0.0;
+    }
+    else
+    {
+        DG[0] = 0.0;
+        DG[1] = 1.0;
+    }
     return ;
 }
 
@@ -281,7 +289,7 @@ void U1NNMode::saveMode(std::string file_path) const
     myfile << std::endl;
     // Write the values of z, fQ, dfQ and factor in the file
     myfile << "z" << '\t' << "fQ" << '\t' << "dfQ/dz" << '\t' << "fQ^2 + (dfQ/dz)^2/Q2" << std::endl;
-    for(int i = 0; z[i] < 10; i++)
+    for(int i = 0; i < z.size(); i++)
     {
         myfile << z[i] << '\t' << fQ(z[i]) << '\t' << dfQ(z[i]) << '\t' << factor(z[i]) << std::endl;
     }
