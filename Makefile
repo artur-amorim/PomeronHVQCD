@@ -254,6 +254,19 @@ fitHVQCDWithoutGlueballScalars_sc_VgIR_fixed.exe/fast:
 .PHONY : fitHVQCDWithoutGlueballScalars_sc_VgIR_fixed.exe/fast
 
 #=============================================================================
+# Target rules for targets named findReggeTrajectories.exe
+
+# Build rule for target.
+findReggeTrajectories.exe: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 findReggeTrajectories.exe
+.PHONY : findReggeTrajectories.exe
+
+# fast build rule for target.
+findReggeTrajectories.exe/fast:
+	$(MAKE) -f CMakeFiles/findReggeTrajectories.exe.dir/build.make CMakeFiles/findReggeTrajectories.exe.dir/build
+.PHONY : findReggeTrajectories.exe/fast
+
+#=============================================================================
 # Target rules for targets named fitHVQCDWithoutScalars_sc_VgIR_fixed.exe
 
 # Build rule for target.
@@ -423,6 +436,33 @@ physics/HVQCDSpectrum.s: physics/HVQCDSpectrum.cpp.s
 physics/HVQCDSpectrum.cpp.s:
 	$(MAKE) -f CMakeFiles/HVQCDSpectrum.exe.dir/build.make CMakeFiles/HVQCDSpectrum.exe.dir/physics/HVQCDSpectrum.cpp.s
 .PHONY : physics/HVQCDSpectrum.cpp.s
+
+physics/findReggeTrajectories.o: physics/findReggeTrajectories.cpp.o
+
+.PHONY : physics/findReggeTrajectories.o
+
+# target to build an object file
+physics/findReggeTrajectories.cpp.o:
+	$(MAKE) -f CMakeFiles/findReggeTrajectories.exe.dir/build.make CMakeFiles/findReggeTrajectories.exe.dir/physics/findReggeTrajectories.cpp.o
+.PHONY : physics/findReggeTrajectories.cpp.o
+
+physics/findReggeTrajectories.i: physics/findReggeTrajectories.cpp.i
+
+.PHONY : physics/findReggeTrajectories.i
+
+# target to preprocess a source file
+physics/findReggeTrajectories.cpp.i:
+	$(MAKE) -f CMakeFiles/findReggeTrajectories.exe.dir/build.make CMakeFiles/findReggeTrajectories.exe.dir/physics/findReggeTrajectories.cpp.i
+.PHONY : physics/findReggeTrajectories.cpp.i
+
+physics/findReggeTrajectories.s: physics/findReggeTrajectories.cpp.s
+
+.PHONY : physics/findReggeTrajectories.s
+
+# target to generate assembly for a file
+physics/findReggeTrajectories.cpp.s:
+	$(MAKE) -f CMakeFiles/findReggeTrajectories.exe.dir/build.make CMakeFiles/findReggeTrajectories.exe.dir/physics/findReggeTrajectories.cpp.s
+.PHONY : physics/findReggeTrajectories.cpp.s
 
 physics/fitDISHVQCD.o: physics/fitDISHVQCD.cpp.o
 
@@ -1928,6 +1968,7 @@ help:
 	@echo "... fitHVQCDWithoutGlueball.exe"
 	@echo "... fitHVQCDGlobal_sc_VgIR_fixed.exe"
 	@echo "... fitHVQCDWithoutGlueballScalars_sc_VgIR_fixed.exe"
+	@echo "... findReggeTrajectories.exe"
 	@echo "... fitHVQCDWithoutScalars_sc_VgIR_fixed.exe"
 	@echo "... fitHVQCDWithoutGlueball_sc_VgIR_fixed.exe"
 	@echo "... HVQCDSpectrum.exe"
@@ -1943,6 +1984,9 @@ help:
 	@echo "... physics/HVQCDSpectrum.o"
 	@echo "... physics/HVQCDSpectrum.i"
 	@echo "... physics/HVQCDSpectrum.s"
+	@echo "... physics/findReggeTrajectories.o"
+	@echo "... physics/findReggeTrajectories.i"
+	@echo "... physics/findReggeTrajectories.s"
 	@echo "... physics/fitDISHVQCD.o"
 	@echo "... physics/fitDISHVQCD.i"
 	@echo "... physics/fitDISHVQCD.s"

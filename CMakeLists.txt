@@ -123,3 +123,7 @@ target_link_libraries(fitDISHVQCD.exe armadillo blas  hvqcd_lib)
 # Add HVQCD spectrum computation
 add_executable(HVQCDSpectrum.exe physics/HVQCDSpectrum.cpp)
 target_link_libraries(HVQCDSpectrum.exe armadillo hvqcd_lib)
+
+# Add findReggeTrajectories computation
+add_executable(findReggeTrajectories.exe physics/findReggeTrajectories.cpp)
+target_link_libraries(findReggeTrajectories.exe armadillo hvqcd_lib)

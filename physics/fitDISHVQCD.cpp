@@ -49,10 +49,10 @@ int main(int argc, char ** argv)
     hqcdp.setGNs(GNs);
     
     // Compute the spectrum to check Reggeon properties
-    chebSetN(1000);
+    chebSetN(400);
 
     vector<double> guess = {invls, a, b, c, d, e, f, g1, g2, g3, g4};
-    hqcdp.fit(guess, 0.5);
+    hqcdp.fit(guess, 10);
 
     return 0;
 }

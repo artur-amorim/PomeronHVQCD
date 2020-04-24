@@ -97,7 +97,7 @@ void Kernel::computeReggeTrajectories(const std::vector<double> &pars)
     for(int i = 0; i < nthreads; i++) ths[i] = std::thread(f, i);
     for(int i = 0; i < nthreads; i++) ths[i].join();
     delete[] ths;
-    f = [&js, &ts, this, h, n_js_thread, nthreads, z] (const int th_id)
+    f = [&js, &ts, this, h, n_js_thread, nthreads, &z] (const int th_id)
     {
         unsigned int i = n_js_thread * nthreads + th_id;
         const double j = i * h ;
