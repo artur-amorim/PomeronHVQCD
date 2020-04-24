@@ -19,6 +19,9 @@ int main(int argc, char ** argv)
         invls = stod(argv[1]); a = stod(argv[2]); b = stod(argv[3]); c = stod(argv[4]);
         d = stod(argv[5]); e = stod(argv[6]); f = stod(argv[7]);
     }
+    cout << "Starting to hunt the intercepts with:" << endl;
+    cout << "invls: " << invls << " a: " << a << " b: " << b << " c: " << c << " d: " << d;
+    cout << " e: " << e << " f: " << f << endl;
     double mq = hvqcd().QuarkMass();
     // Compute Chebyschev matrices
     chebSetN(400);
