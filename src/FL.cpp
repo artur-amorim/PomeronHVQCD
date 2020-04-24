@@ -33,10 +33,9 @@ double FL::IzN(const std::vector<double> &kin, const Reggeon &reg)
     const double Q2 = kin[0];
     const double J = reg.getJ();
     std::vector<std::vector<double> > wf = reg.getWf();
-    // Search for the correct mode
-    std::vector<double> z = hvqcd().z();
-    std::vector<double> fact1 = exp((1.5-J) * hvqcd().Astring());
+    std::vector<double> fact1 = exp((1.5-J) * Astring);
     Poly_Interp<double> f1(z, fact1, 4);
+    // Search for the correct mode
     U1NNMode mode = searchMode(Q2);
     // Interpolate the wavefunction
     Poly_Interp<double> f4(wf[0], wf[1], 4);
