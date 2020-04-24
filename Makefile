@@ -56,17 +56,6 @@ CMAKE_BINARY_DIR = /Users/arturamorim/Desktop/PomeronHVQCD
 #=============================================================================
 # Targets provided globally by CMake.
 
-# Special rule for the target rebuild_cache
-rebuild_cache:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
-	/usr/local/Cellar/cmake/3.14.4/bin/cmake -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
-.PHONY : rebuild_cache
-
-# Special rule for the target rebuild_cache
-rebuild_cache/fast: rebuild_cache
-
-.PHONY : rebuild_cache/fast
-
 # Special rule for the target edit_cache
 edit_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake cache editor..."
@@ -77,6 +66,17 @@ edit_cache:
 edit_cache/fast: edit_cache
 
 .PHONY : edit_cache/fast
+
+# Special rule for the target rebuild_cache
+rebuild_cache:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
+	/usr/local/Cellar/cmake/3.14.4/bin/cmake -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+.PHONY : rebuild_cache
+
+# Special rule for the target rebuild_cache
+rebuild_cache/fast: rebuild_cache
+
+.PHONY : rebuild_cache/fast
 
 # The main all target
 all: cmake_check_build_system
@@ -150,6 +150,32 @@ test_HVQCD.exe/fast:
 .PHONY : test_HVQCD.exe/fast
 
 #=============================================================================
+# Target rules for targets named test_NelderMead.exe
+
+# Build rule for target.
+test_NelderMead.exe: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 test_NelderMead.exe
+.PHONY : test_NelderMead.exe
+
+# fast build rule for target.
+test_NelderMead.exe/fast:
+	$(MAKE) -f CMakeFiles/test_NelderMead.exe.dir/build.make CMakeFiles/test_NelderMead.exe.dir/build
+.PHONY : test_NelderMead.exe/fast
+
+#=============================================================================
+# Target rules for targets named findGs.exe
+
+# Build rule for target.
+findGs.exe: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 findGs.exe
+.PHONY : findGs.exe
+
+# fast build rule for target.
+findGs.exe/fast:
+	$(MAKE) -f CMakeFiles/findGs.exe.dir/build.make CMakeFiles/findGs.exe.dir/build
+.PHONY : findGs.exe/fast
+
+#=============================================================================
 # Target rules for targets named test_schrodinger.exe
 
 # Build rule for target.
@@ -161,6 +187,19 @@ test_schrodinger.exe: cmake_check_build_system
 test_schrodinger.exe/fast:
 	$(MAKE) -f CMakeFiles/test_schrodinger.exe.dir/build.make CMakeFiles/test_schrodinger.exe.dir/build
 .PHONY : test_schrodinger.exe/fast
+
+#=============================================================================
+# Target rules for targets named fitYangMills.exe
+
+# Build rule for target.
+fitYangMills.exe: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 fitYangMills.exe
+.PHONY : fitYangMills.exe
+
+# fast build rule for target.
+fitYangMills.exe/fast:
+	$(MAKE) -f CMakeFiles/fitYangMills.exe.dir/build.make CMakeFiles/fitYangMills.exe.dir/build
+.PHONY : fitYangMills.exe/fast
 
 #=============================================================================
 # Target rules for targets named savePotentials.exe
@@ -306,19 +345,6 @@ HVQCDSpectrum.exe/fast:
 .PHONY : HVQCDSpectrum.exe/fast
 
 #=============================================================================
-# Target rules for targets named test_NelderMead.exe
-
-# Build rule for target.
-test_NelderMead.exe: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 test_NelderMead.exe
-.PHONY : test_NelderMead.exe
-
-# fast build rule for target.
-test_NelderMead.exe/fast:
-	$(MAKE) -f CMakeFiles/test_NelderMead.exe.dir/build.make CMakeFiles/test_NelderMead.exe.dir/build
-.PHONY : test_NelderMead.exe/fast
-
-#=============================================================================
 # Target rules for targets named fitHVQCDGlobal.exe
 
 # Build rule for target.
@@ -356,19 +382,6 @@ fitHVQCDWithoutGlueballScalars.exe: cmake_check_build_system
 fitHVQCDWithoutGlueballScalars.exe/fast:
 	$(MAKE) -f CMakeFiles/fitHVQCDWithoutGlueballScalars.exe.dir/build.make CMakeFiles/fitHVQCDWithoutGlueballScalars.exe.dir/build
 .PHONY : fitHVQCDWithoutGlueballScalars.exe/fast
-
-#=============================================================================
-# Target rules for targets named fitYangMills.exe
-
-# Build rule for target.
-fitYangMills.exe: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 fitYangMills.exe
-.PHONY : fitYangMills.exe
-
-# fast build rule for target.
-fitYangMills.exe/fast:
-	$(MAKE) -f CMakeFiles/fitYangMills.exe.dir/build.make CMakeFiles/fitYangMills.exe.dir/build
-.PHONY : fitYangMills.exe/fast
 
 #=============================================================================
 # Target rules for targets named hvqcd_lib
@@ -436,6 +449,33 @@ physics/HVQCDSpectrum.s: physics/HVQCDSpectrum.cpp.s
 physics/HVQCDSpectrum.cpp.s:
 	$(MAKE) -f CMakeFiles/HVQCDSpectrum.exe.dir/build.make CMakeFiles/HVQCDSpectrum.exe.dir/physics/HVQCDSpectrum.cpp.s
 .PHONY : physics/HVQCDSpectrum.cpp.s
+
+physics/findGs.o: physics/findGs.cpp.o
+
+.PHONY : physics/findGs.o
+
+# target to build an object file
+physics/findGs.cpp.o:
+	$(MAKE) -f CMakeFiles/findGs.exe.dir/build.make CMakeFiles/findGs.exe.dir/physics/findGs.cpp.o
+.PHONY : physics/findGs.cpp.o
+
+physics/findGs.i: physics/findGs.cpp.i
+
+.PHONY : physics/findGs.i
+
+# target to preprocess a source file
+physics/findGs.cpp.i:
+	$(MAKE) -f CMakeFiles/findGs.exe.dir/build.make CMakeFiles/findGs.exe.dir/physics/findGs.cpp.i
+.PHONY : physics/findGs.cpp.i
+
+physics/findGs.s: physics/findGs.cpp.s
+
+.PHONY : physics/findGs.s
+
+# target to generate assembly for a file
+physics/findGs.cpp.s:
+	$(MAKE) -f CMakeFiles/findGs.exe.dir/build.make CMakeFiles/findGs.exe.dir/physics/findGs.cpp.s
+.PHONY : physics/findGs.cpp.s
 
 physics/findReggeTrajectories.o: physics/findReggeTrajectories.cpp.o
 
@@ -1955,15 +1995,18 @@ help:
 	@echo "... all (the default if no target is provided)"
 	@echo "... clean"
 	@echo "... depend"
-	@echo "... rebuild_cache"
 	@echo "... edit_cache"
 	@echo "... fitDISHVQCD.exe"
 	@echo "... test_U1NNMode.exe"
 	@echo "... test_HVQCD.exe"
+	@echo "... test_NelderMead.exe"
+	@echo "... findGs.exe"
 	@echo "... test_schrodinger.exe"
+	@echo "... fitYangMills.exe"
 	@echo "... savePotentials.exe"
 	@echo "... HVQCDRatios.exe"
 	@echo "... test_Kernel.exe"
+	@echo "... rebuild_cache"
 	@echo "... fitSingletAVM.exe"
 	@echo "... fitHVQCDWithoutGlueball.exe"
 	@echo "... fitHVQCDGlobal_sc_VgIR_fixed.exe"
@@ -1972,11 +2015,9 @@ help:
 	@echo "... fitHVQCDWithoutScalars_sc_VgIR_fixed.exe"
 	@echo "... fitHVQCDWithoutGlueball_sc_VgIR_fixed.exe"
 	@echo "... HVQCDSpectrum.exe"
-	@echo "... test_NelderMead.exe"
 	@echo "... fitHVQCDGlobal.exe"
 	@echo "... fitHVQCDWithoutScalars.exe"
 	@echo "... fitHVQCDWithoutGlueballScalars.exe"
-	@echo "... fitYangMills.exe"
 	@echo "... hvqcd_lib"
 	@echo "... physics/HVQCDRatios.o"
 	@echo "... physics/HVQCDRatios.i"
@@ -1984,6 +2025,9 @@ help:
 	@echo "... physics/HVQCDSpectrum.o"
 	@echo "... physics/HVQCDSpectrum.i"
 	@echo "... physics/HVQCDSpectrum.s"
+	@echo "... physics/findGs.o"
+	@echo "... physics/findGs.i"
+	@echo "... physics/findGs.s"
 	@echo "... physics/findReggeTrajectories.o"
 	@echo "... physics/findReggeTrajectories.i"
 	@echo "... physics/findReggeTrajectories.s"
