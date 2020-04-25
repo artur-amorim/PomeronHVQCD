@@ -58,7 +58,8 @@ struct NelderMead {
 			Most general interface: initial simplex specified by the matrix simplex[0..ndim][0..ndim-1].
         	Its ndim+1 rows are ndim-dimensional vectors that are the vertices of the starting simplex.
 		*/
-        const int maxfuncEval= 1000 * ndim;		// Maximum allowed number of function evaluations.
+        ndim = simplex.n_cols;
+		const int maxfuncEval= 1000 * ndim;		// Maximum allowed number of function evaluations.
 		const double epsilon = 1.0e-9;
 		int ihi,ilo,inhi;
 		mpts=simplex.n_rows;
