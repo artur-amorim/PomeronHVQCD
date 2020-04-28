@@ -87,8 +87,6 @@ class HVQCD : public Background
                           const double dtau, const double d2tau);
         // Declaration of d2Phi/dA2 in the coupled regime
         double d2PhiCoupled(const double q, const double phi, const double tau, const double dphi, const double dtau);
-        // Declaration of the constraint equation
-        double dPhiConstr(const double q, const double phi, const double tau, const double dtau);
         // Declaration of the jacobian function
         void jacobian(const state &X , matrix_type &jac , const double A, state &dfdt);
         // Declaration of the system of coupled EOMs
@@ -102,10 +100,10 @@ class HVQCD : public Background
         // Declaration of d2lambda/dA2 in the UV regime
         double d2lambdaUV(const double q, const double lambda , const double dq, const double dlambda);
         // Declaration of d2taun/dA2 in the UV regime
-        double d2taunUV(const double q, const double lambda, const double tau, const double dq, const double dlambda, const double dtau);
+        double d2taunUV(const double q, const double lambda, const double tau, const double dq, const double dlambda, const double dtau, const double A);
         // Declaration of d3taun/dA3 in the UV regime
         double d3taunUV(const double q, const double lambda, const double tau, const double dq, const double dlambda, const double dtau,
-                        const double d2q, const double d2lambda, const double d2tau);
+                        const double d2q, const double d2lambda, const double d2tau, const double A);
         // Declaration of the EOMs in the UV
         void eomUV(const state &X, state &dXdA, const double A);
         // Declaration of the observerUV function
@@ -158,6 +156,8 @@ class HVQCD : public Background
         double Z(const double l) const;
         // Declaration of the solve function.
         void solve();
+        // tausc getter
+        double get_tausc() const;
         // xf getter
         double get_xf() const;
         // Setter of Za and ca
