@@ -185,6 +185,7 @@ double HQCDP::operator()(const std::vector<double> &x)
     setGNs(gpars);
     // Compute chi2
     double CHI2 = chi2();
+    if(std::isnan(CHI2)) CHI2 = 1e99;
     std::cout << "invls: " << x[0] << " a: " << x[1] << " b: " << x[2] << " c: " << x[3] << " d: " << x[4];
     std::cout << " e: " << x[5] << " f: " << x[6];
     std::cout << " g1: " << x[7] << " g2: " << x[8] << " g3: " << x[9] <<  " g4: " << x[10] << std::endl;
