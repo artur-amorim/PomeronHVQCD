@@ -10,7 +10,7 @@ class HVQCD : public Background
         // Matrix type definition
         typedef boost::numeric::ublas::matrix<double> matrix_type;
         // Parameters of the Vf and k potentials
-        double ksc, kU1, W0, WIR, kIR, W1, k1, tausc, xf, tau0;
+        double ksc, kU1, W0, WIR, kIR, W1, k1, a1, a2, xf, tau0;
         // Parameters of the w potential
         double wsc, wU1, w0, wIR, w1;
         // Parameters of the Z(lambda) function
@@ -116,8 +116,9 @@ class HVQCD : public Background
              const double WW0 = 2.5, const double ww0 = 1.26, const double kkU1 = 11./9,
              const double wwU1 = 0.0, const double VVgIR = 2.05, const double WWIR = 0.9,
              const double kkIR = 1.8, const double wwIR = 5.0, const double WW1 = 0.0,
-             const double kk1 = -0.23, const double ww1 = 0.0, const double ttausc = 0,
-             const double xxf = 1.0, const double ttau0 = 1.0, const double za = 133, const double c = 0.26);
+             const double kk1 = -0.23, const double ww1 = 0.0, const double aa1 = 0,
+             const double aa2 = 1.0, const double xxf = 1.0, const double ttau0 = 1.0, 
+             const double za = 133, const double c = 0.26);
         // Class copy constructor
         HVQCD(const HVQCD &hvqcd);
         // Class destructor
@@ -156,8 +157,10 @@ class HVQCD : public Background
         double Z(const double l) const;
         // Declaration of the solve function.
         void solve();
-        // tausc getter
-        double get_tausc() const;
+        // a1 getter
+        double get_a1() const;
+        // a2 getter
+        double get_a2() const;
         // xf getter
         double get_xf() const;
         // Setter of Za and ca

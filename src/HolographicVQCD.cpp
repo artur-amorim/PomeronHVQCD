@@ -1,6 +1,7 @@
 #include <iostream>
 #include <fstream>
 #include <functional>
+#include <boost/numeric/ublas/io.hpp>
 #include <boost/numeric/ublas/assignment.hpp>
 #include <boost/numeric/odeint.hpp>
 #include "HolographicVQCD.h"
@@ -11,11 +12,12 @@ HVQCD::HVQCD(const double ssc, const double kksc, const double wwsc,
              const double WW0, const double ww0, const double kkU1,
              const double wwU1, const double VVgIR, const double WWIR,
              const double kkIR, const double wwIR, const double WW1, 
-             const double kk1, const double ww1, const double ttausc,
-             const double xxf, const double ttau0, const double za, const double c):
+             const double kk1, const double ww1, const double aa1,
+             const double aa2, const double xxf, const double ttau0,
+             const double za, const double c):
              Background(ssc, VVgIR), ksc(kksc), wsc(wwsc), W0(WW0), w0(ww0), 
              kU1(kkU1), wU1(wwU1), WIR(WWIR), kIR(kkIR), wIR(wwIR), W1(WW1),
-             k1(kk1), w1(ww1), tausc(ttausc), xf(xxf), tau0(ttau0),
+             k1(kk1), w1(ww1), a1(aa1), a2(aa2), xf(xxf), tau0(ttau0),
              Za(za), ca(c), taus({}), dtaus({}), d2qs({}),
             d2taus({}), d3taus({}), us({}), Astrings({}),
             dAstrings({}), d2Astrings({}), U2s({}), aFs({}),
@@ -25,7 +27,7 @@ HVQCD::HVQCD(const HVQCD &hvqcd):
     Background(hvqcd), ksc(hvqcd.ksc), wsc(hvqcd.wsc),
     W0(hvqcd.W0), w0(hvqcd.w0), kU1(hvqcd.kU1), wU1(hvqcd.wU1), WIR(hvqcd.WIR),
     kIR(hvqcd.kIR), wIR(hvqcd.wIR), W1(hvqcd.W1), k1(hvqcd.k1), w1(hvqcd.w1),
-    tausc(hvqcd.tausc), xf(hvqcd.xf), tau0(hvqcd.tau0), Za(hvqcd.Za), ca(hvqcd.ca), mq(hvqcd.mq),
+    a1(hvqcd.a1), a2(hvqcd.a2), xf(hvqcd.xf), tau0(hvqcd.tau0), Za(hvqcd.Za), ca(hvqcd.ca), mq(hvqcd.mq),
     taus(hvqcd.taus), dtaus(hvqcd.dtaus), d2qs(hvqcd.d2qs),
     d2taus(hvqcd.d2taus), d3taus(hvqcd.d3taus), us(hvqcd.us),
     Astrings(hvqcd.Astrings), dAstrings(hvqcd.dAstrings),
@@ -92,15 +94,15 @@ double HVQCD::d2Vf0dPhi2(const double phi) const
 // Definition of the Vtau potential
 inline double HVQCD::Vtau(const double tau) const
 {
-    // Definition of Vtau = (1+#tau^2)e^(-tau^2)
-    return (1 + tausc * tau * tau) * std::exp(-tau*tau);
+    // Definition of Vtau = (1+a1tau^2)e^(-a2tau^2)
+    return (1 + a1 * tau * tau) * std::exp(-a2*tau*tau);
 }
 
 // Definition of the dVtau / dtau potential
 inline double HVQCD::dVtau(const double tau) const
 {
-    // Definition of dVtau = -2 tau (1 + (tau^2 - 1) tausc) e^(-tau^2)
-    return -2 * tau * ( 1 + (tau*tau - 1) * tausc) * std::exp(-tau*tau);
+    // Definition of dVtau = -2 e^(-a2tau^2) tau (a2 + a1(-1+a2tau^2))
+    return -2 * std::exp(-a2*tau*tau) * tau * (a2 + a1*(-1 + a2*tau*tau));
 }
 
 inline double HVQCD::d2Vf0dlambda2(const double l) const
@@ -325,8 +327,8 @@ double HVQCD::dtauYangMills1(const double q, const double phi, const double tau,
     double dvf0 = dVf0dPhi(phi);
     double kphi = k(phi);
     double dk = dkdPhi(phi);
-    double ans = 4 * q * q * vf0 * tau * (-1 + tausc -tausc * tau * tau);
-    ans = ans / ((1 + tausc * tau * tau) * (8*vf0 * kphi + 2 * kphi * dvf0 * dphi + vf0 * dk * dphi) );
+    double ans = -4 * q * q * vf0 * tau * (-a1 + a2 + a1*a2 * tau * tau);
+    ans = ans / ( (1 + a1 * tau * tau) * (8*vf0 * kphi + 2 * kphi * dvf0 * dphi + vf0 * dk * dphi) );
     return ans;
 }
 
@@ -340,8 +342,8 @@ double HVQCD::d2tauYangMills1(const double q, const double phi, const double tau
     double d2vf0 = d2Vf0dPhi2(phi);
     double kPhi = k(phi), dkPhi = dkdPhi(phi);
     double d2kPhi = d2kdPhi2(phi);
-    double num = 4 * q * tau * (1-tausc + tausc * tau * tau) * (4*std::pow(q,3)*vf0*vf0*(1-tausc+tausc*tau*tau*(2+tausc+tausc*tau*tau))-2 * vf0 * std::pow(1+tausc*tau*tau,2)*dq*(8*vf0*kPhi+(2*kPhi*dvf0+vf0*dkPhi)*dphi)+q*std::pow(1+tausc*tau*tau,2)*(-2*kPhi*dvf0*dvf0*dphi*dphi+2*vf0*(dphi*dphi*(dvf0*dkPhi+kPhi*d2vf0)+kPhi*dvf0*d2phi)+vf0*vf0*(dphi*dphi*d2kPhi+dkPhi*(8*dphi+d2phi))));
-    double denom = std::pow(1+tausc*tau*tau,3) * std::pow(8*vf0*kPhi+(2*kPhi*dvf0+vf0*dkPhi)*dphi,2);
+    double num = 4 * q * tau * (-a1+a2+a1*a2*tau*tau)*(4*std::pow(q,3)*vf0*vf0*(-a1+a2+a1*tau*tau*(a1+2*a2+a1*a2*tau*tau)) - 2*vf0*std::pow(1+a1*tau*tau,2)*dq*(8*vf0*kPhi+(2*kPhi*dvf0+vf0*dkPhi)*dphi)+q*std::pow(1+a1*tau*tau,2)*(-2*kPhi*dvf0*dvf0*dphi*dphi+2*vf0*(dphi*dphi*(dvf0*dkPhi+kPhi*d2vf0)+kPhi*dvf0*d2phi)+vf0*vf0*(dphi*dphi*d2kPhi+dkPhi*(8*dphi+d2phi))));
+    double denom = std::pow(1+a1*tau*tau,3) * std::pow(8*vf0*kPhi+(2*kPhi*dvf0+vf0*dkPhi)*dphi,2);
     double d2tau = num/denom;
     return d2tau;
 }
@@ -352,9 +354,9 @@ double HVQCD::d2tauYM2dA2(const double q, const double phi, const double tau, co
     double dvf0 = dVf0dPhi(phi);
     double kphi = k(phi);
     double dkphi = dkdPhi(phi);
-    double ans = - 2 * q * q * tau / (kphi*(1+tausc*tau*tau)) + 2 * tausc * q * q * tau / (kphi * (1+tausc*tau*tau)) - 2 * tausc * q * q * tau * tau * tau / (kphi * (1+tausc * tau * tau)) ;
-    ans += -4 * dtau + dq * dtau / q - 2 * tau * dtau / (1+tausc * tau * tau) + 2 * tausc * tau * dtau * dtau / (1+tausc * tau * tau) - 2 * tausc * tau * tau * tau * dtau * dtau / (1+tausc * tau * tau);
-    ans += - 4 * kphi * dtau * dtau * dtau / std::pow(q,2) - dvf0 * dtau * dphi / vf0 - dkphi * dtau * dphi / kphi - kphi * dvf0 * dtau * dtau * dtau * dphi / (q*q*vf0) - dkphi * dtau * dtau * dtau * dphi / (2 * q * q);
+    double ans = 2*a1*q*q*tau/(kphi*(1+a1*tau*tau)) - 2*a2*q*q*tau/(kphi*(1+a1*tau*tau)) - 2*a1*a2*q*q*tau*tau*tau/(kphi*(1+a1*tau*tau)) ;
+    ans += -4*dtau+dq*dtau/q + 2*a1*tau*dtau*dtau / (1+a1*tau*tau) -2*a2*tau*dtau*dtau/(1+a1*tau*tau)-2*a1*a2*tau*tau*tau*dtau*dtau / (1+a1*tau*tau);
+    ans += -4*kphi*dtau*dtau*dtau/std::pow(q,2)-dvf0*dtau*dphi/vf0 - dkphi*dtau*dphi/kphi - kphi*dvf0*dtau*dtau*dtau*dphi / (q*q*vf0) - dkphi*dtau*dtau*dtau*dphi/(2*q*q);
     return ans;
 }
 
@@ -369,16 +371,20 @@ double HVQCD::d3tauYM(const double q, const double phi, const double tau,
     double vf0 = Vf0(phi);
     double dvf0 = dVf0dPhi(phi);
     double d2vf0 = d2Vf0dPhi2(phi);
-    double ans = - 4 * q * tau * dq / (kphi * (1 + tausc * tau * tau)) + 4*tausc*q*tau*dq/(kphi*(1+tausc*tau*tau)) - 4*tausc*q*tau*tau*tau*dq/(kphi*(1+tausc*tau*tau))-4*q*q*tau*tau*dtau/(kphi*std::pow(1+tausc*tau*tau,2)) + 8*tausc*q*q*tau*tau*dtau/(kphi*std::pow(1+tausc*tau*tau,2));
-    ans+=-4*tausc*tausc*q*q*tau*tau*dtau/(kphi*std::pow(1+tausc*tau*tau,2))-8*tausc*q*q*std::pow(tau,4)*dtau/(kphi*std::pow(1+tausc*tau*tau,2))+8*tausc*tausc*q*q*std::pow(tau,4)*dtau/(kphi*std::pow(1+tausc*tau*tau,2)) - 4*tausc*tausc*q*q*std::pow(tau,6)*dtau/(kphi * std::pow(1+tausc*tau*tau,2)) - 2 * q * q * dtau / (kphi*(1+tausc*tau*tau));
-    ans+=2*tausc*q*q*dtau/(kphi*(1+tausc*tau*tau)) + 4*q*q*tau*tau*dtau/(kphi*(1+tausc*tau*tau)) - 10*tausc*q*q*tau*tau*dtau/(kphi*(1+tausc*tau*tau)) + 4*tausc*q*q*std::pow(tau,4)*dtau/(kphi*(1+tausc*tau*tau)) - dq*dq*dtau/std::pow(q,2) - 4*tau*tau * dtau*dtau*dtau / std::pow(1+tausc*tau*tau,2);
-    ans+= 8*tausc*tau*tau*std::pow(dtau,3)/std::pow(1+tausc*tau*tau,2) - 4*tausc*tausc*tau*tau*std::pow(dtau,3)/std::pow(1+tausc*tau*tau,2) - 8*tausc*std::pow(tau,4)*std::pow(dtau,3)/std::pow(1+tausc*tau*tau,2) + 8*tausc*tausc*std::pow(tau,4)*std::pow(dtau,3)/std::pow(1+tausc*tau*tau,2) - 4*tausc*tausc*std::pow(tau,6)*std::pow(dtau,3)/std::pow(1+tausc*tau*tau,2) - 2*dtau*dtau*dtau/(1+tausc*tau*tau) + 2*tausc*std::pow(dtau,3)/(1+tausc*tau*tau);
-    ans+= 4*tau*tau*std::pow(dtau,3)/(1+tausc*tau*tau) - 10*tausc*tau*tau*std::pow(dtau,3)/(1+tausc*tau*tau) + 4*tausc*std::pow(tau,4)*std::pow(dtau,3)/(1+tausc*tau*tau)+8*kphi*dq*std::pow(dtau,3)/std::pow(q,3) + 2*q*q*tau*dkphi*dphi/(kphi*kphi*(1+tausc*tau*tau)) - 2*tausc*q*q*tau*dkphi*dphi/(kphi*kphi*(1+tausc*tau*tau));
-    ans+= 2*tausc*q*q*std::pow(tau,3)*dkphi*dphi/(kphi*kphi*(1+tausc*tau*tau)) + 2*kphi*dq*dvf0*std::pow(dtau,3)*dphi/(q*q*q*vf0) - 4*dkphi*std::pow(dtau,3)*dphi/std::pow(q,2) + dq*dkphi*std::pow(dtau,3)*dphi/std::pow(q,3) + dvf0*dvf0*dtau*dphi*dphi/std::pow(vf0,2);
-    ans+= dkphi * dkphi * dtau * dphi*dphi / std::pow(kphi,2) + kphi*dvf0*dvf0*std::pow(dtau,3)*dphi*dphi/(q*q*vf0*vf0) - dvf0*dkphi*std::pow(dtau,3)*dphi*dphi/(q*q*vf0) + dtau*d2q/q - dtau*dphi*dphi*d2vf0/vf0;
-    ans+= -kphi*std::pow(dtau,3)*dphi*dphi*d2vf0/(q*q*vf0) - dtau*dphi*dphi*d2kphi/kphi - std::pow(dtau,3)*dphi*dphi*d2kphi/(2*q*q) -4*d2tau + dq*d2tau/q - 4*tau*dtau*d2tau/(1+tausc*tau*tau) + 4*tausc*tau*dtau*d2tau/(1+tausc*tau*tau);
-    ans+= -4*tausc*std::pow(tau,3)*dtau*d2tau/(1+tausc*tau*tau) - 12*kphi*dtau*dtau*d2tau/std::pow(q,2) - dvf0*dphi*d2tau/vf0 - dkphi*dphi*d2tau/kphi - 3*kphi*dvf0*dtau*dtau*dphi*d2tau/(q*q*vf0);
-    ans+= -3*dkphi*dtau*dtau*dphi*d2tau/(2*q*q) - dvf0*dtau*d2phi/vf0 - dkphi*dtau*d2phi/kphi - kphi*dvf0*std::pow(dtau,3)*d2phi/(q*q*vf0) - dkphi * std::pow(dtau,3)*d2phi/(2*q*q);
+    double ans = 4*a1*q*tau*dq/(kphi*(1*a1*tau*tau))-4*a2*q*tau*dq/(kphi*(1+a1*tau*tau)) -4*a1*a2*q*tau*tau*tau*dq/(kphi*(1+a1*tau*tau)) - 4*a1*a1*q*q*tau*tau*dtau/(kphi*std::pow(1+a1*tau*tau,2)) +8*a1*a2*q*q*tau*tau*dtau/(kphi*std::pow(1+a1*tau*tau,2)) - 4*a2*a2*q*q*tau*tau*dtau/(kphi*std::pow(1+a1*tau*tau,2)) +8*a1*a1*a2*q*q*std::pow(tau,4)*dtau/(kphi*std::pow(1+a1*tau*tau,2));
+    ans += -8*a1*a2*a2*q*q*std::pow(tau,4)*dtau/(kphi*std::pow(1+a1*tau*tau,2))-4*a1*a1*a2*a2*q*q*std::pow(tau,6)*dtau/(kphi*std::pow(1+a1*tau*tau,2))+2*a1*q*q*dtau/(kphi*(1+a1*tau*tau));
+    ans+= -2*a2*q*q*dtau/(kphi*(1+a1*tau*tau)) - 10*a1*a2*q*q*tau*tau*dtau/(kphi*(1+a1*tau*tau))+4*a2*a2*q*q*tau*tau*dtau/(kphi*(1+a1*tau*tau));
+    ans+= 4*a1*a2*a2*q*q*std::pow(tau,4)*dtau/(kphi*(1+a1*tau*tau)) - dq*dq*dtau/(q*q) - 4*a1*a1*tau*tau*std::pow(dtau,3)/std::pow(1+a1*tau*tau,2) + 8*a1*a2*tau*tau*std::pow(dtau,3)/std::pow(1+a1*tau*tau,2) -4*a2*a2*tau*tau*std::pow(dtau,3)/std::pow(1+a1*tau*tau,2) + 8*a1*a1*a2*std::pow(tau,4)*std::pow(dtau,3)/std::pow(1+a1*tau*tau,2) - 8*a1*a2*a2*std::pow(tau,4)*std::pow(dtau,3)/std::pow(1+a1*tau*tau,2) -4*a1*a1*a2*a2*std::pow(tau,6)*std::pow(dtau,3)/std::pow(1+a1*tau*tau,2);
+    ans+=2*a1*std::pow(dtau,3)/(1+a1*tau*tau) - 2*a2*std::pow(dtau,3)/(1+a1*tau*tau) - 10*a1*a2*tau*tau*std::pow(dtau,3)/(1+a1*tau*tau) + 4*a2*a2*tau*tau*std::pow(dtau,3)/(1+a1*tau*tau) + 4*a1*a2*a2*std::pow(tau,4)*std::pow(dtau,3)/(1+a1*tau*tau);
+    ans +=  8*kphi*dq*std::pow(dtau/q,3) - 2*a1*q*q*tau*dkphi*dphi/(kphi*kphi*(1+a1*tau*tau)) + 2*a2*q*q*tau*dkphi*dphi/(kphi*kphi*(1+a1*tau*tau));
+    ans += 2*a1*a2*q*q*std::pow(tau,3)*dkphi*dphi/(kphi*kphi*(1+a1*tau*tau)) + 2*kphi*dq*dvf0*std::pow(dtau,3)*dphi/(q*q*q*vf0) - 4*dkphi*std::pow(dtau,3)*dphi/(q*q);
+    ans += dq*dkphi*std::pow(dtau/q,3)*dphi + std::pow(dvf0*dphi/vf0,2)*dtau + std::pow(dkphi*dphi/kphi,2)*dtau;
+    ans += kphi* std::pow(dvf0*dphi/(q*vf0), 2) * std::pow(dtau,3) - dvf0*dkphi*std::pow(dtau,3)*dphi*dphi/(q*q*vf0) + dtau*d2q/q;
+    ans += -dtau*dphi*dphi*d2vf0/vf0 - kphi*std::pow(dtau,3)*dphi*dphi*d2vf0/(q*q*vf0) - dtau*dphi*dphi*d2kphi/kphi;
+    ans += - std::pow(dtau,3)*dphi*dphi*d2kphi/(2*q*q) -4*d2tau+dq*d2tau/q + 4*a1*tau*dtau*d2tau/(1+a1*tau*tau) -4*a2*tau*dtau*d2tau/(1+a1*tau*tau);
+    ans += -4*a1*a2*std::pow(tau,3)*dtau*d2tau/(1+a1*tau*tau) - 12*kphi*dtau*dtau*d2tau/(q*q) - dvf0*dphi*d2tau/vf0 - dkphi*dphi*d2tau/kphi;
+    ans += -3*kphi*dvf0*dtau*dtau*dphi*d2tau/(q*q*vf0) - 3*dkphi*dtau*dtau*dphi*d2tau/(2*q*q) - dvf0*dtau*d2phi/vf0;
+    ans += -dkphi*dtau*d2phi/kphi - kphi*dvf0*std::pow(dtau,3)*d2phi/(q*q*vf0) - dkphi*std::pow(dtau,3)*d2phi/(2*q*q);
     return ans;
 }
 
@@ -442,22 +448,20 @@ double HVQCD::d3tauCoupled(const double q, const double phi, const double tau, c
     double dvfdtau = dVfdtau(phi, tau);
     double g = G(q, phi, dtau);
     double dg = dG(q, phi, dq, dphi, dtau, d2tau);
-    double ans = -4*q*tau*dq/(kPhi*(1+tausc*tau*tau)) + 4*tausc*q*tau*dq/(kPhi*(1+tausc*tau*tau)) -4*tausc*q*std::pow(tau,3)*dq/(kPhi*(1+tausc*tau*tau)) - 4*q*q*tau*tau*dtau/(kPhi*std::pow(1+tausc*tau*tau,2)) +8*tausc*q*q*tau*tau*dtau/(kPhi*std::pow(1+tausc*tau*tau,2));
-    ans+= -4*tausc*tausc*q*q*tau*tau*dtau/(kPhi*std::pow(1+tausc*tau*tau,2)) - 8*tausc*q*q*std::pow(tau,4)*dtau/(kPhi*std::pow(1+tausc*tau*tau,2)) + 8*std::pow(tausc*q*tau*tau,2)*dtau/(kPhi*std::pow(1+tausc*tau*tau,2)) - 4*tausc*tausc*q*q*std::pow(tau,6)*dtau/(kPhi*std::pow(1+tausc*tau*tau,2))- 2*q*q*dtau/(kPhi*(1+tausc*tau*tau));
-    ans+= 2*tausc*q*q*dtau/(kPhi*(1+tausc*tau*tau)) + 4*q*q*tau*tau*dtau/(kPhi*(1+tausc*tau*tau)) - 10*tausc*q*q*tau*tau*dtau/(kPhi*(1+tausc*tau*tau)) + 4*tausc*q*q*std::pow(tau,4)*dtau/(kPhi*(1+tausc*tau*tau)) - 4*tau*tau*std::pow(dtau,3)/std::pow(1+tausc*tau*tau,2);
-    ans+= 8*tausc*tau*tau*std::pow(dtau,3)/std::pow(1+tausc*tau*tau,2) - 4*tausc*tausc*tau*tau*std::pow(dtau,3)/std::pow(1+tausc*tau*tau,2) - 8*tausc*std::pow(tau,4)*std::pow(dtau,3)/std::pow(1+tausc*tau*tau,2) + 8*tausc*tausc*std::pow(tau,4)*std::pow(dtau,3)/std::pow(1+tausc*tau*tau,2) - 4*tausc*tausc*std::pow(tau*tau*dtau,3)/std::pow(1+tausc*tau*tau,2) - 2*std::pow(dtau,3)/(1+tausc*tau*tau)+2*tausc*std::pow(dtau,3)/(1+tausc*tau*tau);
-    ans+= 4*tau*tau*std::pow(dtau,3)/(1+tausc*tau*tau) - 10*tausc*tau*tau*std::pow(dtau,3)/(1+tausc*tau*tau)+ 4*tausc*std::pow(tau,4)*std::pow(dtau,3)/(1+tausc*tau*tau) + 8*kPhi*dq*std::pow(dtau/q,3) - xf * std::exp(-tau*tau)*vf0*kPhi*dq*std::pow(dtau/g,3)/(6*q);
-    ans+= std::exp(-tau*tau)*xf*vf0*kPhi*dq*std::pow(dtau,3)/(6*g*q) - std::exp(-tau*tau)*xf*tausc*vf0*kPhi*tau*tau*dq*std::pow(dtau/g,3)/(6*q) + std::exp(-tau*tau)*xf*tausc*vf0*kPhi*tau*tau*dq*std::pow(dtau,3)/(6*g*q);
-    ans+= -std::exp(-tau*tau)*xf*vf0*kPhi*tau*std::pow(dtau,4)/(3*g) + std::exp(-tau*tau)*xf*tausc*vf0*kPhi*tau*std::pow(dtau,4)/(3*g) - std::exp(-tau*tau)*xf*tausc*vf0*kPhi*std::pow(tau,3)*std::pow(dtau,4)/(3*g);
-    ans+= 2*q*q*tau*dkPhi*dphi/(kPhi*kPhi*(1+tausc*tau*tau)) -2*tausc*q*q*tau*dkPhi*dphi/(kPhi*kPhi*(1+tausc*tau*tau)) + 2*tausc*q*q*std::pow(tau,3)*dkPhi*dphi/(kPhi*kPhi*(1+tausc*tau*tau)) + std::exp(-tau*tau)*xf*kPhi*dvf0*std::pow(dtau,3)*dphi/(6*g);
-    ans+= std::exp(-tau*tau)*xf*tausc*kPhi*tau*tau*dvf0*std::pow(dtau,3)*dphi/(6*g)+ 2*kPhi*dq*dvf0*std::pow(dtau/q,3)*dphi/vf0 - 4*dkPhi*std::pow(dtau,3)*dphi/std::pow(q,2) + std::exp(-tau*tau)*xf*vf0*dkPhi*std::pow(dtau,3)*dphi/(6*g);
-    ans+= std::exp(-tau*tau)*xf*tausc*vf0*tau*tau*dkPhi*std::pow(dtau,3)*dphi/(6*g) + dq*dkPhi*std::pow(dtau/q,3)*dphi + std::exp(-tau*tau)*xf*vf0*kPhi*dkPhi*std::pow(dtau,5)*dphi/(12*g*g*g*q*q);
-    ans+= - std::exp(-tau*tau)*xf*tausc*vf0*kPhi*tau*tau*dkPhi*std::pow(dtau,5)*dphi/(12*g*g*g*q*q) + std::pow(dvf0*dphi/vf0,2)*dtau + std::pow(dkPhi*dphi/kPhi,2)*dtau + kPhi*std::pow(dtau,3)*std::pow(dvf0*dphi/(q*vf0),2);
-    ans+=-dvf0*dkPhi*std::pow(dtau,3)*std::pow(dphi/q,2)/vf0 - dtau*dphi*dphi*d2vf0/vf0 - kPhi*std::pow(dtau,3)*dphi*dphi*d2vf0/(q*q*vf0) - dtau*dphi*dphi*d2kPhi/kPhi - dtau*dtau*dtau*dphi*dphi*d2kPhi/(2*q*q);
-    ans+=-4*d2tau - 4*tau*dtau*d2tau/(1+tausc*tau*tau) + 4*tausc*tau*dtau*d2tau/(1+tausc*tau*tau) - 4*tausc*tau*tau*tau*dtau*d2tau/(1+tausc*tau*tau) - 12*kPhi*dtau*dtau*d2tau/(q*q) + std::exp(-tau*tau)*xf*vf0*kPhi*dtau*dtau*d2tau/(2*g);
-    ans+=std::exp(-tau*tau)*xf*tausc*vf0*kPhi*std::pow(tau*dtau,2)*d2tau/(2*g) - std::exp(-tau*tau)*xf*vf0*kPhi*kPhi*std::pow(dtau,4)*d2tau/(6*g*g*g*q*q) - std::exp(-tau*tau)*xf*tausc*vf0*kPhi*kPhi*tau*tau*std::pow(dtau,4)*d2tau/(6*g*g*g*q*q);
-    ans+= - dvf0*dphi*d2tau/vf0 -dkPhi*dphi*d2tau/kPhi - 3*kPhi*dvf0*dtau*dtau*dphi*d2tau/(q*q*vf0) - 3*dkPhi*dtau*dtau*dphi*d2tau/(2*q*q) + 4*dphi*dphi*d2tau/9;
-    ans+=-dvf0*dtau*d2phi/vf0 - dkPhi*dtau*d2phi/kPhi - kPhi*dvf0*std::pow(dtau,3)*d2phi/(q*q*vf0) - dkPhi*std::pow(dtau,3)*d2phi/(2*q*q) + 8*dtau*dphi*d2phi/9;
+    double dvf_vf = -2*a2*tau+2*a1*tau/(1+a1*tau*tau);
+    double d2vf_vf = -10*a2+4*a2*a2*tau*tau+2*(a1+4*a2)/(1+a1*tau*tau);
+    double ans = 2*q*dvf_vf*dq/kPhi+q*q*d2vf_vf*dtau/kPhi-q*q*dvf_vf*dtau/kPhi + d2vf_vf*std::pow(dtau,3);
+    ans += -dvf_vf*std::pow(dtau,3) - xf*Vtau(tau)*vf0*kPhi*dg*std::pow(dtau,3)/(6*g*g) + 8*kPhi*dq*std::pow(dtau/q,3)+xf*Vtau(tau)*vf0*kPhi*dvf_vf*std::pow(dtau,4)/(6*g);
+    ans += -q*q*dvf_vf*dkPhi*dphi/std::pow(kPhi,2)+xf*Vtau(tau)*kPhi*dvf0*std::pow(dtau,3)*dphi/(6*g);
+    ans +=2*kPhi*dq*dvf0*std::pow(dtau/q,3)*dphi/vf0 - 4*dkPhi*std::pow(dtau,3)*dphi/(q*q);
+    ans +=xf*Vtau(tau)*vf0*dkPhi*std::pow(dtau,3)*dphi/(6*g) + dq*dkPhi*std::pow(dtau/q,3)*dphi + std::pow(dvf0*dphi/vf0,2)*dtau;
+    ans += std::pow(dkPhi*dphi/kPhi,2)*dtau + kPhi*std::pow(dvf0*dphi/(q*vf0),2)*std::pow(dtau,3) - dvf0*dkPhi*std::pow(dtau,3)*std::pow(dphi/q,2)/vf0;
+    ans += -dtau*dphi*dphi*d2vf0/vf0 - kPhi*std::pow(dtau,3)*std::pow(dphi/q,2)*d2vf0/vf0 - dtau*dphi*dphi*d2kPhi/kPhi;
+    ans += -std::pow(dtau,3)*std::pow(dphi/q,2)*d2kPhi/2.0 - 4*d2tau + 2*dvf_vf*dtau*d2tau;
+    ans += -12*kPhi*std::pow(dtau/q,2)*d2tau + xf*Vtau(tau)*vf0*kPhi*dtau*dtau*d2tau/(2*g);
+    ans += -dvf0*dphi*d2tau/vf0 - dkPhi*dphi*d2tau/kPhi - 3*kPhi*dvf0*std::pow(dtau/q,2)*dphi*d2tau/vf0;
+    ans += -1.5*dkPhi*std::pow(dtau/q,2)*dphi*d2tau + (4.0/9)*dphi*dphi*d2tau - dvf0*dtau*d2phi/vf0 - dkPhi*dtau*d2phi/kPhi;
+    ans += -kPhi*dvf0*std::pow(dtau,3)*d2phi/(q*q*vf0) - dkPhi*std::pow(dtau,3)*d2phi/(2*q*q) + (8.0/9)*dtau*dphi*d2phi;
     return ans;
 }
 
@@ -482,7 +486,7 @@ double HVQCD::d2qCoupled(const double q, const double phi, const double tau,  co
    double dkPhi = dkdPhi(phi);
    double g = G(q, phi, dtau);
    double dg = dG(q, phi, dq, dphi, dtau, d2tau);
-   double d2q = -xf*q*vf*kPhi*dg*dtau*dtau/(6*g*g) + xf*vf*kPhi*dq*dtau*dtau/(6*g) + xf*q*vf*dkPhi*dtau*dtau*dphi/(6*g) + 4 * dq * dphi*dphi/9;
+   double d2q = -xf*q*vf*kPhi*dg*dtau*dtau/(6*g*g) + xf*vf*kPhi*dq*dtau*dtau/(6*g) + xf*q*vf*dkPhi*dtau*dtau*dphi/(6*g) + 4*dq*dphi*dphi/9;
    d2q += xf*q*vf*kPhi*dtau*d2tau/(3*g) + 8*q*dphi*d2PhiCoupled(q, phi, tau, dphi, dtau)/9 + xf * q * kPhi * std::pow(dtau,3) * dvfdtau / (6*g) + xf * q * kPhi * dtau*dtau*dphi*dvfdphi / (6*g);
    return d2q;
 }
@@ -496,7 +500,7 @@ double HVQCD::d2PhiCoupled(const double q, const double phi, const double tau, c
     double dvfdphi = dVfdPhi(phi, tau);
     double kl = k(phi);
     double dkphi = dkdPhi(phi);
-    double g = sqrt(1 + kl * std::pow(dtau/q,2));
+    double g = std::sqrt(1 + kl * std::pow(dtau/q,2));
     double ans = -(3./8) * q * q * dvg + 3 * xf*vf*dkphi*dtau*dtau/(16*g) + 9 / dphi + 3*xf*q*q*vf/(4*g*dphi) - 3*q*q*vg/(4*dphi);
     ans+=-5*dphi + xf*vf*kl*dtau*dtau*dphi/(6*g) + 4*dphi*dphi*dphi/9 + 3*xf*q*q*dvfdphi/(8*g) + 3*xf*kl*dtau*dtau*dvfdphi/(8*g);
     return ans;
@@ -514,10 +518,10 @@ double HVQCD::d2tauCoupled(const double q, const double phi, const double tau, c
     double kl = k(phi);
     double dkl = dkdPhi(phi);
     double g = std::sqrt(1 + kl * std::pow(dtau/q,2.0));
-    double ans = - 2 * q * q * tau / (kl*(1+tausc*tau*tau)) + 2*tausc*q*q*tau/(kl*(1+tausc*tau*tau)) - 2*tausc*q*q*tau*tau*tau/(kl*(1+tausc*tau*tau)) - 4 * dtau - 2 * tau * std::pow(dtau,2.0)/(1+tausc*tau*tau);
-    ans+= 2*tausc*tau*dtau*dtau/(1+tausc*tau*tau) - 2*tausc*std::pow(tau,3)*dtau*dtau/(1+tausc*tau*tau) - 4 * kl * std::pow(dtau,3.0) / std::pow(q,2.0);
-    ans+= std::exp(-tau*tau)*xf*vf0*kl*std::pow(dtau,3)/(6*g) + std::exp(-tau*tau)*xf*tausc*vf0*kl*tau*tau*std::pow(dtau,3)/(6*g);
-    ans+= -dvf0*dtau*dphi/vf0 - dkl*dtau*dphi/kl - kl*dvf0*std::pow(dtau,3)*dphi/(q*q*vf0) - kl*std::pow(dtau,3)*dphi/(2*q*q) + 4*dtau*dphi*dphi/9;
+    double ans = 2*a1*q*q*tau/(kl*(1+a1*tau*tau)) - 2*a2*q*q*tau / (kl*(1+a1*tau*tau)) -2*a1*a2*q*q*std::pow(tau,3)/(kl*(1+a1*tau*tau)) -4*dtau + 2*a1*tau*std::pow(dtau,2)/(1+a1*tau*tau);
+    ans += -2*a2*tau*std::pow(dtau,2)/(1+a1*tau*tau) - 2*a1*a2*std::pow(tau,3)*std::pow(dtau,2)/(1+a1*tau*tau)-4*kl*std::pow(dtau,3)/std::pow(q,2)+std::exp(-a2*tau*tau)*xf*vf0*kl*std::pow(dtau,3)/(6*g);
+    ans += a1*std::exp(-a2*tau*tau)*xf*vf0*kl*std::pow(tau,2)*std::pow(dtau,3)/(6*g) - dvf0*dtau*dphi/vf0 - dkl*dtau*dphi/kl;
+    ans += -kl*dvf0*std::pow(dtau,3)*dphi/(q*q*vf0) - dkl*std::pow(dtau,3)*dphi/(2*q*q) + 4*dtau*dphi*dphi/9.0;
     return ans;
 }
 
@@ -541,37 +545,41 @@ void HVQCD::jacobian(const state &X , matrix_type &jac , const double A, state &
     double dvfdtau = dVfdtau(X[1], X[2]);
     double d2vfdphidtau = d2VfdPhidtau(X[1], X[2]);
     double g = std::sqrt(1 + kPhi * std::pow(X[4]/X[0],2.0));
-    jac(0,0) = (4./9) * std::pow(X[3],2) + xf*std::pow(X[4],4)*std::pow(kPhi/X[0],2) * vf / (6*std::pow(g,3)) + xf*std::pow(X[4],2)*kPhi*vf/(6*g);
-    jac(0,1) = -xf*std::pow(X[4],4)*kPhi*vf*dkPhi/(12*X[0]*std::pow(g,3)) + xf*X[0]*std::pow(X[4],2)*vf*dkPhi/(6*g) + xf*X[0]*std::pow(X[4],2)*kPhi*dvfdphi/(6*g);
+    jac(0,0) = (4./9) * std::pow(X[3],2) + xf*vf*std::pow(X[4],4)*std::pow(kPhi/X[0],2) / (6*std::pow(g,3)) + xf*vf*std::pow(X[4],2)*kPhi/(6*g);
+    jac(0,1) = -xf*vf*std::pow(X[4],4)*kPhi*dkPhi/(12*X[0]*std::pow(g,3)) + xf*vf*X[0]*std::pow(X[4],2)*dkPhi/(6*g) + xf*X[0]*std::pow(X[4],2)*kPhi*dvfdphi/(6*g);
     jac(0,2) = xf*X[0]*std::pow(X[4],2)*kPhi*dvfdtau/(6*g);
     jac(0,3) = (8./9)*X[0]*X[3];
-    jac(0,4) = -xf*std::pow(X[4],3)*std::pow(kPhi,2)*vf/(6*X[0]*std::pow(g,3)) + xf*X[0]*X[4]*kPhi*vf/(3*g);
+    jac(0,4) = -xf*vf*std::pow(X[4],3)*std::pow(kPhi,2)/(6*X[0]*std::pow(g,3)) + xf*vf*X[0]*X[4]*kPhi/(3*g);
     jac(0,5) = 0; jac(0,6) = 0;
     jac(1,0) = 0; jac(1,1) = 0; jac(1, 2) = 0; jac(1, 3) = 1; jac(1,4) = 0; jac(1,5) = 0; jac(1,6) = 0;
     jac(2,0) = 0; jac(2,1) = 0; jac(2, 2) = 0; jac(2, 3) = 0; jac(2,4) = 1; jac(2,5) = 0; jac(2,6) = 0;
-    jac(3,0) = -1.5*X[0]*vg/X[3] + 0.75*xf*std::pow(X[4],2)*kPhi*vf/(X[0]*X[3]*std::pow(g,3))+ xf*X[3]*std::pow(X[4],4)*std::pow(kPhi,2)*vf/(6*std::pow(X[0]*g,3));
-    jac(3,0) += 1.5*xf*X[0]*vf/(X[3]*g)-0.75*X[0]*dvg+(3./16)*xf*std::pow(X[4],4)*kPhi*vf*dkPhi/std::pow(X[0]*g,3);
+    jac(3,0) = -1.5*X[0]*vg/X[3] + 0.75*xf*vf*std::pow(X[4],2)*kPhi/(X[0]*X[3]*std::pow(g,3))+ xf*vf*X[3]*std::pow(X[4],4)*std::pow(kPhi,2)/(6*std::pow(X[0]*g,3));
+    jac(3,0) += 1.5*xf*vf*X[0]/(X[3]*g)-0.75*X[0]*dvg+(3./16)*xf*vf*std::pow(X[4],4)*kPhi*dkPhi/std::pow(X[0]*g,3);
     jac(3,0) += (3./8)*xf*std::pow(X[4],2)*kPhi*dvfdphi/(X[0]*std::pow(g,3))+(3./8)*xf*std::pow(X[4],4)*std::pow(kPhi,2)*dvfdphi/(std::pow(X[0]*g,3)) + 0.75*xf*X[0]*dvfdphi/g;
-    jac(3,1) = -0.75*X[0]*X[0]*dvg/X[3] -(3./8)*xf*std::pow(X[4],2)*vf*dkPhi/(X[3]*std::pow(g,3)) -(1./12)*xf*X[3]*std::pow(X[4],4)*kPhi*vf*dkPhi/(std::pow(X[0],2)*std::pow(g,3)) + xf*X[3]*std::pow(X[4],2)*vf*dkPhi/(6*g) -(3./32)*xf*std::pow(X[4],4)*vf*std::pow(dkPhi/X[0],2)/std::pow(g,3);
-    jac(3,1) += -(3./8)*std::pow(X[0],2)*d2vg + (3./16)*xf*std::pow(X[4],2)*vf*d2kPhi/g;
+    jac(3,1) = -0.75*X[0]*X[0]*dvg/X[3] -(3./8)*xf*vf*std::pow(X[4],2)*dkPhi/(X[3]*std::pow(g,3)) -(1./12)*xf*vf*X[3]*std::pow(X[4],4)*kPhi*dkPhi/(std::pow(X[0],2)*std::pow(g,3)) + xf*vf*X[3]*std::pow(X[4],2)*dkPhi/(6*g) -(3./32)*xf*vf*std::pow(X[4],4)*std::pow(dkPhi/X[0],2)/std::pow(g,3);
+    jac(3,1) += -(3./8)*std::pow(X[0],2)*d2vg + (3./16)*xf*vf*std::pow(X[4],2)*d2kPhi/g;
     jac(3,1) += 0.75*xf*std::pow(X[0],2)*dvfdphi/(X[3]*g) + xf*X[3]*std::pow(X[4],2)*kPhi*dvfdphi/(6*g) -(3./16)*xf*std::pow(X[4],2)*dkPhi*dvfdphi/std::pow(g,3) - (3/16.)*xf*std::pow(X[4],4)*kPhi*dkPhi*dvfdphi/(std::pow(X[0],2)*std::pow(g,3));
     jac(3,1) += (9./16)*xf*std::pow(X[4],2)*dkPhi*dvfdphi/g + (3./8)*xf*std::pow(X[0],2)*d2vfdphi2/g + (3./8)*xf*std::pow(X[4],2)*kPhi*d2vfdphi2/g;
     jac(3,2) = 0.75*xf*std::pow(X[0],2)*dvfdtau/(X[3]*g)+xf*X[3]*std::pow(X[4],2)*kPhi*dvfdtau/(6*g)+(3./16)*xf*std::pow(X[4],2)*dkPhi*dvfdtau/g+(3./8)*xf*std::pow(X[0],2)*d2vfdphidtau/g+(3./8)*xf*std::pow(X[4],2)*kPhi*d2vfdphidtau/g;
-    jac(3,3) = -5 -9/std::pow(X[3],2)+0.75*std::pow(X[0]/X[3],2)*vg +(4./3)*std::pow(X[3],2)-0.75*xf*std::pow(X[0]/X[3],2)*vf/g + xf*std::pow(X[4],2)*kPhi*vf/(6*g);
-    jac(3,4) = -0.75*xf*X[4]*kPhi*vf/(X[3]*std::pow(g,3))-xf*X[3]*std::pow(X[4],3)*std::pow(kPhi/X[0],2)*vf/(6*std::pow(g,3))+xf*X[3]*X[4]*kPhi*vf/(3*g);
-    jac(3,4) += -(3./16)*xf*std::pow(X[4],3)*kPhi*vf*dkPhi/(std::pow(X[0],2)*std::pow(g,3))+(3./8)*xf*X[4]*vf*dkPhi/g-(3./8)*xf*X[4]*kPhi*dvfdphi/std::pow(g,3)-(3./8)*xf*std::pow(X[4],3)*std::pow(kPhi/X[0],2)*dvfdphi/std::pow(g,3)+0.75*xf*X[4]*kPhi*dvfdphi/g;
+    jac(3,3) = -5 -9/std::pow(X[3],2)+0.75*std::pow(X[0]/X[3],2)*vg +(4./3)*std::pow(X[3],2)-0.75*xf*vf*std::pow(X[0]/X[3],2)/g + xf*vf*std::pow(X[4],2)*kPhi/(6*g);
+    jac(3,4) = -0.75*xf*vf*X[4]*kPhi/(X[3]*std::pow(g,3))-xf*vf*X[3]*std::pow(X[4],3)*std::pow(kPhi/X[0],2)/(6*std::pow(g,3))+xf*vf*X[3]*X[4]*kPhi/(3*g);
+    jac(3,4) += -(3./16)*xf*vf*std::pow(X[4],3)*kPhi*dkPhi/(std::pow(X[0],2)*std::pow(g,3))+(3./8)*xf*vf*X[4]*dkPhi/g-(3./8)*xf*X[4]*kPhi*dvfdphi/std::pow(g,3)-(3./8)*xf*std::pow(X[4],3)*std::pow(kPhi/X[0],2)*dvfdphi/std::pow(g,3)+0.75*xf*X[4]*kPhi*dvfdphi/g;
     jac(3,5) = 0; jac(3,6) = 0;
-    jac(4,0) = -4*X[0]*X[2]/((1+tausc*X[2]*X[2])*kPhi)+4*tausc*X[0]*X[2]/((1+tausc*X[2]*X[2])*kPhi)-4*tausc*X[0]*std::pow(X[2],3)/((1+tausc*X[2]*X[2])*kPhi) + 8*std::pow(X[4]/X[0],3)*kPhi + 2*X[3]*std::pow(X[4],3)*kPhi*dvf0/(vf0*std::pow(X[0],3))+X[3]*std::pow(X[4]/X[0],3)*dkPhi;
-    jac(4,1) = X[3]*X[4]*std::pow(dvf0/vf0,2)+X[3]*std::pow(X[4],3)*kPhi*std::pow(dvf0/(X[0]*vf0),2)-4*std::pow(X[4],3)*dkPhi/std::pow(X[0],2)+2*std::pow(X[0]/kPhi,2)*X[2]*dkPhi/(1+tausc*X[2]*X[2]);
-    jac(4,1)+= - 2*tausc*std::pow(X[0]/kPhi,2)*X[2]*dkPhi/(1+tausc*X[2]*X[2])+2*tausc*std::pow(X[0]/kPhi,2)*std::pow(X[2],3)*dkPhi/(1+tausc*X[2]*X[2]) - X[3]*std::pow(X[4],3)*dvf0*dkPhi/(vf0*X[0]*X[0])+X[3]*X[4]*std::pow(dkPhi/kPhi,2);
-    jac(4,1)+= xf*std::exp(-X[2]*X[2])*std::pow(X[4],3)*kPhi*dvf0/(6*g) + xf*std::exp(-X[2]*X[2])*tausc*X[2]*X[2]*std::pow(X[4],3)*kPhi*dvf0/(6*g)+xf*std::exp(-X[2]*X[2])*vf0*std::pow(X[4],3)*dkPhi/(6*g);
-    jac(4,1)+= xf*std::exp(-X[2]*X[2])*tausc*vf0*X[2]*X[2]*std::pow(X[4],3)*dkPhi/(6*g) - X[3]*X[4]*d2vf0/vf0 - X[3]*std::pow(X[4],3)*kPhi*d2vf0/(vf0*X[0]*X[0])-X[3]*std::pow(X[4],3)*d2kPhi/(2*X[0]*X[0]) - X[3]*X[4]*d2kPhi/kPhi;
-    jac(4,2) = 4*tausc*std::pow(X[2]*X[4]/(1+tausc*X[2]*X[2]),2) - 4*std::pow(tausc*X[2]*X[4]/(1+tausc*X[2]*X[2]),2) + 4*std::pow(tausc*X[2]*X[2]*X[4]/(1+tausc*X[2]*X[2]),2)-2*std::pow(X[4],2)/(1+tausc*X[2]*X[2])+2*tausc*X[4]*X[4]/(1+tausc*X[2]*X[2]) - 6*tausc*std::pow(X[2]*X[4],2)/(1+tausc*X[2]*X[2]) + 4*tausc*std::pow(X[0]*X[2]/(1+tausc*X[2]*X[2]),2)/kPhi;
-    jac(4,2)+= -4*std::pow(tausc*X[0]*X[2]/(1+tausc*X[2]*X[2]),2)/kPhi + 4*std::pow(tausc*X[0]*X[2]*X[2]/(1+tausc*X[2]*X[2]),2)/kPhi - 2*std::pow(X[0],2)/(kPhi*(1+tausc*X[2]*X[2])) + 2*tausc*X[0]*X[0]/(kPhi*(1+tausc*X[2]*X[2])) - 6*tausc*X[0]*X[0]*X[2]*X[2]/(kPhi*(1+tausc*X[2]*X[2]));
-    jac(4,2)+=  -xf*std::exp(-X[2]*X[2])*vf0*X[2]*std::pow(X[4],3)*kPhi/(3*g) + std::exp(-X[2]*X[2])*xf*tausc*vf0*X[2]*std::pow(X[4],3)*kPhi/(3*g) - std::exp(-X[2]*X[2])*xf*tausc*vf0*std::pow(X[2]*X[4],3)*kPhi/(3*g);
+    jac(4,0) = 4*a1*X[0]*X[2]/((1+a1*X[2]*X[2])*kPhi)-4*a2*X[0]*X[2]/((1+a1*X[2]*X[2])*kPhi)-4*a1*a2*X[0]*std::pow(X[2],3)/((1+a1*X[2]*X[2])*kPhi);
+    jac(4,0) += 8*std::pow(X[4]/X[0],3)*kPhi + 2*X[3]*std::pow(X[4],3)*kPhi*dvf0/(vf0*std::pow(X[0],3))+X[3]*std::pow(X[4]/X[0],3)*dkPhi;
+    jac(4,1) = X[3]*X[4]*std::pow(dvf0/vf0,2)+X[3]*std::pow(X[4],3)*kPhi*std::pow(dvf0/(X[0]*vf0),2)-4*std::pow(X[4],3)*dkPhi/std::pow(X[0],2)- 2*a1*std::pow(X[0]/kPhi,2)*X[2]*dkPhi/(1+a1*X[2]*X[2]);
+    jac(4,1) += 2*a2*std::pow(X[0]/kPhi,2)*X[2]*dkPhi/(1+a1*X[2]*X[2]) + 2*a1*a2*std::pow(X[0]/kPhi,2)*std::pow(X[2],3)*dkPhi/(1+a1*X[2]*X[2]) - X[3]*std::pow(X[4],3)*dvf0*dkPhi/(vf0*X[0]*X[0]);
+    jac(4,1)+= X[3]*X[4]*std::pow(dkPhi/kPhi,2) + std::exp(-a2*X[2]*X[2])*xf*std::pow(X[4],3)*kPhi*dvf0/(6*g) +a1*std::exp(-a2*X[2]*X[2])*xf*X[2]*X[2]*std::pow(X[4],3)*kPhi*dvf0/(6*g) ;
+    jac(4,1)+=  std::exp(-a2*X[2]*X[2])*xf*vf0*std::pow(X[4],3)*dkPhi/(6*g) + a1*std::exp(-a2*X[2]*X[2])*xf*vf0*X[2]*X[2]*std::pow(X[4],3)*dkPhi/(6*g);
+    jac(4,1)+=  - X[3]*X[4]*d2vf0/vf0 - X[3]*std::pow(X[4],3)*kPhi*d2vf0/(vf0*X[0]*X[0])-X[3]*std::pow(X[4],3)*d2kPhi/(2*X[0]*X[0]) - X[3]*X[4]*d2kPhi/kPhi;
+    jac(4,2) = -4*a1*a1*std::pow(X[2]*X[4]/(1+a1*X[2]*X[2]),2) + 4*a1*a2*std::pow(X[2]*X[4]/(1+a1*X[2]*X[2]),2)+4*a2*std::pow(a1*X[2]*X[2]*X[4]/(1+a1*X[2]*X[2]),2)+2*a1*X[4]*X[4]/(1+a1*X[2]*X[2]);
+    jac(4,2)+= -2*a2*X[4]*X[4]/(1+a1*X[2]*X[2]) - 6*a1*a2*std::pow(X[2]*X[4],2)/(1+a1*X[2]*X[2]) -4*std::pow(a1*X[0]*X[2]/(1+a1*X[2]*X[2]),2)/kPhi + 4*a1*a2*std::pow(X[0]*X[2]/(1+a1*X[2]*X[2]),2)/kPhi;
+    jac(4,2)+= 4*a2*std::pow(a1*X[0]*X[2]*X[2]/(1+a1*X[2]*X[2]),2)/kPhi + 2*a1*X[0]*X[0]/(kPhi*(1+a1*X[2]*X[2])) - 2*a2*std::pow(X[0],2)/(kPhi*(1+a1*X[2]*X[2]));
+    jac(4,2) += - 6*a1*a2*X[0]*X[0]*X[2]*X[2]/(kPhi*(1+a1*X[2]*X[2])) + a1*std::exp(-a2*X[2]*X[2])*xf*vf0*X[2]*std::pow(X[4],3)*kPhi/(3*g);
+    jac(4,2)+=  -a2*std::exp(-a2*X[2]*X[2])*xf*vf0*X[2]*std::pow(X[4],3)*kPhi/(3*g) - a1*a2*std::exp(-a2*X[2]*X[2])*xf*vf0*std::pow(X[2]*X[4],3)*kPhi/(3*g);
     jac(4,3) = (8./9)*X[3]*X[4] - X[4]*dvf0/vf0 -std::pow(X[4],3)*kPhi*dvf0/(std::pow(X[0],2)*vf0) -std::pow(X[4],3)*dkPhi/(2*X[0]*X[0])-X[4]*dkPhi/kPhi;
-    jac(4,4) = -4+(4./9)*std::pow(X[3],2)-4*X[2]*X[4]/(1+tausc*X[2]*X[2]) + 4*tausc*X[2]*X[4]/(1+tausc*X[2]*X[2]) - 4*tausc*std::pow(X[2],3)*X[4]/(1+tausc*X[2]*X[2]) - 12*std::pow(X[4]/X[0],2)*kPhi -X[3]*dvf0/vf0 -3*X[3]*std::pow(X[4]/X[0],2)*kPhi*dvf0/vf0;
-    jac(4,4) += -1.5*X[3]*std::pow(X[4]/X[0],2)*dkPhi -X[3]*dkPhi/kPhi + std::exp(-X[2]*X[2])*xf*vf0*X[4]*X[4]*kPhi/(2*g) + std::exp(-X[2]*X[2])*xf*tausc*vf0*std::pow(X[2]*X[4],2)*kPhi/(2*g);
+    jac(4,4) = -4+(4./9)*std::pow(X[3],2) + 4*a1*X[2]*X[4]/(1+a1*X[2]*X[2]) -4*a2*X[2]*X[4]/(1+a1*X[2]*X[2]) - 4*a1*a2*std::pow(X[2],3)*X[4]/(1+a1*X[2]*X[2]) - 12*std::pow(X[4]/X[0],2)*kPhi -X[3]*dvf0/vf0 -3*X[3]*std::pow(X[4]/X[0],2)*kPhi*dvf0/vf0 -1.5*X[3]*std::pow(X[4]/X[0],2)*dkPhi -X[3]*dkPhi/kPhi;
+    jac(4,4) += std::exp(-a2*X[2]*X[2])*xf*vf0*X[4]*X[4]*kPhi/(2*g) + a1*std::exp(-a2*X[2]*X[2])*xf*vf0*std::pow(X[2]*X[4],2)*kPhi/(2*g);
     jac(4,5) = 0; jac(4,6) = 0;
     jac(5,0) = exp(-A); jac(5,1) = 0; jac(5,2) = 0; jac(5,3) = 0; jac(5,4) = 0; jac(5,5) = 0; jac(5,6) = 0;
     jac(6,0) = exp(-A)/g; jac(6,1) = exp(-A)*dkPhi*std::pow(X[4],2)/(2*X[0]*g); jac(6,2) = 0; jac(6,3) = 0; 
@@ -633,7 +641,7 @@ double HVQCD::d2lambdaUV(const double q, const double lambda , const double dq, 
    double vfl = Vfl(lambda, 0);
    double dvfdl = dVfldlambda(lambda, 0);
    double ans = -(3./8) * std::pow(q*lambda,2) * dvgl + 9 * std::pow(lambda,2)/dlambda + 0.75 * std::pow(q*lambda,2) * (xf*vfl-vgl)/dlambda ;
-   ans = ans - 5 * dlambda + std::pow(dlambda,2)/lambda + dq*dlambda/q + (3./8) * xf * std::pow(q*lambda,2) * dvfdl;
+   ans+= - 5 * dlambda + std::pow(dlambda,2)/lambda + dq*dlambda/q + (3./8) * xf * std::pow(q*lambda,2) * dvfdl;
    return ans;
 }
 
@@ -644,9 +652,9 @@ double HVQCD::d2taunUV(const double q, const double lambda, const double tau, co
     double dvf0dl = dVf0dlambda(lambda);
     double kl = klambda(lambda);
     double dkdl = dkdlambda(lambda);
-    double ans = 3 * tau - 2 * q * q * tau / (kl*(1+std::exp(-2*A)*tausc*tau*tau)) + 2*tausc*q*q*tau/(kl*(1+std::exp(-2*A)*tausc*tau*tau)) - 2*std::exp(-2*A)*tausc*q*q*std::pow(tau,3)/(kl*(1+std::exp(-2*A)*tausc*tau*tau));
-    ans += tau * dvf0dl * dlambda / vf0l + tau * dlambda * dkdl / kl - tau * dq / q - 2 * dtau - dvf0dl * dlambda * dtau / vf0l;
-    ans = ans - dlambda * dtau * dkdl / kl + dq * dtau / q ;
+    double ans = 3*tau+2*a1*q*q*tau/(kl*(1+a1*std::exp(-2*A)*tau*tau)) - 2*a2*q*q*tau/(kl*(1+a1*std::exp(-2*A)*tau*tau));
+    ans+= -2*a1*a2*std::exp(-2*A)*q*q*std::pow(tau,3)/(kl*(1+a1*std::exp(-2*A)*tau*tau)) + tau*dvf0dl*dlambda/vf0l + tau*dkdl*dlambda/kl;
+    ans += - tau * dq / q - 2 * dtau - dvf0dl * dlambda * dtau / vf0l- dlambda*dtau*dkdl/kl + dq * dtau / q ;
     return ans; 
 }
 
@@ -660,13 +668,17 @@ double HVQCD::d3taunUV(const double q, const double lambda, const double tau, co
     double vf0 = Vf0l(lambda);
     double dvf0dl = dVf0dlambda(lambda);
     double d2vf0dl2 = d2Vf0dlambda2(lambda);
-    double ans = 4*std::exp(2*A)*std::pow(tausc*q,2)*std::pow(tau,3)/(kl*(std::exp(2*A)+tausc*tau*tau)) -4*std::exp(2*A)*q*tau*dq/(kl*(std::exp(2*A)+tausc*tau*tau)) +4*std::exp(2*A)*tausc*q*tau*dq/(kl*(std::exp(2*A)+tausc*tau*tau)) - 4*tausc*q*std::pow(tau,3)*dq/(kl*(std::exp(2*A)+tausc*tau*tau));
-    ans+= 2*std::exp(4*A)*q*q*tau*dkl*dlambda/(kl*kl*std::pow(std::exp(2*A)+tausc*tau*tau,2))-2*std::exp(4*A)*tausc*q*q*tau*dkl*dlambda/(kl*kl*std::pow(std::exp(2*A)+tausc*tau*tau,2)) + 4*std::exp(2*A)*tausc*q*q*std::pow(tau,3)*dkl*dlambda/(kl*kl*std::pow(std::exp(2*A)+tausc*tau*tau,2)) -2*std::exp(2*A)*tausc*tausc*q*q*std::pow(tau,3)*dkl*dlambda/(kl*kl*std::pow(std::exp(2*A)+tausc*tau*tau,2));
-    ans+=2*tausc*tausc*q*q*std::pow(tau,5)*dkl*dlambda/(kl*kl*std::pow(std::exp(2*A)+tausc*tau*tau,2)) - tau*std::pow(dvf0dl*dlambda/vf0,2) - tau*std::pow(dkl*dlambda/kl,2) + (8.0/9)*tau*std::pow(dlambda/lambda,3) + 3*dtau - 2*std::exp(4*A)*q*q*dtau/(kl*std::pow(std::exp(2*A)+tausc*tau*tau,2));
-    ans+=2*std::exp(4*A)*tausc*q*q*dtau/(kl*std::pow(std::exp(2*A)+tausc*tau*tau,2)) - 4*std::exp(2*A)*tausc*q*q*tau*tau*dtau/(kl*std::pow(std::exp(2*A)+tausc*tau*tau,2)) - 2*std::exp(2*A)*std::pow(tausc*q*tau,2)*dtau/(kl*std::pow(std::exp(2*A)+tausc*tau*tau,2))- 2*std::pow(tausc*q*tau*tau,2)*dtau/(kl*std::pow(std::exp(2*A)+tausc*tau*tau,2)) + dvf0dl*dlambda*dtau/vf0;
-    ans += dkl*dlambda*dtau/kl -  dq*dtau/q + std::pow(dvf0dl * dlambda/vf0,2) * dtau + std::pow(dkl*dlambda/kl,2) - (8.0/9)*std::pow(dlambda/lambda,3)*dtau + tau * std::pow(dlambda,2)*d2vf0dl2/vf0;
-    ans+= -std::pow(dlambda,2)*dtau*d2vf0dl2/vf0 + tau * std::pow(dlambda,2)*d2kl/kl - std::pow(dlambda,2)*dtau*d2kl/kl + tau*dvf0dl*d2lambda/vf0 + tau*dkl*d2lambda/kl - (8.0/9)*tau*dlambda*d2lambda/std::pow(lambda,2);
-    ans+= -dvf0dl*dtau*d2lambda/vf0 - dkl*dtau*d2lambda/kl + (8./9)*dlambda*dtau*d2lambda/std::pow(lambda,2) - 2*d2tau - dvf0dl*dlambda*d2tau/vf0 - dkl*dlambda*d2tau/kl + (4.0/9)*std::pow(dlambda/lambda,2)*d2tau;
+    double ans = 4*a1*a1*std::exp(-2*A)*q*q*std::pow(tau,3)/(kl*std::pow(1+a1*std::exp(-2*A)*tau*tau,2)) -4*a1*a2*std::exp(-2*A)*q*q*std::pow(tau,3)/(kl*std::pow(1+a1*std::exp(-2*A)*tau*tau,2))-4*a1*a1*a2*std::exp(-4*A)*q*q*std::pow(tau,5)/(kl*std::pow(1+a1*std::exp(-2*A)*tau*tau,2));
+    ans += 4*a1*a2*std::exp(-2*A)*q*q*std::pow(tau,3)/(kl*(1+a1*std::exp(-2*A)*tau*tau))+4*a1*q*tau*dq/(kl*(1+a1*std::exp(-2*A)*tau*tau)) - 4*a2*q*tau*dq/(kl*(1+a1*std::exp(-2*A)*tau*tau));
+    ans+= - 4*a1*a2*std::exp(-2*A)*q*std::pow(tau,3)*dq/(kl*(1+a1*std::exp(-2*A)*tau*tau)) -2*a1*q*q*tau*dkl*dlambda/(kl*kl*(1+a1*std::exp(-2*A)*tau*tau)) + 2*a2*q*q*tau*dkl*dlambda/(kl*kl*(1+a1*std::exp(-2*A)*tau*tau));
+    ans += 2*a1*a2*std::exp(-2*A)*q*q*std::pow(tau,3)*dkl*dlambda/(kl*kl*(1+a1*std::exp(-2*A)*tau*tau)) - tau*std::pow(dvf0dl*dlambda/vf0,2) - tau*std::pow(dkl*dlambda/kl,2);
+    ans +=  (8.0/9)*tau*std::pow(dlambda/lambda,3) + 3*dtau - 4*a1*a1*std::exp(-2*A)*q*q*tau*tau*dtau/(kl*std::pow(1+a1*std::exp(-2*A)*tau*tau,2)) + 4*a1*a2*std::exp(-2*A)*q*q*tau*tau*dtau/(kl*std::pow(1+a1*std::exp(-2*A)*tau*tau,2));
+    ans +=4*a1*a1*a2*std::exp(-4*A)*std::pow(q*tau*tau,2)*dtau/(kl*std::pow(1+a1*std::exp(-2*A)*tau*tau,2)) + 2*a1*q*q*dtau/(kl*(1+a1*std::exp(-2*A)*tau*tau)) - 2*a2*q*q*dtau/(kl*(1+a1*std::exp(-2*A)*tau*tau));
+    ans += -6*a1*a2*std::exp(-2*A)*q*q*tau*tau*dtau/(kl*(1+a1*std::exp(-2*A)*tau*tau))+dvf0dl*dlambda*dtau/vf0+dkl*dlambda*dtau/kl -  dq*dtau/q;
+    ans += std::pow(dvf0dl * dlambda/vf0,2) * dtau + std::pow(dkl*dlambda/kl,2)*dtau - 2*dq*dlambda*dtau/(q*lambda) + tau * std::pow(dlambda,2)*d2vf0dl2/vf0;
+    ans+= -std::pow(dlambda,2)*dtau*d2vf0dl2/vf0 + tau * std::pow(dlambda,2)*d2kl/kl - std::pow(dlambda,2)*dtau*d2kl/kl + tau*dvf0dl*d2lambda/vf0;
+    ans+= tau*dkl*d2lambda/kl - (8.0/9)*tau*dlambda*d2lambda/std::pow(lambda,2) -dvf0dl*dtau*d2lambda/vf0 - dkl*dtau*d2lambda/kl;
+    ans+= (8./9)*dlambda*dtau*d2lambda/std::pow(lambda,2) - 2*d2tau - dvf0dl*dlambda*d2tau/vf0 - dkl*dlambda*d2tau/kl + (4.0/9)*dq*d2tau/q;
     return ans;
 }
 
@@ -725,8 +737,8 @@ void HVQCD::finalizeBackground()
     As = A; zs = z; us = u; qs = q; Phis = Phi, taus = tau; dqs = dq; dPhis = dPhi; dtaus = dtau;
     d2qs = d2q; d2Phis = d2Phi; d2taus = d2tau;
     d3taus = d3tau;
-
     // Compute Astring, dAstring and d2Astring
+    Astrings.resize(As.size()); dAstrings.resize(As.size()); d2Astrings.resize(As.size());
     for(int i = 0; i < As.size(); i++)
     {
         Astrings[i] = As[i] + 2 * Phis[i] / 3.0 ;
@@ -784,8 +796,8 @@ void HVQCD::solve()
    };
    // Get Yang Mills profile of q and Phi
    double tcut = 1000, Vfcut = 1e-8;
-   state X(4);
-   X <<= qir, Phiir, tauIR, zIRYM;
+   state X(5);
+   X <<= qir, Phiir, tauIR, zIRYM, uIR;
    typedef boost::numeric::odeint::result_of::make_dense_output<boost::numeric::odeint::runge_kutta_dopri5<state> >::type dense_stepper;
    if (X[2] > tcut)
    {
@@ -846,7 +858,7 @@ void HVQCD::solve()
    { 
     double phi = PhiYM2Profile.interp(A);
     double tau = tauYM2Profile.interp(A);
-    double ans = this->Vf0(phi) * exp(-tau * tau)  - Vfcut * this->Vg(phi);
+    double ans = this->Vf(phi, tau)  - Vfcut * this->Vg(phi);
     return ans;
    };
    double AUV2 = zbrent(func2, AUV1, AUVYM, 1e-9, true);
@@ -929,7 +941,9 @@ void HVQCD::solve()
 
 double HVQCD::get_xf() const {return xf;}
 
-double HVQCD::get_tausc()const {return tausc;}
+double HVQCD::get_a1()const {return a1;}
+
+double HVQCD::get_a2()const {return a2;}
 
 void HVQCD::setZa(const double za) {Za = za;}
 
@@ -1064,7 +1078,7 @@ std::vector<double> computeVectorMesonPotential(const HVQCD &hvqcd)
     std::vector<double> As = hvqcd.A(), qs = hvqcd.q(), Phis = hvqcd.Phi(), taus = hvqcd.tau();
     std::vector<double> dqs = hvqcd.dq(), dPhis = hvqcd.dPhi(), d2Phis = hvqcd.d2Phi(), dtaus = hvqcd.dtaudA(), d2taus = hvqcd.d2taudA2();
     std::vector<double> V(As.size());
-    double tausc = hvqcd.get_tausc();
+    double a1 = hvqcd.get_a1();
     for(int i = 0; i < As.size(); i++)
     {
         double e2A = exp(2*As[i]);
@@ -1076,14 +1090,14 @@ std::vector<double> computeVectorMesonPotential(const HVQCD &hvqcd)
         double vf0 = hvqcd.Vf0(Phis[i]);
         double dvf0 = hvqcd.dVf0dPhi(Phis[i]);
         double d2vf0 = hvqcd.d2Vf0dPhi2(Phis[i]);
-        V[i] = 0.75 - 0.5 * dg/g - 0.5*dqs[i]/qs[i] -2*taus[i]*dtaus[i]/(1+tausc*taus[i]*taus[i]) + 2*tausc*taus[i]*dtaus[i]/(1+tausc*taus[i]*taus[i]) - 2*tausc*std::pow(taus[i],3)*dtaus[i]/(1+tausc*taus[i]*taus[i]) + taus[i]*dg*dtaus[i]/(g*(1+tausc*taus[i]*taus[i])) - tausc*taus[i]*dg*dtaus[i]/(g*(1+tausc*taus[i]*taus[i]));
-        V[i] += tausc*std::pow(taus[i],3)*dg*dtaus[i]/(g*(1+tausc*taus[i]*taus[i])) + taus[i]*dqs[i]*dtaus[i]/(qs[i]*(1+tausc*taus[i]*taus[i])) - tausc*taus[i]*dqs[i]*dtaus[i]/(qs[i]*(1+tausc*taus[i]*taus[i])) + tausc*std::pow(taus[i],3)*dqs[i]*dtaus[i]/(qs[i]*(1+tausc*taus[i]*taus[i])) - std::pow(taus[i]*dtaus[i]/(1+tausc*taus[i]*taus[i]),2);
-        V[i] += 2*tausc*std::pow(taus[i]*dtaus[i]/(1+tausc*taus[i]*taus[i]),2) -std::pow(tausc*taus[i]*dtaus[i]/(1+tausc*taus[i]*taus[i]),2) -2*tausc*std::pow(taus[i]*taus[i]*dtaus[i]/(1+tausc*taus[i]*taus[i]),2) + 2+std::pow(tausc*taus[i]*taus[i]*dtaus[i]/(1+tausc*taus[i]*taus[i]),2) -std::pow(tausc*std::pow(taus[i],3)*dtaus[i]/(1+tausc*taus[i]*taus[i]),2) - dtaus[i]*dtaus[i]/(1+tausc*taus[i]*taus[i]);
-        V[i] += tausc*taus[i]*taus[i]/(1+tausc*taus[i]*taus[i]) + 2*std::pow(taus[i]*dtaus[i],2)/(1+tausc*taus[i]*taus[i]) -5*tausc*std::pow(taus[i]*taus[i],2)/(1+tausc*taus[i]*taus[i]) + 2*tausc*std::pow(taus[i]*taus[i]*dtaus[i],2)/(1+tausc*taus[i]*taus[i]) + dvf0*dPhis[i]/vf0 - 0.5*dg*dvf0*dPhis[i]/(g*vf0);
-        V[i] += -0.5*dqs[i]*dvf0*dPhis[i]/(qs[i]*vf0) + 2*dwPhi*dPhis[i]/wPhi - dg*dwPhi*dPhis[i]/(g*wPhi) - dqs[i]*dwPhi*dPhis[i]/(qs[i]*wPhi) -taus[i]*dvf0*dtaus[i]*dPhis[i]/(vf0*(1+tausc*taus[i]*taus[i]));
-        V[i] += tausc*taus[i]*dvf0*dtaus[i]*dPhis[i]/(vf0*(1+tausc*taus[i]*taus[i])) -tausc*std::pow(taus[i],3)*dvf0*dtaus[i]*dPhis[i]/(vf0*(1+tausc*taus[i]*taus[i])) -2*taus[i]*dwPhi*dtaus[i]*dPhis[i]/(wPhi*(1+tausc*taus[i]*taus[i]));
-        V[i] += 2*tausc*taus[i]*dwPhi*dtaus[i]*dPhis[i]/(wPhi*(1+tausc*taus[i]*taus[i])) - 2*tausc*std::pow(taus[i],3)*dwPhi*dtaus[i]*dPhis[i]/(wPhi*(1+tausc*taus[i]*taus[i])) - 0.25*std::pow(dvf0*dPhis[i]/vf0,2) + dvf0*dwPhi*std::pow(dPhis[i],2)/(vf0*wPhi);
-        V[i] += 0.5*std::pow(dPhis[i],2)*d2vf0/vf0 + std::pow(dPhis[i],2)*d2wPhi/wPhi -taus[i]*d2taus[i]/(1+tausc*taus[i]*taus[i]) +tausc*taus[i]*d2taus[i]/(1+tausc*taus[i]*taus[i]) - tausc*std::pow(taus[i],3)*d2taus[i]/(1+tausc*taus[i]*taus[i]) + 0.5*dvf0*d2Phis[i]/vf0 + dwPhi*d2Phis[i]/wPhi;
+        V[i] = 0.75 - 0.5 * dg/g - 0.5*dqs[i]/qs[i] -2*taus[i]*dtaus[i]/(1+a1*taus[i]*taus[i]) + 2*a1*taus[i]*dtaus[i]/(1+a1*taus[i]*taus[i]) - 2*a1*std::pow(taus[i],3)*dtaus[i]/(1+a1*taus[i]*taus[i]) + taus[i]*dg*dtaus[i]/(g*(1+a1*taus[i]*taus[i])) - a1*taus[i]*dg*dtaus[i]/(g*(1+a1*taus[i]*taus[i]));
+        V[i] += a1*std::pow(taus[i],3)*dg*dtaus[i]/(g*(1+a1*taus[i]*taus[i])) + taus[i]*dqs[i]*dtaus[i]/(qs[i]*(1+a1*taus[i]*taus[i])) - a1*taus[i]*dqs[i]*dtaus[i]/(qs[i]*(1+a1*taus[i]*taus[i])) + a1*std::pow(taus[i],3)*dqs[i]*dtaus[i]/(qs[i]*(1+a1*taus[i]*taus[i])) - std::pow(taus[i]*dtaus[i]/(1+a1*taus[i]*taus[i]),2);
+        V[i] += 2*a1*std::pow(taus[i]*dtaus[i]/(1+a1*taus[i]*taus[i]),2) -std::pow(a1*taus[i]*dtaus[i]/(1+a1*taus[i]*taus[i]),2) -2*a1*std::pow(taus[i]*taus[i]*dtaus[i]/(1+a1*taus[i]*taus[i]),2) + 2+std::pow(a1*taus[i]*taus[i]*dtaus[i]/(1+a1*taus[i]*taus[i]),2) -std::pow(a1*std::pow(taus[i],3)*dtaus[i]/(1+a1*taus[i]*taus[i]),2) - dtaus[i]*dtaus[i]/(1+a1*taus[i]*taus[i]);
+        V[i] += a1*taus[i]*taus[i]/(1+a1*taus[i]*taus[i]) + 2*std::pow(taus[i]*dtaus[i],2)/(1+a1*taus[i]*taus[i]) -5*a1*std::pow(taus[i]*taus[i],2)/(1+a1*taus[i]*taus[i]) + 2*a1*std::pow(taus[i]*taus[i]*dtaus[i],2)/(1+a1*taus[i]*taus[i]) + dvf0*dPhis[i]/vf0 - 0.5*dg*dvf0*dPhis[i]/(g*vf0);
+        V[i] += -0.5*dqs[i]*dvf0*dPhis[i]/(qs[i]*vf0) + 2*dwPhi*dPhis[i]/wPhi - dg*dwPhi*dPhis[i]/(g*wPhi) - dqs[i]*dwPhi*dPhis[i]/(qs[i]*wPhi) -taus[i]*dvf0*dtaus[i]*dPhis[i]/(vf0*(1+a1*taus[i]*taus[i]));
+        V[i] += a1*taus[i]*dvf0*dtaus[i]*dPhis[i]/(vf0*(1+a1*taus[i]*taus[i])) -a1*std::pow(taus[i],3)*dvf0*dtaus[i]*dPhis[i]/(vf0*(1+a1*taus[i]*taus[i])) -2*taus[i]*dwPhi*dtaus[i]*dPhis[i]/(wPhi*(1+a1*taus[i]*taus[i]));
+        V[i] += 2*a1*taus[i]*dwPhi*dtaus[i]*dPhis[i]/(wPhi*(1+a1*taus[i]*taus[i])) - 2*a1*std::pow(taus[i],3)*dwPhi*dtaus[i]*dPhis[i]/(wPhi*(1+a1*taus[i]*taus[i])) - 0.25*std::pow(dvf0*dPhis[i]/vf0,2) + dvf0*dwPhi*std::pow(dPhis[i],2)/(vf0*wPhi);
+        V[i] += 0.5*std::pow(dPhis[i],2)*d2vf0/vf0 + std::pow(dPhis[i],2)*d2wPhi/wPhi -taus[i]*d2taus[i]/(1+a1*taus[i]*taus[i]) +a1*taus[i]*d2taus[i]/(1+a1*taus[i]*taus[i]) - a1*std::pow(taus[i],3)*d2taus[i]/(1+a1*taus[i]*taus[i]) + 0.5*dvf0*d2Phis[i]/vf0 + dwPhi*d2Phis[i]/wPhi;
         V[i] = e2A*V[i]/std::pow(g*qs[i],2);
     }
     return V;
@@ -1110,7 +1124,7 @@ std::vector<double> computePseudoScalarMesonPotential(const HVQCD &hvqcd)
     std::vector<double> dqs = hvqcd.dq(), dPhis = hvqcd.dPhi(), dtaus = hvqcd.dtaudA();
     std::vector<double> d2Phis = hvqcd.d2Phi(), d2taus = hvqcd.d2taudA2();
     std::vector<double> V(As.size());
-    double tausc = hvqcd.get_tausc();
+    double a1 = hvqcd.get_a1();
     for(int i = 0; i < As.size(); i++)
     {
         double e2A = exp(2*As[i]);
@@ -1123,15 +1137,15 @@ std::vector<double> computePseudoScalarMesonPotential(const HVQCD &hvqcd)
         double vf0 = hvqcd.Vf0(Phis[i]);
         double dvf0 = hvqcd.dVf0dPhi(Phis[i]);
         double d2vf0 = hvqcd.d2Vf0dPhi2(Phis[i]);
-        V[i] = 0.75+1.5*dg/g+1.5*dqs[i]/qs[i]+2*dtaus[i]/taus[i] + (-2*taus[i]+2*tausc*taus[i]-2*tausc*std::pow(taus[i],3))*dtaus[i]/(1+tausc*taus[i]*taus[i])+dg*dtaus[i]/(g*taus[i]);
-        V[i] += (-2*taus[i]+2*tausc*taus[i]-2*tausc*std::pow(taus[i],3))*dg*dtaus[i]/(2*g*(1+tausc*taus[i]*taus[i])) + dqs[i]*dtaus[i]/(qs[i]*taus[i]) + (-2*taus[i]+2*tausc*taus[i]-2*tausc*std::pow(taus[i],3))*dqs[i]*dtaus[i]/(2*qs[i]*(1+tausc*taus[i]*taus[i]));
-        V[i] += 2*std::pow(dtaus[i]/taus[i],2) + (-2*taus[i]+2*tausc*taus[i]-2*tausc*std::pow(taus[i],3))*std::pow(dtaus[i],2)/(taus[i]*(1+tausc*taus[i]*taus[i])) - (-2+2*tausc+4*taus[i]*taus[i]-10*tausc*taus[i]*taus[i]+4*tausc*std::pow(taus[i],4))*std::pow(dtaus[i],2)/(2*(1+tausc*taus[i]*taus[i]));
-        V[i] += 0.75*(4*taus[i]*taus[i]-8*tausc*taus[i]*taus[i]+4*tausc*tausc*taus[i]*taus[i]+8*tausc*std::pow(taus[i],4)-8*tausc*tausc*std::pow(taus[i],4)+4*tausc*tausc*std::pow(taus[i],6))*dtaus[i]*dtaus[i]/std::pow(1+tausc*taus[i]*taus[i],2) + dkPhi*dPhis[i]/kPhi;
+        V[i] = 0.75+1.5*dg/g+1.5*dqs[i]/qs[i]+2*dtaus[i]/taus[i] + (-2*taus[i]+2*a1*taus[i]-2*a1*std::pow(taus[i],3))*dtaus[i]/(1+a1*taus[i]*taus[i])+dg*dtaus[i]/(g*taus[i]);
+        V[i] += (-2*taus[i]+2*a1*taus[i]-2*a1*std::pow(taus[i],3))*dg*dtaus[i]/(2*g*(1+a1*taus[i]*taus[i])) + dqs[i]*dtaus[i]/(qs[i]*taus[i]) + (-2*taus[i]+2*a1*taus[i]-2*a1*std::pow(taus[i],3))*dqs[i]*dtaus[i]/(2*qs[i]*(1+a1*taus[i]*taus[i]));
+        V[i] += 2*std::pow(dtaus[i]/taus[i],2) + (-2*taus[i]+2*a1*taus[i]-2*a1*std::pow(taus[i],3))*std::pow(dtaus[i],2)/(taus[i]*(1+a1*taus[i]*taus[i])) - (-2+2*a1+4*taus[i]*taus[i]-10*a1*taus[i]*taus[i]+4*a1*std::pow(taus[i],4))*std::pow(dtaus[i],2)/(2*(1+a1*taus[i]*taus[i]));
+        V[i] += 0.75*(4*taus[i]*taus[i]-8*a1*taus[i]*taus[i]+4*a1*a1*taus[i]*taus[i]+8*a1*std::pow(taus[i],4)-8*a1*a1*std::pow(taus[i],4)+4*a1*a1*std::pow(taus[i],6))*dtaus[i]*dtaus[i]/std::pow(1+a1*taus[i]*taus[i],2) + dkPhi*dPhis[i]/kPhi;
         V[i] += dg*dkPhi*dPhis[i]/(2*g*kPhi) + dkPhi*dqs[i]*dPhis[i]/(2*kPhi*qs[i]) + dvf0*dPhis[i]/vf0 + dg*dvf0*dPhis[i]/(2*g*vf0);
-        V[i] += dqs[i]*dvf0*dPhis[i]/(2*qs[i]*vf0)+dkPhi*dtaus[i]*dPhis[i]/(kPhi*taus[i]) + (-2*taus[i]+2*tausc*taus[i]-2*tausc*std::pow(taus[i],3))*dkPhi*dtaus[i]*dPhis[i]/(2*kPhi*(1+tausc*taus[i]*taus[i]));
-        V[i] += dvf0*dtaus[i]*dPhis[i]/(vf0*taus[i])+(-2*taus[i]+2*tausc*taus[i]-2*tausc*std::pow(taus[i],3))*dvf0*dtaus[i]*dPhis[i]/(2*vf0*(1+tausc*taus[i]*taus[i]))+0.75*std::pow(dkPhi*dPhis[i]/kPhi,2);
+        V[i] += dqs[i]*dvf0*dPhis[i]/(2*qs[i]*vf0)+dkPhi*dtaus[i]*dPhis[i]/(kPhi*taus[i]) + (-2*taus[i]+2*a1*taus[i]-2*a1*std::pow(taus[i],3))*dkPhi*dtaus[i]*dPhis[i]/(2*kPhi*(1+a1*taus[i]*taus[i]));
+        V[i] += dvf0*dtaus[i]*dPhis[i]/(vf0*taus[i])+(-2*taus[i]+2*a1*taus[i]-2*a1*std::pow(taus[i],3))*dvf0*dtaus[i]*dPhis[i]/(2*vf0*(1+a1*taus[i]*taus[i]))+0.75*std::pow(dkPhi*dPhis[i]/kPhi,2);
         V[i] += dkPhi*dvf0*std::pow(dPhis[i],2)/(2*kPhi*vf0)+0.75*std::pow(dvf0*dPhis[i]/vf0,2)-std::pow(dPhis[i],2)*d2kPhi/(2*kPhi)-std::pow(dPhis[i],2)*d2vf0/(2*vf0);
-        V[i] += -d2taus[i]/taus[i] - (-2*taus[i]+2*tausc*taus[i]-2*tausc*std::pow(taus[i],3))*d2taus[i]/(2*(1+tausc*taus[i]*taus[i]))-dkPhi*d2Phis[i]/(2*kPhi)-dvf0*d2Phis[i]/(2*vf0);
+        V[i] += -d2taus[i]/taus[i] - (-2*taus[i]+2*a1*taus[i]-2*a1*std::pow(taus[i],3))*d2taus[i]/(2*(1+a1*taus[i]*taus[i]))-dkPhi*d2Phis[i]/(2*kPhi)-dvf0*d2Phis[i]/(2*vf0);
         V[i] = e2A*V[i]/std::pow(g*qs[i],2) + std::pow(2*taus[i]*exp(As[i])/wPhi,2)*kPhi;
     }
     return V;   
@@ -1143,7 +1157,7 @@ std::vector<double> computeScalarMesonPotential(const HVQCD &hvqcd)
     std::vector<double> dqs = hvqcd.dq(), dPhis = hvqcd.dPhi(), dtaus = hvqcd.dtaudA(), d2Phis = hvqcd.d2Phi();
     std::vector<double> d2qs = hvqcd.d2qdA2(), d2taus = hvqcd.d2taudA2(), d3taus = hvqcd.d3taudA3();
     std::vector<double> V(As.size());
-    double tausc = hvqcd.get_tausc();
+    double a1 = hvqcd.get_a1();
     for(int i = 0; i < As.size(); i++)
     {
         double e2A = exp(2*As[i]);
@@ -1158,13 +1172,13 @@ std::vector<double> computeScalarMesonPotential(const HVQCD &hvqcd)
         double dvf0 = hvqcd.dVf0dPhi(Phis[i]);
         double d2vf0 = hvqcd.d2Vf0dPhi2(Phis[i]);
         V[i] = 3.75 - 5.5*dg/g + 3*std::pow(dg/g,2) -1.5*dqs[i]/qs[i] + dg*dqs[i]/(g*qs[i])-4*taus[i]*dtaus[i];
-        V[i] += 2*(-2*taus[i]+2*tausc*taus[i]-2*tausc*std::pow(taus[i],3))*dtaus[i]/(1+tausc*taus[i]*taus[i]) - 1.5*(-2*taus[i]+2*tausc*taus[i]-2*tausc*std::pow(taus[i],3))*dg*dtaus[i]/(g*(1+tausc*taus[i]*taus[i]));
-        V[i] += - (-2*taus[i]+2*tausc*taus[i]-2*tausc*std::pow(taus[i],3))*dqs[i]*dtaus[i]/(2*qs[i]*(1+tausc*taus[i]*taus[i])) + (2+2*tausc+4*taus[i]*taus[i]-10*tausc*taus[i]*taus[i]+4*tausc*std::pow(taus[i],4))*std::pow(dtaus[i],2)/(2*(1+tausc*taus[i]*taus[i]));
-        V[i] += -(4*taus[i]*taus[i]-8*tausc*taus[i]*taus[i]+4*tausc*tausc*taus[i]*taus[i]+8*tausc*std::pow(taus[i],4)-8*std::pow(tausc*taus[i]*taus[i],2)+4*std::pow(tausc*std::pow(taus[i],3),2))*dtaus[i]*dtaus[i]/(4*std::pow(1+tausc*taus[i]*taus[i],2)) + 2*dkPhi*dPhis[i]/kPhi;
+        V[i] += 2*(-2*taus[i]+2*a1*taus[i]-2*a1*std::pow(taus[i],3))*dtaus[i]/(1+a1*taus[i]*taus[i]) - 1.5*(-2*taus[i]+2*a1*taus[i]-2*a1*std::pow(taus[i],3))*dg*dtaus[i]/(g*(1+a1*taus[i]*taus[i]));
+        V[i] += - (-2*taus[i]+2*a1*taus[i]-2*a1*std::pow(taus[i],3))*dqs[i]*dtaus[i]/(2*qs[i]*(1+a1*taus[i]*taus[i])) + (2+2*a1+4*taus[i]*taus[i]-10*a1*taus[i]*taus[i]+4*a1*std::pow(taus[i],4))*std::pow(dtaus[i],2)/(2*(1+a1*taus[i]*taus[i]));
+        V[i] += -(4*taus[i]*taus[i]-8*a1*taus[i]*taus[i]+4*a1*a1*taus[i]*taus[i]+8*a1*std::pow(taus[i],4)-8*std::pow(a1*taus[i]*taus[i],2)+4*std::pow(a1*std::pow(taus[i],3),2))*dtaus[i]*dtaus[i]/(4*std::pow(1+a1*taus[i]*taus[i],2)) + 2*dkPhi*dPhis[i]/kPhi;
         V[i] += -1.5*dg*dkPhi*dPhis[i]/(g*kPhi) -dkPhi*dqs[i]*dPhis[i]/(2*kPhi*qs[i]) + 2*dvf0*dPhis[i]/vf0 -1.5*dg*dvf0*dPhis[i]/(g*vf0) -dqs[i]*dvf0*dPhis[i]/(2*qs[i]*vf0);
-        V[i] += (-2*taus[i]+2*tausc*taus[i]-2*tausc*std::pow(taus[i], 3))*dkPhi*dtaus[i]*dPhis[i]/(2*kPhi*(1+tausc*taus[i]*taus[i])) + (-2*taus[i]+2*tausc*taus[i]-2*tausc*std::pow(taus[i], 3)) * dvf0*dtaus[i]*dPhis[i]/(2*vf0*(1+tausc*taus[i]*taus[i]));
+        V[i] += (-2*taus[i]+2*a1*taus[i]-2*a1*std::pow(taus[i], 3))*dkPhi*dtaus[i]*dPhis[i]/(2*kPhi*(1+a1*taus[i]*taus[i])) + (-2*taus[i]+2*a1*taus[i]-2*a1*std::pow(taus[i], 3)) * dvf0*dtaus[i]*dPhis[i]/(2*vf0*(1+a1*taus[i]*taus[i]));
         V[i] += -0.25*std::pow(dkPhi*dPhis[i]/kPhi,2) + dkPhi*dvf0*std::pow(dPhis[i],2)/(2*kPhi*vf0) -0.25*std::pow(dvf0*dPhis[i]/vf0,2) -d2g/g + std::pow(dPhis[i],2)*d2kPhi/(2*kPhi);
-        V[i] += std::pow(dPhis[i],2)*d2vf0/(2*vf0) + (-2*taus[i]+2*tausc*taus[i]-2*tausc * std::pow(taus[i],3)) * d2taus[i] / (2*(1+tausc*taus[i]*taus[i])) + dkPhi*d2Phis[i]/(2*kPhi)+dvf0*d2Phis[i]/(2*vf0);
+        V[i] += std::pow(dPhis[i],2)*d2vf0/(2*vf0) + (-2*taus[i]+2*a1*taus[i]-2*a1 * std::pow(taus[i],3)) * d2taus[i] / (2*(1+a1*taus[i]*taus[i])) + dkPhi*d2Phis[i]/(2*kPhi)+dvf0*d2Phis[i]/(2*vf0);
         V[i] = e2A*V[i]/std::pow(qs[i]*g,2) -2*e2A/kPhi;
     }
     return V;
