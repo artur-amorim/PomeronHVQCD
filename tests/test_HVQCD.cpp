@@ -40,6 +40,9 @@ int main(int argc, char ** argv)
     cout << "Quark Mass: " << mq << endl;
     cout << "Tau Mass Squered IR: " << tmass2 << endl;
 
+    hvqcd.saveBackgroundFields("BackgroundFields.txt");
+    saveSchrodingerPotentials(hvqcd);
+
     chebSetN(800);
     computeHVQCDSpectrum(hvqcd);
     computeHVQCDRatios(hvqcd);
