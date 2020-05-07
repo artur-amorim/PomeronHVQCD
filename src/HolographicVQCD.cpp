@@ -1265,7 +1265,6 @@ void PseudoScalar::operator() (const state &X, state &dXdA, const double A)
     // X = (\psi, \phi)
     dXdA[0] = -std::exp(f1.interp(A)) * X[1];
     dXdA[1] = ( std::exp(f2.interp(A)) - std::exp(f3.interp(A)) ) * X[0] + f4.interp(A) * X[1];
-    std::cout << A << " " << X << std::endl;
 }
 
 void PseudoScalar::operator() (const state &X , matrix_type &jac , const double A, state &dfdA)
@@ -1369,7 +1368,7 @@ void computeHVQCDSpectrum(const HVQCD &hvqcd)
     TGMasses = computeMasses(zs, V2G, 1);
     VMMasses = computeMasses(us, VVM, 6);
     AVMMasses = computeMasses(us, VAVM, 5);
-    PSMMasses = computePseudoScalarMasses(hvqcd, 5);
+    PSMMasses = computeMasses(us, VPSM, 5);
     SMMasses = computeMasses(us, VSM, 2);
     SingletAVMMasses = computeMasses(us, VSingletAVM, 2);
     // Display the mass values
@@ -1414,20 +1413,15 @@ void computeHVQCDRatios(const HVQCD &hvqcd)
     V2G = computeV2GPotential(hvqcd);
     VVM = computeVectorMesonPotential(hvqcd);
     VAVM = computeAxialVectorMesonNonSingletPotential(hvqcd, VVM);
-    //VPSM = computePseudoScalarMesonPotential(hvqcd);
+    VPSM = computePseudoScalarMesonPotential(hvqcd);
     VSM = computeScalarMesonPotential(hvqcd);
     VSingletAVM = computeAxialVectorMesonSingletPotential(hvqcd, VAVM);
-    // Reverse the vectors
-    std::reverse(std::begin(zs), std::end(zs)); std::reverse(std::begin(us), std::end(us));
-    std::reverse(std::begin(V2G), std::end(V2G)); std::reverse(std::begin(VVM), std::end(VVM));
-    std::reverse(std::begin(VAVM), std::end(VAVM)); std::reverse(std::begin(VPSM), std::end(VPSM));
-    std::reverse(std::begin(VSM), std::end(VSM)); std::reverse(std::begin(VSingletAVM), std::end(VSingletAVM));
     // Compute the masses
     std::vector<double> TGMasses, VMMasses, AVMMasses, PSMMasses, SMMasses, SingletAVMMasses;
     TGMasses = computeMasses(zs, V2G, 1);
     VMMasses = computeMasses(us, VVM, 6);
     AVMMasses = computeMasses(us, VAVM, 5);
-    PSMMasses = computePseudoScalarMasses(hvqcd, 5);
+    PSMMasses = computeMasses(us, VPSM, 5);
     SMMasses = computeMasses(us,VSM, 2);
     SingletAVMMasses = computeMasses(us, VSingletAVM, 2);
     // Compute the predicted ratios

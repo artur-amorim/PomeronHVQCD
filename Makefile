@@ -1057,6 +1057,33 @@ src/schrodinger/common.cpp.s:
 	$(MAKE) -f CMakeFiles/hvqcd_lib.dir/build.make CMakeFiles/hvqcd_lib.dir/src/schrodinger/common.cpp.s
 .PHONY : src/schrodinger/common.cpp.s
 
+src/schrodinger/matrixNumerov.o: src/schrodinger/matrixNumerov.cpp.o
+
+.PHONY : src/schrodinger/matrixNumerov.o
+
+# target to build an object file
+src/schrodinger/matrixNumerov.cpp.o:
+	$(MAKE) -f CMakeFiles/hvqcd_lib.dir/build.make CMakeFiles/hvqcd_lib.dir/src/schrodinger/matrixNumerov.cpp.o
+.PHONY : src/schrodinger/matrixNumerov.cpp.o
+
+src/schrodinger/matrixNumerov.i: src/schrodinger/matrixNumerov.cpp.i
+
+.PHONY : src/schrodinger/matrixNumerov.i
+
+# target to preprocess a source file
+src/schrodinger/matrixNumerov.cpp.i:
+	$(MAKE) -f CMakeFiles/hvqcd_lib.dir/build.make CMakeFiles/hvqcd_lib.dir/src/schrodinger/matrixNumerov.cpp.i
+.PHONY : src/schrodinger/matrixNumerov.cpp.i
+
+src/schrodinger/matrixNumerov.s: src/schrodinger/matrixNumerov.cpp.s
+
+.PHONY : src/schrodinger/matrixNumerov.s
+
+# target to generate assembly for a file
+src/schrodinger/matrixNumerov.cpp.s:
+	$(MAKE) -f CMakeFiles/hvqcd_lib.dir/build.make CMakeFiles/hvqcd_lib.dir/src/schrodinger/matrixNumerov.cpp.s
+.PHONY : src/schrodinger/matrixNumerov.cpp.s
+
 src/schrodinger/numerov.o: src/schrodinger/numerov.cpp.o
 
 .PHONY : src/schrodinger/numerov.o
@@ -1322,6 +1349,9 @@ help:
 	@echo "... src/schrodinger/common.o"
 	@echo "... src/schrodinger/common.i"
 	@echo "... src/schrodinger/common.s"
+	@echo "... src/schrodinger/matrixNumerov.o"
+	@echo "... src/schrodinger/matrixNumerov.i"
+	@echo "... src/schrodinger/matrixNumerov.s"
 	@echo "... src/schrodinger/numerov.o"
 	@echo "... src/schrodinger/numerov.i"
 	@echo "... src/schrodinger/numerov.s"
