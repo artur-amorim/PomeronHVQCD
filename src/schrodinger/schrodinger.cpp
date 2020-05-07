@@ -1,13 +1,15 @@
 #include <string>
 #include <memory>
 #include "schrodinger/schrodinger.h"
+#include "schrodinger/chebspec.h"
+#include "schrodinger/numerov.h"
+#include "schrodinger/matrixNumerov.h"
 
 
 SolvSpec* setSchroMethod(std::string method) 
 {
-  if(method == "numerov") {
-    return new Numerov();
-  }
+  if(method == "numerov") return new Numerov();
+  else if (method == "matrix_numerov") return new MatrixNumerov();
   // use chebyshev as default method
   return new ChebSpec();
 }

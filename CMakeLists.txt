@@ -17,7 +17,9 @@ make_directory(execs)
 set(EXECUTABLE_OUTPUT_PATH "execs")
 
 # Variable SCHRODINGER to be used when schrodinger src code is needed
-set(SCHRODINGER src/schrodinger/common.cpp src/schrodinger/solvspec.cpp src/schrodinger/chebspec.cpp src/schrodinger/numerov.cpp src/schrodinger/schrodinger.cpp)
+set(SCHRODINGER src/schrodinger/common.cpp src/schrodinger/solvspec.cpp src/schrodinger/chebspec.cpp src/schrodinger/numerov.cpp src/schrodinger/matrixNumerov.cpp src/schrodinger/schrodinger.cpp)
+
+add_library(schrodinger_lib ${SCHRODINGER})
 
 # Variable YangMills
 set(YANGMILLS src/background.cpp src/YangMills.cpp)

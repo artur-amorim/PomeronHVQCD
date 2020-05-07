@@ -1,5 +1,6 @@
 #include <iostream>
 #include "HolographicVQCD.h"
+#include "schrodinger/chebspec.h"
 #include "schrodinger/schrodinger.h"
 
 using namespace std;
