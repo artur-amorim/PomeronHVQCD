@@ -47,6 +47,6 @@ int main(int argc, char ** argv)
     chebSetN(800);
     computeHVQCDSpectrum(hvqcd);
     computeHVQCDRatios(hvqcd);
-
+    
     return 0;
 }

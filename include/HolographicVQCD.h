@@ -226,7 +226,6 @@ std::vector<double> computeAxialVectorMesonSingletPotential(const HVQCD &hvqcd, 
 // Declaration of function that computes the Pseudodoscalar spectrum
 std::vector<double> computePseudoScalarMasses(const HVQCD &hvqcd, const int n_masses);
 
-
 // Save Schrodinger potentials in a given file
 void saveSchrodingerPotentials(const HVQCD &hvqcd, std::string path = "SchrodingerPotentials.txt");
 

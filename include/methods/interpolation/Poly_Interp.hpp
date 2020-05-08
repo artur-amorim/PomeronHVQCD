@@ -10,23 +10,23 @@ class Poly_Interp: public Base_Interp<T>
 	// Polynomial interpolation object. Construct with x and y vectors, and the number M of points
 	// to be used locally (polynomial order plus one), then call interp for interpolated values
 	private:
-		double dy;			// Error estimate dy for the most recent call
-		double rawinterp(int jlo, T x);
+		T dy;			// Error estimate dy for the most recent call
+		T rawinterp(int jlo, T x);
 		void copy(const Poly_Interp<T> &poly);
 	public:
 		Poly_Interp();
 		Poly_Interp(const std::vector<T> &X, const std::vector<T> &Y, int m);
 		Poly_Interp(const Poly_Interp<T> &poly);
-		double getDY();		// Returns dy
+		T getDY();		// Returns dy
 		Poly_Interp<T>& operator= (const Poly_Interp<T> &poly);
 		~Poly_Interp();
 };
 
 template<class T>
-Poly_Interp<T>::Poly_Interp(): Base_Interp<T>(), dy(0.0) {}
+Poly_Interp<T>::Poly_Interp(): Base_Interp<T>(), dy(T(0)) {}
 
 template<class T>
-Poly_Interp<T>::Poly_Interp(const std::vector<T> &X, const std::vector<T> &Y, int m): Base_Interp<T>(X, Y, m), dy(0.0) {}
+Poly_Interp<T>::Poly_Interp(const std::vector<T> &X, const std::vector<T> &Y, int m): Base_Interp<T>(X, Y, m), dy(T(0)) {}
 
 template<class T>
 void Poly_Interp<T>::copy(const Poly_Interp<T> &poly)
@@ -49,13 +49,13 @@ Poly_Interp<T>& Poly_Interp<T>::operator= (const Poly_Interp<T> &poly)
 }
 
 template<class T>
-double Poly_Interp<T>::getDY()
+T Poly_Interp<T>::getDY()
 {
 	return this->dy;
 }
 
 template<class T>
-double Poly_Interp<T>::rawinterp(int jl, T x)
+T Poly_Interp<T>::rawinterp(int jl, T x)
 {
 	/*
 		Given a value x, and using pointers to data X and Y, this routine returns an interpolated value y, and stores an error estimate dy.
@@ -63,8 +63,8 @@ double Poly_Interp<T>::rawinterp(int jl, T x)
 	*/
 	int m = this->getM();
 	int i, mm, ns = 0;
-	double y, den, dif, dift, ho, hp, w;
-	std::vector<double> c(m), d(m);
+	T y, den, dif, dift, ho, hp, w;
+	std::vector<T> c(m), d(m);
 	dif = std::fabs(x-this->X(jl));
 	for(i = 0; i < m; i++)
 	{

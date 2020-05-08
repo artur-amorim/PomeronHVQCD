@@ -1216,7 +1216,10 @@ std::vector<double> computeAxialVectorMesonSingletPotential(const HVQCD &hvqcd, 
     return V;
 }
 
-// Definition of the auxiliary struct to compute the masses of the Pseudoscalars
+typedef boost::numeric::ublas::vector<long double> state_long;
+typedef boost::numeric::ublas::matrix<long double> matrix_long;
+
+// Definition of the auxiliary class to compute the masses of the Pseudoscalars
 class PseudoScalar
 {
     public:
@@ -1224,42 +1227,43 @@ class PseudoScalar
     // f1 = log(|e^{2A}q(A) G(A) k(\lambda) \tau^2 Vf0(\lambda)|)
     // f2 = log(-q e^{-4A} G(A) * m^2 / (k(\lambda) \tau^2 Vf0(\lambda))) 
     // f3 = log(|4 q e^{-2A} G / (Vf0(\lambda) * w(\lambda)^2))|)
-    // f4 = -2 \tau d\tau/dA
-        Poly_Interp<double> f1, f2, f3, f4;
-        PseudoScalar(const HVQCD &hvqcd, const double m);
-        void operator() (const state &X, state & dXdA, const double A);
-        void operator() (const state &X , matrix_type &jac , const double A, state &dfdA);
+    // f4 = -2 a2 \tau d\tau/dA
+        Poly_Interp<long double> f1, f2, f3, f4;
+        PseudoScalar(const HVQCD &hvqcd, const long double m);
+        void eom(const state_long &X, state_long & dXdA, const long double A);
+        void jacobian(const state_long &X , matrix_long &jac , const long double A, state_long &dfdA);
 };
 
-PseudoScalar::PseudoScalar(const HVQCD &hvqcd, const double m)
+PseudoScalar::PseudoScalar(const HVQCD &hvqcd, const long double m)
 {
     // Here we compute f1, f2, f3 and f4
     std::vector<double> As = hvqcd.A(), qs = hvqcd.q(), Phis = hvqcd.Phi();
     std::vector<double> taus = hvqcd.tau(), dtausdA = hvqcd.dtaudA();
     std::vector<double> Gs = hvqcd.G();
     // Compute f1 and f2
-    std::vector<double> f1_vec(As.size()), f2_vec(As.size()), f3_vec(As.size()), f4_vec(As.size());
-    double k, vf0, f2_var;
+    std::vector<long double> Aslong(As.size()), f1_vec(As.size()), f2_vec(As.size()), f3_vec(As.size()), f4_vec(As.size());
+    long double k, vf0, f2_var;
     for(int i = 0; i < As.size(); i++)
     {
         k = hvqcd.k(Phis[i]);
         vf0 = hvqcd.Vf0(Phis[i]);
+        Aslong[i] = (long double) (As[i]);
         // Compute f1
-        f1_vec[i] = std::log( std::fabs( std::exp(2 * As[i]) * qs[i] * Gs[i] * k * std::pow(taus[i],2) * vf0 ) ) ;
+        f1_vec[i] = std::log(-std::exp(2 * As[i]) * qs[i] * Gs[i] * k * std::pow(taus[i],2) * vf0) ;
         // Compute f2
         f2_vec[i] = std::log(-qs[i] * std::exp(-4 * As[i]) * Gs[i] * m * m / ( k * taus[i] * taus[i] * vf0 ) );
         // Compute f3
-        f3_vec[i] = std::log( std::fabs( 4 * qs[i] * std::exp(-2 * As[i]) * Gs[i] / ( vf0 * std::pow(hvqcd.w(Phis[i]), 2) ) ) );
+        f3_vec[i] = std::log( -4 * qs[i] * std::exp(-2 * As[i]) * Gs[i] / ( vf0 * std::pow(hvqcd.w(Phis[i]), 2) ) );
         // Compute f3
         f4_vec[i] = -2 * taus[i] * dtausdA[i];
     }
-    f1 = Poly_Interp<double>(As, f1_vec, 4);
-    f2 = Poly_Interp<double>(As, f2_vec, 4);
-    f3 = Poly_Interp<double>(As, f3_vec, 4);
-    f4 = Poly_Interp<double>(As, f4_vec, 4);
+    f1 = Poly_Interp<long double>(Aslong, f1_vec, 4);
+    f2 = Poly_Interp<long double>(Aslong, f2_vec, 4);
+    f3 = Poly_Interp<long double>(Aslong, f3_vec, 4);
+    f4 = Poly_Interp<long double>(Aslong, f4_vec, 4);
 }
 
-void PseudoScalar::operator() (const state &X, state &dXdA, const double A)
+void PseudoScalar::eom(const state_long &X, state_long & dXdA, const long double A)
 {
     // Implementation of the EOM
     // X = (\psi, \phi)
@@ -1267,7 +1271,7 @@ void PseudoScalar::operator() (const state &X, state &dXdA, const double A)
     dXdA[1] = ( std::exp(f2.interp(A)) - std::exp(f3.interp(A)) ) * X[0] + f4.interp(A) * X[1];
 }
 
-void PseudoScalar::operator() (const state &X , matrix_type &jac , const double A, state &dfdA)
+void PseudoScalar::jacobian(const state_long &X , matrix_long &jac , const long double A, state_long &dfdA)
 {
     jac(0,0) = 0.0;
     jac(0,1) = -std::exp(f1.interp(A));
@@ -1290,30 +1294,38 @@ std::vector<double> computePseudoScalarMasses(const HVQCD &hvqcd, const int n_ma
         The masses found will be returned in a std::vector
     */
    // Create function that computes the score
-   std::function<double(double)> score = [hvqcd] (const double m)
+   std::function<long double(long double)> score = [hvqcd] (const long double m)
    {
-       std::cout << "m: " << m << std::endl;
-       // Initiate object used to solve PSM ODE
-       PseudoScalar PSM(hvqcd, m);
-       // Setup IR boundary conditions
-       double AIR = -50, AUV = 10;
-       state X(2);
-       X <<= 1e150 * std::sqrt(-AIR), (- 5e149 / (-std::exp((PSM.f1).interp(AIR)) * std::sqrt(-AIR)));
-       std::cout << X << std::endl;
-       // Define stepper type
-       typedef boost::numeric::odeint::result_of::make_dense_output<boost::numeric::odeint::rosenbrock4<double> >::type dense_stepper_stiff;
-       dense_stepper_stiff stepper = make_dense_output(1.0e-6, 1.0e-6, boost::numeric::odeint::rosenbrock4< double >());
-       // Integrate the equations of motion from AIR to AIR + 0.5
-       integrate_adaptive(stepper, std::make_pair(PSM, PSM), X, AIR, AIR+0.5, 0.01);
-       double PhiIR = X(1);
-       integrate_adaptive(stepper, std::make_pair(PSM, PSM), X, AIR+0.5, AUV, 0.01);
-       double PhiUV = X(1);
-       return PhiUV / PhiIR;
+       // Define PseudoScalar object to compute EOM and jacobian
+        PseudoScalar psm(hvqcd, m);
+        auto eomcoupled = [&psm] (const state_long &Y, state_long &dYdA, const long double A) {psm.eom(Y, dYdA, A);};
+        auto jacfun = [&psm] (const state_long &Y , matrix_long &jac , const long double A, state_long &dfdt) {psm.jacobian(Y, jac, A, dfdt);};
+    
+        // Setup IR boundary conditions
+        long double AIR = -10, AUV = 10;
+        long double psiIR = 1e1000L;
+        psiIR = psiIR * std::sqrt(-AIR);
+        long double phiIR = 5e999L;
+        phiIR = phiIR * std::exp(-psm.f1.interp(AIR)) /std::sqrt(-AIR);
+        state_long X(2);
+        X <<=  psiIR, phiIR;
+        // Define stepper type
+        typedef boost::numeric::odeint::result_of::make_dense_output<boost::numeric::odeint::rosenbrock4<long double> >::type dense_stepper_stiff;
+        dense_stepper_stiff stepper = make_dense_output(1.0e-6, 1.0e-6, boost::numeric::odeint::rosenbrock4<long double>());
+    
+        // Integrate the equations of motion from AIR to AIR + 0.5
+        integrate_adaptive(/*boost::numeric::odeint::rosenbrock4<long double>()*/ stepper , std::make_pair(eomcoupled, jacfun), X, AIR, AIR+0.5L, 0.01L);
+        long double PhiIR = X(1);       
+    
+        // Integrate the equations of motion from AIR + 0.5 to AUV
+        integrate_adaptive(boost::numeric::odeint::rosenbrock4<long double>(), std::make_pair(eomcoupled, jacfun), X, AIR+0.5L, AUV, 0.01L);
+        long double PhiUV = X(1);
+        return PhiUV / PhiIR;
    };
    // Bracket the possible masses range
    std::vector<Range> masses_guess = bracketZeros(score, n_masses, 0.000001, 0.1);
    std::vector<double> masses(n_masses);
-   for(int i = 0; i < masses_guess.size(); i++) masses[i] = zbrent(score, masses_guess[i].eMin, masses_guess[i].eMax, 1e-6);
+   for(int i = 0; i < masses_guess.size(); i++) masses[i] = zbrent(score, masses_guess[i].eMin, masses_guess[i].eMax, 1e-9);
    // Check if masses_guess.size() == masses.size()
    return masses;
 }
@@ -1356,11 +1368,10 @@ void computeHVQCDSpectrum(const HVQCD &hvqcd)
     std::vector<double> zs = hvqcd.z(), us = hvqcd.u();
     if (zs.size() == 0) throw(std::runtime_error("Exception thrown in computeHVQCDSpectrum: solve HVQCD first."));
     // Compute the Schrodinger potential of the fluctuations
-    std::vector<double> V2G, VVM, VAVM, VPSM, VSM, VSingletAVM;
+    std::vector<double> V2G, VVM, VAVM, VSM, VSingletAVM;
     V2G = computeV2GPotential(hvqcd);
     VVM = computeVectorMesonPotential(hvqcd);
     VAVM = computeAxialVectorMesonNonSingletPotential(hvqcd, VVM);
-    VPSM = computePseudoScalarMesonPotential(hvqcd);
     VSM = computeScalarMesonPotential(hvqcd);
     VSingletAVM = computeAxialVectorMesonSingletPotential(hvqcd, VAVM);
     // Compute the masses
@@ -1368,7 +1379,7 @@ void computeHVQCDSpectrum(const HVQCD &hvqcd)
     TGMasses = computeMasses(zs, V2G, 1);
     VMMasses = computeMasses(us, VVM, 6);
     AVMMasses = computeMasses(us, VAVM, 5);
-    PSMMasses = computeMasses(us, VPSM, 5);
+    PSMMasses = computePseudoScalarMasses(hvqcd, 5);
     SMMasses = computeMasses(us, VSM, 2);
     SingletAVMMasses = computeMasses(us, VSingletAVM, 2);
     // Display the mass values
@@ -1409,11 +1420,10 @@ void computeHVQCDRatios(const HVQCD &hvqcd)
    std::vector<double> zs = hvqcd.z(), us = hvqcd.u();
     if (zs.size() == 0) throw(std::runtime_error("Exception thrown in computeHVQCDSpectrum: solve HVQCD first."));
    // Compute the Schrodinger potential of the fluctuations
-    std::vector<double> V2G, VVM, VAVM, VPSM, VSM, VSingletAVM;
+    std::vector<double> V2G, VVM, VAVM, VSM, VSingletAVM;
     V2G = computeV2GPotential(hvqcd);
     VVM = computeVectorMesonPotential(hvqcd);
     VAVM = computeAxialVectorMesonNonSingletPotential(hvqcd, VVM);
-    VPSM = computePseudoScalarMesonPotential(hvqcd);
     VSM = computeScalarMesonPotential(hvqcd);
     VSingletAVM = computeAxialVectorMesonSingletPotential(hvqcd, VAVM);
     // Compute the masses
@@ -1421,7 +1431,7 @@ void computeHVQCDRatios(const HVQCD &hvqcd)
     TGMasses = computeMasses(zs, V2G, 1);
     VMMasses = computeMasses(us, VVM, 6);
     AVMMasses = computeMasses(us, VAVM, 5);
-    PSMMasses = computeMasses(us, VPSM, 5);
+    PSMMasses = computePseudoScalarMasses(hvqcd, 5);
     SMMasses = computeMasses(us,VSM, 2);
     SingletAVMMasses = computeMasses(us, VSingletAVM, 2);
     // Compute the predicted ratios
