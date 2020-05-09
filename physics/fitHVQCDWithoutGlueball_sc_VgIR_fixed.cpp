@@ -36,12 +36,11 @@ double J(const vector<double> X)
     }
 
     // Compute the potentials
-    vector<double> VVM, VAVM, VPSM, VSM;
+    vector<double> VVM, VAVM, VSM;
     try
     {
         VVM = computeVectorMesonPotential(hvqcd);
         VAVM = computeAxialVectorMesonNonSingletPotential(hvqcd, VVM);
-        VPSM = computePseudoScalarMesonPotential(hvqcd);
         VSM = computeScalarMesonPotential(hvqcd);
     }
     catch(...)
@@ -58,7 +57,7 @@ double J(const vector<double> X)
         vector<double> us = hvqcd.u();
         VMMasses = computeMasses(us, VVM, 6, "cheb");
         AVMMasses = computeMasses(us, VAVM, 5, "cheb");
-        PSMMasses = computeMasses(us, VPSM, 5, "cheb");
+        PSMMasses = computePseudoScalarMasses(hvqcd, 5);
         SMMasses = computeMasses(us,VSM, 2, "cheb");
     }
     catch(...)
