@@ -1243,6 +1243,8 @@ PseudoScalar::PseudoScalar(const HVQCD &hvqcd, const long double m)
     // Compute f1 and f2
     std::vector<long double> Aslong(As.size()), f1_vec(As.size()), f2_vec(As.size()), f3_vec(As.size()), f4_vec(As.size());
     long double k, vf0, f2_var;
+    double a1 = hvqcd.get_a1();
+    double a2 = hvqcd.get_a2();
     for(int i = 0; i < As.size(); i++)
     {
         k = hvqcd.k(Phis[i]);
@@ -1254,8 +1256,8 @@ PseudoScalar::PseudoScalar(const HVQCD &hvqcd, const long double m)
         f2_vec[i] = std::log(-qs[i] * std::exp(-4 * As[i]) * Gs[i] * m * m / ( k * taus[i] * taus[i] * vf0 ) );
         // Compute f3
         f3_vec[i] = std::log( -4 * qs[i] * std::exp(-2 * As[i]) * Gs[i] / ( vf0 * std::pow(hvqcd.w(Phis[i]), 2) ) );
-        // Compute f3
-        f4_vec[i] = -2 * taus[i] * dtausdA[i];
+        // Compute f4
+        f4_vec[i] = -2 * taus[i] *(-a1 + a2 + a1*a2*taus[i]*taus[i]) * dtausdA[i] / (1+ a1 * taus[i] * taus[i]);
     }
     f1 = Poly_Interp<long double>(Aslong, f1_vec, 4);
     f2 = Poly_Interp<long double>(Aslong, f2_vec, 4);
