@@ -1,4 +1,5 @@
 #include <iostream>
+#include "HolographicVQCD.h"
 #include "U1NNMode.h"
 
 using namespace std;
@@ -11,6 +12,5 @@ int main(int argc, char ** argv)
     mode.computeMode();
     cout << "Mode computed" << endl;
     mode.saveMode("U1NNMode_Q2_"+to_string(Q2)+".txt");
-
     return 0;
 }

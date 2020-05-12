@@ -59,17 +59,17 @@ void setupU1NNcomputation()
     std::vector<double> dlogVfdPhi(n), dlogVfdtau(n);
     std::vector<double> qs = hvqcd().q(), Phis = hvqcd().Phi(), taus = hvqcd().tau() ;
     std::vector<double> dqs = hvqcd().dq(), d2taudA2 = hvqcd().d2taudA2();
+    double a1 = hvqcd().get_a1(), a2 = hvqcd().get_a2();
     for(int i = 0; i < n; i++)
     {
         k[i] = hvqcd().k(Phis[i]); dkdPhi[i] = hvqcd().dkdPhi(Phis[i]);
         w[i] = hvqcd().w(Phis[i]); dwdPhi[i] = hvqcd().dwdPhi(Phis[i]);
         dlogVfdPhi[i] =  hvqcd().dVf0dPhi(Phis[i]) / hvqcd().Vf0(Phis[i]);
-        dlogVfdtau[i] = - 2 * taus[i] + hvqcd().dVtau(taus[i]) / hvqcd().Vtau(taus[i]) ;
+        dlogVfdtau[i] =  -2*taus[i]*(-a1 + a2 + a1*a2*taus[i]*taus[i])/(1+a1*taus[i]*taus[i]);
     }
     // Compute dlogGdz
     std::vector<double> dlogGdz = - 1. * k * dqs * dtaudA * dtaudA / qs + 0.5 * dkdPhi * dtaudA * dtaudA * dPhidA + k * dtaudA * d2taudA2 ;
     dlogGdz = dlogGdz * exp(hvqcd().A()) / (G * G * qs * qs * qs);
-
 
     // Compute t1Y
     std::vector<double> t1Y = -1.0 *  (dAdz - dlogGdz + 2.0 * dwdPhi * dPhidz / w + dtaudz * dlogVfdtau + dPhidz * dlogVfdPhi);
@@ -243,7 +243,7 @@ void U1NNMode::computeMode()
     int * LTOL = new int[2];
     LTOL[0] = 1; LTOL[1] = 2;
     double * TOL = new double[2];
-    TOL[0] = 1e-12; TOL[1] = 1e-12;
+    TOL[0] = 1e-15; TOL[1] = 1e-15;
     double * FIXPNT = new double[1];
     int * IFLAG = new int();
 
