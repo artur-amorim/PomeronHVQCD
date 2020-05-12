@@ -7,6 +7,7 @@
 #include "GluonKernel.h"
 #include "HQCDP.h"
 #include "schrodinger/schrodinger.h"
+#include "schrodinger/chebspec.h"
 #include "methods/optimization/NelderMead.hpp"
 
 

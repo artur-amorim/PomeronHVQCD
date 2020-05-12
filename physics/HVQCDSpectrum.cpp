@@ -2,6 +2,7 @@
 #include <exception>
 #include "HolographicVQCD.h"
 #include "schrodinger/schrodinger.h"
+#include "schrodinger/chebspec.h"
 
 using namespace std;
 

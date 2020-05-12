@@ -41,8 +41,6 @@ class HVQCD : public Background
         double Vfl(const double l, const double tau) const;
         // Declaration of dVf/dlamda
         double dVfldlambda(const double l, const double tau) const;
-        // Declaration of the Vf = Vf0 (1 + tausc tau^2) exp(-tau^2) potential as a funtion of Phi
-        double Vf(const double phi, const double tau) const;
         // Declaration of the dVfdPhi = dVf0dPhi exp(-tau^2) potential
         double dVfdPhi(const double phi, const double tau) const;
         // Declaration of the dVfdtau = Vf0 (-2tau)exp(-tau^2) potential

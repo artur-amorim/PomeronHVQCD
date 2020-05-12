@@ -2,6 +2,7 @@
 #include <functional>
 #include "HolographicVQCD.h"
 #include "GluonKernel.h"
+#include "schrodinger/chebspec.h"
 #include "schrodinger/schrodinger.h"
 #include "methods/optimization/NelderMead.hpp"
 

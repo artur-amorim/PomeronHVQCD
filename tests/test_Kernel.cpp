@@ -5,6 +5,7 @@
 #include "Reggeon.h"
 #include "GluonKernel.h"
 #include "schrodinger/schrodinger.h"
+#include "schrodinger/chebspec.h"
 
 using namespace std;
 

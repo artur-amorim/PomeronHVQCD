@@ -5,6 +5,7 @@
 #include "FL.h"
 #include "GluonKernel.h"
 #include "HQCDP.h"
+#include "schrodinger/chebspec.h"
 #include "schrodinger/schrodinger.h"
 
 
