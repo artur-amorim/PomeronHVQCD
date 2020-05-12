@@ -1,8 +1,9 @@
 #include <iostream>
-#include <exception>
+#include <string>
+#include <fstream>
+#include <boost/algorithm/string.hpp>
 #include "HolographicVQCD.h"
-#include "schrodinger/chebspec.h"
-#include "schrodinger/schrodinger.h"
+#include "methods/interpolation/Poly_Interp.hpp"
 
 using namespace std;
 
@@ -26,19 +27,42 @@ int main(int argc, char ** argv)
         Za = stod(argv[16]); ca = stod(argv[17]);
     }
     
-    cout << "Computing ratios with parameter values" << endl;
+    cout << "Computing potentials with parameter values" << endl;
     cout << "sc: " << sc << " ksc: " << ksc << " wsc: " << wsc << " W0: " << W0 << " w0: " << w0 << " kU1: " << kU1;
     cout << " wU1: " << wU1 << " VgIR: " << VgIR << " WIR: " << WIR << " kIR: " << kIR << " wIR: " << wIR << " W1: " << W1;
     cout << " k1: " << k1 << " w1: " << w1 << " tau0: " << tau0 << " Za: " << Za << " ca: " << ca << endl;
 
-    // Fit the model to the spectrum
-    chebSetN(1600);
-
     HVQCD hvqcd(sc, ksc, wsc, W0, w0, kU1, wU1, VgIR, WIR, kIR, wIR, W1, k1, w1, xf, tau0, Za, ca);
     hvqcd.solve();
 
-    // Computing the mass ratios
-    computeHVQCDRatios(hvqcd);
+    // Get u and compute the pseudoscalar potential
+    vector<double> VPSM = computePseudoScalarMesonPotential(hvqcd), u = hvqcd.u();
+    Poly_Interp<double> VPSM_func(u, VPSM, 4);
+
+    
+    ofstream potenial_values;
+    ifstream matti_potenial_values;
+    potenial_values.open("PseudoscalarPotential.txt");
+    matti_potenial_values.open("pseudoscalar_potential.dat");
+
+    potenial_values << "u\tMatti\tMine\tError(%)" << endl;
+
+    string line;
+    vector<string> result;
+    double matti_uval, matti_pot_val, my_val, error;
+    while ( getline (matti_potenial_values,line) )
+    {
+        boost::split(result, line, boost::is_any_of("\t") );
+        matti_uval = stod(result[0]);
+        matti_pot_val = stod(result[1]);
+        my_val = VPSM_func.interp(matti_uval);
+        error = 100 * fabs((matti_pot_val-my_val)/matti_pot_val); 
+        potenial_values << matti_uval << '\t' << matti_pot_val << '\t' << my_val << '\t' << error << endl;
+    }
+    //for(int i = 0; i < u.size(); i++) potenial_values << u[i] << '\t' << VPSM[i] << endl;
+
+    matti_potenial_values.close();
+    potenial_values.close();
 
     return 0;
 }

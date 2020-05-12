@@ -2,6 +2,7 @@
 #define SOLVSPEC_H
 
 #include <vector>
+#include <armadillo>
 #include "common.h"
 #include "../methods/interpolation/Poly_Interp.hpp"
 
@@ -31,5 +32,14 @@ class SolvSpec {
     // Class destructor
 	virtual ~SolvSpec();
 };
+
+struct EigenPair
+{
+    double eigen_value;
+    arma::vec eigen_vector;
+    EigenPair(const double eigval = 0, const arma::vec & eigvec = arma::vec());
+};
+
+bool compEigenPair(const EigenPair &lhs, const EigenPair &rhs);
 
 #endif

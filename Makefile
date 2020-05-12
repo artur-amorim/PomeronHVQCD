@@ -111,6 +111,7 @@ depend:
 .PHONY : depend
 
 #=============================================================================
+<<<<<<< HEAD
 # Target rules for targets named fitDISHVQCD.exe
 
 # Build rule for target.
@@ -177,16 +178,19 @@ findGs.exe/fast:
 
 #=============================================================================
 # Target rules for targets named test_schrodinger.exe
+=======
+# Target rules for targets named fitYangMills.exe
+>>>>>>> GeneralVf
 
 # Build rule for target.
-test_schrodinger.exe: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 test_schrodinger.exe
-.PHONY : test_schrodinger.exe
+fitYangMills.exe: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 fitYangMills.exe
+.PHONY : fitYangMills.exe
 
 # fast build rule for target.
-test_schrodinger.exe/fast:
-	$(MAKE) -f CMakeFiles/test_schrodinger.exe.dir/build.make CMakeFiles/test_schrodinger.exe.dir/build
-.PHONY : test_schrodinger.exe/fast
+fitYangMills.exe/fast:
+	$(MAKE) -f CMakeFiles/fitYangMills.exe.dir/build.make CMakeFiles/fitYangMills.exe.dir/build
+.PHONY : fitYangMills.exe/fast
 
 #=============================================================================
 # Target rules for targets named fitYangMills.exe
@@ -254,6 +258,45 @@ fitSingletAVM.exe/fast:
 .PHONY : fitSingletAVM.exe/fast
 
 #=============================================================================
+# Target rules for targets named test_HVQCD.exe
+
+# Build rule for target.
+test_HVQCD.exe: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 test_HVQCD.exe
+.PHONY : test_HVQCD.exe
+
+# fast build rule for target.
+test_HVQCD.exe/fast:
+	$(MAKE) -f CMakeFiles/test_HVQCD.exe.dir/build.make CMakeFiles/test_HVQCD.exe.dir/build
+.PHONY : test_HVQCD.exe/fast
+
+#=============================================================================
+# Target rules for targets named fitHVQCDWithoutGlueball_a1_a2_fixed.exe
+
+# Build rule for target.
+fitHVQCDWithoutGlueball_a1_a2_fixed.exe: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 fitHVQCDWithoutGlueball_a1_a2_fixed.exe
+.PHONY : fitHVQCDWithoutGlueball_a1_a2_fixed.exe
+
+# fast build rule for target.
+fitHVQCDWithoutGlueball_a1_a2_fixed.exe/fast:
+	$(MAKE) -f CMakeFiles/fitHVQCDWithoutGlueball_a1_a2_fixed.exe.dir/build.make CMakeFiles/fitHVQCDWithoutGlueball_a1_a2_fixed.exe.dir/build
+.PHONY : fitHVQCDWithoutGlueball_a1_a2_fixed.exe/fast
+
+#=============================================================================
+# Target rules for targets named fitHVQCDWithoutScalars_sc_VgIR_a1_a2_fixed.exe
+
+# Build rule for target.
+fitHVQCDWithoutScalars_sc_VgIR_a1_a2_fixed.exe: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 fitHVQCDWithoutScalars_sc_VgIR_a1_a2_fixed.exe
+.PHONY : fitHVQCDWithoutScalars_sc_VgIR_a1_a2_fixed.exe
+
+# fast build rule for target.
+fitHVQCDWithoutScalars_sc_VgIR_a1_a2_fixed.exe/fast:
+	$(MAKE) -f CMakeFiles/fitHVQCDWithoutScalars_sc_VgIR_a1_a2_fixed.exe.dir/build.make CMakeFiles/fitHVQCDWithoutScalars_sc_VgIR_a1_a2_fixed.exe.dir/build
+.PHONY : fitHVQCDWithoutScalars_sc_VgIR_a1_a2_fixed.exe/fast
+
+#=============================================================================
 # Target rules for targets named fitHVQCDWithoutGlueball.exe
 
 # Build rule for target.
@@ -267,30 +310,30 @@ fitHVQCDWithoutGlueball.exe/fast:
 .PHONY : fitHVQCDWithoutGlueball.exe/fast
 
 #=============================================================================
-# Target rules for targets named fitHVQCDGlobal_sc_VgIR_fixed.exe
+# Target rules for targets named fitHVQCDWithoutGlueballScalars_a1_a2_fixed.exe
 
 # Build rule for target.
-fitHVQCDGlobal_sc_VgIR_fixed.exe: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 fitHVQCDGlobal_sc_VgIR_fixed.exe
-.PHONY : fitHVQCDGlobal_sc_VgIR_fixed.exe
+fitHVQCDWithoutGlueballScalars_a1_a2_fixed.exe: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 fitHVQCDWithoutGlueballScalars_a1_a2_fixed.exe
+.PHONY : fitHVQCDWithoutGlueballScalars_a1_a2_fixed.exe
 
 # fast build rule for target.
-fitHVQCDGlobal_sc_VgIR_fixed.exe/fast:
-	$(MAKE) -f CMakeFiles/fitHVQCDGlobal_sc_VgIR_fixed.exe.dir/build.make CMakeFiles/fitHVQCDGlobal_sc_VgIR_fixed.exe.dir/build
-.PHONY : fitHVQCDGlobal_sc_VgIR_fixed.exe/fast
+fitHVQCDWithoutGlueballScalars_a1_a2_fixed.exe/fast:
+	$(MAKE) -f CMakeFiles/fitHVQCDWithoutGlueballScalars_a1_a2_fixed.exe.dir/build.make CMakeFiles/fitHVQCDWithoutGlueballScalars_a1_a2_fixed.exe.dir/build
+.PHONY : fitHVQCDWithoutGlueballScalars_a1_a2_fixed.exe/fast
 
 #=============================================================================
-# Target rules for targets named fitHVQCDWithoutGlueballScalars_sc_VgIR_fixed.exe
+# Target rules for targets named fitHVQCDWithoutGlueballScalars_sc_VgIR_a1_a2_fixed.exe
 
 # Build rule for target.
-fitHVQCDWithoutGlueballScalars_sc_VgIR_fixed.exe: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 fitHVQCDWithoutGlueballScalars_sc_VgIR_fixed.exe
-.PHONY : fitHVQCDWithoutGlueballScalars_sc_VgIR_fixed.exe
+fitHVQCDWithoutGlueballScalars_sc_VgIR_a1_a2_fixed.exe: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 fitHVQCDWithoutGlueballScalars_sc_VgIR_a1_a2_fixed.exe
+.PHONY : fitHVQCDWithoutGlueballScalars_sc_VgIR_a1_a2_fixed.exe
 
 # fast build rule for target.
-fitHVQCDWithoutGlueballScalars_sc_VgIR_fixed.exe/fast:
-	$(MAKE) -f CMakeFiles/fitHVQCDWithoutGlueballScalars_sc_VgIR_fixed.exe.dir/build.make CMakeFiles/fitHVQCDWithoutGlueballScalars_sc_VgIR_fixed.exe.dir/build
-.PHONY : fitHVQCDWithoutGlueballScalars_sc_VgIR_fixed.exe/fast
+fitHVQCDWithoutGlueballScalars_sc_VgIR_a1_a2_fixed.exe/fast:
+	$(MAKE) -f CMakeFiles/fitHVQCDWithoutGlueballScalars_sc_VgIR_a1_a2_fixed.exe.dir/build.make CMakeFiles/fitHVQCDWithoutGlueballScalars_sc_VgIR_a1_a2_fixed.exe.dir/build
+.PHONY : fitHVQCDWithoutGlueballScalars_sc_VgIR_a1_a2_fixed.exe/fast
 
 #=============================================================================
 # Target rules for targets named findReggeTrajectories.exe
@@ -319,6 +362,97 @@ fitHVQCDWithoutScalars_sc_VgIR_fixed.exe/fast:
 .PHONY : fitHVQCDWithoutScalars_sc_VgIR_fixed.exe/fast
 
 #=============================================================================
+# Target rules for targets named fitHVQCDWithoutScalars_a1_a2_fixed.exe
+
+# Build rule for target.
+fitHVQCDWithoutScalars_a1_a2_fixed.exe: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 fitHVQCDWithoutScalars_a1_a2_fixed.exe
+.PHONY : fitHVQCDWithoutScalars_a1_a2_fixed.exe
+
+# fast build rule for target.
+fitHVQCDWithoutScalars_a1_a2_fixed.exe/fast:
+	$(MAKE) -f CMakeFiles/fitHVQCDWithoutScalars_a1_a2_fixed.exe.dir/build.make CMakeFiles/fitHVQCDWithoutScalars_a1_a2_fixed.exe.dir/build
+.PHONY : fitHVQCDWithoutScalars_a1_a2_fixed.exe/fast
+
+#=============================================================================
+# Target rules for targets named fitHVQCDWithoutGlueballScalars_sc_VgIR_fixed.exe
+
+# Build rule for target.
+fitHVQCDWithoutGlueballScalars_sc_VgIR_fixed.exe: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 fitHVQCDWithoutGlueballScalars_sc_VgIR_fixed.exe
+.PHONY : fitHVQCDWithoutGlueballScalars_sc_VgIR_fixed.exe
+
+# fast build rule for target.
+fitHVQCDWithoutGlueballScalars_sc_VgIR_fixed.exe/fast:
+	$(MAKE) -f CMakeFiles/fitHVQCDWithoutGlueballScalars_sc_VgIR_fixed.exe.dir/build.make CMakeFiles/fitHVQCDWithoutGlueballScalars_sc_VgIR_fixed.exe.dir/build
+.PHONY : fitHVQCDWithoutGlueballScalars_sc_VgIR_fixed.exe/fast
+
+#=============================================================================
+# Target rules for targets named fitHVQCDGlobal_sc_VgIR_fixed.exe
+
+# Build rule for target.
+fitHVQCDGlobal_sc_VgIR_fixed.exe: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 fitHVQCDGlobal_sc_VgIR_fixed.exe
+.PHONY : fitHVQCDGlobal_sc_VgIR_fixed.exe
+
+# fast build rule for target.
+fitHVQCDGlobal_sc_VgIR_fixed.exe/fast:
+	$(MAKE) -f CMakeFiles/fitHVQCDGlobal_sc_VgIR_fixed.exe.dir/build.make CMakeFiles/fitHVQCDGlobal_sc_VgIR_fixed.exe.dir/build
+.PHONY : fitHVQCDGlobal_sc_VgIR_fixed.exe/fast
+
+#=============================================================================
+# Target rules for targets named fitHVQCDWithoutGlueballScalars.exe
+
+# Build rule for target.
+fitHVQCDWithoutGlueballScalars.exe: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 fitHVQCDWithoutGlueballScalars.exe
+.PHONY : fitHVQCDWithoutGlueballScalars.exe
+
+# fast build rule for target.
+fitHVQCDWithoutGlueballScalars.exe/fast:
+	$(MAKE) -f CMakeFiles/fitHVQCDWithoutGlueballScalars.exe.dir/build.make CMakeFiles/fitHVQCDWithoutGlueballScalars.exe.dir/build
+.PHONY : fitHVQCDWithoutGlueballScalars.exe/fast
+
+#=============================================================================
+# Target rules for targets named fitHVQCDGlobal_sc_VgIR_a1_a2_fixed.exe
+
+# Build rule for target.
+fitHVQCDGlobal_sc_VgIR_a1_a2_fixed.exe: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 fitHVQCDGlobal_sc_VgIR_a1_a2_fixed.exe
+.PHONY : fitHVQCDGlobal_sc_VgIR_a1_a2_fixed.exe
+
+# fast build rule for target.
+fitHVQCDGlobal_sc_VgIR_a1_a2_fixed.exe/fast:
+	$(MAKE) -f CMakeFiles/fitHVQCDGlobal_sc_VgIR_a1_a2_fixed.exe.dir/build.make CMakeFiles/fitHVQCDGlobal_sc_VgIR_a1_a2_fixed.exe.dir/build
+.PHONY : fitHVQCDGlobal_sc_VgIR_a1_a2_fixed.exe/fast
+
+#=============================================================================
+# Target rules for targets named fitHVQCDGlobal_a1_a2_fixed.exe
+
+# Build rule for target.
+fitHVQCDGlobal_a1_a2_fixed.exe: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 fitHVQCDGlobal_a1_a2_fixed.exe
+.PHONY : fitHVQCDGlobal_a1_a2_fixed.exe
+
+# fast build rule for target.
+fitHVQCDGlobal_a1_a2_fixed.exe/fast:
+	$(MAKE) -f CMakeFiles/fitHVQCDGlobal_a1_a2_fixed.exe.dir/build.make CMakeFiles/fitHVQCDGlobal_a1_a2_fixed.exe.dir/build
+.PHONY : fitHVQCDGlobal_a1_a2_fixed.exe/fast
+
+#=============================================================================
+# Target rules for targets named hvqcd_lib
+
+# Build rule for target.
+hvqcd_lib: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 hvqcd_lib
+.PHONY : hvqcd_lib
+
+# fast build rule for target.
+hvqcd_lib/fast:
+	$(MAKE) -f CMakeFiles/hvqcd_lib.dir/build.make CMakeFiles/hvqcd_lib.dir/build
+.PHONY : hvqcd_lib/fast
+
+#=============================================================================
 # Target rules for targets named fitHVQCDWithoutGlueball_sc_VgIR_fixed.exe
 
 # Build rule for target.
@@ -332,6 +466,7 @@ fitHVQCDWithoutGlueball_sc_VgIR_fixed.exe/fast:
 .PHONY : fitHVQCDWithoutGlueball_sc_VgIR_fixed.exe/fast
 
 #=============================================================================
+<<<<<<< HEAD
 # Target rules for targets named HVQCDSpectrum.exe
 
 # Build rule for target.
@@ -343,6 +478,19 @@ HVQCDSpectrum.exe: cmake_check_build_system
 HVQCDSpectrum.exe/fast:
 	$(MAKE) -f CMakeFiles/HVQCDSpectrum.exe.dir/build.make CMakeFiles/HVQCDSpectrum.exe.dir/build
 .PHONY : HVQCDSpectrum.exe/fast
+=======
+# Target rules for targets named test_NelderMead.exe
+
+# Build rule for target.
+test_NelderMead.exe: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 test_NelderMead.exe
+.PHONY : test_NelderMead.exe
+
+# fast build rule for target.
+test_NelderMead.exe/fast:
+	$(MAKE) -f CMakeFiles/test_NelderMead.exe.dir/build.make CMakeFiles/test_NelderMead.exe.dir/build
+.PHONY : test_NelderMead.exe/fast
+>>>>>>> GeneralVf
 
 #=============================================================================
 # Target rules for targets named fitHVQCDGlobal.exe
@@ -371,6 +519,7 @@ fitHVQCDWithoutScalars.exe/fast:
 .PHONY : fitHVQCDWithoutScalars.exe/fast
 
 #=============================================================================
+<<<<<<< HEAD
 # Target rules for targets named fitHVQCDWithoutGlueballScalars.exe
 
 # Build rule for target.
@@ -395,6 +544,19 @@ hvqcd_lib: cmake_check_build_system
 hvqcd_lib/fast:
 	$(MAKE) -f CMakeFiles/hvqcd_lib.dir/build.make CMakeFiles/hvqcd_lib.dir/build
 .PHONY : hvqcd_lib/fast
+=======
+# Target rules for targets named test_schrodinger.exe
+
+# Build rule for target.
+test_schrodinger.exe: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 test_schrodinger.exe
+.PHONY : test_schrodinger.exe
+
+# fast build rule for target.
+test_schrodinger.exe/fast:
+	$(MAKE) -f CMakeFiles/test_schrodinger.exe.dir/build.make CMakeFiles/test_schrodinger.exe.dir/build
+.PHONY : test_schrodinger.exe/fast
+>>>>>>> GeneralVf
 
 physics/HVQCDRatios.o: physics/HVQCDRatios.cpp.o
 
@@ -558,6 +720,60 @@ physics/fitHVQCDGlobal.cpp.s:
 	$(MAKE) -f CMakeFiles/fitHVQCDGlobal.exe.dir/build.make CMakeFiles/fitHVQCDGlobal.exe.dir/physics/fitHVQCDGlobal.cpp.s
 .PHONY : physics/fitHVQCDGlobal.cpp.s
 
+physics/fitHVQCDGlobal_a1_a2_fixed.o: physics/fitHVQCDGlobal_a1_a2_fixed.cpp.o
+
+.PHONY : physics/fitHVQCDGlobal_a1_a2_fixed.o
+
+# target to build an object file
+physics/fitHVQCDGlobal_a1_a2_fixed.cpp.o:
+	$(MAKE) -f CMakeFiles/fitHVQCDGlobal_a1_a2_fixed.exe.dir/build.make CMakeFiles/fitHVQCDGlobal_a1_a2_fixed.exe.dir/physics/fitHVQCDGlobal_a1_a2_fixed.cpp.o
+.PHONY : physics/fitHVQCDGlobal_a1_a2_fixed.cpp.o
+
+physics/fitHVQCDGlobal_a1_a2_fixed.i: physics/fitHVQCDGlobal_a1_a2_fixed.cpp.i
+
+.PHONY : physics/fitHVQCDGlobal_a1_a2_fixed.i
+
+# target to preprocess a source file
+physics/fitHVQCDGlobal_a1_a2_fixed.cpp.i:
+	$(MAKE) -f CMakeFiles/fitHVQCDGlobal_a1_a2_fixed.exe.dir/build.make CMakeFiles/fitHVQCDGlobal_a1_a2_fixed.exe.dir/physics/fitHVQCDGlobal_a1_a2_fixed.cpp.i
+.PHONY : physics/fitHVQCDGlobal_a1_a2_fixed.cpp.i
+
+physics/fitHVQCDGlobal_a1_a2_fixed.s: physics/fitHVQCDGlobal_a1_a2_fixed.cpp.s
+
+.PHONY : physics/fitHVQCDGlobal_a1_a2_fixed.s
+
+# target to generate assembly for a file
+physics/fitHVQCDGlobal_a1_a2_fixed.cpp.s:
+	$(MAKE) -f CMakeFiles/fitHVQCDGlobal_a1_a2_fixed.exe.dir/build.make CMakeFiles/fitHVQCDGlobal_a1_a2_fixed.exe.dir/physics/fitHVQCDGlobal_a1_a2_fixed.cpp.s
+.PHONY : physics/fitHVQCDGlobal_a1_a2_fixed.cpp.s
+
+physics/fitHVQCDGlobal_sc_VgIR_a1_a2_fixed.o: physics/fitHVQCDGlobal_sc_VgIR_a1_a2_fixed.cpp.o
+
+.PHONY : physics/fitHVQCDGlobal_sc_VgIR_a1_a2_fixed.o
+
+# target to build an object file
+physics/fitHVQCDGlobal_sc_VgIR_a1_a2_fixed.cpp.o:
+	$(MAKE) -f CMakeFiles/fitHVQCDGlobal_sc_VgIR_a1_a2_fixed.exe.dir/build.make CMakeFiles/fitHVQCDGlobal_sc_VgIR_a1_a2_fixed.exe.dir/physics/fitHVQCDGlobal_sc_VgIR_a1_a2_fixed.cpp.o
+.PHONY : physics/fitHVQCDGlobal_sc_VgIR_a1_a2_fixed.cpp.o
+
+physics/fitHVQCDGlobal_sc_VgIR_a1_a2_fixed.i: physics/fitHVQCDGlobal_sc_VgIR_a1_a2_fixed.cpp.i
+
+.PHONY : physics/fitHVQCDGlobal_sc_VgIR_a1_a2_fixed.i
+
+# target to preprocess a source file
+physics/fitHVQCDGlobal_sc_VgIR_a1_a2_fixed.cpp.i:
+	$(MAKE) -f CMakeFiles/fitHVQCDGlobal_sc_VgIR_a1_a2_fixed.exe.dir/build.make CMakeFiles/fitHVQCDGlobal_sc_VgIR_a1_a2_fixed.exe.dir/physics/fitHVQCDGlobal_sc_VgIR_a1_a2_fixed.cpp.i
+.PHONY : physics/fitHVQCDGlobal_sc_VgIR_a1_a2_fixed.cpp.i
+
+physics/fitHVQCDGlobal_sc_VgIR_a1_a2_fixed.s: physics/fitHVQCDGlobal_sc_VgIR_a1_a2_fixed.cpp.s
+
+.PHONY : physics/fitHVQCDGlobal_sc_VgIR_a1_a2_fixed.s
+
+# target to generate assembly for a file
+physics/fitHVQCDGlobal_sc_VgIR_a1_a2_fixed.cpp.s:
+	$(MAKE) -f CMakeFiles/fitHVQCDGlobal_sc_VgIR_a1_a2_fixed.exe.dir/build.make CMakeFiles/fitHVQCDGlobal_sc_VgIR_a1_a2_fixed.exe.dir/physics/fitHVQCDGlobal_sc_VgIR_a1_a2_fixed.cpp.s
+.PHONY : physics/fitHVQCDGlobal_sc_VgIR_a1_a2_fixed.cpp.s
+
 physics/fitHVQCDGlobal_sc_VgIR_fixed.o: physics/fitHVQCDGlobal_sc_VgIR_fixed.cpp.o
 
 .PHONY : physics/fitHVQCDGlobal_sc_VgIR_fixed.o
@@ -639,6 +855,60 @@ physics/fitHVQCDWithoutGlueballScalars.cpp.s:
 	$(MAKE) -f CMakeFiles/fitHVQCDWithoutGlueballScalars.exe.dir/build.make CMakeFiles/fitHVQCDWithoutGlueballScalars.exe.dir/physics/fitHVQCDWithoutGlueballScalars.cpp.s
 .PHONY : physics/fitHVQCDWithoutGlueballScalars.cpp.s
 
+physics/fitHVQCDWithoutGlueballScalars_a1_a2_fixed.o: physics/fitHVQCDWithoutGlueballScalars_a1_a2_fixed.cpp.o
+
+.PHONY : physics/fitHVQCDWithoutGlueballScalars_a1_a2_fixed.o
+
+# target to build an object file
+physics/fitHVQCDWithoutGlueballScalars_a1_a2_fixed.cpp.o:
+	$(MAKE) -f CMakeFiles/fitHVQCDWithoutGlueballScalars_a1_a2_fixed.exe.dir/build.make CMakeFiles/fitHVQCDWithoutGlueballScalars_a1_a2_fixed.exe.dir/physics/fitHVQCDWithoutGlueballScalars_a1_a2_fixed.cpp.o
+.PHONY : physics/fitHVQCDWithoutGlueballScalars_a1_a2_fixed.cpp.o
+
+physics/fitHVQCDWithoutGlueballScalars_a1_a2_fixed.i: physics/fitHVQCDWithoutGlueballScalars_a1_a2_fixed.cpp.i
+
+.PHONY : physics/fitHVQCDWithoutGlueballScalars_a1_a2_fixed.i
+
+# target to preprocess a source file
+physics/fitHVQCDWithoutGlueballScalars_a1_a2_fixed.cpp.i:
+	$(MAKE) -f CMakeFiles/fitHVQCDWithoutGlueballScalars_a1_a2_fixed.exe.dir/build.make CMakeFiles/fitHVQCDWithoutGlueballScalars_a1_a2_fixed.exe.dir/physics/fitHVQCDWithoutGlueballScalars_a1_a2_fixed.cpp.i
+.PHONY : physics/fitHVQCDWithoutGlueballScalars_a1_a2_fixed.cpp.i
+
+physics/fitHVQCDWithoutGlueballScalars_a1_a2_fixed.s: physics/fitHVQCDWithoutGlueballScalars_a1_a2_fixed.cpp.s
+
+.PHONY : physics/fitHVQCDWithoutGlueballScalars_a1_a2_fixed.s
+
+# target to generate assembly for a file
+physics/fitHVQCDWithoutGlueballScalars_a1_a2_fixed.cpp.s:
+	$(MAKE) -f CMakeFiles/fitHVQCDWithoutGlueballScalars_a1_a2_fixed.exe.dir/build.make CMakeFiles/fitHVQCDWithoutGlueballScalars_a1_a2_fixed.exe.dir/physics/fitHVQCDWithoutGlueballScalars_a1_a2_fixed.cpp.s
+.PHONY : physics/fitHVQCDWithoutGlueballScalars_a1_a2_fixed.cpp.s
+
+physics/fitHVQCDWithoutGlueballScalars_sc_VgIR_a1_a2_fixed.o: physics/fitHVQCDWithoutGlueballScalars_sc_VgIR_a1_a2_fixed.cpp.o
+
+.PHONY : physics/fitHVQCDWithoutGlueballScalars_sc_VgIR_a1_a2_fixed.o
+
+# target to build an object file
+physics/fitHVQCDWithoutGlueballScalars_sc_VgIR_a1_a2_fixed.cpp.o:
+	$(MAKE) -f CMakeFiles/fitHVQCDWithoutGlueballScalars_sc_VgIR_a1_a2_fixed.exe.dir/build.make CMakeFiles/fitHVQCDWithoutGlueballScalars_sc_VgIR_a1_a2_fixed.exe.dir/physics/fitHVQCDWithoutGlueballScalars_sc_VgIR_a1_a2_fixed.cpp.o
+.PHONY : physics/fitHVQCDWithoutGlueballScalars_sc_VgIR_a1_a2_fixed.cpp.o
+
+physics/fitHVQCDWithoutGlueballScalars_sc_VgIR_a1_a2_fixed.i: physics/fitHVQCDWithoutGlueballScalars_sc_VgIR_a1_a2_fixed.cpp.i
+
+.PHONY : physics/fitHVQCDWithoutGlueballScalars_sc_VgIR_a1_a2_fixed.i
+
+# target to preprocess a source file
+physics/fitHVQCDWithoutGlueballScalars_sc_VgIR_a1_a2_fixed.cpp.i:
+	$(MAKE) -f CMakeFiles/fitHVQCDWithoutGlueballScalars_sc_VgIR_a1_a2_fixed.exe.dir/build.make CMakeFiles/fitHVQCDWithoutGlueballScalars_sc_VgIR_a1_a2_fixed.exe.dir/physics/fitHVQCDWithoutGlueballScalars_sc_VgIR_a1_a2_fixed.cpp.i
+.PHONY : physics/fitHVQCDWithoutGlueballScalars_sc_VgIR_a1_a2_fixed.cpp.i
+
+physics/fitHVQCDWithoutGlueballScalars_sc_VgIR_a1_a2_fixed.s: physics/fitHVQCDWithoutGlueballScalars_sc_VgIR_a1_a2_fixed.cpp.s
+
+.PHONY : physics/fitHVQCDWithoutGlueballScalars_sc_VgIR_a1_a2_fixed.s
+
+# target to generate assembly for a file
+physics/fitHVQCDWithoutGlueballScalars_sc_VgIR_a1_a2_fixed.cpp.s:
+	$(MAKE) -f CMakeFiles/fitHVQCDWithoutGlueballScalars_sc_VgIR_a1_a2_fixed.exe.dir/build.make CMakeFiles/fitHVQCDWithoutGlueballScalars_sc_VgIR_a1_a2_fixed.exe.dir/physics/fitHVQCDWithoutGlueballScalars_sc_VgIR_a1_a2_fixed.cpp.s
+.PHONY : physics/fitHVQCDWithoutGlueballScalars_sc_VgIR_a1_a2_fixed.cpp.s
+
 physics/fitHVQCDWithoutGlueballScalars_sc_VgIR_fixed.o: physics/fitHVQCDWithoutGlueballScalars_sc_VgIR_fixed.cpp.o
 
 .PHONY : physics/fitHVQCDWithoutGlueballScalars_sc_VgIR_fixed.o
@@ -665,6 +935,33 @@ physics/fitHVQCDWithoutGlueballScalars_sc_VgIR_fixed.s: physics/fitHVQCDWithoutG
 physics/fitHVQCDWithoutGlueballScalars_sc_VgIR_fixed.cpp.s:
 	$(MAKE) -f CMakeFiles/fitHVQCDWithoutGlueballScalars_sc_VgIR_fixed.exe.dir/build.make CMakeFiles/fitHVQCDWithoutGlueballScalars_sc_VgIR_fixed.exe.dir/physics/fitHVQCDWithoutGlueballScalars_sc_VgIR_fixed.cpp.s
 .PHONY : physics/fitHVQCDWithoutGlueballScalars_sc_VgIR_fixed.cpp.s
+
+physics/fitHVQCDWithoutGlueball_a1_a2_fixed.o: physics/fitHVQCDWithoutGlueball_a1_a2_fixed.cpp.o
+
+.PHONY : physics/fitHVQCDWithoutGlueball_a1_a2_fixed.o
+
+# target to build an object file
+physics/fitHVQCDWithoutGlueball_a1_a2_fixed.cpp.o:
+	$(MAKE) -f CMakeFiles/fitHVQCDWithoutGlueball_a1_a2_fixed.exe.dir/build.make CMakeFiles/fitHVQCDWithoutGlueball_a1_a2_fixed.exe.dir/physics/fitHVQCDWithoutGlueball_a1_a2_fixed.cpp.o
+.PHONY : physics/fitHVQCDWithoutGlueball_a1_a2_fixed.cpp.o
+
+physics/fitHVQCDWithoutGlueball_a1_a2_fixed.i: physics/fitHVQCDWithoutGlueball_a1_a2_fixed.cpp.i
+
+.PHONY : physics/fitHVQCDWithoutGlueball_a1_a2_fixed.i
+
+# target to preprocess a source file
+physics/fitHVQCDWithoutGlueball_a1_a2_fixed.cpp.i:
+	$(MAKE) -f CMakeFiles/fitHVQCDWithoutGlueball_a1_a2_fixed.exe.dir/build.make CMakeFiles/fitHVQCDWithoutGlueball_a1_a2_fixed.exe.dir/physics/fitHVQCDWithoutGlueball_a1_a2_fixed.cpp.i
+.PHONY : physics/fitHVQCDWithoutGlueball_a1_a2_fixed.cpp.i
+
+physics/fitHVQCDWithoutGlueball_a1_a2_fixed.s: physics/fitHVQCDWithoutGlueball_a1_a2_fixed.cpp.s
+
+.PHONY : physics/fitHVQCDWithoutGlueball_a1_a2_fixed.s
+
+# target to generate assembly for a file
+physics/fitHVQCDWithoutGlueball_a1_a2_fixed.cpp.s:
+	$(MAKE) -f CMakeFiles/fitHVQCDWithoutGlueball_a1_a2_fixed.exe.dir/build.make CMakeFiles/fitHVQCDWithoutGlueball_a1_a2_fixed.exe.dir/physics/fitHVQCDWithoutGlueball_a1_a2_fixed.cpp.s
+.PHONY : physics/fitHVQCDWithoutGlueball_a1_a2_fixed.cpp.s
 
 physics/fitHVQCDWithoutGlueball_sc_VgIR_fixed.o: physics/fitHVQCDWithoutGlueball_sc_VgIR_fixed.cpp.o
 
@@ -719,6 +1016,60 @@ physics/fitHVQCDWithoutScalars.s: physics/fitHVQCDWithoutScalars.cpp.s
 physics/fitHVQCDWithoutScalars.cpp.s:
 	$(MAKE) -f CMakeFiles/fitHVQCDWithoutScalars.exe.dir/build.make CMakeFiles/fitHVQCDWithoutScalars.exe.dir/physics/fitHVQCDWithoutScalars.cpp.s
 .PHONY : physics/fitHVQCDWithoutScalars.cpp.s
+
+physics/fitHVQCDWithoutScalars_a1_a2_fixed.o: physics/fitHVQCDWithoutScalars_a1_a2_fixed.cpp.o
+
+.PHONY : physics/fitHVQCDWithoutScalars_a1_a2_fixed.o
+
+# target to build an object file
+physics/fitHVQCDWithoutScalars_a1_a2_fixed.cpp.o:
+	$(MAKE) -f CMakeFiles/fitHVQCDWithoutScalars_a1_a2_fixed.exe.dir/build.make CMakeFiles/fitHVQCDWithoutScalars_a1_a2_fixed.exe.dir/physics/fitHVQCDWithoutScalars_a1_a2_fixed.cpp.o
+.PHONY : physics/fitHVQCDWithoutScalars_a1_a2_fixed.cpp.o
+
+physics/fitHVQCDWithoutScalars_a1_a2_fixed.i: physics/fitHVQCDWithoutScalars_a1_a2_fixed.cpp.i
+
+.PHONY : physics/fitHVQCDWithoutScalars_a1_a2_fixed.i
+
+# target to preprocess a source file
+physics/fitHVQCDWithoutScalars_a1_a2_fixed.cpp.i:
+	$(MAKE) -f CMakeFiles/fitHVQCDWithoutScalars_a1_a2_fixed.exe.dir/build.make CMakeFiles/fitHVQCDWithoutScalars_a1_a2_fixed.exe.dir/physics/fitHVQCDWithoutScalars_a1_a2_fixed.cpp.i
+.PHONY : physics/fitHVQCDWithoutScalars_a1_a2_fixed.cpp.i
+
+physics/fitHVQCDWithoutScalars_a1_a2_fixed.s: physics/fitHVQCDWithoutScalars_a1_a2_fixed.cpp.s
+
+.PHONY : physics/fitHVQCDWithoutScalars_a1_a2_fixed.s
+
+# target to generate assembly for a file
+physics/fitHVQCDWithoutScalars_a1_a2_fixed.cpp.s:
+	$(MAKE) -f CMakeFiles/fitHVQCDWithoutScalars_a1_a2_fixed.exe.dir/build.make CMakeFiles/fitHVQCDWithoutScalars_a1_a2_fixed.exe.dir/physics/fitHVQCDWithoutScalars_a1_a2_fixed.cpp.s
+.PHONY : physics/fitHVQCDWithoutScalars_a1_a2_fixed.cpp.s
+
+physics/fitHVQCDWithoutScalars_sc_VgIR_a1_a2_fixed.o: physics/fitHVQCDWithoutScalars_sc_VgIR_a1_a2_fixed.cpp.o
+
+.PHONY : physics/fitHVQCDWithoutScalars_sc_VgIR_a1_a2_fixed.o
+
+# target to build an object file
+physics/fitHVQCDWithoutScalars_sc_VgIR_a1_a2_fixed.cpp.o:
+	$(MAKE) -f CMakeFiles/fitHVQCDWithoutScalars_sc_VgIR_a1_a2_fixed.exe.dir/build.make CMakeFiles/fitHVQCDWithoutScalars_sc_VgIR_a1_a2_fixed.exe.dir/physics/fitHVQCDWithoutScalars_sc_VgIR_a1_a2_fixed.cpp.o
+.PHONY : physics/fitHVQCDWithoutScalars_sc_VgIR_a1_a2_fixed.cpp.o
+
+physics/fitHVQCDWithoutScalars_sc_VgIR_a1_a2_fixed.i: physics/fitHVQCDWithoutScalars_sc_VgIR_a1_a2_fixed.cpp.i
+
+.PHONY : physics/fitHVQCDWithoutScalars_sc_VgIR_a1_a2_fixed.i
+
+# target to preprocess a source file
+physics/fitHVQCDWithoutScalars_sc_VgIR_a1_a2_fixed.cpp.i:
+	$(MAKE) -f CMakeFiles/fitHVQCDWithoutScalars_sc_VgIR_a1_a2_fixed.exe.dir/build.make CMakeFiles/fitHVQCDWithoutScalars_sc_VgIR_a1_a2_fixed.exe.dir/physics/fitHVQCDWithoutScalars_sc_VgIR_a1_a2_fixed.cpp.i
+.PHONY : physics/fitHVQCDWithoutScalars_sc_VgIR_a1_a2_fixed.cpp.i
+
+physics/fitHVQCDWithoutScalars_sc_VgIR_a1_a2_fixed.s: physics/fitHVQCDWithoutScalars_sc_VgIR_a1_a2_fixed.cpp.s
+
+.PHONY : physics/fitHVQCDWithoutScalars_sc_VgIR_a1_a2_fixed.s
+
+# target to generate assembly for a file
+physics/fitHVQCDWithoutScalars_sc_VgIR_a1_a2_fixed.cpp.s:
+	$(MAKE) -f CMakeFiles/fitHVQCDWithoutScalars_sc_VgIR_a1_a2_fixed.exe.dir/build.make CMakeFiles/fitHVQCDWithoutScalars_sc_VgIR_a1_a2_fixed.exe.dir/physics/fitHVQCDWithoutScalars_sc_VgIR_a1_a2_fixed.cpp.s
+.PHONY : physics/fitHVQCDWithoutScalars_sc_VgIR_a1_a2_fixed.cpp.s
 
 physics/fitHVQCDWithoutScalars_sc_VgIR_fixed.o: physics/fitHVQCDWithoutScalars_sc_VgIR_fixed.cpp.o
 
@@ -833,213 +1184,381 @@ src/DeepInelasticScattering.o: src/DeepInelasticScattering.cpp.o
 .PHONY : src/DeepInelasticScattering.o
 
 # target to build an object file
+<<<<<<< HEAD
 src/DeepInelasticScattering.cpp.o:
 	$(MAKE) -f CMakeFiles/hvqcd_lib.dir/build.make CMakeFiles/hvqcd_lib.dir/src/DeepInelasticScattering.cpp.o
 .PHONY : src/DeepInelasticScattering.cpp.o
+=======
+src/HolographicVQCD.cpp.o:
+	$(MAKE) -f CMakeFiles/hvqcd_lib.dir/build.make CMakeFiles/hvqcd_lib.dir/src/HolographicVQCD.cpp.o
+.PHONY : src/HolographicVQCD.cpp.o
+>>>>>>> GeneralVf
 
 src/DeepInelasticScattering.i: src/DeepInelasticScattering.cpp.i
 
 .PHONY : src/DeepInelasticScattering.i
 
 # target to preprocess a source file
+<<<<<<< HEAD
 src/DeepInelasticScattering.cpp.i:
 	$(MAKE) -f CMakeFiles/hvqcd_lib.dir/build.make CMakeFiles/hvqcd_lib.dir/src/DeepInelasticScattering.cpp.i
 .PHONY : src/DeepInelasticScattering.cpp.i
+=======
+src/HolographicVQCD.cpp.i:
+	$(MAKE) -f CMakeFiles/hvqcd_lib.dir/build.make CMakeFiles/hvqcd_lib.dir/src/HolographicVQCD.cpp.i
+.PHONY : src/HolographicVQCD.cpp.i
+>>>>>>> GeneralVf
 
 src/DeepInelasticScattering.s: src/DeepInelasticScattering.cpp.s
 
 .PHONY : src/DeepInelasticScattering.s
 
 # target to generate assembly for a file
+<<<<<<< HEAD
 src/DeepInelasticScattering.cpp.s:
 	$(MAKE) -f CMakeFiles/hvqcd_lib.dir/build.make CMakeFiles/hvqcd_lib.dir/src/DeepInelasticScattering.cpp.s
 .PHONY : src/DeepInelasticScattering.cpp.s
+=======
+src/HolographicVQCD.cpp.s:
+	$(MAKE) -f CMakeFiles/hvqcd_lib.dir/build.make CMakeFiles/hvqcd_lib.dir/src/HolographicVQCD.cpp.s
+.PHONY : src/HolographicVQCD.cpp.s
+>>>>>>> GeneralVf
 
 src/F2.o: src/F2.cpp.o
 
 .PHONY : src/F2.o
 
 # target to build an object file
+<<<<<<< HEAD
 src/F2.cpp.o:
 	$(MAKE) -f CMakeFiles/hvqcd_lib.dir/build.make CMakeFiles/hvqcd_lib.dir/src/F2.cpp.o
 .PHONY : src/F2.cpp.o
+=======
+src/YangMills.cpp.o:
+	$(MAKE) -f CMakeFiles/hvqcd_lib.dir/build.make CMakeFiles/hvqcd_lib.dir/src/YangMills.cpp.o
+.PHONY : src/YangMills.cpp.o
+>>>>>>> GeneralVf
 
 src/F2.i: src/F2.cpp.i
 
 .PHONY : src/F2.i
 
 # target to preprocess a source file
+<<<<<<< HEAD
 src/F2.cpp.i:
 	$(MAKE) -f CMakeFiles/hvqcd_lib.dir/build.make CMakeFiles/hvqcd_lib.dir/src/F2.cpp.i
 .PHONY : src/F2.cpp.i
+=======
+src/YangMills.cpp.i:
+	$(MAKE) -f CMakeFiles/hvqcd_lib.dir/build.make CMakeFiles/hvqcd_lib.dir/src/YangMills.cpp.i
+.PHONY : src/YangMills.cpp.i
+>>>>>>> GeneralVf
 
 src/F2.s: src/F2.cpp.s
 
 .PHONY : src/F2.s
 
 # target to generate assembly for a file
+<<<<<<< HEAD
 src/F2.cpp.s:
 	$(MAKE) -f CMakeFiles/hvqcd_lib.dir/build.make CMakeFiles/hvqcd_lib.dir/src/F2.cpp.s
 .PHONY : src/F2.cpp.s
+=======
+src/YangMills.cpp.s:
+	$(MAKE) -f CMakeFiles/hvqcd_lib.dir/build.make CMakeFiles/hvqcd_lib.dir/src/YangMills.cpp.s
+.PHONY : src/YangMills.cpp.s
+>>>>>>> GeneralVf
 
 src/FL.o: src/FL.cpp.o
 
 .PHONY : src/FL.o
 
 # target to build an object file
+<<<<<<< HEAD
 src/FL.cpp.o:
 	$(MAKE) -f CMakeFiles/hvqcd_lib.dir/build.make CMakeFiles/hvqcd_lib.dir/src/FL.cpp.o
 .PHONY : src/FL.cpp.o
+=======
+src/background.cpp.o:
+	$(MAKE) -f CMakeFiles/hvqcd_lib.dir/build.make CMakeFiles/hvqcd_lib.dir/src/background.cpp.o
+.PHONY : src/background.cpp.o
+>>>>>>> GeneralVf
 
 src/FL.i: src/FL.cpp.i
 
 .PHONY : src/FL.i
 
 # target to preprocess a source file
+<<<<<<< HEAD
 src/FL.cpp.i:
 	$(MAKE) -f CMakeFiles/hvqcd_lib.dir/build.make CMakeFiles/hvqcd_lib.dir/src/FL.cpp.i
 .PHONY : src/FL.cpp.i
+=======
+src/background.cpp.i:
+	$(MAKE) -f CMakeFiles/hvqcd_lib.dir/build.make CMakeFiles/hvqcd_lib.dir/src/background.cpp.i
+.PHONY : src/background.cpp.i
+>>>>>>> GeneralVf
 
 src/FL.s: src/FL.cpp.s
 
 .PHONY : src/FL.s
 
 # target to generate assembly for a file
+<<<<<<< HEAD
 src/FL.cpp.s:
 	$(MAKE) -f CMakeFiles/hvqcd_lib.dir/build.make CMakeFiles/hvqcd_lib.dir/src/FL.cpp.s
 .PHONY : src/FL.cpp.s
+=======
+src/background.cpp.s:
+	$(MAKE) -f CMakeFiles/hvqcd_lib.dir/build.make CMakeFiles/hvqcd_lib.dir/src/background.cpp.s
+.PHONY : src/background.cpp.s
+>>>>>>> GeneralVf
 
 src/Fortran/colnew.o: src/Fortran/colnew.f.o
 
 .PHONY : src/Fortran/colnew.o
 
 # target to build an object file
+<<<<<<< HEAD
 src/Fortran/colnew.f.o:
 	$(MAKE) -f CMakeFiles/hvqcd_lib.dir/build.make CMakeFiles/hvqcd_lib.dir/src/Fortran/colnew.f.o
 .PHONY : src/Fortran/colnew.f.o
+=======
+src/schrodinger/chebspec.cpp.o:
+	$(MAKE) -f CMakeFiles/hvqcd_lib.dir/build.make CMakeFiles/hvqcd_lib.dir/src/schrodinger/chebspec.cpp.o
+.PHONY : src/schrodinger/chebspec.cpp.o
+>>>>>>> GeneralVf
 
 src/Fortran/colnew.i: src/Fortran/colnew.f.i
 
 .PHONY : src/Fortran/colnew.i
 
 # target to preprocess a source file
+<<<<<<< HEAD
 src/Fortran/colnew.f.i:
 	$(MAKE) -f CMakeFiles/hvqcd_lib.dir/build.make CMakeFiles/hvqcd_lib.dir/src/Fortran/colnew.f.i
 .PHONY : src/Fortran/colnew.f.i
+=======
+src/schrodinger/chebspec.cpp.i:
+	$(MAKE) -f CMakeFiles/hvqcd_lib.dir/build.make CMakeFiles/hvqcd_lib.dir/src/schrodinger/chebspec.cpp.i
+.PHONY : src/schrodinger/chebspec.cpp.i
+>>>>>>> GeneralVf
 
 src/Fortran/colnew.s: src/Fortran/colnew.f.s
 
 .PHONY : src/Fortran/colnew.s
 
 # target to generate assembly for a file
+<<<<<<< HEAD
 src/Fortran/colnew.f.s:
 	$(MAKE) -f CMakeFiles/hvqcd_lib.dir/build.make CMakeFiles/hvqcd_lib.dir/src/Fortran/colnew.f.s
 .PHONY : src/Fortran/colnew.f.s
+=======
+src/schrodinger/chebspec.cpp.s:
+	$(MAKE) -f CMakeFiles/hvqcd_lib.dir/build.make CMakeFiles/hvqcd_lib.dir/src/schrodinger/chebspec.cpp.s
+.PHONY : src/schrodinger/chebspec.cpp.s
+>>>>>>> GeneralVf
 
 src/Fortran/dgefa.o: src/Fortran/dgefa.f.o
 
 .PHONY : src/Fortran/dgefa.o
 
 # target to build an object file
+<<<<<<< HEAD
 src/Fortran/dgefa.f.o:
 	$(MAKE) -f CMakeFiles/hvqcd_lib.dir/build.make CMakeFiles/hvqcd_lib.dir/src/Fortran/dgefa.f.o
 .PHONY : src/Fortran/dgefa.f.o
+=======
+src/schrodinger/common.cpp.o:
+	$(MAKE) -f CMakeFiles/hvqcd_lib.dir/build.make CMakeFiles/hvqcd_lib.dir/src/schrodinger/common.cpp.o
+.PHONY : src/schrodinger/common.cpp.o
+>>>>>>> GeneralVf
 
 src/Fortran/dgefa.i: src/Fortran/dgefa.f.i
 
 .PHONY : src/Fortran/dgefa.i
 
 # target to preprocess a source file
+<<<<<<< HEAD
 src/Fortran/dgefa.f.i:
 	$(MAKE) -f CMakeFiles/hvqcd_lib.dir/build.make CMakeFiles/hvqcd_lib.dir/src/Fortran/dgefa.f.i
 .PHONY : src/Fortran/dgefa.f.i
+=======
+src/schrodinger/common.cpp.i:
+	$(MAKE) -f CMakeFiles/hvqcd_lib.dir/build.make CMakeFiles/hvqcd_lib.dir/src/schrodinger/common.cpp.i
+.PHONY : src/schrodinger/common.cpp.i
+>>>>>>> GeneralVf
 
 src/Fortran/dgefa.s: src/Fortran/dgefa.f.s
 
 .PHONY : src/Fortran/dgefa.s
 
 # target to generate assembly for a file
+<<<<<<< HEAD
 src/Fortran/dgefa.f.s:
 	$(MAKE) -f CMakeFiles/hvqcd_lib.dir/build.make CMakeFiles/hvqcd_lib.dir/src/Fortran/dgefa.f.s
 .PHONY : src/Fortran/dgefa.f.s
 
 src/Fortran/dgesl.o: src/Fortran/dgesl.f.o
+=======
+src/schrodinger/common.cpp.s:
+	$(MAKE) -f CMakeFiles/hvqcd_lib.dir/build.make CMakeFiles/hvqcd_lib.dir/src/schrodinger/common.cpp.s
+.PHONY : src/schrodinger/common.cpp.s
+
+src/schrodinger/matrixNumerov.o: src/schrodinger/matrixNumerov.cpp.o
+
+.PHONY : src/schrodinger/matrixNumerov.o
+
+# target to build an object file
+src/schrodinger/matrixNumerov.cpp.o:
+	$(MAKE) -f CMakeFiles/hvqcd_lib.dir/build.make CMakeFiles/hvqcd_lib.dir/src/schrodinger/matrixNumerov.cpp.o
+.PHONY : src/schrodinger/matrixNumerov.cpp.o
+
+src/schrodinger/matrixNumerov.i: src/schrodinger/matrixNumerov.cpp.i
+
+.PHONY : src/schrodinger/matrixNumerov.i
+
+# target to preprocess a source file
+src/schrodinger/matrixNumerov.cpp.i:
+	$(MAKE) -f CMakeFiles/hvqcd_lib.dir/build.make CMakeFiles/hvqcd_lib.dir/src/schrodinger/matrixNumerov.cpp.i
+.PHONY : src/schrodinger/matrixNumerov.cpp.i
+
+src/schrodinger/matrixNumerov.s: src/schrodinger/matrixNumerov.cpp.s
+
+.PHONY : src/schrodinger/matrixNumerov.s
+
+# target to generate assembly for a file
+src/schrodinger/matrixNumerov.cpp.s:
+	$(MAKE) -f CMakeFiles/hvqcd_lib.dir/build.make CMakeFiles/hvqcd_lib.dir/src/schrodinger/matrixNumerov.cpp.s
+.PHONY : src/schrodinger/matrixNumerov.cpp.s
+
+src/schrodinger/numerov.o: src/schrodinger/numerov.cpp.o
+>>>>>>> GeneralVf
 
 .PHONY : src/Fortran/dgesl.o
 
 # target to build an object file
+<<<<<<< HEAD
 src/Fortran/dgesl.f.o:
 	$(MAKE) -f CMakeFiles/hvqcd_lib.dir/build.make CMakeFiles/hvqcd_lib.dir/src/Fortran/dgesl.f.o
 .PHONY : src/Fortran/dgesl.f.o
+=======
+src/schrodinger/numerov.cpp.o:
+	$(MAKE) -f CMakeFiles/hvqcd_lib.dir/build.make CMakeFiles/hvqcd_lib.dir/src/schrodinger/numerov.cpp.o
+.PHONY : src/schrodinger/numerov.cpp.o
+>>>>>>> GeneralVf
 
 src/Fortran/dgesl.i: src/Fortran/dgesl.f.i
 
 .PHONY : src/Fortran/dgesl.i
 
 # target to preprocess a source file
+<<<<<<< HEAD
 src/Fortran/dgesl.f.i:
 	$(MAKE) -f CMakeFiles/hvqcd_lib.dir/build.make CMakeFiles/hvqcd_lib.dir/src/Fortran/dgesl.f.i
 .PHONY : src/Fortran/dgesl.f.i
+=======
+src/schrodinger/numerov.cpp.i:
+	$(MAKE) -f CMakeFiles/hvqcd_lib.dir/build.make CMakeFiles/hvqcd_lib.dir/src/schrodinger/numerov.cpp.i
+.PHONY : src/schrodinger/numerov.cpp.i
+>>>>>>> GeneralVf
 
 src/Fortran/dgesl.s: src/Fortran/dgesl.f.s
 
 .PHONY : src/Fortran/dgesl.s
 
 # target to generate assembly for a file
+<<<<<<< HEAD
 src/Fortran/dgesl.f.s:
 	$(MAKE) -f CMakeFiles/hvqcd_lib.dir/build.make CMakeFiles/hvqcd_lib.dir/src/Fortran/dgesl.f.s
 .PHONY : src/Fortran/dgesl.f.s
+=======
+src/schrodinger/numerov.cpp.s:
+	$(MAKE) -f CMakeFiles/hvqcd_lib.dir/build.make CMakeFiles/hvqcd_lib.dir/src/schrodinger/numerov.cpp.s
+.PHONY : src/schrodinger/numerov.cpp.s
+>>>>>>> GeneralVf
 
 src/GluonKernel.o: src/GluonKernel.cpp.o
 
 .PHONY : src/GluonKernel.o
 
 # target to build an object file
+<<<<<<< HEAD
 src/GluonKernel.cpp.o:
 	$(MAKE) -f CMakeFiles/hvqcd_lib.dir/build.make CMakeFiles/hvqcd_lib.dir/src/GluonKernel.cpp.o
 .PHONY : src/GluonKernel.cpp.o
+=======
+src/schrodinger/schrodinger.cpp.o:
+	$(MAKE) -f CMakeFiles/hvqcd_lib.dir/build.make CMakeFiles/hvqcd_lib.dir/src/schrodinger/schrodinger.cpp.o
+.PHONY : src/schrodinger/schrodinger.cpp.o
+>>>>>>> GeneralVf
 
 src/GluonKernel.i: src/GluonKernel.cpp.i
 
 .PHONY : src/GluonKernel.i
 
 # target to preprocess a source file
+<<<<<<< HEAD
 src/GluonKernel.cpp.i:
 	$(MAKE) -f CMakeFiles/hvqcd_lib.dir/build.make CMakeFiles/hvqcd_lib.dir/src/GluonKernel.cpp.i
 .PHONY : src/GluonKernel.cpp.i
+=======
+src/schrodinger/schrodinger.cpp.i:
+	$(MAKE) -f CMakeFiles/hvqcd_lib.dir/build.make CMakeFiles/hvqcd_lib.dir/src/schrodinger/schrodinger.cpp.i
+.PHONY : src/schrodinger/schrodinger.cpp.i
+>>>>>>> GeneralVf
 
 src/GluonKernel.s: src/GluonKernel.cpp.s
 
 .PHONY : src/GluonKernel.s
 
 # target to generate assembly for a file
+<<<<<<< HEAD
 src/GluonKernel.cpp.s:
 	$(MAKE) -f CMakeFiles/hvqcd_lib.dir/build.make CMakeFiles/hvqcd_lib.dir/src/GluonKernel.cpp.s
 .PHONY : src/GluonKernel.cpp.s
+=======
+src/schrodinger/schrodinger.cpp.s:
+	$(MAKE) -f CMakeFiles/hvqcd_lib.dir/build.make CMakeFiles/hvqcd_lib.dir/src/schrodinger/schrodinger.cpp.s
+.PHONY : src/schrodinger/schrodinger.cpp.s
+>>>>>>> GeneralVf
 
 src/HQCDP.o: src/HQCDP.cpp.o
 
 .PHONY : src/HQCDP.o
 
 # target to build an object file
+<<<<<<< HEAD
 src/HQCDP.cpp.o:
 	$(MAKE) -f CMakeFiles/hvqcd_lib.dir/build.make CMakeFiles/hvqcd_lib.dir/src/HQCDP.cpp.o
 .PHONY : src/HQCDP.cpp.o
+=======
+src/schrodinger/solvspec.cpp.o:
+	$(MAKE) -f CMakeFiles/hvqcd_lib.dir/build.make CMakeFiles/hvqcd_lib.dir/src/schrodinger/solvspec.cpp.o
+.PHONY : src/schrodinger/solvspec.cpp.o
+>>>>>>> GeneralVf
 
 src/HQCDP.i: src/HQCDP.cpp.i
 
 .PHONY : src/HQCDP.i
 
 # target to preprocess a source file
+<<<<<<< HEAD
 src/HQCDP.cpp.i:
 	$(MAKE) -f CMakeFiles/hvqcd_lib.dir/build.make CMakeFiles/hvqcd_lib.dir/src/HQCDP.cpp.i
 .PHONY : src/HQCDP.cpp.i
+=======
+src/schrodinger/solvspec.cpp.i:
+	$(MAKE) -f CMakeFiles/hvqcd_lib.dir/build.make CMakeFiles/hvqcd_lib.dir/src/schrodinger/solvspec.cpp.i
+.PHONY : src/schrodinger/solvspec.cpp.i
+>>>>>>> GeneralVf
 
 src/HQCDP.s: src/HQCDP.cpp.s
 
 .PHONY : src/HQCDP.s
 
 # target to generate assembly for a file
+<<<<<<< HEAD
 src/HQCDP.cpp.s:
 	$(MAKE) -f CMakeFiles/hvqcd_lib.dir/build.make CMakeFiles/hvqcd_lib.dir/src/HQCDP.cpp.s
 .PHONY : src/HQCDP.cpp.s
@@ -1072,6 +1591,13 @@ src/HolographicVQCD.cpp.s:
 .PHONY : src/HolographicVQCD.cpp.s
 
 src/Kernel.o: src/Kernel.cpp.o
+=======
+src/schrodinger/solvspec.cpp.s:
+	$(MAKE) -f CMakeFiles/hvqcd_lib.dir/build.make CMakeFiles/hvqcd_lib.dir/src/schrodinger/solvspec.cpp.s
+.PHONY : src/schrodinger/solvspec.cpp.s
+
+tests/test_HVQCD.o: tests/test_HVQCD.cpp.o
+>>>>>>> GeneralVf
 
 .PHONY : src/Kernel.o
 
@@ -1098,7 +1624,38 @@ src/Kernel.cpp.s:
 	$(MAKE) -f CMakeFiles/hvqcd_lib.dir/build.make CMakeFiles/hvqcd_lib.dir/src/Kernel.cpp.s
 .PHONY : src/Kernel.cpp.s
 
+<<<<<<< HEAD
 src/ProcessObservable.o: src/ProcessObservable.cpp.o
+=======
+tests/test_NelderMead.o: tests/test_NelderMead.cpp.o
+
+.PHONY : tests/test_NelderMead.o
+
+# target to build an object file
+tests/test_NelderMead.cpp.o:
+	$(MAKE) -f CMakeFiles/test_NelderMead.exe.dir/build.make CMakeFiles/test_NelderMead.exe.dir/tests/test_NelderMead.cpp.o
+.PHONY : tests/test_NelderMead.cpp.o
+
+tests/test_NelderMead.i: tests/test_NelderMead.cpp.i
+
+.PHONY : tests/test_NelderMead.i
+
+# target to preprocess a source file
+tests/test_NelderMead.cpp.i:
+	$(MAKE) -f CMakeFiles/test_NelderMead.exe.dir/build.make CMakeFiles/test_NelderMead.exe.dir/tests/test_NelderMead.cpp.i
+.PHONY : tests/test_NelderMead.cpp.i
+
+tests/test_NelderMead.s: tests/test_NelderMead.cpp.s
+
+.PHONY : tests/test_NelderMead.s
+
+# target to generate assembly for a file
+tests/test_NelderMead.cpp.s:
+	$(MAKE) -f CMakeFiles/test_NelderMead.exe.dir/build.make CMakeFiles/test_NelderMead.exe.dir/tests/test_NelderMead.cpp.s
+.PHONY : tests/test_NelderMead.cpp.s
+
+tests/test_schrodinger.o: tests/test_schrodinger.cpp.o
+>>>>>>> GeneralVf
 
 .PHONY : src/ProcessObservable.o
 
@@ -1995,6 +2552,7 @@ help:
 	@echo "... all (the default if no target is provided)"
 	@echo "... clean"
 	@echo "... depend"
+<<<<<<< HEAD
 	@echo "... edit_cache"
 	@echo "... fitDISHVQCD.exe"
 	@echo "... test_U1NNMode.exe"
@@ -2006,19 +2564,47 @@ help:
 	@echo "... savePotentials.exe"
 	@echo "... HVQCDRatios.exe"
 	@echo "... test_Kernel.exe"
+=======
+	@echo "... fitYangMills.exe"
+	@echo "... savePotentials.exe"
+	@echo "... HVQCDRatios.exe"
+>>>>>>> GeneralVf
 	@echo "... rebuild_cache"
 	@echo "... fitSingletAVM.exe"
+	@echo "... test_HVQCD.exe"
+	@echo "... fitHVQCDWithoutGlueball_a1_a2_fixed.exe"
+	@echo "... fitHVQCDWithoutScalars_sc_VgIR_a1_a2_fixed.exe"
 	@echo "... fitHVQCDWithoutGlueball.exe"
+<<<<<<< HEAD
 	@echo "... fitHVQCDGlobal_sc_VgIR_fixed.exe"
 	@echo "... fitHVQCDWithoutGlueballScalars_sc_VgIR_fixed.exe"
 	@echo "... findReggeTrajectories.exe"
+=======
+	@echo "... fitHVQCDWithoutGlueballScalars_a1_a2_fixed.exe"
+	@echo "... edit_cache"
+	@echo "... fitHVQCDWithoutGlueballScalars_sc_VgIR_a1_a2_fixed.exe"
+>>>>>>> GeneralVf
 	@echo "... fitHVQCDWithoutScalars_sc_VgIR_fixed.exe"
+	@echo "... fitHVQCDWithoutScalars_a1_a2_fixed.exe"
+	@echo "... fitHVQCDWithoutGlueballScalars_sc_VgIR_fixed.exe"
+	@echo "... fitHVQCDGlobal_sc_VgIR_fixed.exe"
+	@echo "... fitHVQCDWithoutGlueballScalars.exe"
+	@echo "... fitHVQCDGlobal_sc_VgIR_a1_a2_fixed.exe"
+	@echo "... fitHVQCDGlobal_a1_a2_fixed.exe"
+	@echo "... hvqcd_lib"
 	@echo "... fitHVQCDWithoutGlueball_sc_VgIR_fixed.exe"
+<<<<<<< HEAD
 	@echo "... HVQCDSpectrum.exe"
 	@echo "... fitHVQCDGlobal.exe"
 	@echo "... fitHVQCDWithoutScalars.exe"
 	@echo "... fitHVQCDWithoutGlueballScalars.exe"
 	@echo "... hvqcd_lib"
+=======
+	@echo "... test_NelderMead.exe"
+	@echo "... fitHVQCDGlobal.exe"
+	@echo "... fitHVQCDWithoutScalars.exe"
+	@echo "... test_schrodinger.exe"
+>>>>>>> GeneralVf
 	@echo "... physics/HVQCDRatios.o"
 	@echo "... physics/HVQCDRatios.i"
 	@echo "... physics/HVQCDRatios.s"
@@ -2037,6 +2623,12 @@ help:
 	@echo "... physics/fitHVQCDGlobal.o"
 	@echo "... physics/fitHVQCDGlobal.i"
 	@echo "... physics/fitHVQCDGlobal.s"
+	@echo "... physics/fitHVQCDGlobal_a1_a2_fixed.o"
+	@echo "... physics/fitHVQCDGlobal_a1_a2_fixed.i"
+	@echo "... physics/fitHVQCDGlobal_a1_a2_fixed.s"
+	@echo "... physics/fitHVQCDGlobal_sc_VgIR_a1_a2_fixed.o"
+	@echo "... physics/fitHVQCDGlobal_sc_VgIR_a1_a2_fixed.i"
+	@echo "... physics/fitHVQCDGlobal_sc_VgIR_a1_a2_fixed.s"
 	@echo "... physics/fitHVQCDGlobal_sc_VgIR_fixed.o"
 	@echo "... physics/fitHVQCDGlobal_sc_VgIR_fixed.i"
 	@echo "... physics/fitHVQCDGlobal_sc_VgIR_fixed.s"
@@ -2046,15 +2638,30 @@ help:
 	@echo "... physics/fitHVQCDWithoutGlueballScalars.o"
 	@echo "... physics/fitHVQCDWithoutGlueballScalars.i"
 	@echo "... physics/fitHVQCDWithoutGlueballScalars.s"
+	@echo "... physics/fitHVQCDWithoutGlueballScalars_a1_a2_fixed.o"
+	@echo "... physics/fitHVQCDWithoutGlueballScalars_a1_a2_fixed.i"
+	@echo "... physics/fitHVQCDWithoutGlueballScalars_a1_a2_fixed.s"
+	@echo "... physics/fitHVQCDWithoutGlueballScalars_sc_VgIR_a1_a2_fixed.o"
+	@echo "... physics/fitHVQCDWithoutGlueballScalars_sc_VgIR_a1_a2_fixed.i"
+	@echo "... physics/fitHVQCDWithoutGlueballScalars_sc_VgIR_a1_a2_fixed.s"
 	@echo "... physics/fitHVQCDWithoutGlueballScalars_sc_VgIR_fixed.o"
 	@echo "... physics/fitHVQCDWithoutGlueballScalars_sc_VgIR_fixed.i"
 	@echo "... physics/fitHVQCDWithoutGlueballScalars_sc_VgIR_fixed.s"
+	@echo "... physics/fitHVQCDWithoutGlueball_a1_a2_fixed.o"
+	@echo "... physics/fitHVQCDWithoutGlueball_a1_a2_fixed.i"
+	@echo "... physics/fitHVQCDWithoutGlueball_a1_a2_fixed.s"
 	@echo "... physics/fitHVQCDWithoutGlueball_sc_VgIR_fixed.o"
 	@echo "... physics/fitHVQCDWithoutGlueball_sc_VgIR_fixed.i"
 	@echo "... physics/fitHVQCDWithoutGlueball_sc_VgIR_fixed.s"
 	@echo "... physics/fitHVQCDWithoutScalars.o"
 	@echo "... physics/fitHVQCDWithoutScalars.i"
 	@echo "... physics/fitHVQCDWithoutScalars.s"
+	@echo "... physics/fitHVQCDWithoutScalars_a1_a2_fixed.o"
+	@echo "... physics/fitHVQCDWithoutScalars_a1_a2_fixed.i"
+	@echo "... physics/fitHVQCDWithoutScalars_a1_a2_fixed.s"
+	@echo "... physics/fitHVQCDWithoutScalars_sc_VgIR_a1_a2_fixed.o"
+	@echo "... physics/fitHVQCDWithoutScalars_sc_VgIR_a1_a2_fixed.i"
+	@echo "... physics/fitHVQCDWithoutScalars_sc_VgIR_a1_a2_fixed.s"
 	@echo "... physics/fitHVQCDWithoutScalars_sc_VgIR_fixed.o"
 	@echo "... physics/fitHVQCDWithoutScalars_sc_VgIR_fixed.i"
 	@echo "... physics/fitHVQCDWithoutScalars_sc_VgIR_fixed.s"
@@ -2172,6 +2779,9 @@ help:
 	@echo "... src/schrodinger/common.o"
 	@echo "... src/schrodinger/common.i"
 	@echo "... src/schrodinger/common.s"
+	@echo "... src/schrodinger/matrixNumerov.o"
+	@echo "... src/schrodinger/matrixNumerov.i"
+	@echo "... src/schrodinger/matrixNumerov.s"
 	@echo "... src/schrodinger/numerov.o"
 	@echo "... src/schrodinger/numerov.i"
 	@echo "... src/schrodinger/numerov.s"
@@ -2184,6 +2794,7 @@ help:
 	@echo "... tests/test_HVQCD.o"
 	@echo "... tests/test_HVQCD.i"
 	@echo "... tests/test_HVQCD.s"
+<<<<<<< HEAD
 	@echo "... tests/test_Kernel.o"
 	@echo "... tests/test_Kernel.i"
 	@echo "... tests/test_Kernel.s"
@@ -2193,6 +2804,11 @@ help:
 	@echo "... tests/test_U1NNMode.o"
 	@echo "... tests/test_U1NNMode.i"
 	@echo "... tests/test_U1NNMode.s"
+=======
+	@echo "... tests/test_NelderMead.o"
+	@echo "... tests/test_NelderMead.i"
+	@echo "... tests/test_NelderMead.s"
+>>>>>>> GeneralVf
 	@echo "... tests/test_schrodinger.o"
 	@echo "... tests/test_schrodinger.i"
 	@echo "... tests/test_schrodinger.s"

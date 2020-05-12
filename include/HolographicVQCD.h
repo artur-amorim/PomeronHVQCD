@@ -4,13 +4,13 @@
 #include <boost/numeric/ublas/matrix.hpp>
 #include "background.h"
 
+typedef boost::numeric::ublas::matrix<double> matrix_type;
+
 class HVQCD : public Background
 {
     private:
-        // Matrix type definition
-        typedef boost::numeric::ublas::matrix<double> matrix_type;
         // Parameters of the Vf and k potentials
-        double ksc, kU1, W0, WIR, kIR, W1, k1, xf, tau0;
+        double ksc, kU1, W0, WIR, kIR, W1, k1, a1, a2, xf, tau0;
         // Parameters of the w potential
         double wsc, wU1, w0, wIR, w1;
         // Parameters of the Z(lambda) function
@@ -41,6 +41,8 @@ class HVQCD : public Background
         double Vfl(const double l, const double tau) const;
         // Declaration of dVf/dlamda
         double dVfldlambda(const double l, const double tau) const;
+        // Declaration of the Vf = Vf0 (1 + tausc tau^2) exp(-tau^2) potential as a funtion of Phi
+        double Vf(const double phi, const double tau) const;
         // Declaration of the dVfdPhi = dVf0dPhi exp(-tau^2) potential
         double dVfdPhi(const double phi, const double tau) const;
         // Declaration of the dVfdtau = Vf0 (-2tau)exp(-tau^2) potential
@@ -87,8 +89,6 @@ class HVQCD : public Background
                           const double dtau, const double d2tau);
         // Declaration of d2Phi/dA2 in the coupled regime
         double d2PhiCoupled(const double q, const double phi, const double tau, const double dphi, const double dtau);
-        // Declaration of the constraint equation
-        double dPhiConstr(const double q, const double phi, const double tau, const double dtau);
         // Declaration of the jacobian function
         void jacobian(const state &X , matrix_type &jac , const double A, state &dfdt);
         // Declaration of the system of coupled EOMs
@@ -102,10 +102,10 @@ class HVQCD : public Background
         // Declaration of d2lambda/dA2 in the UV regime
         double d2lambdaUV(const double q, const double lambda , const double dq, const double dlambda);
         // Declaration of d2taun/dA2 in the UV regime
-        double d2taunUV(const double q, const double lambda, const double tau, const double dq, const double dlambda, const double dtau);
+        double d2taunUV(const double q, const double lambda, const double tau, const double dq, const double dlambda, const double dtau, const double A);
         // Declaration of d3taun/dA3 in the UV regime
         double d3taunUV(const double q, const double lambda, const double tau, const double dq, const double dlambda, const double dtau,
-                        const double d2q, const double d2lambda, const double d2tau);
+                        const double d2q, const double d2lambda, const double d2tau, const double A);
         // Declaration of the EOMs in the UV
         void eomUV(const state &X, state &dXdA, const double A);
         // Declaration of the observerUV function
@@ -115,11 +115,11 @@ class HVQCD : public Background
     public:
         // Class Constructor
         HVQCD(const double ssc = 3.0, const double kksc = 3.0, const double wwsc = 1.56,
-             const double WW0 = 2.5, const double ww0 = 1.26,
-             const double kkU1 = 11./9, const double wwU1 = 0.0,
-             const double VVgIR = 2.05, const double WWIR = 0.9, const double kkIR = 1.8, const double wwIR = 5.0,
-             const double WW1 = 0.0, const double kk1 = -0.23, const double ww1 = 0.0,
-             const double xxf = 2.0/3, const double ttau0 = 1.0,
+             const double WW0 = 2.5, const double ww0 = 1.26, const double kkU1 = 11./9,
+             const double wwU1 = 0.0, const double VVgIR = 2.05, const double WWIR = 0.9,
+             const double kkIR = 1.8, const double wwIR = 5.0, const double WW1 = 0.0,
+             const double kk1 = -0.23, const double ww1 = 0.0, const double aa1 = 0,
+             const double aa2 = 1.0, const double xxf = 1.0, const double ttau0 = 1.0, 
              const double za = 133, const double c = 0.26);
         // Class copy constructor
         HVQCD(const HVQCD &hvqcd);
@@ -131,7 +131,7 @@ class HVQCD : public Background
         double dVf0dPhi(const double phi) const;
         // Declaration of the d2Vf0dPhi2 potential
         double d2Vf0dPhi2(const double phi) const;
-        // Declaration of the Vtau potential;
+        // Declaration of the Vtau potential = (1+ tausc tau^2)e^(-tau^2);
         double Vtau(const double tau) const;
         // Declaration of the dVtau potential;
         double dVtau(const double tau) const;
@@ -161,6 +161,10 @@ class HVQCD : public Background
         double Z(const double l) const;
         // Declaration of the solve function.
         void solve();
+        // a1 getter
+        double get_a1() const;
+        // a2 getter
+        double get_a2() const;
         // xf getter
         double get_xf() const;
         // Setter of Za and ca
@@ -226,6 +230,9 @@ std::vector<double> computePseudoScalarMesonPotential(const HVQCD &hvqcd);
 std::vector<double> computeScalarMesonPotential(const HVQCD &hvqcd);
 // Declaration of the function that computes the potential of Flavour Singlet Axial Vector Mesons
 std::vector<double> computeAxialVectorMesonSingletPotential(const HVQCD &hvqcd, const std::vector<double> &VAxialVectorMeson);
+
+// Declaration of function that computes the Pseudodoscalar spectrum
+std::vector<double> computePseudoScalarMasses(const HVQCD &hvqcd, const int n_masses);
 
 // Save Schrodinger potentials in a given file
 void saveSchrodingerPotentials(const HVQCD &hvqcd, std::string path = "SchrodingerPotentials.txt");

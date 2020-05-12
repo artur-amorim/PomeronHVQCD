@@ -1,6 +1,7 @@
 #include <iostream>
 #include <vector>
 #include "YangMills.h"
+#include "schrodinger/chebspec.h"
 #include "schrodinger/schrodinger.h"
 
 using namespace std;

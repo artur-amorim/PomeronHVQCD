@@ -4,15 +4,6 @@
 #include <armadillo>
 #include "solvspec.h"
 
-struct EigenPair
-{
-    double eigen_value;
-    arma::vec eigen_vector;
-    EigenPair(const double eigval = 0, const arma::vec & eigvec = arma::vec());
-};
-
-bool compEigenPair(const EigenPair &lhs, const EigenPair &rhs);
-
 class ChebSpec : public SolvSpec{
     private:
         double a, b, scal;

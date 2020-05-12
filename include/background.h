@@ -4,11 +4,12 @@
 #include <vector>
 #include <boost/numeric/ublas/vector.hpp>
 
+ // state definition
+typedef boost::numeric::ublas::vector< double > state;
+
 class Background
 {
     protected:
-        // state definition
-        typedef boost::numeric::ublas::vector< double > state;
         double sc, VgIR;
         std::vector<double> qs, Phis, dqs, dPhis, d2Phis, As, zs;
         static const double lambda0;

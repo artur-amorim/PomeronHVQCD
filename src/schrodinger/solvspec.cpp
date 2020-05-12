@@ -60,3 +60,11 @@ void SolvSpec::savePotential()
 }
 
 SolvSpec::~SolvSpec(){}
+
+// Definition of the struct EigenPair
+EigenPair::EigenPair(const double eigval, const arma::vec & eigvec): eigen_value(eigval), eigen_vector(eigvec){}
+
+bool compEigenPair(const EigenPair &lhs, const EigenPair &rhs)
+{
+  return lhs.eigen_value < rhs.eigen_value;
+}
