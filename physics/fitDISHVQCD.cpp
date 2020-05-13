@@ -35,7 +35,6 @@ int main(int argc, char ** argv)
     double mq = hvqcd().QuarkMass();
     cout << "mq: " << mq << endl;
     F2 f2(false, "expdata/F2_data.txt");
-    FL fl(false, "expdata/FL_data.txt");
 
     // Setup Gluon Kernel and GNs vector
     vector<double> gluon_pars = {invls, a, b, c, d, e, f};
@@ -45,7 +44,6 @@ int main(int argc, char ** argv)
     // Setup HQCDP object
     HQCDP hqcdp(false ,0);
     hqcdp.addProcessObservable(f2);
-    hqcdp.addProcessObservable(fl);
     hqcdp.addKernel(gluon);
     hqcdp.setGNs(GNs);
     
