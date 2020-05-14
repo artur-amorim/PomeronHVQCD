@@ -137,6 +137,10 @@ target_link_libraries(test_HVQCD.exe armadillo hvqcd_lib)
 add_executable(test_Kernel.exe  tests/test_Kernel.cpp)
 target_link_libraries(test_Kernel.exe armadillo hvqcd_lib)
 
+# Add test_exp_factor
+add_executable(test_Wf.exe tests/test_Wf.cpp)
+target_link_libraries(test_Wf.exe armadillo blas hvqcd_lib)
+
 # Add test_EfficientNelderMead
 add_executable(test_NelderMead.exe  tests/test_NelderMead.cpp)
 

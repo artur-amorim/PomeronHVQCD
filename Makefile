@@ -449,6 +449,19 @@ fitHVQCDWithoutGlueball_sc_VgIR_fixed.exe/fast:
 .PHONY : fitHVQCDWithoutGlueball_sc_VgIR_fixed.exe/fast
 
 #=============================================================================
+# Target rules for targets named test_Wf.exe
+
+# Build rule for target.
+test_Wf.exe: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 test_Wf.exe
+.PHONY : test_Wf.exe
+
+# fast build rule for target.
+test_Wf.exe/fast:
+	$(MAKE) -f CMakeFiles/test_Wf.exe.dir/build.make CMakeFiles/test_Wf.exe.dir/build
+.PHONY : test_Wf.exe/fast
+
+#=============================================================================
 # Target rules for targets named fitHVQCDGlobal.exe
 
 # Build rule for target.
@@ -2269,6 +2282,33 @@ tests/test_U1NNMode.cpp.s:
 	$(MAKE) -f CMakeFiles/test_U1NNMode.exe.dir/build.make CMakeFiles/test_U1NNMode.exe.dir/tests/test_U1NNMode.cpp.s
 .PHONY : tests/test_U1NNMode.cpp.s
 
+tests/test_Wf.o: tests/test_Wf.cpp.o
+
+.PHONY : tests/test_Wf.o
+
+# target to build an object file
+tests/test_Wf.cpp.o:
+	$(MAKE) -f CMakeFiles/test_Wf.exe.dir/build.make CMakeFiles/test_Wf.exe.dir/tests/test_Wf.cpp.o
+.PHONY : tests/test_Wf.cpp.o
+
+tests/test_Wf.i: tests/test_Wf.cpp.i
+
+.PHONY : tests/test_Wf.i
+
+# target to preprocess a source file
+tests/test_Wf.cpp.i:
+	$(MAKE) -f CMakeFiles/test_Wf.exe.dir/build.make CMakeFiles/test_Wf.exe.dir/tests/test_Wf.cpp.i
+.PHONY : tests/test_Wf.cpp.i
+
+tests/test_Wf.s: tests/test_Wf.cpp.s
+
+.PHONY : tests/test_Wf.s
+
+# target to generate assembly for a file
+tests/test_Wf.cpp.s:
+	$(MAKE) -f CMakeFiles/test_Wf.exe.dir/build.make CMakeFiles/test_Wf.exe.dir/tests/test_Wf.cpp.s
+.PHONY : tests/test_Wf.cpp.s
+
 tests/test_schrodinger.o: tests/test_schrodinger.cpp.o
 
 .PHONY : tests/test_schrodinger.o
@@ -2330,6 +2370,7 @@ help:
 	@echo "... fitHVQCDGlobal_a1_a2_fixed.exe"
 	@echo "... hvqcd_lib"
 	@echo "... fitHVQCDWithoutGlueball_sc_VgIR_fixed.exe"
+	@echo "... test_Wf.exe"
 	@echo "... fitHVQCDGlobal.exe"
 	@echo "... fitHVQCDWithoutScalars.exe"
 	@echo "... test_schrodinger.exe"
@@ -2531,6 +2572,9 @@ help:
 	@echo "... tests/test_U1NNMode.o"
 	@echo "... tests/test_U1NNMode.i"
 	@echo "... tests/test_U1NNMode.s"
+	@echo "... tests/test_Wf.o"
+	@echo "... tests/test_Wf.i"
+	@echo "... tests/test_Wf.s"
 	@echo "... tests/test_schrodinger.o"
 	@echo "... tests/test_schrodinger.i"
 	@echo "... tests/test_schrodinger.s"
