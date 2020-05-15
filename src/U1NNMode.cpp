@@ -28,12 +28,12 @@ Poly_Interp<double> U1NNMode::t1 = {};
 void setupU1NNcomputation()
 {
     // Get z and reverse it
-    U1NNMode::z = hvqcd().z();
+    U1NNMode::z = hvqcdU1NNMode().z();
     std::reverse(std::begin(U1NNMode::z), std::end(U1NNMode::z));
     const int n = U1NNMode::z.size();
 
     // t0Y = G^2. Don't forget to reverse it
-    std::vector<double> G = hvqcd().G();
+    std::vector<double> G = hvqcdU1NNMode().G();
     std::vector<double> t0Y = G * G;
     std::reverse(std::begin(t0Y), std::end(t0Y));
     U1NNMode::t0 = Poly_Interp<double>(U1NNMode::z, t0Y, 4);
@@ -44,32 +44,32 @@ void setupU1NNcomputation()
         Remember to reverse each of them
     */
     // Compute dAdz
-    std::vector<double> dAdz = exp(hvqcd().A()) / hvqcd().q();
+    std::vector<double> dAdz = exp(hvqcdU1NNMode().A()) / hvqcdU1NNMode().q();
 
     // Compute dPhidz
-    std::vector<double> dPhidA = hvqcd().dPhi();
-    std::vector<double> dPhidz =  exp(hvqcd().A()) * dPhidA / hvqcd().q() ;
+    std::vector<double> dPhidA = hvqcdU1NNMode().dPhi();
+    std::vector<double> dPhidz =  exp(hvqcdU1NNMode().A()) * dPhidA / hvqcdU1NNMode().q() ;
 
     // Compute dtaudz
-    std::vector<double> dtaudA = hvqcd().dtaudA();
-    std::vector<double> dtaudz = exp(hvqcd().A()) * dtaudA / hvqcd().q();
+    std::vector<double> dtaudA = hvqcdU1NNMode().dtaudA();
+    std::vector<double> dtaudz = exp(hvqcdU1NNMode().A()) * dtaudA / hvqcdU1NNMode().q();
 
 
     std::vector<double> k(n), dkdPhi(n), dwdPhi(n), w(n);
     std::vector<double> dlogVfdPhi(n), dlogVfdtau(n);
-    std::vector<double> qs = hvqcd().q(), Phis = hvqcd().Phi(), taus = hvqcd().tau() ;
-    std::vector<double> dqs = hvqcd().dq(), d2taudA2 = hvqcd().d2taudA2();
-    double a1 = hvqcd().get_a1(), a2 = hvqcd().get_a2();
+    std::vector<double> qs = hvqcdU1NNMode().q(), Phis = hvqcdU1NNMode().Phi(), taus = hvqcdU1NNMode().tau() ;
+    std::vector<double> dqs = hvqcdU1NNMode().dq(), d2taudA2 = hvqcdU1NNMode().d2taudA2();
+    double a1 = hvqcdU1NNMode().get_a1(), a2 = hvqcdU1NNMode().get_a2();
     for(int i = 0; i < n; i++)
     {
-        k[i] = hvqcd().k(Phis[i]); dkdPhi[i] = hvqcd().dkdPhi(Phis[i]);
-        w[i] = hvqcd().w(Phis[i]); dwdPhi[i] = hvqcd().dwdPhi(Phis[i]);
-        dlogVfdPhi[i] =  hvqcd().dVf0dPhi(Phis[i]) / hvqcd().Vf0(Phis[i]);
+        k[i] = hvqcdU1NNMode().k(Phis[i]); dkdPhi[i] = hvqcdU1NNMode().dkdPhi(Phis[i]);
+        w[i] = hvqcdU1NNMode().w(Phis[i]); dwdPhi[i] = hvqcdU1NNMode().dwdPhi(Phis[i]);
+        dlogVfdPhi[i] =  hvqcdU1NNMode().dVf0dPhi(Phis[i]) / hvqcdU1NNMode().Vf0(Phis[i]);
         dlogVfdtau[i] =  -2*taus[i]*(-a1 + a2 + a1*a2*taus[i]*taus[i])/(1+a1*taus[i]*taus[i]);
     }
     // Compute dlogGdz
     std::vector<double> dlogGdz = - 1. * k * dqs * dtaudA * dtaudA / qs + 0.5 * dkdPhi * dtaudA * dtaudA * dPhidA + k * dtaudA * d2taudA2 ;
-    dlogGdz = dlogGdz * exp(hvqcd().A()) / (G * G * qs * qs * qs);
+    dlogGdz = dlogGdz * exp(hvqcdU1NNMode().A()) / (G * G * qs * qs * qs);
 
     // Compute t1Y
     std::vector<double> t1Y = -1.0 *  (dAdz - dlogGdz + 2.0 * dwdPhi * dPhidz / w + dtaudz * dlogVfdtau + dPhidz * dlogVfdPhi);

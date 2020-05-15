@@ -11,6 +11,6 @@ int main(int argc, char ** argv)
     U1NNMode mode(Q2);
     mode.computeMode();
     cout << "Mode computed" << endl;
-    mode.saveMode("U1NNMode_Q2_"+to_string(Q2)+".txt");
+    mode.saveMode("plots/U1NNMode/U1NNMode_Q2_"+to_string(Q2)+".txt");
     return 0;
 }
