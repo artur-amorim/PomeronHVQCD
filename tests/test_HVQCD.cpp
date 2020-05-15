@@ -33,7 +33,7 @@ int main(int argc, char ** argv)
     // Create HVQCD object with default values
     HVQCD hvqcd(sc, ksc, wsc, W0, w0, kU1, wU1, VgIR, WIR, kIR, wIR, W1, k1, w1, a1, a2, xf, tau0, za, ca);
     // Solve the background
-    hvqcd.solve();
+    hvqcd.solve(-10, 9);
     
     double mq = hvqcd.QuarkMass();
     double tmass2 = hvqcd.TachyonMassSquareIR();

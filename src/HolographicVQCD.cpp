@@ -724,15 +724,13 @@ void HVQCD::observerUV(const state &X , double A)
     AUVs.push_back(A);
 }
 
-void HVQCD::finalizeBackground()
+void HVQCD::finalizeBackground(const double AIR, const double AUV)
 {
     // Selects the relevant values to compute the potentials later
     std::vector<double> A, z, u, q, Phi, tau, dq, dPhi, dtau, d2q, d2Phi, d2tau, d3tau;
     for(int i = 0; i < As.size(); i++)
     {
-        // For the spectrum we are only interested in -10 < A < 10
-        //if ((zs[i]-zs.back()> 1e-6) && (Phis[i] < 120))
-        if ((As[i] > -80) && (As[i] < 20))
+        if ((As[i] > AIR) && (As[i] < AUV))
         {
             A.push_back(As[i]); z.push_back(zs[i]-zs.back()); u.push_back(us[i]-us.back());
             q.push_back(qs[i]); Phi.push_back(Phis[i]); tau.push_back(taus[i]);
@@ -781,7 +779,7 @@ void HVQCD::finalizeBackground()
     solved = true;
 }
 
-void HVQCD::solve()
+void HVQCD::solveRaw(const double AIR, const double AUV)
 {
    // Solves the Holographic QCD model
    // Clear the vector containers
@@ -890,7 +888,7 @@ void HVQCD::solve()
        d2Phis.insert(d2Phis.end(), d2PhiYM2.begin(), d2PhiYM2.end());
        d2taus.insert(d2taus.end(), d2tauYM2.begin(), d2tauYM2.end());
        d3taus.insert(d3taus.end(), d3tauYM2.begin(), d3tauYM2.end());
-       finalizeBackground();
+       finalizeBackground(AIR, AUV);
        return;
    }
    // Append the values and find iYM2 that will allow us
@@ -924,7 +922,7 @@ void HVQCD::solve()
    double AUV3 = As.back();
    if( AUV3 < AUVc - 0.1 )
    {
-       finalizeBackground();
+       finalizeBackground(AIR, AUV);
        return ;
    }
    // Solving the UV EOMs
@@ -937,7 +935,7 @@ void HVQCD::solve()
    integrate_adaptive(stepper_AUVC_AUVF, uveom, XUV, AUV3, AUVf, h, obsUV);
    if( As.back() < AUVf - 0.1)
    {
-       finalizeBackground();
+       finalizeBackground(AIR, AUV);
        return ;
    }
    // Now we compute mq
@@ -946,7 +944,7 @@ void HVQCD::solve()
    double lUV = 1;
    mq = lambdaUV.interp(AUVf-10) * taunUV.interp(AUVf)*exp(-log(lUV) - tcorr(lambdaUV.interp(AUVf))) - lambdaUV.interp(AUVf) * taunUV.interp(AUVf - 10)*exp(-log(lUV) - tcorr(lambdaUV.interp(AUVf - 10)));
    mq = mq / (lambdaUV.interp(AUVf-10) - lambdaUV.interp(AUVf)) ;
-   finalizeBackground();
+   finalizeBackground(AIR,AUV);
    return ;
 }
 
@@ -1026,7 +1024,7 @@ void HVQCD::saveBackgroundFields(std::string path)
     myfile.open(path);
     myfile << "A" << '\t' << "q" << '\t' << "Phi" << '\t' << "tau" << '\t' << "dq/dA" << '\t' << "dPhi/dA" << '\t' << "dtau/dA" << '\t';
     myfile << "d2q/dA2" << '\t' << "d2Phi/dA2" << '\t' << "d2tau/dA2" << '\t' << "d3tau/dA3" << std::endl;
-    if(As.size() == 0) solve();
+    if(As.size() == 0) solve(-80, 20);
     for(int i = 0; i < As.size(); i++)
     {
         myfile << As[i] << '\t' << qs[i] << '\t' << Phis[i] << '\t' << taus[i] << '\t' << dqs[i] << '\t' << dPhis[i] << '\t' << dtaus[i] << '\t';
@@ -1046,7 +1044,7 @@ void HVQCD::savePotentials(std::string path)
     myfile.open(path);
     myfile << "A\tVg\tVf\tk\tw" << std::endl;
     // If the background has not been solved, solve it first
-    if(As.size() == 0) solve();
+    if(As.size() == 0) solve(-80, 20);
     // Write the data into the file
     for(int i = 0; i < As.size(); i++)
     {
@@ -1493,7 +1491,21 @@ HVQCD& hvqcd()
     if(bck.isSolved()) return bck;
     else
     {
-        bck.solve();
+        bck.solve(-10, 9);
+        return bck;
+    }
+}
+
+HVQCD& hvqcdU1NNMode()
+{
+    static HVQCD bck(3.25546, 4.12754, 1.31668, 2.868, 1.8009,
+                    0.533949, -0.766744, 1.54926, 0.502304, 2.8191,
+                    7.74607, 0.986571, -1.36173, 0.815957, 0, 1, 2.0/3,
+                    0.457303, -0.513725, 4.58782e-9);
+    if(bck.isSolved()) return bck;
+    else
+    {
+        bck.solve(-80, 9);
         return bck;
     }
 }

@@ -15,7 +15,8 @@ class YangMills: public Background
         // defines how to save the computed background fields for Yang-Mills
         void observer(const state &X, const double A);
         // prepare background for further computations
-        void finalizeBackground();
+        void finalizeBackground(const double AIR, const double AUV);
+        void solveRaw(const double AIR, const double AUV);
     public:
         // YangMills constructor
         YangMills(const double ssc = 3.0, const double VVgIR = 2.05);
@@ -25,8 +26,6 @@ class YangMills: public Background
         YangMills& operator=(const YangMills &rhs); 
         // YangMills destructor
         ~YangMills();
-        // Solves Yang Mills equations of motion
-        void solve();
         // Get d3Phi values
         std::vector<double> d3Phi() const;
 };

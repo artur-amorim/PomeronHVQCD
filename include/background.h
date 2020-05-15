@@ -42,7 +42,9 @@ class Background
         virtual void eom(const state &X, state &dXdA, const double A);
         // operator() relevant for the observer
         virtual void observer(const state &X, const double A );
-        virtual void finalizeBackground();
+        virtual void solveRaw(const double AIR, const double AUV);
+    protected:
+        virtual void finalizeBackground(const double AIR, const double AUV);
     public:
         // Class constructor
         Background(const double ssc = 3.0, const double VVgIR = 2.05);
@@ -51,7 +53,7 @@ class Background
         // Class assignment opertor
         Background& operator=(const Background &rhs);
         virtual ~Background();
-        virtual void solve();
+        void solve(const double AIR = -150, const double AUV = 50);
         // Getters of sc, VgIR, qs, Phis, dqs, dPhis, d2Phis, As and zs
         double get_sc() const;
         double get_VgIR() const;

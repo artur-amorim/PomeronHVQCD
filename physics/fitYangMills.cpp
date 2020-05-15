@@ -19,7 +19,7 @@ int main(int argc, char ** argv)
 
     // Solve Yang-Mills for sc = 3, VgIR = 2.05
     YangMills ym(sc_guess, VgIR_guess);
-    ym.solve();
+    ym.solve(-80, 20);
 
     // Compute the initial mass ratios
     computeYangMillsRatios(ym);

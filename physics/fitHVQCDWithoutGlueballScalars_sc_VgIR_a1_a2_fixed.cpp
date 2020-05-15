@@ -25,7 +25,7 @@ double J(const vector<double> X)
     // Solve the background
     try
     {
-        hvqcd.solve();
+        hvqcd.solve(-80, 20);
     }
     catch(...)
     {
@@ -138,7 +138,7 @@ int main(int argc, char ** argv)
     double a1 = 0, a2 = 1;
 
     HVQCD hvqcd(sc, ksc, wsc, W0, w0, kU1, wU1, VgIR, WIR, kIR, wIR, W1, k1, w1, a1, a2, xf, tau0, Za, ca);
-    hvqcd.solve();
+    hvqcd.solve(-80, 20);
 
     // Computing the mass ratios
     computeHVQCDRatios(hvqcd);

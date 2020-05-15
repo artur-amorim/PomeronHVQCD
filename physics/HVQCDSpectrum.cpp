@@ -35,7 +35,7 @@ int main(int argc, char ** argv)
     chebSetN(800);
 
     HVQCD hvqcd(sc, ksc, wsc, W0, w0, kU1, wU1, VgIR, WIR, kIR, wIR, W1, k1, w1, xf, tau0, Za, ca);
-    hvqcd.solve();
+    hvqcd.solve(-80, 20);
 
     // Computing the mass ratios
     computeHVQCDSpectrum(hvqcd);

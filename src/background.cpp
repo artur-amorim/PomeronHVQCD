@@ -154,14 +154,19 @@ void Background::observer(const state &X, const double A)
     std::cout << "observer member function of Background class." << std::endl;
 }
 
-void Background::finalizeBackground()
+void Background::finalizeBackground(const double AIR, const double AUV)
 {
-    std::cout << "finalizeBackground member function of Background class." << std::endl;
+    std::cout << "Background::finalizeBackground. Doing nothing" << std::endl;
 }
 
-void Background::solve()
+void Background::solveRaw(const double AIR, const double AUV)
 {
-    std::cout << "solve member function of Background class called. Doing nothing." << std::endl; 
+    std::cout << "Calling Background::solveRaw. Doing nothing." << std::endl; 
+}
+
+void Background::solve(const double AIR, const double AUV)
+{
+    solveRaw(AIR, AUV);
 }
 
 double Background::get_sc() const {return this->sc;}

@@ -109,7 +109,8 @@ class HVQCD : public Background
         // Declaration of the observerUV function
         void observerUV(const state &X , const double A);
         // Function that processes the final background
-        void finalizeBackground();
+        void finalizeBackground(const double AIR, const double AUV);
+        void solveRaw(const double AIR, const double AUV);
     public:
         // Class Constructor
         HVQCD(const double ssc = 3.0, const double kksc = 3.0, const double wwsc = 1.56,
@@ -157,8 +158,6 @@ class HVQCD : public Background
                    const double d3tau) const;
         // Declaration of Z(lambda)
         double Z(const double l) const;
-        // Declaration of the solve function.
-        void solve();
         // a1 getter
         double get_a1() const;
         // a2 getter
@@ -259,5 +258,7 @@ const std::vector<double> Romega_rho = {1.01, 1.83, 2.15};
 const std::vector<double> Rf1_rho = {1.65, 1.84};
 
 HVQCD& hvqcd();
+
+HVQCD& hvqcdU1NNMode();
 
 #endif

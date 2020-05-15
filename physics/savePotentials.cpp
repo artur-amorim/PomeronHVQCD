@@ -33,7 +33,7 @@ int main(int argc, char ** argv)
     cout << " k1: " << k1 << " w1: " << w1 << " tau0: " << tau0 << " Za: " << Za << " ca: " << ca << endl;
 
     HVQCD hvqcd(sc, ksc, wsc, W0, w0, kU1, wU1, VgIR, WIR, kIR, wIR, W1, k1, w1, xf, tau0, Za, ca);
-    hvqcd.solve();
+    hvqcd.solve(-80, 20);
 
     // Save background fields
     hvqcd.saveBackgroundFields("BackgroundFields_" + table + ".txt");

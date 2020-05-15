@@ -64,14 +64,14 @@ void YangMills::observer(const state &X, const double A)
     zs.push_back(X[2]);
 }
 
-void YangMills::finalizeBackground()
+void YangMills::finalizeBackground(const double AIR, const double AUV)
 {
     // Selects the relevant values to compute the potentials later
     std::vector<double> A, z, q, Phi, dq, dPhi, d2Phi, d3Phi;
     for(int i = 0; i < As.size(); i++)
     {
         // For the spectrum we are only interested in -50 < A < 20
-        if ((zs[i]-zs.back()> 1e-6) && (Phis[i] < 120))
+        if ((As[i]> AIR) && (As[i] < AUV))
         {
             A.push_back(As[i]); z.push_back(zs[i]-zs.back());
             q.push_back(qs[i]); Phi.push_back(Phis[i]);
@@ -85,7 +85,7 @@ void YangMills::finalizeBackground()
 
 
 // Solve Yang-Mills equations of motion
-void YangMills::solve()
+void YangMills::solveRaw(const double AIR, const double AUV)
 {
     // Setting up IR boundary conditions
    double Air = -150, AUVYM = 50, h = 0.01;
@@ -100,7 +100,7 @@ void YangMills::solve()
    typedef boost::numeric::odeint::result_of::make_dense_output<boost::numeric::odeint::runge_kutta_dopri5<state> >::type dense_stepper;
    dense_stepper stepper = make_dense_output(1.0e-12, 1.0e-12, boost::numeric::odeint::runge_kutta_dopri5< state >());
    integrate_const(stepper, eomfun, X, Air, AUVYM, h, obsfun);
-   finalizeBackground();
+   finalizeBackground(AIR, AUV);
 }
 
 std::vector<double> YangMills::d3Phi() const {return this->d3Phis ;}
@@ -174,7 +174,7 @@ void fitYangMills(const double sc_guess, const double VgIR_guess)
         // Create Yang-Mills object
         YangMills ym(sc, VgIR);
         // Solve Yang-Mills theory
-        ym.solve();
+        ym.solve(-80, 20);
 
         // Find the glueball spectrum
         std::vector<double> zs = ym.z();
@@ -207,6 +207,6 @@ void fitYangMills(const double sc_guess, const double VgIR_guess)
 
     // Create Yang-Mills object and display the ratios
     YangMills ym(X_optimum[0], X_optimum[1]);
-    ym.solve();
+    ym.solve(-80, 20);
     computeYangMillsRatios(ym);
 }
