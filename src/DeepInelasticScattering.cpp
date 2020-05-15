@@ -177,10 +177,11 @@ double DeepInelasticScattering::IzNBar(std::vector<double> kin, const Reggeon &r
         it returns the right gn from the list gs and multiplies
         it by x^(1-J)
     */
+   const double alpha0 = 0.0072973525693;
    const double x = kin[0];
    const double J = reg.getJ();
    const int reg_index = reg.getIndex();
-   double iznbar = std::pow(x, 1-J) * gs[reg_index-1];
+   double iznbar = std::pow(x, 1-J) * gs[reg_index-1] / (4*M_PI*M_PI*alpha0);
    return iznbar;
 }
 

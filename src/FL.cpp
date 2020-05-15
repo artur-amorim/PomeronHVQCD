@@ -47,7 +47,6 @@ double FL::IzN(const std::vector<double> &kin, const Reggeon &reg)
     double a = z[0], b = z.back();
     // Absolute and relative tolerances desidered
     double epsabs = 1e-9, epsrel = 1e-9;
-    if (Q2 < 2) epsabs = 1e-7;
     // Output variables 
     int neval = 0, ier;
     // Setup the workspace for the method
