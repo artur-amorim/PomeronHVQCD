@@ -18,7 +18,7 @@ int main()
     std::reverse(std::begin(zvals), std::end(zvals));
     
     // Setup gluon kernel and compute the Reggeons for t = 0
-    std::vector<double> gluon_pars = {0.232303, 7.33966, 0.696812, 1.15569, 0.569428, 0.940377, -0.27283};
+    std::vector<double> gluon_pars = {0.254119, 13.9538, 0.921665, 2.03904, -2.7305, -0.473787, -0.517072};
     GluonKernel gluon(4, gluon_pars);
 
     gluon.computeReggeTrajectories();

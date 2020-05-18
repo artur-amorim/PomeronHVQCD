@@ -19,7 +19,8 @@ int main(int argc, char ** argv)
     double g1, g2, g3, g4;
     if (argc < 12)
     {
-        invls = 0; a = 0; b = 0; c = 0; d = 0; e = 0; f = 0;
+        invls = 0.254119; a = 13.9538; b = 0.921665; c = 2.03904; d = -2.7305; e = -0.473787;
+        f = -0.517072;
         g1 = 0; g2 = 0; g3 = 0; g4 = 0;  
     }
     else
