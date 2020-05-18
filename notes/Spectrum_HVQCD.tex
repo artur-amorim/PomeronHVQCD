@@ -900,7 +900,7 @@ In order to get the total amplitude we need to sum over even spin J fields with 
 \end{align}
 which requires analytic continuation of the amplitude for the spin J exchange to the complex J-plane. We assume that the J-plane integral can be deformed from the poles at even J, to the poles $J = j_n \left(t\right)$ defined by $t_n \left(J\right) = t$. The scattering domain of negative t contains these poles along the real axis for J < 2. The scattering amplitude for $t = 0$ is then
 \begin{align}
-&\mathcal{A} \left(s, 0 \right) = \sum_n g_n s^{j_n\left(0\right)} \int dz e^{A(\frac{3}{2} - {j_n\left(0\right)})} e^{-\frac{7}{3} \Phi}  V_f \left( \lambda, \tau \right) {w_s\left(\lambda \right)}^2  \left(  {f_Q}^2 + \frac{{\partial_z f_Q}^2}{Q^2 G^2}  \right) \psi_n \left(j_n, z\right), \\
+&\mathcal{A} \left(s, 0 \right) = \sum_n g_n s^{j_n\left(0\right)} \int dz e^{A(\frac{3}{2} - {j_n\left(0\right)})} G e^{-\frac{7}{3} \Phi}  V_f \left( \lambda, \tau \right) {w_s\left(\lambda \right)}^2  \left(  {f_Q}^2 + \frac{{\partial_z f_Q}^2}{Q^2 G^2}  \right) \psi_n \left(j_n, z\right), \\
 & g_n = - \frac{\pi}{2} \frac{k_{j_n\left(0\right)} \bar{k}_{j_n\left(0\right)}}{2^{j_n\left(0\right)}}  \left(i + \cot \frac{\pi j_n\left(0\right)}{2} \right) \frac{d j_n}{dt} \int d\bar{z} e^{\bar{A}\left( \frac{7}{2} - j_n \right)}  {\bar{\upsilon}}^2  \psi\left(j_n, \bar{z}\right) \notag
 \end{align}
 
@@ -911,17 +911,44 @@ $F_2$ is related with the transverse and longitudinal cross-sections through the
 \end{equation}
 Using the final result of the previous section and the optical theorem we can write the holographic expression for $F_2$ and $F_L$
 \begin{align}
- &F_2\left(x, Q^2\right) = \sum_n \frac{g_n}{4 \pi^2 \alpha} Q^{2 j_n} x^{1-jn} \int dz e^{A(\frac{3}{2} - {j_n\left(0\right)})} e^{-\frac{7}{3} \Phi}  V_f \left( \lambda, \tau \right) {w_s\left(\lambda \right)}^2  \left(  {f_Q}^2 + \frac{{\partial_z f_Q}^2}{Q^2 G^2}  \right) \psi_n \left(j_n, z\right), \\
-& F_L\left(x, Q^2\right) = \sum_n \frac{g_n}{4 \pi^2 \alpha} Q^{2 j_n} x^{1-jn} \int dz e^{A(\frac{3}{2} - {j_n\left(0\right)})} e^{-\frac{7}{3} \Phi}  V_f \left( \lambda, \tau \right) {w_s\left(\lambda \right)}^2  \frac{{\partial_z f_Q}^2}{Q^2 G^2} \psi_n \left(j_n, z\right)
+ &F_2\left(x, Q^2\right) = \sum_n \frac{g_n}{4 \pi^2 \alpha} Q^{2 j_n} x^{1-jn} \int dz e^{A(\frac{3}{2} - {j_n\left(0\right)})} G e^{-\frac{7}{3} \Phi}  V_f \left( \lambda, \tau \right) {w_s\left(\lambda \right)}^2  \left(  {f_Q}^2 + \frac{{\partial_z f_Q}^2}{Q^2 G^2}  \right) \psi_n \left(j_n, z\right), \\
+& F_L\left(x, Q^2\right) = \sum_n \frac{g_n}{4 \pi^2 \alpha} Q^{2 j_n} x^{1-jn} \int dz e^{A(\frac{3}{2} - {j_n\left(0\right)})} G e^{-\frac{7}{3} \Phi}  V_f \left( \lambda, \tau \right) {w_s\left(\lambda \right)}^2  \frac{{\partial_z f_Q}^2}{Q^2 G^2} \psi_n \left(j_n, z\right)
 \end{align}
 
+It turns out that a more convenient variable
 
+\section{Vector Meson Trajectory}
 
+In this section we will discuss how to include in our framework the exchange of the vector meson trajectory to compute holographically $F_2$ and $F_L$. Before starting the holographic computation let's review what Donnachie and Landshoff have done. More details in~\cite{donnachie_dosch_landshoff_nachtmann_2002}.
 
+A fit to small-$x$ data is possible with the following ansatz
+\begin{equation}
+F_2 \left(x, Q^2\right) = \sum_{i = 0, 1, 2} f_i\left(Q^2\right) x^{- \epsilon_i},
+\end{equation}
+ where the $i=0$ corresponds to hard-pomeron exchange, $i=1$ corresponds to soft-pomeron exchange and $i = 2$ comes from $(f_2, a_2)$ exchange. Only the quantum numbers with $PC=++$ are exchanged.
+ The precise definition of the coefficient functions $f_i\left(Q^2\right)$ will not be relevant to our discussion so we will omit them. The above equation can be also generalized to larger values of $x$ but we need to modify the ansatz in order to impose that $F_2\left(x, Q^2\right)$ vanishes as $x \rightarrow 1$ for all values of $Q^2$. Dimensional counting rules suggest the generalization
+\begin{equation}
+F_2\left(x, Q^2\right) = f_0 \left(Q^2\right) x^{-\epsilon_0} {\left(1-x\right)}^7 +  f_1 \left(Q^2\right) x^{-\epsilon_1} {\left(1-x\right)}^7 +  f_2 \left(Q^2\right) x^{-\epsilon_2} {\left(1-x^2\right)}^3.
+\end{equation} 
 
+The hard and soft pomeron are incorporated in our model when we consider the exchange of the graviton's Regge trajectory in the bulk as we have seen in previous papers. The quantum numbers~$I^G\left(J^{PC}\right)$ of $a_2$ and $f_2$ are respectively $1^{-} \left(2^{++}\right)$ and $0^{+}\left(2^{++}\right)$. With the graviton's Regge trajectory in mind, the first step to model these trajectories holographically could be finding the EOM of the fluctuations with these quantum numbers. Then we could generalize in the same way as we did with the graviton. However, in the model we are considering, the only present fluctuations with $J^{PC} = 2^{++}$ are identified with the tensor glueballs and not with these mesons. The way we have around this is to use the fact that the $\rho$ meson, $f_2$ and $a_2$ trajectories are degenerate and apply the procedure to the EOM of the $\rho$ mesons.
 
+Another issue is the coupling in the bulk of the virtual photon with the fields of  $\left(a_2, f_2\right)$ trajectory. One strategy is to compute the cubic coupling of the vector $U\left(1\right)$ gauge field. I have done this and it is zero. The solution I have found around this is to use the that $\left(a_2, f_2\right)$ have the same quantum numbers as the hard and soft pomeron. Based on this we assume the coupling between the $U\left(1\right)$ gauge field dual to the off-shell photon with the meson trajectory is the same as the coupling with the graviton's Regge trajectory.
 
+\subsection{EOM of the $\left(a_2, f_2\right)$ trajectory}
 
+The EOM of the $U(1)$ gauge field in the bulk in the string frame is
+\begin{equation}
+\frac{1}{e^{-10/3 \Phi}V_f\left(\lambda, \tau\right) {w_s\left(\lambda\right)}^2 e^{A_s} G} \partial_z \left( e^{-10/3 \Phi}V_f\left(\lambda, \tau\right) {w_s\left(\lambda\right)}^2 e^{A_s} G^{-1} \partial_z \psi_V \right) + \Box \psi_V = 0
+\end{equation}
+Performing the change of variable defined by
+\begin{equation}
+\frac{du}{dz} = G
+\end{equation}
+one obtains
+\begin{equation}
+\frac{1}{e^{-10/3 \Phi}V_f\left(\lambda, \tau\right) {w_s\left(\lambda\right)}^2 e^{A_s} } \partial_u \left( e^{-10/3 \Phi}V_f\left(\lambda, \tau\right) {w_s\left(\lambda\right)}^2 e^{A_s}  \partial_u \psi_V \right) + \Box \psi_V = 0
+\end{equation}
 
 
 
@@ -995,6 +1022,7 @@ Using the final result of the previous section and the optical theorem we can wr
 
 
 
-
+\bibliographystyle{elsarticle-num}
+\bibliography{bib/HVQCD.bib}
 
 \end{document}
