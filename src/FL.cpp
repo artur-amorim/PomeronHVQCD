@@ -9,8 +9,7 @@ FLIzNIntegrand::FLIzNIntegrand(const Poly_Interp<double> &f1, const Poly_Interp<
 double FLIzNIntegrand::operator()(const double x)
 {
     double dfq = func3.dfQ(x);
-    double g2 = func3.Gsquared(x);
-    return func1.interp(x) * func2.interp(x) * (dfq * dfq / (g2 * func3.Q2())) * func4.interp(x);
+    return func1.interp(x) * func2.interp(x) * (dfq * dfq / func3.Q2()) * func4.interp(x);
 }
 
 extern"C"
