@@ -24,7 +24,7 @@ DeepInelasticScattering::DeepInelasticScattering(const bool rrsslog, std::string
     // We now compute potFactor
     if (z.size() == 0)
     {
-        u = hvqcd().u(); z = hvqcd().z()
+        u = hvqcd().u(); z = hvqcd().z();
         ufunc = Poly_Interp<double>(z, u, 4);
         Astring = hvqcd().Astring();
         std::vector<double> Gs = hvqcd().G(); 

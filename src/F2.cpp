@@ -45,7 +45,7 @@ double F2::IzN(const std::vector<double> &kin, const Reggeon &reg)
     // Search for the correct mode
     U1NNMode mode = searchMode(Q2);
     // Interpolate the wavefunction after computing the respective u value.
-    for(int i = 0; i < wf[0].size(); i++) wf[0][i] = ufunc(wf[0][i]);
+    for(int i = 0; i < wf[0].size(); i++) wf[0][i] = ufunc.interp(wf[0][i]);
     Poly_Interp<double> f4(wf[0], wf[1], 4);
     // Define the integrand object
     F2IzNIntegrand integrand(f1, potFactor, mode, f4);
