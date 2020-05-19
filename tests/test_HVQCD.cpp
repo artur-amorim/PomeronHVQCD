@@ -42,7 +42,9 @@ int main(int argc, char ** argv)
     cout << "Tau Mass Squered IR: " << tmass2 << endl;
 
     hvqcd.saveBackgroundFields("BackgroundFields.txt");
+    hvqcd.savePotentials("BackgroundPotentials.txt");
     saveSchrodingerPotentials(hvqcd);
+
 
     chebSetN(800);
     computeHVQCDSpectrum(hvqcd);
