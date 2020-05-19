@@ -23,11 +23,12 @@ DeepInelasticScattering::DeepInelasticScattering(const bool rrsslog, std::string
     if (z.size() == 0)
     {
         z = hvqcd().z();
-        Astring = hvqcd().Astring(); 
+        Astring = hvqcd().Astring();
+        std::vector<double> Gs = hvqcd().G(); 
         Vfw2fac.resize(z.size());
-        // e^{-7/3 \Phi} V_f w_s^2 = e^(\Phi / 3) V_f w^2 in terms of the Einstein frame background potentials
+        // G e^{-7/3 \Phi} V_f w_s^2 = G e^(\Phi / 3) V_f w^2 in terms of the Einstein frame background potentials
         std::vector<double> Phis = hvqcd().Phi(), taus = hvqcd().tau();
-        for(int i = 0; i < z.size(); i++) Vfw2fac[i] = std::exp(Phis[i] / 3) * hvqcd().Vf(Phis[i], taus[i]) * std::pow(hvqcd().w(Phis[i]),2) ;
+        for(int i = 0; i < z.size(); i++) Vfw2fac[i] = Gs[i] * std::exp(Phis[i] / 3) * hvqcd().Vf(Phis[i], taus[i]) * std::pow(hvqcd().w(Phis[i]),2) ;
         // Now we reverse z, Astring and Vfw2fac because we want them from the UV to the IR
         std::reverse(std::begin(z), std::end(z));
         std::reverse(std::begin(Astring), std::end(Astring));
