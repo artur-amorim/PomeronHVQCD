@@ -57,9 +57,17 @@ target_link_libraries(fitYangMills.exe armadillo hvqcd_lib)
 add_executable(fitHVQCDGlobal.exe physics/fitHVQCDGlobal.cpp)
 target_link_libraries(fitHVQCDGlobal.exe armadillo hvqcd_lib)
 
+# Fit HVQCD All with f2
+add_executable(fitHVQCDAllWithf2.exe physics/fitHVQCDAllWithf2.cpp)
+target_link_libraries(fitHVQCDAllWithf2.exe armadillo hvqcd_lib)
+
 # Fit HVQCD Global a1 and a2 fixed
 add_executable(fitHVQCDGlobal_a1_a2_fixed.exe physics/fitHVQCDGlobal_a1_a2_fixed.cpp)
 target_link_libraries(fitHVQCDGlobal_a1_a2_fixed.exe armadillo hvqcd_lib)
+
+# Fit HVQCD All with f2 a1 and a2 fixed
+add_executable(fitHVQCDAllWithf2_a1_a2_fixed.exe physics/fitHVQCDAllWithf2_a1_a2_fixed.cpp)
+target_link_libraries(fitHVQCDAllWithf2_a1_a2_fixed.exe armadillo hvqcd_lib)
 
 # Fit HVQCD Without Scalars
 add_executable(fitHVQCDWithoutScalars.exe physics/fitHVQCDWithoutScalars.cpp)
