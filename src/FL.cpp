@@ -33,23 +33,24 @@ double FL::IzN(const std::vector<double> &kin, const Reggeon &reg)
     const double J = reg.getJ();
     std::vector<std::vector<double> > wf = reg.getWf();
     std::vector<double> fact1 = exp((1.5-J) * Astring);
-    Poly_Interp<double> f1(z, fact1, 4);
+    Poly_Interp<double> f1(u, fact1, 4);
     // Search for the correct mode
     U1NNMode mode = searchMode(Q2);
-    // Interpolate the wavefunction
+    // Interpolate the wavefunction after computing the respective u value.
+    for(int i = 0; i < wf[0].size(); i++) wf[0][i] = ufunc(wf[0][i]);
     Poly_Interp<double> f4(wf[0], wf[1], 4);
     // Define the integrand object
     FLIzNIntegrand integrand(f1, potFactor, mode, f4);
     void * params = &integrand;
     // Compute the integral
     double izn = 0.0, abserr = 0.0;
-    double a = z[0], b = z.back();
+    double a = u[0], b = u.back();
     // Absolute and relative tolerances desidered
     double epsabs = 1e-9, epsrel = 1e-9;
     // Output variables 
     int neval = 0, ier;
     // Setup the workspace for the method
-    int limit = 10000;
+    int limit = 100000;
     int lenw = 100000;
     int last = 0;
     int * iwork = new int[limit];
