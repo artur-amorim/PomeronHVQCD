@@ -22,8 +22,8 @@ extern"C"
 }
 
 std::vector<double> U1NNMode::z = {};
-Poly_Interp<double> U1NNMode::t0 = {};
-Poly_Interp<double> U1NNMode::t1 = {};
+Poly_Interp<double> U1NNMode::t0 = Poly_Interp<double>({},{},4);
+Poly_Interp<double> U1NNMode::t1 = Poly_Interp<double>({},{},4);
 
 void setupU1NNcomputation()
 {

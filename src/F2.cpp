@@ -56,7 +56,7 @@ double F2::IzN(const std::vector<double> &kin, const Reggeon &reg)
     // Output variables 
     int neval = 0, ier;
     // Setup the workspace for the method
-    int limit = 10000;
+    int limit = 100000;
     int lenw = 100000;
     int last = 0;
     int * iwork = new int[limit];
