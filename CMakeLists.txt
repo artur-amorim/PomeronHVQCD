@@ -1,20 +1,22 @@
 # Specify the minimum CMAKE version required
 cmake_minimum_required(VERSION 2.8.0)
 
-if(UNIX AND NOT APPLE)
-        FIND_PACKAGE(Boost 1.68 REQUIRED)
-endif()
-
 set(CMAKE_Fortran_COMPILER gfortran)
 set(CMAKE_CXX_FLAGS "-std=c++11")
-set(OS_INCLUDE_DIRS "/usr/include" "/usr/local/include")
-set(OS_LIB_DIRS "/usr/lib" "/usr/local/lib")
-
 ENABLE_LANGUAGE(Fortran)
 set(CMAKE_Fortran_FLAGS "-std=legacy")
 
-include_directories(${OS_INCLUDE_DIRS} "include")
-link_directories(${OS_LIB_DIRS})
+if(UNIX AND NOT APPLE)
+        FIND_PACKAGE(Boost 1.68 REQUIRED)
+        include_directories(${Boost_INCLUDE_DIRS} "include")
+endif()
+
+if(APPLE)
+        set(OS_INCLUDE_DIRS "/usr/include" "/usr/local/include")
+        set(OS_LIB_DIRS "/usr/lib" "/usr/local/lib")
+        include_directories(${OS_INCLUDE_DIRS} "include")
+        link_directories(${OS_LIB_DIRS})
+endif()
 
 make_directory(execs)
 
