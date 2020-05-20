@@ -1,6 +1,10 @@
 # Specify the minimum CMAKE version required
 cmake_minimum_required(VERSION 2.8.0)
 
+if(UNIX AND NOT APPLE)
+        FIND_PACKAGE(Boost 1.68 REQUIRED)
+endif()
+
 set(CMAKE_Fortran_COMPILER gfortran)
 set(CMAKE_CXX_FLAGS "-std=c++11")
 set(OS_INCLUDE_DIRS "/usr/include" "/usr/local/include")
