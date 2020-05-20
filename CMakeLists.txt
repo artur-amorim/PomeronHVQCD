@@ -2,7 +2,7 @@
 cmake_minimum_required(VERSION 2.8.0)
 
 set(CMAKE_Fortran_COMPILER gfortran)
-set(CMAKE_CXX_FLAGS "-std=c++11")
+set(CMAKE_CXX_FLAGS "-std=c++11 -O3")
 ENABLE_LANGUAGE(Fortran)
 set(CMAKE_Fortran_FLAGS "-std=legacy")
 

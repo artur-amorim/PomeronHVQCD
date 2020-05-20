@@ -63,14 +63,14 @@ double HVQCD::dVf0dlambda(const double l) const
     return ans;
 }
 
-inline double HVQCD::Vf0(const double phi) const
+double HVQCD::Vf0(const double phi) const
 {
     // Definition of Vf0 as a function of Phi, lambda = exp(Phi)
     double l = std::exp(phi);
     return Vf0l(l);
 }
 
-inline double HVQCD::dVf0dPhi(const double phi) const
+double HVQCD::dVf0dPhi(const double phi) const
 {
     // Definition of dVf0/dPhi
     double l = std::exp(phi);
@@ -97,64 +97,64 @@ double HVQCD::d2Vf0dPhi2(const double phi) const
 }
 
 // Definition of the Vtau potential
-inline double HVQCD::Vtau(const double tau) const
+double HVQCD::Vtau(const double tau) const
 {
     // Definition of Vtau = (1+a1tau^2)e^(-a2tau^2)
     return (1 + a1 * tau * tau) * std::exp(-a2*tau*tau);
 }
 
 // Definition of the dVtau / dtau potential
-inline double HVQCD::dVtau(const double tau) const
+double HVQCD::dVtau(const double tau) const
 {
     // Definition of dVtau = -2 e^(-a2tau^2) tau (a2 + a1(-1+a2tau^2))
     return -2 * std::exp(-a2*tau*tau) * tau * (a2 + a1*(-1 + a2*tau*tau));
 }
 
-inline double HVQCD::d2Vf0dlambda2(const double l) const
+double HVQCD::d2Vf0dlambda2(const double l) const
 {
     // Definition of the d2Vf0/dlambda2 potential
     double ans = (d2Vf0dPhi2(log(l)) - dVf0dPhi(log(l)))/std::pow(l,2);
     return ans;
 }
 
-inline double HVQCD::Vfl(const double l, const double tau) const
+double HVQCD::Vfl(const double l, const double tau) const
 {
     // Definition of the Vf = Vf0 exp(-tau^2) potential
     return  Vf0l(l) * Vtau(tau);
 }
 
-inline double HVQCD::dVfldlambda(const double l, const double tau) const
+double HVQCD::dVfldlambda(const double l, const double tau) const
 {
     // Definition of the dVfdl = dVf0dl Vtau potential
     return dVf0dlambda(l) * Vtau(tau);
 }
 
-inline double HVQCD::Vf(const double phi, const double tau) const
+double HVQCD::Vf(const double phi, const double tau) const
 {
     // Definition of the Vf = Vf0(Phi) Vtau potential vs phi
     return Vf0(phi) * Vtau(tau);
 }
 
-inline double HVQCD::dVfdPhi(const double phi, const double tau) const
+double HVQCD::dVfdPhi(const double phi, const double tau) const
 {
     // Definition of the dVfdPhi = dVf0dPhi Vtau potential
     return dVf0dPhi(phi) * Vtau(tau);
 }
 
 // Declaration of the dVfdtau = Vf0 (-2tau)exp(-tau^2) potential
-inline double HVQCD::dVfdtau(const double phi, const double tau) const
+double HVQCD::dVfdtau(const double phi, const double tau) const
 {
     // Definition of the dVfdtau = Vf0 dVtau/dtau potential
     return Vf0(phi) * dVtau(tau);
 }
 
-inline double HVQCD::d2VfdPhi2(const double phi, const double tau) const
+double HVQCD::d2VfdPhi2(const double phi, const double tau) const
 {
     // Definition of d2Vf/dPhi2 potential
     return d2Vf0dPhi2(phi) * Vtau(tau);
 }
 
-inline double HVQCD::d2VfdPhidtau(const double phi, const double tau) const
+double HVQCD::d2VfdPhidtau(const double phi, const double tau) const
 {
     // Definition of d2Vf/dPhidtau = dVf0dPhi dVtaudtau
     return dVf0dPhi(phi) * dVtau(tau);
@@ -168,7 +168,7 @@ double HVQCD::klambda(const double l) const
     return 1 / ans ;
 }
 
-inline double HVQCD::k(const double phi) const
+double HVQCD::k(const double phi) const
 {
     // Definition of the k potential as a function of Phi
     double l = exp(phi);
@@ -189,7 +189,7 @@ double HVQCD::dkdlambda(const double l) const
     return ans;
 }
 
-inline double HVQCD::dkdPhi(const double phi) const 
+double HVQCD::dkdPhi(const double phi) const 
 {
     // Computes dk/dPhi = lambda dk/dlambda
     double l = exp(phi);
@@ -220,7 +220,7 @@ double HVQCD::d2kdPhi2(const double phi) const
     return ans;
 }
 
-inline double HVQCD::d2kdlambda2(const double l) const
+double HVQCD::d2kdlambda2(const double l) const
 {
     // Compute d2k/dlambda2
     double ans = (d2kdPhi2(log(l)) - dkdPhi(log(l)))/std::pow(l,2);
@@ -251,7 +251,7 @@ double HVQCD::dwdPhi(const double phi) const
     return ans;
 }
 
-inline double HVQCD::dwdlambda(const double l) const
+double HVQCD::dwdlambda(const double l) const
 {
     // Returns dw/dlambda = dw/dPhi / lambda
     double ans = dwdPhi(log(l));
@@ -278,7 +278,7 @@ double HVQCD::d2wdPhi2(const double phi) const
     return ans;
 }
 
-inline double HVQCD::G(const double q, const double phi, const double dt) const
+double HVQCD::G(const double q, const double phi, const double dt) const
 {
     return std::sqrt(1 + k(phi) * std::pow(dt / q, 2.0));
 }
@@ -309,13 +309,13 @@ double HVQCD::d2G(const double q, const double phi, const double dq,
     return ans;
 }
 
-inline double HVQCD::Z(const double l) const
+double HVQCD::Z(const double l) const
 {
     // Returns Z(lambda) = Za(1 + ca * l ^ 4)
     return Za + ca * std::pow(l / lambda0,4);
 }
 
-inline double HVQCD::dudA(const double q, const double phi,
+double HVQCD::dudA(const double q, const double phi,
                    const double dtau, const double A) const
 {
     // Returns du/dA = G(A) q(A) exp(-A)
