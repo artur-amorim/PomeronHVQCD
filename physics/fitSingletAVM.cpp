@@ -29,7 +29,7 @@ Function::Function(const double sc, const double ksc, const double wsc, const do
                 try
                 {
                     // Prepare the background
-                    hvqcd.solve(-80, 20);
+                    hvqcd.solve(-19, 9);
                     // Now compute VVM and VAVM
                     vector<double> VVM = computeVectorMesonPotential(hvqcd);
                     VAVM = computeAxialVectorMesonNonSingletPotential(hvqcd, VVM);
@@ -132,7 +132,7 @@ int main(int argc, char ** argv)
     Za = xop[0]; ca = xop[1];
 
     HVQCD hvqcd(sc, ksc, wsc, W0, w0, kU1, wU1, VgIR, WIR, kIR, wIR, W1, k1, w1, a1, a2, xf, tau0, Za, ca);
-    hvqcd.solve(-80, 20);
+    hvqcd.solve(-19, 9);
 
     // Computing the mass ratios
     computeHVQCDRatios(hvqcd);
