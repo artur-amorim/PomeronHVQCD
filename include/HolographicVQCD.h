@@ -240,13 +240,13 @@ void computeHVQCDSpectrum(const HVQCD &hvqcd);
 // Declaration of computeHVQCDRatios function
 void computeHVQCDRatios(const HVQCD &hvqcd);
 
-const std::vector<double> mrhos = {775.5, 1465, 1720, 1909, 2149, 2265};         // Non-Singlet Vector Mesons
-const std::vector<double> ma1s = {1230, 1647, 1930, 2096, 2270};                 // Non-Singlet Axial Vector Mesons
-const std::vector<double> mpis = {135, 1300, 1812, 2070, 2360};                  // Non-Singlet Pseudoscalar Mesons
-const std::vector<double> a0s = {1474, 2025};                                    // Non-Singlet Scalar Mesons
-const std::vector<double> mTG = {2150};                                          // Singlet Tensor glueballs
-const std::vector<double> momegas = {782.65, 1420, 1670};                        // Singlet Vector Mesons
-const std::vector<double> mf1s = {1281.9, 1426.4};                               // Singlet Axial Vector Mesons
+const std::vector<double> mrhos = {775.26, 1465, 1720, 2000, 2265};                 // Non-Singlet Vector Mesons
+const std::vector<double> ma1s = {1230, 1930, 2095, 2270};                          // Non-Singlet Axial Vector Mesons
+const std::vector<double> mpis = {134.9770, 1300, 1812, 2070, 2360};                // Non-Singlet Pseudoscalar Mesons
+const std::vector<double> a0s = {1474, 2025};                                       // Non-Singlet Scalar Mesons
+const std::vector<double> mTG = {2150};                                             // Singlet Tensor glueballs
+const std::vector<double> momegas = {782.65, 1420, 1670, 1960, 2205, 2290, 2330};   // Singlet Vector Mesons
+const std::vector<double> mf1s = {1281.9, 1426.4, 1971, 2310};                      // Singlet Axial Vector Mesons
 
 // Ratios with the rho vector meson rho
 const std::vector<double> RTG_rho = {2.7724};
@@ -256,6 +256,8 @@ const std::vector<double> Rpi_rho = {0.1741,1.6763,2.3366,2.6692, 3.0432};
 const std::vector<double> Ra0_rho = {1.9007, 2.6112};
 const std::vector<double> Romega_rho = {1.01, 1.83, 2.15};
 const std::vector<double> Rf1_rho = {1.65, 1.84};
+
+const double m_a0 = 980;
 
 HVQCD& hvqcd();
 
