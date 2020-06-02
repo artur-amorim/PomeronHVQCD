@@ -34,7 +34,7 @@ Function::Function(const double sc, const double ksc, const double wsc, const do
                     vector<double> VVM = computeVectorMesonPotential(hvqcd);
                     VAVM = computeAxialVectorMesonNonSingletPotential(hvqcd, VVM);
                     // Compute the mass of the rho meson
-                    vector<double> us = hvqcd.u(), VMMasses = computeMasses(us, VVM, 6, "cheb");
+                    vector<double> us = hvqcd.u(), VMMasses = computeMasses(us, VVM, 7, "cheb");
                     rho_mass = VMMasses[0];
                 }
                 catch(...)
@@ -69,7 +69,7 @@ double Function::operator() (const vector<double> &X)
     try
     {
         vector<double> us = hvqcd.u();
-        SingletAVMMasses = computeMasses(us, VSingletAVM, 2, "cheb");
+        SingletAVMMasses = computeMasses(us, VSingletAVM, 4, "cheb");
         if(SingletAVMMasses.size() == 0) throw(runtime_error("Only negative values for Singlet AVM masses"));
     }
     catch(...)
@@ -80,7 +80,7 @@ double Function::operator() (const vector<double> &X)
     }
     double erms = 0;
     // In case we have negative m2 the mass container will be empty. In that case we fill it with zero entries
-    if( SingletAVMMasses.size() == 0) SingletAVMMasses = vector<double>(2,0);
+    if( SingletAVMMasses.size() == 0) SingletAVMMasses = vector<double>(4,0);
     for(int i = 0; i < Rf1_rho.size(); i++) erms += fabs((SingletAVMMasses[i]/rho_mass-Rf1_rho[i])/Rf1_rho[i]);
    
     if (std::isnan(erms))

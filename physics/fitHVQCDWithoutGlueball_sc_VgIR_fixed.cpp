@@ -55,8 +55,8 @@ double J(const vector<double> X)
     try
     {
         vector<double> us = hvqcd.u();
-        VMMasses = computeMasses(us, VVM, 6, "cheb");
-        AVMMasses = computeMasses(us, VAVM, 5, "cheb");
+        VMMasses = computeMasses(us, VVM, 7, "cheb");
+        AVMMasses = computeMasses(us, VAVM, 4, "cheb");
         PSMMasses = computePseudoScalarMasses(hvqcd, 5);
         SMMasses = computeMasses(us,VSM, 2, "cheb");
     }
@@ -70,10 +70,10 @@ double J(const vector<double> X)
     // In case we have negative m2 the mass container will be empty. In that case we fill it with zero entries    
     // Contributions from the Meson ratios
     // Contributions from the ratios m_{\rho_n}/m_{\rho}
-    if( VMMasses.size() == 0) VMMasses = vector<double>(6,0);
+    if( VMMasses.size() == 0) VMMasses = vector<double>(7,0);
     for(int i = 0; i < Rrho_rho.size(); i++) erms += fabs((VMMasses[i+1]/VMMasses[0]-Rrho_rho[i])/Rrho_rho[i]);
     // Contributions from the ratios m_{\a1_n}/m_{\rho}
-    if( AVMMasses.size() == 0) AVMMasses = vector<double>(5,0);
+    if( AVMMasses.size() == 0) AVMMasses = vector<double>(4,0);
     for(int i = 0; i < Ra1_rho.size(); i++) erms += fabs((AVMMasses[i]/VMMasses[0]-Ra1_rho[i])/Ra1_rho[i]);
     // Contributions from the ratios m_{\pi_n} / m_{\rho}
     if( PSMMasses.size() == 0) PSMMasses = vector<double>(5,0);
@@ -83,7 +83,7 @@ double J(const vector<double> X)
     for(int i = 0; i < Ra0_rho.size(); i++) erms += fabs((SMMasses[i]/VMMasses[0]- Ra0_rho[i])/Ra0_rho[i]);
     // Singlet vector and axial vector meson sector
     for(int i = 0; i < Romega_rho.size(); i++) erms += fabs((VMMasses[i]/VMMasses[0]-Romega_rho[i])/Romega_rho[i]);
-    int nRatios = 20;
+    int nRatios = 22;
    
     erms = erms/nRatios;
 
