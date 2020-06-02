@@ -63,6 +63,10 @@ target_link_libraries(fitYangMills.exe armadillo hvqcd_lib)
 add_executable(fitHVQCDGlobal.exe physics/fitHVQCDGlobal.cpp)
 target_link_libraries(fitHVQCDGlobal.exe armadillo hvqcd_lib)
 
+# Fit HVQCD Global
+add_executable(fitHVQCDGlobalWitha0.exe physics/fitHVQCDGlobalWitha0.cpp)
+target_link_libraries(fitHVQCDGlobalWitha0.exe armadillo hvqcd_lib)
+
 # Fit HVQCD All with f2
 add_executable(fitHVQCDAllWithf2.exe physics/fitHVQCDAllWithf2.cpp)
 target_link_libraries(fitHVQCDAllWithf2.exe armadillo hvqcd_lib)
