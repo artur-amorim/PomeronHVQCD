@@ -1386,11 +1386,11 @@ void computeHVQCDSpectrum(const HVQCD &hvqcd)
     // Compute the masses
     std::vector<double> TGMasses, VMMasses, AVMMasses, PSMMasses, SMMasses, SingletAVMMasses;
     TGMasses = computeMasses(zs, V2G, 1);
-    VMMasses = computeMasses(us, VVM, 6);
-    AVMMasses = computeMasses(us, VAVM, 5);
+    VMMasses = computeMasses(us, VVM, 7);
+    AVMMasses = computeMasses(us, VAVM, 4);
     PSMMasses = computePseudoScalarMasses(hvqcd, 5);
     SMMasses = computeMasses(us, VSM, 2);
-    SingletAVMMasses = computeMasses(us, VSingletAVM, 2);
+    SingletAVMMasses = computeMasses(us, VSingletAVM, 4);
     // Display the mass values
     // Tensor glueball ratio
     std::cout << "TENSOR GLUEBALL SECTOR" << std::endl;
@@ -1438,20 +1438,20 @@ void computeHVQCDRatios(const HVQCD &hvqcd)
     // Compute the masses
     std::vector<double> TGMasses, VMMasses, AVMMasses, PSMMasses, SMMasses, SingletAVMMasses;
     TGMasses = computeMasses(zs, V2G, 1);
-    VMMasses = computeMasses(us, VVM, 6);
-    AVMMasses = computeMasses(us, VAVM, 5);
+    VMMasses = computeMasses(us, VVM, 7);
+    AVMMasses = computeMasses(us, VAVM, 4);
     PSMMasses = computePseudoScalarMasses(hvqcd, 5);
     SMMasses = computeMasses(us,VSM, 2);
-    SingletAVMMasses = computeMasses(us, VSingletAVM, 2);
+    SingletAVMMasses = computeMasses(us, VSingletAVM, 4);
     // Compute the predicted ratios
     std::vector<double> RTGPred, RrhoPred, Ra1Pred, RpiPred, Ra0Pred, RomegaPred, Rf1Pred;
     RTGPred = {TGMasses[0]/ VMMasses[0]};
-    RrhoPred = {VMMasses[1]/VMMasses[0], VMMasses[2]/VMMasses[0], VMMasses[3]/VMMasses[0], VMMasses[4]/VMMasses[0], VMMasses[5]/VMMasses[0]};
-    Ra1Pred = {AVMMasses[0]/VMMasses[0], AVMMasses[1]/VMMasses[0], AVMMasses[2]/VMMasses[0], AVMMasses[3]/VMMasses[0], AVMMasses[4]/VMMasses[0]};
+    RrhoPred = {VMMasses[1]/VMMasses[0], VMMasses[2]/VMMasses[0], VMMasses[3]/VMMasses[0], VMMasses[4]/VMMasses[0]};
+    Ra1Pred = {AVMMasses[0]/VMMasses[0], AVMMasses[1]/VMMasses[0], AVMMasses[2]/VMMasses[0], AVMMasses[3]/VMMasses[0]};
     RpiPred = {PSMMasses[0]/VMMasses[0], PSMMasses[1]/VMMasses[0], PSMMasses[2]/VMMasses[0], PSMMasses[3]/VMMasses[0], PSMMasses[4]/VMMasses[0]};
     Ra0Pred = {SMMasses[0] / VMMasses[0], SMMasses[1] / VMMasses[0]};
-    RomegaPred = {VMMasses[0]/VMMasses[0], VMMasses[1]/VMMasses[0], VMMasses[2]/VMMasses[0]};
-    Rf1Pred = {SingletAVMMasses[0]/VMMasses[0], SingletAVMMasses[1]/VMMasses[0]};
+    RomegaPred = {VMMasses[0]/VMMasses[0], VMMasses[1]/VMMasses[0], VMMasses[2]/VMMasses[0], VMMasses[3]/VMMasses[0], VMMasses[4]/VMMasses[0], VMMasses[5]/VMMasses[0], VMMasses[6]/VMMasses[0]};
+    Rf1Pred = {SingletAVMMasses[0]/VMMasses[0], SingletAVMMasses[1]/VMMasses[0], SingletAVMMasses[2]/VMMasses[0], SingletAVMMasses[3]/VMMasses[0]};
     // Compare the predicted ratios with the known ones
     std::cout << "Predicted Ratios" << '\t' << "Measured Ratios" << '\t' << "(Rpred - Robs) / Robs" << std::endl;
     // Tensor glueball ratio
