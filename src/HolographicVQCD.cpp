@@ -958,6 +958,10 @@ void HVQCD::setZa(const double za) {Za = za;}
 
 void HVQCD::setca(const double cca) {ca = cca;}
 
+double HVQCD::get_Za() const {return Za;}
+
+double HVQCD::get_ca() const {return ca;}
+
 bool HVQCD::isSolved() const {return this->solved;}
 
 std::vector<double> HVQCD::Astring() const {return this->Astrings;}
@@ -1205,20 +1209,23 @@ std::vector<double> computeScalarMesonPotential(const HVQCD &hvqcd)
 
 std::vector<double> computeAxialVectorMesonSingletPotential(const HVQCD &hvqcd, const std::vector<double> &VAxialVectorMeson)
 {
-    std::vector<double> As = hvqcd.A(), qs = hvqcd.q(), Phis = hvqcd.Phi(), taus = hvqcd.tau();
-    std::vector<double> dtaus = hvqcd.dtaudA();
+    const std::vector<double> As = hvqcd.A(), qs = hvqcd.q(), Phis = hvqcd.Phi(), taus = hvqcd.tau();
+    const std::vector<double> dtaus = hvqcd.dtaudA();
     std::vector<double> V(As.size());
-    double a1 = hvqcd.get_a1();
-    double a2 = hvqcd.get_a2();
-    double x = hvqcd.get_xf();
+    const double a1 = hvqcd.get_a1();
+    const double a2 = hvqcd.get_a2();
+    const double Za = hvqcd.get_Za();
+    const double ca = hvqcd.get_ca();
+    const double x = hvqcd.get_xf();
+    const double lambda0 = 8 * M_PI * M_PI;
     for(int i = 0; i < As.size(); i++)
     {
         double l = std::exp(Phis[i]);
-        double z = hvqcd.Z(l);
         double vf0 = hvqcd.Vf0(Phis[i]);
         double g = hvqcd.G(qs[i], Phis[i], dtaus[i]);
         double wPhi = hvqcd.w(Phis[i]);
-        V[i] = VAxialVectorMeson[i] + 4*std::exp(2*As[i] - a2*taus[i]*taus[i])*x*z*(1+a1*taus[i]*taus[i])/(g*vf0*wPhi*wPhi); 
+        V[i] = VAxialVectorMeson[i] + 4*std::exp(2*As[i] - a2*taus[i]*taus[i])*x*Za*(1+a1*taus[i]*taus[i])/(g*vf0*wPhi*wPhi);
+        V[i] +=  4*std::exp(2*As[i] - a2*taus[i]*taus[i] + 4 * Phis[i])*x*ca*(1+a1*taus[i]*taus[i])/(g*vf0*wPhi*wPhi*std::pow(lambda0, 4));
     }
     return V;
 }

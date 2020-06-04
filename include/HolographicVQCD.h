@@ -167,6 +167,10 @@ class HVQCD : public Background
         // Setter of Za and ca
         void setZa(const double za);
         void setca(const double cca);
+        // getter of Za
+        double get_Za() const;
+        // getter of ca
+        double get_ca() const;
         // Declaration of solved getter
         bool isSolved() const;
         // Declaration of Astring getter
