@@ -202,30 +202,30 @@ test_schrodinger.exe/fast:
 .PHONY : test_schrodinger.exe/fast
 
 #=============================================================================
-# Target rules for targets named fitYangMills.exe
+# Target rules for targets named fitHVQCDGlobalWitha0.exe
 
 # Build rule for target.
-fitYangMills.exe: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 fitYangMills.exe
-.PHONY : fitYangMills.exe
+fitHVQCDGlobalWitha0.exe: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 fitHVQCDGlobalWitha0.exe
+.PHONY : fitHVQCDGlobalWitha0.exe
 
 # fast build rule for target.
-fitYangMills.exe/fast:
-	$(MAKE) -f CMakeFiles/fitYangMills.exe.dir/build.make CMakeFiles/fitYangMills.exe.dir/build
-.PHONY : fitYangMills.exe/fast
+fitHVQCDGlobalWitha0.exe/fast:
+	$(MAKE) -f CMakeFiles/fitHVQCDGlobalWitha0.exe.dir/build.make CMakeFiles/fitHVQCDGlobalWitha0.exe.dir/build
+.PHONY : fitHVQCDGlobalWitha0.exe/fast
 
 #=============================================================================
-# Target rules for targets named savePotentials.exe
+# Target rules for targets named HVQCDRatiosWitha0.exe
 
 # Build rule for target.
-savePotentials.exe: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 savePotentials.exe
-.PHONY : savePotentials.exe
+HVQCDRatiosWitha0.exe: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 HVQCDRatiosWitha0.exe
+.PHONY : HVQCDRatiosWitha0.exe
 
 # fast build rule for target.
-savePotentials.exe/fast:
-	$(MAKE) -f CMakeFiles/savePotentials.exe.dir/build.make CMakeFiles/savePotentials.exe.dir/build
-.PHONY : savePotentials.exe/fast
+HVQCDRatiosWitha0.exe/fast:
+	$(MAKE) -f CMakeFiles/HVQCDRatiosWitha0.exe.dir/build.make CMakeFiles/HVQCDRatiosWitha0.exe.dir/build
+.PHONY : HVQCDRatiosWitha0.exe/fast
 
 #=============================================================================
 # Target rules for targets named HVQCDRatios.exe
@@ -501,17 +501,30 @@ fitHVQCDWithoutGlueball_sc_VgIR_fixed.exe/fast:
 .PHONY : fitHVQCDWithoutGlueball_sc_VgIR_fixed.exe/fast
 
 #=============================================================================
-# Target rules for targets named fitHVQCDGlobalWitha0.exe
+# Target rules for targets named savePotentials.exe
 
 # Build rule for target.
-fitHVQCDGlobalWitha0.exe: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 fitHVQCDGlobalWitha0.exe
-.PHONY : fitHVQCDGlobalWitha0.exe
+savePotentials.exe: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 savePotentials.exe
+.PHONY : savePotentials.exe
 
 # fast build rule for target.
-fitHVQCDGlobalWitha0.exe/fast:
-	$(MAKE) -f CMakeFiles/fitHVQCDGlobalWitha0.exe.dir/build.make CMakeFiles/fitHVQCDGlobalWitha0.exe.dir/build
-.PHONY : fitHVQCDGlobalWitha0.exe/fast
+savePotentials.exe/fast:
+	$(MAKE) -f CMakeFiles/savePotentials.exe.dir/build.make CMakeFiles/savePotentials.exe.dir/build
+.PHONY : savePotentials.exe/fast
+
+#=============================================================================
+# Target rules for targets named fitYangMills.exe
+
+# Build rule for target.
+fitYangMills.exe: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 fitYangMills.exe
+.PHONY : fitYangMills.exe
+
+# fast build rule for target.
+fitYangMills.exe/fast:
+	$(MAKE) -f CMakeFiles/fitYangMills.exe.dir/build.make CMakeFiles/fitYangMills.exe.dir/build
+.PHONY : fitYangMills.exe/fast
 
 #=============================================================================
 # Target rules for targets named fitDISHVQCD.exe
@@ -565,6 +578,33 @@ physics/HVQCDRatios.s: physics/HVQCDRatios.cpp.s
 physics/HVQCDRatios.cpp.s:
 	$(MAKE) -f CMakeFiles/HVQCDRatios.exe.dir/build.make CMakeFiles/HVQCDRatios.exe.dir/physics/HVQCDRatios.cpp.s
 .PHONY : physics/HVQCDRatios.cpp.s
+
+physics/HVQCDRatiosWitha0.o: physics/HVQCDRatiosWitha0.cpp.o
+
+.PHONY : physics/HVQCDRatiosWitha0.o
+
+# target to build an object file
+physics/HVQCDRatiosWitha0.cpp.o:
+	$(MAKE) -f CMakeFiles/HVQCDRatiosWitha0.exe.dir/build.make CMakeFiles/HVQCDRatiosWitha0.exe.dir/physics/HVQCDRatiosWitha0.cpp.o
+.PHONY : physics/HVQCDRatiosWitha0.cpp.o
+
+physics/HVQCDRatiosWitha0.i: physics/HVQCDRatiosWitha0.cpp.i
+
+.PHONY : physics/HVQCDRatiosWitha0.i
+
+# target to preprocess a source file
+physics/HVQCDRatiosWitha0.cpp.i:
+	$(MAKE) -f CMakeFiles/HVQCDRatiosWitha0.exe.dir/build.make CMakeFiles/HVQCDRatiosWitha0.exe.dir/physics/HVQCDRatiosWitha0.cpp.i
+.PHONY : physics/HVQCDRatiosWitha0.cpp.i
+
+physics/HVQCDRatiosWitha0.s: physics/HVQCDRatiosWitha0.cpp.s
+
+.PHONY : physics/HVQCDRatiosWitha0.s
+
+# target to generate assembly for a file
+physics/HVQCDRatiosWitha0.cpp.s:
+	$(MAKE) -f CMakeFiles/HVQCDRatiosWitha0.exe.dir/build.make CMakeFiles/HVQCDRatiosWitha0.exe.dir/physics/HVQCDRatiosWitha0.cpp.s
+.PHONY : physics/HVQCDRatiosWitha0.cpp.s
 
 physics/HVQCDSpectrum.o: physics/HVQCDSpectrum.cpp.o
 
@@ -2469,8 +2509,8 @@ help:
 	@echo "... test_Kernel.exe"
 	@echo "... test_HVQCD.exe"
 	@echo "... test_schrodinger.exe"
-	@echo "... fitYangMills.exe"
-	@echo "... savePotentials.exe"
+	@echo "... fitHVQCDGlobalWitha0.exe"
+	@echo "... HVQCDRatiosWitha0.exe"
 	@echo "... HVQCDRatios.exe"
 	@echo "... rebuild_cache"
 	@echo "... fitSingletAVM.exe"
@@ -2494,12 +2534,16 @@ help:
 	@echo "... test_Wf.exe"
 	@echo "... fitHVQCDGlobal.exe"
 	@echo "... fitHVQCDWithoutGlueball_sc_VgIR_fixed.exe"
-	@echo "... fitHVQCDGlobalWitha0.exe"
+	@echo "... savePotentials.exe"
+	@echo "... fitYangMills.exe"
 	@echo "... fitDISHVQCD.exe"
 	@echo "... fitHVQCDAllWithf2.exe"
 	@echo "... physics/HVQCDRatios.o"
 	@echo "... physics/HVQCDRatios.i"
 	@echo "... physics/HVQCDRatios.s"
+	@echo "... physics/HVQCDRatiosWitha0.o"
+	@echo "... physics/HVQCDRatiosWitha0.i"
+	@echo "... physics/HVQCDRatiosWitha0.s"
 	@echo "... physics/HVQCDSpectrum.o"
 	@echo "... physics/HVQCDSpectrum.i"
 	@echo "... physics/HVQCDSpectrum.s"

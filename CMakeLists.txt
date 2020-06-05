@@ -139,6 +139,9 @@ target_link_libraries(fitSingletAVM.exe armadillo hvqcd_lib)
 add_executable(HVQCDRatios.exe physics/HVQCDRatios.cpp)
 target_link_libraries(HVQCDRatios.exe armadillo hvqcd_lib)
 
+add_executable(HVQCDRatiosWitha0.exe physics/HVQCDRatiosWitha0.cpp)
+target_link_libraries(HVQCDRatiosWitha0.exe armadillo hvqcd_lib)
+
 # Save background fields, potentials and schrodinger potentials of the fluctuations
 add_executable(savePotentials.exe physics/savePotentials.cpp)
 target_link_libraries(savePotentials.exe armadillo hvqcd_lib)
