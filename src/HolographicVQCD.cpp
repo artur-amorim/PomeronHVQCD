@@ -1459,34 +1459,61 @@ void computeHVQCDRatios(const HVQCD &hvqcd)
     Ra0Pred = {SMMasses[0] / VMMasses[0], SMMasses[1] / VMMasses[0]};
     RomegaPred = {VMMasses[0]/VMMasses[0], VMMasses[1]/VMMasses[0], VMMasses[2]/VMMasses[0], VMMasses[3]/VMMasses[0], VMMasses[4]/VMMasses[0], VMMasses[5]/VMMasses[0], VMMasses[6]/VMMasses[0]};
     Rf1Pred = {SingletAVMMasses[0]/VMMasses[0], SingletAVMMasses[1]/VMMasses[0], SingletAVMMasses[2]/VMMasses[0], SingletAVMMasses[3]/VMMasses[0]};
+    double sum_errors = 0;
     // Compare the predicted ratios with the known ones
     std::cout << "Predicted Ratios" << '\t' << "Measured Ratios" << '\t' << "(Rpred - Robs) / Robs" << std::endl;
     // Tensor glueball ratio
     std::cout << "TENSOR GLUEBALL SECTOR" << std::endl;
     std::cout << RTGPred[0] << '\t' << RTG_rho[0] << '\t' << (RTGPred[0] - RTG_rho[0]) / RTG_rho[0] << std::endl;
+    sum_errors += fabs((RTGPred[0] - RTG_rho[0]) / RTG_rho[0]);
     std::cout << std::endl;
     // Vector meson ratios
     std::cout << "VECTOR MESON NONSINGLET SECTOR" << std::endl;
-    for(int i = 0; i < Rrho_rho.size(); i++) std::cout << RrhoPred[i] << '\t' << Rrho_rho[i] << '\t' << (RrhoPred[i] - Rrho_rho[i]) / Rrho_rho[i] << std::endl;
+    for(int i = 0; i < Rrho_rho.size(); i++)
+    {
+        std::cout << RrhoPred[i] << '\t' << Rrho_rho[i] << '\t' << (RrhoPred[i] - Rrho_rho[i]) / Rrho_rho[i] << std::endl;
+        sum_errors += fabs((RrhoPred[i] - Rrho_rho[i]) / Rrho_rho[i]);
+    }
     std::cout << std::endl;
     // Axial vector meson ratios
     std::cout << "AXIAL VECTOR MESON NONSINGLET SECTOR" << std::endl;
-    for(int i = 0; i < Ra1_rho.size(); i++) std::cout << Ra1Pred[i] << '\t' << Ra1_rho[i] << '\t' << (Ra1Pred[i] - Ra1_rho[i]) / Ra1_rho[i] << std::endl;
+    for(int i = 0; i < Ra1_rho.size(); i++)
+    {
+        std::cout << Ra1Pred[i] << '\t' << Ra1_rho[i] << '\t' << (Ra1Pred[i] - Ra1_rho[i]) / Ra1_rho[i] << std::endl;
+        sum_errors += fabs((Ra1Pred[i] - Ra1_rho[i]) / Ra1_rho[i]);
+    }
     std::cout << std::endl;
     std::cout << "PSEUDOSCALAR MESON NONSINGLET SECTOR" << std::endl;
-    for(int i = 0; i < Rpi_rho.size(); i++) std::cout << RpiPred[i] << '\t' << Rpi_rho[i] << '\t' << (RpiPred[i] - Rpi_rho[i]) / Rpi_rho[i] << std::endl;
+    for(int i = 0; i < Rpi_rho.size(); i++)
+    {
+        std::cout << RpiPred[i] << '\t' << Rpi_rho[i] << '\t' << (RpiPred[i] - Rpi_rho[i]) / Rpi_rho[i] << std::endl;
+        sum_errors += fabs((RpiPred[i] - Rpi_rho[i]) / Rpi_rho[i]);
+    }
     std::cout << std::endl;
     std::cout << "SCALAR MESON NONSINGLET SECTOR" << std::endl;
-    for(int i = 0; i < Ra0_rho.size(); i++) std::cout << Ra0Pred[i] << '\t' << Ra0_rho[i] << '\t' << (Ra0Pred[i] - Ra0_rho[i]) / Ra0_rho[i] << std::endl;
+    for(int i = 0; i < Ra0_rho.size(); i++)
+    {
+        std::cout << Ra0Pred[i] << '\t' << Ra0_rho[i] << '\t' << (Ra0Pred[i] - Ra0_rho[i]) / Ra0_rho[i] << std::endl;
+        sum_errors += fabs((Ra0Pred[i] - Ra0_rho[i]) / Ra0_rho[i]);
+    }
     std::cout << std::endl;
     // Singlet Vector meson ratios
     std::cout << "VECTOR MESON SINGLET SECTOR" << std::endl;
-    for(int i = 0; i < Romega_rho.size(); i++) std::cout << RomegaPred[i] << '\t' << Romega_rho[i] << '\t' << (RomegaPred[i] - Romega_rho[i]) / Romega_rho[i] << std::endl;
+    for(int i = 0; i < Romega_rho.size(); i++)
+    {
+        std::cout << RomegaPred[i] << '\t' << Romega_rho[i] << '\t' << (RomegaPred[i] - Romega_rho[i]) / Romega_rho[i] << std::endl;
+        sum_errors += fabs((RomegaPred[i] - Romega_rho[i]) / Romega_rho[i]);
+    }
     std::cout << std::endl;
     // Singlet Axial vector meson ratios
     std::cout << "AXIAL VECTOR MESON SINGLET SECTOR" << std::endl;
-    for(int i = 0; i < Rf1_rho.size(); i++) std::cout << Rf1Pred[i] << '\t' << Rf1_rho[i] << '\t' << (Rf1Pred[i] - Rf1_rho[i]) / Rf1_rho[i] << std::endl;
+    for(int i = 0; i < Rf1_rho.size(); i++)
+    {
+        std::cout << Rf1Pred[i] << '\t' << Rf1_rho[i] << '\t' << (Rf1Pred[i] - Rf1_rho[i]) / Rf1_rho[i] << std::endl;
+        sum_errors += fabs((Rf1Pred[i] - Rf1_rho[i]) / Rf1_rho[i]);
+    }
     std::cout << std::endl;
+    std::cout << "Sum of the relative errors: " << sum_errors << std::endl;
 }
 
 HVQCD& hvqcd()
