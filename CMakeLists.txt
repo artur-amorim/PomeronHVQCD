@@ -127,6 +127,10 @@ target_link_libraries(fitHVQCDWithoutGlueballScalars_a1_a2_fixed.exe armadillo h
 add_executable(fitHVQCDWithoutGlueball.exe physics/fitHVQCDWithoutGlueball.cpp)
 target_link_libraries(fitHVQCDWithoutGlueball.exe armadillo hvqcd_lib)
 
+# Fit HVQCD Without Glueball
+add_executable(fitHVQCDWithoutGlueballWitha0.exe physics/fitHVQCDWithoutGlueballWitha0.cpp)
+target_link_libraries(fitHVQCDWithoutGlueballWitha0.exe armadillo hvqcd_lib)
+
 # Fit HVQCD Without Glueball a1 and a2 fixed
 add_executable(fitHVQCDWithoutGlueball_a1_a2_fixed.exe physics/fitHVQCDWithoutGlueball_a1_a2_fixed.cpp)
 target_link_libraries(fitHVQCDWithoutGlueball_a1_a2_fixed.exe armadillo hvqcd_lib)
