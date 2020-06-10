@@ -122,7 +122,7 @@ int main(int argc, char ** argv)
     chebSetN(800);
 
     vector<double> x_guess = {Za, ca};
-    vector<double> deltas = {0.1, 0.1};
+    vector<double> deltas = {10, 10};
 
     Function func(sc, ksc, wsc, W0, w0, kU1, wU1, VgIR, WIR, kIR, wIR, W1, k1, w1, a1, a2, xf, tau0);
     
