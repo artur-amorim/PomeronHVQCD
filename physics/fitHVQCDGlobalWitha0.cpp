@@ -7,7 +7,6 @@
 
 using namespace std;
 
-const std::vector<double> new_Ra0_rho = {1.2640920465392256, 1.901297629182468, 2.6120269328999304};
 
 double J(const vector<double> X)
 {
@@ -88,7 +87,7 @@ double J(const vector<double> X)
     for(int i = 0; i < Rpi_rho.size(); i++) erms += fabs((PSMMasses[i]/VMMasses[0]-Rpi_rho[i])/Rpi_rho[i]);
     // Contributions from the ratios m_{a0_n} / m_{\rho}
     if( SMMasses.size() == 0) SMMasses = vector<double>(3,0);
-    for(int i = 0; i < new_Ra0_rho.size(); i++) erms += fabs((SMMasses[i]/VMMasses[0]- new_Ra0_rho[i])/new_Ra0_rho[i]);
+    for(int i = 0; i < Ra0_rho_with_a0980.size(); i++) erms += fabs((SMMasses[i]/VMMasses[0]- Ra0_rho_with_a0980[i])/Ra0_rho_with_a0980[i]);
     // Singlet vector and axial vector meson sector
     for(int i = 0; i < Romega_rho.size(); i++) erms += fabs((VMMasses[i]/VMMasses[0]-Romega_rho[i])/Romega_rho[i]);
     int nRatios = 24;
@@ -157,7 +156,7 @@ int main(int argc, char ** argv)
     hvqcd.solve(-80,20);
 
     // Computing the mass ratios
-    computeHVQCDRatios(hvqcd);
+    computeHVQCDRatios(hvqcd, true);
 
     double chi2 = J(xop);
     cout << "Best Chi2 found for ";

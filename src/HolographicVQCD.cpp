@@ -1396,7 +1396,7 @@ void computeHVQCDSpectrum(const HVQCD &hvqcd)
     VMMasses = computeMasses(us, VVM, 7);
     AVMMasses = computeMasses(us, VAVM, 4);
     PSMMasses = computePseudoScalarMasses(hvqcd, 5);
-    SMMasses = computeMasses(us, VSM, 2);
+    SMMasses = computeMasses(us, VSM, 3);
     SingletAVMMasses = computeMasses(us, VSingletAVM, 4);
     // Display the mass values
     // Tensor glueball ratio
@@ -1424,7 +1424,7 @@ void computeHVQCDSpectrum(const HVQCD &hvqcd)
     std::cout << std::endl << std::endl;
 }
 
-void computeHVQCDRatios(const HVQCD &hvqcd)
+void computeHVQCDRatios(const HVQCD &hvqcd, const bool with_a0)
 {
     /*
         This function starts by checking that the profile of the background fields has been computed.
@@ -1448,7 +1448,8 @@ void computeHVQCDRatios(const HVQCD &hvqcd)
     VMMasses = computeMasses(us, VVM, 7);
     AVMMasses = computeMasses(us, VAVM, 4);
     PSMMasses = computePseudoScalarMasses(hvqcd, 5);
-    SMMasses = computeMasses(us,VSM, 2);
+    if (with_a0) SMMasses = computeMasses(us,VSM, 3);
+    else SMMasses = computeMasses(us,VSM, 2);
     SingletAVMMasses = computeMasses(us, VSingletAVM, 4);
     // Compute the predicted ratios
     std::vector<double> RTGPred, RrhoPred, Ra1Pred, RpiPred, Ra0Pred, RomegaPred, Rf1Pred;
@@ -1456,16 +1457,19 @@ void computeHVQCDRatios(const HVQCD &hvqcd)
     RrhoPred = {VMMasses[1]/VMMasses[0], VMMasses[2]/VMMasses[0], VMMasses[3]/VMMasses[0], VMMasses[4]/VMMasses[0]};
     Ra1Pred = {AVMMasses[0]/VMMasses[0], AVMMasses[1]/VMMasses[0], AVMMasses[2]/VMMasses[0], AVMMasses[3]/VMMasses[0]};
     RpiPred = {PSMMasses[0]/VMMasses[0], PSMMasses[1]/VMMasses[0], PSMMasses[2]/VMMasses[0], PSMMasses[3]/VMMasses[0], PSMMasses[4]/VMMasses[0]};
-    Ra0Pred = {SMMasses[0] / VMMasses[0], SMMasses[1] / VMMasses[0]};
+    if (with_a0) Ra0Pred = {SMMasses[0] / VMMasses[0], SMMasses[1] / VMMasses[0], SMMasses[2] / VMMasses[0]};
+    else Ra0Pred = {SMMasses[0] / VMMasses[0], SMMasses[1] / VMMasses[0]};
     RomegaPred = {VMMasses[0]/VMMasses[0], VMMasses[1]/VMMasses[0], VMMasses[2]/VMMasses[0], VMMasses[3]/VMMasses[0], VMMasses[4]/VMMasses[0], VMMasses[5]/VMMasses[0], VMMasses[6]/VMMasses[0]};
     Rf1Pred = {SingletAVMMasses[0]/VMMasses[0], SingletAVMMasses[1]/VMMasses[0], SingletAVMMasses[2]/VMMasses[0], SingletAVMMasses[3]/VMMasses[0]};
     double sum_errors = 0;
+    int n_ratios = 0;
     // Compare the predicted ratios with the known ones
     std::cout << "Predicted Ratios" << '\t' << "Measured Ratios" << '\t' << "(Rpred - Robs) / Robs" << std::endl;
     // Tensor glueball ratio
     std::cout << "TENSOR GLUEBALL SECTOR" << std::endl;
     std::cout << RTGPred[0] << '\t' << RTG_rho[0] << '\t' << (RTGPred[0] - RTG_rho[0]) / RTG_rho[0] << std::endl;
     sum_errors += fabs((RTGPred[0] - RTG_rho[0]) / RTG_rho[0]);
+    n_ratios += 1;
     std::cout << std::endl;
     // Vector meson ratios
     std::cout << "VECTOR MESON NONSINGLET SECTOR" << std::endl;
@@ -1473,6 +1477,7 @@ void computeHVQCDRatios(const HVQCD &hvqcd)
     {
         std::cout << RrhoPred[i] << '\t' << Rrho_rho[i] << '\t' << (RrhoPred[i] - Rrho_rho[i]) / Rrho_rho[i] << std::endl;
         sum_errors += fabs((RrhoPred[i] - Rrho_rho[i]) / Rrho_rho[i]);
+        n_ratios += 1;
     }
     std::cout << std::endl;
     // Axial vector meson ratios
@@ -1481,6 +1486,7 @@ void computeHVQCDRatios(const HVQCD &hvqcd)
     {
         std::cout << Ra1Pred[i] << '\t' << Ra1_rho[i] << '\t' << (Ra1Pred[i] - Ra1_rho[i]) / Ra1_rho[i] << std::endl;
         sum_errors += fabs((Ra1Pred[i] - Ra1_rho[i]) / Ra1_rho[i]);
+        n_ratios += 1;
     }
     std::cout << std::endl;
     std::cout << "PSEUDOSCALAR MESON NONSINGLET SECTOR" << std::endl;
@@ -1488,13 +1494,27 @@ void computeHVQCDRatios(const HVQCD &hvqcd)
     {
         std::cout << RpiPred[i] << '\t' << Rpi_rho[i] << '\t' << (RpiPred[i] - Rpi_rho[i]) / Rpi_rho[i] << std::endl;
         sum_errors += fabs((RpiPred[i] - Rpi_rho[i]) / Rpi_rho[i]);
+        n_ratios += 1;
     }
     std::cout << std::endl;
     std::cout << "SCALAR MESON NONSINGLET SECTOR" << std::endl;
-    for(int i = 0; i < Ra0_rho.size(); i++)
+    if (with_a0)
     {
-        std::cout << Ra0Pred[i] << '\t' << Ra0_rho[i] << '\t' << (Ra0Pred[i] - Ra0_rho[i]) / Ra0_rho[i] << std::endl;
-        sum_errors += fabs((Ra0Pred[i] - Ra0_rho[i]) / Ra0_rho[i]);
+        for(int i = 0; i < Ra0_rho_with_a0980.size(); i++)
+        {
+            std::cout << Ra0Pred[i] << '\t' << Ra0_rho_with_a0980[i] << '\t' << (Ra0Pred[i] - Ra0_rho_with_a0980[i]) / Ra0_rho_with_a0980[i] << std::endl;
+            sum_errors += fabs((Ra0Pred[i] - Ra0_rho_with_a0980[i]) / Ra0_rho_with_a0980[i]);
+            n_ratios += 1;
+        }
+    }
+    else
+    {
+        for(int i = 0; i < Ra0_rho.size(); i++)
+        {
+            std::cout << Ra0Pred[i] << '\t' << Ra0_rho[i] << '\t' << (Ra0Pred[i] - Ra0_rho[i]) / Ra0_rho[i] << std::endl;
+            sum_errors += fabs((Ra0Pred[i] - Ra0_rho[i]) / Ra0_rho[i]);
+            n_ratios += 1;
+        }
     }
     std::cout << std::endl;
     // Singlet Vector meson ratios
@@ -1503,6 +1523,7 @@ void computeHVQCDRatios(const HVQCD &hvqcd)
     {
         std::cout << RomegaPred[i] << '\t' << Romega_rho[i] << '\t' << (RomegaPred[i] - Romega_rho[i]) / Romega_rho[i] << std::endl;
         sum_errors += fabs((RomegaPred[i] - Romega_rho[i]) / Romega_rho[i]);
+        n_ratios += 1;
     }
     std::cout << std::endl;
     // Singlet Axial vector meson ratios
@@ -1511,9 +1532,10 @@ void computeHVQCDRatios(const HVQCD &hvqcd)
     {
         std::cout << Rf1Pred[i] << '\t' << Rf1_rho[i] << '\t' << (Rf1Pred[i] - Rf1_rho[i]) / Rf1_rho[i] << std::endl;
         sum_errors += fabs((Rf1Pred[i] - Rf1_rho[i]) / Rf1_rho[i]);
+        n_ratios += 1;
     }
     std::cout << std::endl;
-    std::cout << "Sum of the relative errors: " << sum_errors << std::endl;
+    std::cout << "Average relative error: " << sum_errors / n_ratios << std::endl;
 }
 
 HVQCD& hvqcd()

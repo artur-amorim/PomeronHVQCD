@@ -242,18 +242,18 @@ void saveSchrodingerPotentials(const HVQCD &hvqcd, std::string path = "Schroding
 void computeHVQCDSpectrum(const HVQCD &hvqcd);
 
 // Declaration of computeHVQCDRatios function
-void computeHVQCDRatios(const HVQCD &hvqcd);
+void computeHVQCDRatios(const HVQCD &hvqcd,  const bool with_a0 = false);
 
 const std::vector<double> mrhos = {775.26, 1465, 1720, 2000, 2265};                 // Non-Singlet Vector Mesons
 const std::vector<double> ma1s = {1230, 1930, 2095, 2270};                          // Non-Singlet Axial Vector Mesons
 const std::vector<double> mpis = {134.9770, 1300, 1812, 2070, 2360};                // Non-Singlet Pseudoscalar Mesons
 const std::vector<double> a0s = {1474, 2025};                                       // Non-Singlet Scalar Mesons
-const std::vector<double> mTG = {2150};                                             // Singlet Tensor glueballs
+const std::vector<double> mTG = {1918};                                             // Singlet Tensor glueballs
 const std::vector<double> momegas = {782.65, 1420, 1670, 1960, 2205, 2290, 2330};   // Singlet Vector Mesons
 const std::vector<double> mf1s = {1281.9, 1426.4, 1971, 2310};                      // Singlet Axial Vector Mesons
 
 // Ratios with the rho vector meson rho
-const std::vector<double> RTG_rho = {2.773263163325852};
+const std::vector<double> RTG_rho = {2.4740087196553415};
 const std::vector<double> Rrho_rho = {1.8896886205918015, 2.2186105306606816, 2.5797796868147462, 2.9216004953177};
 const std::vector<double> Ra1_rho = {1.5865645073910688, 2.4894873977762297, 2.7023192219384464, 2.9280499445347368};
 const std::vector<double> Rpi_rho = {0.174105461393597, 1.6768567964295849, 2.33728039625416, 2.6700719758532623, 3.0441400304414};
@@ -262,6 +262,7 @@ const std::vector<double> Romega_rho = {1.0095322859427804, 1.8316435776384696, 
 const std::vector<double> Rf1_rho = {1.6535097902639115, 1.839898872636277, 2.542372881355932, 2.979645538271032};
 
 const double m_a0 = 980;
+const std::vector<double> Ra0_rho_with_a0980 = {1.2640920465392256, 1.901297629182468, 2.6120269328999304};
 
 HVQCD& hvqcd();
 
