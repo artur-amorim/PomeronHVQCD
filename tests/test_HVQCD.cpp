@@ -33,8 +33,16 @@ int main(int argc, char ** argv)
     // Create HVQCD object with default values
     HVQCD hvqcd(sc, ksc, wsc, W0, w0, kU1, wU1, VgIR, WIR, kIR, wIR, W1, k1, w1, a1, a2, xf, tau0, za, ca);
     // Solve the background
-    hvqcd.solve(-10, 9);
+    hvqcd.solve(-80, 20);
+
+    vector<double> As = hvqcd.A(), Phis = hvqcd.Phi(), taus = hvqcd.tau();
+
+    for(int i = 0; i < As.size(); i++)
+    {
+        cout << As[i] << '\t' << hvqcd.Vf0(Phis[i]) << '\t' << hvqcd.Vtau(taus[i]) << '\t' << hvqcd.Vf(Phis[i], taus[i]) << endl;
+    }
     
+    /*
     double mq = hvqcd.QuarkMass();
     double tmass2 = hvqcd.TachyonMassSquareIR();
 
@@ -49,6 +57,6 @@ int main(int argc, char ** argv)
     chebSetN(800);
     computeHVQCDSpectrum(hvqcd);
     computeHVQCDRatios(hvqcd);
-    
+    */
     return 0;
 }
