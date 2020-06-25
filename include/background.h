@@ -19,8 +19,6 @@ class Background
         double Vgl(const double l);
         // dVg/dPhi
         double dVgldlambda(const double l);
-        // Dilaton potential as a function of phi
-        double Vg(const double phi);
         // dVg/dPhi
         double dVgdPhi(const double phi);
         // d2Vg/dPhi2
@@ -57,6 +55,8 @@ class Background
         // Getters of sc, VgIR, qs, Phis, dqs, dPhis, d2Phis, As and zs
         double get_sc() const;
         double get_VgIR() const;
+        // Dilaton potential as a function of phi
+        double Vg(const double phi);
         std::vector<double> q() const;
         std::vector<double> Phi() const;
         std::vector<double> dq() const;

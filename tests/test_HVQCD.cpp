@@ -37,9 +37,11 @@ int main(int argc, char ** argv)
 
     vector<double> As = hvqcd.A(), Phis = hvqcd.Phi(), taus = hvqcd.tau();
 
+    cout << "A\tVf0\tVtau\tVf\tVg\tVf/Vg" << endl;
     for(int i = 0; i < As.size(); i++)
     {
-        cout << As[i] << '\t' << hvqcd.Vf0(Phis[i]) << '\t' << hvqcd.Vtau(taus[i]) << '\t' << hvqcd.Vf(Phis[i], taus[i]) << endl;
+        cout << As[i] << '\t' << hvqcd.Vf0(Phis[i]) << '\t' << hvqcd.Vtau(taus[i]) << '\t' << hvqcd.Vf(Phis[i], taus[i]);
+        cout << '\t' << hvqcd.Vg(Phis[i]) << '\t' << hvqcd.Vf(Phis[i], taus[i]) / hvqcd.Vg(Phis[i]) << endl;
     }
     
     /*
