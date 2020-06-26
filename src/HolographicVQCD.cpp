@@ -107,7 +107,7 @@ double HVQCD::Vtau(const double tau) const
 double HVQCD::dVtau(const double tau) const
 {
     // Definition of dVtau = -2 e^(-a2tau^2) tau (a2 + a1(-1+a2tau^2))
-    return -2 * std::exp(-a2*tau*tau) * tau * (a2 + a1*(-1 + a2*tau*tau));
+    return -2 * std::exp(-a2*tau*tau) * tau * a2 *(1 + a1*(-1 + a2*tau*tau)/a2);
 }
 
 double HVQCD::d2Vf0dlambda2(const double l) const
@@ -163,9 +163,9 @@ double HVQCD::d2VfdPhidtau(const double phi, const double tau) const
 double HVQCD::klambda(const double l) const
 {
     // Definition of the k potential as a function of lambda = exp(Phi)
-    double ans = 1.5 - W0 * xf / 8;
-    ans = ans * (1 + sc * kU1 * l / lambda0 + kIR * exp(-lambda0/(ksc * l)) * (1 + lambda0 * k1 /(ksc * l)) * std::pow(ksc * l / lambda0, 4.0/3) / sqrt(log(1 + ksc * l / lambda0 ))) ;
-    return 1 / ans ;
+    double k0 = a2*(1-a1/a2) / (1.5 - xf * W0 / 8);
+    double ans = 1 + sc * kU1 * l / lambda0 + kIR * exp(-lambda0/(ksc * l)) * (1 + lambda0 * k1 /(ksc * l)) * std::pow(ksc * l / lambda0, 4.0/3) / sqrt(log(1 + ksc * l / lambda0 )) ;
+    return k0 / ans ;
 }
 
 double HVQCD::k(const double phi) const
@@ -179,14 +179,14 @@ double HVQCD::k(const double phi) const
 double HVQCD::dkdlambda(const double l) const
 {
     // Computes dk/dlambda
-    double k0 = 1.5 - W0 * xf / 8.0;
-    double kfactor = k0 * std::pow( 1 + kU1 * sc * l / lambda0 + exp(-lambda0/(ksc * l)) * kIR * std::pow(ksc * l, 4.0/3) * (1+ k1 * lambda0 /(ksc * l))/(16 * std::pow(M_PI, 8.0/3) * sqrt(log(1+ksc*l/lambda0))), 2.0) ;
+    double k0 = a2*(1-a1/a2) / (1.5 - xf * W0 / 8);
+    double kfactor = std::pow( 1 + kU1 * sc * l / lambda0 + exp(-lambda0/(ksc * l)) * kIR * std::pow(ksc * l, 4.0/3) * (1+ k1 * lambda0 /(ksc * l))/(16 * std::pow(M_PI, 8.0/3) * sqrt(log(1+ksc*l/lambda0))), 2.0) ;
     double ans = kU1 * sc / lambda0 - exp(-lambda0/(ksc*l)) * kIR * ksc * std::pow(ksc * l, 4.0/3) * (1+ k1 * lambda0 /(ksc * l)) / (32 * std::pow(M_PI, 8.0/3) * (1+ksc * l / lambda0) * lambda0 * std::pow(log(1+ksc*l/lambda0),1.5));
     ans -= exp(-lambda0/(ksc*l)) * k1 * kIR * std::pow(ksc * l, 4.0/3) * lambda0 / (16 * ksc * std::pow(M_PI,8.0/3) * l * l * sqrt(log(1+ksc*l/lambda0)));
     ans += exp(-lambda0/(ksc*l)) * kIR * ksc * std::pow(ksc * l, 1.0/3) * (1+k1*lambda0/(ksc * l)) / (12 * std::pow(M_PI,8.0/3) * sqrt(log(1+ksc*l/lambda0)));
     ans += exp(-lambda0/(ksc*l)) * kIR * std::pow(ksc * l, 4.0/3) * lambda0 * (1+k1*lambda0/(ksc * l)) / (16 * ksc * std::pow(M_PI, 8.0/3) * l * l * sqrt(log(1+ ksc*l / lambda0)));
     ans = - ans / kfactor ;
-    return ans;
+    return k0 * ans;
 }
 
 double HVQCD::dkdPhi(const double phi) const 
@@ -204,6 +204,7 @@ double HVQCD::d2kdPhi2(const double phi) const
     /* Definition of d2k/dPhi2 potential
        Given that k(Phi) = 1 / f(Phi), d2k/dPhi2 = 2 dkdPhi^2/k - k^2 f''(Phi)
     */
+    double k0 = a2*(1-a1/a2) / (1.5 - xf * W0 / 8);
     double kPhi = k(phi);
     double dkPhi = dkdPhi(phi);
     double l = exp(phi);
@@ -215,7 +216,7 @@ double HVQCD::d2kdPhi2(const double phi) const
     d2f += -(8./3)*exp(-1/arg)*k1*kIR*std::pow(arg,1./3)/sqrt(logarg)-exp(-1/arg)*k1*kIR*std::pow(arg,4./3)*std::pow(lambda0/(ksc*l),2)/sqrt(logarg)-exp(-1/arg)*k1*kIR*std::pow(arg,4./3)*lambda0*(-1+1/arg)/(ksc*l*sqrt(logarg));
     d2f += (4./3)*exp(-1/arg)*kIR*std::pow(arg,1./3)*(1+k1/arg)/sqrt(logarg) +(4./9)*exp(-1/arg)*kIR*std::pow(ksc*l/lambda0,2)*(1+k1/arg)/(std::pow(arg,2./3)*sqrt(logarg));
     d2f += exp(-1/arg)*kIR*std::pow(arg,4./3)*lambda0*(-1+1/arg)*(1+k1/arg)/(ksc*l*sqrt(logarg)) +(4./3)*exp(-1/arg)*kIR*ksc*l*std::pow(arg,1./3)*(1+1/arg)*(1+k1/arg)/(lambda0*sqrt(logarg));
-    d2f = (1.5 - W0*xf/8)*d2f;
+    d2f = d2f / k0;
     double ans = 2 * std::pow(dkPhi,2)/kPhi - std::pow(kPhi,2)*d2f; 
     return ans;
 }
@@ -332,7 +333,7 @@ double HVQCD::dtauYangMills1(const double q, const double phi, const double tau,
     double dvf0 = dVf0dPhi(phi);
     double kphi = k(phi);
     double dk = dkdPhi(phi);
-    double ans = -4 * q * q * vf0 * tau * (-a1 + a2 + a1*a2 * tau * tau);
+    double ans = -4 * q * q * vf0 * tau * a2 *(- a1 / a2 + 1 + a1 * tau * tau);
     ans = ans / ( (1 + a1 * tau * tau) * (8*vf0 * kphi + 2 * kphi * dvf0 * dphi + vf0 * dk * dphi) );
     return ans;
 }
