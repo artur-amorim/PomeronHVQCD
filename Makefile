@@ -267,6 +267,19 @@ fitHVQCDWithoutGlueballWitha0.exe/fast:
 .PHONY : fitHVQCDWithoutGlueballWitha0.exe/fast
 
 #=============================================================================
+# Target rules for targets named fitHVQCDGlobalTachyonNormalized.exe
+
+# Build rule for target.
+fitHVQCDGlobalTachyonNormalized.exe: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 fitHVQCDGlobalTachyonNormalized.exe
+.PHONY : fitHVQCDGlobalTachyonNormalized.exe
+
+# fast build rule for target.
+fitHVQCDGlobalTachyonNormalized.exe/fast:
+	$(MAKE) -f CMakeFiles/fitHVQCDGlobalTachyonNormalized.exe.dir/build.make CMakeFiles/fitHVQCDGlobalTachyonNormalized.exe.dir/build
+.PHONY : fitHVQCDGlobalTachyonNormalized.exe/fast
+
+#=============================================================================
 # Target rules for targets named fitHVQCDWithoutScalars_sc_VgIR_a1_a2_fixed.exe
 
 # Build rule for target.
@@ -317,19 +330,6 @@ fitHVQCDWithoutGlueballScalars_a1_a2_fixed.exe: cmake_check_build_system
 fitHVQCDWithoutGlueballScalars_a1_a2_fixed.exe/fast:
 	$(MAKE) -f CMakeFiles/fitHVQCDWithoutGlueballScalars_a1_a2_fixed.exe.dir/build.make CMakeFiles/fitHVQCDWithoutGlueballScalars_a1_a2_fixed.exe.dir/build
 .PHONY : fitHVQCDWithoutGlueballScalars_a1_a2_fixed.exe/fast
-
-#=============================================================================
-# Target rules for targets named fitHVQCDWithoutScalars_sc_VgIR_fixed.exe
-
-# Build rule for target.
-fitHVQCDWithoutScalars_sc_VgIR_fixed.exe: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 fitHVQCDWithoutScalars_sc_VgIR_fixed.exe
-.PHONY : fitHVQCDWithoutScalars_sc_VgIR_fixed.exe
-
-# fast build rule for target.
-fitHVQCDWithoutScalars_sc_VgIR_fixed.exe/fast:
-	$(MAKE) -f CMakeFiles/fitHVQCDWithoutScalars_sc_VgIR_fixed.exe.dir/build.make CMakeFiles/fitHVQCDWithoutScalars_sc_VgIR_fixed.exe.dir/build
-.PHONY : fitHVQCDWithoutScalars_sc_VgIR_fixed.exe/fast
 
 #=============================================================================
 # Target rules for targets named fitHVQCDWithoutScalars_a1_a2_fixed.exe
@@ -423,19 +423,6 @@ fitHVQCDWithoutScalars.exe/fast:
 .PHONY : fitHVQCDWithoutScalars.exe/fast
 
 #=============================================================================
-# Target rules for targets named fitHVQCDGlobal_a1_a2_fixed.exe
-
-# Build rule for target.
-fitHVQCDGlobal_a1_a2_fixed.exe: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 fitHVQCDGlobal_a1_a2_fixed.exe
-.PHONY : fitHVQCDGlobal_a1_a2_fixed.exe
-
-# fast build rule for target.
-fitHVQCDGlobal_a1_a2_fixed.exe/fast:
-	$(MAKE) -f CMakeFiles/fitHVQCDGlobal_a1_a2_fixed.exe.dir/build.make CMakeFiles/fitHVQCDGlobal_a1_a2_fixed.exe.dir/build
-.PHONY : fitHVQCDGlobal_a1_a2_fixed.exe/fast
-
-#=============================================================================
 # Target rules for targets named hvqcd_lib
 
 # Build rule for target.
@@ -449,56 +436,17 @@ hvqcd_lib/fast:
 .PHONY : hvqcd_lib/fast
 
 #=============================================================================
-# Target rules for targets named test_Wf.exe
+# Target rules for targets named fitHVQCDGlobal_a1_a2_fixed.exe
 
 # Build rule for target.
-test_Wf.exe: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 test_Wf.exe
-.PHONY : test_Wf.exe
+fitHVQCDGlobal_a1_a2_fixed.exe: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 fitHVQCDGlobal_a1_a2_fixed.exe
+.PHONY : fitHVQCDGlobal_a1_a2_fixed.exe
 
 # fast build rule for target.
-test_Wf.exe/fast:
-	$(MAKE) -f CMakeFiles/test_Wf.exe.dir/build.make CMakeFiles/test_Wf.exe.dir/build
-.PHONY : test_Wf.exe/fast
-
-#=============================================================================
-# Target rules for targets named fitHVQCDGlobal.exe
-
-# Build rule for target.
-fitHVQCDGlobal.exe: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 fitHVQCDGlobal.exe
-.PHONY : fitHVQCDGlobal.exe
-
-# fast build rule for target.
-fitHVQCDGlobal.exe/fast:
-	$(MAKE) -f CMakeFiles/fitHVQCDGlobal.exe.dir/build.make CMakeFiles/fitHVQCDGlobal.exe.dir/build
-.PHONY : fitHVQCDGlobal.exe/fast
-
-#=============================================================================
-# Target rules for targets named fitHVQCDWithoutGlueball_sc_VgIR_fixed.exe
-
-# Build rule for target.
-fitHVQCDWithoutGlueball_sc_VgIR_fixed.exe: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 fitHVQCDWithoutGlueball_sc_VgIR_fixed.exe
-.PHONY : fitHVQCDWithoutGlueball_sc_VgIR_fixed.exe
-
-# fast build rule for target.
-fitHVQCDWithoutGlueball_sc_VgIR_fixed.exe/fast:
-	$(MAKE) -f CMakeFiles/fitHVQCDWithoutGlueball_sc_VgIR_fixed.exe.dir/build.make CMakeFiles/fitHVQCDWithoutGlueball_sc_VgIR_fixed.exe.dir/build
-.PHONY : fitHVQCDWithoutGlueball_sc_VgIR_fixed.exe/fast
-
-#=============================================================================
-# Target rules for targets named fitHVQCDGlobalWitha0.exe
-
-# Build rule for target.
-fitHVQCDGlobalWitha0.exe: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 fitHVQCDGlobalWitha0.exe
-.PHONY : fitHVQCDGlobalWitha0.exe
-
-# fast build rule for target.
-fitHVQCDGlobalWitha0.exe/fast:
-	$(MAKE) -f CMakeFiles/fitHVQCDGlobalWitha0.exe.dir/build.make CMakeFiles/fitHVQCDGlobalWitha0.exe.dir/build
-.PHONY : fitHVQCDGlobalWitha0.exe/fast
+fitHVQCDGlobal_a1_a2_fixed.exe/fast:
+	$(MAKE) -f CMakeFiles/fitHVQCDGlobal_a1_a2_fixed.exe.dir/build.make CMakeFiles/fitHVQCDGlobal_a1_a2_fixed.exe.dir/build
+.PHONY : fitHVQCDGlobal_a1_a2_fixed.exe/fast
 
 #=============================================================================
 # Target rules for targets named savePotentials.exe
@@ -551,6 +499,84 @@ fitHVQCDAllWithf2.exe: cmake_check_build_system
 fitHVQCDAllWithf2.exe/fast:
 	$(MAKE) -f CMakeFiles/fitHVQCDAllWithf2.exe.dir/build.make CMakeFiles/fitHVQCDAllWithf2.exe.dir/build
 .PHONY : fitHVQCDAllWithf2.exe/fast
+
+#=============================================================================
+# Target rules for targets named test_Wf.exe
+
+# Build rule for target.
+test_Wf.exe: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 test_Wf.exe
+.PHONY : test_Wf.exe
+
+# fast build rule for target.
+test_Wf.exe/fast:
+	$(MAKE) -f CMakeFiles/test_Wf.exe.dir/build.make CMakeFiles/test_Wf.exe.dir/build
+.PHONY : test_Wf.exe/fast
+
+#=============================================================================
+# Target rules for targets named fitHVQCDGlobal.exe
+
+# Build rule for target.
+fitHVQCDGlobal.exe: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 fitHVQCDGlobal.exe
+.PHONY : fitHVQCDGlobal.exe
+
+# fast build rule for target.
+fitHVQCDGlobal.exe/fast:
+	$(MAKE) -f CMakeFiles/fitHVQCDGlobal.exe.dir/build.make CMakeFiles/fitHVQCDGlobal.exe.dir/build
+.PHONY : fitHVQCDGlobal.exe/fast
+
+#=============================================================================
+# Target rules for targets named fitHVQCDGlobalWitha0TachyonNormalized.exe
+
+# Build rule for target.
+fitHVQCDGlobalWitha0TachyonNormalized.exe: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 fitHVQCDGlobalWitha0TachyonNormalized.exe
+.PHONY : fitHVQCDGlobalWitha0TachyonNormalized.exe
+
+# fast build rule for target.
+fitHVQCDGlobalWitha0TachyonNormalized.exe/fast:
+	$(MAKE) -f CMakeFiles/fitHVQCDGlobalWitha0TachyonNormalized.exe.dir/build.make CMakeFiles/fitHVQCDGlobalWitha0TachyonNormalized.exe.dir/build
+.PHONY : fitHVQCDGlobalWitha0TachyonNormalized.exe/fast
+
+#=============================================================================
+# Target rules for targets named fitHVQCDWithoutScalars_sc_VgIR_fixed.exe
+
+# Build rule for target.
+fitHVQCDWithoutScalars_sc_VgIR_fixed.exe: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 fitHVQCDWithoutScalars_sc_VgIR_fixed.exe
+.PHONY : fitHVQCDWithoutScalars_sc_VgIR_fixed.exe
+
+# fast build rule for target.
+fitHVQCDWithoutScalars_sc_VgIR_fixed.exe/fast:
+	$(MAKE) -f CMakeFiles/fitHVQCDWithoutScalars_sc_VgIR_fixed.exe.dir/build.make CMakeFiles/fitHVQCDWithoutScalars_sc_VgIR_fixed.exe.dir/build
+.PHONY : fitHVQCDWithoutScalars_sc_VgIR_fixed.exe/fast
+
+#=============================================================================
+# Target rules for targets named fitHVQCDWithoutGlueball_sc_VgIR_fixed.exe
+
+# Build rule for target.
+fitHVQCDWithoutGlueball_sc_VgIR_fixed.exe: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 fitHVQCDWithoutGlueball_sc_VgIR_fixed.exe
+.PHONY : fitHVQCDWithoutGlueball_sc_VgIR_fixed.exe
+
+# fast build rule for target.
+fitHVQCDWithoutGlueball_sc_VgIR_fixed.exe/fast:
+	$(MAKE) -f CMakeFiles/fitHVQCDWithoutGlueball_sc_VgIR_fixed.exe.dir/build.make CMakeFiles/fitHVQCDWithoutGlueball_sc_VgIR_fixed.exe.dir/build
+.PHONY : fitHVQCDWithoutGlueball_sc_VgIR_fixed.exe/fast
+
+#=============================================================================
+# Target rules for targets named fitHVQCDGlobalWitha0.exe
+
+# Build rule for target.
+fitHVQCDGlobalWitha0.exe: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 fitHVQCDGlobalWitha0.exe
+.PHONY : fitHVQCDGlobalWitha0.exe
+
+# fast build rule for target.
+fitHVQCDGlobalWitha0.exe/fast:
+	$(MAKE) -f CMakeFiles/fitHVQCDGlobalWitha0.exe.dir/build.make CMakeFiles/fitHVQCDGlobalWitha0.exe.dir/build
+.PHONY : fitHVQCDGlobalWitha0.exe/fast
 
 physics/HVQCDRatios.o: physics/HVQCDRatios.cpp.o
 
@@ -768,6 +794,33 @@ physics/fitHVQCDGlobal.cpp.s:
 	$(MAKE) -f CMakeFiles/fitHVQCDGlobal.exe.dir/build.make CMakeFiles/fitHVQCDGlobal.exe.dir/physics/fitHVQCDGlobal.cpp.s
 .PHONY : physics/fitHVQCDGlobal.cpp.s
 
+physics/fitHVQCDGlobalTachyonNormalized.o: physics/fitHVQCDGlobalTachyonNormalized.cpp.o
+
+.PHONY : physics/fitHVQCDGlobalTachyonNormalized.o
+
+# target to build an object file
+physics/fitHVQCDGlobalTachyonNormalized.cpp.o:
+	$(MAKE) -f CMakeFiles/fitHVQCDGlobalTachyonNormalized.exe.dir/build.make CMakeFiles/fitHVQCDGlobalTachyonNormalized.exe.dir/physics/fitHVQCDGlobalTachyonNormalized.cpp.o
+.PHONY : physics/fitHVQCDGlobalTachyonNormalized.cpp.o
+
+physics/fitHVQCDGlobalTachyonNormalized.i: physics/fitHVQCDGlobalTachyonNormalized.cpp.i
+
+.PHONY : physics/fitHVQCDGlobalTachyonNormalized.i
+
+# target to preprocess a source file
+physics/fitHVQCDGlobalTachyonNormalized.cpp.i:
+	$(MAKE) -f CMakeFiles/fitHVQCDGlobalTachyonNormalized.exe.dir/build.make CMakeFiles/fitHVQCDGlobalTachyonNormalized.exe.dir/physics/fitHVQCDGlobalTachyonNormalized.cpp.i
+.PHONY : physics/fitHVQCDGlobalTachyonNormalized.cpp.i
+
+physics/fitHVQCDGlobalTachyonNormalized.s: physics/fitHVQCDGlobalTachyonNormalized.cpp.s
+
+.PHONY : physics/fitHVQCDGlobalTachyonNormalized.s
+
+# target to generate assembly for a file
+physics/fitHVQCDGlobalTachyonNormalized.cpp.s:
+	$(MAKE) -f CMakeFiles/fitHVQCDGlobalTachyonNormalized.exe.dir/build.make CMakeFiles/fitHVQCDGlobalTachyonNormalized.exe.dir/physics/fitHVQCDGlobalTachyonNormalized.cpp.s
+.PHONY : physics/fitHVQCDGlobalTachyonNormalized.cpp.s
+
 physics/fitHVQCDGlobalWitha0.o: physics/fitHVQCDGlobalWitha0.cpp.o
 
 .PHONY : physics/fitHVQCDGlobalWitha0.o
@@ -794,6 +847,33 @@ physics/fitHVQCDGlobalWitha0.s: physics/fitHVQCDGlobalWitha0.cpp.s
 physics/fitHVQCDGlobalWitha0.cpp.s:
 	$(MAKE) -f CMakeFiles/fitHVQCDGlobalWitha0.exe.dir/build.make CMakeFiles/fitHVQCDGlobalWitha0.exe.dir/physics/fitHVQCDGlobalWitha0.cpp.s
 .PHONY : physics/fitHVQCDGlobalWitha0.cpp.s
+
+physics/fitHVQCDGlobalWitha0TachyonNormalized.o: physics/fitHVQCDGlobalWitha0TachyonNormalized.cpp.o
+
+.PHONY : physics/fitHVQCDGlobalWitha0TachyonNormalized.o
+
+# target to build an object file
+physics/fitHVQCDGlobalWitha0TachyonNormalized.cpp.o:
+	$(MAKE) -f CMakeFiles/fitHVQCDGlobalWitha0TachyonNormalized.exe.dir/build.make CMakeFiles/fitHVQCDGlobalWitha0TachyonNormalized.exe.dir/physics/fitHVQCDGlobalWitha0TachyonNormalized.cpp.o
+.PHONY : physics/fitHVQCDGlobalWitha0TachyonNormalized.cpp.o
+
+physics/fitHVQCDGlobalWitha0TachyonNormalized.i: physics/fitHVQCDGlobalWitha0TachyonNormalized.cpp.i
+
+.PHONY : physics/fitHVQCDGlobalWitha0TachyonNormalized.i
+
+# target to preprocess a source file
+physics/fitHVQCDGlobalWitha0TachyonNormalized.cpp.i:
+	$(MAKE) -f CMakeFiles/fitHVQCDGlobalWitha0TachyonNormalized.exe.dir/build.make CMakeFiles/fitHVQCDGlobalWitha0TachyonNormalized.exe.dir/physics/fitHVQCDGlobalWitha0TachyonNormalized.cpp.i
+.PHONY : physics/fitHVQCDGlobalWitha0TachyonNormalized.cpp.i
+
+physics/fitHVQCDGlobalWitha0TachyonNormalized.s: physics/fitHVQCDGlobalWitha0TachyonNormalized.cpp.s
+
+.PHONY : physics/fitHVQCDGlobalWitha0TachyonNormalized.s
+
+# target to generate assembly for a file
+physics/fitHVQCDGlobalWitha0TachyonNormalized.cpp.s:
+	$(MAKE) -f CMakeFiles/fitHVQCDGlobalWitha0TachyonNormalized.exe.dir/build.make CMakeFiles/fitHVQCDGlobalWitha0TachyonNormalized.exe.dir/physics/fitHVQCDGlobalWitha0TachyonNormalized.cpp.s
+.PHONY : physics/fitHVQCDGlobalWitha0TachyonNormalized.cpp.s
 
 physics/fitHVQCDGlobal_a1_a2_fixed.o: physics/fitHVQCDGlobal_a1_a2_fixed.cpp.o
 
@@ -2516,11 +2596,11 @@ help:
 	@echo "... edit_cache"
 	@echo "... fitHVQCDWithoutGlueballScalars_sc_VgIR_a1_a2_fixed.exe"
 	@echo "... fitHVQCDWithoutGlueballWitha0.exe"
+	@echo "... fitHVQCDGlobalTachyonNormalized.exe"
 	@echo "... fitHVQCDWithoutScalars_sc_VgIR_a1_a2_fixed.exe"
 	@echo "... fitHVQCDWithoutGlueball.exe"
 	@echo "... HVQCDSpectrum.exe"
 	@echo "... fitHVQCDWithoutGlueballScalars_a1_a2_fixed.exe"
-	@echo "... fitHVQCDWithoutScalars_sc_VgIR_fixed.exe"
 	@echo "... fitHVQCDWithoutScalars_a1_a2_fixed.exe"
 	@echo "... fitHVQCDWithoutGlueballScalars_sc_VgIR_fixed.exe"
 	@echo "... fitHVQCDWithoutGlueballScalars.exe"
@@ -2528,16 +2608,18 @@ help:
 	@echo "... fitHVQCDAllWithf2_a1_a2_fixed.exe"
 	@echo "... fitHVQCDGlobal_sc_VgIR_fixed.exe"
 	@echo "... fitHVQCDWithoutScalars.exe"
-	@echo "... fitHVQCDGlobal_a1_a2_fixed.exe"
 	@echo "... hvqcd_lib"
-	@echo "... test_Wf.exe"
-	@echo "... fitHVQCDGlobal.exe"
-	@echo "... fitHVQCDWithoutGlueball_sc_VgIR_fixed.exe"
-	@echo "... fitHVQCDGlobalWitha0.exe"
+	@echo "... fitHVQCDGlobal_a1_a2_fixed.exe"
 	@echo "... savePotentials.exe"
 	@echo "... fitYangMills.exe"
 	@echo "... fitDISHVQCD.exe"
 	@echo "... fitHVQCDAllWithf2.exe"
+	@echo "... test_Wf.exe"
+	@echo "... fitHVQCDGlobal.exe"
+	@echo "... fitHVQCDGlobalWitha0TachyonNormalized.exe"
+	@echo "... fitHVQCDWithoutScalars_sc_VgIR_fixed.exe"
+	@echo "... fitHVQCDWithoutGlueball_sc_VgIR_fixed.exe"
+	@echo "... fitHVQCDGlobalWitha0.exe"
 	@echo "... physics/HVQCDRatios.o"
 	@echo "... physics/HVQCDRatios.i"
 	@echo "... physics/HVQCDRatios.s"
@@ -2562,9 +2644,15 @@ help:
 	@echo "... physics/fitHVQCDGlobal.o"
 	@echo "... physics/fitHVQCDGlobal.i"
 	@echo "... physics/fitHVQCDGlobal.s"
+	@echo "... physics/fitHVQCDGlobalTachyonNormalized.o"
+	@echo "... physics/fitHVQCDGlobalTachyonNormalized.i"
+	@echo "... physics/fitHVQCDGlobalTachyonNormalized.s"
 	@echo "... physics/fitHVQCDGlobalWitha0.o"
 	@echo "... physics/fitHVQCDGlobalWitha0.i"
 	@echo "... physics/fitHVQCDGlobalWitha0.s"
+	@echo "... physics/fitHVQCDGlobalWitha0TachyonNormalized.o"
+	@echo "... physics/fitHVQCDGlobalWitha0TachyonNormalized.i"
+	@echo "... physics/fitHVQCDGlobalWitha0TachyonNormalized.s"
 	@echo "... physics/fitHVQCDGlobal_a1_a2_fixed.o"
 	@echo "... physics/fitHVQCDGlobal_a1_a2_fixed.i"
 	@echo "... physics/fitHVQCDGlobal_a1_a2_fixed.s"

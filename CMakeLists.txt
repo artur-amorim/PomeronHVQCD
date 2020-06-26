@@ -63,9 +63,17 @@ target_link_libraries(fitYangMills.exe armadillo hvqcd_lib)
 add_executable(fitHVQCDGlobal.exe physics/fitHVQCDGlobal.cpp)
 target_link_libraries(fitHVQCDGlobal.exe armadillo hvqcd_lib)
 
-# Fit HVQCD Global
+# Fit HVQCD Global With tachyon normalized
+add_executable(fitHVQCDGlobalTachyonNormalized.exe physics/fitHVQCDGlobalTachyonNormalized.cpp)
+target_link_libraries(fitHVQCDGlobalTachyonNormalized.exe armadillo hvqcd_lib)
+
+# Fit HVQCD Global With a0
 add_executable(fitHVQCDGlobalWitha0.exe physics/fitHVQCDGlobalWitha0.cpp)
 target_link_libraries(fitHVQCDGlobalWitha0.exe armadillo hvqcd_lib)
+
+# Fit HVQCD Global With a0 Tachyon Normalized
+add_executable(fitHVQCDGlobalWitha0TachyonNormalized.exe physics/fitHVQCDGlobalWitha0TachyonNormalized.cpp)
+target_link_libraries(fitHVQCDGlobalWitha0TachyonNormalized.exe armadillo hvqcd_lib)
 
 # Fit HVQCD All with f2
 add_executable(fitHVQCDAllWithf2.exe physics/fitHVQCDAllWithf2.cpp)
