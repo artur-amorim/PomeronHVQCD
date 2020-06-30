@@ -29,7 +29,7 @@ double J(const vector<double> X)
     // Solve the background
     try
     {
-        hvqcd.solve(-80,20);
+        hvqcd.solve(-10,10);
     }
     catch(...)
     {
@@ -134,7 +134,7 @@ int main(int argc, char ** argv)
     cout << " k1: " << k1 << " w1: " << w1 << " a2: " << a2 << " tau0: " << tau0 << endl;
 
     // Fit the model to the spectrum
-    chebSetN(800);
+    chebSetN(1000);
 
     vector<double> x_guess = {sc, ksc, wsc, W0, w0, kU1, wU1, VgIR, WIR, kIR, wIR, W1, k1, w1, a2, tau0};
 
@@ -149,7 +149,7 @@ int main(int argc, char ** argv)
     W1 = xop[11]; k1 = xop[12]; w1 = xop[13]; a2 = xop[14]; a1 = a2*(4+W0*xf)/16.0; xf = 2./3; tau0 = xop[15];
 
     HVQCD hvqcd(sc, ksc, wsc, W0, w0, kU1, wU1, VgIR, WIR, kIR, wIR, W1, k1, w1, a1, a2, xf, tau0, Za, ca);
-    hvqcd.solve(-80,20);
+    hvqcd.solve(-10,10);
 
     const vector<double> us = hvqcd.u();
 

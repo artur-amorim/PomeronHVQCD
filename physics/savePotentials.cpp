@@ -34,7 +34,7 @@ int main(int argc, char ** argv)
     cout << " Za: " << Za << " ca: " << ca << endl;
 
     HVQCD hvqcd(sc, ksc, wsc, W0, w0, kU1, wU1, VgIR, WIR, kIR, wIR, W1, k1, w1, a1, a2, xf, tau0, Za, ca);
-    hvqcd.solve(-80, 20);
+    hvqcd.solve(-10, 10);
 
     // Save background fields
     hvqcd.saveBackgroundFields("BackgroundFields_" + tag + ".txt");

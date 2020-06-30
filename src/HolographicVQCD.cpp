@@ -1548,7 +1548,7 @@ HVQCD& hvqcd()
     if(bck.isSolved()) return bck;
     else
     {
-        bck.solve(-10, 9);
+        bck.solve(-10, 10);
         return bck;
     }
 }
@@ -1562,7 +1562,7 @@ HVQCD& hvqcdU1NNMode()
     if(bck.isSolved()) return bck;
     else
     {
-        bck.solve(-80, 9);
+        bck.solve(-80, 10);
         return bck;
     }
 }

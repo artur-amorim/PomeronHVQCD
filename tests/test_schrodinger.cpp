@@ -18,7 +18,7 @@ int main()
     }
 
     // Compute Chebyschev matrices
-    chebSetN(800);
+    chebSetN(1000);
 
     // Compute spectrum using Chebyshev method
     cout << "Computing spectrum using Chebyschev method" << endl;

@@ -174,7 +174,7 @@ void fitYangMills(const double sc_guess, const double VgIR_guess)
         // Create Yang-Mills object
         YangMills ym(sc, VgIR);
         // Solve Yang-Mills theory
-        ym.solve(-80, 20);
+        ym.solve(-10, 10);
 
         // Find the glueball spectrum
         std::vector<double> zs = ym.z();
@@ -207,6 +207,6 @@ void fitYangMills(const double sc_guess, const double VgIR_guess)
 
     // Create Yang-Mills object and display the ratios
     YangMills ym(X_optimum[0], X_optimum[1]);
-    ym.solve(-80, 20);
+    ym.solve(-10, 10);
     computeYangMillsRatios(ym);
 }

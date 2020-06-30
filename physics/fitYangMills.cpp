@@ -15,11 +15,11 @@ int main(int argc, char ** argv)
     }
 
     // Set number of Chebyshev points 
-    chebSetN(800);
+    chebSetN(1000);
 
     // Solve Yang-Mills for sc = 3, VgIR = 2.05
     YangMills ym(sc_guess, VgIR_guess);
-    ym.solve(-80, 20);
+    ym.solve(-10, 10);
 
     // Compute the initial mass ratios
     computeYangMillsRatios(ym);

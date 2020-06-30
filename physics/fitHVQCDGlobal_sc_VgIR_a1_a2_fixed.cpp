@@ -25,7 +25,7 @@ double J(const vector<double> X)
     // Solve the background
     try
     {
-        hvqcd.solve(-80,20);
+        hvqcd.solve(-10,10);
     }
     catch(...)
     {
@@ -135,7 +135,7 @@ int main(int argc, char ** argv)
     cout << " k1: " << k1 << " w1: " << w1 << " tau0: " << tau0 << endl;
 
     // Fit the model to the spectrum
-    chebSetN(800);
+    chebSetN(1000);
 
     vector<double> x_guess = {ksc, wsc, W0, w0, kU1, wU1, WIR, kIR, wIR, W1, k1, w1, tau0};
 
@@ -149,7 +149,7 @@ int main(int argc, char ** argv)
     W1 = xop[9]; k1 = xop[10]; w1 = xop[11]; tau0 = xop[12];
     double a1 = 0, a2 = 1;
     HVQCD hvqcd(sc, ksc, wsc, W0, w0, kU1, wU1, VgIR, WIR, kIR, wIR, W1, k1, w1, a1, a2, xf, tau0, Za, ca);
-    hvqcd.solve(-80,20);
+    hvqcd.solve(-10,10);
 
     // Computing the mass ratios
     computeHVQCDRatios(hvqcd);

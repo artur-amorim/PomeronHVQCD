@@ -29,7 +29,7 @@ Function::Function(const double sc, const double ksc, const double wsc, const do
                 try
                 {
                     // Prepare the background
-                    hvqcd.solve(-80, 20);
+                    hvqcd.solve(-10, 10);
                     // Now compute VVM and VAVM
                     vector<double> VVM = computeVectorMesonPotential(hvqcd);
                     VAVM = computeAxialVectorMesonNonSingletPotential(hvqcd, VVM);
@@ -119,7 +119,7 @@ int main(int argc, char ** argv)
     cout << "Za: " << Za << " ca: " << ca << endl;
 
     // Fit the model to the spectrum
-    chebSetN(800);
+    chebSetN(1000);
 
     vector<double> x_guess = {Za, ca};
     vector<double> deltas = {10, 10};
@@ -132,7 +132,7 @@ int main(int argc, char ** argv)
     Za = xop[0]; ca = xop[1];
 
     HVQCD hvqcd(sc, ksc, wsc, W0, w0, kU1, wU1, VgIR, WIR, kIR, wIR, W1, k1, w1, a1, a2, xf, tau0, Za, ca);
-    hvqcd.solve(-80, 20);
+    hvqcd.solve(-10, 10);
 
     // Computing the mass ratios
     computeHVQCDRatios(hvqcd);
