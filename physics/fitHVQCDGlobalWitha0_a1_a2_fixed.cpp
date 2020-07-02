@@ -7,6 +7,7 @@
 
 using namespace std;
 
+
 double J(const vector<double> X)
 {
     double sc, ksc, wsc, W0, w0, kU1, wU1;
@@ -62,7 +63,7 @@ double J(const vector<double> X)
         VMMasses = computeMasses(us, VVM, 7, "cheb");
         AVMMasses = computeMasses(us, VAVM, 4, "cheb");
         PSMMasses = computePseudoScalarMasses(hvqcd, 5);
-        SMMasses = computeMasses(us,VSM, 2, "cheb");
+        SMMasses = computeMasses(us,VSM, 3, "cheb");
     }
     catch(...)
     {
@@ -86,11 +87,11 @@ double J(const vector<double> X)
     if( PSMMasses.size() == 0) PSMMasses = vector<double>(5,0);
     for(int i = 0; i < Rpi_rho.size(); i++) erms += fabs((PSMMasses[i]/VMMasses[0]-Rpi_rho[i])/Rpi_rho[i]);
     // Contributions from the ratios m_{a0_n} / m_{\rho}
-    if( SMMasses.size() == 0) SMMasses = vector<double>(2,0);
-    for(int i = 0; i < Ra0_rho.size(); i++) erms += fabs((SMMasses[i]/VMMasses[0]- Ra0_rho[i])/Ra0_rho[i]);
-    // Singlet vector meson sector
+    if( SMMasses.size() == 0) SMMasses = vector<double>(3,0);
+    for(int i = 0; i < Ra0_rho_with_a0980.size(); i++) erms += fabs((SMMasses[i]/VMMasses[0]- Ra0_rho_with_a0980[i])/Ra0_rho_with_a0980[i]);
+    // Singlet vector and axial vector meson sector
     for(int i = 0; i < Romega_rho.size(); i++) erms += fabs((VMMasses[i]/VMMasses[0]-Romega_rho[i])/Romega_rho[i]);
-    int nRatios = 23;
+    int nRatios = 24;
    
     erms = erms/nRatios;
 
@@ -130,7 +131,7 @@ int main(int argc, char ** argv)
         kU1 = stod(argv[6]);wU1 = stod(argv[7]); VgIR = stod(argv[8]); WIR = stod(argv[9]); kIR = stod(argv[10]);
         wIR = stod(argv[11]); W1 = stod(argv[12]); k1 = stod(argv[13]); w1 = stod(argv[14]); tau0 = stod(argv[15]);
     }
-    
+
     cout << "Starting fit with values" << endl;
     cout << "sc: " << sc << " ksc: " << ksc << " wsc: " << wsc << " W0: " << W0 << " w0: " << w0 << " kU1: " << kU1;
     cout << " wU1: " << wU1 << " VgIR: " << VgIR << " WIR: " << WIR << " kIR: " << kIR << " wIR: " << wIR << " W1: " << W1;
@@ -148,14 +149,14 @@ int main(int argc, char ** argv)
     // Show the optimum values found
     sc = xop[0]; ksc = xop[1]; wsc = xop[2]; W0 = xop[3]; w0 = xop[4]; kU1 = xop[5];
     wU1 = xop[6]; VgIR = xop[7]; WIR = xop[8]; kIR = xop[9]; wIR = xop[10];
-    W1 = xop[11]; k1 = xop[12]; w1 = xop[13]; tau0 = xop[14];
+    W1 = xop[11]; k1 = xop[12]; w1 = xop[13]; xf = 2./3; tau0 = xop[16];
     double a2 = 2 / (1.5 - xf * W0 / 8),  a1 = a2 - 1;
 
     HVQCD hvqcd(sc, ksc, wsc, W0, w0, kU1, wU1, VgIR, WIR, kIR, wIR, W1, k1, w1, a1, a2, xf, tau0, Za, ca);
-    hvqcd.solve(-10, 10);
+    hvqcd.solve(-10,10);
 
     // Computing the mass ratios
-    computeHVQCDRatios(hvqcd);
+    computeHVQCDRatios(hvqcd, true);
 
     double chi2 = J(xop);
     cout << "Best Chi2 found for ";

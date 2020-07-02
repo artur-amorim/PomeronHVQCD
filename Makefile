@@ -578,6 +578,19 @@ fitHVQCDGlobalWitha0.exe/fast:
 	$(MAKE) -f CMakeFiles/fitHVQCDGlobalWitha0.exe.dir/build.make CMakeFiles/fitHVQCDGlobalWitha0.exe.dir/build
 .PHONY : fitHVQCDGlobalWitha0.exe/fast
 
+#=============================================================================
+# Target rules for targets named fitHVQCDGlobalWitha0_a1_a2_fixed.exe
+
+# Build rule for target.
+fitHVQCDGlobalWitha0_a1_a2_fixed.exe: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 fitHVQCDGlobalWitha0_a1_a2_fixed.exe
+.PHONY : fitHVQCDGlobalWitha0_a1_a2_fixed.exe
+
+# fast build rule for target.
+fitHVQCDGlobalWitha0_a1_a2_fixed.exe/fast:
+	$(MAKE) -f CMakeFiles/fitHVQCDGlobalWitha0_a1_a2_fixed.exe.dir/build.make CMakeFiles/fitHVQCDGlobalWitha0_a1_a2_fixed.exe.dir/build
+.PHONY : fitHVQCDGlobalWitha0_a1_a2_fixed.exe/fast
+
 physics/HVQCDRatios.o: physics/HVQCDRatios.cpp.o
 
 .PHONY : physics/HVQCDRatios.o
@@ -874,6 +887,33 @@ physics/fitHVQCDGlobalWitha0TachyonNormalized.s: physics/fitHVQCDGlobalWitha0Tac
 physics/fitHVQCDGlobalWitha0TachyonNormalized.cpp.s:
 	$(MAKE) -f CMakeFiles/fitHVQCDGlobalWitha0TachyonNormalized.exe.dir/build.make CMakeFiles/fitHVQCDGlobalWitha0TachyonNormalized.exe.dir/physics/fitHVQCDGlobalWitha0TachyonNormalized.cpp.s
 .PHONY : physics/fitHVQCDGlobalWitha0TachyonNormalized.cpp.s
+
+physics/fitHVQCDGlobalWitha0_a1_a2_fixed.o: physics/fitHVQCDGlobalWitha0_a1_a2_fixed.cpp.o
+
+.PHONY : physics/fitHVQCDGlobalWitha0_a1_a2_fixed.o
+
+# target to build an object file
+physics/fitHVQCDGlobalWitha0_a1_a2_fixed.cpp.o:
+	$(MAKE) -f CMakeFiles/fitHVQCDGlobalWitha0_a1_a2_fixed.exe.dir/build.make CMakeFiles/fitHVQCDGlobalWitha0_a1_a2_fixed.exe.dir/physics/fitHVQCDGlobalWitha0_a1_a2_fixed.cpp.o
+.PHONY : physics/fitHVQCDGlobalWitha0_a1_a2_fixed.cpp.o
+
+physics/fitHVQCDGlobalWitha0_a1_a2_fixed.i: physics/fitHVQCDGlobalWitha0_a1_a2_fixed.cpp.i
+
+.PHONY : physics/fitHVQCDGlobalWitha0_a1_a2_fixed.i
+
+# target to preprocess a source file
+physics/fitHVQCDGlobalWitha0_a1_a2_fixed.cpp.i:
+	$(MAKE) -f CMakeFiles/fitHVQCDGlobalWitha0_a1_a2_fixed.exe.dir/build.make CMakeFiles/fitHVQCDGlobalWitha0_a1_a2_fixed.exe.dir/physics/fitHVQCDGlobalWitha0_a1_a2_fixed.cpp.i
+.PHONY : physics/fitHVQCDGlobalWitha0_a1_a2_fixed.cpp.i
+
+physics/fitHVQCDGlobalWitha0_a1_a2_fixed.s: physics/fitHVQCDGlobalWitha0_a1_a2_fixed.cpp.s
+
+.PHONY : physics/fitHVQCDGlobalWitha0_a1_a2_fixed.s
+
+# target to generate assembly for a file
+physics/fitHVQCDGlobalWitha0_a1_a2_fixed.cpp.s:
+	$(MAKE) -f CMakeFiles/fitHVQCDGlobalWitha0_a1_a2_fixed.exe.dir/build.make CMakeFiles/fitHVQCDGlobalWitha0_a1_a2_fixed.exe.dir/physics/fitHVQCDGlobalWitha0_a1_a2_fixed.cpp.s
+.PHONY : physics/fitHVQCDGlobalWitha0_a1_a2_fixed.cpp.s
 
 physics/fitHVQCDGlobal_a1_a2_fixed.o: physics/fitHVQCDGlobal_a1_a2_fixed.cpp.o
 
@@ -2620,6 +2660,7 @@ help:
 	@echo "... fitHVQCDWithoutScalars_sc_VgIR_fixed.exe"
 	@echo "... fitHVQCDWithoutGlueball_sc_VgIR_fixed.exe"
 	@echo "... fitHVQCDGlobalWitha0.exe"
+	@echo "... fitHVQCDGlobalWitha0_a1_a2_fixed.exe"
 	@echo "... physics/HVQCDRatios.o"
 	@echo "... physics/HVQCDRatios.i"
 	@echo "... physics/HVQCDRatios.s"
@@ -2653,6 +2694,9 @@ help:
 	@echo "... physics/fitHVQCDGlobalWitha0TachyonNormalized.o"
 	@echo "... physics/fitHVQCDGlobalWitha0TachyonNormalized.i"
 	@echo "... physics/fitHVQCDGlobalWitha0TachyonNormalized.s"
+	@echo "... physics/fitHVQCDGlobalWitha0_a1_a2_fixed.o"
+	@echo "... physics/fitHVQCDGlobalWitha0_a1_a2_fixed.i"
+	@echo "... physics/fitHVQCDGlobalWitha0_a1_a2_fixed.s"
 	@echo "... physics/fitHVQCDGlobal_a1_a2_fixed.o"
 	@echo "... physics/fitHVQCDGlobal_a1_a2_fixed.i"
 	@echo "... physics/fitHVQCDGlobal_a1_a2_fixed.s"

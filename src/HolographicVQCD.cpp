@@ -1203,7 +1203,7 @@ std::vector<double> computeScalarMesonPotential(const HVQCD &hvqcd)
         V[i] +=  2*dvf0*dPhis[i]/vf0 -1.5*dg*dvf0*dPhis[i]/(g*vf0) -dqs[i]*dvf0*dPhis[i]/(2*qs[i]*vf0)+0.5*dvtau_vtau*dkPhi*dtaus[i]*dPhis[i]/kPhi;
         V[i] += 0.5*dvtau_vtau*dvf0*dtaus[i]*dPhis[i]/vf0 - 0.25*std::pow(dkPhi*dPhis[i]/kPhi,2)+dkPhi*dvf0*std::pow(dPhis[i],2)/(2*kPhi*vf0) -0.25*std::pow(dvf0*dPhis[i]/vf0,2);
         V[i] += -d2g/g + std::pow(dPhis[i],2)*d2kPhi/(2*kPhi) + std::pow(dPhis[i],2)*d2vf0/(2*vf0) +0.5*dvtau_vtau*d2taus[i]+dkPhi*d2Phis[i]/(2*kPhi)+dvf0*d2Phis[i]/(2*vf0);
-        V[i] = e2A*V[i]/std::pow(qs[i]*g,2) -2*e2A*(a2 - a1 + a1 * taus[i]*taus[i]*(a1+2*a2+a1*a2*taus[i]*taus[i]))/(kPhi*std::pow(1+a1*taus[i]*taus[i],2);
+        V[i] = e2A*V[i]/std::pow(qs[i]*g,2) -2*e2A*(a2 - a1 + a1 * taus[i]*taus[i]*(a1+2*a2+a1*a2*taus[i]*taus[i]))/(kPhi*std::pow(1+a1*taus[i]*taus[i],2));
     }
     return V;
 }
