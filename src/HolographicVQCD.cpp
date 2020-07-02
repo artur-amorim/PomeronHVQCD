@@ -794,7 +794,7 @@ void HVQCD::solveRaw(const double AIR, const double AUV)
    double Air = -150, AUVYM = 50.0, h = 0.01, AUVc = 100, AUVf = 1000;
    std::function<double(double)> func = [this, &Air] (double z) { return this->AIR(z) - Air ;} ;
    double zIRYM = zbrent(func, 0.1, 100.0, 1e-9, true), uIR = zIRYM;
-   double tcoeff = (12 - xf * W0) * kIR / (6.0 * VgIR) ;
+   double tcoeff = (4./3) * (1.5 - xf * W0 / 8) * kIR * a2 / (VgIR * (a2 - a1));
    double qir = exp(Air) / dAIR(zIRYM), Phiir = PhiIR(zIRYM), tauIR = tau0 * std::pow(zIRYM, tcoeff);
    double dqir = dqYM(qir, Phiir), dPhiir = dPhiYM(qir, Phiir), dtauIR = tcoeff * tau0 * std::pow(zIRYM, tcoeff - 1.0) * exp(-Air) * qir;
    double d2Phiir = d2PhiYM(qir, Phiir), d2tauIR = exp(-2*Air)*tcoeff*tau0*std::pow(zIRYM,tcoeff-2)*((tcoeff-1)*qir*qir-exp(Air)*zIRYM*(qir-dqir));
@@ -805,7 +805,7 @@ void HVQCD::solveRaw(const double AIR, const double AUV)
         return (-88+16*this->xf+27*this->sc*this->kU1)*log(24*std::pow(M_PI,2)/((11-2*this->xf)*l))/(-66+12*this->xf);
    };
    // Get Yang Mills profile of q and Phi
-   double tcut = 1000, Vfcut = 1e-8;
+   double tcut = 1000 / std::sqrt(a2), Vfcut = 1e-8;
    state X(5);
    X <<= qir, Phiir, tauIR, zIRYM, uIR;
    typedef boost::numeric::odeint::result_of::make_dense_output<boost::numeric::odeint::runge_kutta_dopri5<state> >::type dense_stepper;
@@ -1203,7 +1203,7 @@ std::vector<double> computeScalarMesonPotential(const HVQCD &hvqcd)
         V[i] +=  2*dvf0*dPhis[i]/vf0 -1.5*dg*dvf0*dPhis[i]/(g*vf0) -dqs[i]*dvf0*dPhis[i]/(2*qs[i]*vf0)+0.5*dvtau_vtau*dkPhi*dtaus[i]*dPhis[i]/kPhi;
         V[i] += 0.5*dvtau_vtau*dvf0*dtaus[i]*dPhis[i]/vf0 - 0.25*std::pow(dkPhi*dPhis[i]/kPhi,2)+dkPhi*dvf0*std::pow(dPhis[i],2)/(2*kPhi*vf0) -0.25*std::pow(dvf0*dPhis[i]/vf0,2);
         V[i] += -d2g/g + std::pow(dPhis[i],2)*d2kPhi/(2*kPhi) + std::pow(dPhis[i],2)*d2vf0/(2*vf0) +0.5*dvtau_vtau*d2taus[i]+dkPhi*d2Phis[i]/(2*kPhi)+dvf0*d2Phis[i]/(2*vf0);
-        V[i] = e2A*V[i]/std::pow(qs[i]*g,2) -2*a2*e2A/kPhi;
+        V[i] = e2A*V[i]/std::pow(qs[i]*g,2) -2*e2A*(a2 - a1 + a1 * taus[i]*taus[i]*(a1+2*a2+a1*a2*taus[i]*taus[i]))/(kPhi*std::pow(1+a1*taus[i]*taus[i],2);
     }
     return V;
 }
