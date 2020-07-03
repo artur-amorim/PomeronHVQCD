@@ -11,7 +11,9 @@ std::vector<double> DeepInelasticScattering::u = {};
 std::vector<double> DeepInelasticScattering::z = {};
 std::vector<double> DeepInelasticScattering::Astring = {};
 std::vector<double> DeepInelasticScattering::Vfw2fac = {};
+std::vector<double> DeepInelasticScattering::MesonPotFac = {};
 Poly_Interp<double> DeepInelasticScattering::potFactor({},{},4);
+Poly_Interp<double> DeepInelasticScattering::MesonPotFactor({}, {}, 4);
 Poly_Interp<double> DeepInelasticScattering::ufunc({},{},4);
 
 
@@ -25,18 +27,26 @@ DeepInelasticScattering::DeepInelasticScattering(const bool rrsslog, std::string
     if (z.size() == 0)
     {
         u = hvqcd().u(); z = hvqcd().z();
-        ufunc = Poly_Interp<double>(z, u, 4);
         Astring = hvqcd().Astring();
         std::vector<double> Gs = hvqcd().G(); 
-        Vfw2fac.resize(z.size());
-        // e^{-7/3 \Phi} V_f w_s^2 = e^(\Phi / 3) V_f w^2 in terms of the Einstein frame background potentials
+        Vfw2fac.resize(z.size()); MesonPotFac.resize(z.size());
+        // e^(-7/3 \Phi) V_f w_s^2 = e^(\Phi / 3) V_f w^2 in terms of the Einstein frame background potentials
+        // e^(-10/3 \Phi) V_f w_s^2 = e^(-2 \Phi / 3) V_f w^2 in terms of the Einstein frame background potentials
         std::vector<double> Phis = hvqcd().Phi(), taus = hvqcd().tau();
-        for(int i = 0; i < z.size(); i++) Vfw2fac[i] = std::exp(Phis[i] / 3) * hvqcd().Vf(Phis[i], taus[i]) * std::pow(hvqcd().w(Phis[i]),2) ;
-        // Now we reverse z, Astring and Vfw2fac because we want them from the UV to the IR
+        for(int i = 0; i < z.size(); i++) 
+        {
+            Vfw2fac[i] = std::exp(Phis[i] / 3) * hvqcd().Vf(Phis[i], taus[i]) * std::pow(hvqcd().w(Phis[i]),2);
+            MesonPotFac[i] = std::sqrt(std::exp(-2*Phis[i]/3) * hvqcd().Vf(Phis[i], taus[i]) * std::pow(hvqcd().w(Phis[i]),2));
+        }
+        // Now we reverse u, Astring and Vfw2fac because we want them from the UV to the IR
         std::reverse(std::begin(u), std::end(u));
+        std::reverse(std::begin(z), std::end(z));
         std::reverse(std::begin(Astring), std::end(Astring));
         std::reverse(std::begin(Vfw2fac), std::end(Vfw2fac));
+        std::reverse(std::begin(MesonPotFac), std::end(MesonPotFac));
+        ufunc = Poly_Interp<double>(z, u, 4);
         potFactor = Poly_Interp<double>(u, Vfw2fac, 4);
+        MesonPotFactor = Poly_Interp<double>(u, MesonPotFac, 4);
     }
 }
 

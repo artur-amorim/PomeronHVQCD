@@ -837,6 +837,7 @@ In the string frame this coupling takes the form
 For a spin J field we propose the coupling
 \begin{align}
 k_J \int d^5X \sqrt{-g_s} G e^{-\frac{10}{3} \Phi} V_f \left( \lambda, \tau \right) {w_s\left(\lambda \right)}^2 g_s^{\alpha \mu} g_s^{\beta \nu} g_{eff. s}^{AB} F^V_{A\alpha} \nabla^{\alpha_1} \dots \nabla^{\alpha_{J-2}} F^V_{B \beta} h_{\mu \nu \alpha_1 \dots \alpha_{J-2}}
+\label{eq:spin_J_graviton_coupling}
 \end{align}
 
 \subsection{Regge limit analysis of the spin J coupling}
@@ -1220,6 +1221,7 @@ G_J \left(u, \bar{u}, t \right) = \left. \frac{1}{\sqrt{e^{-\frac{10}{3}\Phi}V_f
 Before computing the holographic contribution of the holographic meson trajectory to scattering amplitudes we need to specify the couplings of the external states with the spin J fields of the meson trajectory. We assume such fields come from the open string sector and hence the coupling between a $U(1)$ gauge field  with these fields is given by
 \begin{equation}
 k_J \int d^5X \sqrt{-g} e^{-\Phi} \left(F_{b_1 a} \nabla_{b_2} \cdots \nabla_{b_{J-1}} F^{a}_{\, \, \, b_J}  \right) h^{b_1 \cdots b_J}
+\label{eq:open_string_spin_J_coupling}
 \end{equation}
 We will also assume that a scalar field $\Upsilon$ coming from the open string sector is dual to the proton target and because of that we assume the substitution
 \begin{equation}
@@ -1231,11 +1233,7 @@ In the Regge limit only the TT components of the spin J fields will be important
 &\bar{k}_J \int d^5 X \sqrt{-g} e^{-\Phi}  \left( \Upsilon \nabla_{\beta_1} \cdots \nabla_{\beta_J} \Upsilon \right)h^{\beta_1 \cdots \beta_J}
 \label{eq:meson_spin_J_couplings}
 \end{align}
-We will assume that the coupling of the proton field $\Upsilon$ with the spin J fields of the graviton Regge trajectory is also
-\begin{equation}
-k'_J \int d^5 X \sqrt{-g} e^{-\Phi}  \left( \Upsilon \nabla_{\beta_1} \cdots \nabla_{\beta_J} \Upsilon \right)h^{\beta_1 \cdots \beta_J}
-\label{eq:pomeron_spin_J_couplings}
-\end{equation}
+Another possibility is to assume that the coupling of the $U\left(1\right)$ gauge field with the spin J fields of the meson trajectory is the same as in equation (\ref{eq:spin_J_graviton_coupling}).
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Kinematics}
@@ -1376,11 +1374,17 @@ Changing to the u variable the above expressions become
 &F_L\left(x, Q^2\right) = \sum_n \frac{{\rm Im} g_n }{4\pi^2 \alpha} Q^{2 j_n} x^{1-j_n} \int du \frac{e^{-\left(j_n - 2 \right)A - \Phi}}{G\Xi\left(u\right)} \frac{G^2\partial_u{f_Q}^2}{Q^2} \psi_n\left(u\right)
 \end{align}
 
-
-
-
-
-
+Another possibility is instead of using the coupling of equation (\ref{eq:open_string_spin_J_coupling}) we use the one of equation (\ref{eq:spin_J_graviton_coupling}) for the upper part of the Witten diagram. The corresponding expressions are
+\begin{align}
+&F_2\left(x, Q^2\right) = \sum_n \frac{{\rm Im} g_n }{4\pi^2 \alpha} Q^{2 j_n} x^{1-j_n} \int dz \frac{e^{-\left(j_n - 2 \right)A }}{\Xi\left(z\right)}e^{-\frac{10}{3} \Phi} V_f w_s^2 G \left(f_Q^2 +\frac{\partial_z{f_Q}^2}{G^2Q^2} \right) \psi_n\left(u\left(z\right)\right)\\
+&F_L\left(x, Q^2\right) = \sum_n \frac{{\rm Im} g_n }{4\pi^2 \alpha} Q^{2 j_n} x^{1-j_n} \int dz \frac{e^{-\left(j_n - 2 \right)A }}{\Xi\left(z\right)}e^{-\frac{10}{3} \Phi} V_f w_s^2 G \frac{\partial_z{f_Q}^2}{G^2Q^2} \psi_n\left(u\left(z\right)\right)
+\end{align}
+or in terms of the u variable
+\begin{align}
+&F_2\left(x, Q^2\right) = \sum_n \frac{{\rm Im} g_n }{4\pi^2 \alpha} Q^{2 j_n} x^{1-j_n} \int du e^{-\left(j_n - 2 \right)A }\sqrt{e^{-\frac{10}{3} \Phi} V_f w_s^2} \left(f_Q^2 +\frac{\partial_u{f_Q}^2}{Q^2} \right) \psi_n\left(u\right)\\
+&F_L\left(x, Q^2\right) = \sum_n \frac{{\rm Im} g_n }{4\pi^2 \alpha} Q^{2 j_n} x^{1-j_n} \int du e^{-\left(j_n - 2 \right)A }\sqrt{e^{-\frac{10}{3} \Phi} V_f w_s^2} \frac{\partial_u{f_Q}^2}{Q^2} \psi_n\left(u\right)
+\end{align}
+These last two expressions are the ones I will use from now on to fit the DIS strﬂucture functions $F_2$ and $F_L$.
 
 
 

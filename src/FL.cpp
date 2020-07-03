@@ -31,16 +31,24 @@ double FL::IzN(const std::vector<double> &kin, const Reggeon &reg)
     // Get the kinematical values and J
     const double Q2 = kin[0];
     const double J = reg.getJ();
+    const std::string reg_name = reg.getName();
     std::vector<std::vector<double> > wf = reg.getWf();
-    std::vector<double> fact1 = exp((1.5-J) * Astring);
+    // Define e^(As(1.5 - jn)) or e^(As(2-j_n))
+    std::vector<double> fact1;
+    if(reg_name == "gluon") fact1 = exp((1.5-J) * Astring);
+    else fact1 = exp((2.0-J) * Astring);
     Poly_Interp<double> f1(u, fact1, 4);
     // Search for the correct mode
     U1NNMode mode = searchMode(Q2);
     // Interpolate the wavefunction after computing the respective u value.
-    for(int i = 0; i < wf[0].size(); i++) wf[0][i] = ufunc.interp(wf[0][i]);
+    if(reg_name == "gluon") for(int i = 0; i < wf[0].size(); i++) wf[0][i] = ufunc.interp(wf[0][i]);
     Poly_Interp<double> f4(wf[0], wf[1], 4);
+    // Choose the background potentials factor accordingly
+    Poly_Interp<double> bckPotFac;
+    if(reg_name == "gluon") bckPotFac = potFactor;
+    else bckPotFac = MesonPotFactor;
     // Define the integrand object
-    FLIzNIntegrand integrand(f1, potFactor, mode, f4);
+    FLIzNIntegrand integrand(f1, bckPotFac, mode, f4);
     void * params = &integrand;
     // Compute the integral
     double izn = 0.0, abserr = 0.0;
