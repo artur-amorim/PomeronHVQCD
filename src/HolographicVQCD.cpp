@@ -753,7 +753,7 @@ void HVQCD::finalizeBackground(const double AIR, const double AUV)
         d2Astrings[i] = std::exp(2*As[i]) * (1 - dqs[i] / qs[i]) / std::pow(qs[i], 2);          
         d2Astrings[i] += 2 * std::exp(2 * As[i]) * (dPhis[i] - dqs[i] * dPhis[i] /qs[i] + d2Phis[i]) / (3 * std::pow(qs[i], 2));
     }
-    // Now we compute U2s, aFs, bFs, cFs and dFs
+    // Now we compute U1s, U2s, aFs, bFs, cFs and dFs
     U2s.resize(As.size()); aFs.resize(As.size());
     bFs.resize(As.size()); cFs.resize(As.size());
     dFs.resize(As.size()); eFs.resize(As.size());
@@ -768,7 +768,8 @@ void HVQCD::finalizeBackground(const double AIR, const double AUV)
         eFs[i] = std::pow( std::exp(As[i]) * dtaus[i] / qs[i], 2);
 
     }
-
+    // Compute U1
+    U1s = computeVectorMesonPotential(*this);
     // Compute e2As and e2Astrings
     e2As.resize(As.size()); e2Astrings.resize(As.size()); l1_2s.resize(As.size());
     for(int i = 0; i < As.size(); i++)
@@ -992,6 +993,8 @@ std::vector<double> HVQCD::G() const
     for(int i = 0; i < As.size(); i++) g_vals[i] = G(qs[i], Phis[i], dtaus[i]);
     return g_vals;
 }
+
+std::vector<double> HVQCD::U1() const {return this->U1s;}
 
 std::vector<double> HVQCD::U2() const {return this->U2s;}
 

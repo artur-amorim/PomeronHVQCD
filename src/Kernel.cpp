@@ -73,7 +73,9 @@ void Kernel::computeReggeTrajectories(const std::vector<double> &pars)
     int n_js_thread = n_js / nthreads;
     int r = n_js % nthreads; // Reminder of n_js divided by nthreads
     // Function that defines each thread
-    std::vector<double> z = hvqcd().z();
+    std::vector<double> z;
+    if(name == "gluon") z = hvqcd().z();
+    else z = hvqcd().u();
     // We need to reverse z because it is given from the IR to the UV
     // while VSch is given from the UV to the IR
     std::reverse(std::begin(z), std::end(z));
@@ -88,8 +90,8 @@ void Kernel::computeReggeTrajectories(const std::vector<double> &pars)
             // Compute the potential
             std::vector<double> VSch = this->computePotential(j);
             // Compute all the tn(J)s
-            List  spectrum = computeSpectrum(z, VSch, this->NTrajectories(), "cheb");
-            for(int k = 0; k < this->NTrajectories(); k++) ts[k][i] = spectrum.Es[k];
+            List  spectrum = computeSpectrum(z, VSch, nTrajectories, "cheb");
+            for(int k = 0; k < nTrajectories; k++) ts[k][i] = spectrum.Es[k];
         }
         return;
     };
@@ -105,8 +107,8 @@ void Kernel::computeReggeTrajectories(const std::vector<double> &pars)
         // Compute the potential
         std::vector<double> VSch = this->computePotential(j);
         // Compute all the tn(J)s
-        List  spectrum = computeSpectrum(z, VSch, this->NTrajectories(), "cheb");
-        for(int k = 0; k < this->NTrajectories(); k++) ts[k][i] = spectrum.Es[k]; 
+        List  spectrum = computeSpectrum(z, VSch, nTrajectories, "cheb");
+        for(int k = 0; k < nTrajectories; k++) ts[k][i] = spectrum.Es[k]; 
         return;
     };
     ths = new std::thread[r];

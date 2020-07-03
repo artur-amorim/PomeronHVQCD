@@ -1671,6 +1671,33 @@ src/Kernel.cpp.s:
 	$(MAKE) -f CMakeFiles/hvqcd_lib.dir/build.make CMakeFiles/hvqcd_lib.dir/src/Kernel.cpp.s
 .PHONY : src/Kernel.cpp.s
 
+src/MesonKernel.o: src/MesonKernel.cpp.o
+
+.PHONY : src/MesonKernel.o
+
+# target to build an object file
+src/MesonKernel.cpp.o:
+	$(MAKE) -f CMakeFiles/hvqcd_lib.dir/build.make CMakeFiles/hvqcd_lib.dir/src/MesonKernel.cpp.o
+.PHONY : src/MesonKernel.cpp.o
+
+src/MesonKernel.i: src/MesonKernel.cpp.i
+
+.PHONY : src/MesonKernel.i
+
+# target to preprocess a source file
+src/MesonKernel.cpp.i:
+	$(MAKE) -f CMakeFiles/hvqcd_lib.dir/build.make CMakeFiles/hvqcd_lib.dir/src/MesonKernel.cpp.i
+.PHONY : src/MesonKernel.cpp.i
+
+src/MesonKernel.s: src/MesonKernel.cpp.s
+
+.PHONY : src/MesonKernel.s
+
+# target to generate assembly for a file
+src/MesonKernel.cpp.s:
+	$(MAKE) -f CMakeFiles/hvqcd_lib.dir/build.make CMakeFiles/hvqcd_lib.dir/src/MesonKernel.cpp.s
+.PHONY : src/MesonKernel.cpp.s
+
 src/ProcessObservable.o: src/ProcessObservable.cpp.o
 
 .PHONY : src/ProcessObservable.o
@@ -2781,6 +2808,9 @@ help:
 	@echo "... src/Kernel.o"
 	@echo "... src/Kernel.i"
 	@echo "... src/Kernel.s"
+	@echo "... src/MesonKernel.o"
+	@echo "... src/MesonKernel.i"
+	@echo "... src/MesonKernel.s"
 	@echo "... src/ProcessObservable.o"
 	@echo "... src/ProcessObservable.i"
 	@echo "... src/ProcessObservable.s"

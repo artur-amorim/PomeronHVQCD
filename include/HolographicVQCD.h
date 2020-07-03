@@ -28,7 +28,7 @@ class HVQCD : public Background
         // Containers of Astring, dAstring, d2Astring
         std::vector<double> Astrings, dAstrings, d2Astrings;
         // Containers that will be useful latter for Regge theory
-        std::vector<double> U2s, aFs, bFs, cFs, dFs, eFs;
+        std::vector<double> U1s, U2s, aFs, bFs, cFs, dFs, eFs;
         // Containers which contain e^(2 A), e^(2Astring) and l1_2
         std::vector<double> e2As, e2Astrings, l1_2s;
         // Declaration of Vf0 as a function of lambda
@@ -193,6 +193,8 @@ class HVQCD : public Background
         std::vector<double> u() const;
         // Declaration of G
         std::vector<double> G() const;
+        // Declaration of U1 getter
+        std::vector<double> U1() const;
         // Declaration of U2 getter
         std::vector<double> U2() const;
         // Declaration of aF getter
