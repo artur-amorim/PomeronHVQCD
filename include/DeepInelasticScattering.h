@@ -13,8 +13,9 @@ class DeepInelasticScattering: public ProcessObservable
         void copy(const DeepInelasticScattering & rhs);                                                     // copy function of DIS
     protected:
         U1NNMode searchMode(const double Q2);                                                               // Function that searches for the mode with virtuality Q2
-        static std::vector<double> z, Astring, Vfw2fac;
+        static std::vector<double> u, z, Astring, Vfw2fac;
         static Poly_Interp<double> potFactor;                                                               // Interpolation function of e^{-7/3 \Phi} V_f w_s^2
+        static Poly_Interp<double> ufunc;                                                                   // Interpolation function of u(z)
     public:
         DeepInelasticScattering(const bool rrsslog = false, std::string file_path = "");                    // Class constructor
         DeepInelasticScattering(const DeepInelasticScattering &dis);                                        // Class copy constructor

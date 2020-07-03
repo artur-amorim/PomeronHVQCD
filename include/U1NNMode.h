@@ -20,8 +20,7 @@ class U1NNMode
         static void dg(int * I, double * Z, double * DG, double * PARS);
         static void guess(double * X, double * Z, double * DMVAL);
         // Static auxiliary variables to compute the mode profile
-        static std::vector<double> z;
-        static Poly_Interp<double> t0;
+        static std::vector<double> u;
         static Poly_Interp<double> t1;
         static const int IFDIM = 5000;
         static const  int IIDIM = 5000;
@@ -33,7 +32,6 @@ class U1NNMode
         double fQ(const double x) const;
         double dfQ(const double x) const ;
         double factor(const double x) const ;
-        double Gsquared(const double x) const;
         void computeMode();                                 // Compute the non-normalizable modex
         void saveMode(std::string file_path = "") const;    // Crates a txt file with columns x, fQ, dfQ and fQ^2 + (dfQ/dx)^2
         U1NNMode& operator= (const U1NNMode &mode);         // Assignment operator

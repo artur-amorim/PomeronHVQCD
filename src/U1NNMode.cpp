@@ -21,61 +21,39 @@ extern"C"
     void appsln_ (double * X, double * Z, double * FSPACE, double * ISPACE);
 }
 
-std::vector<double> U1NNMode::z = {};
-Poly_Interp<double> U1NNMode::t0 = Poly_Interp<double>({},{},4);
+std::vector<double> U1NNMode::u = {};
 Poly_Interp<double> U1NNMode::t1 = Poly_Interp<double>({},{},4);
 
 void setupU1NNcomputation()
 {
-    // Get z and reverse it
-    U1NNMode::z = hvqcdU1NNMode().z();
-    std::reverse(std::begin(U1NNMode::z), std::end(U1NNMode::z));
-    const int n = U1NNMode::z.size();
-
-    // t0Y = G^2. Don't forget to reverse it
-    std::vector<double> G = hvqcdU1NNMode().G();
-    std::vector<double> t0Y = G * G;
-    std::reverse(std::begin(t0Y), std::end(t0Y));
-    U1NNMode::t0 = Poly_Interp<double>(U1NNMode::z, t0Y, 4);
-
-    /*
-        t1Y = -(dA/dz - dGdz/G + 2 dwdPhi dPhidz / w + dtaudz Vf(0,1)/Vf + dPhidz Vf(1,0)/Vf)
-        First we compute the above quantities individually.
-        Remember to reverse each of them
-    */
-    // Compute dAdz
-    std::vector<double> dAdz = exp(hvqcdU1NNMode().A()) / hvqcdU1NNMode().q();
-
-    // Compute dPhidz
+    // Get u
+    U1NNMode::u = hvqcdU1NNMode().u();
+    const int n = U1NNMode::u.size();
+    // t1Y = -(1 + 2 dwdPhi dPhidA / w + dtaudA Vf(0,1)/Vf + dPhidA Vf(1,0)/Vf) exp(A) / (G q)
+    std::vector<double> A = hvqcdU1NNMode().A();
+    std::vector<double> q = hvqcdU1NNMode().q();
+    std::vector<double> Phis = hvqcdU1NNMode().Phi();
+    std::vector<double> taus = hvqcdU1NNMode().tau();
     std::vector<double> dPhidA = hvqcdU1NNMode().dPhi();
-    std::vector<double> dPhidz =  exp(hvqcdU1NNMode().A()) * dPhidA / hvqcdU1NNMode().q() ;
-
-    // Compute dtaudz
     std::vector<double> dtaudA = hvqcdU1NNMode().dtaudA();
-    std::vector<double> dtaudz = exp(hvqcdU1NNMode().A()) * dtaudA / hvqcdU1NNMode().q();
-
-
-    std::vector<double> k(n), dkdPhi(n), dwdPhi(n), w(n);
-    std::vector<double> dlogVfdPhi(n), dlogVfdtau(n);
-    std::vector<double> qs = hvqcdU1NNMode().q(), Phis = hvqcdU1NNMode().Phi(), taus = hvqcdU1NNMode().tau() ;
-    std::vector<double> dqs = hvqcdU1NNMode().dq(), d2taudA2 = hvqcdU1NNMode().d2taudA2();
+    std::vector<double> G = hvqcdU1NNMode().G();
     double a1 = hvqcdU1NNMode().get_a1(), a2 = hvqcdU1NNMode().get_a2();
+
+    double dwdPhi, w, dlogVfdPhi, dlogVfdtau;
+    std::vector<double> t1Y(n);
     for(int i = 0; i < n; i++)
     {
-        k[i] = hvqcdU1NNMode().k(Phis[i]); dkdPhi[i] = hvqcdU1NNMode().dkdPhi(Phis[i]);
-        w[i] = hvqcdU1NNMode().w(Phis[i]); dwdPhi[i] = hvqcdU1NNMode().dwdPhi(Phis[i]);
-        dlogVfdPhi[i] =  hvqcdU1NNMode().dVf0dPhi(Phis[i]) / hvqcdU1NNMode().Vf0(Phis[i]);
-        dlogVfdtau[i] =  -2*taus[i]*(-a1 + a2 + a1*a2*taus[i]*taus[i])/(1+a1*taus[i]*taus[i]);
+        w = hvqcdU1NNMode().w(Phis[i]); dwdPhi = hvqcdU1NNMode().dwdPhi(Phis[i]);
+        dlogVfdPhi =  hvqcdU1NNMode().dVf0dPhi(Phis[i]) / hvqcdU1NNMode().Vf0(Phis[i]);
+        dlogVfdtau =  -2*taus[i]*(-a1 + a2 + a1*a2*taus[i]*taus[i])/(1+a1*taus[i]*taus[i]);
+        // Compute t1Y
+        t1Y[i] = -(1+2*dwdPhi * dPhidA[i] / w + dtaudA[i] * dlogVfdtau + dPhidA[i] *  dlogVfdPhi) * std::exp(A[i]) / (G[i] * q[i]);
     }
-    // Compute dlogGdz
-    std::vector<double> dlogGdz = - 1. * k * dqs * dtaudA * dtaudA / qs + 0.5 * dkdPhi * dtaudA * dtaudA * dPhidA + k * dtaudA * d2taudA2 ;
-    dlogGdz = dlogGdz * exp(hvqcdU1NNMode().A()) / (G * G * qs * qs * qs);
 
-    // Compute t1Y
-    std::vector<double> t1Y = -1.0 *  (dAdz - dlogGdz + 2.0 * dwdPhi * dPhidz / w + dtaudz * dlogVfdtau + dPhidz * dlogVfdPhi);
+    std::reverse(std::begin(U1NNMode::u), std::end(U1NNMode::u));
     std::reverse(std::begin(t1Y), std::end(t1Y));
 
-    U1NNMode::t1 = Poly_Interp<double>(U1NNMode::z, t1Y, 4);
+    U1NNMode::t1 = Poly_Interp<double>(U1NNMode::u, t1Y, 4);
 }
 
 U1NNMode::U1NNMode(const double qq2):
@@ -112,7 +90,7 @@ double U1NNMode::fQ(const double x) const
     /*
         Returns the value of fQ given x <= z.back(). If x > z.back() throw runtime_error
     */
-    if (x > z.back()) std::runtime_error("U1NNMode::fQ: x out of range");
+    if (x > u.back()) std::runtime_error("U1NNMode::fQ: x out of range");
     double * X = new double(x);
     double * Z = new double[2];
     appsln_(X, Z, FSPACE, ISPACE);
@@ -125,9 +103,9 @@ double U1NNMode::fQ(const double x) const
 double U1NNMode::dfQ(const double x) const
 {
     /*
-        Returns the value of dfQ/dz given x <= z.back(). If x > z.back() throw runtime_error
+        Returns the value of dfQ/du given x <= u.back(). If x > u.back() throw runtime_error
     */
-    if (x > z.back()) std::runtime_error("U1NNMode::dfQ: x out of range");
+    if (x > u.back()) std::runtime_error("U1NNMode::dfQ: x out of range");
     double * X = new double(x);
     double * Z = new double[2];
     appsln_(X, Z, FSPACE, ISPACE);
@@ -141,36 +119,26 @@ double U1NNMode::dfQ(const double x) const
 double U1NNMode::factor(const double x) const
 {
     /*
-        Returns the value of fQ^2 + (dfQ/dz)^2/(G^2 Q2) given x <= z.back(). If x > z.back() throw runtime_error
+        Returns the value of fQ^2 + (dfQ/du)^2/Q2 given x <= u.back(). If x > u.back() throw runtime_error
     */
-    if (x > z.back()) std::runtime_error("U1NNMode::factor: x is out of range");
+    if (x > u.back()) std::runtime_error("U1NNMode::factor: x is out of range");
     double * X = new double(x);
     double * Z = new double[2];
     appsln_(X, Z, FSPACE, ISPACE);
     double fq = Z[0];
     double dfq = Z[1];
-    double fact = std::pow(fq, 2) + std::pow(dfq, 2) / (q2 * t0.interp(x)); 
+    double fact = fq*fq + dfq*dfq / q2; 
     // Delete X and Z
     delete X;
     delete[] Z;
     return fact;
 }
 
-double U1NNMode::Gsquared(const double x) const
-{
-    /*
-        Returns the value of G^2. Useful for computing F_2 and F_L
-        t0 is a Poly_Interp<double> object that interpolates G^2
-    */
-    if (x > z.back()) std::runtime_error("U1NNMode::Gsquared: x is out of range");
-    return t0.interp(x);
-}
-
 void U1NNMode::f(double * X, double * Z, double *F, double * PARS)
 {
     double q2 = *PARS;
     F[0] = Z[1];
-    F[1] = q2 * Z[0] * t0.interp(*X) + t1.interp(*X) * Z[1];
+    F[1] = q2 * Z[0] + t1.interp(*X) * Z[1];
     return ;
 }
 
@@ -180,7 +148,7 @@ void U1NNMode::df(double * X, double * Z, double * DF, double * PARS)
     // This function is parsed to Fortran code so make sure DF is column ordered
     double q2 = *PARS;
     DF[0] = 0.0;
-    DF[1] = q2 * t0.interp(*X) ;
+    DF[1] = q2;
     DF[2] = 1.0;
     DF[3] = t1.interp(*X); 
     return ;
@@ -216,13 +184,13 @@ void U1NNMode::guess(double * X, double * Z, double * DMVAL)
 void U1NNMode::computeMode()
 {
     // Check if everything is ready to start the computation
-    if (U1NNMode::z.size() == 0) setupU1NNcomputation();
+    if (U1NNMode::u.size() == 0) setupU1NNcomputation();
     // Create necessary variables
     int * NCOMP = new int(2);
     int * M = new int[2];
     M[0] = 1; M[1] = 1;
-    double * ALEFT = new double(z[0]);
-    double * ARIGHT = new double(z.back());
+    double * ALEFT = new double(u[0]);
+    double * ARIGHT = new double(u.back());
     double * Zeta = new double[2];
     Zeta[0] = *ALEFT; Zeta[1] = *ARIGHT;
     int * NOTOL = new int(2);
@@ -287,11 +255,11 @@ void U1NNMode::saveMode(std::string file_path) const
     // Write the value of Q2
     myfile << "Q2:" << '\t' << q2 << std::endl;
     myfile << std::endl;
-    // Write the values of z, fQ, dfQ and factor in the file
-    myfile << "z" << '\t' << "fQ" << '\t' << "dfQ/dz" << '\t' << "fQ^2 + (dfQ/dz)^2/Q2" << std::endl;
-    for(int i = 0; i < z.size(); i++)
+    // Write the values of u, fQ, dfQ and factor in the file
+    myfile << "u" << '\t' << "fQ" << '\t' << "dfQ/du" << '\t' << "fQ^2 + (dfQ/du)^2/Q2" << std::endl;
+    for(int i = 0; i < u.size(); i++)
     {
-        myfile << z[i] << '\t' << fQ(z[i]) << '\t' << dfQ(z[i]) << '\t' << factor(z[i]) << std::endl;
+        myfile << u[i] << '\t' << fQ(u[i]) << '\t' << dfQ(u[i]) << '\t' << factor(u[i]) << std::endl;
     }
     // Close the file
     myfile.close();
