@@ -1,7 +1,6 @@
 #include <algorithm>
 #include <stdexcept>
 #include "HQCDP.h"
-#include "methods/optimization/NelderMead.hpp"
 
 HQCDP::HQCDP(const bool rrsslog, const double spconst):
             rsslog(rrsslog), SPconstraint(spconst),
@@ -82,17 +81,13 @@ void HQCDP::computeSpectrum(const std::vector< std::vector<double> > &kernelPars
     */
    // If the number of vectors is the same update the parameters of each kernel.
    if (kernels.size() == 0) throw std::runtime_error("Add one kernel first");
-   if(kernelPars.size() != 0)
+   if(kernelPars.size() == kernels.size())
    {
-       for(int ker_idx = 0; ker_idx < kernels.size(); ker_idx+=1)
-       {
-           std::vector<double> pars = kernelPars[ker_idx];
-           kernels[ker_idx]->setKernelPars(pars);
-           kernels[ker_idx]->computeReggeTrajectories();
-       }
+       for(int ker_idx = 0; ker_idx < kernels.size(); ker_idx+=1) kernels[ker_idx]->computeReggeTrajectories(kernelPars[ker_idx]);
    }
    else
    {
+       // Computes with default values
        for(int ker_idx = 0; ker_idx < kernels.size(); ker_idx+=1) kernels[ker_idx]->computeReggeTrajectories();
    }
    
@@ -108,8 +103,9 @@ void HQCDP::computeSpectrum(const std::vector< std::vector<double> > &kernelPars
        std::vector<Reggeon> reggeons;
        // Given t, compute the Reggeons for each kernel
        for(int j = 0; j < kernels.size(); j++)
-       {
+       { 
             Kernel * ker = kernels[j];
+            std::cout << "Computing Reggeons of " << ker->Name() << " kernel." << std::endl;
             const int n_regs = ker->NTrajectories();
             std::vector<Reggeon> ker_reggeons = computeReggeons(*ker, t, n_regs);
             for(int k = 0; k < ker_reggeons.size(); k++) reggeons.push_back(ker_reggeons[k]);
@@ -160,83 +156,4 @@ double HQCDP::chi2()
         chi2 += proc->rss(izs, izsbar, points);
     }
     return chi2;
-}
-
-double HQCDP::operator()(const std::vector<double> &x)
-{
-    /* 
-        The operator() is used as the fitting function.
-        It uses the values of x to update the kernel parameters
-        as well the gn parameters.
-        Then it updates the spectrum since we have new kernel parameters.
-        Afther that we also update the GNs values.
-        After that we compute the new chi2 value and it is returned
-    */
-    // Kernel pars correspond to x(0), x(1), x(2), x(3), x(4)
-    std::vector<double> gluon_pars = {x[0], x[1], x[2], x[3], x[4], x[5], x[6]};
-    std::vector<std::vector<double> > kernels_pars = {gluon_pars};
-    // GNs correspond to x(5), ..., x(n_Kernel_regs+4)
-    const int n_Kernel_regs = kernels[0]->NTrajectories();
-    std::vector<double> gpars(n_Kernel_regs, 0);
-    for(int i = 0; i < n_Kernel_regs; i++) gpars[i] = x[7+i];
-    // Update the spectrum
-    computeSpectrum(kernels_pars);
-    // Update the GNs
-    setGNs(gpars);
-    // Compute chi2
-    double CHI2 = chi2();
-    if(std::isnan(CHI2)) CHI2 = 1e99;
-    std::cout << "invls: " << x[0] << " a: " << x[1] << " b: " << x[2] << " c: " << x[3] << " d: " << x[4];
-    std::cout << " e: " << x[5] << " f: " << x[6];
-    std::cout << " g1: " << x[7] << " g2: " << x[8] << " g3: " << x[9] <<  " g4: " << x[10] << std::endl;
-    std::cout << "chi2: " << CHI2 << std::endl;
-    // Return chi2
-    return CHI2;
-}
-
-void HQCDP::fit(const std::vector<double> &xguess, const double delta)
-{
-    /*
-        This function takes an initial xguess and starts to fit
-        the kernel parameters as well the gns to the data available
-        in the processes vector. The function we want to minimize
-        is the chi2 one and to find the optimum set of parameters
-        we will use the Nelder-Mead algorithm.
-        After the optimization it computes the chi2 with the
-        optimum value of parameters and prints the optimum
-        parameters as well the value of chi2
-    */
-    int ndof  = this->NumberOfDegreesOfFreedom();
-    // Optimize using Nelder-Mead algorithm
-    std::function<double(std::vector<double>)> f = [this] (const std::vector<double> x) {return this->operator()(x);};
-    std::vector<double> xopt = optimFunction(xguess, f, delta);
-    // Compute chi2
-    // Kernel pars correspond to xopt(0), xopt(1), xopt(2), xopt(3), xopt(4), xopt(5), xopt(6)
-    std::vector<double> gluon_pars = {xopt[0], xopt[1], xopt[2], xopt[3], xopt[4], xopt[5], xopt[6]};
-    std::vector<std::vector<double> > kernels_pars = {gluon_pars};
-    // GNs correspond to x(7), ..., x(n_Kernel_regs+6)
-    const int n_Kernel_regs = kernels[0]->NTrajectories();
-    std::vector<double> gpars(n_Kernel_regs, 0);
-    for(int i = 0; i < n_Kernel_regs; i++) gpars[i] = xopt[7+i];
-    // Update the spectrum
-    computeSpectrum(kernels_pars);
-    // Update the GNs
-    setGNs(gpars);
-    // Compute chi2
-    double CHI2 = chi2();
-   // Print the results
-   std::cout << "Best chi2 found for:" << std::endl;
-   std::cout << "invls:\t" << gluon_pars[0] << std::endl;
-   std::cout << "a:\t"     << gluon_pars[1] << std::endl;
-   std::cout << "b:\t"     << gluon_pars[2] << std::endl;
-   std::cout << "c:\t"     << gluon_pars[3] << std::endl;
-   std::cout << "d:\t"     << gluon_pars[4] << std::endl;
-   std::cout << "e:\t"     << gluon_pars[5] << std::endl;
-   std::cout << "f:\t"     << gluon_pars[6] << std::endl;
-   // Print the GNs
-   for(int i = 0; i < gpars.size(); i++) std::cout << "g" << std::to_string(i+1) << '\t' << gpars[i] << std::endl;
-   std::cout << "chi2:\t"  << CHI2 << std::endl;
-   std::cout << "Number of degrees of freedom (Ndof):\t" << ndof << std::endl;
-   std::cout << "chi2/Ndof:\t" << CHI2/ndof << std::endl;
-
 }

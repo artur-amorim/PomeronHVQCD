@@ -124,6 +124,19 @@ findReggeTrajectories.exe/fast:
 .PHONY : findReggeTrajectories.exe/fast
 
 #=============================================================================
+# Target rules for targets named fitDISHVQCDGluonKernelOnly.exe
+
+# Build rule for target.
+fitDISHVQCDGluonKernelOnly.exe: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 fitDISHVQCDGluonKernelOnly.exe
+.PHONY : fitDISHVQCDGluonKernelOnly.exe
+
+# fast build rule for target.
+fitDISHVQCDGluonKernelOnly.exe/fast:
+	$(MAKE) -f CMakeFiles/fitDISHVQCDGluonKernelOnly.exe.dir/build.make CMakeFiles/fitDISHVQCDGluonKernelOnly.exe.dir/build
+.PHONY : fitDISHVQCDGluonKernelOnly.exe/fast
+
+#=============================================================================
 # Target rules for targets named test_U1NNMode.exe
 
 # Build rule for target.
@@ -725,6 +738,33 @@ physics/fitDISHVQCD.s: physics/fitDISHVQCD.cpp.s
 physics/fitDISHVQCD.cpp.s:
 	$(MAKE) -f CMakeFiles/fitDISHVQCD.exe.dir/build.make CMakeFiles/fitDISHVQCD.exe.dir/physics/fitDISHVQCD.cpp.s
 .PHONY : physics/fitDISHVQCD.cpp.s
+
+physics/fitDISHVQCDGluonKernelOnly.o: physics/fitDISHVQCDGluonKernelOnly.cpp.o
+
+.PHONY : physics/fitDISHVQCDGluonKernelOnly.o
+
+# target to build an object file
+physics/fitDISHVQCDGluonKernelOnly.cpp.o:
+	$(MAKE) -f CMakeFiles/fitDISHVQCDGluonKernelOnly.exe.dir/build.make CMakeFiles/fitDISHVQCDGluonKernelOnly.exe.dir/physics/fitDISHVQCDGluonKernelOnly.cpp.o
+.PHONY : physics/fitDISHVQCDGluonKernelOnly.cpp.o
+
+physics/fitDISHVQCDGluonKernelOnly.i: physics/fitDISHVQCDGluonKernelOnly.cpp.i
+
+.PHONY : physics/fitDISHVQCDGluonKernelOnly.i
+
+# target to preprocess a source file
+physics/fitDISHVQCDGluonKernelOnly.cpp.i:
+	$(MAKE) -f CMakeFiles/fitDISHVQCDGluonKernelOnly.exe.dir/build.make CMakeFiles/fitDISHVQCDGluonKernelOnly.exe.dir/physics/fitDISHVQCDGluonKernelOnly.cpp.i
+.PHONY : physics/fitDISHVQCDGluonKernelOnly.cpp.i
+
+physics/fitDISHVQCDGluonKernelOnly.s: physics/fitDISHVQCDGluonKernelOnly.cpp.s
+
+.PHONY : physics/fitDISHVQCDGluonKernelOnly.s
+
+# target to generate assembly for a file
+physics/fitDISHVQCDGluonKernelOnly.cpp.s:
+	$(MAKE) -f CMakeFiles/fitDISHVQCDGluonKernelOnly.exe.dir/build.make CMakeFiles/fitDISHVQCDGluonKernelOnly.exe.dir/physics/fitDISHVQCDGluonKernelOnly.cpp.s
+.PHONY : physics/fitDISHVQCDGluonKernelOnly.cpp.s
 
 physics/fitHVQCDAllWithf2.o: physics/fitHVQCDAllWithf2.cpp.o
 
@@ -2650,6 +2690,7 @@ help:
 	@echo "... clean"
 	@echo "... depend"
 	@echo "... findReggeTrajectories.exe"
+	@echo "... fitDISHVQCDGluonKernelOnly.exe"
 	@echo "... test_U1NNMode.exe"
 	@echo "... findGs.exe"
 	@echo "... test_NelderMead.exe"
@@ -2703,6 +2744,9 @@ help:
 	@echo "... physics/fitDISHVQCD.o"
 	@echo "... physics/fitDISHVQCD.i"
 	@echo "... physics/fitDISHVQCD.s"
+	@echo "... physics/fitDISHVQCDGluonKernelOnly.o"
+	@echo "... physics/fitDISHVQCDGluonKernelOnly.i"
+	@echo "... physics/fitDISHVQCDGluonKernelOnly.s"
 	@echo "... physics/fitHVQCDAllWithf2.o"
 	@echo "... physics/fitHVQCDAllWithf2.i"
 	@echo "... physics/fitHVQCDAllWithf2.s"

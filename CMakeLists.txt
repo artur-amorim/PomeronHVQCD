@@ -187,6 +187,10 @@ target_link_libraries(test_U1NNMode.exe hvqcd_lib blas armadillo)
 add_executable(fitDISHVQCD.exe physics/fitDISHVQCD.cpp)
 target_link_libraries(fitDISHVQCD.exe armadillo blas  hvqcd_lib)
 
+# Add DIS fit using onlye the gluon kernel
+add_executable(fitDISHVQCDGluonKernelOnly.exe physics/fitDISHVQCDGluonKernelOnly.cpp)
+target_link_libraries(fitDISHVQCDGluonKernelOnly.exe armadillo blas  hvqcd_lib)
+
 # Add HVQCD spectrum computation
 add_executable(HVQCDSpectrum.exe physics/HVQCDSpectrum.cpp)
 target_link_libraries(HVQCDSpectrum.exe armadillo hvqcd_lib)
