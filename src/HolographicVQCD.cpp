@@ -941,8 +941,8 @@ void HVQCD::solveRaw(const double AIR, const double AUV)
        return ;
    }
    // Now we compute mq
-   Spline_Interp<double> taunUV(AUVs, tauns, dtauns.front(), dtauns.back());
-   Spline_Interp<double> lambdaUV(AUVs, lUVs, dlUVs.front(), dlUVs.back());
+   Poly_Interp<double> taunUV(AUVs, tauns, 4);
+   Poly_Interp<double> lambdaUV(AUVs, lUVs, 4);
    double lUV = 1;
    mq = lambdaUV.interp(AUVf-10) * taunUV.interp(AUVf)*exp(-log(lUV) - tcorr(lambdaUV.interp(AUVf))) - lambdaUV.interp(AUVf) * taunUV.interp(AUVf - 10)*exp(-log(lUV) - tcorr(lambdaUV.interp(AUVf - 10)));
    mq = mq / (lambdaUV.interp(AUVf-10) - lambdaUV.interp(AUVf)) ;
