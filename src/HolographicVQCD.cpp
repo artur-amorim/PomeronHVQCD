@@ -874,7 +874,7 @@ void HVQCD::solveRaw(const double AIR, const double AUV)
    };
    double AUV2 = zbrent(func2, AUV1, AUVYM, 1e-9, true);
    double PhiUV2 = PhiYM2Profile.interp(AUV2), tauUV2 = tauYM2Profile.interp(AUV2);
-   bool potCond = std::fabs(Vf0(PhiUV2) * std::exp(-std::pow(tauUV2,2))  - Vfcut * Vg(PhiUV2)) > (0.01 * Vfcut * Vg(PhiUV2));
+   bool potCond = std::fabs(Vf0(PhiUV2) * Vtau(tauUV2)  - Vfcut * Vg(PhiUV2)) > (0.01 * Vfcut * Vg(PhiUV2));
    if (AUV2 < AUV1 || AUV2 > AUVYM || potCond)
    {
        As.insert(As.end(), AYM2.begin(), AYM2.end());
