@@ -102,13 +102,13 @@ double J(const vector<double> X)
         return erms;
     }
     // Now we impose the constraint (12-x W0) kIR/VgIR/6>1
-    double constr = (12-xf*W0)*kIR/(VgIR*6);
+    double constr = (12-xf*W0)*kIR *a2 /(6*VgIR*(a2-a1));
     erms += 0.1 * exp(- ( constr - 1) ); // The more the constraint is satisfied the smaller the penalty
     // We also impose the tachyo mass squared to be larger than 3.5
     double tmass2 = hvqcd.TachyonMassSquareIR();
     erms += 0.1 * exp( - (tmass2 - 3.5)) ;
     double mq = hvqcd.QuarkMass();
-    cout << "(12 - xf) W0 kIR / (6 VgIR) = " << constr << " TachyonMassSquaredIR = " << tmass2 << endl;
+    cout << "(12 - xf W0) kIR a2 / (6 VgIR (a2 - a1)) = " << constr << " TachyonMassSquaredIR = " << tmass2 << endl;
     cout << "mq: " << mq << " erms: " << erms << endl;
     return erms;
 }
