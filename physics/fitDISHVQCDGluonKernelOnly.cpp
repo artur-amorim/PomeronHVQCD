@@ -69,7 +69,7 @@ int main(int argc, char ** argv)
         hqcdp.setGNs(gpars);
         // Compute chi2
         double CHI2 = hqcdp.chi2();
-        if(isnan(CHI2)) CHI2 = 1e99;
+        if(std::isnan(CHI2)) CHI2 = 1e99;
         cout << "invls: " << x[0] << " a: " << x[1] << " b: " << x[2] << " c: " << x[3] << " d: " << x[4];
         cout << " e: " << x[5] << " f: " << x[6];
         cout << " g1: " << x[7] << " g2: " << x[8] << " g3: " << x[9] <<  " g4: " << x[10] << endl;
