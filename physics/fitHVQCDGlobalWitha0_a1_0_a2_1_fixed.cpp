@@ -87,7 +87,7 @@ double J(const vector<double> X)
     for(int i = 0; i < Rpi_rho.size(); i++) erms += fabs((PSMMasses[i]/VMMasses[0]-Rpi_rho[i])/Rpi_rho[i]);
     // Contributions from the ratios m_{a0_n} / m_{\rho}
     if( SMMasses.size() == 0) SMMasses = vector<double>(3,0);
-    for(int i = 0; i < Ra0_rho_with_a0980.size(); i++) erms += fabs((SMMasses[i]/VMMasses[0]- Ra0_rho[i])/Ra0_rho[i]);
+    for(int i = 0; i < Ra0_rho_with_a0980.size(); i++) erms += fabs((SMMasses[i]/VMMasses[0]- Ra0_rho_with_a0980[i])/Ra0_rho_with_a0980[i]);
     // Singlet vector meson sector
     for(int i = 0; i < Romega_rho.size(); i++) erms += fabs((VMMasses[i]/VMMasses[0]-Romega_rho[i])/Romega_rho[i]);
     int nRatios = 24;
