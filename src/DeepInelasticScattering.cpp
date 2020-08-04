@@ -65,7 +65,7 @@ void DeepInelasticScattering::loadData(std::string file_path)
     std::vector<double> Q2, x, Fi, Fierr;
     std::vector<std::string> result;
     // Ratio of the rho mass in the model to the rho mass in GeV. Assuming we are using global fit results to HVQCD
-    const double mrho_U_mrho_GeV = 4.06789;
+    const double mrho_U_mrho_GeV = 4.3669;
     while(getline(file, line))
     {
         boost::split(result, line, boost::is_any_of("\t") ) ;
