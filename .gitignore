@@ -1,3 +1,5 @@
+/Makefile
+
 # Ignore generated library files
 *.a
 
