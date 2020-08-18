@@ -211,6 +211,10 @@ target_link_libraries(findReggeTrajectories.exe armadillo hvqcd_lib)
 add_executable(findGs.exe physics/findGs.cpp)
 target_link_libraries(findGs.exe armadillo blas hvqcd_lib)
 
+# Add findKernelIntercepts computation
+add_executable(findKernelIntercepts.exe physics/findKernelIntercepts.cpp)
+target_link_libraries(findKernelIntercepts.exe armadillo blas hvqcd_lib)
+
 # test_BckPotFactor
 add_executable(test_BckPotFactor.exe tests/test_BckPotFactor.cpp)
 target_link_libraries(test_BckPotFactor.exe armadillo blas hvqcd_lib)
