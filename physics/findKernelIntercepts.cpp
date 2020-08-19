@@ -29,20 +29,22 @@ int main(int argc, char ** argv)
 
     // Setup gluon kernel
     vector<double> gluon_pars = {invls, 0, 0, 0, 0, 0, 0};
-    GluonKernel gluon(1, gluon_pars);
+    GluonKernel gluon(2, gluon_pars);
     MesonKernel meson(1, gluon_pars);
 
-    function<double(vector<double>) > func = [&gluon, &meson] (const vector<double> &params){
+    function<double(vector<double>) > func = [&gluon, &meson] (const vector<double> &x){
         // Compute Regge Trajectories
-        gluon.computeReggeTrajectories(params);
-        meson.computeReggeTrajectories(params);
+        gluon.computeReggeTrajectories({x[0], 0, 0, 0, 0, 0, 0});
+        meson.computeReggeTrajectories({x[0], 0, 0, 0, 0, 0, 0});
         // Compute the intercepts
         Spline_Interp<double> gluon_j0 = gluon.Trajectory(0);
+        Spline_Interp<double> gluon_j1 = gluon.Trajectory(1);
         Spline_Interp<double> meson_j0 = meson.Trajectory(0);
-        double g_j0 = gluon_j0.interp(0), m_j0 = meson_j0.interp(0);
+        double g_j0 = gluon_j0.interp(0), g_j1 = gluon_j1.interp(0), m_j0 = meson_j0.interp(0);
         // Compute the error squared and return it
-        double erms2 = pow(g_j0 - 1.08, 2) + pow(m_j0 - 0.45, 2);
-        cout << "g_j0: " << g_j0 << " m_j0: " << m_j0 << endl;
+        double erms2 = pow(g_j0 - 1.4, 2) + pow(g_j1 - 1.08, 2) + pow(m_j0 - 0.45, 2);
+        cout << "invls: " << x[0] << endl;
+        cout << "g_j0: " << g_j0 << " g_j1: " << g_j1 << " m_j0: " << m_j0 << endl;
         cout << "erms2: " << erms2 << endl; 
         return erms2;
     };
@@ -51,22 +53,16 @@ int main(int argc, char ** argv)
 
     std::cout << "Best parameters found for:" << std::endl;
     std::cout << "invls:\t" << gluon_pars[0] << std::endl;
-    std::cout << "a:\t"     << gluon_pars[1] << std::endl;
-    std::cout << "b:\t"     << gluon_pars[2] << std::endl;
-    std::cout << "c:\t"     << gluon_pars[3] << std::endl;
-    std::cout << "d:\t"     << gluon_pars[4] << std::endl;
-    std::cout << "e:\t"     << gluon_pars[5] << std::endl;
-    std::cout << "f:\t"     << gluon_pars[6] << std::endl;
-
-    gluon.computeReggeTrajectories(gluon_pars);
-    meson.computeReggeTrajectories(gluon_pars);
+    
+    gluon.computeReggeTrajectories({gluon_pars[0],0,0,0,0,0,0});
+    meson.computeReggeTrajectories({gluon_pars[0],0,0,0,0,0,0});
     // Compute the intercepts
     Spline_Interp<double> gluon_j0 = gluon.Trajectory(0);
+    Spline_Interp<double> gluon_j1 = gluon.Trajectory(1);
     Spline_Interp<double> meson_j0 = meson.Trajectory(0);
 
-    double g_j0 = gluon_j0.interp(0), m_j0 = meson_j0.interp(0);
-
-    cout << "g_j0: " << g_j0 << " m_j0: " << m_j0 << endl;
+    double g_j0 = gluon_j0.interp(0), g_j1 = gluon_j1.interp(0), m_j0 = meson_j0.interp(0);
+    cout << "g_j0: " << g_j0 << "g_j1: " << g_j1 << " m_j0: " << m_j0 << endl;
 
     return 0;
 }
