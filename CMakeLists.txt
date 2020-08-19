@@ -46,8 +46,8 @@ set(U1NNMODE src/U1NNMode.cpp)
 # Spectra and Reggeon classes
 set(SPECTRA src/Spectra.cpp src/Reggeon.cpp src/Kernel.cpp src/GluonKernel.cpp src/MesonKernel.cpp)
 
-# ProcessObservable and its derived classes
-set(PROCESS src/ProcessObservable.cpp src/DeepInelasticScattering.cpp src/F2.cpp src/FL.cpp)
+# Process and its derived classes
+set(PROCESS src/Process.cpp src/Sigma.cpp src/SigmaProtonProton.cpp src/DeepInelasticScattering.cpp src/F2.cpp src/FL.cpp)
 
 # HQCDP class
 set(HQCDP src/HQCDP.cpp)
@@ -207,6 +207,10 @@ target_link_libraries(HVQCDSpectrum.exe armadillo hvqcd_lib)
 add_executable(findReggeTrajectories.exe physics/findReggeTrajectories.cpp)
 target_link_libraries(findReggeTrajectories.exe armadillo hvqcd_lib)
 
+# Add fitSigmaProtonProton
+add_executable(fitSigmaProtonProton.exe physics/fitSigmaProtonProton.cpp)
+target_link_libraries(fitSigmaProtonProton.exe armadillo hvqcd_lib)
+
 # Add findGs computation
 add_executable(findGs.exe physics/findGs.cpp)
 target_link_libraries(findGs.exe armadillo blas hvqcd_lib)
@@ -218,3 +222,7 @@ target_link_libraries(findKernelIntercepts.exe armadillo blas hvqcd_lib)
 # test_BckPotFactor
 add_executable(test_BckPotFactor.exe tests/test_BckPotFactor.cpp)
 target_link_libraries(test_BckPotFactor.exe armadillo blas hvqcd_lib)
+
+# test_SigmaProtonProton
+add_executable(test_SigmaProtonProton.exe tests/test_SigmaProtonProton.cpp)
+target_link_libraries(test_SigmaProtonProton.exe armadillo blas hvqcd_lib)

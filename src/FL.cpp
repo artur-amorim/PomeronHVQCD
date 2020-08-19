@@ -21,7 +21,7 @@ extern"C"
 }
 
 
-FL::FL(const bool rrsslog, const std::string file_path) : DeepInelasticScattering(rrsslog, file_path)
+FL::FL(const std::string file_path) : DeepInelasticScattering(file_path)
 {
     std::cout << "Loaded FL." << std::endl;
 }

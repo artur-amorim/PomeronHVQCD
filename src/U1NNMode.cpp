@@ -121,7 +121,8 @@ double U1NNMode::factor(const double x) const
     /*
         Returns the value of fQ^2 + (dfQ/du)^2/Q2 given x <= u.back(). If x > u.back() throw runtime_error
     */
-    if (x > u.back()) std::runtime_error("U1NNMode::factor: x is out of range");
+    if (x > u.back()) throw std::runtime_error("U1NNMode::factor: x is out of range");
+    if (q2 < 1e-9) return 1;
     double * X = new double(x);
     double * Z = new double[2];
     appsln_(X, Z, FSPACE, ISPACE);

@@ -28,7 +28,7 @@ extern"C"
                 int * limit, int * lenw, int * last, int * iwork, double * work);
 }
 
-F2::F2(const bool rrsslog, std::string file_path) : DeepInelasticScattering(rrsslog, file_path)
+F2::F2(std::string file_path) : DeepInelasticScattering(file_path)
 {
     std::cout << "Loaded F2." << std::endl;
 }

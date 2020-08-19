@@ -54,13 +54,12 @@ void HQCDP::computeNeededTVals()
     useTVals.erase(std::unique(useTVals.begin(), useTVals.end() ), useTVals.end() );
 }
 
-void HQCDP::addProcessObservable(ProcessObservable &proc)
+void HQCDP::addProcessObservable(Process &proc)
 {
     // Add a process to be fitted or predicted
     // For consistency change NMC, alpha and rsslog data members of proc
     // to be the same as the HQCDP object.
-    ProcessObservable * newProcess = &proc;
-    if(proc.getRSSLOG() != rsslog) newProcess->setRSSLOG(rsslog);
+    Process * newProcess = &proc;
     // Append the process observable proc
     processes.push_back(newProcess) ;
 }
@@ -122,7 +121,7 @@ int HQCDP::NumberOfDegreesOfFreedom()
     /* 
         Computes the number of degrees of freedom in the fit.
         It is equal to the number of fitting points minus the number of parameters.
-        Then we iterate over the ProcessObservable vector,and for each ProcessObservable we compute
+        Then we iterate over the Process * vector,and for each Process we compute
         the number of data points. Then we iterate over the kernels and compute the number
         of kernel parameters. Finally we add to the number of kernel parameters the number of gns.
     */
@@ -149,11 +148,11 @@ double HQCDP::chi2()
     double chi2 = 0.0;
     for(int i = 0; i < processes.size(); i++)
     {
-        ProcessObservable * proc = processes[i];
+        Process * proc = processes[i];
         std::vector<std::vector<double> > points = proc->expKinematics();
         std::vector<kinStruct> izs = proc->getIzs(points, spectrum);
         std::vector<kinStruct> izsbar = proc->getIzsBar(points, spectrum, gns);
-        chi2 += proc->rss(izs, izsbar, points);
+        chi2 += proc->chi2(izs, izsbar, points);
     }
     return chi2;
 }

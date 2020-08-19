@@ -7,7 +7,7 @@
 class FL : public DeepInelasticScattering
 {
     public :
-        FL(const bool rrsslog = false, std::string file_path = "expdata/FL_data.txt");                                           // Constructor
+        FL(std::string file_path = "expdata/FL_data.txt");                                           // Constructor
         double IzN(const std::vector<double> &kin, const Reggeon &reg);
 };
 

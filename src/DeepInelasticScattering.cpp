@@ -7,50 +7,15 @@
 #include "methods/vectorOperators.hpp"
 #include "methods/interpolation/Spline_Interp.hpp"
 
-std::vector<double> DeepInelasticScattering::u = {};
-std::vector<double> DeepInelasticScattering::z = {};
-std::vector<double> DeepInelasticScattering::Astring = {};
-std::vector<double> DeepInelasticScattering::Vfw2fac = {};
-std::vector<double> DeepInelasticScattering::MesonPotFac = {};
-Poly_Interp<double> DeepInelasticScattering::potFactor({},{},4);
-Poly_Interp<double> DeepInelasticScattering::MesonPotFactor({}, {}, 4);
-Poly_Interp<double> DeepInelasticScattering::ufunc({},{},4);
-
-
-DeepInelasticScattering::DeepInelasticScattering(const bool rrsslog, std::string file_path): ProcessObservable(rrsslog), modes({})
+DeepInelasticScattering::DeepInelasticScattering(std::string file_path): Process(), modes({})
 {
     // Load data
     loadData(file_path);
     // Compute all the necessary U(1) NN modes
     computeU1NNModes();
-    // We now compute potFactor
-    if (z.size() == 0)
-    {
-        u = hvqcd().u(); z = hvqcd().z();
-        Astring = hvqcd().Astring();
-        std::vector<double> Gs = hvqcd().G(); 
-        Vfw2fac.resize(z.size()); MesonPotFac.resize(z.size());
-        // e^(-7/3 \Phi) V_f w_s^2 = e^(\Phi / 3) V_f w^2 in terms of the Einstein frame background potentials
-        // e^(-10/3 \Phi) V_f w_s^2 = e^(-2 \Phi / 3) V_f w^2 in terms of the Einstein frame background potentials
-        std::vector<double> Phis = hvqcd().Phi(), taus = hvqcd().tau();
-        for(int i = 0; i < z.size(); i++) 
-        {
-            Vfw2fac[i] = std::exp(Phis[i] / 3) * hvqcd().Vf(Phis[i], taus[i]) * std::pow(hvqcd().w(Phis[i]),2);
-            MesonPotFac[i] = std::sqrt(std::exp(-2*Phis[i]/3) * hvqcd().Vf(Phis[i], taus[i]) * std::pow(hvqcd().w(Phis[i]),2));
-        }
-        // Now we reverse u, Astring and Vfw2fac because we want them from the UV to the IR
-        std::reverse(std::begin(u), std::end(u));
-        std::reverse(std::begin(z), std::end(z));
-        std::reverse(std::begin(Astring), std::end(Astring));
-        std::reverse(std::begin(Vfw2fac), std::end(Vfw2fac));
-        std::reverse(std::begin(MesonPotFac), std::end(MesonPotFac));
-        ufunc = Poly_Interp<double>(z, u, 4);
-        potFactor = Poly_Interp<double>(u, Vfw2fac, 4);
-        MesonPotFactor = Poly_Interp<double>(u, MesonPotFac, 4);
-    }
 }
 
-DeepInelasticScattering::DeepInelasticScattering(const DeepInelasticScattering &dis): ProcessObservable(dis), modes(dis.modes){}
+DeepInelasticScattering::DeepInelasticScattering(const DeepInelasticScattering &dis): Process(dis), modes(dis.modes){}
 
 void DeepInelasticScattering::loadData(std::string file_path)
 {
@@ -115,7 +80,7 @@ void DeepInelasticScattering::computeU1NNModes()
 
 void DeepInelasticScattering::copy(const DeepInelasticScattering &rhs)
 {
-    ProcessObservable::copy(rhs);
+    Process::copy(rhs);
     modes = rhs.modes;
 }
 
@@ -184,7 +149,7 @@ std::vector<double> DeepInelasticScattering::getNeededTVals()
     return ans ;
 }
 
-double DeepInelasticScattering::IzNBar(std::vector<double> kin, const Reggeon &reg, const std::vector<double> &gs)
+double DeepInelasticScattering::IzNBar(const std::vector<double> &kin, const Reggeon &reg, const std::vector<double> &gs)
 {
     /*
         Given a reggeon and it the kinematical point (Q2, x),
@@ -260,7 +225,7 @@ std::vector<kinStruct> DeepInelasticScattering::getIzsBar(const std::vector< std
     return ans ;
 }
 
-std::vector<double> DeepInelasticScattering::predictObs(const std::vector<kinStruct> &Izs,
+std::vector<double> DeepInelasticScattering::predict(const std::vector<kinStruct> &Izs,
                                                         const std::vector<kinStruct> &IzsBar,
                                                         const std::vector< std::vector<double> > &points,
                                                         const bool savePredictions)
@@ -298,6 +263,16 @@ DeepInelasticScattering& DeepInelasticScattering::operator=(const DeepInelasticS
     if (this == &rhs) return *this;
     copy(rhs);
     return *this;
+}
+
+std::vector<double> DeepInelasticScattering::diffObsWeighted(const std::vector<kinStruct> &Izs, const std::vector<kinStruct> &IzsBar, const std::vector< std::vector < double > > &points)
+{
+    if( points.size() == 0) std::vector< std::vector< double > > points = this->expKinematics() ;   // If points is NULL provide the experimental ones
+    const std::vector<double> Opred = this->predict(Izs, IzsBar, points, false) ;                   // Predictions of the model for the process
+    const std::vector<double> Oexp  = this->expVal() ;                                              // Experimental values of the process
+    const std::vector<double> Oerr  = this->expErr() ;                                              // Experimental errors of the process
+    return (Opred - Oexp) / Oerr ;
+
 }
 
 DeepInelasticScattering::~DeepInelasticScattering()

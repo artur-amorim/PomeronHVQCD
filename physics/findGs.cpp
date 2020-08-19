@@ -36,8 +36,8 @@ int main(int argc, char ** argv)
     cout << " g1: " << g1 << " g2: " << g2 << " g3: " << g3 << " g4: " << g4 << endl;
 
     double mq = hvqcd().QuarkMass();
-    F2 f2(false, "expdata/F2_data.txt");
-    FL fl(false, "expdata/FL_data.txt");
+    F2 f2("expdata/F2_data.txt");
+    FL fl("expdata/FL_data.txt");
 
     // Setup Gluon Kernel and GNs vector
     vector<double> gluon_pars = {invls, a, b, c, d, e, f};
