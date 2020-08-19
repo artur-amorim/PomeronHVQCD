@@ -20,7 +20,7 @@ int main(int argc, char ** argv)
     {
         invls = 0.254119; a = 13.9538; b = 0.921665; c = 2.03904; d = -2.7305; e = -0.473787;
         f = -0.517072;
-        g1 = 0; g2 = 0; g3 = 0; g4 = 0;
+        g1 = 1; g2 = -1; g3 = 1; g4 = -1;
     }
     else
     {
@@ -78,7 +78,7 @@ int main(int argc, char ** argv)
         return CHI2;
     };
 
-    vector<double> xopt = optimFunction(x_guess, func, 100);
+    vector<double> xopt = optimFunction(x_guess, func, 10);
 
     // Compute best chi2
     // Kernel pars correspond to xopt(0), xopt(1), xopt(2), xopt(3), xopt(4), xopt(5), xopt(6)

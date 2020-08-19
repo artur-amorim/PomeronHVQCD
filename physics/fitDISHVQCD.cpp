@@ -23,7 +23,7 @@ int main(int argc, char ** argv)
         invls = 0.254119; ag = 13.9538; bg = 0.921665; cg = 2.03904; dg = -2.7305; eg = -0.473787;
         fg = -0.517072;
         am = 0; bm = 0; cm = 0, dm = 0; em = 0; fm = 0;
-        g1g = 0; g2g = 0; g1m = 0;
+        g1g = 1; g2g = 1; g1m = 1;
     }
     else
     {
@@ -90,7 +90,7 @@ int main(int argc, char ** argv)
         return CHI2;
     };
 
-    vector<double> xopt = optimFunction(x_guess, func, 100);
+    vector<double> xopt = optimFunction(x_guess, func, 10);
 
     // Compute best chi2
     // gluon pars correspond to xopt(0), xopt(1), xopt(2), xopt(3), xopt(4), xopt(5), xopt(6)
