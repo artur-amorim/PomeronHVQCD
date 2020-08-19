@@ -41,8 +41,8 @@ int main(int argc, char ** argv)
     cout << "g1g: " << g1g << " g2g: " << g2g << " g1m: " << g1m << endl;
 
     double mq = hvqcd().QuarkMass();
-    F2 f2("expdata/F2_data.txt");
-    FL fl("expdata/FL_data.txt");
+    F2 f2("expdata/DIS/F2_data.txt");
+    FL fl("expdata/DIS/FL_data.txt");
 
     // Setup Gluon and Meson Kernels and GNs vector
     vector<double> gluon_pars = {invls, ag, bg, cg, dg, eg, fg};
