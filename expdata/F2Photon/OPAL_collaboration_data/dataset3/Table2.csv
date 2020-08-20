@@ -1,0 +1,18 @@
+#: table_doi: 10.17182/hepdata.49560.v1/t2
+#: name: Table 2
+#: description: Measurement of the hadron photon structure function. Systematic errors do not contain any effects caused by the four momentum of the quasi-real photon being non zero.
+
+#: data_file: Table2.yaml
+#: keyword reactions: E+ E- --> HADRONS | E+ E- --> Z0 | E- GAMMA --> E- HADRONS | E+ GAMMA --> E+ HADRONS | GAMMA* GAMMA --> HADRONS
+#: keyword observables: F2
+#: keyword phrases: Exclusive | Structure Function | Photoproduction | E+ E- Scattering | Electron production
+#: keyword cmenergies: 0.001
+#: RE,,,,,E+- GAMMA --> E+- HADRONS
+#: Q**2 [GEV**2],,,,,3.76(BIN=2.5 TO 6.6)
+#: SQRT(S) [GeV],,,,,0.001
+-LOG(X),-LOG(X) LOW,-LOG(X) HIGH,X,X LOW,X HIGH,F2/ALPHAE,stat +,stat -,sys +,sys -
+1.9500000000000002,2.2,1.7,0.011,0.0063,0.02,0.35,0.03,-0.03,0.08,-0.08
+1.5499999999999998,1.7,1.4,0.028,0.02,0.04,0.29,0.03,-0.03,0.06,-0.06
+1.2,1.4,1.0,0.063,0.04,0.1,0.32,0.02,-0.02,0.07,-0.05
+0.85,1.0,0.7,0.141,0.1,0.2,0.32,0.03,-0.03,0.08,-0.04
+

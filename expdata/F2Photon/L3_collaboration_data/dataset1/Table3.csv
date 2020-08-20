@@ -1,0 +1,26 @@
+#: table_doi: 10.17182/hepdata.49392.v1/t3
+#: name: Table 3
+#: description: No description provided.
+#: data_file: Table3.yaml
+#: keyword reactions: E+ E- --> E- E+ HADRONS | GAMMA GAMMA --> HADRONS
+#: keyword observables: F2
+#: keyword phrases: Exclusive | Structure Function | Photoproduction | Two-Photon | E+ E- Scattering | Electron production
+#: keyword cmenergies: 0.0
+#: RE,GAMMA GAMMA --> HADRONS
+#: X,0.01 TO 0.1
+#: SQRT(S) [GeV],0.0
+MEAN(N=Q2) [GEV**2],F2(C=SET1)/ALPHA,stat +,stat -,sys +,sys -
+1.5,0.173,0.004,-0.004,0.009,-0.009
+2.4,0.195,0.005,-0.005,0.004,-0.004
+3.8,0.245,0.006,-0.006,0.007,-0.007
+6.6,0.278,0.009,-0.009,0.013,-0.013
+
+#: RE,GAMMA GAMMA --> HADRONS
+#: X,0.01 TO 0.1
+#: SQRT(S) [GeV],0.0
+MEAN(N=Q2) [GEV**2],F2(C=SET2)/ALPHA,stat +,stat -,sys +,sys -
+1.5,0.196,0.005,-0.005,0.01,-0.01
+2.4,0.208,0.005,-0.005,0.004,-0.004
+3.8,0.252,0.006,-0.006,0.007,-0.007
+6.6,0.292,0.009,-0.009,0.014,-0.014
+

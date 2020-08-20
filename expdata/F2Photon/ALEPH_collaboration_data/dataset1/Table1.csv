@@ -1,0 +1,17 @@
+#: table_doi: 10.17182/hepdata.49109.v1/t1
+#: name: Table 1
+#: description: The measured values of dsig/dx from the ECAL data in the Q**2 bin 35 to 3000 GeV**2 with a mean of 284 +- 49 GeV**2.
+
+#: data_file: Table1.yaml
+#: keyword reactions: E+ E- --> E- E+ HADRONS | GAMMA* GAMMA --> HADRONS
+#: keyword observables: DSIG/DX
+#: keyword phrases: Exclusive | Single Differential Cross Section | Photoproduction | E+ E- Scattering | Electron production
+#: keyword cmenergies: 0.0
+#: MEAN(N=Q**2) [GeV^2],,,284.0
+#: RE,,,GAMMA* GAMMA --> HADRONS
+#: SQRT(S) [GeV],,,0.0
+X,X LOW,X HIGH,D(SIG)/DX [PB],total +,total -,stat +,stat -
+0.171,0.03,0.35,4.1,0.9,-0.9,0.7,-0.7
+0.5,0.35,0.65,2.4,0.8,-0.8,0.6,-0.6
+0.8,0.65,0.97,3.1,0.9,-0.9,0.6,-0.6
+

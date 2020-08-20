@@ -1,0 +1,14 @@
+#: table_doi: 10.17182/hepdata.47770.v1/t5
+#: name: Table 5
+#: description: No description provided.
+#: data_file: Table5.yaml
+#: keyword reactions: E+ E- --> HADRONS | E+ E- --> Z0 | E- GAMMA --> E- HADRONS | E+ GAMMA --> E+ HADRONS | GAMMA* GAMMA --> HADRONS
+#: keyword observables: SLOPE
+#: keyword phrases: Exclusive | Photoproduction | E+ E- Scattering | Electron production
+#: keyword cmenergies: 0.001
+#: RE,,,E+- GAMMA --> E+- HADRONS
+#: X,,,0.1 TO 0.6
+#: SQRT(S) [GeV],,,0.001
+Q2 [GEV**2],Q2 [GEV**2] LOW,Q2 [GEV**2] HIGH,D(F2/ALPHA)/DLN(Q**2),error +,error -
+203.0,6.0,400.0,0.13,0.06,-0.04
+

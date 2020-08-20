@@ -1,0 +1,23 @@
+#: table_doi: 10.17182/hepdata.49907.v1/t9
+#: name: Table 9
+#: description: Statistical correlations between the bins from the LEP1 FD data sample at Q**2 = 8.9 GeV**2.
+
+#: data_file: Table9.yaml
+#: keyword reactions: E+ E- --> E+ E- X | GAMMA GAMMA --> X
+#: keyword observables: F2
+#: keyword phrases: Inclusive | Exclusive | Structure Function | Photoproduction | Two-Photon | E+ E- Scattering | Electron production | Neutral Current | Deep Inelastic Scattering
+#: keyword cmenergies: 0.0
+#: RE,GAMMA GAMMA --> X
+#: Q**2 [GeV^2],8.9
+#: SQRT(S) [GeV],0.0
+X,X,
+0.0235,0.0235,1.0
+0.1054,0.0235,-0.02
+0.3331,0.0235,-0.12
+0.0235,0.1054,-
+0.1054,0.1054,1.0
+0.3331,0.1054,-0.31
+0.0235,0.3331,-
+0.1054,0.3331,-
+0.3331,0.3331,1.0
+

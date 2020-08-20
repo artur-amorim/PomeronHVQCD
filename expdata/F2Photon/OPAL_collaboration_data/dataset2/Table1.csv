@@ -1,0 +1,36 @@
+#: table_doi: 10.17182/hepdata.47450.v1/t1
+#: name: Table 1
+#: description: Measured values of F2 for the SW sample.
+
+#: data_file: Table1.yaml
+#: keyword reactions: E- GAMMA --> E- HADRONS | E+ GAMMA --> E+ HADRONS | GAMMA* GAMMA --> HADRONS
+#: keyword observables: F2
+#: keyword phrases: Exclusive | Structure Function | Photoproduction | Electron production
+#: keyword cmenergies: 0.001
+#: SQRT(S(C=EE)) [GEV],,,161 TO 172
+#: RE,,,E+- GAMMA --> E+- HADRONS
+#: Q**2 [GEV**2],,,6 TO 11 (MEAN=9)
+#: SQRT(S) [GeV],,,0.001
+X,X LOW,X HIGH,F2/ALPHAE,stat +,stat -,sys +,sys -
+0.060000000000000005,0.02,0.1,0.33,0.03,-0.03,0.06,-0.06
+0.175,0.1,0.25,0.29,0.04,-0.04,0.04,-0.05
+0.425,0.25,0.6,0.39,0.08,-0.08,0.3,-0.1
+
+#: SQRT(S(C=EE)) [GEV],,,161 TO 172
+#: RE,,,E+- GAMMA --> E+- HADRONS
+#: Q**2 [GEV**2],,,11 TO 20 (MEAN=14.5)
+#: SQRT(S) [GeV],,,0.001
+X,X LOW,X HIGH,F2/ALPHAE,stat +,stat -,sys +,sys -
+0.060000000000000005,0.02,0.1,0.37,0.03,-0.03,0.16,-0.01
+0.175,0.1,0.25,0.42,0.05,-0.05,0.04,-0.14
+0.425,0.25,0.6,0.39,0.06,-0.06,0.1,-0.11
+
+#: SQRT(S(C=EE)) [GEV],,,161 TO 172
+#: RE,,,E+- GAMMA --> E+- HADRONS
+#: Q**2 [GEV**2],,,6 TO 20 (MEAN=11)
+#: SQRT(S) [GeV],,,0.001
+X,X LOW,X HIGH,F2/ALPHAE,stat +,stat -,sys +,sys -
+0.060000000000000005,0.02,0.1,0.34,0.02,-0.02,0.11,-0.02
+0.175,0.1,0.25,0.36,0.03,-0.03,0.02,-0.1
+0.425,0.25,0.6,0.39,0.04,-0.04,0.12,-0.04
+

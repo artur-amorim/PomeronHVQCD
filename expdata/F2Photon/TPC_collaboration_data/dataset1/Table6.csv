@@ -1,0 +1,17 @@
+#: table_doi: 10.17182/hepdata.15803.v1/t6
+#: name: Table 6
+#: description: No description provided.
+#: data_file: Table6.yaml
+#: keyword reactions: GAMMA GAMMA --> X
+#: keyword observables: F2
+#: keyword phrases: Exclusive | Structure Function | Photoproduction | Two-Photon
+#: keyword cmenergies: 0.0
+#: SYS,,,
+#: RE,,,GAMMA GAMMA --> X
+#: Q**2 [GEV**2],,,4.0 TO 6.6 (MEAN=5.1)
+#: SQRT(S) [GeV],,,0.0
+X,X LOW,X HIGH,F2,error +,error -
+0.11,0.021,0.199,0.224,0.0339,-0.0339
+0.274,0.189,0.359,0.3727,0.0567,-0.0567
+0.55,0.36,0.74,0.3002,0.0438,-0.0438
+

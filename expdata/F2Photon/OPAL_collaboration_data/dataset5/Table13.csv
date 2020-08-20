@@ -1,0 +1,39 @@
+#: table_doi: 10.17182/hepdata.49744.v1/t13
+#: name: Table 13
+#: description: F2 and DSIG/DX over the full X range 0.10 to 0.60 as a function of Q**2.
+
+#: data_file: Table13.yaml
+#: keyword reactions: GAMMA* GAMMA --> HADRONS
+#: keyword observables: DSIG/DX | F2
+#: keyword phrases: Exclusive | Single Differential Cross Section | Structure Function | Photoproduction
+#: keyword cmenergies: 0.0
+#: RE,,,GAMMA* GAMMA --> HADRONS
+#: X,,,0.10 TO 0.60
+#: SQRT(S) [GeV],,,0.0
+Q**2 [GEV**2],Q**2 [GEV**2] LOW,Q**2 [GEV**2] HIGH,F2/ALPHA,stat +,stat -,sys +,sys -
+12.1,9.0,15.0,0.41,0.01,-0.01,0.03,-0.02
+19.9,15.0,30.0,0.46,0.01,-0.01,0.01,-0.01
+39.7,30.0,50.0,0.58,0.01,-0.01,0.02,-0.02
+76.4,50.0,150.0,0.64,0.01,-0.01,0.02,-0.02
+780.0,400.0,2350.0,0.9,0.09,-0.09,0.13,-0.11
+
+#: RE,,,GAMMA* GAMMA --> HADRONS
+#: X,,,0.10 TO 0.60
+#: SQRT(S) [GeV],,,0.0
+Q**2 [GEV**2],Q**2 [GEV**2] LOW,Q**2 [GEV**2] HIGH,D(SIG)/DX [PB],stat +,stat -,sys +,sys -
+12.1,9.0,15.0,57.0,1.0,-1.0,4.0,-2.0
+19.9,15.0,30.0,42.0,1.0,-1.0,1.0,-1.0
+39.7,30.0,50.0,17.7,0.3,-0.3,0.6,-0.7
+76.4,50.0,150.0,15.3,0.3,-0.3,0.4,-0.5
+780.0,400.0,2350.0,0.86,0.08,-0.08,0.12,-0.11
+
+#: RE,,,GAMMA* GAMMA --> HADRONS
+#: X,,,0.10 TO 0.60
+#: SQRT(S) [GeV],,,0.0
+Q**2 [GEV**2],Q**2 [GEV**2] LOW,Q**2 [GEV**2] HIGH,RAD-CORR [PCT]
+12.1,9.0,15.0,-4.7
+19.9,15.0,30.0,-4.9
+39.7,30.0,50.0,-5.3
+76.4,50.0,150.0,-5.6
+780.0,400.0,2350.0,-8.2
+

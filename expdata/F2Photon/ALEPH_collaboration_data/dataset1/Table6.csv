@@ -1,0 +1,18 @@
+#: table_doi: 10.17182/hepdata.49109.v1/t6
+#: name: Table 6
+#: description: The photon structure function determined from the LCAL data in the Q**2 bin 13 to 44 GeV**2 with a mean of 20.67 +- 016 GeV**2. Bin to bin correlations are given in the next table.
+
+#: data_file: Table6.yaml
+#: keyword reactions: E+ E- --> E- E+ HADRONS | GAMMA* GAMMA --> HADRONS
+#: keyword observables: F2
+#: keyword phrases: Exclusive | Structure Function | Photoproduction | E+ E- Scattering | Electron production
+#: keyword cmenergies: 0.0
+#: MEAN(N=Q**2) [GeV^2],,,20.7
+#: RE,,,GAMMA* GAMMA --> HADRONS
+#: SQRT(S) [GeV],,,0.0
+X,X LOW,X HIGH,F2/ALPHAE,stat +,stat -,sys +,sys -
+0.055,0.009,0.12,0.36,0.02,-0.02,0.05,-0.05
+0.19,0.12,0.27,0.34,0.03,-0.03,0.11,-0.11
+0.38,0.27,0.5,0.56,0.05,-0.05,0.1,-0.1
+0.63,0.5,0.89,0.45,0.11,-0.11,0.05,-0.05
+

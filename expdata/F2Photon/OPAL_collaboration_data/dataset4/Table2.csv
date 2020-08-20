@@ -1,0 +1,19 @@
+#: table_doi: 10.17182/hepdata.49907.v1/t2
+#: name: Table 2
+#: description: Results of F2/ALPHAE for the LEP1 data using the SW for Q**2 = 3.7 GeV**2.
+
+#: data_file: Table2.yaml
+#: keyword reactions: E+ E- --> E+ E- X | GAMMA GAMMA --> X
+#: keyword observables: F2
+#: keyword phrases: Inclusive | Exclusive | Structure Function | Photoproduction | Two-Photon | E+ E- Scattering | Electron production | Neutral Current | Deep Inelastic Scattering
+#: keyword cmenergies: 91.0
+#: RE,,,GAMMA GAMMA --> X
+#: SQRT(S) [GeV],,,91.0
+#: Q**2 [GeV^2],,,3.7
+#: SQRT(S) (C=E+E-) [GeV^2],,,91.0
+X,X LOW,X HIGH,F2/ALPHAE,stat +,stat -,sys +,sys -
+0.0032,0.0015,0.0067,0.269,0.033,-0.033,0.047,-0.033
+0.0143,0.0067,0.0302,0.232,0.013,-0.013,0.023,-0.021
+0.0639,0.0302,0.1353,0.259,0.01,-0.01,0.006,-0.013
+0.1986,0.1353,0.6065,0.296,0.014,-0.014,0.029,-0.022
+

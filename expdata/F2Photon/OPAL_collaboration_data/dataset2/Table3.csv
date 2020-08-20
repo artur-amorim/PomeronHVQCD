@@ -1,0 +1,24 @@
+#: table_doi: 10.17182/hepdata.47450.v1/t3
+#: name: Table 3
+#: description: F2 for the full X range (0.1 to 0.6) as a function of Q**2. The full SW andFD sample points are tabulated for completeness but are not in the plot or fits . The first three points are previous OPAL data at sqrt(s) = 91 GeV (ZP C74(1997)33).
+
+#: data_file: Table3.yaml
+#: keyword reactions: E- GAMMA --> E- HADRONS | E+ GAMMA --> E+ HADRONS | GAMMA* GAMMA --> HADRONS
+#: keyword observables: F2
+#: keyword phrases: Exclusive | Structure Function | Photoproduction | Electron production
+#: keyword cmenergies: 0.001
+#: SQRT(S(C=EE)) [GEV],91.2 + (161 TO 172)
+#: RE,E+- GAMMA --> E+- HADRONS
+#: X,0.1 TO 0.6
+#: SQRT(S) [GeV],0.001
+Q**2 [GEV**2],F2/ALPHAE,stat +,stat -,sys +,sys -
+7.5,0.36,0.02,-0.02,0.06,-0.12
+14.7,0.41,0.01,-0.01,0.08,-0.04
+135.0,0.71,0.07,-0.07,0.14,-0.05
+-,-,0,0,0,0
+9.0,0.36,0.05,-0.05,0.08,-0.06
+14.5,0.41,0.04,-0.04,0.04,-0.11
+30.0,0.48,0.05,-0.05,0.06,-0.07
+59.0,0.46,0.06,-0.06,0.07,-0.04
+11.0,0.38,0.03,-0.03,0.06,-0.03
+

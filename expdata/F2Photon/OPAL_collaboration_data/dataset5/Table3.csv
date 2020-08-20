@@ -1,0 +1,30 @@
+#: table_doi: 10.17182/hepdata.49744.v1/t3
+#: name: Table 3
+#: description: The measured value of F2 and DSIG/DX for the SW data sample in the Q**2 range 9 to 15 GeV**2.
+
+#: data_file: Table3.yaml
+#: keyword reactions: GAMMA* GAMMA --> HADRONS
+#: keyword observables: DSIG/DX | F2
+#: keyword phrases: Exclusive | Single Differential Cross Section | Structure Function | Photoproduction
+#: keyword cmenergies: 0.0
+#: RE,,,GAMMA* GAMMA --> HADRONS
+#: Q**2 [GEV**2],,,9 TO 15 (MEAN=12.1)
+#: SQRT(S) [GeV],,,0.0
+X,X LOW,X HIGH,F2/ALPHA,stat +,stat -,sys +,sys -
+0.175,0.1,0.25,0.38,0.01,-0.01,0.03,-0.03
+0.425,0.25,0.6,0.43,0.01,-0.01,0.03,-0.02
+
+#: RE,,,GAMMA* GAMMA --> HADRONS
+#: Q**2 [GEV**2],,,9 TO 15 (MEAN=12.1)
+#: SQRT(S) [GeV],,,0.0
+X,X LOW,X HIGH,D(SIG)/DX [PB],stat +,stat -,sys +,sys -
+0.175,0.1,0.25,83.0,1.0,-1.0,7.0,-6.0
+0.425,0.25,0.6,47.0,1.0,-1.0,4.0,-2.0
+
+#: RE,,,GAMMA* GAMMA --> HADRONS
+#: Q**2 [GEV**2],,,9 TO 15 (MEAN=12.1)
+#: SQRT(S) [GeV],,,0.0
+X,X LOW,X HIGH,RAD-CORR [PCT]
+0.175,0.1,0.25,-5.3
+0.425,0.25,0.6,-4.4
+

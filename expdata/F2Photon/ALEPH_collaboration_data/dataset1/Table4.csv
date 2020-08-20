@@ -1,0 +1,17 @@
+#: table_doi: 10.17182/hepdata.49109.v1/t4
+#: name: Table 4
+#: description: The photon structure function determined from the ECAL data in the Q**2 bin 35 to 3000 Gev**2 with a mean of 284 +- 49 GeV**2. Bin to bin correlations are given in the next table.
+
+#: data_file: Table4.yaml
+#: keyword reactions: E+ E- --> E- E+ HADRONS | GAMMA* GAMMA --> HADRONS
+#: keyword observables: F2
+#: keyword phrases: Exclusive | Structure Function | Photoproduction | E+ E- Scattering | Electron production
+#: keyword cmenergies: 0.0
+#: MEAN(N=Q**2) [GeV^2],,,284.0
+#: RE,,,GAMMA* GAMMA --> HADRONS
+#: SQRT(S) [GeV],,,0.0
+X,X LOW,X HIGH,F2/ALPHAE,stat +,stat -,sys +,sys -
+0.171,0.03,0.35,0.65,0.1,-0.1,0.09,-0.09
+0.5,0.35,0.65,0.7,0.16,-0.16,0.19,-0.19
+0.8,0.65,0.97,1.28,0.26,-0.26,0.26,-0.26
+

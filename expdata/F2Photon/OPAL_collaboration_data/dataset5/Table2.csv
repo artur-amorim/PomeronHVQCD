@@ -1,0 +1,22 @@
+#: table_doi: 10.17182/hepdata.49744.v1/t2
+#: name: Table 2
+#: description: Statistical correlations between the bins in the preceding table.
+
+#: data_file: Table2.yaml
+#: keyword reactions: GAMMA* GAMMA --> HADRONS
+#: keyword observables: CORR
+#: keyword phrases: Exclusive | Photoproduction
+#: keyword cmenergies: 0.0
+#: RE,,,,,GAMMA* GAMMA --> HADRONS
+#: SQRT(S) [GeV],,,,,0.0
+X,X LOW,X HIGH,X,X LOW,X HIGH,STAT CORRELATION
+0.275,0.15,0.4,0.275,0.15,0.4,1.0
+0.55,0.4,0.7,0.275,0.15,0.4,0.16
+0.84,0.7,0.98,0.275,0.15,0.4,-0.04
+0.275,0.15,0.4,0.55,0.4,0.7,-
+0.55,0.4,0.7,0.55,0.4,0.7,1.0
+0.84,0.7,0.98,0.55,0.4,0.7,-0.15
+0.275,0.15,0.4,0.84,0.7,0.98,-
+0.55,0.4,0.7,0.84,0.7,0.98,-
+0.84,0.7,0.98,0.84,0.7,0.98,1.0
+

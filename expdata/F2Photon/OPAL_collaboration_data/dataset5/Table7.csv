@@ -1,0 +1,30 @@
+#: table_doi: 10.17182/hepdata.49744.v1/t7
+#: name: Table 7
+#: description: The measured value of F2 and DSIG/DX for the EE data sample in the Q**2 range 400 to 2350 GeV**2.
+
+#: data_file: Table7.yaml
+#: keyword reactions: GAMMA* GAMMA --> HADRONS
+#: keyword observables: DSIG/DX | F2
+#: keyword phrases: Exclusive | Single Differential Cross Section | Structure Function | Photoproduction
+#: keyword cmenergies: 0.0
+#: RE,,,GAMMA* GAMMA --> HADRONS
+#: Q**2 [GEV**2],,,400 TO 2350 (MEAN=780)
+#: SQRT(S) [GeV],,,0.0
+X,X LOW,X HIGH,F2/ALPHA,stat +,stat -,sys +,sys -
+0.425,0.25,0.6,0.94,0.09,-0.09,0.09,-0.11
+0.725,0.6,0.85,0.83,0.11,-0.11,0.21,-0.29
+
+#: RE,,,GAMMA* GAMMA --> HADRONS
+#: Q**2 [GEV**2],,,400 TO 2350 (MEAN=780)
+#: SQRT(S) [GeV],,,0.0
+X,X LOW,X HIGH,D(SIG)/DX [PB],stat +,stat -,sys +,sys -
+0.425,0.25,0.6,0.91,0.09,-0.09,0.08,-0.1
+0.725,0.6,0.85,0.71,0.09,-0.09,0.18,-0.25
+
+#: RE,,,GAMMA* GAMMA --> HADRONS
+#: Q**2 [GEV**2],,,400 TO 2350 (MEAN=780)
+#: SQRT(S) [GeV],,,0.0
+X,X LOW,X HIGH,RAD-CORR [PCT]
+0.425,0.25,0.6,-7.6
+0.725,0.6,0.85,-6.0
+

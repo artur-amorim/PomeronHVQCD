@@ -1,0 +1,22 @@
+#: table_doi: 10.17182/hepdata.43218.v1/t2
+#: name: Table 2
+#: description: Measured value of F2/ALPHAE at a mean Q**2 of 67.2 GeV**2.
+
+#: data_file: Table2.yaml
+#: keyword reactions: E+ E- --> E+ E- HADRONS | GAMMA* GAMMA --> HADRONS
+#: keyword observables: F2
+#: keyword phrases: Exclusive | Structure Function | Photoproduction | E+ E- Scattering | Electron production
+#: keyword cmenergies: 0.0
+#: RE,,,GAMMA* GAMMA --> HADRONS
+#: Q**2 [GEV**2],,,67.2 (BIN=30 TO 250,C=APPROX)
+#: SQRT(S) [GeV],,,0.0
+X,X LOW,X HIGH,F2(C=GAMMA)/ALPHAE,stat +,stat -,sys +,sys -
+0.0211,0.006,0.0362,0.57,0.027,-0.027,0.145,-0.145
+0.0656,0.0362,0.095,0.43,0.027,-0.027,0.039,-0.039
+0.13805,0.095,0.1811,0.47,0.029,-0.029,0.041,-0.041
+0.2359,0.1811,0.2907,0.5,0.031,-0.031,0.031,-0.031
+0.35555000000000003,0.2907,0.4204,0.6,0.036,-0.036,0.038,-0.038
+0.4959,0.4204,0.5714,0.66,0.038,-0.038,0.077,-0.077
+0.6535,0.5714,0.7356,0.65,0.055,-0.055,0.126,-0.126
+0.8478,0.7356,0.96,0.66,0.06,-0.06,0.137,-0.137
+

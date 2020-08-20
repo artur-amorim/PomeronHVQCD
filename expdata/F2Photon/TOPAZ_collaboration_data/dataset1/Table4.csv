@@ -1,0 +1,17 @@
+#: table_doi: 10.17182/hepdata.38377.v1/t4
+#: name: Table 4
+#: description: Structure function values in the intermediate x region (0.3 to 0.8). Errors are the sum of systematic and statistical uncertainties.
+
+#: data_file: Table4.yaml
+#: keyword reactions: E+ E- --> E+ E- HADRONS | GAMMA GAMMA --> HADRONS
+#: keyword observables: F2
+#: keyword phrases: Exclusive | Structure Function | Photoproduction | Two-Photon | E+ E- Scattering | Electron production
+#: keyword cmenergies: 0.0
+#: RE,GAMMA GAMMA --> HADRONS
+#: X,0.3 TO 0.8
+#: SQRT(S) [GeV],0.0
+Q**2 [GEV**2],F2/ALPHA,error +,error -
+16.0,0.47,0.08,-0.08
+80.0,0.7,0.15,-0.15
+338.0,1.07,0.37,-0.37
+

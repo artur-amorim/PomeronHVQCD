@@ -1,0 +1,30 @@
+#: table_doi: 10.17182/hepdata.49392.v1/t1
+#: name: Table 1
+#: description: No description provided.
+#: data_file: Table1.yaml
+#: keyword reactions: E+ E- --> E- E+ HADRONS | GAMMA GAMMA --> HADRONS
+#: keyword observables: F2
+#: keyword phrases: Exclusive | Structure Function | Photoproduction | Two-Photon | E+ E- Scattering | Electron production
+#: keyword cmenergies: 0.0
+#: RE,,,GAMMA GAMMA --> HADRONS
+#: Q2 [GeV^2],,,1.9
+#: SQRT(S) [GeV],,,0.0
+X,X LOW,X HIGH,F2(C=SET1)/ALPHA,stat +,stat -,sys +,sys -
+0.0035,0.002,0.005,0.184,0.009,-0.009,0.013,-0.013
+0.0075,0.005,0.01,0.179,0.007,-0.007,0.009,-0.009
+0.015,0.01,0.02,0.176,0.006,-0.006,0.006,-0.006
+0.025,0.02,0.03,0.191,0.008,-0.008,0.004,-0.004
+0.04,0.03,0.05,0.193,0.008,-0.008,0.007,-0.007
+0.07500000000000001,0.05,0.1,0.185,0.007,-0.007,0.015,-0.015
+
+#: RE,,,GAMMA GAMMA --> HADRONS
+#: Q2 [GeV^2],,,1.9
+#: SQRT(S) [GeV],,,0.0
+X,X LOW,X HIGH,F2(C=SET2)/ALPHA,stat +,stat -,sys +,sys -
+0.0035,0.002,0.005,0.231,0.011,-0.011,0.016,-0.016
+0.0075,0.005,0.01,0.199,0.008,-0.008,0.01,-0.01
+0.015,0.01,0.02,0.191,0.007,-0.007,0.006,-0.006
+0.025,0.02,0.03,0.193,0.008,-0.008,0.004,-0.004
+0.04,0.03,0.05,0.199,0.008,-0.008,0.007,-0.007
+0.07500000000000001,0.05,0.1,0.206,0.008,-0.008,0.017,-0.017
+

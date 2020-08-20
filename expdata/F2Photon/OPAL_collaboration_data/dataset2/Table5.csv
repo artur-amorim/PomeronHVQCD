@@ -1,0 +1,16 @@
+#: table_doi: 10.17182/hepdata.47450.v1/t5
+#: name: Table 5
+#: description: Variation of F2 with Q**2.
+
+#: data_file: Table5.yaml
+#: keyword reactions: E- GAMMA --> E- HADRONS | E+ GAMMA --> E+ HADRONS | GAMMA* GAMMA --> HADRONS
+#: keyword observables: F2 | SLOPE
+#: keyword phrases: Exclusive | Structure Function | Photoproduction | Electron production
+#: keyword cmenergies: 0.001
+#: SQRT(S(C=EE)) [GEV],,,91.2 + (161 TO 172)
+#: RE,,,E+- GAMMA --> E+- HADRONS
+#: X,,,0.10 TO 0.60
+#: SQRT(S) [GeV],,,0.001
+Q**2 [GEV**2],Q**2 [GEV**2] LOW,Q**2 [GEV**2] HIGH,D(F2/ALPHAE)/DLN(Q**2),stat +,stat -,sys +,sys -
+71.25,7.5,135.0,0.1,0.02,-0.02,0.05,-0.02
+

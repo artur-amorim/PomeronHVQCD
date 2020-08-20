@@ -1,0 +1,17 @@
+#: table_doi: 10.17182/hepdata.49109.v1/t10
+#: name: Table 10
+#: description: The mean values of F2 in the X range 0.1 to 0.6.
+
+#: data_file: Table10.yaml
+#: keyword reactions: E+ E- --> E- E+ HADRONS | GAMMA* GAMMA --> HADRONS
+#: keyword observables: F2
+#: keyword phrases: Exclusive | Structure Function | Photoproduction | E+ E- Scattering | Electron production
+#: keyword cmenergies: 0.0
+#: RE,GAMMA* GAMMA --> HADRONS
+#: X,0.1 TO 0.6
+#: SQRT(S) [GeV],0.0
+MEAN(N=Q**2) [GEV**2],F2/ALPHAE,total +,total -,stat +,stat -
+9.9,0.38,0.05,-0.05,0.03,-0.03
+20.7,0.5,0.05,-0.05,0.02,-0.02
+284.0,0.68,0.12,-0.12,0.1,-0.1
+

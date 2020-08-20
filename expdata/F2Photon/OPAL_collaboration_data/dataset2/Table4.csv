@@ -1,0 +1,48 @@
+#: table_doi: 10.17182/hepdata.47450.v1/t4
+#: name: Table 4
+#: description: F2 measurements as a function of Q**2 and X. The first five points are fromprevious OPAL papers (ZP C74,33 and PL B412,255) at masses around the Z0, rebin ned to match these data.
+
+#: data_file: Table4.yaml
+#: keyword reactions: E- GAMMA --> E- HADRONS | E+ GAMMA --> E+ HADRONS | GAMMA* GAMMA --> HADRONS
+#: keyword observables: F2
+#: keyword phrases: Exclusive | Structure Function | Photoproduction | Electron production
+#: keyword cmenergies: 0.001
+#: SQRT(S(C=EE)) [GEV],91.2 + (161 TO 172)
+#: RE,E+- GAMMA --> E+- HADRONS
+#: X,0.02 TO 0.10
+#: SQRT(S) [GeV],0.001
+Q**2 [GEV**2],F2/ALPHAE,stat +,stat -,sys +,sys -
+1.86,0.22,0.01,-0.01,0.06,-0.04
+3.76,0.3,0.01,-0.01,0.06,-0.03
+7.5,0.27,0.02,-0.02,0.02,-0.06
+14.7,0.37,0.01,-0.01,0.05,-0.15
+135.0,-,0,0,0,0
+-,-,0,0,0,0
+11.0,0.34,0.02,-0.02,0.11,-0.02
+
+#: SQRT(S(C=EE)) [GEV],91.2 + (161 TO 172)
+#: RE,E+- GAMMA --> E+- HADRONS
+#: X,0.10 TO 0.25
+#: SQRT(S) [GeV],0.001
+Q**2 [GEV**2],F2/ALPHAE,stat +,stat -,sys +,sys -
+1.86,-,0,0,0,0
+3.76,0.32,0.02,-0.02,0.1,-0.03
+7.5,0.32,0.02,-0.02,0.08,-0.14
+14.7,0.4,0.02,-0.02,0.06,-0.04
+135.0,0.62,0.09,-0.09,0.12,-0.05
+-,-,0,0,0,0
+11.0,0.36,0.03,-0.03,0.02,-0.1
+
+#: SQRT(S(C=EE)) [GEV],91.2 + (161 TO 172)
+#: RE,E+- GAMMA --> E+- HADRONS
+#: X,0.25 TO 0.60
+#: SQRT(S) [GeV],0.001
+Q**2 [GEV**2],F2/ALPHAE,stat +,stat -,sys +,sys -
+1.86,-,0,0,0,0
+3.76,-,0,0,0,0
+7.5,0.38,0.04,-0.04,0.05,-0.18
+14.7,0.42,0.02,-0.02,0.09,-0.09
+135.0,0.73,0.07,-0.07,0.04,-0.05
+-,-,0,0,0,0
+11.0,0.39,0.04,-0.04,0.12,-0.04
+

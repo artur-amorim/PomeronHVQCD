@@ -1,0 +1,23 @@
+#: table_doi: 10.17182/hepdata.49744.v1/t9
+#: name: Table 9
+#: description: Statistical correlation between the bins for mean Q**2 value 19.9 GeV**2.
+
+#: data_file: Table9.yaml
+#: keyword reactions: GAMMA* GAMMA --> HADRONS
+#: keyword observables: CORR
+#: keyword phrases: Exclusive | Photoproduction
+#: keyword cmenergies: 0.0
+#: RE,,,,,GAMMA* GAMMA --> HADRONS
+#: Q2 [GeV^2],,,,,12.1
+#: SQRT(S) [GeV],,,,,0.0
+X,X LOW,X HIGH,X,X LOW,X HIGH,STAT CORRELATION
+0.175,0.1,0.25,0.175,0.1,0.25,1.0
+0.425,0.25,0.6,0.175,0.1,0.25,0.28
+0.725,0.6,0.85,0.175,0.1,0.25,-
+0.175,0.1,0.25,0.425,0.25,0.6,-
+0.425,0.25,0.6,0.425,0.25,0.6,1.0
+0.725,0.6,0.85,0.425,0.25,0.6,-
+0.175,0.1,0.25,0.725,0.6,0.85,-
+0.425,0.25,0.6,0.725,0.6,0.85,-
+0.725,0.6,0.85,0.725,0.6,0.85,1.0
+

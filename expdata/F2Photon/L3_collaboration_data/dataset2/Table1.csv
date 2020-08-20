@@ -1,0 +1,36 @@
+#: table_doi: 10.17182/hepdata.49323.v1/t1
+#: name: Table 1
+#: description: Measured values of F2/ALPHA as a function of x. The second systematic error (DSYS) is that due to the model dependence and is the difference between the results obtained with PHOJET and TWOGAM. The full systematic error is the quadrature sum of the two systematic errors.
+
+#: data_file: Table1.yaml
+#: keyword reactions: E+ E- --> E+ E- HADRONS | GAMMA GAMMA --> HADRONS
+#: keyword observables: F2
+#: keyword phrases: Exclusive | Structure Function | Photoproduction | Two-Photon | E+ E- Scattering | Electron production
+#: keyword cmenergies: 0.0
+#: Q**2IN GEV**2,,,10.8(BIN=9 TO 13)
+#: SQRT(S) [GeV],,,0.0
+#: RE,,,GAMMA GAMMA --> HADRONS
+X,X LOW,X HIGH,F2/ALPHAE,stat +,stat -,sys_1 +,sys_1 -,sys_2 +,sys_2 -
+0.055,0.01,0.1,0.3,0.02,-0.02,0.03,-0.03,0.0,-0.0
+0.15000000000000002,0.1,0.2,0.35,0.03,-0.03,0.02,-0.02,0.0,-0.0
+0.25,0.2,0.3,0.3,0.04,-0.04,0.1,-0.1,0.03,-0.03
+0.4,0.3,0.5,-,0,0,0,0,0,0
+
+#: Q**2IN GEV**2,,,15.3(BIN=13 TO 18)
+#: SQRT(S) [GeV],,,0.0
+#: RE,,,GAMMA GAMMA --> HADRONS
+X,X LOW,X HIGH,F2/ALPHAE,stat +,stat -,sys_1 +,sys_1 -,sys_2 +,sys_2 -
+0.055,0.01,0.1,0.37,0.02,-0.02,0.03,-0.03,0.0,-0.0
+0.15000000000000002,0.1,0.2,0.42,0.04,-0.04,0.01,-0.01,0.02,-0.02
+0.25,0.2,0.3,0.42,0.05,-0.05,0.05,-0.05,0.05,-0.05
+0.4,0.3,0.5,0.35,0.05,-0.05,0.08,-0.08,0.13,-0.13
+
+#: Q**2IN GEV**2,,,23.1(BIN=18 TO 30)
+#: SQRT(S) [GeV],,,0.0
+#: RE,,,GAMMA GAMMA --> HADRONS
+X,X LOW,X HIGH,F2/ALPHAE,stat +,stat -,sys_1 +,sys_1 -,sys_2 +,sys_2 -
+0.055,0.01,0.1,0.4,0.03,-0.03,0.03,-0.03,0.02,-0.02
+0.15000000000000002,0.1,0.2,0.44,0.04,-0.04,0.04,-0.04,0.0,-0.0
+0.25,0.2,0.3,0.47,0.05,-0.05,0.02,-0.02,0.01,-0.01
+0.4,0.3,0.5,0.44,0.05,-0.05,0.11,-0.11,0.05,-0.05
+

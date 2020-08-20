@@ -1,0 +1,18 @@
+#: table_doi: 10.17182/hepdata.49109.v1/t2
+#: name: Table 2
+#: description: The measured values of dsig/dx from the LCAL data in the Q**2 bin 13 to 44 GeV**2 with a mean of 20.67 +- 016 GeV**2.
+
+#: data_file: Table2.yaml
+#: keyword reactions: E+ E- --> E- E+ HADRONS | GAMMA* GAMMA --> HADRONS
+#: keyword observables: DSIG/DX
+#: keyword phrases: Exclusive | Single Differential Cross Section | Photoproduction | E+ E- Scattering | Electron production
+#: keyword cmenergies: 0.0
+#: MEAN(N=Q**2) [GeV^2],,,20.7
+#: RE,,,GAMMA* GAMMA --> HADRONS
+#: SQRT(S) [GeV],,,0.0
+X,X LOW,X HIGH,D(SIG)/DX [PB],total +,total -,stat +,stat -
+0.055,0.009,0.12,79.1,11.8,-11.8,5.4,-5.4
+0.191,0.12,0.27,41.5,14.0,-14.0,4.1,-4.1
+0.38,0.27,0.5,45.8,9.3,-9.3,4.2,-4.2
+0.63,0.5,0.89,22.2,5.7,-5.7,5.2,-5.2
+

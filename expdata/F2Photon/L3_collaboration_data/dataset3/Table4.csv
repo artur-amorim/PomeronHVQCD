@@ -1,0 +1,21 @@
+#: table_doi: 10.17182/hepdata.49964.v1/t4
+#: name: Table 4
+#: description: The effective F2 measured in double-tag events as a function of the Q**2 ofthe 'target' virtual photon.
+
+#: data_file: Table4.yaml
+#: keyword reactions: E+ E- --> E+ E- HADRONS | GAMMA GAMMA --> HADRONS
+#: keyword observables: F2
+#: keyword phrases: Exclusive | Structure Function | Photoproduction | Two-Photon | E+ E- Scattering | Electron production
+#: keyword cmenergies: 0.0
+#: SQRT(S(C=EE)) [GEV],89 TO 96
+#: RE,GAMMA GAMMA --> HADRONS
+#: Q(C=PROBE)**2 [GEV**2],50 TO 400 (MEAN=120)
+#: X,0.05 TO 0.98
+#: SQRT(S) [GeV],0.0
+Q(C=TARGET)**2 [GEV**2],F2(C=EFF)/ALPHAE,stat +,stat -,sys +,sys -
+0.0,0.83,0.06,-0.06,0.08,-0.08
+2.0,0.87,0.25,-0.25,0.11,-0.11
+3.9,1.0,0.32,-0.32,0.13,-0.13
+6.4,1.02,0.7,-0.7,0.13,-0.13
+-,-,0,0,0,0
+

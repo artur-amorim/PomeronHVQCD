@@ -1,0 +1,39 @@
+#: table_doi: 10.17182/hepdata.49964.v1/t2
+#: name: Table 2
+#: description: Measured values of F2 for the single-tag data as a function of Q**2 for different X ranges.
+
+#: data_file: Table2.yaml
+#: keyword reactions: E+ E- --> E+ E- HADRONS | GAMMA GAMMA --> HADRONS
+#: keyword observables: F2
+#: keyword phrases: Exclusive | Structure Function | Photoproduction | Two-Photon | E+ E- Scattering | Electron production
+#: keyword cmenergies: 0.0
+#: RE,GAMMA GAMMA --> HADRONS
+#: X,0.05 TO 0.98
+#: SQRT(S) [GeV],0.0
+Q**2 [GEV**2],F2/ALPHAE,stat +,stat -,sys +,sys -
+60.0,0.73,0.11,-0.11,0.07,-0.07
+90.0,0.89,0.13,-0.13,0.09,-0.09
+125.0,0.85,0.11,-0.11,0.09,-0.09
+225.0,1.01,0.25,-0.25,0.1,-0.1
+-,-,0,0,0,0
+
+#: RE,GAMMA GAMMA --> HADRONS
+#: X,0.3 TO 0.8
+#: SQRT(S) [GeV],0.0
+Q**2 [GEV**2],F2/ALPHAE,stat +,stat -,sys +,sys -
+60.0,0.66,0.09,-0.09,0.06,-0.06
+90.0,0.79,0.14,-0.14,0.08,-0.08
+125.0,0.88,0.12,-0.12,0.08,-0.08
+225.0,1.18,0.22,-0.22,0.11,-0.11
+-,-,0,0,0,0
+
+#: RE,GAMMA GAMMA --> HADRONS
+#: X,0.1 TO 0.6
+#: SQRT(S) [GeV],0.0
+Q**2 [GEV**2],F2/ALPHAE,stat +,stat -,sys +,sys -
+60.0,0.63,0.06,-0.06,0.06,-0.06
+90.0,0.92,0.14,-0.14,0.09,-0.09
+125.0,0.86,0.14,-0.14,0.08,-0.08
+225.0,0.91,0.3,-0.3,0.09,-0.09
+-,-,0,0,0,0
+

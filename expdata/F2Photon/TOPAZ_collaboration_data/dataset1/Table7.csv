@@ -1,0 +1,10 @@
+#: table_doi: 10.17182/hepdata.38377.v1/t7
+#: name: Table 7
+#: description: Data requested from authors.
+
+#: data_file: Table7.yaml
+#: keyword reactions: GAMMA GAMMA --> JET(S) X
+#: keyword observables: DN/DPT
+#: keyword phrases: Inclusive | Single Differential Distribution | Transverse Momentum Dependence | Jet Production | Photoproduction | Two-Photon
+""
+

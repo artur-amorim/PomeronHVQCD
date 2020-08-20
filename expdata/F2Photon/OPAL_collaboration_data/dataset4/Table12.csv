@@ -1,0 +1,30 @@
+#: table_doi: 10.17182/hepdata.49907.v1/t12
+#: name: Table 12
+#: description: Statistical correlations between the bins from the LEP2 SW data sample at Q**2 = 17.8 GeV**2.
+
+#: data_file: Table12.yaml
+#: keyword reactions: E+ E- --> E+ E- X | GAMMA GAMMA --> X
+#: keyword observables: F2
+#: keyword phrases: Inclusive | Exclusive | Structure Function | Photoproduction | Two-Photon | E+ E- Scattering | Electron production | Neutral Current | Deep Inelastic Scattering
+#: keyword cmenergies: 0.0
+#: RE,GAMMA GAMMA --> X
+#: Q**2 [GeV^2],17.8
+#: SQRT(S) [GeV],0.0
+X,X,
+0.0033,0.0033,1.0
+0.0166,0.0033,-0.35
+0.0821,0.0033,0.05
+0.3483,0.0033,-0.01
+0.0033,0.0166,-
+0.0166,0.0166,1.0
+0.0821,0.0166,-0.33
+0.3483,0.0166,0.09
+0.0033,0.0821,-
+0.0166,0.0821,-
+0.0821,0.0821,1.0
+0.3483,0.0821,-0.41
+0.0033,0.3483,-
+0.0166,0.3483,-
+0.0821,0.3483,-
+0.3483,0.3483,1.0
+

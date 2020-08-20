@@ -1,0 +1,30 @@
+#: table_doi: 10.17182/hepdata.49109.v1/t7
+#: name: Table 7
+#: description: Bin to bin correlations in the extracted values of the photon structure function F2.
+
+#: data_file: Table7.yaml
+#: keyword reactions: E+ E- --> E- E+ HADRONS | GAMMA* GAMMA --> HADRONS
+#: keyword observables: CORR | F2
+#: keyword phrases: Exclusive | Structure Function | Photoproduction | E+ E- Scattering | Electron production
+#: keyword cmenergies: 0.0
+#: RE,,,,,GAMMA* GAMMA --> HADRONS
+#: Q**2 [GeV^2],,,,,20.7
+#: SQRT(S) [GeV],,,,,0.0
+X,X LOW,X HIGH,X,X LOW,X HIGH,Bin to Bin Correlations [F2 Measurement]
+0.0645,0.009,0.12,0.0645,0.009,0.12,1.0
+0.195,0.12,0.27,0.0645,0.009,0.12,-
+0.385,0.27,0.5,0.0645,0.009,0.12,-
+0.6950000000000001,0.5,0.89,0.0645,0.009,0.12,-
+0.0645,0.009,0.12,0.195,0.12,0.27,-0.33
+0.195,0.12,0.27,0.195,0.12,0.27,1.0
+0.385,0.27,0.5,0.195,0.12,0.27,-
+0.6950000000000001,0.5,0.89,0.195,0.12,0.27,-
+0.0645,0.009,0.12,0.385,0.27,0.5,-0.06
+0.195,0.12,0.27,0.385,0.27,0.5,-0.39
+0.385,0.27,0.5,0.385,0.27,0.5,1.0
+0.6950000000000001,0.5,0.89,0.385,0.27,0.5,-
+0.0645,0.009,0.12,0.6950000000000001,0.5,0.89,0.04
+0.195,0.12,0.27,0.6950000000000001,0.5,0.89,0.06
+0.385,0.27,0.5,0.6950000000000001,0.5,0.89,-0.48
+0.6950000000000001,0.5,0.89,0.6950000000000001,0.5,0.89,1.0
+

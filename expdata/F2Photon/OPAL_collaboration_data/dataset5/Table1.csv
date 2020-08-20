@@ -1,0 +1,49 @@
+#: table_doi: 10.17182/hepdata.49744.v1/t1
+#: name: Table 1
+#: description: F2 and DSIG/DX for the EE sample in the high Q**2 region as a function of X.
+
+#: data_file: Table1.yaml
+#: keyword reactions: E+ E- --> E+ E- HADRONS | E- GAMMA --> E- HADRONS | E+ GAMMA --> E+ HADRONS | GAMMA* GAMMA --> HADRONS
+#: keyword observables: DSIG/DX | F2
+#: keyword phrases: Exclusive | Single Differential Cross Section | Structure Function | Photoproduction | E+ E- Scattering | Electron production
+#: keyword cmenergies: 0.0
+#: SQRT(S(C=EE)) [GEV],,,182 TO 209 (MEAN=197.1)
+#: RE,,,GAMMA* GAMMA --> HADRONS
+#: Y,,,< 0.3
+#: Q**2 [GEV**2],,,400 TO 2350 (MEAN=780)
+#: SQRT(S) [GeV],,,0.0
+X,X LOW,X HIGH,F2/ALPHA,stat +,stat -,sys +,sys -
+0.275,0.15,0.4,0.93,0.1,-0.1,0.14,-0.11
+0.55,0.4,0.7,0.87,0.1,-0.1,0.05,-0.15
+0.84,0.7,0.98,0.97,0.17,-0.17,0.16,-0.23
+
+#: SQRT(S(C=EE)) [GEV],,,182 TO 209 (MEAN=197.1)
+#: RE,,,GAMMA* GAMMA --> HADRONS
+#: Y,,,< 0.3
+#: Q**2 [GEV**2],,,400 TO 2350 (MEAN=780)
+#: SQRT(S) [GeV],,,0.0
+X,X LOW,X HIGH,D(SIG)/DX [PB],stat +,stat -,sys +,sys -
+0.275,0.15,0.4,0.94,0.11,-0.11,0.15,-0.11
+0.55,0.4,0.7,0.79,0.09,-0.09,0.05,-0.14
+0.84,0.7,0.98,0.62,0.11,-0.11,0.1,-0.15
+
+#: SQRT(S(C=EE)) [GEV],,,182 TO 209 (MEAN=197.1)
+#: RE,,,GAMMA* GAMMA --> HADRONS
+#: Y,,,< 0.3
+#: Q**2 [GEV**2],,,400 TO 2350 (MEAN=780)
+#: SQRT(S) [GeV],,,0.0
+X,X LOW,X HIGH,RAD-CORR [PCT]
+0.275,0.15,0.4,-8.8
+0.55,0.4,0.7,-6.9
+0.84,0.7,0.98,-5.4
+
+#: SQRT(S(C=EE)) [GEV],,,182 TO 209 (MEAN=197.1)
+#: RE,,,GAMMA* GAMMA --> HADRONS
+#: Y,,,< 0.3
+#: Q**2 [GEV**2],,,400 TO 2350 (MEAN=780)
+#: SQRT(S) [GeV],,,0.0
+X,X LOW,X HIGH,BIN-CORR [PCT]
+0.275,0.15,0.4,-0.4
+0.55,0.4,0.7,0.1
+0.84,0.7,0.98,-5.1
+

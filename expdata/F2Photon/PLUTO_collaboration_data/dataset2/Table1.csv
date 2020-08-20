@@ -1,0 +1,18 @@
+#: table_doi: 10.17182/hepdata.33588.v1/t1
+#: name: Table 1
+#: description: Data read from graph.
+
+#: data_file: Table1.yaml
+#: keyword reactions: GAMMA GAMMA --> HADRONS
+#: keyword observables: F2
+#: keyword phrases: Exclusive | Structure Function | Photoproduction | Two-Photon
+#: keyword cmenergies: 0.0
+#: RE,,,GAMMA GAMMA --> HADRONS
+#: Q**2 [GeV^2],,,45.0
+#: SQRT(S) [GeV],,,0.0
+X,X LOW,X HIGH,F2/ALPHA,error +,error -
+0.175,0.1,0.25,0.48,0.17,-0.17
+0.375,0.25,0.5,0.55,0.12,-0.12
+0.625,0.5,0.75,0.89,0.16,-0.16
+0.825,0.75,0.9,0.87,0.26,-0.26
+
