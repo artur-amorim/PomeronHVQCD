@@ -1,0 +1,49 @@
+#: table_doi: 10.17182/hepdata.22991.v1/t3
+#: name: Table 3
+#: description: Errors are statistical only.
+
+#: data_file: Table3.yaml
+#: keyword reactions: GAMMA GAMMA --> HADRONS
+#: keyword observables: SIG
+#: keyword phrases: Exclusive | Integrated Cross Section | Cross Section | Photoproduction | Two-Photon
+#: keyword cmenergies: 2.0-10.0
+#: RE,,,GAMMA GAMMA --> HADRONS
+#: M [GEV],,,2 TO 3
+#: SQRT(S) [GeV],,,2.0-3.0
+Q**2 [GEV**2],Q**2 [GEV**2] LOW,Q**2 [GEV**2] HIGH,SIG [NB],error +,error -
+0.29,0.2,0.4,235.0,16.0,-16.0
+0.6000000000000001,0.4,0.8,215.0,8.0,-8.0
+1.04,0.8,1.6,130.0,6.0,-6.0
+2.39,1.6,3.0,63.0,6.0,-6.0
+3.94,3.0,6.8,50.0,4.0,-4.0
+
+#: RE,,,GAMMA GAMMA --> HADRONS
+#: M [GEV],,,3 TO 4
+#: SQRT(S) [GeV],,,3.0-4.0
+Q**2 [GEV**2],Q**2 [GEV**2] LOW,Q**2 [GEV**2] HIGH,SIG [NB],error +,error -
+0.29,0.2,0.4,257.0,19.0,-19.0
+0.6000000000000001,0.4,0.8,210.0,10.0,-10.0
+1.04,0.8,1.6,134.0,8.0,-8.0
+2.39,1.6,3.0,76.0,7.0,-7.0
+3.94,3.0,6.8,62.0,5.0,-5.0
+
+#: RE,,,GAMMA GAMMA --> HADRONS
+#: M [GEV],,,4 TO 6
+#: SQRT(S) [GeV],,,4.0-6.0
+Q**2 [GEV**2],Q**2 [GEV**2] LOW,Q**2 [GEV**2] HIGH,SIG [NB],error +,error -
+0.29,0.2,0.4,288.0,22.0,-22.0
+0.6000000000000001,0.4,0.8,164.0,10.0,-10.0
+1.04,0.8,1.6,112.0,8.0,-8.0
+2.39,1.6,3.0,78.0,7.0,-7.0
+3.94,3.0,6.8,47.0,5.0,-5.0
+
+#: RE,,,GAMMA GAMMA --> HADRONS
+#: M [GEV],,,6 TO 10
+#: SQRT(S) [GeV],,,6.0-10.0
+Q**2 [GEV**2],Q**2 [GEV**2] LOW,Q**2 [GEV**2] HIGH,SIG [NB],error +,error -
+0.29,0.2,0.4,261.0,28.0,-28.0
+0.6000000000000001,0.4,0.8,160.0,13.0,-13.0
+1.04,0.8,1.6,101.0,11.0,-11.0
+2.39,1.6,3.0,56.0,9.0,-9.0
+3.94,3.0,6.8,25.0,5.0,-5.0
+

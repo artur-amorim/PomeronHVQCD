@@ -1,0 +1,19 @@
+#: table_doi: 10.17182/hepdata.22991.v1/t2
+#: name: Table 2
+#: description: Errors are statistical only.
+
+#: data_file: Table2.yaml
+#: keyword reactions: GAMMA GAMMA --> HADRONS
+#: keyword observables: SIG
+#: keyword phrases: Exclusive | Integrated Cross Section | Cross Section | Photoproduction | Two-Photon
+#: keyword cmenergies: 2.0-8.0
+#: RE,,,GAMMA GAMMA --> HADRONS
+#: Q**2,,,0.0
+#: SQRT(S) [GeV],,,2.0-8.0
+M [GEV],M [GEV] LOW,M [GEV] HIGH,SIG [NB],error +,error -
+2.5,2.0,3.0,471.0,12.0,-12.0
+3.5,3.0,4.0,479.0,16.0,-16.0
+5.0,4.0,6.0,408.0,16.0,-16.0
+7.0,6.0,8.0,331.0,24.0,-24.0
+9.0,8.0,10.0,391.0,24.0,-24.0
+

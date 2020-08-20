@@ -47,7 +47,7 @@ set(U1NNMODE src/U1NNMode.cpp)
 set(SPECTRA src/Spectra.cpp src/Reggeon.cpp src/Kernel.cpp src/GluonKernel.cpp src/MesonKernel.cpp)
 
 # Process and its derived classes
-set(PROCESS src/Process.cpp src/Sigma.cpp src/SigmaProtonProton.cpp src/DeepInelasticScattering.cpp src/F2.cpp src/FL.cpp src/SigmaGammaProton.cpp)
+set(PROCESS src/Process.cpp src/Sigma.cpp src/SigmaProtonProton.cpp src/DeepInelasticScattering.cpp src/F2.cpp src/FL.cpp src/SigmaGammaProton.cpp src/SigmaGammaGamma.cpp)
 
 # HQCDP class
 set(HQCDP src/HQCDP.cpp)
@@ -211,9 +211,13 @@ target_link_libraries(findReggeTrajectories.exe armadillo hvqcd_lib)
 add_executable(fitSigmaProtonProton.exe physics/fitSigmaProtonProton.cpp)
 target_link_libraries(fitSigmaProtonProton.exe armadillo hvqcd_lib)
 
-# Add fitSigmaProtonProton
+# Add fitSigmaGammaProton
 add_executable(fitSigmaGammaProton.exe physics/fitSigmaGammaProton.cpp)
 target_link_libraries(fitSigmaGammaProton.exe armadillo hvqcd_lib)
+
+# Add fitSigmaGammaGamma
+add_executable(fitSigmaGammaGamma.exe physics/fitSigmaGammaGamma.cpp)
+target_link_libraries(fitSigmaGammaGamma.exe armadillo hvqcd_lib)
 
 # Add findGs computation
 add_executable(findGs.exe physics/findGs.cpp)
