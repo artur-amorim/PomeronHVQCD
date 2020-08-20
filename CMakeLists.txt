@@ -47,7 +47,7 @@ set(U1NNMODE src/U1NNMode.cpp)
 set(SPECTRA src/Spectra.cpp src/Reggeon.cpp src/Kernel.cpp src/GluonKernel.cpp src/MesonKernel.cpp)
 
 # Process and its derived classes
-set(PROCESS src/Process.cpp src/Sigma.cpp src/SigmaProtonProton.cpp src/DeepInelasticScattering.cpp src/F2.cpp src/FL.cpp)
+set(PROCESS src/Process.cpp src/Sigma.cpp src/SigmaProtonProton.cpp src/DeepInelasticScattering.cpp src/F2.cpp src/FL.cpp src/SigmaGammaProton.cpp)
 
 # HQCDP class
 set(HQCDP src/HQCDP.cpp)
