@@ -928,7 +928,7 @@ which requires analytic continuation of the amplitude for the spin J exchange to
 & g_n = - \frac{\pi}{2} \frac{k_{j_n\left(0\right)} \bar{k}_{j_n\left(0\right)}}{2^{j_n\left(0\right)}}  \left(i + \cot \frac{\pi j_n\left(0\right)}{2} \right) \frac{d j_n}{dt} \int d\bar{z} e^{\bar{A}\left( \frac{7}{2} - j_n \right)}  {\bar{\upsilon}}^2  \psi\left(j_n, \bar{z}\right) \notag
 \end{align}
 
-\subsection{Expressions for $F_2\left(x, Q^2\right)$ and $F_L\left(x, Q^2\right)$}
+\subsection{Expressions for $F_2\left(x, Q^2\right)$ and $F_L\left(x, Q^2\right)$ due to pomeron exchange}
 $F_2$ is related with the transverse and longitudinal cross-sections through the equation
 \begin{equation}
  F_2\left(x, Q^2\right) = \frac{Q^2}{4 \pi^2 \alpha} \left( \sigma_T + \sigma_L \right)
@@ -943,6 +943,19 @@ It turns out that a more convenient variable to perform the above integration is
  &F_2\left(x, Q^2\right) = \sum_n \frac{g_n}{4 \pi^2 \alpha} Q^{2 j_n} x^{1-jn} \int du e^{A(\frac{3}{2} - {j_n\left(0\right)})}  e^{-\frac{7}{3} \Phi}  V_f \left( \lambda, \tau \right) {w_s\left(\lambda \right)}^2  \left(  {f_Q}^2 + \frac{{\partial_u f_Q}^2}{Q^2}  \right) \psi_n \left(j_n, u\right), \\
 & F_L\left(x, Q^2\right) = \sum_n \frac{g_n}{4 \pi^2 \alpha} Q^{2 j_n} x^{1-jn} \int du e^{A(\frac{3}{2} - {j_n\left(0\right)})}  e^{-\frac{7}{3} \Phi}  V_f \left( \lambda, \tau \right) {w_s\left(\lambda \right)}^2  \frac{{\partial_u f_Q}^2}{Q^2} \psi_n \left(j_n, u\right)
 \end{align}
+The structure function $F_2$ is related to the total cross-section $\sigma\left(\gamma p \rightarrow X\right)$ through
+\begin{equation}
+\sigma\left(\gamma p \rightarrow X\right) = 4 \pi^2 \alpha \lim_{Q^2 \rightarrow 0} \frac{F_2\left(x, Q^2\right)}{Q^2}.
+\end{equation}
+In the limit of $Q^2 \rightarrow 0$
+\begin{equation}
+\lim_{Q\rightarrow 0} f_Q = 1 , \quad \lim_{Q\rightarrow 0} \frac{\dot{f}_Q}{Q} = 0
+\end{equation}
+and it follows that
+\begin{equation}
+\sigma\left(\gamma p \rightarrow X\right) = \sum_n {\rm Im} g_n \,  s^{j_n - 1} \int du e^{-\left(j_n - 3/2 \right)A } e^{-\frac{7}{3} \Phi} V_f w_s^2  \,  \psi_n\left(u\right).
+\end{equation}
+
 
 \section{Vector Meson Trajectory}
 
@@ -1323,7 +1336,7 @@ From previous work we know that what people call the hard-pomeron corresponds to
 \sigma\left(h h \rightarrow X\right) = {\rm Im} \, g_0 s^{j_0 - 1} +  {\rm Im} \, g_1 s^{j_1 - 1} +  {\rm Im} \, g_\rho s^{j_\rho - 1}
 \end{equation}
 
-\section{Proton structure functions $F_2$ and $F_L$ with holographic pomeron and meson exchange}
+\section{Contribution of the meson exchange to $F^p_2$ and $F^p_L$}
 
 The holographic amplitude due to the exchange of spin J fields for $\gamma^* p$
 \begin{equation}
@@ -1386,6 +1399,18 @@ or in terms of the u variable
 \end{align}
 These last two expressions are the ones I will use from now on to fit the DIS strﬂucture functions $F_2$ and $F_L$.
 
+The structure function $F_2$ is related to the total cross-section $\sigma\left(\gamma p \rightarrow X\right)$ through
+\begin{equation}
+\sigma\left(\gamma p \rightarrow X\right) = 4 \pi^2 \alpha \lim_{Q^2 \rightarrow 0} \frac{F_2\left(x, Q^2\right)}{Q^2}.
+\end{equation}
+In the limit of $Q^2 \rightarrow 0$
+\begin{equation}
+\lim_{Q\rightarrow 0} f_Q = 1 , \quad \lim_{Q\rightarrow 0} \frac{\dot{f}_Q}{Q} = 0
+\end{equation}
+and it follows that
+\begin{equation}
+\sigma\left(\gamma p \rightarrow X\right) = \sum_n {\rm Im} g_n \,  s^{j_n - 1} \int du e^{-\left(j_n - 2 \right)A }\sqrt{e^{-\frac{10}{3} \Phi} V_f w_s^2} \,  \psi_n\left(u\right).
+\end{equation}
 
 
 
