@@ -2,8 +2,7 @@
 #include <stdexcept>
 #include "HQCDP.h"
 
-HQCDP::HQCDP(const bool rrsslog, const double spconst):
-            rsslog(rrsslog), SPconstraint(spconst),
+HQCDP::HQCDP():
             processes({}), useTVals({}),
             kernels({}), spectrum({}),
             gns({})
@@ -38,15 +37,9 @@ void HQCDP::computeNeededTVals()
     for(int i = 0; i < nprocs ; i++)
     {
         std::vector<double> proc_ts = processes[i]->getNeededTVals();
-        if(proc_ts.size() == 0)
-        {
-            std::cout << "Process with no t values has been found" << std::endl;
-        }
+        if(proc_ts.size() == 0) std::cout << "Process with no t values has been found" << std::endl;
         // Get all the tvals in proc_ts
-        for(int j = 0 ; j < proc_ts.size(); j++)
-        {
-            useTVals.push_back(proc_ts[j]) ;
-        }
+        for(int j = 0 ; j < proc_ts.size(); j++) useTVals.push_back(proc_ts[j]) ;
     }
     // Now we std::sort the values of t and remove repeated values
     std::sort(useTVals.begin(), useTVals.end()) ;

@@ -44,7 +44,7 @@ int main(int argc, char ** argv)
     vector<double> GNs = {g1, g2, g3, g4};
 
     // Setup HQCDP object
-    HQCDP hqcdp(false ,0);
+    HQCDP hqcdp;
     hqcdp.addProcessObservable(f2);
     hqcdp.addProcessObservable(fl);
     hqcdp.addKernel(gluon);

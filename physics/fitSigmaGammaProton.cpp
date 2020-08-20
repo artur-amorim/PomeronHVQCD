@@ -38,7 +38,7 @@ int main(int argc, char ** argv)
     vector<double> GNs = {g1, g2, m1};
 
     // Setup HQCDP object
-    HQCDP hqcdp(false ,0);
+    HQCDP hqcdp;
     hqcdp.addProcessObservable(sigma_gp);
     hqcdp.addKernel(gluon);
     hqcdp.addKernel(meson);

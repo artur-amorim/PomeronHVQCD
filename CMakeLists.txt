@@ -211,6 +211,10 @@ target_link_libraries(findReggeTrajectories.exe armadillo hvqcd_lib)
 add_executable(fitSigmaProtonProton.exe physics/fitSigmaProtonProton.cpp)
 target_link_libraries(fitSigmaProtonProton.exe armadillo hvqcd_lib)
 
+# Add fitSigmaProtonProton
+add_executable(fitSigmaGammaProton.exe physics/fitSigmaGammaProton.cpp)
+target_link_libraries(fitSigmaGammaProton.exe armadillo hvqcd_lib)
+
 # Add findGs computation
 add_executable(findGs.exe physics/findGs.cpp)
 target_link_libraries(findGs.exe armadillo blas hvqcd_lib)
