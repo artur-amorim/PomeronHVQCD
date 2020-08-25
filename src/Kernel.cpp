@@ -63,8 +63,12 @@ void Kernel::computeReggeTrajectories(const std::vector<double> &pars)
     // Update the parameters of the kernel
     if(pars.size() != 0) setKernelPars(pars);
     // Define the js and ts vectors
-    const double jmax = 2.1;
-    const double h = 0.025;
+    double jmax;
+    if(name == "gluon") jmax = 2.1;
+    else jmax = 1.2;
+    double h ;
+    if(name == "gluon") h = 0.025;
+    else h = 0.02;
     const int n_js = jmax / h ;
     std::vector<double> js(n_js, 0.0);
     std::vector<std::vector<double> > ts(nTrajectories,std::vector<double>(n_js,0.0));

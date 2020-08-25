@@ -211,6 +211,18 @@ target_link_libraries(findReggeTrajectories.exe armadillo hvqcd_lib)
 add_executable(fitSigmaProtonProton.exe physics/fitSigmaProtonProton.cpp)
 target_link_libraries(fitSigmaProtonProton.exe armadillo hvqcd_lib)
 
+# Add fitSigmaProtonProtonKernelFixed
+add_executable(fitSigmaProtonProtonKernelFixed.exe physics/fitSigmaProtonProtonKernelFixed.cpp)
+target_link_libraries(fitSigmaProtonProtonKernelFixed.exe armadillo hvqcd_lib)
+
+# Add fitSigmaGammaProtonKernelFixed
+add_executable(fitSigmaGammaProtonKernelFixed.exe physics/fitSigmaGammaProtonKernelFixed.cpp)
+target_link_libraries(fitSigmaGammaProtonKernelFixed.exe armadillo hvqcd_lib)
+
+# Add fitSigmaGammaGammaKernelFixed
+add_executable(fitSigmaGammaGammaKernelFixed.exe physics/fitSigmaGammaGammaKernelFixed.cpp)
+target_link_libraries(fitSigmaGammaGammaKernelFixed.exe armadillo hvqcd_lib)
+
 # Add fitSigmaGammaProton
 add_executable(fitSigmaGammaProton.exe physics/fitSigmaGammaProton.cpp)
 target_link_libraries(fitSigmaGammaProton.exe armadillo hvqcd_lib)
