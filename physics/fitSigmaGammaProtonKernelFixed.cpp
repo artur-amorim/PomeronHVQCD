@@ -17,7 +17,7 @@ int main(int argc, char ** argv)
     double g1, g2, m1;
     //double invls_g = 0.253093, ag = -0.322648, bg = -0.0559966, cg = -0.7771, dg = 0.0145733, eg = 0.256595, fg = 0.131464;
     //double invls_m = -0.00513779, am = 3.57895, bm = 0.0192416, cm = 0.486709, dm = -0.0102358, em = 6.43404, fm = 0.333183;
-    double ag = 13.3216, am = 9.15034;
+    double bg = -10.6221, bm = -5.58333;
     if(argc < 5)
     {
         data_path = "expdata/SigmaGammaProton/SigmaGammaP_PDG_data_W_gt_461.txt";
@@ -34,8 +34,8 @@ int main(int argc, char ** argv)
     SigmaGammaProton sigma_gp(data_path);
 
     // Setup Gluon and Meson Kernels and GNs vector
-    GluonKernel gluon(2, {0, ag, 0, 0, 0, 0, 0});
-    MesonKernel meson(1, {0, am, 0, 0, 0, 0, 0});
+    GluonKernel gluon(2, {0, 0, bg, 0, 0, 0, 0});
+    MesonKernel meson(1, {0, 0, bm, 0, 0, 0, 0});
     vector<double> GNs = {g1, g2, m1};
 
     // Setup HQCDP object
@@ -69,7 +69,7 @@ int main(int argc, char ** argv)
         return CHI2;
     };
 
-    vector<double> xopt = optimFunction(x_guess, func, 10);
+    vector<double> xopt = optimFunction(x_guess, func, 10, 1e-12);
     // Compute best chi2
     GNs = {xopt[0], xopt[1], xopt[2]};
     // Update the GNs

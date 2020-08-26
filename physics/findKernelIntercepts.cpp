@@ -21,30 +21,31 @@ int main(int argc, char ** argv)
     double fg, fm;
     if (argc < 3)
     {
-        ag = 0; am = 0;
+        bg = 0; bm = 0;
     }
     else
     {
-        ag = stod(argv[1]); am = stod(argv[2]);
+        bg = stod(argv[1]); bm = stod(argv[2]);
     }
     cout << "Starting to hunt for the intercepts with:" << endl;
-    cout << "ag: " << ag << " am: " << am << endl;
+    cout << "bg: " << bg << " bm: " << bm << endl;
 
     double mq = hvqcd().QuarkMass();
     // Compute Chebyschev matrices
     chebSetN(400);
 
     // Setup gluon kernel
-    vector<double> gluon_pars = {0, ag, 0, 0, 0, 0, 0};
-    vector<double> meson_pars = {0, am, 0, 0, 0, 0, 0};
+    vector<double> gluon_pars = {0, 0, bg, 0, 0, 0, 0};
+    vector<double> meson_pars = {0, 0, bm, 0, 0, 0, 0};
     GluonKernel gluon(2, gluon_pars);
     MesonKernel meson(1, meson_pars);
 
-    function<double(vector<double>) > func = [&gluon, &meson] (const vector<double> &x){
+    function<double(vector<double>) > func = [&gluon, &meson] (const vector<double> &x)
+    {
         // Compute Regge Trajectories
-        cout << "ag: " << x[0] << " am: " << x[1] << " eg: " << x[2] << endl;
-        gluon.computeReggeTrajectories({0, x[0], 0, 0, 0, 0, 0});
-        meson.computeReggeTrajectories({0, x[1], 0, 0, 0, 0, 0});
+        cout << "bg: " << x[0] << " bm: " << x[1] << endl;
+        gluon.computeReggeTrajectories({0, 0, x[0], 0, 0, 0, 0});
+        meson.computeReggeTrajectories({0, 0, x[1], 0, 0, 0, 0});
         // Compute the intercepts
         Spline_Interp<double> gluon_j0 = gluon.Trajectory(0);
         Spline_Interp<double> gluon_j1 = gluon.Trajectory(1);
@@ -58,7 +59,7 @@ int main(int argc, char ** argv)
         return erms2;
     };
 
-    vector<double> x = {ag, am};
+    vector<double> x = {bg, bm};
     vector<double> deltas(x.size(), 10);
     x = optimFunction(x, func, deltas, 1e-3);
 
@@ -66,8 +67,8 @@ int main(int argc, char ** argv)
     for(int i = 0; i < x.size(); i++) cout << x[i] << '\t';
     cout << endl;
     
-    gluon.computeReggeTrajectories({0, x[0], 0, 0, 0, 0, 0});
-    meson.computeReggeTrajectories({0, x[1], 0, 0, 0, 0, 0});
+    gluon.computeReggeTrajectories({0, 0, x[0], 0, 0, 0, 0});
+    meson.computeReggeTrajectories({0, 0, x[1], 0, 0, 0, 0});
     // Compute the intercepts
     Spline_Interp<double> gluon_j0 = gluon.Trajectory(0);
     Spline_Interp<double> gluon_j1 = gluon.Trajectory(1);

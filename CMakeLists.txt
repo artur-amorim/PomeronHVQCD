@@ -231,6 +231,14 @@ target_link_libraries(fitSigmaGammaProton.exe armadillo hvqcd_lib)
 add_executable(fitSigmaGammaGamma.exe physics/fitSigmaGammaGamma.cpp)
 target_link_libraries(fitSigmaGammaGamma.exe armadillo hvqcd_lib)
 
+# Add fitAllSigma
+add_executable(fitAllSigma.exe physics/fitAllSigma.cpp)
+target_link_libraries(fitAllSigma.exe armadillo hvqcd_lib)
+
+# Add fitAllSigmaKernelFixed
+add_executable(fitAllSigmaFixedKernel.exe physics/fitAllSigmaFixedKernel.cpp)
+target_link_libraries(fitAllSigmaFixedKernel.exe armadillo hvqcd_lib)
+
 # Add findGs computation
 add_executable(findGs.exe physics/findGs.cpp)
 target_link_libraries(findGs.exe armadillo blas hvqcd_lib)
