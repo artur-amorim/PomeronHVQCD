@@ -60,7 +60,7 @@ int main(int argc, char ** argv)
     hqcdp.setGNs(GNs);
     
     // initialise Chebyschev matrices
-    chebSetN(1000);
+    chebSetN(400);
 
     vector<double> x_guess = {invls, ag, bg, cg, dg, eg, fg, am, bm, cm, dm, em, fm, g1g, g2g, g1m};
 
