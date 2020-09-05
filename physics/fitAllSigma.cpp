@@ -28,8 +28,8 @@ int main(int argc, char ** argv)
         sigma_gp_path = "expdata/SigmaGammaProton/SigmaGammaP_PDG_data_W_gt_461.txt";
         sigma_pp_path = "expdata/SigmaProtonProton/SigmaProtonProton_data_W_lt_10000_without_outliers.txt";
         bg = -10.6221; bm = -5.58333;
-        k0g = 0; k1g = 0; k0m = 0;
-        kbar0g = 0; kbar1g = 0; kbar0m = 0;
+        k0g = 0.000431395; k1g = 0.0195943; k0m = -0.00126498;
+        kbar0g = 0.216585; kbar1g = 21.3912; kbar0m = -66.2591; 
         cout << "Program usage: " + string(argv[0]) + " sigma_gg_path sigma_gp_path sigma_pp_path bg bm k0g k1g k0m kbar0g kbar1g kbar0m " << endl;
         cout << "Using default values." << endl;
     }
@@ -136,10 +136,9 @@ int main(int argc, char ** argv)
         return chi2;
     };
 
-
     // Start the fit now
     vector<double> X_guess = {bg, bm, k0g, k1g, k0m, kbar0g, kbar1g, kbar0m};
-    vector<double> delta(X_guess.size(), 10);
+    vector<double> delta = {1, 1, 0.001, 0.1, 0.01, 1, 10, 10};
     vector<double> X_opt = optimFunction(X_guess, f, delta, 1e-12);
     
     // Print X_opt

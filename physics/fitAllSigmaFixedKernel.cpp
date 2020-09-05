@@ -57,7 +57,7 @@ int main(int argc, char ** argv)
     npoints += sigma_pp_pts[0].size();
 
     // Setup Chebyschev computation
-    chebSetN(1000);
+    chebSetN(400);
 
     // Setup HardPomeron Kernel and compute the Reggeons
     double bg = -10.6221, bm = -5.58333;
