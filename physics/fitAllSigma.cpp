@@ -27,9 +27,10 @@ int main(int argc, char ** argv)
         sigma_gg_path = "expdata/SigmaGammaGamma/SigmaGammaGamma_PDG_data_W_gt_4.txt";
         sigma_gp_path = "expdata/SigmaGammaProton/SigmaGammaP_PDG_data_W_gt_461.txt";
         sigma_pp_path = "expdata/SigmaProtonProton/SigmaProtonProton_data_W_lt_10000_without_outliers.txt";
-        bg = -10.6221; bm = -5.58333;
-        k0g = 0.000431395; k1g = 0.0195943; k0m = -0.00126498;
-        kbar0g = 0.216585; kbar1g = 21.3912; kbar0m = -66.2591; 
+        // Default values for N = 400
+        bg = -10.5297; bm = -7.85023;
+        k0g = 0.000923808; k1g = 0.0190831; k0m = -0.0017291;
+        kbar0g = 0.335811; kbar1g = 21.6018; kbar0m = -46.4023;
         cout << "Program usage: " + string(argv[0]) + " sigma_gg_path sigma_gp_path sigma_pp_path bg bm k0g k1g k0m kbar0g kbar1g kbar0m " << endl;
         cout << "Using default values." << endl;
     }
@@ -61,7 +62,7 @@ int main(int argc, char ** argv)
     npoints += sigma_pp_pts[0].size();
 
     // Setup Chebyschev computation
-    chebSetN(400);
+    chebSetN(800);
 
     // Setup  GluonKernel and Meson Kernel
     GluonKernel gluon(2, {0, 0, bg, 0, 0, 0, 0});

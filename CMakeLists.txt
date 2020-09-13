@@ -258,3 +258,12 @@ target_link_libraries(test_BckPotFactor.exe armadillo blas hvqcd_lib)
 # test_SigmaProtonProton
 add_executable(test_SigmaProtonProton.exe tests/test_SigmaProtonProton.cpp)
 target_link_libraries(test_SigmaProtonProton.exe armadillo blas hvqcd_lib)
+
+add_executable(predictSigmaGammaGamma.exe physics/predictSigmaGammaGamma.cpp)
+target_link_libraries(predictSigmaGammaGamma.exe armadillo blas hvqcd_lib)
+
+add_executable(predictSigmaGammaProton.exe physics/predictSigmaGammaProton.cpp)
+target_link_libraries(predictSigmaGammaProton.exe armadillo blas hvqcd_lib)
+
+add_executable(predictSigmaProtonProton.exe physics/predictSigmaProtonProton.cpp)
+target_link_libraries(predictSigmaProtonProton.exe armadillo blas hvqcd_lib)

@@ -15,13 +15,12 @@ int main(int argc, char ** argv)
 {
     string data_path;
     double g1, g2, m1;
-    //double invls_g = 0.253093, ag = -0.322648, bg = -0.0559966, cg = -0.7771, dg = 0.0145733, eg = 0.256595, fg = 0.131464;
-    //double invls_m = -0.00513779, am = 3.57895, bm = 0.0192416, cm = 0.486709, dm = -0.0102358, em = 6.43404, fm = 0.333183;
     double bg = -10.6221, bm = -5.58333;
     if(argc < 5)
     {
         data_path = "expdata/SigmaGammaGamma/SigmaGammaGamma_PDG_data_W_gt_4.txt";
-        g1 = 0; g2 = 0; m1 = 0;
+        // Default values for N = 400
+        g1 = 1.9765e-7; g2 = 3.5005e-6; m1 = 3.51578e-6;
     }
     else
     {
@@ -46,7 +45,7 @@ int main(int argc, char ** argv)
     hqcdp.setGNs(GNs);
     // Compute the spectrum
     // initialise Chebyschev matrices
-    chebSetN(400);
+    chebSetN(1000);
     hqcdp.computeSpectrum();
 
 

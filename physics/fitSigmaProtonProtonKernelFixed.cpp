@@ -21,7 +21,8 @@ int main(int argc, char ** argv)
     if(argc < 5)
     {
         data_path = "expdata/SigmaProtonProton/SigmaProtonProton_data_W_lt_10000_without_outliers.txt";
-        g1 = 0; g2 = 0; m1 = 0;
+        // Default values for N = 400
+        g1 = 0.000474912; g2 = 2.31493; m1 = 26.4385;
     }
     else
     {
@@ -46,7 +47,7 @@ int main(int argc, char ** argv)
     hqcdp.setGNs(GNs);
     // Compute the spectrum
     // initialise Chebyschev matrices
-    chebSetN(400);
+    chebSetN(1000);
     hqcdp.computeSpectrum();
 
 
@@ -68,7 +69,7 @@ int main(int argc, char ** argv)
         return CHI2;
     };
 
-    vector<double> xopt = optimFunction(x_guess, func, 10);
+    vector<double> xopt = optimFunction(x_guess, func, 10, 1e-12);
     // Compute best chi2
     GNs = {xopt[0], xopt[1], xopt[2]};
     // Update the GNs
