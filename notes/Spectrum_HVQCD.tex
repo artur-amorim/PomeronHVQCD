@@ -1,26 +1,91 @@
-\documentclass[10 pt]{article}
-
-\usepackage{graphicx}
-\usepackage[utf8]{inputenc}
+\documentclass[a4paper,12pt]{article}
+\pdfoutput=1 
+\usepackage{jheppub}
 \usepackage{amssymb}
 \usepackage{amsfonts}
 \usepackage{amsmath}
+\usepackage{color}
+\usepackage{ulem}
+\usepackage[portuguese, english]{babel}
+\usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
-\usepackage[margin=0.5in]{geometry}
+
+\newcommand{\overbar}[1]{\mkern 1.5mu\overline{\mkern-1.5mu#1\mkern-1.5mu}\mkern 1.5mu}
 
 
-\title{Spectrum of HVQCD}
-\author{Artur Amorim }
+\title{Regge theory in a Holographic dual of QCD in the Veneziano Limit.}
+\author{Artur Amorim, Miguel Costa, Matti Jarvinen}
 \date{}
-
-\linespread{1.5}
 
 \begin{document}
 \maketitle
 
-\section{How do we compute the spectrum}
+\section{Holographic dual of QCD in the Veneziano Limit}
 
-In this section we review how we compute the spectrum of HVQCD in our fits.
+Quantum Chromodynamics is the widely accepted quantum theory of the strong interactions between quarks and gluons inside the proton and neutron. It consists of gauge fields (gluons) in the adjoint representation of $SU(N_c)$, with $N_c = 3$, coupled to $N_f$ fermions (quarks) in the fundamental representation of $SU(3)$. This theory can be generalised and studied in the $(N_c, N_f)$ plane by considering $SU(N_c)$ Yang-Mills coupled to $N_f$ Dirac fermions in the fundamental representation. This generalisation been studied in great depth in the 't Hooft large-$N_c$ limit  where $N_c \rightarrow \infty$ and $\lambda = g_{\rm{YM}}^2 N_c$ and $N_f$ is kept fixed. This limit is also known as the "quenched" limit since quark contributions are suppressed in powers of $\frac{N_f}{N_c} \rightarrow 0$.
+Another interesting large-$N_c$ limit is the Veneziano limit where
+\begin{align}
+N_c \rightarrow \infty \quad , \quad N_f \rightarrow \infty \quad , \quad \frac{N_f}{N_c} = x \quad {\rm fixed} \quad , \quad \lambda = g_{\rm{YM}}^2 N_c \quad {\rm fixed}
+\end{align}
+
+A holographic dual that reproduces the features of QCD in the Veneziano limit was presented in \cite{Jarvinen:2011qe}. It consists of a system of a dilaton and tachyon coupled to five-dimensional gravity. The dilaton action is the same as in the Improved Holographic QCD (IHQCD) model presented in \cite{gursoy_exploring_2008, gursoy_exploring_2008-1}. In IHQCD the dynamics of the dilaton is set by its potential $V_g(\lambda)$. The small $\lambda$ and large $\lambda$ asymptotic forms of the dilaton potential are constrained in order to reproduce the YM $\beta$-function, to obtain confinement and no bad singularities. The exponential of the dilaton is identified with the running 't Hooft coupling $\lambda$ while the energy scale is related to the exponential of the warp factor in the Einstein frame.
+The action of the dilaton coupled to gravity is
+\begin{equation}
+S_g =  M_p^3 N_c^2 \int d^5X \sqrt{g} \left[ R - \frac{4}{3} \frac{{\left( \partial \lambda \right)}^2}{\lambda^2}+ V_g \left( \lambda\right) \right]\, ,
+\label{eq:sg_action}
+\end{equation}
+where $M_p$ is the five-dimensional Plack scale and $N_c$ is the number of colours and $\lambda \equiv e^{\Phi}$ with $\Phi$ being the dilaton field.
+In this work we will adopt $V_g$ to be
+\begin{align}
+&V_g(\lambda) = 12 + V_1 \, \lambda + V_2 \, \frac{\lambda^2}{1 + \frac{\rm{sc} \, \lambda}{\lambda_0}} + 3 \rm{V_gIR} \, e^{-\frac{\lambda_0}{\rm {sc} \, \lambda}}  \frac{\lambda^{4/3}}{4 \pi^{8/3}}\sqrt{\log\left(1+\frac{\rm{sc} \, \lambda}{\lambda_0}\right)} \, , \\ \notag
+& V_1 = \frac{44}{9 \pi^2} \, , V_2 = \frac{4619}{3888 \pi^4} \, , \lambda_0 = 8 \pi^2 \, .
+\end{align}
+The values of $V_1$ and $V_2$ are fixed by the pure Yang-Mills $\beta$-function while the parameters $\rm{sc}$ and $\rm{V_gIR}$ will be fitted to the zero-temperature spectrum, in particular by computing meson and tensor glueball mass ratios and comparing them to lattice and experimental results. The spectrum of the theory can be computed by computing the action of the quadratic fluctuations around the background solution followed by the reduction to the four-dimensional dynamics. For example, in the case of pure Yang-Mills (i.e. $x = 0$), the quadratic fluctuations are dual to glueballs with quantum numbers $J^{PC} = 0^{++}, 2^{++}$ and with $J^{PC} = 0^{-+}$ by considering an axion term. For pure Yang-Mills  we have found that $\rm{sc} = 2.50492$ and   $\rm{V_gIR} = 3.47844$ reproduce the lattice ratios of 1.46 and 1.87 of $m_{2^{++}} / m_{0^{++}}$ and $m_{0^{*++}} / m_{0^{++}}$ respectively. In the IR, i.e. $\lambda \rightarrow \infty$, $V_g \sim \lambda^{\frac{4}{3}} \log^{\frac{1}{2}} \lambda$ which gives  linear asymptotic trajectories for glueballs.
+
+The tachyon appears in this model in order to add matter by considering pairs of space-filling $D_4 - \bar{D_4}$ branes. In the boundary theory the operators with lowest dimension involving fermions are $\bar{\psi}^{i}_R \psi^j_L$ with spin 0 and the two spin 1 conserved currents $\bar{\psi}^i_L \sigma^\mu \psi^j_L$ and $\bar{\psi}^i_R \sigma^\mu \psi^j_R$. According to the gauge/gravity duality these operators are dual to bulk complex scalars $T_{ij}$ and two bulk gauge fields $A^{\mu}_{L ,\, ij}$ and $A^{\mu}_{R,\, ij}$ that transform as $(N_f, \bar{N}_f)$ of the flavour symmetry $U\left(N_f\right)_R \times U \left(N_f\right)_L$ while the fields $A^\mu_{L, i j}$ and $A^\mu_{R, i j}$ transform in the adjoint representations of $U\left(N_f\right)_L$ and  $U \left(N_f\right)_R$ respectively. In string theory the three bulk fields can be modelled by considering $N_f$ flavour branes (R) and $N_f$ flavour antibranes(L).  In this configuration the complex scalar fields $T_{ij}$ are the lowest modes of open strings with one end in a D brane and another in the anti-D brane while the fields gauge bulk fields are the lowest open string modes with both ends in a D brane or in a anti-D brane. For our purposes such a system obeys a Dirac-Born-Infeld (DBI) like action (we are ignoring a WZ term)
+\begin{align}
+\label{eq: DBI action}
+&S_{DBI} = - \frac{x}{2} M_p^3 N_c^2 \int d^5 X \, \bold{Str} \left[ V_f \left(\lambda, T^{\dagger} T\right) \sqrt{det\left( g_{ab} + k\left(\lambda\right)D_{(a}T^{\dagger}D_{b)}T + w\left(\lambda\right) F^{L}_{ab}\right)} + \right. \\ \notag
+&\left. + V_f \left(\lambda, T T^{\dagger} \right) \sqrt{det\left( g_{ab} + k\left(\lambda\right)D_{(a}TD_{b)}T^{\dagger} + w\left(\lambda\right) F^{R}_{ab}\right)}  \right]
+\end{align}
+where $\bold{Str}$ is the symmetric trace over the gauge indices while the determinant is taken with respect to the Minkowski indices (since we are going to work up to quadratic order we can treat the symmetric trace as the trace with respect to the gauge indices). $T_{ij}$ is a complex $N_f \times N_f$ matrix and $A^{L,R}_a$ are the world-volume gauge fields of the $U(N_f)_L \times U(N_f)_R$ group. The covariant derivative terms are given by
+\begin{equation}
+D_a T = \partial_a T - i T A^L_a + i A^R_a T \, , \, D_a T^{\dagger} = \partial_a T^{\dagger} - i  A^L_a T^{\dagger}+ i T^{\dagger} A^R_a 
+\end{equation}
+and the field strengths by
+\begin{align}
+F^{L,R} = d A^{L,R} - i A^{L,R} \wedge A^{L,R}
+\end{align}
+In this work we are assuming that the light quark masses are equal and under this assumption the tachyon is just $T = \tau \mathbf{1}$. Furthermore for the QCD vacuum $A^R_a = 0 = A^L_a$. Using these conditions in the action (\ref{eq: DBI action}) we get
+\begin{equation}
+S_f = - x M_p^3 N_c^2 \int d^5 X V_f\left(\lambda, T\right) \sqrt{det\left(g_{ab} + k\left(\lambda\right) \partial_a \tau \partial_b \tau \right)}.
+\label{eq:sf_equation}
+\end{equation}
+The background is determined by considering the action $S = S_g + S_f$.
+
+The DBI action that we have described is analogous to the flat space Sen action for the $D - \bar{D}$ system. Since we are in the presence of a curved space-time  and other non-trivial background fields we correct it by including the general potentials $V_f(\lambda, \tau)$, $k(\lambda)$ and $w(\lambda)$. However these potentials must satisfy some properties. The tachyon potential $V_f$ is expected to have a regular series expansion in $\lambda$ and $T$ near the boundary (i.e. $\lambda \rightarrow 0, \, T \rightarrow 0$)
+\begin{equation}
+V_f \approx V_0 (\lambda) + V_1 (\lambda) T^2 + \mathcal{O}(T^4)
+\end{equation} 
+and to vanish exponentially in the IR when $T \rightarrow \infty$. In particular in the flat space string theory $V_s \sim \frac{1}{\lambda} e^{- \mu T^2}$. Our ansatz for $V_f$ will be
+\begin{align}
+& V_f(\lambda, \tau) = V_{f0} \left(\lambda\right) ( 1 + a_1 \tau^2) e^{- a_2 \tau^2}, \\ \notag
+& V_{f0}\left(\lambda\right) = W_0 + W_1 \lambda + W_2 \frac{\lambda^2}{1+ \frac{\rm{sc} \, \lambda}{\lambda_0}} + \frac{3 W_{IR}}{16 \pi^4} {\left(\rm{sc} \, \lambda \right)}^2 e^{- \frac{\lambda_0}{\rm{sc} \, \lambda}} \left( 1 + \frac{\lambda_0 W_1}{\rm{sc} \, \lambda}\right) \\
+& W_1 = \frac{24 + \left(11- 2 x\right) W_0}{27 \pi^2}, \, W_2 =  \frac{24 (857 - 46 x) + W_0 (4619 - 1714 x + 92 x^2)}{46656 \pi^4} 
+\end{align}
+As both $k(\lambda)$ and $w(\lambda)$ are coupling functions under the square root of the DBI action we expect them to have similar qualitative behaviour. On the other hand in order to have the correct UV dimension of the $\bar{q}q$ operator we need to impose
+\begin{equation}
+k(0) = \frac{a_2 - a_1}{ \frac{3}{2} - x \frac{W_0}{8} }
+\end{equation}
+The IR asymptotics of the potentials $k$ and $w$ affect the meson spectrum. We are interested in the case where the mesons have an asymptotic linear spectrum and that the meson towers have the same asymptotics. This can be achieved with the following IR asymptotics $k(\lambda) \sim \lambda^{-4/3} {\left(\log \lambda\right)}^{1/2}$ and $w(\lambda) \sim \lambda^{-4/3} \log \lambda$. With this considerations we adopt the following ansatzs for $k$ and $w$
+\begin{align}
+& \frac{1}{k(\lambda)} =  \frac{ \frac{3}{2} - \frac{W_0 x}{8}}{a_2 - a_1} \left[ 1+ \frac{\rm{sc} \, k_{U1} \lambda}{\lambda_0} + k_{IR} \, e^{-\frac{\lambda_0}{\rm{ksc} \lambda}} \left( 1 + \frac{\lambda_0 k_1}{\rm{ksc} \lambda}\right) \frac{{\left(\frac{\rm{ksc} \lambda}{\lambda_0}\right)}^{4/3}}{\sqrt{\log\left(1 + \frac{\rm{ksc} \lambda}{\lambda_0}\right)}}\right], \\
+& \frac{1}{w\left(\lambda\right)} = w_0 \left[1 + \frac{\rm{sc} w_{U1} \lambda}{\lambda_0 \left( 1+ \frac{\rm{sc} \lambda}{\lambda_0}\right)} + w_{IR} e^{- \frac{\lambda_0}{\rm{wsc} \lambda}} \left(1+\frac{\lambda_0 w_1}{\rm{wsc} \lambda}\right)\frac{{\left( \frac{\rm{wsc} \lambda}{\lambda_0}\right)}^{4/3}}{\log\left(1+\frac{\rm{wsc} \lambda}{\lambda_0}\right)} \right]
+\end{align}
+
+
+
+
 
 \subsection{HVQCD action}
 
@@ -40,36 +105,6 @@ where $\eta_{\mu\nu}$ is the 4d Minkowski metric. Latin indices refer to general
 
 We have three background fields whose profiles will be found by solving the equations of motion resulting from the action (\ref{eq: HVQCD action}): the warp factor $A$, the dilaton $\Phi$ and the tachyon $\tau$. Because the metric is invariant under translation in $x^\mu$ the background fields will depend only on the radial coordinate $z$.
 
-The action (\ref{eq: HVQCD action}) is not the most general one. The discussion that follows can be found, for example, in~\cite{Jarvinen:2011qe}. The reason we reproduce it here is because it will be useful to keep these ideas in mind when we derive the gravitational coupling between the graviton in this background and the $U(1)$ gauge field dual to the current operator $J^\mu$ in the boundary. The flavour action is motivated by considering bulk fields $T_{ij}$, $A^\mu_{L, i j}$ and $A^\mu_{R, i j}$ dual to the boundary operators $\bar{\psi}^i_R \psi^j_L$, $\bar{\psi}^i_L \sigma^\mu \psi^J_L$ and $\bar{\psi}^i_R \sigma^\mu \psi^J_R$, respectively. The field $T_{ij}$ transforms as $\left(N_f, \bar{N}_f \right)$ of the flavour symmetry $U\left(N_f\right)_R \times U \left(N_f\right)_L$ while the fields $A^\mu_{L, i j}$ and $A^\mu_{R, i j}$ transform in the adjoint representations of $U\left(N_f\right)_L$ and  $U \left(N_f\right)_R$ respectively. In string theory this is modelled by considering $N_f$ flavour branes (R) and $N_f$ flavour antibranes (L). In particular $A^\mu_R$ and $A^\mu_L$ are the lowest modes of open strings with both ends in the D branes and anti-D branes respectively. The $T_{ij}$ fields are the lowest modes of open strings with one end in a D brane and another end in the anti-D brane which corresponds to the tachyon. For our purposes such a system obeys a Dirac-Born-Infeld like action (let's ignore the WZ term for now)
-\begin{align}
-&S_{DBI} = - \frac{1}{2} M_p^3 N_c N_f \int dz d^4 x \, \bold{Str} \left[ V_f \left(\lambda, T^{\dagger} T\right) \sqrt{det\left( g_{ab} + k\left(\lambda\right)D_{(a}T^{\dagger}D_{b)}T + w\left(\lambda\right) F^{L}_{ab}\right)} + \right. \\ \notag
-&\left. + V_f \left(\lambda, T T^{\dagger} \right) \sqrt{det\left( g_{ab} + k\left(\lambda\right)D_{(a}TD_{b)}T^{\dagger} + w\left(\lambda\right) F^{R}_{ab}\right)}  \right]
-\label{eq: DBI action}
-\end{align}
-where $\bold{Str}$ is the symmetric trace over the gauge indices while the determinant is taken with respect to the Minkowski indices (since we are going to work up to quadratic order we can treat the symmetric trace as the trace with respect to the gauge indices). $T_{ij}$ is a complex $N_f \times N_f$ matrix and $A^{L,R}_a$ are the world-volume gauge fields of the $U(N_f)_L \times U(N_f)_R$ group. The covariant derivative terms are given by
-\begin{equation}
-D_a T = \partial_a T - i T A^L_a + i A^R_a T \, , \, D_a T^{\dagger} = \partial_a T^{\dagger} - i  A^L_a T^{\dagger}+ i T^{\dagger} A^R_a 
-\end{equation}
-and the field strengths by
-\begin{align}
-F^{L,R} = d A^{L,R} - i A^{L,R} \wedge A^{L,R}
-\end{align}
-In this work we are assuming that the light quark masses are equal and under this assumption the tachyon is just $T = \tau \mathbf{1}$. Furthermore for the QCD vacuum $A^R_a = 0 = A^L_a$. Using these conditions the action (\ref{eq: DBI action}) reduces to (\ref{eq: HVQCD action}).
-
-\subsection{Potentials definitions}
-
-To compute the profile of the background fields as well the spectrum of their fluctuations it is necessary to define the potentials $Vg$, $Vf$, $k$ and $w$ that appear in the previous actions:
-\begin{align}
-&V_g(\lambda) = 12 + V_1 \lambda + V_2 \frac{\lambda^2}{1 + \frac{sc \lambda}{\lambda_0}} + 3 e^{-\frac{\lambda_0}{sc \lambda}} V_gIR \frac{\lambda^{4/3}}{4 \pi^{8/3}}\sqrt{\log\left(1+\frac{sc \lambda}{\lambda_0}\right)}, \\ \notag
-& V_1 = \frac{44}{9 \pi^2}, \, V_2 = \frac{4619}{3888 \pi^4}, \, \lambda_0 = 8 \pi^2 \\
-& V_f(\lambda, \tau) = V_{f0} \left(\lambda\right) e^{-\tau^2}, \\ \notag
-& V_{f0}\left(\lambda\right) = W_0 + \frac{24 + \left(11- 2 x\right) W_0}{27 \pi^2} \lambda + \frac{24 (857 - 46 x) + W_0 (4619 - 1714 x + 92 x^2)}{46656 \pi^4} \frac{\lambda^2}{1+ \frac{sc \lambda}{\lambda_0}} + \\ \notag
-& + \frac{3 W_{IR}}{16 \pi^4} {\left(sc \lambda \right)}^2 e^{- \frac{\lambda_0}{sc \lambda}} \left( 1 + \frac{\lambda_0 W_1}{sc \lambda}\right) \\
-& \frac{1}{k(\lambda)} =  \left( \frac{3}{2} - \frac{W_0 x}{8} \right) \left( 1+ \frac{sc k_{U1} \lambda}{\lambda_0} + k_{IR} e^{-\frac{\lambda_0}{ksc \lambda}} \left( 1 + \frac{\lambda_0 k_1}{ksc \lambda}\right) \frac{{\left(\frac{ksc \lambda}{\lambda_0}\right)}^{4/3}}{\sqrt{\log\left(1 + \frac{ksc \lambda}{\lambda_0}\right)}}\right), \\
-& \frac{1}{w\left(\lambda\right)} = w_0 \left(1 + \frac{sc w_{U1} \lambda}{\lambda_0 \left( 1+ \frac{sc \lambda}{\lambda_0}\right)} + w_{IR} e^{- \frac{\lambda_0}{wsc \lambda}} \left(1+\frac{\lambda_0 w_1}{wsc \lambda}\right)\frac{{\left( \frac{wsc \lambda}{\lambda_0}\right)}^{4/3}}{\log\left(1+\frac{wsc \lambda}{\lambda_0}\right)}) \right)
-\end{align}
-
-Althogh $w\left(\lambda\right)$ will not be important for determination of the profile of $A$, $\Phi$ and $\tau$, it will be necessary to the evaluation of the spectrum of the mesons as it enters the expressions of the Schrodinger potentials.  Hence we need to provide the numerical values of the parameters $sc$, $ksc$, $wsc$, $W_0$, $w_0$, $k_{U1}$, $w_{U1}$, $V_{gIR}$, $W_{IR}$, $k_{IR}$,  $w_{IR}$, $W_1$, $k_1$ and $w_1$ to compute the spectrum. In our fits we will use $x = 2/3$ and as such we will look only at the mesons with quarks up and down in their composition. There is only one parameter to specify in order to compute numerically the spectrum. We will present it in the next section.
 
 \subsection{Solving the Equatios of Motion}
 

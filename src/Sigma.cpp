@@ -126,6 +126,51 @@ std::vector<std::vector<double> >  Sigma::expKinematics()
    return {Ws, WsPlus, WsMinus};
 }
 
+/*
+double Sigma::IzN(const std::vector<double> &kin, const Reggeon &reg)
+{
+    
+        Computes the IzN integral that appears in the 
+        holographic computation of sigma(gamma proton -> hadrons)
+        kin - std::vector<double> with just one element: W
+        reg - Reggeon object from wich j_n and \psi_n can be accessed.
+        returns \int du e^(-(j_n - 3/2)A) exp^(-7/3 Phi) * Vf * ws^2 \psi_n if the reggeon comes from the pomeron trajectory
+        or returns \int du e^{-(j_n - 2) A_s} sqrt(exp^(-10\Phi/3) * Vf * ws^2) \psi_n if it comes from the meson trajectory
+
+
+    // Get J and the wavefunction wf from Reggeon object reg
+    const double J = reg.getJ();
+    const std::string reg_name = reg.getName();
+    std::vector<std::vector<double> > wf = reg.getWf();
+
+    // Define e^(As(1.5 - jn)) or e^(As(2-j_n))
+    std::vector<double> fact1;
+    if(reg_name == "gluon") fact1 = exp((1.5-J) * Astring);
+    else fact1 = exp((2.0-J) * Astring);
+    Poly_Interp<double> f1(u, fact1, 4);
+
+    // Choose the background potentials factor accordingly
+    Poly_Interp<double> bckPotFac;
+    if(reg_name == "gluon") bckPotFac = potFactor;
+    else bckPotFac = MesonPotFactor;
+
+    // Interpolate the wavefunction after computing the respective u value.
+    if(reg_name == "gluon")  for(int i = 0; i < wf[0].size(); i++) wf[0][i] = ufunc.interp(wf[0][i]);
+    Poly_Interp<double> f3(wf[0], wf[1], 4);
+
+    auto f = [&f1, &bckPotFac, &f3] (const double u) { return f1.interp(u) * bckPotFac.interp(u) * f3.interp(u) ;};
+
+    // Compute the integral
+    double error;
+    // If we look at the potential profiles vs u we see that this is good enough
+    double a = u[0], b = 4;
+    // Absolute and relative tolerances desidered
+    double epsabs = 1e-9, epsrel = 1e-9;
+    double izn = boost::math::quadrature::gauss_kronrod<double, 61>::integrate(f, a, b, 15, 1e-9, &error);
+    return izn;
+}
+*/
+
 double Sigma::IzN(const std::vector<double> &kin, const Reggeon &reg)
 {
     /*

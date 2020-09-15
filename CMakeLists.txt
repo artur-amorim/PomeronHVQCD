@@ -267,3 +267,5 @@ target_link_libraries(predictSigmaGammaProton.exe armadillo blas hvqcd_lib)
 
 add_executable(predictSigmaProtonProton.exe physics/predictSigmaProtonProton.cpp)
 target_link_libraries(predictSigmaProtonProton.exe armadillo blas hvqcd_lib)
+
+add_executable(test_gauss_kronrod_boost.exe tests/test_gauss_kronrod_boost.cpp)
