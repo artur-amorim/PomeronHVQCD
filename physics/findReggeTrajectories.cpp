@@ -40,6 +40,8 @@ int main(int argc, char ** argv)
 
     function<double(vector<double>) > func = [&gluon, &meson] (const vector<double> &x){
         
+        cout << "invls: " << x[0] << " ag: " << x[1] << " bg: " << x[2] << " cg: " << x[3] << " dg: " << x[4] << " eg: " << x[5] << " fg : " << x[6] << endl;
+        cout << "am: " << x[7] << " bm: " << x[8] << " cm: " << x[9] << " dm: " << x[10] << " em: " << x[11] << " fm : " << x[12] << endl;
         // Compute Regge Trajectories
         gluon.computeReggeTrajectories({x[0], x[1], x[2], x[3], x[4], x[5], x[6]});
         meson.computeReggeTrajectories({x[0], x[7], x[8], x[9], x[10], x[11], x[12]});
