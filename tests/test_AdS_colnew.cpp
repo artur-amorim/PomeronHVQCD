@@ -1,9 +1,13 @@
 #include <iostream>
 #include <cmath>
 #include <boost/math/special_functions/bessel.hpp>
+#include <boost/math/quadrature/gauss_kronrod.hpp>
+
 
 using namespace std;
 using namespace boost::math;
+using namespace boost::math::quadrature;
+
 
 extern"C"
 {
@@ -125,18 +129,35 @@ int main(int argc, char ** argv)
     delete[] ISPACE;
     delete[] FSPACE;
 
-    for(double x = a; x <= b; x += (b-a)/200)
+    auto f = [FSPACE, ISPACE] (double x)
     {
         double * X = new double(x);
         double * Z = new double[2];
         appsln_(X, Z, FSPACE, ISPACE);
         double fq = Z[0];
-        double exact_sol = x * sqrt(Q2) * cyl_bessel_k(1, x * sqrt(Q2));
-        // Delete X and Z
         delete X;
         delete[] Z;
-        cout << x << '\t' << fq << '\t' << exact_sol << '\t' << fabs(fq - exact_sol) / exact_sol << endl;
+        return fq;
+    };
+
+    for(double x = a; x <= b; x += (b-a)/200)
+    {
+        double nsol_sol = f(x);
+        double exact_sol = x * sqrt(Q2) * cyl_bessel_k(1, x * sqrt(Q2));
+        cout << x << '\t' << nsol_sol << '\t' << exact_sol << '\t' << fabs(nsol_sol - exact_sol) / exact_sol << endl;
     }
+
+    // Compute the integral of the numerical solution
+    double error;
+    double num_result = gauss_kronrod<double, 21>::integrate(f, a, b, 15, 1e-15, &error);
+
+    // Compute the integral of the exact solution
+
+    auto f_anal = [Q2] (double x) {return x * sqrt(Q2) * cyl_bessel_k(1, x * sqrt(Q2));};
+    double anal_result = gauss_kronrod<double, 21>::integrate(f_anal, a, b, 15, 1e-15, &error);
+
+    cout << "Integral results" << endl;
+    cout << num_result << '\t' << anal_result << '\t' << fabs(num_result - anal_result) / anal_result << endl;
 
     return 0;
 }
