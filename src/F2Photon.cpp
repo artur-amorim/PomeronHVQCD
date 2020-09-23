@@ -62,7 +62,7 @@ double F2Photon::IzN(const std::vector<double> &kin, const Reggeon &reg)
     // Compute the integral
     double izn = 0.0, abserr = 0.0;
     // If we look at the potential profiles vs u we see that this is good enough
-    double a = u[0], b = 4;
+    double a = u[0], b = 13.5;
     // Absolute and relative tolerances desidered
     double epsabs = 1e-9, epsrel = 1e-9;
     // Output variables 
