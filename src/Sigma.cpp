@@ -65,13 +65,12 @@ void Sigma::loadData(const std::string & file_path, const double conv_factor)
    std::vector<double> Ws, WsPlus, WsMinus, sigmas, sigmaErrs;
    std::vector<std::string> result;
    // Convert GeV to U units
-   const double mrho_U_mrho_GeV = 4.3669;
    while(getline(file, line))
     {
         boost::split(result, line, boost::is_any_of("\t") ) ;
-        Ws.push_back(stod(result[0]) * mrho_U_mrho_GeV) ;
-        WsPlus.push_back((stod(result[0]) + stod(result[1])) * mrho_U_mrho_GeV);
-        WsMinus.push_back((stod(result[0]) - stod(result[2])) * mrho_U_mrho_GeV);
+        Ws.push_back(stod(result[0])) ;
+        WsPlus.push_back((stod(result[0]) + stod(result[1])));
+        WsMinus.push_back((stod(result[0]) - stod(result[2])));
         sigmas.push_back(stod(result[3]) * conv_factor);
         sigmaErrs.push_back(std::max(stod(result[4]), stod(result[5])) * conv_factor);
     }
@@ -89,17 +88,17 @@ void Sigma::copy(const Sigma &sigma)
     // Copy data points using the Process copy
     Process::copy(sigma);
     // Finally copy barn_to_UMINUS2
-    barn_to_UMINUS2 = sigma.barn_to_UMINUS2;
+    barn_to_GEVMINUS2 = sigma.barn_to_GEVMINUS2;
 }
 
 // Define the class constructor
-Sigma::Sigma(const std::string &file_path, const double conv_factor) : Process(), barn_to_UMINUS2(conv_factor)
+Sigma::Sigma(const std::string &file_path, const double conv_factor) : Process(), barn_to_GEVMINUS2(conv_factor)
 {
-    loadData(file_path, barn_to_UMINUS2);
+    loadData(file_path, barn_to_GEVMINUS2);
 }
 
 // Define the class copy constructor
-Sigma::Sigma(const Sigma &sigma): Process(sigma), barn_to_UMINUS2(sigma.barn_to_UMINUS2) {}
+Sigma::Sigma(const Sigma &sigma): Process(sigma), barn_to_GEVMINUS2(sigma.barn_to_GEVMINUS2) {}
 
 // Define expVal
 std::vector<double> Sigma::expVal()
@@ -312,14 +311,13 @@ std::vector<double>  Sigma::predict(const std::vector<kinStruct>  &Izs, const st
     }
     if(savePredictions)
     {
-        const double mrho_U_mrho_GeV = 4.3669;
         std::ofstream myfile;
         std::string file_path;
         std::cout << "Please introduce the path to save the predictions of sigma" << std::endl;
         std::cin >> file_path;
         myfile.open(file_path);
         myfile << "W\tPred" << std::endl;
-        for(int i = 0; i < points[0].size(); i++) myfile << points[0][i] / mrho_U_mrho_GeV << '\t' << ans[i] / barn_to_UMINUS2 << std::endl;
+        for(int i = 0; i < points[0].size(); i++) myfile << points[0][i] << '\t' << ans[i] / barn_to_GEVMINUS2 << std::endl;
     }
     return ans ;
 }

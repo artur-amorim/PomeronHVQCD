@@ -9,7 +9,7 @@
 class Sigma: public Process
 {
     private:
-        double barn_to_UMINUS2;
+        double barn_to_GEVMINUS2;
         void loadData(const std::string & file_path, const double conv_factor);
         void copy(const Sigma &sigma);
     public:
