@@ -729,11 +729,14 @@ void HVQCD::finalizeBackground(const double AIR, const double AUV)
 {
     // Selects the relevant values to compute the potentials later
     std::vector<double> A, z, u, q, Phi, tau, dq, dPhi, dtau, d2q, d2Phi, d2tau, d3tau;
+    // Lambda number in order to get the model in GeV units
+    const double Lambda = 4.367928;
     for(int i = 0; i < As.size(); i++)
     {
+
         if ((As[i] > AIR) && (As[i] < AUV))
         {
-            A.push_back(As[i]); z.push_back(zs[i]-zs.back()); u.push_back(us[i]-us.back());
+            A.push_back(As[i]-std::log(Lambda)); z.push_back(Lambda*(zs[i]-zs.back())); u.push_back(Lambda*(us[i]-us.back()));
             q.push_back(qs[i]); Phi.push_back(Phis[i]); tau.push_back(taus[i]);
             dq.push_back(dqs[i]); dPhi.push_back(dPhis[i]); dtau.push_back(dtaus[i]);
             d2q.push_back(d2qs[i]); d2Phi.push_back(d2Phis[i]); d2tau.push_back(d2taus[i]);
