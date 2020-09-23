@@ -9,7 +9,7 @@ struct List
 {
   std::vector<double> Es;
   std::vector< std::vector< std::vector<double> > > wfs;
-  List(const std::vector<double> &es, const std::vector< std::vector< std::vector<double> > > &Wfs)
+  List(const std::vector<double> &es = {}, const std::vector< std::vector< std::vector<double> > > &Wfs = {})
   {
     Es = es;
     wfs = Wfs;

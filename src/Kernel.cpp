@@ -93,8 +93,21 @@ void Kernel::computeReggeTrajectories(const std::vector<double> &pars)
             js[i] = j;
             // Compute the potential
             std::vector<double> VSch = this->computePotential(j);
+            std::vector<double> z_meson, VSch_meson;
+            if(name == "meson")
+            {
+                for(int m = 0; m < z.size(); m++)
+                {
+                    if (z[m] <= 13.5)
+                    {
+                        z_meson.push_back(z[m]); VSch_meson.push_back(VSch[m]);
+                    }
+                }
+            }
             // Compute all the tn(J)s
-            List  spectrum = computeSpectrum(z, VSch, nTrajectories, "cheb");
+            List  spectrum;
+            if(name == "gluon") spectrum = computeSpectrum(z, VSch, nTrajectories, "cheb");
+            else spectrum = computeSpectrum(z_meson, VSch_meson, nTrajectories, "cheb");
             for(int k = 0; k < nTrajectories; k++) ts[k][i] = spectrum.Es[k];
         }
         return;
@@ -103,15 +116,28 @@ void Kernel::computeReggeTrajectories(const std::vector<double> &pars)
     for(int i = 0; i < nthreads; i++) ths[i] = std::thread(f, i);
     for(int i = 0; i < nthreads; i++) ths[i].join();
     delete[] ths;
-    f = [&js, &ts, this, h, n_js_thread, nthreads, &z] (const int th_id)
+    f = [this, &js, &ts, h, n_js_thread, nthreads, &z] (const int th_id)
     {
         unsigned int i = n_js_thread * nthreads + th_id;
         const double j = i * h ;
         js[i] = j;
         // Compute the potential
         std::vector<double> VSch = this->computePotential(j);
+        std::vector<double> z_meson, VSch_meson;
+        if(name == "meson")
+        {
+            for(int m = 0; m < z.size(); m++)
+            {
+                if (z[m] <= 13.5)
+                {
+                    z_meson.push_back(z[m]); VSch_meson.push_back(VSch[m]);
+                }
+            }
+        }
         // Compute all the tn(J)s
-        List  spectrum = computeSpectrum(z, VSch, nTrajectories, "cheb");
+        List spectrum;
+        if(name == "gluon") spectrum = computeSpectrum(z, VSch, nTrajectories, "cheb");
+        else spectrum = computeSpectrum(z_meson, VSch_meson, nTrajectories, "cheb");
         for(int k = 0; k < nTrajectories; k++) ts[k][i] = spectrum.Es[k]; 
         return;
     };
@@ -168,10 +194,27 @@ std::vector<Reggeon> computeReggeons(const Kernel &kernel, const double t, const
         const double dJdt = reggeTraj.der1(t);
         std::vector<double> VSch = kernel.computePotential(jn);
         // Compute the wavefunction
-        std::vector<double> z = hvqcd().z();
+        std::vector<double> z;
+        if(kernel.Name() == "gluon") z = hvqcd().z();
+        else z = hvqcd().u();
         std::reverse(std::begin(z), std::end(z));
-        const List spectrum = computeSpectrum(z, VSch, i+1);
+        std::vector<double> z_meson, VSch_meson;
+        if(kernel.Name() == "meson")
+        {
+            for(int m = 0; m < z.size(); m++)
+            {
+                if (z[m] <= 13.5)
+                {
+                    z_meson.push_back(z[m]); VSch_meson.push_back(VSch[m]);
+                }
+            }
+        }
+        // Compute all the tn(J)s
+        List spectrum;
+        if(kernel.Name() == "gluon") spectrum = computeSpectrum(z, VSch, i+1, "cheb");
+        else spectrum = computeSpectrum(z_meson, VSch_meson, i+1, "cheb");
         std::vector< std::vector<double> > wf = spectrum.wfs[i];
+
         // We need to normalize the wavefunction
         Spline_Interp<double> wf2(wf[0], wf[1] * wf[1], 0, 0);
         double c = wf2.integrate(wf[0].back());
