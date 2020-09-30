@@ -16,17 +16,20 @@ int main(int argc, char ** argv)
 {
     double invls, a, b, c, d, e, f;
     double g1, g2, g3, g4;
-    if (argc < 12)
+    int N;
+    if (argc < 13)
     {
-        invls = 0.254119; a = 13.9538; b = 0.921665; c = 2.03904; d = -2.7305; e = -0.473787;
+        invls = 0.254119; a = -13.9538; b = -0.921665; c = -2.03904; d = -2.7305; e = -0.473787;
         f = -0.517072;
         g1 = 1; g2 = -1; g3 = 1; g4 = -1;
+        N = 400;
     }
     else
     {
         invls = stod(argv[1]); a = stod(argv[2]); b = stod(argv[3]); c = stod(argv[4]); d= stod(argv[5]);
         e = stod(argv[6]); f = stod(argv[7]);
         g1 = stod(argv[8]); g2 = stod(argv[9]); g3 = stod(argv[10]); g4 = stod(argv[11]);
+        N = stoi(argv[12]);
     }
 
     cout << "Starting the fit with" << endl;
@@ -51,7 +54,7 @@ int main(int argc, char ** argv)
     hqcdp.setGNs(GNs);
     
     // initialise Chebyschev matrices
-    chebSetN(1000);
+    chebSetN(N);
 
     vector<double> x_guess = {invls, a, b, c, d, e, f, g1, g2, g3, g4};
 
