@@ -272,3 +272,21 @@ add_executable(test_gauss_kronrod_boost.exe tests/test_gauss_kronrod_boost.cpp)
 
 add_executable(test_AdS_colnew.exe tests/test_AdS_colnew.cpp)
 target_link_libraries(test_AdS_colnew.exe blas hvqcd_lib)
+
+add_executable(fitFLSigmaGammaProtonKernelFixed.exe physics/fitFLSigmaGammaProtonKernelFixed.cpp)
+target_link_libraries(fitFLSigmaGammaProtonKernelFixed.exe armadillo blas hvqcd_lib)
+
+add_executable(fitFLSigmaGammaProton.exe physics/fitFLSigmaGammaProton.cpp)
+target_link_libraries(fitFLSigmaGammaProton.exe armadillo blas hvqcd_lib)
+
+add_executable(fitFLSigmaGammaProtonGluonKernelFixed.exe physics/fitFLSigmaGammaProtonGluonKernelFixed.cpp)
+target_link_libraries(fitFLSigmaGammaProtonGluonKernelFixed.exe armadillo blas hvqcd_lib)
+
+add_executable(fitFLSigmaGammaProtonGluonKernel.exe physics/fitFLSigmaGammaProtonGluonKernel.cpp)
+target_link_libraries(fitFLSigmaGammaProtonGluonKernel.exe armadillo blas hvqcd_lib)
+
+add_executable(fitGammaProtonGluonKernel.exe physics/fitGammaProtonGluonKernel.cpp)
+target_link_libraries(fitGammaProtonGluonKernel.exe armadillo blas hvqcd_lib)
+
+add_executable(fitGammaProtonGluonKernelFixed.exe physics/fitGammaProtonGluonKernelFixed.cpp)
+target_link_libraries(fitGammaProtonGluonKernelFixed.exe armadillo blas hvqcd_lib)

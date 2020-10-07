@@ -63,12 +63,8 @@ void Kernel::computeReggeTrajectories(const std::vector<double> &pars)
     // Update the parameters of the kernel
     if(pars.size() != 0) setKernelPars(pars);
     // Define the js and ts vectors
-    double jmax;
-    if(name == "gluon") jmax = 2.1;
-    else jmax = 1.2;
-    double h ;
-    if(name == "gluon") h = 0.025;
-    else h = 0.02;
+    const double jmax = 2.1;
+    const double h = 0.025;
     const int n_js = jmax / h ;
     std::vector<double> js(n_js, 0.0);
     std::vector<std::vector<double> > ts(nTrajectories,std::vector<double>(n_js,0.0));
@@ -219,7 +215,7 @@ std::vector<Reggeon> computeReggeons(const Kernel &kernel, const double t, const
         Spline_Interp<double> wf2(wf[0], wf[1] * wf[1], 0, 0);
         double c = wf2.integrate(wf[0].back());
         wf[1] = (1/std::sqrt(c)) * (wf[1][2] / std::fabs(wf[1][2])) * wf[1] ;
-        Reggeon reggeon(jn, dJdt, wf, kernel.Name() + "." + std::to_string(i+1), i+1);
+        Reggeon reggeon(jn, dJdt, wf, kernel.Name(), i+1);
         reggeons[i] = reggeon;
    }
    return reggeons ;
