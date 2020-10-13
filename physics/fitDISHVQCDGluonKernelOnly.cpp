@@ -19,9 +19,8 @@ int main(int argc, char ** argv)
     int N;
     if (argc < 13)
     {
-        invls = 0.254119; a = -13.9538; b = -0.921665; c = -2.03904; d = -2.7305; e = -0.473787;
-        f = -0.517072;
-        g1 = 1; g2 = -1; g3 = 1; g4 = -1;
+        invls = 0; ag = 0.788065; bg = -12.8544; cg = 3.62336; dg = -4.31717; eg = -1.02091; fg = 0;
+        g1 = -7.38451; g2 = 19.7027; g3 = -0.152453; g4 = 11.5501;
         N = 400;
     }
     else
@@ -56,16 +55,19 @@ int main(int argc, char ** argv)
     // initialise Chebyschev matrices
     chebSetN(N);
 
-    vector<double> x_guess = {invls, a, b, c, d, e, f, g1, g2, g3, g4};
+    //vector<double> x_guess = {invls, a, b, c, d, e, f, g1, g2, g3, g4};
+    vector<double> x_guess = {a, b, c, d, e, g1, g2, g3, g4};
+
 
     // Definition of the function we want to fit
     auto func = [&hqcdp] (const vector<double> &x)
     {
         // Kernel pars correspond to x(0), x(1), x(2), x(3), x(4), x(5) and x(6)
-        vector<double> gluon_pars = {x[0], x[1], x[2], x[3], x[4], x[5], x[6]};
+        //vector<double> gluon_pars = {x[0], x[1], x[2], x[3], x[4], x[5], x[6]};
+        vector<double> gluon_pars = {0, x[0], x[1], x[2], x[3], x[4], 0};
         vector<vector<double> > kernels_pars = {gluon_pars};
         // GNs correspond to x(7), x(8), x(9), x(10)
-        vector<double> gpars = {x[7], x[8], x[9], x[10]};
+        vector<double> gpars = {x[5], x[6], x[7], x[8]};
         // Update the spectrum
         hqcdp.computeSpectrum(kernels_pars);
         // Update the GNs
@@ -73,9 +75,9 @@ int main(int argc, char ** argv)
         // Compute chi2
         double CHI2 = hqcdp.chi2();
         if(std::isnan(CHI2)) CHI2 = 1e99;
-        cout << "invls: " << x[0] << " a: " << x[1] << " b: " << x[2] << " c: " << x[3] << " d: " << x[4];
-        cout << " e: " << x[5] << " f: " << x[6];
-        cout << " g1: " << x[7] << " g2: " << x[8] << " g3: " << x[9] <<  " g4: " << x[10] << endl;
+        cout << "invls = " << 0 << " a = " << x[0] << " b = " << x[1] << " c = " << x[2] << " d = " << x[3];
+        cout << " e = " << x[4] << " f = " << 0 << endl;
+        cout << "g1 = " << x[5] << " g2 = " << x[6] << " g3 = " << x[7] <<  " g4 = " << x[8] << endl;
         cout << "chi2: " << CHI2 << endl;
         // Return chi2
         return CHI2;
@@ -85,10 +87,11 @@ int main(int argc, char ** argv)
 
     // Compute best chi2
     // Kernel pars correspond to xopt(0), xopt(1), xopt(2), xopt(3), xopt(4), xopt(5), xopt(6)
-    gluon_pars = {xopt[0], xopt[1], xopt[2], xopt[3], xopt[4], xopt[5], xopt[6]};
+    //gluon_pars = {xopt[0], xopt[1], xopt[2], xopt[3], xopt[4], xopt[5], xopt[6]};
+    gluon_pars = {0, xopt[0], xopt[1], xopt[2], xopt[3], xopt[4], 0};
     vector<vector<double> > kernels_pars = {gluon_pars};
     // GNs correspond to x(7), x(8), x(9), x(10)
-    GNs = {xopt[7], xopt[8], xopt[9], xopt[10]};
+    GNs = {xopt[5], xopt[6], xopt[7], xopt[8]};
     // Update the spectrum
     hqcdp.computeSpectrum(kernels_pars);
     // Update the GNs
