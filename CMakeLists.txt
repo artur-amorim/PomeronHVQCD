@@ -290,3 +290,12 @@ target_link_libraries(fitGammaProtonGluonKernel.exe armadillo blas hvqcd_lib)
 
 add_executable(fitGammaProtonGluonKernelFixed.exe physics/fitGammaProtonGluonKernelFixed.cpp)
 target_link_libraries(fitGammaProtonGluonKernelFixed.exe armadillo blas hvqcd_lib)
+
+add_executable(fitF2GluonKernel.exe physics/fitF2GluonKernel.cpp)
+target_link_libraries(fitF2GluonKernel.exe armadillo blas hvqcd_lib)
+
+add_executable(fitF2GluonKernelFixed.exe physics/fitF2GluonKernelFixed.cpp)
+target_link_libraries(fitF2GluonKernelFixed.exe armadillo blas hvqcd_lib)
+
+add_executable(predictStructureFunctions.exe physics/predictStructureFunctions.cpp)
+target_link_libraries(predictStructureFunctions.exe armadillo blas hvqcd_lib)
