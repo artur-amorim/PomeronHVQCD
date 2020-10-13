@@ -29,7 +29,7 @@ void setupU1NNcomputation()
     // Get u
     U1NNMode::u = hvqcdU1NNMode().u();
     const int n = U1NNMode::u.size();
-    // t1Y = -(1 + 2 dwdPhi dPhidA / w + dtaudA Vf(0,1)/Vf + dPhidA Vf(1,0)/Vf) exp(A) / (G q)
+    // t1Y = -( 1 + 2 dwdPhi dPhidA / w + dtaudA Vf(0,1)/Vf + dPhidA Vf(1,0)/Vf ) exp(A) / (G q)
     std::vector<double> A = hvqcdU1NNMode().A();
     std::vector<double> q = hvqcdU1NNMode().q();
     std::vector<double> Phis = hvqcdU1NNMode().Phi();
@@ -158,13 +158,13 @@ void U1NNMode::df(double * X, double * Z, double * DF, double * PARS)
 void U1NNMode::g(int * I, double * Z, double * G, double * PARS)
 {
     if(*I == 1) *G = Z[0] - 1.0;
-    if(*I == 2) *G = Z[1] ;
+    if(*I == 2) *G = Z[0] ;
     return ;
 }
 
 void U1NNMode::dg(int * I, double * Z, double * DG, double * PARS)
 {
-    if (*I == 1)
+    /*if (*I == 1)
     {
         DG[0] = 1.0;
         DG[1] = 0.0;
@@ -174,6 +174,9 @@ void U1NNMode::dg(int * I, double * Z, double * DG, double * PARS)
         DG[0] = 0.0;
         DG[1] = 1.0;
     }
+    */
+   DG[0] = 1.0;
+   DG[1] = 0.0;
     return ;
 }
 
