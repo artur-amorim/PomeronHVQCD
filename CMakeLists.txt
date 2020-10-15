@@ -299,3 +299,6 @@ target_link_libraries(fitF2GluonKernelFixed.exe armadillo blas hvqcd_lib)
 
 add_executable(predictStructureFunctions.exe physics/predictStructureFunctions.cpp)
 target_link_libraries(predictStructureFunctions.exe armadillo blas hvqcd_lib)
+
+add_executable(fitF2.exe physics/fitF2.cpp)
+target_link_libraries(fitF2.exe armadillo blas hvqcd_lib)

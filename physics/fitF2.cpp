@@ -21,7 +21,7 @@ int main(int argc, char ** argv)
     {
         invls = 0; ag = -0.788065; bg = 12.8544; cg = -3.62336; dg = 4.31717; eg = 1.02091; fg = 0;
         am = -4.5345; bm = 4.46109; cm = -10.2159; dm = -0.444645; em = -6.65785; fm = 0;
-        g1g = -7.38451; g2g = 19.7027; g1m = 0; gm = 0;
+        g1g = -7.38451; g2g = 19.7027; g1m = 0; g2m = 0;
     }
     else
     {
@@ -51,7 +51,6 @@ int main(int argc, char ** argv)
     // Setup HQCDP object
     HQCDP hqcdp;
     hqcdp.addProcessObservable(f2);
-    hqcdp.addProcessObservable(fl);
     hqcdp.addKernel(gluon);
     hqcdp.addKernel(meson);
     hqcdp.setGNs(GNs);
