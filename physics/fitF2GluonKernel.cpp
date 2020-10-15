@@ -21,9 +21,9 @@ int main(int argc, char ** argv)
         f2_data_path = "expdata/DIS/F2_data_Q2max_10.txt";
         // Default values for N = 400
         //invls = 0.0439659; ag = 0.305626; bg = -10.1539; cg = 0.822607; dg = -4.85037; eg = -0.251665; fg = 10.0599;
-        invls = 0; ag = 0.788065; bg = -12.8544; cg = 3.62336; dg = -4.31717; eg = -1.02091; fg = 0;
+        invls = 0; ag = -0.788065; bg = 12.8544; cg = -3.62336; dg = 4.31717; eg = 1.02091; fg = 0;
         g1 = -7.38451; g2 = 19.7027; g3 = -0.152453; g4 = 11.5501;
-        N = 400;
+        N = 800;
     }
     else
     {
@@ -74,7 +74,7 @@ int main(int argc, char ** argv)
         //cout << "chi2 + Soft Pomeron constraint: " << CHI2 << endl;
         return CHI2;
     };
-    vector<double> deltas = {-1, -10, -1, -1, -1, 10, 10, 0.1, 10};
+    vector<double> deltas = {10, 10, 10, 10, 10, 10, 10, 10, 10};
     vector<double> xopt = optimFunction(x_guess, func, deltas, 1e-12);
     
     // Compute best chi2

@@ -15,7 +15,7 @@ int main(int argc, char ** argv)
 {
     string fl_data_path, sigma_gp_data_path;
     double invls, ag, bg, cg, dg, eg, fg;
-    invls = 0, ag = 0.0676887; bg = -10.3607; cg = 0.374505; dg = -1.64394; eg = 2.36996; fg = 0;
+    invls = 0; ag = 0.0486791; bg = -11.8035; cg = 1.28621; dg = -4.8624; eg = -0.366335; fg = 0;
     double g1, g2, g3, g4;
     int N;
     if(argc < 8)

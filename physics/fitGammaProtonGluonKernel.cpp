@@ -25,8 +25,8 @@ int main(int argc, char ** argv)
         sigma_gp_data_path = "expdata/SigmaGammaProton/SigmaGammaP_PDG_data_W_gt_461.txt";
         // Default values for N = 400
         //invls = 0.0439659; ag = 0.305626; bg = -10.1539; cg = 0.822607; dg = -4.85037; eg = -0.251665; fg = 10.0599;
-        invls = 0; ag = 0.206651; bg = -11.8679; cg = 1.32781; dg = -5.02503; eg = -0.37594; fg = 0;
-        g1 = 0.0230507; g2 = -0.0141257; g3 = 0.191976; g4 = -42.7255;
+        invls = 0; ag = 0.0486791; bg = -11.8035; cg = 1.28621; dg = -4.8624; eg = -0.366335; fg = 0;
+        g1 = 0.0220324; g2 = -0.0174865; g3 = 0.148405; g4 = -38.6718;
         N = 400;
     }
     else
@@ -76,9 +76,13 @@ int main(int argc, char ** argv)
         cout << "ag: " << x[0] << " bg: " << x[1] << " cg: " << x[2] << " dg: " << x[3] << " eg: " << x[4] << endl;
         cout << "g1: " << x[5] << " g2: " << x[6] << " g3: " << x[7] << " g4: " << x[8] << endl;
         cout << "chi2: " << CHI2 << endl;
+        double j_sp = hqcdp.getSpectrum()[0].getReggeons()[1].getJ();
+        cout << "Soft Pomeron intercept: " << j_sp << endl;
+        CHI2 += 10000 * std::fabs(j_sp - 1.08);
+        cout << "chi2 + Soft Pomeron constraint: " << CHI2 << endl;
         return CHI2;
     };
-    vector<double> deltas = {-10, -10, -10, -10, -10, 10, 10, 10, 10};
+    vector<double> deltas = {-1, -1, -5, -1, -1, 1, 1, 1, 10};
     vector<double> xopt = optimFunction(x_guess, func, deltas, 1e-12);
     
     // Compute best chi2

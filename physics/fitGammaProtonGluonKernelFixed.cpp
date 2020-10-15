@@ -16,7 +16,7 @@ int main(int argc, char ** argv)
 {
     string f2_data_path, fl_data_path, sigma_gp_data_path;
     double invls, ag, bg, cg, dg, eg, fg;
-    invls = 0; ag = 0.206651; bg = -11.8679; cg = 1.32781; dg = -5.02503; eg = -0.37594; fg = 0;
+    invls = 0; ag = 0.0486791; bg = -11.8035; cg = 1.28621; dg = -4.8624; eg = -0.366335; fg = 0;
     double g1, g2, g3, g4;
     int N;
     if(argc < 9)
@@ -25,7 +25,7 @@ int main(int argc, char ** argv)
         fl_data_path = "expdata/DIS/FL_data_Q2max_10.txt";
         sigma_gp_data_path = "expdata/SigmaGammaProton/SigmaGammaP_PDG_data_W_gt_461.txt";
         // Default values for N = 400
-        g1 = 0.0230507; g2 = -0.0141257; g3 = 0.191976; g4 = -42.7255;
+        g1 = 0.0220171; g2 = -0.0174094; g3 = 0.147975; g4 = -38.5175;
         N = 400;
     }
     else
