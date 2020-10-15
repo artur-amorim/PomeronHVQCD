@@ -20,7 +20,9 @@
 \begin{document}
 \maketitle
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Holographic dual of QCD in the Veneziano Limit}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 Quantum Chromodynamics is the widely accepted quantum theory of the strong interactions between quarks and gluons inside the proton and neutron. It consists of gauge fields (gluons) in the adjoint representation of $SU(N_c)$, with $N_c = 3$, coupled to $N_f$ fermions (quarks) in the fundamental representation of $SU(3)$. This theory can be generalised and studied in the $(N_c, N_f)$ plane by considering $SU(N_c)$ Yang-Mills coupled to $N_f$ Dirac fermions in the fundamental representation. This generalisation been studied in great depth in the 't Hooft large-$N_c$ limit  where $N_c \rightarrow \infty$ and $\lambda = g_{\rm{YM}}^2 N_c$ and $N_f$ is kept fixed. This limit is also known as the "quenched" limit since quark contributions are suppressed in powers of $\frac{N_f}{N_c} \rightarrow 0$.
 Another interesting large-$N_c$ limit is the Veneziano limit where
@@ -28,13 +30,20 @@ Another interesting large-$N_c$ limit is the Veneziano limit where
 N_c \rightarrow \infty \quad , \quad N_f \rightarrow \infty \quad , \quad \frac{N_f}{N_c} = x \quad {\rm fixed} \quad , \quad \lambda = g_{\rm{YM}}^2 N_c \quad {\rm fixed}
 \end{align}
 
-A holographic dual that reproduces the features of QCD in the Veneziano limit was presented in \cite{Jarvinen:2011qe}. It consists of a system of a dilaton and tachyon coupled to five-dimensional gravity. The dilaton action is the same as in the Improved Holographic QCD (IHQCD) model presented in \cite{gursoy_exploring_2008, gursoy_exploring_2008-1}. In IHQCD the dynamics of the dilaton is set by its potential $V_g(\lambda)$. The small $\lambda$ and large $\lambda$ asymptotic forms of the dilaton potential are constrained in order to reproduce the YM $\beta$-function, to obtain confinement and no bad singularities. The exponential of the dilaton is identified with the running 't Hooft coupling $\lambda$ while the energy scale is related to the exponential of the warp factor in the Einstein frame.
+A holographic dual that reproduces the features of QCD in the Veneziano limit was presented in \cite{Jarvinen:2011qe}. It consists of a system of a dilaton and tachyon coupled to five-dimensional gravity. The dilaton action is the same as in the Improved Holographic QCD (IHQCD) model presented in \cite{gursoy_exploring_2008, gursoy_exploring_2008-1}. The exponential of the dilaton $\lambda = e^\Phi$ is dual to the $\mathcal{T}r F^2$ operator of the field theory with its background value equal to the 't Hooft coupling.
+The metric ansatz is
+\begin{equation}
+\label{eq: metric definition}
+ds^2 = e^{2 A} \left( d z^2 + \eta_{\mu \nu} dx^\mu dx^\nu \right),
+\end{equation}
+where the warp factor $A$ is identified with the logarithm of the energy scale in the field theory at the boundary.
+In IHQCD the dynamics of the dilaton is set by its potential $V_g(\lambda)$. The small $\lambda$ and large $\lambda$ asymptotic forms of the dilaton potential are constrained in order to reproduce the YM $\beta$-function, to obtain confinement and no bad singularities.
 The action of the dilaton coupled to gravity is
 \begin{equation}
 S_g =  M_p^3 N_c^2 \int d^5X \sqrt{g} \left[ R - \frac{4}{3} \frac{{\left( \partial \lambda \right)}^2}{\lambda^2}+ V_g \left( \lambda\right) \right]\, ,
 \label{eq:sg_action}
 \end{equation}
-where $M_p$ is the five-dimensional Plack scale and $N_c$ is the number of colours and $\lambda \equiv e^{\Phi}$ with $\Phi$ being the dilaton field.
+where $M_p$ is the five-dimensional Plack scale and $N_c$ is the number of colours.
 In this work we will adopt $V_g$ to be
 \begin{align}
 &V_g(\lambda) = 12 + V_1 \, \lambda + V_2 \, \frac{\lambda^2}{1 + \frac{\rm{sc} \, \lambda}{\lambda_0}} + 3 \rm{V_gIR} \, e^{-\frac{\lambda_0}{\rm {sc} \, \lambda}}  \frac{\lambda^{4/3}}{4 \pi^{8/3}}\sqrt{\log\left(1+\frac{\rm{sc} \, \lambda}{\lambda_0}\right)} \, , \\ \notag
@@ -69,7 +78,7 @@ V_f \approx V_0 (\lambda) + V_1 (\lambda) T^2 + \mathcal{O}(T^4)
 \end{equation} 
 and to vanish exponentially in the IR when $T \rightarrow \infty$. In particular in the flat space string theory $V_s \sim \frac{1}{\lambda} e^{- \mu T^2}$. Our ansatz for $V_f$ will be
 \begin{align}
-& V_f(\lambda, \tau) = V_{f0} \left(\lambda\right) ( 1 + a_1 \tau^2) e^{- a_2 \tau^2}, \\ \notag
+& V_f(\lambda, \tau) = V_{f0} \left(\lambda\right) V_\tau \left(\tau\right), \quad V_\tau (\tau) = ( 1 + a_1 \tau^2) e^{- a_2 \tau^2}, \\ \notag
 & V_{f0}\left(\lambda\right) = W_0 + W_1 \lambda + W_2 \frac{\lambda^2}{1+ \frac{\rm{sc} \, \lambda}{\lambda_0}} + \frac{3 W_{IR}}{16 \pi^4} {\left(\rm{sc} \, \lambda \right)}^2 e^{- \frac{\lambda_0}{\rm{sc} \, \lambda}} \left( 1 + \frac{\lambda_0 W_1}{\rm{sc} \, \lambda}\right) \\
 & W_1 = \frac{24 + \left(11- 2 x\right) W_0}{27 \pi^2}, \, W_2 =  \frac{24 (857 - 46 x) + W_0 (4619 - 1714 x + 92 x^2)}{46656 \pi^4} 
 \end{align}
@@ -82,127 +91,168 @@ The IR asymptotics of the potentials $k$ and $w$ affect the meson spectrum. We a
 & \frac{1}{k(\lambda)} =  \frac{ \frac{3}{2} - \frac{W_0 x}{8}}{a_2 - a_1} \left[ 1+ \frac{\rm{sc} \, k_{U1} \lambda}{\lambda_0} + k_{IR} \, e^{-\frac{\lambda_0}{\rm{ksc} \lambda}} \left( 1 + \frac{\lambda_0 k_1}{\rm{ksc} \lambda}\right) \frac{{\left(\frac{\rm{ksc} \lambda}{\lambda_0}\right)}^{4/3}}{\sqrt{\log\left(1 + \frac{\rm{ksc} \lambda}{\lambda_0}\right)}}\right], \\
 & \frac{1}{w\left(\lambda\right)} = w_0 \left[1 + \frac{\rm{sc} w_{U1} \lambda}{\lambda_0 \left( 1+ \frac{\rm{sc} \lambda}{\lambda_0}\right)} + w_{IR} e^{- \frac{\lambda_0}{\rm{wsc} \lambda}} \left(1+\frac{\lambda_0 w_1}{\rm{wsc} \lambda}\right)\frac{{\left( \frac{\rm{wsc} \lambda}{\lambda_0}\right)}^{4/3}}{\log\left(1+\frac{\rm{wsc} \lambda}{\lambda_0}\right)} \right]
 \end{align}
+In order to compute the profiles of the background fields we need to specify the values of the parameters that appear in the definition of the potentials presented above. These parameters will be fitted to the ratios between the low-spin meson and tensor glueball masses to the $\rho^0$ meson mass as predicted by the model.
 
-
-
-
-
-\subsection{HVQCD action}
-
-The theory in the bulk that we will consider in these notes is dual to QCD in the Veneziano limit. Its action can be divided in a gluon and flavour sector and in the Einstein frame takes the form
-\begin{align}
-&S = S_g + S_f, \\
-&S_g =  M_p^3 N_c^2 \int d^5X \sqrt{g} \left[ R - \frac{4}{3} \frac{{\left( \partial \lambda \right)}^2}{\lambda^2}+ V_g \left( \lambda\right) \right], \\
-&S_f = - x M_p^3 N_c^2 \int d^5 X V_f\left(\lambda, T\right) \sqrt{det\left(g_{ab} + k\left(\lambda\right) \partial_a \tau \partial_b \tau \right)},
-\label{eq: HVQCD action}
-\end{align}
-where $M_p$ is the Planck mass, $N_c$ is the number of colours, $x = N_f / N_c$ with $N_f$ being the number of quark flavours and $\lambda = e^{\Phi}$ with $\Phi$ being the dilaton field. In the Veneziano limit $N_c \to \infty, \, N_f \to \infty$ with $x$ fixed. It is assumed $X = \left(z, x^\mu \right)$ and a metric of the form
+There is also an additional pseudo-scalar axion field $a$ whose action takes the form
 \begin{equation}
-\label{eq: metric definition}
-ds^2 = e^{2 A} \left( d z^2 + \eta_{\mu \nu} dx^\mu dx^\nu \right),
+\label{eq:axion_action}
+S_a = - \frac{M^3 N_c^2}{2} \int d^5 X \sqrt{g} Z(\lambda) [ d a - x (2 V_a(\lambda, \tau) A - \theta d V_a (\lambda, \tau))]^2
 \end{equation}
-where $\eta_{\mu\nu}$ is the 4d Minkowski metric. Latin indices refer to general space-time indices and greek indices strictly mean boundary indices.
-
-We have three background fields whose profiles will be found by solving the equations of motion resulting from the action (\ref{eq: HVQCD action}): the warp factor $A$, the dilaton $\Phi$ and the tachyon $\tau$. Because the metric is invariant under translation in $x^\mu$ the background fields will depend only on the radial coordinate $z$.
-
-
-\subsection{Solving the Equatios of Motion}
-
-In this section we give details on how the equations of motion are solved. It turns out to be convenient to write the resulting equations in terms of $A$ instead of the radial coordinate $z$. To do this one introduces the variable
+with $\theta$ being the overall phase of the tachyon $T = \tau e^{i \theta} \mathbb{I}_{N_f}$. In the flat-space tachyon condensation $V_a(\lambda, \tau)$ is independent of $\lambda$ and is that same as the tachyon potential that appears in the DBI action. Although in principle it may be different in principle we will take $V_a$ to be $V_f$ defined above without the $V_{0f}$ term. This form guarantees that it becomes a field-independent constant at $T=0$ and that it vanishes exponentially at $T = \infty$.
+The $Z(\lambda)$ function is defined by
 \begin{equation}
-q\left(A\right) = \frac{dz}{dA} e^{A};
-\label{eq: q definition}
+Z(\lambda) = Z_a + c_a {\left(\frac{\lambda}{\lambda_0}\right)}^4
 \end{equation}
-From now on all the background fields will be functions of $A$ and the differential equations we present are all with respect to A being the independent variable.
+The definition is constrained by Yang-Mills theory and the parameters $Z_a$ and $c_a$ will be determined by fitting the spectrum of singlet axial vector mesons.
 
-\subsubsection{Yang-Mills Equations of Motion}
 
-If we make $x = 0$ we get the action of the IHQCD model and hence we are dealing with a pure Yang-Mills theory in the large $N_c$ limit. The equations of motion are then
-\begin{align}
-	&\frac{dq}{dA} = \frac{1}{3} \left( 12 q - q^3 V_g \left(\Phi\right) \right) \\
-	&\frac{d\Phi}{dA} = - \frac{\sqrt{3}}{2} \sqrt{12 - q^2 V_g\left(\Phi\right)}
-	\label{eq: YM equations}
-\end{align}
-We will solve this coupled differential equations from the IR to the UV. We set $A_{IR} = -150$ and $A_{UVYM} = 50$ as the lower and upper bound on A. In the IR $A$ and $\Phi$ take the asymptotic form
-\begin{align}
-&A_{IR} \left(z\right) = \frac{23}{24} - \frac{173}{3456 z^2} - z^2 + 0.25 \log(6 z^2) - \frac{\log(Vg_{IR})}{2} \\
-&\Phi_{IR} \left(z \right) = - \frac{23}{16} - \frac{151}{2304 z^2} + \frac{3}{2} z^2 - \log(\frac{sc}{\lambda_0})
-\label{eq: YM fields IR asymptotics}
-\end{align}
-This allows us to determine $z_{IRYM}$ such that $A_{IR}\left(z_{IRYM}\right) = -150$ and use its numerical value to compute $\Phi\left(A_{IR}\right) = \Phi_{IR} \left( z_{IRYM}\right)$ and $q\left(A_{IR}\right) = e^{A_{IR}} / \frac{dA_{IR}}{d z} $ and hence defining boundary conditions to solve equations~\ref{eq: YM equations}. Note that $sc$ and $V_{gIR}$ determine uniquely both the initial conditions as well the evolution of the background fields in pure YM.
 
-After we solve the YM equations we can determine $z\left(A\right)$ by using equation (\ref{eq: q definition}). We solve this numerically by taking $z(A_{IRYM})$ = $z_{IRYM}$ as initial condition and at the end we perform the shift $z\left(A\right) \to z\left(A\right) - z\left(A_{UVYM} \right) $ in order to have the UV singularity at $z = 0$. For the spectrum we will consider only  $A$ values that satisfy $z\left(A\right) > 10^{-6}$ and $\Phi\left(A\right) < 120$.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Spectrum Evaluation}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-We finish this section by specifying which algorithms we have used to find the numerical YM background. To compute $z_{IRYM}$ we have used the root finding Van Wijngaarden-Dekker-Brent method described in~\cite{10.5555/1403886}. The differential equations (\ref{eq: YM equations}) were solved using $integrate\_const$ with a Runge-Kutta-Dormand-Prince stepper from the Boost $C++$ library.
+The quadratic fluctuations around the background fields can be mapped to the spectrum of mesons and glueballs. The normalisable fluctuations of the metric $g_{ab}$, dilaton $\Phi$ and QCD axion $a$ correspond to glueballs with $J^{PC} = 0^{++}, \, 0^{-+}, \, 2^{++}$ where $J$ is the spin and $P$ and $C$ are the corresponding parity and charge conjugation properties. The meson sector comes from the normalisable fluctuations of the tachyon $T$ and of the gauge fields $A^{L/R}_{a}$. They correspond to mesons with $J^{PC} = 1^{++}, \, 1^{--}, \, 0^{++}, \, 0^{-+}$. 
 
-\subsubsection{Solving HVQCD equations of motion}
+The fluctuations can be classified according to how they transform under $SU(N_f)$. They can be grouped in flavour singlet and flavour non-singlet nodes. The fluctuations that come from $S_g$ and $S_a$ are only flavour singlet ones while the ones coming from $S_f$ come singlet and non-singlet terms. The singlet terms from $S_f$ will mix with with the singlet terms coming from $S_g$ and $S_a$. In this work we will not consider the flavour singlet states of $J^{PC} = 0^{++}, \, 0^{-+}$, as they involve mixing of the $0^{++}$ glueball with the flavour singlet $\sigma$ meson and mixing between the $0^{-+}$ glueball with the $\eta'$ meson, respectively.
 
-The solution of HVQCD equations is done in four stages. In the first two we are deep in the IR and the tachyon is decoupled from the other background fields and $q\left(A\right)$ and $\Phi\left(A\right)$ obey equations (\ref{eq: YM equations}). In the third stage the tachyon will couple to the other background fields until it reaches the UV where it decouples again and we are in the fourth and last stage of the solution of the EOMs.
+The masses of the different glueballs and mesons can be obtained after expanding the action $S = S_g + S_f$ to quadratic order of the fluctuations of the background fields. It was shown in \cite{Arean:2013tja} that the fluctuations decouple in separate sectors. They are flavour singlet rank-two tensor fluctuations($J^{PC} = 2^{++}$), flavour singlet and non-singlet vector mesons ($J^{PC} = 1^{--}$), flavour singlet and non-singlet axial vector mesons ($J^{PC} = 1^{++}$), flavour singlet and non-singlet scalars ($J^{PC} = 0^{++}$) and flavour singlet and non-singlet pseudoscalars ($J^{PC} = 0^{-+}$). These fluctuations generate towers of $2^{++}$ glueballs, singlet and non-singlet vector mesons, singlet and non-singlet axial vector mesons, non-singlet scalar mesons and mixtures between $0^{++}$ glueballs and $\sigma$ mesons and non-singlet pseudoscalar mesons and mixtures between 
+$0^{-+}$ glueballs and $\eta'$ mesons, respectively. 
+These towers of mesons and glueballs come as solutions of a Schrodinger problem associated with the equation of motion of the associated fluctuation. The eigenvalues correspond to the square of the mass of the glueball or meson and their holographic wave functions are the associated eigenfunctions.
 
-As in the YM case we start by first specifying the IR boundary conditions. We first define $A_{IR} = -150$, $A_{UVYM} = 50$, $A_{UVc} = 100$ and $A_{UVf} = 1000$.
-Again  we compute $z_{IRYM}$ as in the YM case and we use it to compute $q\left(A_{IR}\right)$ and $\Phi\left(A_{IR}\right)$ as in YM and $\tau\left(A_{IR}\right)$ using the tachyon IR asymptotics
+A detailed derivation of the equations of motion and Schrodinger problems associated with each fluctuation has been done in \cite{Arean:2013tja} and hence we will just summarise the main results relevant for work in the next sections. 
+The singlet and non-singlet vector mesons have the same equation of motion
 \begin{equation}
-\tau_{IR} \left(z \right) = \tau_0 z^{\frac{(12 - x W_0) k_{IR}}{6 V_{gIR}}}
+\frac{1}{V_f(\lambda, \tau) w(\lambda)^2 e^A G} \partial_z (V_f(\lambda, \tau) w(\lambda)^2 e^A G^{-1} \partial_z \psi_V) + m_V^2 \psi_V = 0 ,
 \end{equation}
-where $\tau_0$ is a paremter that is gonna be fitted by the spectrum. This is the last parameter to be introduced.
-The constants $\tau_{cut} = 1000$ and $V_{f cut} = 10^{-8}$ are defined and they signal the end of the first and second stages of the construction of the numerical background, respectively.
-
-We start the construction of the background by computing the YM profile of $q\left(A\right)$ and $\Phi\left(A\right)$ from $A_{IR}$ to $A_{UVYM}$. If $\tau_{IR} > \tau_{cut}$ the tachyon profile will be given by the solution of the differential equation
+where $\psi_V$ is their wavefunction. By performing the change of variable defined by
 \begin{equation}
-	\frac{d\tau}{dA} = - 4 \frac{q^2 V_{f0}\left(\Phi\right) \tau}{8 V_{f0}\left( \Phi\right) k\left(\Phi\right) + 2 k\left(\Phi\right) \frac{d V_{f0}}{d\Phi} \frac{d\Phi}{dA} + V_{f0} \left(\Phi\right) \frac{dk}{d\Phi} \frac{d\Phi}{dA} }
+\frac{du}{dz} = G(z) \equiv \sqrt{1 + e^{-2A} k(\lambda) {\left( \partial_z \tau \right)}^2}.
 \end{equation}
-until $\tau < \tau_{cut}$, marking the end of the first stage. The value of $A$ such that this condition is met is called $A_{UV1}$ The values of $q$ and $\Phi$ used are the ones given by YM.
-
-In the second stage we solve the tachyon differential equation
+and rescaling $\psi_V = \alpha / \Xi_V$ one can rewrite the equation of motion in the Schrodinger form,
+\begin{equation}
+- \frac{d^2 \alpha}{d u^2} + V_V \alpha = m_n^2 \alpha,
+\end{equation}
+ with potential
+\begin{equation}
+V_V (u) = \frac{1}{\Xi_V (u)} \frac{d^2 \Xi_V (u)}{d u^2}, \quad \Xi_V = w (\lambda) \sqrt{V_f (\lambda, \tau) e^A}
+\end{equation}
+The singlet and non-singlet axial vector mesons have Schrodinger potentials differing by a term coming from the action $S_a$. The potentials of the non-singlet axial vector mesons and of the singlet axial vector mesons are
 \begin{align}
-&\frac{d^2\tau}{d A^2} = - 2 \frac{q^2 \tau}{k\left(\Phi\right)} - 4 \frac{d \tau}{dA} + \frac{d \log q}{dA} \frac{d\tau}{dA} - 2 \tau {\left(\frac{d\tau}{dA}\right)}^2 - 4 k\left(\Phi\right) \frac{{\left( \frac{d\tau}{dA}\right)}^3}{q^2} - \\ \notag
-& - \frac{d \log V_{f0}}{d\Phi} \frac{d\tau}{dA} \frac{d\Phi}{dA} - \frac{d \log k}{d\Phi} \frac{d\tau}{dA} \frac{d\Phi}{dA} - k\left(\Phi\right) \frac{d \log V_{f0}}{d\Phi} {\left(\frac{d\tau}{dA}\right)}^3 \frac{\frac{d\Phi}{dA}}{q^2} - \frac{d k}{d\Phi} \frac{d\Phi}{dA} \frac{{\left(\frac{d\tau}{dA}\right)}^3}{2 q^2}
-\label{eq: tau YM 2}
+&V_{NSA} (u) = V_V(u) + 4 \frac{\tau^2 e^{2 A}}{w(\lambda)^2} k(\lambda) \\
+&V_{SA}(u) = V_{NSA} (u) + 4 \, x \, \frac{e^{2A}Z(\lambda)V_a(\lambda, \tau)^2}{V_f(\lambda,\tau) G w(\lambda)^2}
 \end{align}
-from the value of $A_{UV1}$ to $A_{UVYM}$. Using the profiles of $q$, $\Phi$ and $\tau$ we compute $A_{UV2}$ such that $A_{UV1} < A_{UV2} < A_{UVYM}$ and $V_{f0}\left(\Phi\right) e^{-\tau^2} = V_{fcut} V_g \left(\Phi\right)$ are satisfied. This condition marks when the tachyon starts to couple with $q$ and $\Phi$ from the IR to the UV.\footnote{Matti's code rejects such backgrounds while my code just takes them as valid backgrounds. This, I think, explains why Matti could not get the same results for the spectrum as me in that fit. This also means that in the numerical background I have obtained the tachyon never couples to $q$ and $\Phi$. }
-
-In the stage where the tachyon is coupled the backgroud fields' dynamics obeys
+The non-singlet scalar mesons have the potential
 \begin{align}
-& \frac{dq}{dA} = \frac{4}{9} q {\left(\frac{d\Phi}{dA}\right)}^2 + q V_f \left(\Phi, \tau\right) k\left(\Phi\right) \frac{{\left(\frac{d\tau}{dA}\right)}^2}{6\sqrt{1+ k\left(\Phi\right) {\left(\frac{\frac{d\tau}{dA}}{q}\right)}^2}} \\
-& \frac{d^2 \Phi}{d^2A} = - \frac{3}{8} q^2 \frac{d V_g}{d\Phi} + \frac{9}{\frac{d\Phi}{dA}} + \frac{3}{4} \frac{q^2}{\frac{d\Phi}{dA}} \left( \frac{V_f \left(\Phi, \tau\right)}{\sqrt{1+ k \frac{{\left(\frac{d\tau}{dA}\right)}^2}{q^2}}} - V_g \left(\Phi\right) \right) - \\ \notag
-& - 5 \frac{d\Phi}{d A} + V_f \left(\Phi, \tau\right) k \left(\Phi\right) \frac{{\left(\frac{d\tau}{dA}\right)}^2 \frac{d\Phi}{dA}}{6 \sqrt{1+ k\left(\Phi\right) {\left(\frac{\frac{d\tau}{dA}}{q}\right)}^2 }} + \frac{4}{9} {\left(\frac{d\Phi}{dA}\right)}^3 + \\ \notag
-& + \frac{3}{8} q^2 \frac{\frac{d V_f}{d\Phi}}{\sqrt{1+ k\left(\Phi\right) {\left(\frac{\frac{d\tau}{dA}}{q}\right)}^2}} + \frac{3}{8} k\left(\Phi\right) {\left( \frac{d\tau}{dA}\right)}^2 \frac{\frac{dV_f}{d\Phi}}{\sqrt{1+ k\left(\Phi\right) {\left(\frac{\frac{d\tau}{dA}}{q}\right)}^2}} + \\ \notag
-& + \frac{3}{16} V_f\left(\Phi, \tau\right) {\left( \frac{d\tau}{dA}\right)}^2 \frac{\frac{dk}{d \Phi}}{\sqrt{1+ k\left(\Phi\right) {\left(\frac{\frac{d\tau}{dA}}{q}\right)}^2}} \\ \notag
-& \frac{d^2 \tau}{d A^2} = -2 q^2 \frac{\tau}{k\left(\Phi\right)} - 4 \frac{d\tau}{d A} -2 \tau {\left(\frac{d\tau}{dA}\right)}^2 - 4\frac{k\left(\Phi\right)}{q^2} {\left(\frac{d\tau}{dA}\right)}^3 + k\left(\Phi\right) V_f \left(\Phi, \tau \right) \frac{{\left(\frac{d\tau}{dA}\right)}^3}{6 \sqrt{1+ k\left(\Phi\right) {\left(\frac{\frac{d\tau}{dA}}{q}\right)}^2}} - \\
-& - \frac{d \log(V_{f0})}{dA} \frac{d\Phi}{dA} \frac{d\tau}{dA} - k \left(\Phi\right) \frac{d\log(V_{f0}}{dA} \frac{d\Phi}{dA}\frac{{\left(\frac{d\tau}{d A}\right)}^3}{q^2} + \frac{4}{9} {\left(\frac{d\Phi}{dA}\right)}^2 \frac{d\tau}{dA} - \frac{d \log(k)}{d\Phi} \frac{d\Phi}{dA} \frac{d\tau}{dA} - \\ \notag
-& - \frac{1}{2} \frac{d k}{d\Phi} \frac{d\Phi}{dA} \frac{{\left( \frac{d\tau}{dA}\right)}^3}{q^2}
+&V_S(u) = \frac{1}{\Xi_S(u)} \frac{d^2 \Xi_S(u)}{d u^2} + H_S (u), \\
+&\Xi_S(u) = \frac{1}{G} \sqrt{V_f(\lambda, \tau) k(\lambda) e^{3A}}, \\
+&H_S(u) =  - \frac{e^{2A}}{k(\lambda)} \left( \frac{(\partial_\tau V_\tau)^2}{V_\tau^2} - \frac{\partial_\tau^2 V_\tau}{V_\tau} \right),
 \end{align}
-This is a stiff system of differential equations and for this reason we had used the function integrate\_adaptive with the rosenbrock4 stepper from Boost. This system is solved from $A_{UV2}$ to $A_{UCc}$. Because $A_{UVc} = 50$ we believe that at this point we are in the UV and here the tachyon decouples again from $q$ and $\Phi$.
-
-The UV equations of motion are
+where the $H_S$ expression is the same as the one in \cite{Arean:2013tja} for $a_1 = 0$ and $a(\lambda) =  a_2 = 1$.
+Finally the equation of motion of the non-singlet pseudoscalar fluctuations is given by
 \begin{align}
-&\frac{dq}{dA} =  \frac{4}{9} q {\left(\frac{\frac{d\lambda}{dA}}{\lambda}\right)}^2 \\
-&\frac{d^2\lambda}{dA^2} = -\frac{3}{8}  {\left(q \lambda \right)}^2 \frac{d V_g}{d\lambda} + 9 \frac{\lambda^2}{\frac{d\lambda}{dA}} + \frac{3}{4} \frac{{\left(q \lambda \right)}^2}{\frac{d\lambda}{dA}} \left( V_f\left(\lambda, 0\right) - V_g \left(\lambda\right) \right) - 5 \frac{d\lambda}{dA}  + \\
-& + \frac{d \log q}{dA} \frac{d\lambda}{d A} + \frac{{\left( \frac{d\lambda}{dA}\right)}^2}{\lambda} + \frac{3}{8} {\left( q \lambda \right)}^2 \frac{d V_f}{d\lambda} \left(\lambda, 0 \right) \\ \notag
-& \frac{d^2 \tau_n}{dA^2} = 3 \tau_n - 2 \frac{q^2 \tau_n}{k\left(\lambda\right)} - \tau_n \frac{d \log q}{dA} + \tau_n \frac{d \log V_{f0}}{d\lambda} \frac{d\lambda}{dA} - 2 \frac{d\tau_n}{d A} + \frac{d\log q}{d A} \frac{d \tau_n}{dA} - \\
-& - \frac{d \log V_{f0}}{d\lambda} \frac{d\lambda}{dA} \frac{d\tau_n}{dA} + \tau_n \frac{d\lambda}{dA} \frac{d \log k}{d\lambda} - \frac{d\lambda}{dA} \frac{d\tau_n}{dA} \frac{d \log k}{d\lambda}
+&V_f(\lambda, \tau) \tau^2 e^{3A} G^{-1} k(\lambda) \partial_z \left[ \frac{1}{V_f(\lambda, \tau) \tau^2 k(\lambda) e^{3A} G} \partial_z \psi_P \right] - \notag \\
+& - 4 \tau^2 e^{2A} \frac{k(\lambda)}{w(\lambda)^2} \psi_P + m^2 \psi_P = 0
 \end{align}
-where $\tau_n = e^A \tau$. This system is solved from $A_{UVc}$ to $A_{UVf}$. With the profile of $\tau_n$ and $\lambda$ in this region we can compute the quark mass $m_q$ through the formula
+with associated Schrodinger potential
 \begin{align}
-&m_q = \frac{\lambda \left(A_{UVf} - 10\right) \tau_n\left(A_{UVf}\right)e^{- \log l_{UV} - \tau_{corr}\left(\lambda\left(A_{UVf}\right)\right)} - \lambda \left(A_{UVf} \right) \tau_n\left(A_{UVf} - 10\right)e^{- \log l_{UV} - \tau_{corr}\left(\lambda\left(A_{UVf} - 10\right)\right)} }{\lambda\left(A_{UVf} - 10\right) - \lambda\left(A_{UVf}\right)}, \\
-& \tau_{corr} = \frac{\left(-88 + 16 x + 27 sc k_{U1}\right) \log\left( \frac{24 \pi^2}{\left(11 - 2 x\right) \lambda}\right)}{12 x - 66}
+&V_P(u) = \frac{1}{\Xi_P(u)} \frac{d^2 \Xi_P(u)}{d u^2} + H_P (u), \\
+&\Xi_P(u) = \frac{1}{\tau \sqrt{V_f(\lambda, \tau) k(\lambda) e^{3A}}}, \\
+&H_P(u) = \frac{4 \tau^2 e^{2A} k(\lambda)}{w(\lambda)^2}
 \end{align}
+The singlet tensor fluctuation $J^{PC} = 2^{++}$ has the same equation of motion as in IHQCD, i.e.
+\begin{equation}
+\partial_z^2 h_{\mu \nu}^{\perp \perp} + 3 \dot{A} \partial_z h_{\mu \nu}^{\perp \perp} + \Box h_{\mu \nu}^{\perp \perp} = 0
+\end{equation}
+with the equivalent Schrodinger potential
+\begin{equation}
+V_G (z) = \frac{9}{4} {\dot{A}}^2 + \frac{3}{2} \ddot{A}
+\end{equation}
 
-As in the YM case we can determine $z\left(A\right)$ by using equation (\ref{eq: q definition}) and perform the shift $z\left(A\right) \to z\left(A\right) - z\left(A_{UVYM} \right) $ in order to have the UV singularity at $z = 0$. For the spectrum we will consider only  $A$ values that satisfy $z\left(A\right) > 10^{-6}$ and $\Phi\left(A\right) < 120$.
+The numerical determination of the spectrum proceeds by first finding the solution of the equations of motion defined by the action $S = S_g + S_f$. Details of the numerical procedure can be found in appendix~\ref{appendix:eom_sol}. For the cases of spin-2, singlet and non-singlet vector and axial vector and non-singlet scalar fluctuations we compute the Schrodinger potential and use a pseudospectral based on Chebyschev polynomials to compute the predicted masses of this model. The number of Chebyschev points used was 1000 and we checked the results were stable by computing the masses with a higher number of points. The mass of the pseudoscalars was computed using a standard shooting technique.
 
+\section{Fitting the meson and glueball spectrum}
 
+We now proceed to fix the parameters that appear in the potentials by comparing the predictions of our model with the lattice QCD results for the glueball spectrum and the experimental values of the meson masses quoted by the Particle Data Group \cite{pdg_2020}.  The overall energy unit in the model is also a free parameter. Varying it changes nothing due to symmetry~\cite{Jarvinen:2011qe}. Hence all the masses computed are the same as the experimental and lattice ones in $\rm{GeV}$ units. For this reason we will fit the parameters to the numerical values of ratios of masses instead of numerical values of masses.
 
+In the meson sector we will only consider the ones made of light quarks up and down. This sets the $x$ parameter coming from the flavour sector to be $2/3$.
 
+\begin{table}
+\centering
+\begin{tabular}{ | c | c | c | c | }
+\hline
+$J^{PC}$ & I & Meson & Mass Measured (GeV) \\
+\hline
+$1^{--}$ & 1 & $\rho$ & 0.7755 \\
+\hline
+$1^{--}$ & 1 &  $\rho(1450)$ & 1.465 \\
+\hline
+$1^{--}$ & 1 & $\rho(1700)$ & 1.720 \\
+\hline
+$1^{--}$ & 0 & $\omega(782)$ & 0.78265 \\
+\hline
+$1^{--}$ & 0 &  $\omega(1420)$ & 1.420 \\
+\hline
+$1^{--}$ & 0 & $\omega(1650)$ & 1.670 \\
+\hline
+$1^{++}$ & 1 & $a_1(1260)$ & 1.230\\
+\hline
+$1^{++}$ & 0 & $f_1(1285)$ & 1.2819\\
+\hline
+$1^{++}$ & 0 & $f_1(1420)$ & 1.4264\\
+\hline
+$0^{++}$ & 1 &  $a_0(1450)$ & 1.474 \\
+\hline
+$0^{-+}$ & 1 &  $\pi_0$ & 0.134977 \\
+\hline
+$0^{-+}$ & 1 &  $\pi_0(1300)$ & 1.300 \\
+\hline
+$0^{-+}$ & 1 & $\pi_0(1800)$ & 1.812 \\
+\hline
+\end{tabular}
+\caption{Light unflavoured mesons from~\cite{pdg_2020} used in the spectrum fit. The quantum number $I = 1$ means the meson is a flavour non-singlet state while $I = 0$ means the meson is a flavour singlet state.}
+\label{table:light mesons} 
+\end{table}
 
-
-
-
-
-
-
-\section{Spectrum computation}
-We will simply use the formulas given in~\cite{Arean:2013tja} to solve the Schrodinger problem associated with each kind of fluctuation. A detail in my C++ code is worth mentioning. Basically I expand the $\Xi$ expressions in terms of the background fields and potentials as well their derivatives. This is done in Mathematica. The resulting expression in Mathematica is then coded in C++ in order to compute the Schrodinger potential for each kind of fluctuation.
-
+\begin{table}
+\centering
+\begin{tabular}{ | c | c | c | c | }
+\hline
+$J^{PC}$ & I & Meson & Mass Measured (GeV) \\
+\hline
+$1^{--}$ & 1 &  $\rho(2000)$ & 1.465 \\
+\hline
+$1^{--}$ & 1 & $\rho(2270)$ & 1.720 \\
+\hline
+$1^{--}$ & 0 &  $\omega(1960)$ & 1.960 \\
+\hline
+$1^{--}$ & 0 & $\omega(2205)$ & 2.205 \\
+\hline
+$1^{--}$ & 0 &  $\omega(2290)$ & 2.290 \\
+\hline
+$1^{--}$ & 0 & $\omega(2330)$ & 2.330 \\
+\hline
+$1^{++}$ & 1 & $a_1(1930)$ & 1.930\\
+\hline
+$1^{++}$ & 1 & $a_1(2095)$ & 2.095\\
+\hline
+$1^{++}$ & 1 & $a_1(2270)$ & 2.270\\
+\hline
+$1^{++}$ & 0 & $f_1(1970)$ & 1.971\\
+\hline
+$1^{++}$ & 0 & $f_1(2310$ & 2.310\\
+\hline
+$0^{++}$ & 1 &  $a_0(1450)$ & 1.474 \\
+\hline
+$0^{-+}$ & 1 &  $\pi_0$ & 0.134977 \\
+\hline
+$0^{-+}$ & 1 &  $\pi_0(1300)$ & 1.300 \\
+\hline
+$0^{-+}$ & 1 & $\pi_0(1800)$ & 1.812 \\
+\hline
+\end{tabular}
+\caption{Other light mesons from~\cite{pdg_2020} used in the spectrum fit. The quantum number $I = 1$ means the meson is a flavour non-singlet state while $I = 0$ means the meson is a flavour singlet state.}
+\label{table:other light mesons} 
+\end{table}
 
 
 \section{Fits}
@@ -1481,8 +1531,92 @@ Of course $\sigma\left(\gamma \gamma \rightarrow X\right) = \sigma^{\rm pomeron}
 
 
 
+\appendix
 
+\section{Solving the Equatios of Motion}
+\label{appendix:eom_sol}
 
+In this appendix we give details on how the equations of motion are solved. It turns out to be convenient to write the resulting equations in terms of $A$ instead of the radial coordinate $z$. To do this one introduces the variable
+\begin{equation}
+q\left(A\right) = \frac{dz}{dA} e^{A};
+\label{eq: q definition}
+\end{equation}
+From now on all the background fields will be functions of $A$ and the differential equations we present are all with respect to A being the independent variable.
+
+\subsubsection{Yang-Mills Equations of Motion}
+
+If we make $x = 0$ we get the action of the IHQCD model and hence we are dealing with a pure Yang-Mills theory in the large $N_c$ limit. The equations of motion are then
+\begin{align}
+	&\frac{dq}{dA} = \frac{1}{3} \left( 12 q - q^3 V_g \left(\Phi\right) \right) \\
+	&\frac{d\Phi}{dA} = - \frac{\sqrt{3}}{2} \sqrt{12 - q^2 V_g\left(\Phi\right)}
+	\label{eq: YM equations}
+\end{align}
+We will solve this coupled differential equations from the IR to the UV. We set $A_{IR} = -150$ and $A_{UVYM} = 50$ as the lower and upper bound on A. In the IR $A$ and $\Phi$ take the asymptotic form
+\begin{align}
+&A_{IR} \left(z\right) = \frac{23}{24} - \frac{173}{3456 z^2} - z^2 + 0.25 \log(6 z^2) - \frac{\log(Vg_{IR})}{2} \\
+&\Phi_{IR} \left(z \right) = - \frac{23}{16} - \frac{151}{2304 z^2} + \frac{3}{2} z^2 - \log(\frac{sc}{\lambda_0})
+\label{eq: YM fields IR asymptotics}
+\end{align}
+This allows us to determine $z_{IRYM}$ such that $A_{IR}\left(z_{IRYM}\right) = -150$ and use its numerical value to compute $\Phi\left(A_{IR}\right) = \Phi_{IR} \left( z_{IRYM}\right)$ and $q\left(A_{IR}\right) = e^{A_{IR}} / \frac{dA_{IR}}{d z} $ and hence defining boundary conditions to solve equations~\ref{eq: YM equations}. Note that $sc$ and $V_{gIR}$ determine uniquely both the initial conditions as well the evolution of the background fields in pure YM.
+
+After we solve the YM equations we can determine $z\left(A\right)$ by using equation (\ref{eq: q definition}). We solve this numerically by taking $z(A_{IRYM})$ = $z_{IRYM}$ as initial condition and at the end we perform the shift $z\left(A\right) \to z\left(A\right) - z\left(A_{UVYM} \right) $ in order to have the UV singularity at $z = 0$. For the spectrum we will consider only  $A$ values that satisfy $z\left(A\right) > 10^{-6}$ and $\Phi\left(A\right) < 120$.
+
+We finish this section by specifying which algorithms we have used to find the numerical YM background. To compute $z_{IRYM}$ we have used the root finding Van Wijngaarden-Dekker-Brent method described in~\cite{10.5555/1403886}. The differential equations (\ref{eq: YM equations}) were solved using $integrate\_const$ with a Runge-Kutta-Dormand-Prince stepper from the Boost $C++$ library.
+
+\subsubsection{Solving HVQCD equations of motion}
+
+The solution of HVQCD equations is done in four stages. In the first two we are deep in the IR and the tachyon is decoupled from the other background fields and $q\left(A\right)$ and $\Phi\left(A\right)$ obey equations (\ref{eq: YM equations}). In the third stage the tachyon will couple to the other background fields until it reaches the UV where it decouples again and we are in the fourth and last stage of the solution of the EOMs.
+
+As in the YM case we start by first specifying the IR boundary conditions. We first define $A_{IR} = -150$, $A_{UVYM} = 50$, $A_{UVc} = 100$ and $A_{UVf} = 1000$.
+Again  we compute $z_{IRYM}$ as in the YM case and we use it to compute $q\left(A_{IR}\right)$ and $\Phi\left(A_{IR}\right)$ as in YM and $\tau\left(A_{IR}\right)$ using the tachyon IR asymptotics
+\begin{equation}
+\tau_{IR} \left(z \right) = \tau_0 z^{\frac{(12 - x W_0) k_{IR}}{6 V_{gIR}}}
+\end{equation}
+where $\tau_0$ is a paremter that is gonna be fitted by the spectrum. This is the last parameter to be introduced.
+The constants $\tau_{cut} = 1000$ and $V_{f cut} = 10^{-8}$ are defined and they signal the end of the first and second stages of the construction of the numerical background, respectively.
+
+We start the construction of the background by computing the YM profile of $q\left(A\right)$ and $\Phi\left(A\right)$ from $A_{IR}$ to $A_{UVYM}$. If $\tau_{IR} > \tau_{cut}$ the tachyon profile will be given by the solution of the differential equation
+\begin{equation}
+	\frac{d\tau}{dA} = - 4 \frac{q^2 V_{f0}\left(\Phi\right) \tau}{8 V_{f0}\left( \Phi\right) k\left(\Phi\right) + 2 k\left(\Phi\right) \frac{d V_{f0}}{d\Phi} \frac{d\Phi}{dA} + V_{f0} \left(\Phi\right) \frac{dk}{d\Phi} \frac{d\Phi}{dA} }
+\end{equation}
+until $\tau < \tau_{cut}$, marking the end of the first stage. The value of $A$ such that this condition is met is called $A_{UV1}$ The values of $q$ and $\Phi$ used are the ones given by YM.
+
+In the second stage we solve the tachyon differential equation
+\begin{align}
+&\frac{d^2\tau}{d A^2} = - 2 \frac{q^2 \tau}{k\left(\Phi\right)} - 4 \frac{d \tau}{dA} + \frac{d \log q}{dA} \frac{d\tau}{dA} - 2 \tau {\left(\frac{d\tau}{dA}\right)}^2 - 4 k\left(\Phi\right) \frac{{\left( \frac{d\tau}{dA}\right)}^3}{q^2} - \\ \notag
+& - \frac{d \log V_{f0}}{d\Phi} \frac{d\tau}{dA} \frac{d\Phi}{dA} - \frac{d \log k}{d\Phi} \frac{d\tau}{dA} \frac{d\Phi}{dA} - k\left(\Phi\right) \frac{d \log V_{f0}}{d\Phi} {\left(\frac{d\tau}{dA}\right)}^3 \frac{\frac{d\Phi}{dA}}{q^2} - \frac{d k}{d\Phi} \frac{d\Phi}{dA} \frac{{\left(\frac{d\tau}{dA}\right)}^3}{2 q^2}
+\label{eq: tau YM 2}
+\end{align}
+from the value of $A_{UV1}$ to $A_{UVYM}$. Using the profiles of $q$, $\Phi$ and $\tau$ we compute $A_{UV2}$ such that $A_{UV1} < A_{UV2} < A_{UVYM}$ and $V_{f0}\left(\Phi\right) e^{-\tau^2} = V_{fcut} V_g \left(\Phi\right)$ are satisfied. This condition marks when the tachyon starts to couple with $q$ and $\Phi$ from the IR to the UV.\footnote{Matti's code rejects such backgrounds while my code just takes them as valid backgrounds. This, I think, explains why Matti could not get the same results for the spectrum as me in that fit. This also means that in the numerical background I have obtained the tachyon never couples to $q$ and $\Phi$. }
+
+In the stage where the tachyon is coupled the backgroud fields' dynamics obeys
+\begin{align}
+& \frac{dq}{dA} = \frac{4}{9} q {\left(\frac{d\Phi}{dA}\right)}^2 + q V_f \left(\Phi, \tau\right) k\left(\Phi\right) \frac{{\left(\frac{d\tau}{dA}\right)}^2}{6\sqrt{1+ k\left(\Phi\right) {\left(\frac{\frac{d\tau}{dA}}{q}\right)}^2}} \\
+& \frac{d^2 \Phi}{d^2A} = - \frac{3}{8} q^2 \frac{d V_g}{d\Phi} + \frac{9}{\frac{d\Phi}{dA}} + \frac{3}{4} \frac{q^2}{\frac{d\Phi}{dA}} \left( \frac{V_f \left(\Phi, \tau\right)}{\sqrt{1+ k \frac{{\left(\frac{d\tau}{dA}\right)}^2}{q^2}}} - V_g \left(\Phi\right) \right) - \\ \notag
+& - 5 \frac{d\Phi}{d A} + V_f \left(\Phi, \tau\right) k \left(\Phi\right) \frac{{\left(\frac{d\tau}{dA}\right)}^2 \frac{d\Phi}{dA}}{6 \sqrt{1+ k\left(\Phi\right) {\left(\frac{\frac{d\tau}{dA}}{q}\right)}^2 }} + \frac{4}{9} {\left(\frac{d\Phi}{dA}\right)}^3 + \\ \notag
+& + \frac{3}{8} q^2 \frac{\frac{d V_f}{d\Phi}}{\sqrt{1+ k\left(\Phi\right) {\left(\frac{\frac{d\tau}{dA}}{q}\right)}^2}} + \frac{3}{8} k\left(\Phi\right) {\left( \frac{d\tau}{dA}\right)}^2 \frac{\frac{dV_f}{d\Phi}}{\sqrt{1+ k\left(\Phi\right) {\left(\frac{\frac{d\tau}{dA}}{q}\right)}^2}} + \\ \notag
+& + \frac{3}{16} V_f\left(\Phi, \tau\right) {\left( \frac{d\tau}{dA}\right)}^2 \frac{\frac{dk}{d \Phi}}{\sqrt{1+ k\left(\Phi\right) {\left(\frac{\frac{d\tau}{dA}}{q}\right)}^2}} \\ \notag
+& \frac{d^2 \tau}{d A^2} = -2 q^2 \frac{\tau}{k\left(\Phi\right)} - 4 \frac{d\tau}{d A} -2 \tau {\left(\frac{d\tau}{dA}\right)}^2 - 4\frac{k\left(\Phi\right)}{q^2} {\left(\frac{d\tau}{dA}\right)}^3 + k\left(\Phi\right) V_f \left(\Phi, \tau \right) \frac{{\left(\frac{d\tau}{dA}\right)}^3}{6 \sqrt{1+ k\left(\Phi\right) {\left(\frac{\frac{d\tau}{dA}}{q}\right)}^2}} - \\
+& - \frac{d \log(V_{f0})}{dA} \frac{d\Phi}{dA} \frac{d\tau}{dA} - k \left(\Phi\right) \frac{d\log(V_{f0}}{dA} \frac{d\Phi}{dA}\frac{{\left(\frac{d\tau}{d A}\right)}^3}{q^2} + \frac{4}{9} {\left(\frac{d\Phi}{dA}\right)}^2 \frac{d\tau}{dA} - \frac{d \log(k)}{d\Phi} \frac{d\Phi}{dA} \frac{d\tau}{dA} - \\ \notag
+& - \frac{1}{2} \frac{d k}{d\Phi} \frac{d\Phi}{dA} \frac{{\left( \frac{d\tau}{dA}\right)}^3}{q^2}
+\end{align}
+This is a stiff system of differential equations and for this reason we had used the function integrate\_adaptive with the rosenbrock4 stepper from Boost. This system is solved from $A_{UV2}$ to $A_{UCc}$. Because $A_{UVc} = 50$ we believe that at this point we are in the UV and here the tachyon decouples again from $q$ and $\Phi$.
+
+The UV equations of motion are
+\begin{align}
+&\frac{dq}{dA} =  \frac{4}{9} q {\left(\frac{\frac{d\lambda}{dA}}{\lambda}\right)}^2 \\
+&\frac{d^2\lambda}{dA^2} = -\frac{3}{8}  {\left(q \lambda \right)}^2 \frac{d V_g}{d\lambda} + 9 \frac{\lambda^2}{\frac{d\lambda}{dA}} + \frac{3}{4} \frac{{\left(q \lambda \right)}^2}{\frac{d\lambda}{dA}} \left( V_f\left(\lambda, 0\right) - V_g \left(\lambda\right) \right) - 5 \frac{d\lambda}{dA}  + \\
+& + \frac{d \log q}{dA} \frac{d\lambda}{d A} + \frac{{\left( \frac{d\lambda}{dA}\right)}^2}{\lambda} + \frac{3}{8} {\left( q \lambda \right)}^2 \frac{d V_f}{d\lambda} \left(\lambda, 0 \right) \\ \notag
+& \frac{d^2 \tau_n}{dA^2} = 3 \tau_n - 2 \frac{q^2 \tau_n}{k\left(\lambda\right)} - \tau_n \frac{d \log q}{dA} + \tau_n \frac{d \log V_{f0}}{d\lambda} \frac{d\lambda}{dA} - 2 \frac{d\tau_n}{d A} + \frac{d\log q}{d A} \frac{d \tau_n}{dA} - \\
+& - \frac{d \log V_{f0}}{d\lambda} \frac{d\lambda}{dA} \frac{d\tau_n}{dA} + \tau_n \frac{d\lambda}{dA} \frac{d \log k}{d\lambda} - \frac{d\lambda}{dA} \frac{d\tau_n}{dA} \frac{d \log k}{d\lambda}
+\end{align}
+where $\tau_n = e^A \tau$. This system is solved from $A_{UVc}$ to $A_{UVf}$. With the profile of $\tau_n$ and $\lambda$ in this region we can compute the quark mass $m_q$ through the formula
+\begin{align}
+&m_q = \frac{\lambda \left(A_{UVf} - 10\right) \tau_n\left(A_{UVf}\right)e^{- \log l_{UV} - \tau_{corr}\left(\lambda\left(A_{UVf}\right)\right)} - \lambda \left(A_{UVf} \right) \tau_n\left(A_{UVf} - 10\right)e^{- \log l_{UV} - \tau_{corr}\left(\lambda\left(A_{UVf} - 10\right)\right)} }{\lambda\left(A_{UVf} - 10\right) - \lambda\left(A_{UVf}\right)}, \\
+& \tau_{corr} = \frac{\left(-88 + 16 x + 27 sc k_{U1}\right) \log\left( \frac{24 \pi^2}{\left(11 - 2 x\right) \lambda}\right)}{12 x - 66}
+\end{align}
+
+As in the YM case we can determine $z\left(A\right)$ by using equation (\ref{eq: q definition}) and perform the shift $z\left(A\right) \to z\left(A\right) - z\left(A_{UVYM} \right) $ in order to have the UV singularity at $z = 0$. For the spectrum we will consider only  $A$ values that satisfy $z\left(A\right) > 10^{-6}$ and $\Phi\left(A\right) < 120$.
 
 
 
