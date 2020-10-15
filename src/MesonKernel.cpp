@@ -20,7 +20,7 @@ std::vector<double> MesonKernel::computePotential(const double J) const
     const double f = pars[6];
     // model = IHQCD
     std::vector<double> VSch = hvqcd().U1() + (J*J-1) * hvqcd().e2A() - 3 * invls * invls * (J-1) * hvqcd().e2Astring() * (1.0 + f / hvqcd().l1_2());
-    VSch = VSch -1.0 * (J-1) * (a * hvqcd().aF() + b * hvqcd().bF() + c * hvqcd().cF() + d * hvqcd().dF() + e * hvqcd().eF());
+    VSch = VSch + (J-1) * (a * hvqcd().aF() + b * hvqcd().bF() + c * hvqcd().cF() + d * hvqcd().dF() + e * hvqcd().eF());
     // VSch's values are ordered from IR to UV
     // We want from UV to IR, so we reverse them
     std::reverse(std::begin(VSch), std::end(VSch));
