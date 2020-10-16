@@ -13,9 +13,8 @@ int main()
     double invls, ag, bg, cg, dg, eg, fg;
     double am, bm, cm, dm, em, fm;
 
-    invls = 0; fg = 0; fm = 0;
-    ag = -0.788065; bg = 12.8544; cg = -3.62336; dg = 4.31717; eg = 1.02091;
-    am = 10.8103, bm = 5.35897, cm = 10.8907, dm = 5.58653, em = 9.74851;
+    invls = 0; ag = -0.952001; bg = 12.8395; cg = -3.62051; dg = 4.85515; eg = 1.0048; fg = 0;
+    am = -3.74852; bm = 4.81612; cm = -9.96161; dm = 0.247632; em = 0.115675; fm = 0;
     
     // Compute Chebyschev matrices
     chebSetN(400);
