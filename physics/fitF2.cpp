@@ -85,6 +85,13 @@ int main(int argc, char ** argv)
         cout << "g1g = " << x[10] << " g2g = " << x[11] << " g3g = " << x[12] << " g4g = " << x[13] << endl;
         cout << "g1m = " << x[14] << endl;
         cout << "chi2: " << CHI2 << endl;
+        double j_sp = hqcdp.getSpectrum()[0].getReggeons()[1].getJ();
+        double j_m = hqcdp.getSpectrum()[0].getReggeons()[4].getJ();
+        cout << "Soft Pomeron intercept: " << j_sp << endl;
+        cout << "Meson Intercept: " << j_m << endl;
+        CHI2 +=  ( fabs(j_sp - 1.08) > 0.01 ) ? exp( 1000 * fabs(j_sp - 1.08)) : 0 ;
+        CHI2 +=  ( fabs(j_m - 0.55) > 0.01 ) ? exp( 1000 * fabs(j_m - 0.55)) : 0 ;
+        cout << "chi2 + intercept constraints: " << CHI2 << endl;
         // Return chi2
         return CHI2;
     };
