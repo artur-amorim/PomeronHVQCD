@@ -247,3 +247,6 @@ target_link_libraries(predictStructureFunctions.exe armadillo blas hvqcd_lib)
 
 add_executable(fitF2.exe physics/fitF2.cpp)
 target_link_libraries(fitF2.exe armadillo blas hvqcd_lib)
+
+add_executable(fitF2MesonKernel.exe physics/fitF2MesonKernel.cpp)
+target_link_libraries(fitF2MesonKernel.exe armadillo blas hvqcd_lib)
