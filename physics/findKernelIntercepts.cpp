@@ -12,40 +12,40 @@ using namespace std;
 
 int main(int argc, char ** argv)
 {
-    double invls;
-    double ag, am;
-    double bg, bm;
-    double cg, cm;
-    double dg, dm;
-    double eg, em;
-    double fg, fm;
-    if (argc < 3)
+    double coeff_g, coeff_m;
+    int coeff_index;
+    if (argc < 4)
     {
-        bg = 0; bm = 0;
+        coeff_g = 10.6221; coeff_m = 5.58333;
+        coeff_index = 2;
     }
     else
     {
-        bg = stod(argv[1]); bm = stod(argv[2]);
+        coeff_g = stod(argv[1]); coeff_m = stod(argv[2]);
+        coeff_index = stoi(argv[3]);
     }
     cout << "Starting to hunt for the intercepts with:" << endl;
-    cout << "bg: " << bg << " bm: " << bm << endl;
+    cout << "coeff_index: " << coeff_index << endl;
+    cout << "coeff_g: " << coeff_g << " coeff_m: " << coeff_m << endl;
 
     double mq = hvqcd().QuarkMass();
     // Compute Chebyschev matrices
-    chebSetN(400);
+    chebSetN(1000);
 
     // Setup gluon kernel
-    vector<double> gluon_pars = {0, 0, bg, 0, 0, 0, 0};
-    vector<double> meson_pars = {0, 0, bm, 0, 0, 0, 0};
+    vector<double> gluon_pars = {0, 0, 0, 0, 0, 0, 0};
+    vector<double> meson_pars = {0, 0, 0, 0, 0, 0, 0};
+    gluon_pars[coeff_index] = coeff_g; meson_pars[coeff_index] = coeff_m;
     GluonKernel gluon(2, gluon_pars);
     MesonKernel meson(1, meson_pars);
 
-    function<double(vector<double>) > func = [&gluon, &meson] (const vector<double> &x)
+    function<double(vector<double>) > func = [&gluon, &meson, &gluon_pars, &meson_pars, coeff_index] (const vector<double> &x)
     {
         // Compute Regge Trajectories
-        cout << "bg: " << x[0] << " bm: " << x[1] << endl;
-        gluon.computeReggeTrajectories({0, 0, x[0], 0, 0, 0, 0});
-        meson.computeReggeTrajectories({0, 0, x[1], 0, 0, 0, 0});
+        cout << "coeff_g: " << x[0] << " coeff_m: " << x[1] << endl;
+        gluon_pars[coeff_index] = x[0]; meson_pars[coeff_index] = x[1];
+        gluon.computeReggeTrajectories(gluon_pars);
+        meson.computeReggeTrajectories(meson_pars);
         // Compute the intercepts
         Spline_Interp<double> gluon_j0 = gluon.Trajectory(0);
         Spline_Interp<double> gluon_j1 = gluon.Trajectory(1);
@@ -59,7 +59,7 @@ int main(int argc, char ** argv)
         return erms2;
     };
 
-    vector<double> x = {bg, bm};
+    vector<double> x = {coeff_g, coeff_m};
     vector<double> deltas(x.size(), 10);
     x = optimFunction(x, func, deltas, 1e-3);
 
@@ -67,8 +67,10 @@ int main(int argc, char ** argv)
     for(int i = 0; i < x.size(); i++) cout << x[i] << '\t';
     cout << endl;
     
-    gluon.computeReggeTrajectories({0, 0, x[0], 0, 0, 0, 0});
-    meson.computeReggeTrajectories({0, 0, x[1], 0, 0, 0, 0});
+    gluon_pars[coeff_index] = x[0]; meson_pars[coeff_index] = x[1];
+    gluon.computeReggeTrajectories(gluon_pars);
+    meson.computeReggeTrajectories(meson_pars);
+
     // Compute the intercepts
     Spline_Interp<double> gluon_j0 = gluon.Trajectory(0);
     Spline_Interp<double> gluon_j1 = gluon.Trajectory(1);
