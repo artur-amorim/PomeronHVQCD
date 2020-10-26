@@ -250,3 +250,6 @@ target_link_libraries(fitF2.exe armadillo blas hvqcd_lib)
 
 add_executable(fitF2MesonKernel.exe physics/fitF2MesonKernel.cpp)
 target_link_libraries(fitF2MesonKernel.exe armadillo blas hvqcd_lib)
+
+add_executable(computeReggeTrajectories.exe physics/computeReggeTrajectories.cpp)
+target_link_libraries(computeReggeTrajectories.exe armadillo blas hvqcd_lib)
