@@ -17,40 +17,42 @@ using namespace std;
 int main(int argc, char ** argv)
 {
     // Gravitational photon couplings
-    double bg, bm;
+    double coeff_g, coeff_m;
+    int coeff_index;
     double k0g, k1g, k0m;
     // Gravitational proton couplings
     double kbar0g, kbar1g, kbar0m;
-    string sigma_gp_path, sigma_gg_path, sigma_pp_path;
-    if(argc < 12)
+    //string sigma_gp_path, sigma_gg_path, sigma_pp_path;
+    if(argc < 10)
     {
-        sigma_gg_path = "expdata/SigmaGammaGamma/SigmaGammaGamma_PDG_data_W_gt_4.txt";
-        sigma_gp_path = "expdata/SigmaGammaProton/SigmaGammaP_PDG_data_W_gt_461.txt";
-        sigma_pp_path = "expdata/SigmaProtonProton/SigmaProtonProton_data_W_lt_10000_without_outliers.txt";
+        //sigma_gg_path = "expdata/SigmaGammaGamma/SigmaGammaGamma_PDG_data_W_gt_4.txt";
+        //sigma_gp_path = "expdata/SigmaGammaProton/SigmaGammaP_PDG_data_W_gt_461.txt";
+        //sigma_pp_path = "expdata/SigmaProtonProton/SigmaProtonProton_data_W_lt_10000_without_outliers.txt";
         // Default values for N = 400
-        bg = -10.5297; bm = -7.85023;
+        coeff_g = 10.5297; coeff_m = 7.85023; coeff_index = 2;
         k0g = 0.000923808; k1g = 0.0190831; k0m = -0.0017291;
         kbar0g = 0.335811; kbar1g = 21.6018; kbar0m = -46.4023;
-        cout << "Program usage: " + string(argv[0]) + " sigma_gg_path sigma_gp_path sigma_pp_path bg bm k0g k1g k0m kbar0g kbar1g kbar0m " << endl;
+        cout << "Program usage: " + string(argv[0]) + " coeff_g coeff_m coeff_index k0g k1g k0m kbar0g kbar1g kbar0m " << endl;
         cout << "Using default values." << endl;
     }
     else
     {
-        sigma_gg_path = argv[1];
-        sigma_gp_path = argv[2]; sigma_pp_path = argv[3];
-        bg = stod(argv[4]); bm = stod(argv[5]);
-        k0g = stod(argv[6]); k1g = stod(argv[7]); k0m = stod(argv[8]);
-        kbar0g = stod(argv[9]); kbar1g = stod(argv[10]); kbar0m = stod(argv[11]);
+        //sigma_gg_path = argv[1];
+        //sigma_gp_path = argv[2]; sigma_pp_path = argv[3];
+        coeff_g = stod(argv[1]); coeff_m = stod(argv[2]); coeff_index = stoi(argv[3]);
+        k0g = stod(argv[4]); k1g = stod(argv[5]); k0m = stod(argv[6]);
+        kbar0g = stod(argv[7]); kbar1g = stod(argv[8]); kbar0m = stod(argv[9]);
     }
     cout << "Starting fit with values:" << endl;
-    cout << "bg: " << bg << " bm: " << bm << endl;
+    cout << "coeff_index: " << coeff_index << endl;
+    cout << "coeff_g: " << coeff_g << " coeff_m: " << coeff_m << endl;
     cout << "k0g: " << k0g << " k1g: " << k1g << " k0m: " << k0m << endl;
     cout << "kbar0g: " << kbar0g << " kbar1g: " << kbar1g << " kbar0m: " << kbar0m << endl;
 
     // Define the process observables and load the data needed for the fit
-    SigmaGammaGamma sigma_gg(sigma_gg_path);
-    SigmaGammaProton sigma_gp(sigma_gp_path);
-    SigmaProtonProton sigma_pp(sigma_pp_path);
+    SigmaGammaGamma sigma_gg("expdata/SigmaGammaGamma/SigmaGammaGamma_PDG_data_W_gt_4.txt");
+    SigmaGammaProton sigma_gp("expdata/SigmaGammaProton/SigmaGammaP_PDG_data_W_gt_461.txt");
+    SigmaProtonProton sigma_pp("expdata/SigmaProtonProton/SigmaProtonProton_data_W_lt_10000_without_outliers.txt");
 
     // Get the experimental points
     int npoints = 0;
@@ -62,17 +64,22 @@ int main(int argc, char ** argv)
     npoints += sigma_pp_pts[0].size();
 
     // Setup Chebyschev computation
-    chebSetN(800);
+    chebSetN(1000);
 
     // Setup  GluonKernel and Meson Kernel
-    GluonKernel gluon(2, {0, 0, bg, 0, 0, 0, 0});
-    MesonKernel meson(1, {0, 0, bm, 0, 0, 0, 0});
+    vector<double> gluon_pars = {0, 0, 0, 0, 0, 0, 0};
+    vector<double> meson_pars = {0, 0, 0, 0, 0, 0, 0};
+    gluon_pars[coeff_index] = coeff_g; meson_pars[coeff_index] = coeff_m;
+    GluonKernel gluon(2, gluon_pars);
+    MesonKernel meson(1, meson_pars);
 
-    auto f = [&sigma_gg, &sigma_gp, &sigma_pp, &sigma_gg_pts, &sigma_gp_pts, &sigma_pp_pts, &gluon, &meson] (const std::vector<double> & X)
+    auto f = [&sigma_gg, &sigma_gp, &sigma_pp, &sigma_gg_pts, &sigma_gp_pts, &sigma_pp_pts, 
+              &gluon, &meson, &gluon_pars, &meson_pars, coeff_index] (const std::vector<double> & X)
     {
         // X is a vector with the values of bgm bm, k0g, k1g, k0m, kbar0g, kbar1g, kbar0m
-        gluon.computeReggeTrajectories({0, 0, X[0], 0, 0, 0, 0});
-        meson.computeReggeTrajectories({0, 0, X[1], 0, 0, 0, 0});
+        gluon_pars[coeff_index] = X[0]; meson_pars[coeff_index] = X[1];
+        gluon.computeReggeTrajectories(gluon_pars);
+        meson.computeReggeTrajectories(meson_pars);
         vector<Reggeon> reggeons_gluon = computeReggeons(gluon, 0, 2);
         vector<Reggeon> reggeons_meson = computeReggeons(meson, 0, 1);
         vector<Reggeon> reggeons = {reggeons_gluon[0], reggeons_gluon[1], reggeons_meson[0]};
@@ -87,7 +94,8 @@ int main(int argc, char ** argv)
 
         vector<double> ks = {X[2], X[3], X[4]};
         vector<double> kbars = {X[5], X[6], X[7]};
-        cout << "bg: " << X[0] << " bm: " << X[1] << endl;
+        cout << "coeff_index: " << coeff_index << endl;
+        cout << "coeff_g: " << X[0] << " coeff_m: " << X[1] << endl;
         cout << "kg0: " << ks[0] << " kg1: " << ks[1] << " km0: " << ks[2] << " kbarg0: " << kbars[0] << " kbarg1: " << kbars[1] << " kbarm0: " << kbars[2] << endl;
         /*
             Now we need to compute the gn's according to the definition in the notes
@@ -138,8 +146,8 @@ int main(int argc, char ** argv)
     };
 
     // Start the fit now
-    vector<double> X_guess = {bg, bm, k0g, k1g, k0m, kbar0g, kbar1g, kbar0m};
-    vector<double> delta = {1, 1, 0.001, 0.1, 0.01, 1, 10, 10};
+    vector<double> X_guess = {coeff_g, coeff_m, k0g, k1g, k0m, kbar0g, kbar1g, kbar0m};
+    vector<double> delta = {10, 10, 0.001, 0.1, 0.01, 1, 10, 10};
     vector<double> X_opt = optimFunction(X_guess, f, delta, 1e-12);
     
     // Print X_opt
