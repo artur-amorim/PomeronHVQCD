@@ -1,7 +1,6 @@
 #include <iostream>
 #include <string>
 #include <complex>
-#include <random>
 #include "HolographicVQCD.h"
 #include "SigmaGammaProton.h"
 #include "SigmaGammaGamma.h"

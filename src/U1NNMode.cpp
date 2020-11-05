@@ -158,13 +158,13 @@ void U1NNMode::df(double * X, double * Z, double * DF, double * PARS)
 void U1NNMode::g(int * I, double * Z, double * G, double * PARS)
 {
     if(*I == 1) *G = Z[0] - 1.0;
-    if(*I == 2) *G = Z[0] ;
+    if(*I == 2) *G = Z[1] ;
     return ;
 }
 
 void U1NNMode::dg(int * I, double * Z, double * DG, double * PARS)
 {
-    /*if (*I == 1)
+    if (*I == 1)
     {
         DG[0] = 1.0;
         DG[1] = 0.0;
@@ -174,9 +174,8 @@ void U1NNMode::dg(int * I, double * Z, double * DG, double * PARS)
         DG[0] = 0.0;
         DG[1] = 1.0;
     }
-    */
-   DG[0] = 1.0;
-   DG[1] = 0.0;
+    /*DG[0] = 1.0;
+    DG[1] = 0.0;*/
     return ;
 }
 

@@ -1,7 +1,6 @@
 #include <iostream>
 #include <string>
 #include <complex>
-#include <random>
 #include "HolographicVQCD.h"
 #include "SigmaGammaProton.h"
 #include "SigmaGammaGamma.h"
@@ -17,36 +16,39 @@ using namespace std;
 int main(int argc, char ** argv)
 {
     // Gravitational photon couplings
+    double coeff_g, coeff_m;
+    int coeff_index;
     double k0g, k1g, k0m;
     // Gravitational proton couplings
     double kbar0g, kbar1g, kbar0m;
-    string sigma_gp_path, sigma_gg_path, sigma_pp_path;
+    //string sigma_gp_path, sigma_gg_path, sigma_pp_path;
     if(argc < 10)
     {
-        sigma_gg_path = "expdata/SigmaGammaGamma/SigmaGammaGamma_PDG_data_W_gt_4.txt";
-        sigma_gp_path = "expdata/SigmaGammaProton/SigmaGammaP_PDG_data_W_gt_461.txt";
-        sigma_pp_path = "expdata/SigmaProtonProton/SigmaProtonProton_data_W_lt_10000_without_outliers.txt";
         // Default values for N = 400
-        k0g = 0.000431395; k1g = 0.0195943; k0m = -0.00126498;
-        kbar0g = 0.216585; kbar1g = 21.3912; kbar0m = -66.2591;
-        cout << "Program usage: " + string(argv[0]) + " sigma_gg_path sigma_gp_path sigma_pp_path k0g k1g k0m kbar0g kbar1g kbar0m " << endl;
+        coeff_g = 10.5297; coeff_m = 7.85023; coeff_index = 2;
+        k0g = 0.000923808; k1g = 0.0190831; k0m = -0.0017291;
+        kbar0g = 0.335811; kbar1g = 21.6018; kbar0m = -46.4023;
+        cout << "Program usage: " + string(argv[0]) + " coeff_g coeff_m coeff_index k0g k1g k0m kbar0g kbar1g kbar0m " << endl;
         cout << "Using default values." << endl;
     }
     else
     {
-        sigma_gg_path = argv[1];
-        sigma_gp_path = argv[2]; sigma_pp_path = argv[3];
+        //sigma_gg_path = argv[1];
+        //sigma_gp_path = argv[2]; sigma_pp_path = argv[3];
+        coeff_g = stod(argv[1]); coeff_m = stod(argv[2]); coeff_index = stoi(argv[3]);
         k0g = stod(argv[4]); k1g = stod(argv[5]); k0m = stod(argv[6]);
         kbar0g = stod(argv[7]); kbar1g = stod(argv[8]); kbar0m = stod(argv[9]);
     }
     cout << "Starting fit with values:" << endl;
+    cout << "coeff_index: " << coeff_index << endl;
+    cout << "coeff_g: " << coeff_g << " coeff_m: " << coeff_m << endl;
     cout << "k0g: " << k0g << " k1g: " << k1g << " k0m: " << k0m << endl;
     cout << "kbar0g: " << kbar0g << " kbar1g: " << kbar1g << " kbar0m: " << kbar0m << endl;
 
     // Define the process observables and load the data needed for the fit
-    SigmaGammaGamma sigma_gg(sigma_gg_path);
-    SigmaGammaProton sigma_gp(sigma_gp_path);
-    SigmaProtonProton sigma_pp(sigma_pp_path);
+    SigmaGammaGamma sigma_gg("expdata/SigmaGammaGamma/SigmaGammaGamma_PDG_data_W_gt_4.txt");
+    SigmaGammaProton sigma_gp("expdata/SigmaGammaProton/SigmaGammaP_PDG_data_W_gt_461.txt");
+    SigmaProtonProton sigma_pp("expdata/SigmaProtonProton/SigmaProtonProton_data_W_lt_10000_without_outliers.txt");
 
     // Get the experimental points
     int npoints = 0;
@@ -60,10 +62,12 @@ int main(int argc, char ** argv)
     // Setup Chebyschev computation
     chebSetN(1000);
 
-    // Setup HardPomeron Kernel and compute the Reggeons
-    double bg = -10.6221, bm = -5.58333;
-    GluonKernel gluon(2, {0, 0, bg, 0, 0, 0, 0});
-    MesonKernel meson(1, {0, 0, bm, 0, 0, 0, 0});
+    // Setup  GluonKernel and Meson Kernel
+    vector<double> gluon_pars = {0, 0, 0, 0, 0, 0, 0};
+    vector<double> meson_pars = {0, 0, 0, 0, 0, 0, 0};
+    gluon_pars[coeff_index] = coeff_g; meson_pars[coeff_index] = coeff_m;
+    GluonKernel gluon(2, gluon_pars);
+    MesonKernel meson(1, meson_pars);
     gluon.computeReggeTrajectories();
     meson.computeReggeTrajectories();
     vector<Reggeon> reggeons_gluon = computeReggeons(gluon, 0, 2);
@@ -72,6 +76,7 @@ int main(int argc, char ** argv)
     for(int i = 0; i < reggeons.size(); i++) reggeons[i].setIndex(i+1);
     Spectra spec(0, reggeons);
     vector<Spectra> spectrum = {spec};
+
 
     // Ok now let's compute all the Izns, because our fitting parameters only enter in the IzNBars
     cout << "Computing sigma(gamma gamma -> X) IzNs" << endl;
