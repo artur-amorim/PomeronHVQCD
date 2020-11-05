@@ -102,6 +102,7 @@ with $\theta$ being the overall phase of the tachyon $T = \tau e^{i \theta} \mat
 The $Z(\lambda)$ function is defined by
 \begin{equation}
 Z(\lambda) = Z_a + c_a {\left(\frac{\lambda}{\lambda_0}\right)}^4
+\label{eq:Z_func_def}
 \end{equation}
 The definition is constrained by Yang-Mills theory and the parameters $Z_a$ and $c_a$ will be determined by fitting the spectrum of singlet axial vector mesons.
 
@@ -168,13 +169,13 @@ with the equivalent Schrodinger potential
 V_G (z) = \frac{9}{4} {\dot{A}}^2 + \frac{3}{2} \ddot{A}
 \end{equation}
 
-The numerical determination of the spectrum proceeds by first finding the solution of the equations of motion defined by the action $S = S_g + S_f$. Details of the numerical procedure can be found in appendix~\ref{appendix:eom_sol}. For the cases of spin-2, singlet and non-singlet vector and axial vector and non-singlet scalar fluctuations we compute the Schrodinger potential and use a pseudospectral based on Chebyschev polynomials to compute the predicted masses of this model. The number of Chebyschev points used was 1000 and we checked the results were stable by computing the masses with a higher number of points. The mass of the pseudoscalars was computed using a standard shooting technique.
+The numerical determination of the spectrum proceeds by first finding the solution of the equations of motion defined by the action $S = S_g + S_f$. Details of the numerical procedure can be found in appendix~\ref{appendix:eom_sol}. For the cases of spin-2, singlet and non-singlet vector and axial vector and non-singlet scalar fluctuations we compute the Schrodinger potential and use a pseudospectral based on Chebyschev polynomials to compute the predicted masses of this model. The number of Chebyschev points used was 1000 and we checked the results were stable by computing the masses with a higher number of points. The reliability of the results was also studied by considering different IR and UV cutoffs on the background fields used to solve the Schrodinger problems. The masses of the pseudoscalars were computed using the shooting method.
 
 \section{Fitting the meson and glueball spectrum}
 
 We now proceed to fix the parameters that appear in the potentials by comparing the predictions of our model with the lattice QCD results for the glueball spectrum and the experimental values of the meson masses quoted by the Particle Data Group \cite{pdg_2020}.  The overall energy unit in the model is also a free parameter. Varying it changes nothing due to symmetry~\cite{Jarvinen:2011qe}. Hence all the masses computed are the same as the experimental and lattice ones in $\rm{GeV}$ units. For this reason we will fit the parameters to the numerical values of ratios of masses instead of numerical values of masses.
 
-In the meson sector we will only consider the ones made of light quarks up and down. This sets the $x$ parameter coming from the flavour sector to be $2/3$.
+In the meson sector we will only consider the ones made of light quarks up and down. This sets the $x$ parameter coming from the flavour sector to be $2/3$. In table~\ref{table:light mesons} we show all the mesons listed in~\cite{pdg_2020} under \textit{light unflavoured mesons} with the values of $J^{PC}$ mentioned before. The exceptions are the flavour singlet scalars and pseudoscalars and the $a_0(980)$. The latter being a quark-antiquark state or a four-quark state is still debatable although the literature favours more the four-quark state hypothesis. For this reason we did not include it in this work. In table~\ref{table:other light mesons} we have the mesons under \textit{other light unflavoured mesons}, which are still not well establishd. In case some of these states are not confirmed this work should be updated.
 
 \begin{table}
 \centering
@@ -219,9 +220,9 @@ $0^{-+}$ & 1 & $\pi_0(1800)$ & 1.812 \\
 \hline
 $J^{PC}$ & I & Meson & Mass Measured (GeV) \\
 \hline
-$1^{--}$ & 1 &  $\rho(2000)$ & 1.465 \\
+$1^{--}$ & 1 &  $\rho(2000)$ & 2.000 \\
 \hline
-$1^{--}$ & 1 & $\rho(2270)$ & 1.720 \\
+$1^{--}$ & 1 & $\rho(2270)$ & 2.265 \\
 \hline
 $1^{--}$ & 0 &  $\omega(1960)$ & 1.960 \\
 \hline
@@ -241,416 +242,248 @@ $1^{++}$ & 0 & $f_1(1970)$ & 1.971\\
 \hline
 $1^{++}$ & 0 & $f_1(2310$ & 2.310\\
 \hline
-$0^{++}$ & 1 &  $a_0(1450)$ & 1.474 \\
+$0^{++}$ & 1 &  $a_0(2020)$ & 2.025 \\
 \hline
-$0^{-+}$ & 1 &  $\pi_0$ & 0.134977 \\
+$0^{-+}$ & 1 &  $\pi_0(2070)$ & 2.070 \\
 \hline
-$0^{-+}$ & 1 &  $\pi_0(1300)$ & 1.300 \\
-\hline
-$0^{-+}$ & 1 & $\pi_0(1800)$ & 1.812 \\
+$0^{-+}$ & 1 & $\pi_0(2360)$ & 2.360 \\
 \hline
 \end{tabular}
 \caption{Other light mesons from~\cite{pdg_2020} used in the spectrum fit. The quantum number $I = 1$ means the meson is a flavour non-singlet state while $I = 0$ means the meson is a flavour singlet state.}
 \label{table:other light mesons} 
 \end{table}
 
-
-\section{Fits}
-
-In the last sections we discussed how to compute the numerical backgrounds of a bulk theory dual to QCD in the Veneziano limit. We also saw how these backgrounds depend on a given set of parameters. Here we describe how those parameters can be fixed by using ratios of masses of particles that have been detected experimentally or in lattice simulations of QCD. The fluctuations of our backgrounds fields can be classified in flavour singlet and non-singlet fluctuations. We can also divide the different  fluctuations by using the quantum numbers $J^{PC}$.  Each of this classes of fluctuations will be identified with a group of mesons or glueballs. To simplify this identification we will consider only mesons with up and down quarks in their quark content. This means that in our fits $x = 2 / 3$.
-
-Our background fields are determined by 15 parameters: sc, ksc, wsc, $W_0$, $w_0$, $k_{U1}$, $w_{U1}$, $V_{gIR}$, $W_{IR}$, $k_{IR}$, $w_{IR}$, $W_1$, $k_1$, $w_1$ and $\tau_0$. We are then in presence of non-trivial problem of finding the best set of parameters that describes the spectrum of observed mesons and glueballs. To simplify a bit the search for such set we can start by considering the spectrum of pure YM ($x = 0$) and fit sc and $V_{gIR}$ to the ratios $m_{0^{++}*} / m_{0^{++}}$ and $m_{2^{++}}/m_{0^{++}}$. If we do that we find that $sc = 2.50485$ and $V_{gIR} = 3.47852$ are the best set of values. Having said this we will perform fits with and without sc and $V_{gIR}$ fixed.
-
-For the tensor glueball $2^{++}$ we will use the pure YM value of 2.150 GeV. The flavour non-singlet mesons and flavour singlet mesons used in the fits are displayed in table~\ref{table: ns mesons} and table~\ref{table: s mesons}, respectively.
-
+The profile of the background fields are determined by 17 parameters: $\rm{sc}$, $\rm{ksc}$, $\rm{wsc}$, $W_0$, $w_0$, $kU1$, $wU1$, $VgIR$, $WIR$, $kIR$, $wIR$, $W1$, $k1$, $w1$, $a_1$ and $a_2$ are parameters of the potentials appearing in the action and $\tau_0$ is a parameter that characterises the IR asymptotics of the tachyon. For our choice of potentials the asymptotics of the tachyon in the IR is
+\begin{equation}
+\tau \sim \tau_0 \, z^{\tau_c}, \quad \tau_c = \frac{4}{3} \frac{\left(\frac{3}{2} - x \frac{W_0}{8}\right) kIR a_2}{VgIR (a_2 - a_1)}
+\end{equation}
+In our fits $a_1$ and $a_2$ are fixed by imposing the constraints $a_2 - a_1 = 1$ and $a_2 = k(0) / 2$ in order to get a reasonable spectrum~\cite{Jarvinen:2015ofa}. This reduces the number of free parameters to 15. We then fit these parameters to ratios between glueball and meson masses in tables~\ref{table:light mesons} and~\ref{table:other light mesons} with the $\rho$ mass by minimising the function
+\begin{equation}
+J = \sum_{i} \frac{|R_{\rm{pred.} \,i} - R_{\rm{obs.} \, i}|}{R_{\rm{obs.} \, i}} + \lambda e^{- \left(\tau_c - 1\right)} + \lambda e^{-\left( \tau_M^2 - 3.5 \right)},
+\end{equation}
+excluding the singlet axial vector mesons. This gives a total of 23 data points. The sum term is the absolute relative difference between the predictions of our model and the ones obtained by using experimental and lattice data while the other two terms are constraints we want our background to satisfy. The first condition ensures absence of extra gauge anomalies in the IR while the second one gives more weight to solutions with a tachyon mass in the IR satisfying the Breitenlohner-Freedman bound. We repeated the fit with different values of the $\lambda$ parameter in order to balance the ability of the model to reproduce the observed ratios and still be consistent and stable. We have found that $\lambda = 0.1$ is a good choice and the results that we present below were obtained with this value. Having fixed the background, we fit the parameters $Z_a$ and $c_a$ of equation~\ref{eq:Z_func_def} against four mass ratios between the singlet axial vector mesons with the $\rho$ meson. With this procedure we have obtained the parameter values present in table~\ref{table:best_fit_background_pars} and the corresponding mass ratios of table~\ref{table:best spectrum fit}.
 \begin{table}
 \centering
-\begin{tabular}{ | c | c | c | }
-
+\begin{tabular}{|c|c|c|c|c|c|}
 \hline
-$J^{PC}$ & Meson & Mass Measured (GeV) \\
+Parameter & value & Parameter & value & Parameter & value \\
 \hline
-$1^{--}$ & $\rho$ & 0.7755 \\
+sc & 2.8328 & ksc & 3.16697 & wsc & 1.69263 \\
 \hline
-$1^{--}$ &  $\rho(1450)$ & 1.465 \\
+$W_0$ & 2.42885 & $w_0$ & 1.06381 & kU1 & 1.32535 \\ 
 \hline
-$1^{--}$ & $\rho(1700)$ & 1.720 \\
+wU1 & -0.289843 & VgIR & 1.80415 & WIR & 1.13448 \\ 
 \hline
-$1^{--}$ & $\rho(1900)$ & 1.909 \\
+kIR & 1.76473 & wIR & 2.92914 & W1 & 0.234188 \\ 
 \hline
-$1^{--}$ & $\rho(2150)$ & 2.149 \\
+k1 & -0.307571 & w1 & 3.03579 & $a_1$ & 0.541312 \\
 \hline
-$1^{--}$ & $\rho(2270)$ & 2.265\\
+ $a_2$ & 1.54131 & $\tau_0$ & 0.92323 & $Z_a$ & -0.0376777 \\
 \hline
-$1^{++}$ & $a_1(1260)$ & 1.230\\
-\hline
-$1^{++}$ & $a_1(1640)$ & 1.647 \\
-\hline
-$1^{++}$ & $a_1(1930)$ & 1.930 \\
-\hline
-$1^{++}$ & $a_1(2096)$ & 2.096 \\
-\hline
-$1^{++}$ & $a_1(2270)$ & 2.270 \\
-\hline
-$0^{++}$ &  $a_0(1450)$ & 1.474 \\
-\hline
-$0^{++}$ &  $a_0(2020)$ & 2.025 \\
-\hline
-$0^{-+}$ &  $\pi_0$ & 0.135 \\
-\hline
-$0^{-+}$ &  $\pi_0(1300)$ & 1.300 \\
-\hline
-$0^{-+}$ &  $\pi_0(1800)$ & 1.812 \\
-\hline
-$0^{-+}$ &  $\pi_0(2070)$ & 2.070 \\
-\hline
-$0^{-+}$ &  $\pi_0(2360)$ & 2.360 \\
+$c_a$ & 23.3073 & & & & \\
 \hline
 \end{tabular}
-\caption{Non-singlet mesons used in the fits.}
-\label{table: ns mesons} 
+\caption{Best fit parameters of the background potentials to the mass ratios between the mesons listed on tables~\ref{table:light mesons} and~\ref{table:other light mesons} and the $\rho$ meson. }
+\label{table:best_fit_background_pars} 
 \end{table}
-
 \begin{table}
 \centering
-\begin{tabular}{ | c | c | c | }
-
+\begin{tabular}{ | c | c | c | c | }
 \hline
-$J^{PC}$ & Meson & Mass Measured (GeV) \\
+Ratio & $\rm{R_{pred.}}$ & $\rm{R_{obs.}}$ & $|\rm{R_{pred.}} - \rm{R_{obs.}}| / \rm{R_{obs.}}$ \\
 \hline
-$1^{--}$ & $\omega(782)$ & 0.78265 \\
+$m_{2^{++}} / m_\rho $  & $1.42174$	& $2.47401$ &	$0.42533$ \\
 \hline
-$1^{--}$ &  $\omega(1420)$ & 1.420\\
+$m_{\rho(1450)}/m_\rho$ & $1.66194$ &	$1.88969$ & $0.12052$ \\
 \hline
-$1^{--}$ & $\omega(1650)$ & 1.670 \\
+$m_{\rho(1700)} / m_\rho$ & $2.14063$ & $2.21861$ & $0.035149$ \\
 \hline
-$1^{++}$ & $f_1(1285)$ & 1.2819\\
+$m_{\rho(2000)} / m_\rho$ & $2.55841$ & $2.57978$ & $0.00828202$ \\
 \hline
-$1^{++}$ & $f_1(1420)$ & 1.4264 \\
+$m_{\rho(2270)} / m_\rho $ & $2.93938$ & $2.9216$ & $0.00608397$ \\
+\hline
+$m_{\omega(782)} / m_{\rho}$ & $1$ & $1.00953$ & $0.00944228$ \\
+\hline
+$m_{\omega(1420)} / m_\rho$ & $1.66194$ &	$1.83164$ & $0.092649$ \\
+\hline
+$m_{\omega(1650)} / m_{\rho}$ & $2.14063$ & $2.15412$ & $0.00626128$ \\
+\hline
+$m_{\omega(1960)} / m_\rho$ & $2.55841$ &	$2.52818$ & $0.0119571$ \\
+\hline
+$m_{\omega(2205)} / m_{\rho}$ & 2.93938 &2.84421 &0.0334604 \\
+\hline
+$m_{\omega{2290}} / m_{\rho}$ & $3.2884$	& $2.95385$ & $0.113261$\\
+\hline
+$m_{\omega(2330)} / m_{\rho}$ & $3.60968$	& $3.00544$ &	$0.201048$ \\
+\hline
+$m_{a_1(1260)} / m_\rho$ & $1.59097$ &	 $1.58656$ & $0.00277946$ \\
+\hline
+$m_{a_1(1930)} / m_\rho $ & $2.09478$ & $2.48949$ &	$0.158549$ \\
+\hline
+$m_{a_1(2095)} / m_\rho$ & $2.52329$ &	 $2.70232$ & $0.0662509$ \\
+\hline
+$m_{a_1(2270)} / m_\rho$ & $2.91585$ & $2.92805$ & $0.00416789$ \\
+\hline
+$m_{f_1(1285)} / m_\rho$ & $1.65338$ &	$1.65351$ & $-8.06147\times10^{-5}$ \\
+\hline
+$m_{f_1(1420)} / m_{\rho}$ & $2.12826$ & $1.8399$ &  $0.156729$ \\
+\hline
+$m_{f_1(1970)} / m_{\rho}$ & $2.5426$ &	$2.54237$ & $8.91731 \times 10^{-5}$ \\
+\hline
+$m_{f_1(2310)} / m_{\rho}$ & $2.92962$ & $2.97965$ & $-0.0167892$ \\
+\hline
+$m_\pi / m_\rho$ & $0.174135$ & $0.174105$ & $0.000167864$ \\
+\hline
+$m_{\pi(1300)} / m_\rho$ & $1.73071$ & $1.67686$ & $0.0321131$ \\
+\hline
+$m_{\pi(1800} / m_\rho$ & $2.33737$ & $2.33728$ & $4.03495 \times 10^{-5}$ \\
+\hline
+$m_{\pi(2070)} / m_\rho$ & $2.78489$ & $2.67007$ & $0.0430032$ \\
+\hline
+$m_{\pi(2360)} / m_\rho$ & $3.17279$ & $3.04414$ & $0.0422604$ \\
+\hline
+$m_{a_0(1450)} / m_\rho$ & $0.684836$ & $1.9013$ & $0.639806$ \\
+\hline
+$m_{a_0(2020)} / m_\rho$ & $1.49201$ & $2.61203$ & $0.428791$ \\
 \hline
 \end{tabular}
-\caption{Singlet mesons used in the fits.}
-\label{table: s mesons} 
+\caption{Mass ratios obtained with the parameter values of table~\ref{table:best_fit_background_pars}.}
+\label{table:best spectrum fit} 
 \end{table}
 
+As mentioned above after fixing the background we still have freedom to change the units of the model. This can be done by the scaling symmetry
+\begin{equation}
+A \rightarrow A - \log \Lambda \,, \quad z \rightarrow \Lambda z
+\end{equation}
+We have choosen $\Lambda$ such that the numerical mass of the $\rho$ meson is the one in GeV units. As expected the mass ratios have not changed.
 
-The cost function that we use for the fits is
+\section{$\gamma\gamma$, $\gamma p$ and $pp$ total cross-sections in holographic QCD}
+In this section we present the necessary ingredients to compute the total cross-sections of $\gamma\gamma$, $\gamma p$ and $pp$ scattering in holographic models of QCD in the Veneziano limit. First we will discuss the kinematics of each process. Then we will present generic holographic expressions of the forward scattering amplitude, in the Regge limit, via the exchange of higher spin J fields. We conclude by deriving the holographic expression of the total cross-sections by taking the imaginary part of the amplitudes and using the optical theorem.
+
+\subsection{Kinematics}
+For all processes we will use light-cone coordinates $\left(+,-,\perp \right)$, with flat space metric $ds^2 = - dx^+ dx^- + d x^2_\perp$, where $x_\perp \in \mathbb{R}^2$.
+The large $s$ kinematics of  $\gamma^{*} \left(Q_1^2\right) p \rightarrow \gamma^{*} \left(Q_3^2\right) p $ scattering for the incoming and outgoing off-shell photons are the following
+\begin{equation}
+k_1=\left(\!\sqrt{s},-\frac{Q_1^2}{\sqrt{s}} ,0\right),
+\ \ \ \ \ 
+-k_3=\left(\sqrt{s} , \frac{q_\perp^2 - Q_3^2}{\sqrt{s}}, q_\perp \right),
+\label{eq:gp_off_shell_photons_kinematics}
+\end{equation}
+while the incoming and outgoing protons with mass $M$ have momenta
+\begin{equation}
+k_2=\left(\frac{M^2}{\sqrt{s}} , \sqrt{s}, 0\right),
+\ \ \ \ \ 
+-k_4=\left(\frac{q_\perp^2 + M^2}{\sqrt{s}}, \sqrt{s},  -q_\perp \right).
+\label{eq:gp_off_shell_photons_kinematics}
+\end{equation}
+The momentum transfer $q_\perp$ is a $\mathbb{R}^2$ vector and is related to the Mandelstam variable $t$ through $t = - q_\perp^2$.
+For the forward scattering amplitude the 
+momentum transfer $q_\perp = 0$ so that the outgoing off-shell photon has $k_3=-k_1$ and the outgoing
+proton $k_4=-k_2$. The  incoming and outgoing photon polarizations are the same.
+The possible polarization vectors are
+\begin{equation}
+  \label{eq:polarization vectors} 
+n(\lambda) = \begin{cases}
+    \big(0,0,\epsilon_\lambda\big) \,, & \ \ \ \lambda=1,2 \,,\\
+   \big( \sqrt{s}/Q, Q/\sqrt{s},0  \big)\, , & \ \ \ \lambda=3\,,
+    \end{cases}
+\end{equation}
+where $\epsilon_\lambda$ is just the usual transverse polarization vector.
+In the context of holographic QCD the relevant Witten diagram is the present in figure~\ref{fig:Witten_diagram_gp}.
+\begin{figure}[!t]
+  \center
+  \includegraphics[height=4cm]{images/WittenDiagram_gp} 
+  \caption{Tree level Witten diagram representing spin $J$    exchange in  $\gamma^* p\to\gamma^* p$ scattering. 
+The $n_1$ and $n_3$ labels denote the incoming/outgoing photon polarizations, for forward scattering $n_1=n_3$.
+}
+  \label{fig:Witten_diagram_gp}
+\end{figure}
+
+The incoming photons in the $\gamma^{*}\left(Q_1^2\right) \gamma^{*}\left(Q_2^2\right) \rightarrow \gamma^{*}\left(Q_3^2\right) \gamma^{*}\left(Q_4^2\right)$  have the four momenta
+\begin{equation} 
+k_1 = \left( \sqrt{s}, - \frac{Q_1^2}{\sqrt{s}}, 0 \right) \,,  \qquad  
+k_2 = \left( - \frac{Q_2^2}{\sqrt{s}}, \sqrt{s},  0 \right) \,,
+\end{equation}
+while the outgoing photons have
+\begin{equation}
+k_3 = - \left( \sqrt{s},  \frac{q_\perp^2 - Q_3^2}{\sqrt{s}}, q_\perp \right) \, \qquad  k_4 = - \left(  \frac{q_\perp^2-Q_4^2}{\sqrt{s}}, \sqrt{s},  -q_\perp \right),
+\end{equation}
+where $Q^2_i = k_i^2 >0$  $(i=1, \dots, 4)$ is the off-shellness. As in the case of $\gamma^* p$ scattering for the forward scattering amplitude the 
+momentum transfer is null.
+The possible polarization vectors are, respectively,
 \begin{align}
-J = \sum_{i} \frac{|R_{pred_i} - R_{obs_i}|}{R_{obs_i}} + \lambda e^{- \left(\frac{12-x W_0)k_{IR}}{6 V_{gIR}} - 1\right)} + \lambda e^{-\left( \tau_M^2 - 3.5 \right)},
+    &n_{1,3} =
+    \begin{cases}
+      \left(0,0,1,0\right), & \lambda=1 \\
+      \left(0,0,0,1\right), & \lambda=2 \\
+      \frac{1}{Q} \left( \sqrt{s}, \frac{Q^2}{\sqrt{s}}, 0, 0 \right), & \lambda = 3
+    \end{cases}\,,\\
+    &n_{2,4} =
+    \begin{cases}
+      \left(0,0,1,0\right), & \lambda=1 \\
+      \left(0,0,0,1\right), & \lambda=2 \\
+      \frac{1}{Q} \left( \frac{Q^2}{\sqrt{s}}, \sqrt{s}, 0, 0 \right), & \lambda = 3
+    \end{cases} \,,
+    \label{eq:inPolarization}
 \end{align}
-where $\tau_M^2$ is the square of the tachyon mass in the IR. Here $R_{obs_i}$ is the experimental observed ratio between one of the particles in the tables~\ref{table: ns mesons} and~\ref{table: s mesons} and the $\rho$ meson and $R_{pred_i}$ is the same ratio predicted by our model. The exponential terms are included in order to impose the constraints $\frac{\left(12-x W_0\right)k_{IR}}{6 V_{gIR}} > 1$ and $\tau_M^2 > 3.5$. The results presented were obtained with $\lambda = 0.5$ but I will redo the fits with $\lambda = 0.1$ or even smaller values. Maybe this way we can find a set of parameters that satisfy the constraints and with better ratio values.
-
-\subsection{Global fit}
-
-In the global fit we use the tensor glueball  and all the mesons in tables~\ref{table: ns mesons} and~\ref{table: s mesons} while varying all parameters. The best fit parameters are found in table~\ref{table: global fit parameters} and the ratios are shown in figure~\ref{figure: global fit ratios}.
-
-\begin{table}
-\centering
-\begin{tabular}{ | c | c | c | c |}
-\hline
-sc & 3.25546 & ksc & 4.12754 \\
-\hline
-wsc & 1.31668& $W_0$ & 2.868 \\
-\hline
-$w_0$ & 1.8009 & $k_{U1}$ & 0.533949 \\
-\hline
-$w_{U1}$ & -0.766744 & $V_{gIR}$ & 1.54926 \\
-\hline
-$W_{IR}$ & 0.502304 & $k_{IR}$ & 2.8191 \\
-\hline
-$w_{IR}$ & 7.74607 & $W_1$ & 0.986571 \\
-\hline
-$k_1$ & -1.36173 & $w_1$ & 0.815957 \\
-\hline
-x & $2/3$ & $\tau_0$ & 0.457303\\
-\hline
-$Z_a$ & -0.513725 & $c_a$ & $4.58782 \times 10^{-9} $\\
-\hline
-\end{tabular}
-\caption{Best fit parameters for global fit.}
-\label{table: global fit parameters} 
-\end{table}
-
-\begin{figure}
+since in the forward amplitude the incoming and outgoing off-shell photons have the same polarizations.
+Notice that the transverse photons~$\left(\lambda=1,2\right)$ are normalized such that~$n^2 = 1$, while the longitudinal photons~$\left(\lambda=3\right)$ are normalized such that~$n^2 = -1$.
+For this process the Witten diagram that we compute is the one of figure~\ref{fig:Witten_diagram_gamma_gamma}.
+\begin{figure}[!h]
   \center
-  \includegraphics[scale = 0.5]{images/HVQCDGlobal_WithSAVM.png} 
-  \caption{Ratios for the best fit parameters for global fit.}
-  \label{figure: global fit ratios}
+  \includegraphics[height=4cm]{images/WittenDiagram_gg.pdf} 
+  \caption{Tree level Witten diagram representing spin $J$    exchange in a $\gamma^* \gamma^* \to \gamma^* \gamma^*$ scattering process between bulk photons.}
+  \label{fig:Witten_diagram_gamma_gamma}
 \end{figure}
 
-\subsection{Global fit with sc and VgIR fixed}
-
-In this fit we also use the tensor glueball  and all the mesons in tables~\ref{table: ns mesons} and~\ref{table: s mesons} while varying all parameters except sc and $V_{gIR}$. The best fit parameters are found in table~\ref{table: global fit parameters sc VgIR fixed} and the ratios are shown in figure~\ref{figure: global fit ratios sc VgIR fixed}.
-
-\begin{table}
-\centering
-\begin{tabular}{ | c | c | c | c |}
-\hline
-sc & 2.50485 & ksc & 2.80494 \\
-\hline
-wsc & 4.75507 & $W_0$ & 2.04542 \\
-\hline
-$w_0$ & 0.635567 & $k_{U1}$ & 0.898244 \\
-\hline
-$w_{U1}$ & -4.79273 & $V_{gIR}$ & 3.47852 \\
-\hline
-$W_{IR}$ & 2.10562 & $k_{IR}$ & 2.81353 \\
-\hline
-$w_{IR}$ & 6.93792 & $W_1$ & 1.90077 \\
-\hline
-$k_1$ & -0.0484519 & $w_1$ & 0.767193 \\
-\hline
-x & 2/3 & $\tau_0$ & 0.351475\\
-\hline
-$Z_a$ & 0.187512 & $c_a$ & $1.13332 \times 10^{-13}$ \\
-\hline
-\end{tabular}
-\caption{Best fit parameters for global fit with sc and VgIR fixed.}
-\label{table: global fit parameters sc VgIR fixed} 
-\end{table}
-
-\begin{figure}
+Finally, the large $s$ kinematics of $pp$ scattering are the following
+\begin{align}
+\label{eq:pp_kinematics}
+&k_1=\left(\!\sqrt{s},\frac{M^2}{\sqrt{s}} ,0\right),\  \ k_3=-\left(\!\sqrt{s},\frac{ q_\perp^2 +M^2}{\sqrt{s}} , q_\perp \right)\!,\\
+&k_2=\left(\frac{M^2}{\sqrt{s}},\sqrt{s} ,0\right),\  \ k_4=-\left(\frac{M^2+ q_\perp^2}{\sqrt{s}},\sqrt{s} ,-q_\perp \right).\notag
+\end{align}
+where $k_1$ and $k_2$ are the incoming proton momenta and $k_3$ and $k_4$ are the outgoing proton momenta. As in the other processes we will only compute the forward scattering amplitude for which $q_\perp = 0$. In figure~\ref{fig:Witten_diagram_pp} shows the Witten diagram for $pp$ scattering. 
+\begin{figure}[!h]
   \center
-  \includegraphics[scale = 0.5]{images/HVQCDGlobal_sc_VgIR_fixed_WithSAVM.png} 
-  \caption{Ratios for the best fit parameters for global fit with sc and VgIR fixed.}
-  \label{figure: global fit ratios sc VgIR fixed}
+  \includegraphics[height=4cm]{images/WittenDiagram_pp.pdf} 
+  \caption{Tree level Witten diagram representing spin $J$    exchange in a $pp \to pp$ scattering process between bulk protons.}
+  \label{fig:Witten_diagram_pp}
 \end{figure}
 
-\subsection{Fit Without Glueballs but with sc and VgIR fixed}
+\subsection{Holographic scattering amplitudes}
+Before we start the computation of the forward scattering amplitudes we need to define the external states as well the interaction between them and the spin J fields that are exchanged in the Witten diagrams of figures~\ref{fig:Witten_diagram_gp},~\ref{fig:Witten_diagram_gamma_gamma} and~\ref{fig:Witten_diagram_pp}.
 
-In this fit we also use all the mesons in tables~\ref{table: ns mesons} and~\ref{table: s mesons} while varying all parameters except sc and $V_{gIR}$. The best fit parameters are found in table~\ref{table: fit without glueball sc VgIR fixed parameters} and the ratios are shown in figure~\ref{figure: fit without glueball sc VgIR fixed}.
+An external photon is a source of the conserved current $\bar{\psi} \gamma^\mu \psi$, where the quark field $\psi$ comes from the open string sector. According to the gauge/gravity duality this field is dual to the nonnormalizable mode of a vector field in the bulk. In the context of this model the natural candidate is the linear combination of the $A^L$ and $A^R$ gauge fields
+\begin{align}
+V_M = \frac{A^L_M + A^R_M}{2} \,.
+\end{align}
+In the string frame the action of this field is
+\begin{equation}
+S = - \frac{1}{4} M^3 N_c N_f \int d^5 X \sqrt{-g_s} e^{-\frac{10}{3} \Phi} V_f w_s^2 G F_{AB}g^{AC}_{\rm{eff. (s)}}g^{BD}_{\rm{eff. (s)}}F_{CD} \, ,
+\label{eq:VM_new_action_string_frame}
+\end{equation}
+where $g_s$ is the determinant of the metric in the string frame, $g^{AB}_{\rm{eff. (s)}}$ is the inverse of $g_{\rm{eff.(s)} AB} = g_{\rm{(s)} AB} +  k_s\left(\lambda\right) \partial_M \tau \partial_N \tau $, $k_s \left(\lambda\right) = \lambda^{4 / 3} k\left(\lambda\right) $ and $w_s \left(\lambda\right) = \lambda^{4 / 3} w\left(\lambda\right)$. Working on the gauge $V_z = 0$ and $\partial_\mu V^{\mu} = 0$ the vector field components describing a boundary plane wave solution with polarization $n_\mu$ take the form
+\begin{equation}
+V_\mu \left(x, z\right) = n_\mu f_Q \left(z\right) e^{i k \cdot x} \, , \quad k^2 = Q^2 \, ,
+\end{equation}
+where $f_Q$ satisfies the equation
+\begin{equation}
+\frac{1}{V_f(\lambda, \tau) w(\lambda)^2 e^A G} \partial_z (V_f(\lambda, \tau) w(\lambda)^2 e^A G^{-1} \partial_z f_Q) - Q^2 f_Q = 0 \, \,
+\end{equation}
+subject to the boundary conditions $f_Q\left(0\right) = 1$ and $\partial_z f_Q \left( z \to \infty \right) = 0$.
 
-\begin{table}
-\centering
-\begin{tabular}{ | c | c | c | c |}
-\hline
-sc & 2.50485 & ksc & 3.04602 \\
-\hline
-wsc & 1.93123 & $W_0$ & 2.18834 \\
-\hline
-$w_0$ & 2.33377 & $k_{U1}$ & 0.463568 \\
-\hline
-$w_{U1}$ & -2.73495 & $V_{gIR}$ & 3.47852 \\
-\hline
-$W_{IR}$ & 2.83069 & $k_{IR}$ & 2.53127 \\
-\hline
-$w_{IR}$ & 4.94608 & $W_1$ & 1.15435\\
-\hline
-$k_1$ & 0.151849 & $w_1$ & 0.0495368\\
-\hline
-x & 2/3 & $\tau_0$ & 0.519466\\
-\hline
-$Z_a$ & 0.107029 & $c_a$ & $8.72313 \times 10^{-13}$\\
-\hline
-\end{tabular}
-\caption{Best fit parameters for fit without glueball but with sc and VgIR fixed.}
-\label{table: fit without glueball sc VgIR fixed parameters} 
-\end{table}
+For the proton external state we consider that it is dual to the normalizable mode of a bulk scalar field $\Upsilon\left(x, z\right) = e^{i P \cdot x} \upsilon\left(z\right)$ that represents an unpolarised proton. We will see that the contribution of the proton wavefunction to the scattering amplitudes is inside an integral that will be absorbed in the coupling constants and hence the precise details will not be important.
 
-\begin{figure}
-  \center
-  \includegraphics[scale = 0.5]{images/HVQCDWithoutGlueball_sc_VgIR_fixed_WithSAVM.png} 
-  \caption{Ratios for the best fit parameters for fit without glueball but with sc and VgIR fixed.}
-  \label{figure: fit without glueball sc VgIR fixed}
-\end{figure}
+The last ingredient of our model are the higher spin fields $h_{a_1 \cdots a_J}$ that will mediate the interaction between the external states in the considered scattering states. These fields are dual to the spin J twist two operators made of the gluon fields and quark fields.
 
-\subsection{Fit Without Glueballs}
-
-In this fit we also use all the mesons in tables~\ref{table: ns mesons} and~\ref{table: s mesons} while varying all parameters. The best fit parameters are found in table~\ref{table: fit without glueball parameters} and the ratios are shown in figure~\ref{figure: fit without glueball}.
-
-\begin{table}
-\centering
-\begin{tabular}{ | c | c | c | c |}
-\hline
-sc & 3.28916 & ksc & 3.17356 \\
-\hline
-wsc & 1.64997 & $W_0$ & 4.03026 \\
-\hline
-$w_0$ & -0.442523 & $k_{U1}$ & 2.50302 \\
-\hline
-$w_{U1}$ & 0.0457434 & $V_{gIR}$ & 3.12627 \\
-\hline
-$W_{IR}$ & 1.61772 & $k_{IR}$ & 1.30104 \\
-\hline
-$w_{IR}$ & 5.95641 & $W_1$ & 2.464 \\
-\hline
-$k_1$ & -1.42264 & $w_1$ & 0.0215877 \\
-\hline
-x & 2/3 & $\tau_0$ & 0.108259\\
-\hline
-$Z_a$ & 1.9721 & $c_a$ & 0.000100825\\
-\hline
-\end{tabular}
-\caption{Best fit parameters for fit without glueball.}
-\label{table: fit without glueball parameters} 
-\end{table}
-
-\begin{figure}
-  \center
-  \includegraphics[scale = 0.5]{images/fitHVQCDWithoutGlueball_withSAVM.png} 
-  \caption{Ratios for the best fit parameters for fit without glueball.}
-  \label{figure: fit without glueball}
-\end{figure}
-
-
-\subsection{Fit Without Scalars}
-
-In this fit we also use the tensor glueball and the mesons in tables~\ref{table: ns mesons} and~\ref{table: s mesons} except the scalars and pseudoscalar mesons. We vary all parameters. The best fit parameters are found in table~\ref{table: fit without scalars parameters} and the ratios are shown in figure~\ref{figure: fit without scalars}.
-
-\begin{table}
-\centering
-\begin{tabular}{ | c | c | c | c |}
-\hline
-sc & 2.75988 & ksc & 3.16245 \\
-\hline
-wsc &1.86214 & $W_0$ & 2.67223 \\
-\hline
-$w_0$ & 1.2902 & $k_{U1}$ & 1.20368 \\
-\hline
-$w_{U1}$ & 0.28155 & $V_{gIR}$ & 1.40383 \\
-\hline
-$W_{IR}$ & 1.06798 & $k_{IR}$ & 2.44736 \\
-\hline
-$w_{IR}$ & 5.30943 & $W_1$ & 0.392724 \\
-\hline
-$k_1$ & 0.305196 & $w_1$ & -0.47342 \\
-\hline
-x & 2/3 & $\tau_0$ & 0.424401\\
-\hline
-$Z_a$ & -1.21038 & $c_a$ & $1.11625 \times 10^{-7}$ \\
-\hline
-\end{tabular}
-\caption{Best fit parameters for fit without scalars.}
-\label{table: fit without scalars parameters} 
-\end{table}
-
-\begin{figure}
-  \center
-  \includegraphics[scale = 0.5]{images/HVQCDWithoutScalars_WithSAVM.png} 
-  \caption{Ratios for the best fit parameters for fit without scalars.}
-  \label{figure: fit without scalars}
-\end{figure}
-
-
-\subsection{Fit Without Scalars but sc and VgIR fixed}
-
-In this fit we also use the tensor glueball and the mesons in tables~\ref{table: ns mesons} and~\ref{table: s mesons} except the scalars and pseudoscalar mesons. We vary all parameters except sc and $V_{gIR}$. The best fit parameters are found in table~\ref{table: fit without scalars sc VgIR fixed} and the ratios are shown in figure~\ref{figure: fit without scalars sc VgIR fixed}.
-
-\begin{table}
-\centering
-\begin{tabular}{ | c | c | c | c |}
-\hline
-sc & 2.50485 & ksc & 1.29058 \\
-\hline
-wsc & 0.0603466 & $W_0$ & 0.0110914 \\
-\hline
-$w_0$ & 2.57011 & $k_{U1}$ & 2.66727  \\
-\hline
-$w_{U1}$ & -1.71986 & $V_{gIR}$ & 3.47852 \\
-\hline
-$W_{IR}$ & 1.73027 & $k_{IR}$ & 4.26511 \\
-\hline
-$w_{IR}$ & 4.72176 & $W_1$ & 2.65188 \\
-\hline
-$k_1$ & 0.572573 & $w_1$ & 0.580926 \\
-\hline
-x & 2/3& $\tau_0$ & 0.574017\\
-\hline
-$Z_a$ & -0.0790245 & $c_a$ & 0.000172359 \\
-\hline
-\end{tabular}
-\caption{Best fit parameters for fit without scalars but with sc and VgIR fixed.}
-\label{table: fit without scalars sc VgIR fixed} 
-\end{table}
-
-\begin{figure}
-  \center
-  \includegraphics[scale = 0.5]{images/HVQCDWithoutScalars_sc_VgIR_fixed_WithSAVM.png} 
-  \caption{Ratios for the best fit parameters for fit without scalars but with sc and VgIR fixed.}
-  \label{figure: fit without scalars sc VgIR fixed}
-\end{figure}
-
-
-\subsection{Fit Without Glueball and Scalars but with sc and VgIR fixed}
-
-In this fit we don't use the tensor glueball and the scalar and pseudoscalar mesons. We vary all parameters except sc and $V_{gIR}$. The best fit parameters are found in table~\ref{table: fit without glueball scalars sc VgIR fixed} and the ratios are shown in figure~\ref{figure: fit without glueball scalars sc VgIR fixed}.
-
-\begin{table}
-\centering
-\begin{tabular}{ | c | c | c | c |}
-\hline
-sc & 2.50485 & ksc & 4.28812 \\
-\hline
-wsc & 5.10253 & $W_0$ & 1.24218 \\
-\hline
-$w_0$ & 2.02123 & $k_{U1}$ & -2.80363  \\
-\hline
-$w_{U1}$ & 4.11302 & $V_{gIR}$ & 3.47852 \\
-\hline
-$W_{IR}$ & 1.65571 & $k_{IR}$ & 12.5991 \\
-\hline
-$w_{IR}$ & 4.04552 & $W_1$ & -0.377037 \\
-\hline
-$k_1$ & -7.68695 & $w_1$ & - 0.674825 \\
-\hline
-x & 2/3 & $\tau_0$ & $2.2559 \times 10^{-7}$\\
-\hline
-$Z_a$ & 0.0500001 & $c_a$ & $8.9016 \times 10^{-22}$ \\
-\hline
-\end{tabular}
-\caption{Best fit parameters for fit without glueball and scalars but with sc and VgIR fixed.}
-\label{table: fit without glueball scalars sc VgIR fixed} 
-\end{table}
-
-
-
-\begin{figure}
-  \center
-  \includegraphics[scale = 0.5]{images/HVQCDWithoutGlueballsScalars_sc_VgIR_fixed_WithSAVM.png} 
-  \caption{Ratios for the best fit parameters for fit without glueball and scalars but with sc and VgIR fixed.}
-   \label{figure: fit without glueball scalars sc VgIR fixed}
-\end{figure}
-
-
-\subsection{Fit Without Glueball and Scalars}
-
-In this fit we don't use the tensor glueball and the scalar and pseudoscalar mesons. We vary all parameters. The best fit parameters are found in table~\ref{table: fit without glueball scalars} and the ratios are shown in figure~\ref{figure: fit without glueball scalars}.
-
-\begin{table}
-\centering
-\begin{tabular}{ | c | c | c | c |}
-\hline
-sc & 2.97492 & ksc & 2.99657 \\
-\hline
-wsc & 1.43836 & $W_0$ & 3.94432 \\
-\hline
-$w_0$ & 0.681841 & $k_{U1}$ & 0.983282  \\
-\hline
-$w_{U1}$ & 0.687317 & $V_{gIR}$ & 2.85167 \\
-\hline
-$W_{IR}$ & 1.58022 & $k_{IR}$ & 1.64482 \\
-\hline
-$w_{IR}$ & 5.28076 & $W_1$ & 2.40908 \\
-\hline
-$k_1$ & -2.50085 & $w_1$ & - 0.410125 \\
-\hline
-x & 2/3 & $\tau_0$ & 1.03513 \\
-\hline
-$Z_a$ & 1.86124 & $c_a$ & $6.22234 \times 10^{-07}$ \\
-\hline
-\end{tabular}
-\caption{Best fit parameters for fit without glueball and scalars.}
-\label{table: fit without glueball scalars} 
-\end{table}
-
-
-
-\begin{figure}
-  \center
-  \includegraphics[scale = 0.5]{images/fitHVQCDWithoutGlueballScalars_with_SAVM.png} 
-  \caption{Ratios for the best fit parameters for fit without glueball and scalars.}
-   \label{figure: fit without glueball scalars}
-\end{figure}
+Like in IHQCD we describe the proton as a scalar field  that has the following coupling with a spin J field in the graviton's Regge trajectory
+\begin{align}
+\bar{k}_J \int d^5 X \sqrt{-g_s} e^{-\Phi} \left( \Upsilon D_{b_1} \dots D_{b_J} \Upsilon \right) h^{b_1 \dots b_J}
+\end{align}
+Focusing on the TT part of the spin J field, we are left with the single coupling
+\begin{align}
+\bar{k}_J \int d^5 X \sqrt{-g_s} e^{-\Phi} \left( \Upsilon \partial_{\beta_1} \dots \partial_{\beta_J} \Upsilon \right) h^{\beta_1 \dots \beta_J}
+\end{align}
 
 
 \section{Spin J field EOM}
@@ -1538,39 +1371,38 @@ Of course $\sigma\left(\gamma \gamma \rightarrow X\right) = \sigma^{\rm pomeron}
 
 In this appendix we give details on how the equations of motion are solved. It turns out to be convenient to write the resulting equations in terms of $A$ instead of the radial coordinate $z$. To do this one introduces the variable
 \begin{equation}
-q\left(A\right) = \frac{dz}{dA} e^{A};
+q\left(A\right) = \frac{dz}{dA} e^{A}
 \label{eq: q definition}
 \end{equation}
 From now on all the background fields will be functions of $A$ and the differential equations we present are all with respect to A being the independent variable.
 
-\subsubsection{Yang-Mills Equations of Motion}
+\subsubsection*{Yang-Mills Equations of Motion}
 
 If we make $x = 0$ we get the action of the IHQCD model and hence we are dealing with a pure Yang-Mills theory in the large $N_c$ limit. The equations of motion are then
 \begin{align}
-	&\frac{dq}{dA} = \frac{1}{3} \left( 12 q - q^3 V_g \left(\Phi\right) \right) \\
-	&\frac{d\Phi}{dA} = - \frac{\sqrt{3}}{2} \sqrt{12 - q^2 V_g\left(\Phi\right)}
-	\label{eq: YM equations}
+&\frac{dq}{dA} = \frac{1}{3} \left( 12 q - q^3 V_g \left(\Phi\right) \right) \, , \label{eq:q_YM_eom} \\
+&\frac{d\Phi}{dA} = - \frac{\sqrt{3}}{2} \sqrt{12 - q^2 V_g\left(\Phi\right)} \label{eq:Phi_YM_eom}
 \end{align}
-We will solve this coupled differential equations from the IR to the UV. We set $A_{IR} = -150$ and $A_{UVYM} = 50$ as the lower and upper bound on A. In the IR $A$ and $\Phi$ take the asymptotic form
+We will solve this coupled differential equations from the IR to the UV. We set $A_{IR} = -150$ and $A_{UVYM} = 50$ as the lower and upper bound on A. In the IR the warp factor $A$ and the dilaton $\Phi$ have the asymptotic forms
 \begin{align}
 &A_{IR} \left(z\right) = \frac{23}{24} - \frac{173}{3456 z^2} - z^2 + 0.25 \log(6 z^2) - \frac{\log(Vg_{IR})}{2} \\
 &\Phi_{IR} \left(z \right) = - \frac{23}{16} - \frac{151}{2304 z^2} + \frac{3}{2} z^2 - \log(\frac{sc}{\lambda_0})
 \label{eq: YM fields IR asymptotics}
 \end{align}
-This allows us to determine $z_{IRYM}$ such that $A_{IR}\left(z_{IRYM}\right) = -150$ and use its numerical value to compute $\Phi\left(A_{IR}\right) = \Phi_{IR} \left( z_{IRYM}\right)$ and $q\left(A_{IR}\right) = e^{A_{IR}} / \frac{dA_{IR}}{d z} $ and hence defining boundary conditions to solve equations~\ref{eq: YM equations}. Note that $sc$ and $V_{gIR}$ determine uniquely both the initial conditions as well the evolution of the background fields in pure YM.
+This allows us to determine $z_{IRYM}$ such that $A_{IR}\left(z_{IRYM}\right) = -150$ and use its numerical value to compute $\Phi\left(A_{IR}\right) = \Phi_{IR} \left( z_{IRYM}\right)$ and $q\left(A_{IR}\right) = e^{A_{IR}} / \frac{dA_{IR}}{d z} $ and hence defining boundary conditions to solve equations~\ref{eq:q_YM_eom} and~\ref{eq:Phi_YM_eom}. Note that $sc$ and $V_{gIR}$ determine uniquely both the initial conditions as well the evolution of the background fields in pure YM.
 
-After we solve the YM equations we can determine $z\left(A\right)$ by using equation (\ref{eq: q definition}). We solve this numerically by taking $z(A_{IRYM})$ = $z_{IRYM}$ as initial condition and at the end we perform the shift $z\left(A\right) \to z\left(A\right) - z\left(A_{UVYM} \right) $ in order to have the UV singularity at $z = 0$. For the spectrum we will consider only  $A$ values that satisfy $z\left(A\right) > 10^{-6}$ and $\Phi\left(A\right) < 120$.
+After we solve the YM equations we can determine $z\left(A\right)$ by using equation (\ref{eq: q definition}). We solve this numerically by taking $z(A_{IRYM})$ = $z_{IRYM}$ as initial condition and at the end we perform the shift $z\left(A\right) \to z\left(A\right) - z\left(A_{UVYM} \right) $ in order to have the UV singularity at $z = 0$. For the spectrum we will consider only  $A$ between $-10$ and $10$.
 
-We finish this section by specifying which algorithms we have used to find the numerical YM background. To compute $z_{IRYM}$ we have used the root finding Van Wijngaarden-Dekker-Brent method described in~\cite{10.5555/1403886}. The differential equations (\ref{eq: YM equations}) were solved using $integrate\_const$ with a Runge-Kutta-Dormand-Prince stepper from the Boost $C++$ library.
+We finish this section by specifying which algorithms we have used to find the numerical YM background. To compute $z_{IRYM}$ we have used the root finding Van Wijngaarden-Dekker-Brent method described in~\cite{10.5555/1403886}. The differential equations~\ref{eq:q_YM_eom} and~\ref{eq:Phi_YM_eom} were solved using $\text{integrate\_const}$ with a Runge-Kutta-Dormand-Prince stepper from the Boost $C\texttt{++}$ library.
 
-\subsubsection{Solving HVQCD equations of motion}
+\subsubsection*{Solving HVQCD equations of motion}
 
 The solution of HVQCD equations is done in four stages. In the first two we are deep in the IR and the tachyon is decoupled from the other background fields and $q\left(A\right)$ and $\Phi\left(A\right)$ obey equations (\ref{eq: YM equations}). In the third stage the tachyon will couple to the other background fields until it reaches the UV where it decouples again and we are in the fourth and last stage of the solution of the EOMs.
 
 As in the YM case we start by first specifying the IR boundary conditions. We first define $A_{IR} = -150$, $A_{UVYM} = 50$, $A_{UVc} = 100$ and $A_{UVf} = 1000$.
 Again  we compute $z_{IRYM}$ as in the YM case and we use it to compute $q\left(A_{IR}\right)$ and $\Phi\left(A_{IR}\right)$ as in YM and $\tau\left(A_{IR}\right)$ using the tachyon IR asymptotics
 \begin{equation}
-\tau_{IR} \left(z \right) = \tau_0 z^{\frac{(12 - x W_0) k_{IR}}{6 V_{gIR}}}
+\tau \sim \tau_0 \, z^{\tau_c}, \quad \tau_c = \frac{4}{3} \frac{\left(\frac{3}{2} - x \frac{W_0}{8}\right) kIR a_2}{VgIR (a_2 - a_1)}
 \end{equation}
 where $\tau_0$ is a paremter that is gonna be fitted by the spectrum. This is the last parameter to be introduced.
 The constants $\tau_{cut} = 1000$ and $V_{f cut} = 10^{-8}$ are defined and they signal the end of the first and second stages of the construction of the numerical background, respectively.

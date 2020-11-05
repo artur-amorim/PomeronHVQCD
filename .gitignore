@@ -21,6 +21,7 @@ Makefile
 *.log
 *.pdf
 *.synctex.gz
+*.toc
 
 # Ignore png files
 *.png
