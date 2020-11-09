@@ -1,0 +1,14 @@
+Computing the gluon Regge trajectories with:
+invls: 0 ag: -13.3221 bg: 0 cg: 0 dg: 0 eg: 0 fg: 0
+am: -10.3965 bm: 0 cm: 0 dm: 0 em: 0 fm: 0
+computing chebyshev matrices, N = 1000
+Computing the Masses of the J = 2 mesons.
+Masses of the tensor mesons f2
+-nan	-nan	1.17395	1.68302	2.05816	2.37226	
+Computing the Masses of the J = 3 mesons.
+Masses of the rho3, omega3
+-nan	-nan	-nan	1.16614	1.71329	2.10655	
+Computing the Masses of the J = 4 mesons.
+Masses of the mesons f4 and a4
+-nan	-nan	-nan	-nan	1.22384	1.765	
+Computing the trajectories.
