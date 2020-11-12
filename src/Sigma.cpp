@@ -186,10 +186,8 @@ double Sigma::IzN(const std::vector<double> &kin, const Reggeon &reg)
     const std::string reg_name = reg.getName();
     std::vector<std::vector<double> > wf = reg.getWf();
 
-    // Define e^(As(1.5 - jn)) or e^(As(2-j_n))
-    std::vector<double> fact1;
-    if(reg_name == "gluon") fact1 = exp((1.5-J) * Astring);
-    else fact1 = exp((2.0-J) * Astring);
+    // Define e^(As(1.5 - jn))
+    std::vector<double> fact1 = exp((1.5-J) * Astring);
     Poly_Interp<double> f1(u, fact1, 4);
 
     // Choose the background potentials factor accordingly
