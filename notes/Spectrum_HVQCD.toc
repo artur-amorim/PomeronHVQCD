@@ -1,37 +1,19 @@
 \babel@toc {english}{}
 \contentsline {section}{\numberline {1}Holographic dual of QCD in the Veneziano Limit}{1}{section.1}% 
-\contentsline {subsection}{\numberline {1.1}HVQCD action}{4}{subsection.1.1}% 
-\contentsline {subsection}{\numberline {1.2}Solving the Equatios of Motion}{4}{subsection.1.2}% 
-\contentsline {subsubsection}{\numberline {1.2.1}Yang-Mills Equations of Motion}{5}{subsubsection.1.2.1}% 
-\contentsline {subsubsection}{\numberline {1.2.2}Solving HVQCD equations of motion}{5}{subsubsection.1.2.2}% 
-\contentsline {section}{\numberline {2}Spectrum computation}{8}{section.2}% 
-\contentsline {section}{\numberline {3}Fits}{8}{section.3}% 
-\contentsline {subsection}{\numberline {3.1}Global fit}{10}{subsection.3.1}% 
-\contentsline {subsection}{\numberline {3.2}Global fit with sc and VgIR fixed}{10}{subsection.3.2}% 
-\contentsline {subsection}{\numberline {3.3}Fit Without Glueballs but with sc and VgIR fixed}{11}{subsection.3.3}% 
-\contentsline {subsection}{\numberline {3.4}Fit Without Glueballs}{11}{subsection.3.4}% 
-\contentsline {subsection}{\numberline {3.5}Fit Without Scalars}{12}{subsection.3.5}% 
-\contentsline {subsection}{\numberline {3.6}Fit Without Scalars but sc and VgIR fixed}{12}{subsection.3.6}% 
-\contentsline {subsection}{\numberline {3.7}Fit Without Glueball and Scalars but with sc and VgIR fixed}{13}{subsection.3.7}% 
-\contentsline {subsection}{\numberline {3.8}Fit Without Glueball and Scalars}{15}{subsection.3.8}% 
-\contentsline {section}{\numberline {4}Spin J field EOM}{15}{section.4}% 
-\contentsline {section}{\numberline {5}EOM and gravitational coupling of the $U(1)$ gauge field}{21}{section.5}% 
-\contentsline {subsection}{\numberline {5.1}The action of the vector $U(1)$ gauge field}{22}{subsection.5.1}% 
-\contentsline {subsection}{\numberline {5.2}Equation of motion of the EOM in terms of u}{24}{subsection.5.2}% 
-\contentsline {subsection}{\numberline {5.3}From Einstein frame to string frame}{24}{subsection.5.3}% 
-\contentsline {subsection}{\numberline {5.4}Coupling between the graviton and the U(1) vector gauge field}{25}{subsection.5.4}% 
-\contentsline {subsection}{\numberline {5.5}Regge limit analysis of the spin J coupling}{26}{subsection.5.5}% 
-\contentsline {subsection}{\numberline {5.6}Upper part Witten diagram}{27}{subsection.5.6}% 
-\contentsline {subsection}{\numberline {5.7}Lower part Witten diagram}{27}{subsection.5.7}% 
-\contentsline {subsection}{\numberline {5.8}spin J exchange amplitude}{28}{subsection.5.8}% 
-\contentsline {subsection}{\numberline {5.9}Regge theory}{28}{subsection.5.9}% 
-\contentsline {subsection}{\numberline {5.10}Expressions for $F_2\left (x, Q^2\right )$ and $F_L\left (x, Q^2\right )$ due to pomeron exchange}{29}{subsection.5.10}% 
-\contentsline {section}{\numberline {6}Vector Meson Trajectory}{29}{section.6}% 
-\contentsline {subsection}{\numberline {6.1}EOM of the $\left (a_2, f_2\right )$ trajectory}{30}{subsection.6.1}% 
-\contentsline {subsection}{\numberline {6.2}Schrodinger form}{35}{subsection.6.2}% 
-\contentsline {subsection}{\numberline {6.3}Spin J field propagator}{35}{subsection.6.3}% 
-\contentsline {subsection}{\numberline {6.4}Couplings to the spin J fields in the meson trajectory}{37}{subsection.6.4}% 
-\contentsline {section}{\numberline {7}Kinematics}{37}{section.7}% 
-\contentsline {section}{\numberline {8}$pp$ scattering with holographic pomeron and meson exchange}{38}{section.8}% 
-\contentsline {section}{\numberline {9}Contribution of the meson exchange to $F^p_2$ and $F^p_L$}{40}{section.9}% 
-\contentsline {section}{\numberline {10}$\gamma ^{*} \gamma $ processes}{42}{section.10}% 
+\contentsline {section}{\numberline {2}Spectrum Evaluation}{5}{section.2}% 
+\contentsline {section}{\numberline {3}Fitting the meson and glueball spectrum}{7}{section.3}% 
+\contentsline {section}{\numberline {4}$\gamma \gamma $, $\gamma p$ and $pp$ total cross-sections in holographic QCD}{10}{section.4}% 
+\contentsline {subsection}{\numberline {4.1}Kinematics}{10}{subsection.4.1}% 
+\contentsline {subsection}{\numberline {4.2}Holographic scattering amplitudes}{13}{subsection.4.2}% 
+\contentsline {section}{\numberline {5}Spin J field EOM}{17}{section.5}% 
+\contentsline {section}{\numberline {6}Vector Meson Trajectory}{20}{section.6}% 
+\contentsline {subsection}{\numberline {6.1}EOM of the $\left (a_2, f_2\right )$ trajectory}{21}{subsection.6.1}% 
+\contentsline {subsection}{\numberline {6.2}Schrodinger form}{26}{subsection.6.2}% 
+\contentsline {subsection}{\numberline {6.3}Spin J field propagator}{26}{subsection.6.3}% 
+\contentsline {subsection}{\numberline {6.4}Couplings to the spin J fields in the meson trajectory}{28}{subsection.6.4}% 
+\contentsline {section}{\numberline {7}$pp$ scattering with holographic pomeron and meson exchange}{28}{section.7}% 
+\contentsline {section}{\numberline {8}Contribution of the meson exchange to $F^p_2$ and $F^p_L$}{30}{section.8}% 
+\contentsline {section}{\numberline {9}$\gamma ^{*} \gamma $ processes}{32}{section.9}% 
+\contentsline {section}{\numberline {A}Solving the Equatios of Motion}{33}{appendix.A}% 
+\contentsline {section}{\numberline {B}EOM and gravitational coupling of the $U(1)$ gauge field}{36}{appendix.B}% 
+\contentsline {section}{\numberline {C}Regge limit analysis of the spin J coupling}{41}{appendix.C}% 
