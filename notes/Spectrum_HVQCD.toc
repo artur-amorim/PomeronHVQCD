@@ -5,7 +5,8 @@
 \contentsline {section}{\numberline {4}$\gamma \gamma $, $\gamma p$ and $pp$ total cross-sections in holographic QCD}{10}{section.4}% 
 \contentsline {subsection}{\numberline {4.1}Kinematics}{10}{subsection.4.1}% 
 \contentsline {subsection}{\numberline {4.2}Holographic scattering amplitudes}{13}{subsection.4.2}% 
-\contentsline {section}{\numberline {5}Spin J field EOM}{17}{section.5}% 
+\contentsline {section}{\numberline {5}Spin J Dynamics}{17}{section.5}% 
+\contentsline {subsection}{\numberline {5.1}Pomeron in Holographic QCD in the Veneziano limit}{17}{subsection.5.1}% 
 \contentsline {section}{\numberline {6}Vector Meson Trajectory}{20}{section.6}% 
 \contentsline {subsection}{\numberline {6.1}EOM of the $\left (a_2, f_2\right )$ trajectory}{21}{subsection.6.1}% 
 \contentsline {subsection}{\numberline {6.2}Schrodinger form}{26}{subsection.6.2}% 
@@ -17,3 +18,4 @@
 \contentsline {section}{\numberline {A}Solving the Equatios of Motion}{33}{appendix.A}% 
 \contentsline {section}{\numberline {B}EOM and gravitational coupling of the $U(1)$ gauge field}{36}{appendix.B}% 
 \contentsline {section}{\numberline {C}Regge limit analysis of the spin J coupling}{41}{appendix.C}% 
+\contentsline {section}{\numberline {D}Graviton equation of motion in the Einstein frame}{42}{appendix.D}% 
