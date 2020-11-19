@@ -13,9 +13,11 @@ using namespace std;
 
 int main(int argc, char ** argv)
 {
-    string data_path;
+    // Kernel parameters
+    double coeff_g, coeff_m;
+    int coeff_index;
+    // Couplings
     double Im_g0, Im_g1, Im_m0;
-    double bg, bm;
     if(argc < 7)
     {
         cout << "Program usage: " << argv[0] << " data_path bg bm Im_g0 Im_g1 Im_m0" << endl;
@@ -23,21 +25,25 @@ int main(int argc, char ** argv)
     }
     else
     {
-        data_path = argv[1];
-        bg = stod(argv[2]); bm = stod(argv[3]); 
+        coeff_g = stod(argv[1]); coeff_m = stod(argv[2]); coeff_index = stoi(argv[3]);
         Im_g0 = stod(argv[4]); Im_g1 = stod(argv[5]); Im_m0 = stod(argv[6]);
     }
     cout << "Predicting sigma(gamma p -> X) with" << endl;
-    cout << "bg: " << bg << " bm: " << bm << endl;
+    cout << "coeff_index: " << coeff_index << endl;
+    cout << "coeff_g: " << coeff_g << " coeff_m: " << coeff_m << endl;
     cout << "Im_g0: " << Im_g0 << " Im_g1: " << Im_g1 << " Im_m0: " << Im_m0 << endl;
 
     double mq = hvqcd().QuarkMass();
-    SigmaGammaProton sigma(data_path);
+    SigmaGammaProton sigma("expdata/SigmaGammaProton/SigmaGammaP_PDG_data_W_gt_461.txt");
     vector<vector<double> > sigma_points = sigma.expKinematics();
 
     // Setup Gluon and Meson Kernels and GNs vector
-    GluonKernel gluon(2, {0, 0, bg, 0, 0, 0, 0});
-    MesonKernel meson(1, {0, 0, bm, 0, 0, 0, 0});
+    // Setup Gluon and Meson Kernels and GNs vector
+    vector<double> gluon_pars = {0, 0, 0, 0, 0, 0, 0};
+    vector<double> meson_pars = {0, 0, 0, 0, 0, 0, 0};
+    gluon_pars[coeff_index] = coeff_g; meson_pars[coeff_index] = coeff_m;
+    GluonKernel gluon(2, gluon_pars);
+    MesonKernel meson(1, meson_pars);
     vector<double> GNs = {Im_g0, Im_g1, Im_m0};
 
     // Setup HQCDP object
@@ -66,9 +72,8 @@ int main(int argc, char ** argv)
     cout << "The sigma(gamma p -> hadrons) chi2 / points is " << sigma_chi2 / nPoints << endl;
     cout << "The sigma(gamma p -> hadrons) chi2 / Ndof is " << sigma_chi2 / (nPoints - 5) << endl;
 
-    const double mrho_U_mrho_GeV = 4.3669;
     vector<double> Ws;
-    for(double W = 1.5; W < 300; W += 0.1) Ws.push_back(W * mrho_U_mrho_GeV);
+    for(double W = 1.5; W < 300; W += 0.1) Ws.push_back(W);
     vector<double> WPlus(Ws.size(), 0.0), WMinus(Ws.size(), 0.0);
     vector<vector<double>> kinPts = {Ws, WPlus, WMinus};
     // Compute new IzNBars

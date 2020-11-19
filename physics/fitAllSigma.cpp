@@ -24,20 +24,11 @@ int main(int argc, char ** argv)
     //string sigma_gp_path, sigma_gg_path, sigma_pp_path;
     if(argc < 10)
     {
-        //sigma_gg_path = "expdata/SigmaGammaGamma/SigmaGammaGamma_PDG_data_W_gt_4.txt";
-        //sigma_gp_path = "expdata/SigmaGammaProton/SigmaGammaP_PDG_data_W_gt_461.txt";
-        //sigma_pp_path = "expdata/SigmaProtonProton/SigmaProtonProton_data_W_lt_10000_without_outliers.txt";
-        // Default values for N = 400
-        coeff_g = 10.5297; coeff_m = 7.85023; coeff_index = 2;
-        k0g = 0.000923808; k1g = 0.0190831; k0m = -0.0017291;
-        kbar0g = 0.335811; kbar1g = 21.6018; kbar0m = -46.4023;
         cout << "Program usage: " + string(argv[0]) + " coeff_g coeff_m coeff_index k0g k1g k0m kbar0g kbar1g kbar0m " << endl;
-        cout << "Using default values." << endl;
+        return 0;
     }
     else
     {
-        //sigma_gg_path = argv[1];
-        //sigma_gp_path = argv[2]; sigma_pp_path = argv[3];
         coeff_g = stod(argv[1]); coeff_m = stod(argv[2]); coeff_index = stoi(argv[3]);
         k0g = stod(argv[4]); k1g = stod(argv[5]); k0m = stod(argv[6]);
         kbar0g = stod(argv[7]); kbar1g = stod(argv[8]); kbar0m = stod(argv[9]);
