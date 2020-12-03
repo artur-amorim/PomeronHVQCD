@@ -530,8 +530,8 @@ In order to get the total amplitude we need to sum over even spin J fields with 
 \end{align}
 which requires analytic continuation of the amplitude for the spin J exchange to the complex J-plane. We assume that the J-plane integral can be deformed from the poles at even J, to the poles $J = j_n \left(t\right)$ defined by $t_n \left(J\right) = t$. The scattering domain of negative t contains these poles along the real axis for J < 2. The scattering amplitude for $t = 0$ is then
 \begin{align}
-&\mathcal{A} \left(s, 0 \right) = \sum_n g^{\gamma p}_n s^{j_n\left(0\right)} \int dz e^{A(2 - {j_n\left(0\right)})} G e^{-\frac{10}{3} \Phi}  V_f {w_s}^2  \left(  {f_Q}^2 + \frac{{\partial_z f_Q}^2}{Q^2 G^2}  \right) e^{B} \psi_n \left(j_n, z\right), \\
-& g_n^{\gamma p} = \frac{\pi}{2} \frac{k_{j_n\left(0\right)} \bar{k}_{j_n\left(0\right)}}{2^{j_n\left(0\right)}}  \left(i + \cot \frac{\pi j_n\left(0\right)}{2} \right) \frac{d j_n}{dt} \int d\bar{z} e^{\bar{A}\left( 4 - j_n \right)} e^{-\bar{\Phi}}  {\bar{\upsilon}}^2 e^{\bar{B}}  {\psi\left(j_n, \bar{z}\right)}^{*} \notag
+&\mathcal{A} \left(s, 0 \right) = \sum_n g^{\gamma p}_n s^{j_n\left(0\right)} \int dz e^{A(2 - {j_n\left(0\right)})} G e^{-\frac{10}{3} \Phi}  V_f {w_s}^2  \left(  {f_Q}^2 + \frac{{\partial_z f_Q}^2}{Q^2 G^2}  \right) e^{B} \psi_n \left(j_n, z\right), \label{eq:gp_forward_scattering_amp} \\
+& g_n^{\gamma p} = \frac{\pi}{2} \frac{k_{j_n\left(0\right)} \bar{k}_{j_n\left(0\right)}}{2^{j_n\left(0\right)}}  \left(i + \cot \frac{\pi j_n\left(0\right)}{2} \right) \frac{d j_n}{dt} \int d\bar{z} e^{\bar{A}\left( 4 - j_n \right)} e^{-\bar{\Phi}}  {\bar{\upsilon}}^2 e^{\bar{B}}  {\psi\left(j_n, \bar{z}\right)}^{*} \, . \label{eq:gp_couplings_def}
 \end{align}
 In the limit of $Q^2 \rightarrow 0$
 \begin{equation}
@@ -547,9 +547,9 @@ where we have made the change of variable $d u = G d z$.
 As mentioned before the procedure to compute the holographic total cross-sections in this model is the same as the presented above. Hence, we finish this section by presenting the expressions for $\sigma\left(\gamma \gamma \to X\right)$ and $\sigma\left(p p \to X\right)$:
 \begin{align}
 &\sigma\left(\gamma \gamma \rightarrow X\right) =  \sum_n {\rm Im} \, g^{\gamma \gamma}_n s^{jn-1} \int du e^{-\left(j_n - 2 \right)A } e^{-\frac{10}{3} \Phi} V_f w_s^2  \, e^B \psi_n\left(u\right)  \, , \label{eq:sigma_gg_hol_gens}  \\
-&g^{\gamma \gamma}_n = \frac{\pi}{2} \frac{k^2_{j_n\left(0\right)}}{2^{j_n\left(0\right)}}  \left(i + \cot \frac{\pi j_n\left(0\right)}{2} \right) \frac{d j_n}{dt}  \int d\bar{u} e^{-\left(j_n - 2 \right)\bar{A} } e^{-\frac{10}{3} \bar{\Phi}} \bar{V_f} \bar{w_s}^2  \, e^{\bar{B}} {\psi_n\left(u\right)}^{*} \, , \\
+&g^{\gamma \gamma}_n = \frac{\pi}{2} \frac{k^2_{j_n\left(0\right)}}{2^{j_n\left(0\right)}}  \left(i + \cot \frac{\pi j_n\left(0\right)}{2} \right) \frac{d j_n}{dt}  \int d\bar{u} e^{-\left(j_n - 2 \right)\bar{A} } e^{-\frac{10}{3} \bar{\Phi}} \bar{V_f} \bar{w_s}^2  \, e^{\bar{B}} {\psi_n\left(u\right)}^{*} \, , \label{eq:gg_couplings_def} \\
 & \sigma\left( p p \to X \right) = \sum_n {\rm Im} \, g^{p p}_n s^{jn-1}  \, , \label{eq:sigma_pp_hol_gens} \\
-&g^{p p}_n = \frac{\pi}{2} \frac{\bar{k}^2_{j_n\left(0\right)}}{2^{j_n\left(0\right)}}  \left(i + \cot \frac{\pi j_n\left(0\right)}{2} \right) \frac{d j_n}{dt} {\left| \int dz  e^{A\left( 4 - j_n \right)} e^{-\Phi}  {\bar{\upsilon}}^2 e^{B}  {\psi\left(j_n, z\right)} \right|}^2  \, .
+&g^{p p}_n = \frac{\pi}{2} \frac{\bar{k}^2_{j_n\left(0\right)}}{2^{j_n\left(0\right)}}  \left(i + \cot \frac{\pi j_n\left(0\right)}{2} \right) \frac{d j_n}{dt} {\left| \int dz  e^{A\left( 4 - j_n \right)} e^{-\Phi}  {\bar{\upsilon}}^2 e^{B}  {\psi\left(j_n, z\right)} \right|}^2  \, \label{eq:pp_couplings_def} .
 \end{align}
 
 
@@ -945,7 +945,7 @@ $e_f = 1.3887$  & $\rho_3(1690)$ / $\omega_3(1670)$ & 1.6888 / 1.667 & 1.64726 &
 \label{table:regge_traj}
 \end{table}
 
-After fixing the kernel with $e_g = 0.246201$, $e_f = 1.3887$ we fit the couplings $k^{g}_1$, $k^{g}_2$, $k^{m}_1$,  $\bar{k}^{g}_1$, $\bar{k}^{g}_2$, $\bar{k}^{m}_1$ to the total cross-section data by minimising~\ref{eq:chi2_def}. For a total of 199 experimental points and 6 parameters we have found a $\chi^2_{\rm d.o.f.}$ of $1.09$. The best fit parameters are present in table~\ref{table:best_fit_pars_all_sigma} and the comparison of the experimental data with the predictions of the model for these parameters is present in figures
+After fixing the kernel with $e_g = 0.246201$, $e_f = 1.3887$ we fit the couplings $k^{g}_1$, $k^{g}_2$, $k^{m}_1$,  $\bar{k}^{g}_1$, $\bar{k}^{g}_2$, $\bar{k}^{m}_1$ to the total cross-section data by minimising~\ref{eq:chi2_def}. For a total of 199 experimental points and 6 parameters we have found a $\chi^2_{\rm d.o.f.}$ of $1.09$. The best fit parameters are present in table~\ref{table:best_fit_pars_all_sigma} and the comparison of the experimental data with the predictions of the model for these parameters is present in figures \ref{fig:sigma_gg}, \ref{fig:sigma_gp} and \ref{fig:sigma_pp}.
 \begin{table}[t!]
 \centering
 \caption{Values of the couplings for the joint fit of $\sigma\left(\gamma \gamma \to X\right)$, $\sigma\left(\gamma p \to X\right)$ and $\sigma\left(p p \to X\right)$ data. There are 199 experimental points giving a  $\chi^2_{d.o.f.}=1.09$.}
@@ -954,17 +954,34 @@ After fixing the kernel with $e_g = 0.246201$, $e_f = 1.3887$ we fit the couplin
 \hline
 $\gamma$ coupling & value & proton coupling & value  \\
 \hline
-$k^{g}_1$ & 0.030733 & $\bar{k}^{g}_1$ & 1.23282 \\
+$k^{g}_1$ & 0.0307329 & $\bar{k}^{g}_1$ & 1.23283 \\
 \hline
 $k^{g}_2$ & -0.126877 & $\bar{k}^{g}_2$ & -16.2746 \\
 \hline
-$k^{m}_1$ & -0.0167819 & $\bar{k}^{m}_1$ & -13.9132  \\
+$k^{m}_1$ & -0.0356684 & $\bar{k}^{m}_1$ & -13.9132  \\
 \hline
 \end{tabular}
 \label{table:best_fit_pars_all_sigma}
 \end{table}
 
-
+\begin{figure}[!t]
+  \center
+  \includegraphics[scale = 0.5]{images/sigma_gg_Es_KernelFixedN1000} 
+  \caption{Predicted $\sigma \left( \gamma \gamma \rightarrow X \right)$ vs experimental points. The curve was obtained using the values from table~\ref{table:best_fit_pars_all_sigma}.}
+  \label{fig:sigma_gg}
+\end{figure}
+\begin{figure}[!t]
+  \center
+  \includegraphics[scale = 0.5]{images/sigma_gp_Es_KernelFixedN1000} 
+  \caption{Predicted $\sigma \left( \gamma p \rightarrow X \right)$ vs experimental points. The curve was obtained using the values from table~\ref{table:best_fit_pars_all_sigma}.}
+  \label{fig:sigma_gp}
+\end{figure}
+\begin{figure}[!t]
+  \center
+  \includegraphics[scale = 0.5]{images/sigma_pp_Es_KernelFixedN1000} 
+  \caption{Predicted $\sigma \left( p p \rightarrow X \right)$ vs experimental points. The curve was obtained using the values from table~\ref{table:best_fit_pars_all_sigma}.}
+  \label{fig:sigma_pp}
+\end{figure}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Conclusions}
@@ -1482,169 +1499,199 @@ e^{-4A} \eta^{\mu \nu} \left[\frac{1}{G^2}\left(\partial_z^2 - 2 J \dot{A} \part
 \end{equation}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{$pp$ scattering with holographic pomeron and meson exchange}
+\section{$pp$ scattering}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-We now have all the ingredients to compute holographic scattering amplitudes. We start the hadron-hadron scattering case by considering general spin J exchange. Later we specify for the cases of fields belonging either to the graviton's Regge trajectory or to the vector meson trajectory. The scattering amplitude for spin J exchange is
+In this appendix we will present the computation for the total cross-section of $pp$ scattering. The steps of the computation are the same as in the case of $\gamma p$ show in the main text.
+
+The scattering amplitude for spin J exchange between two incoming scalar fields $\Upsilon^(1) \sim e^{i k_1 \cdot x}$ and $\Upsilon^(2) \sim e^{i k_2 \cdot x}$ is
 \begin{equation}
-\mathcal{A}_J = {\left(i k'_J\right)}^2 \int d^5X d^5\bar{X} \sqrt{-g} \sqrt{-\bar{g}} e^{- \Phi -\bar{\Phi}} \left(\Upsilon_1 \partial_{-}^J \Upsilon_3\right) \Pi^{-\cdots-, + \cdots +} \left(X, \bar{X}\right) \left(\bar{\Upsilon}_2 \bar{\partial}_{+}^J \bar{\Upsilon}_4\right)
+\mathcal{A}_J = {\left(\bar{k}_J\right)}^2 \int d^5X d^5\bar{X} \sqrt{-g} \sqrt{-\bar{g}} e^{- \Phi -\bar{\Phi}} \left(\Upsilon_1 \partial_{-}^J \Upsilon_3\right) \Pi^{-\cdots-, + \cdots +} \left(X, \bar{X}\right) \left(\bar{\Upsilon}_2 \bar{\partial}_{+}^J \bar{\Upsilon}_4\right) \, ,
 \end{equation}
-Lowering the indices of the propagator gives
-\begin{equation}
-\mathcal{A}_J = {\left(i k'_J\right)}^2 \int d^5X d^5\bar{X} \sqrt{-g} \sqrt{-\bar{g}} e^{- \Phi -\bar{\Phi}} {\left(-2 e^{-2 A }\right)}^J {\left(-2 e^{-2 \bar{A} }\right)}^J \left(\Upsilon_1 \partial_{-}^J \Upsilon_3\right) \Pi_{+\cdots+, - \cdots -} \left(X, \bar{X}\right) \left(\bar{\Upsilon}_2 \bar{\partial}_{+}^J \bar{\Upsilon}_4\right)
-\end{equation}
-Using the fact that $\Upsilon_i = \upsilon\left(z\right) e^{i k_i \dot x}$ and the kinematics of equation (\ref{eq:pp_kinematics}) we get
-\begin{equation}
-\mathcal{A}_J = - k_J^2 {\left(-1\right)}^J s^J \int \frac{d^5X}{2}\frac{d^5\bar{X}}{2} e^{5\left(A+\bar{A}\right)} e^{-\Phi - \bar{\Phi}} e^{-2J\left(A+\bar{A}\right)} {|\upsilon_1|}^2 {|\upsilon_2|}^2 e^{-i q_\perp \cdot \left(x_\perp - \bar{x}_\perp\right)} \Pi_{+ \cdots +, - \cdots -} \left(X, \bar{X}\right)
-\end{equation}
-Making the change of variable $w = x - \bar{x}$  and using the identity
+where it was taken into account that the kinematics \ref{eq:pp_kinematics} implies that in the Regge limit the component $\Pi^{-,\cdots-, +\cdots+}$ dominates. Lowering the indices of the spin J propagator, making the change of variable $w = x - \bar{x}$ and using the identity
+%Lowering the indices of the propagator gives
+%\begin{equation}
+%\mathcal{A}_J = {\left(i k'_J\right)}^2 \int d^5X d^5\bar{X} \sqrt{-g} \sqrt{-\bar{g}} e^{- \Phi -\bar{\Phi}} {\left(-2 e^{-2 A }\right)}^J {\left(-2 e^{-2 \bar{A} }\right)}^J \left(\Upsilon_1 \partial_{-}^J \Upsilon_3\right) \Pi_{+\cdots+, - \cdots -} \left(X, \bar{X}\right) \left(\bar{\Upsilon}_2 \bar{\partial}_{+}^J \bar{\Upsilon}_4\right)
+%\end{equation}
+%Using the fact that $\Upsilon_i = \upsilon\left(z\right) e^{i k_i \dot x}$ and the kinematics of equation (\ref{eq:pp_kinematics}) we get
+%\begin{align}
+%\mathcal{A}_J = \bar{k}_J^2 {\left(-1\right)}^J s^J \int \frac{d^5X}{2}\frac{d^5\bar{X}}{2} e^{5\left(A+\bar{A}\right)} e^{-\Phi - \bar{\Phi}} e^{-2J\left(A+\bar{A}\right)} {|\upsilon_1|}^2 {|\upsilon_2|}^2 e^{-i q_\perp \cdot \left(x_\perp - \bar{x}_\perp\right)} \Pi_{+ \cdots +, - \cdots -} \left(X, \bar{X}\right)
+%\end{align}
+%Making the change of variable $w = x - \bar{x}$  and using the identity
 \begin{equation}
 \int d^2 l_\perp e^{- i q_\perp \cdot l_\perp}\int \frac{dw^+ dw^-}{2} \Pi_{+\cdots+, - \cdots -} \left(X, \bar{X}\right) = - \frac{i}{\left(-2\right)^J} e^{\left(J-1\right)\left(A+\bar{A}\right)} G_J \left(z, \bar{z}, t\right),
 \end{equation}
-the scattering amplitude can be rewritten as
+after some algebra the scattering amplitude can be rewritten as
 \begin{align}
-\mathcal{A}_J = i V \frac{k_J^2}{2^J} s^J \int dz d\bar{z} e^{4\left(A+\bar{A}\right)} e^{-J\left(A+\bar{A}\right)} e^{-\Phi - \bar{\Phi}} {|\upsilon_1|}^2 {|\upsilon_2|}^2  G_J \left(z, \bar{z}, t\right).
+\mathcal{A}_J = - i V \frac{\bar{k}_J^2}{2^J} s^J \int dz d\bar{z} e^{4\left(A+\bar{A}\right)} e^{-J\left(A+\bar{A}\right)} e^{-\Phi - \bar{\Phi}} {|\upsilon_1|}^2 {|\upsilon_2|}^2  G_J \left(z, \bar{z}, t\right).
 \end{align}
-For the case of a spin J of the graviton's Regge trajectory
-\begin{equation}
-G_J \left(z, \bar{z}, t \right) = e^{\Phi + \bar{\Phi} - \frac{A+\bar{A}}{2}} \sum_n \frac{\psi_n \left(z\right) {\psi_n \left(\bar{z}\right)}^*}{t_n(J) - t},
-\end{equation}
-while for the case of a spin J in the vector meson trajectory we have
-\begin{equation}
-G_J \left(z, \bar{z}, t \right)  = \left.\frac{1}{\sqrt{e^{-\frac{10}{3}\Phi} V_f w_s^2 e^A}}\right|_z  \left.\frac{1}{\sqrt{e^{-\frac{10}{3}\Phi} V_f w_s^2 e^A}}\right|_{\bar{z}} \, \sum_n \frac{\psi_n \left(u\left(z\right)\right){\psi_n \left(u\left(\bar{z}\right)\right)}^*}{t_n(J)-t}
-\end{equation}
+%For the case of a spin J of the graviton's Regge trajectory
+%\begin{equation}
+%G_J \left(z, \bar{z}, t \right) = e^{\Phi + \bar{\Phi} - \frac{A+\bar{A}}{2}} \sum_n \frac{\psi_n \left(z\right) {\psi_n \left(\bar{z}\right)}^*}{t_n(J) - t},
+%\end{equation}
+%while for the case of a spin J in the vector meson trajectory we have
+%\begin{equation}
+%G_J \left(z, \bar{z}, t \right)  = \left.\frac{1}{\sqrt{e^{-\frac{10}{3}\Phi} V_f w_s^2 e^A}}\right|_z  \left.\frac{1}{\sqrt{e^{-\frac{10}{3}\Phi} V_f w_s^2 e^A}}\right|_{\bar{z}} \, \sum_n \frac{\psi_n \left(u\left(z\right)\right){\psi_n \left(u\left(\bar{z}\right)\right)}^*}{t_n(J)-t}
+%\end{equation}
 
-Let's consider each case separately and start with the graviton case. We sum all even spin J exchanges with $J \geqslant 2$ using the Sommerfeld-Watson transform
+The meson trajectories $a_2 \, , f_2$ has charge conjugation quantum number $C = 1$, while the meson trajectories has $C = -1 $. Hence, for scattering of two particles $ab$, in Regge theory, each of these trajectories contributes with $X_{+} s^{\eta_+}$ and $X_{-}s^{\eta_-}$, respectively, while for $\bar{a}b$ scattering they contribute with $X_{+} s^{\eta_+}$ and $-X_{-}s^{\eta_-}$, respectively, for the total cross-sections. Since we are assuming near degeneracy of the meson trajectories contribute $\left(X_{+} + X_{-}\right) s^{\eta}$ and $\left(X_{+} - X_{-}\right) s^{\eta}$ for the $ab$ and $\bar{a}b$ total cross-sections, respectively. In~\cite{donnachie_dosch_landshoff_nachtmann_2002} it is shown that (i) the contributions of $f_2$ and $\omega$ exchange dominate the ones of $\rho$ and $a_2$ exchange; (ii) the couplings to the proton at $t = 0$ satisfy $g^{f_2} \approx 2 g^{\omega}$. Hence, we will assume that the meson contributions to $pp$ scattering are dominated by the exchange of the $f_2$ trajectory which is made of even spin J fields with $J \geqslant 2$.
+
+We now sum over all even spin J exchanges with $J \geqslant 2$ using the Sommerfeld-Watson transform
 \begin{equation}
 \frac{1}{2} \sum_{J \geqslant 2} \left( s^J + {\left(-s\right)}^J \right) \rightarrow - \frac{\pi}{2} \int \frac{dJ}{2 \pi i} \frac{s^J + {\left(-s\right)}^J}{\sin\left(\pi J\right)}
 \end{equation}
 where we are assuming the analytic continuation of the scattering amplitude $\mathcal{A}_J$ to the complex J-plane. Deforming the J-plane integral and catching all the poles $J = j_n\left(t\right)$ defined by $t_n\left(J\right) ) = t$ we get
 \begin{align}
-\mathcal{A}^{\rm {gluon}} = - \frac{\pi}{2} \sum_n \frac{k_{j_n}^2}{2^{j_n}} s^{j_n} \left[i + \cot \left( \frac{\pi j_n}{2} \right) \right] \frac{d j_n}{dt} \int dz d\bar{z} e^{-\left(j_n - \frac{7}{2}\right) \left(A+\bar{A}\right)} {|\upsilon_1|}^2 {|\upsilon_2|}^2 \psi_n \left(z\right) {\psi_n \left(\bar{z}\right)}^*
+\mathcal{A} = \frac{\pi}{2} \sum_n \frac{\bar{k}_{j_n}^2}{2^{j_n}} s^{j_n} \left[i + \cot \left( \frac{\pi j_n}{2} \right) \right] \frac{d j_n}{dt} {\left| \int dz e^{-\left(j_n - 4\right) A} {|\upsilon_1|}^2 e^{-\Phi} e^B \psi_n \left(z \right) \right|}^2
 \end{align}
-In the scattering domain of $t < 0$ these poles are in the real axis for $J < 2$. 
-
-For the case of the $\rho$ meson trajectory we do a similar procedure. We sum all odd spin J exchanges with $J \geqslant 1$ using the Sommerfeld-Watson transform
+In the scattering domain of $t < 0$ these poles are in the real axis for $J < 2$. If in the future one wishes to do the sum over odd spin J fields with $J \geqslant 1$ one
+uses the Sommerfeld-Watson transform
 \begin{equation}
 \frac{1}{2} \sum_{J \geqslant 1} \left( s^J - {\left(-s\right)}^J \right) \rightarrow - \frac{\pi}{2} \int \frac{dJ}{2 \pi i} \frac{s^J - {\left(-s\right)}^J}{\sin\left(\pi J\right)}
 \end{equation}
-and again we deform the J-plane integral from the poles at odd values of J to poles $J = j_n\left(t\right)$ again defined through $t_n\left(J\right) = t$. However this time these poles are along the real axis for $J < 1$.
-The contribution of the holographic meson trajectory is then
-\begin{equation}
-\mathcal{A}^{\rm {meson}} = - \frac{\pi}{2} \sum_n \frac{k_{j_n}^2}{2^{j_n}} s^{j_n} \left[-i + \tan \left( \frac{\pi j_n}{2} \right) \right] \frac{d j_n}{dt} \int dz d\bar{z} \frac{e^{-\left(j_n - 4\right) \left(A+\bar{A}\right)-\Phi - \bar{\Phi}}}{\Xi\left(z\right) \Xi\left(\bar{z}\right)} {|\upsilon_1|}^2 {|\upsilon_2|}^2 \psi_n \left(u\left(z\right)\right) {\psi_n \left(u\left(\bar{z}\right)\right)}^*
-\end{equation}
+and we get the above result with $ \left[-i + \tan \left( \frac{\pi j_n}{2} \right) \right]$ in the place of $\left[i + \cot \left( \frac{\pi j_n}{2} \right) \right]$. Then, again, we deform the J-plane integral from the poles at odd values of J to poles $J = j_n\left(t\right)$ again defined through $t_n\left(J\right) = t$. However this time these poles are along the real axis for $J < 1$.
+%The contribution of the holographic meson trajectory is then
+%\begin{equation}
+%\mathcal{A}^{\rm {meson}} = - \frac{\pi}{2} \sum_n \frac{k_{j_n}^2}{2^{j_n}} s^{j_n} \left[-i + \tan \left( \frac{\pi j_n}{2} \right) \right] \frac{d j_n}{dt} \int dz d\bar{z} \frac{e^{-\left(j_n - 4\right) \left(A+\bar{A}\right)-\Phi - \bar{\Phi}}}{\Xi\left(z\right) \Xi\left(\bar{z}\right)} {|\upsilon_1|}^2 {|\upsilon_2|}^2 \psi_n \left(u\left(z\right)\right) {\psi_n \left(u\left(\bar{z}\right)\right)}^*
+%\end{equation}
 
-From previous work we know that what people call the hard-pomeron corresponds to the $n=0$ contribution from $\mathcal{A}^{gluon}$ and the soft-pomeron is the $n=1$ constribution from $\mathcal{A}^{gluon}$. These trajectories dominate hadron-hadron scattering at very high center-of-mass energies. For lower energies it is necessary to include a meson trajectory which has an intercept lower than 1. We identify this trajectory as the $n=0$ term from $\mathcal{A}^{\rm {meson}}$. Using the optical theorem the total cross-section is given by
-\begin{equation}
-\sigma\left(h h \rightarrow X\right) = {\rm Im} \, g_0 s^{j_0 - 1} +  {\rm Im} \, g_1 s^{j_1 - 1} +  {\rm Im} \, g_\rho s^{j_\rho - 1}
-\end{equation}
+%From previous work we know that what people call the hard-pomeron corresponds to the $n=0$ contribution from $\mathcal{A}^{gluon}$ and the soft-pomeron is the $n=1$ constribution from $\mathcal{A}^{gluon}$. These trajectories dominate hadron-hadron scattering at very high center-of-mass energies. For lower energies it is necessary to include a meson trajectory which has an intercept lower than 1. We identify this trajectory as the $n=0$ term from $\mathcal{A}^{\rm {meson}}$. Using the optical theorem the total cross-section is given by
+%\begin{equation}
+%\sigma\left(h h \rightarrow X\right) = {\rm Im} \, g_0 s^{j_0 - 1} +  {\rm Im} \, g_1 s^{j_1 - 1} +  {\rm Im} \, g_\rho s^{j_\rho - 1}
+%\end{equation}
 
-\section{Contribution of the meson exchange to $F^p_2$ and $F^p_L$}
+After this procedure we get equations (\ref{eq:sigma_pp_hol_gens}) and (\ref{eq:pp_couplings_def}).
 
-The holographic amplitude due to the exchange of spin J fields for $\gamma^* p$
-\begin{equation}
-\mathcal{A}_J = - k_J \bar{k}_J \int d^5X d^5 \bar{X} \sqrt{-g} \sqrt{-\bar{g}} e^{-\Phi -\bar{\Phi}} F^{(1)}_{- a} \partial_{-}^{J-2} F^{a (3)}_{\, \, \, -} \Pi^{- \cdots -, + \cdots +} \left(X, \bar{X}\right) \Upsilon^{(2)} \bar{\partial}^J_{+} \Upsilon^{(4)}
-\end{equation}
-Because $A_z = 0$ and $A_\mu = n_\mu f_Q e^{i k \cdot x}$, $F_{z\mu} = n_\mu \dot{f}_Q e^{i k \cdot x}$ and $F_{\mu\nu} = 2 i k_{[\mu}n_{\nu]} f_Q e^{i k \cdot x}$
-the expression for the scattering amplitude due to spin J exchange is
-\begin{align}
-\mathcal{A}_J = - k_J \bar{k}_J s^J \int d^5X d^5\bar{X} \sqrt{-g} \sqrt{-\bar{g}} e^{- \Phi - \bar{\Phi}} e^{-2A} e^{-2J\left(A+\bar{A}\right)} &\left[ \left( \epsilon_{\lambda_1} \cdot \epsilon_{\lambda_3}\right) f_Q^2 \left(1-\delta_{\lambda_1,3}\right) \left(1-\delta_{\lambda_3,3}\right) +  \right. \notag \\
-&\left. + \delta_{\lambda_1,3} \delta_{\lambda_3, 3} \frac{\dot{f_Q}^2}{Q^2}\right] |\upsilon_p|^2 e^{-i q_\perp \cdot l_\perp} \Pi_{+ \cdots +, - \cdots -} \left(X, \bar{X}\right)
-\end{align}
-Making the change of variable $w = x - \bar{x}$  and using the identity
-\begin{equation}
-\int d^2 l_\perp e^{- i q_\perp \cdot l_\perp}\int \frac{dw^+ dw^-}{2} \Pi_{+\cdots+, - \cdots -} \left(X, \bar{X}\right) = - \frac{i}{\left(-2\right)^J} e^{\left(J-1\right)\left(A+\bar{A}\right)} G_J \left(z, \bar{z}, t\right),
-\end{equation}
-the scattering amplitude can be rewritten as
-\begin{align}
-&\mathcal{A}_J = i V \frac{k_J \bar{k}_J}{2^J} s^J \int dz d\bar{z} e^{-\Phi -\bar{\Phi}} e^{-J\left(A+\bar{A}\right)} e^{4\left(A+\bar{A}\right)} e^{-2A} \times  \notag \\
-&\left[ \left( \epsilon_{\lambda_1} \cdot \epsilon_{\lambda_3}\right) f_Q^2 \left(1-\delta_{\lambda_1,3}\right) \left(1-\delta_{\lambda_3,3}\right) + \delta_{\lambda_1,3} \delta_{\lambda_3, 3} \frac{\dot{f_Q}^2}{Q^2}\right]  |\upsilon_p|^2 G_J \left(z, \bar{z}, t\right)
-\end{align}
- where for the vector meson trajectory
-\begin{equation}
-G_J \left(z, \bar{z}, t \right)  = \left.\frac{1}{\sqrt{e^{-\frac{10}{3}\Phi} V_f w_s^2 e^A}}\right|_z  \left.\frac{1}{\sqrt{e^{-\frac{10}{3}\Phi} V_f w_s^2 e^A}}\right|_{\bar{z}} \, \sum_n \frac{\psi_n \left(u\left(z\right)\right){\psi_n \left(u\left(\bar{z}\right)\right)}^*}{t_n(J)-t}.
-\end{equation}
-Now we need to sum over all even spin J fields with $J \geqslant 2$ and then perform the deformation of the complex-J integral.
-Defining
-\begin{equation}
-g_n\left(t\right) = - \frac{\pi}{2} \left[i + \cot\left(\frac{\pi j_n}{2^{j_n}}\right)\right] \frac{k_{j_n} \bar{k}_{j_n}}{2^{j_n}} \frac{d j_n}{dt} \int d\bar{z} \frac{e^{-\bar{\Phi}}e^{-\left(j_n-4\right)\bar{A}}}{\Xi\left(\bar{z}\right)} |\upsilon_p|^2  {\psi_n\left(u\left(z\right)\right)}^*,
-\end{equation}
-the scattering amplitude is given by
-\begin{equation}
-\mathcal{A}^{\lambda_1, \lambda_3} \left(s, t\right) = \sum_n g_n\left(t\right) s^{j_n} \int dz \frac{e^{-\Phi} e^{-\left(j_n-2\right)A}}{\Xi\left(z\right)} \left[ \left( \epsilon_{\lambda_1} \cdot \epsilon_{\lambda_3}\right) f_Q^2 \left(1-\delta_{\lambda_1,3}\right) \left(1-\delta_{\lambda_3,3}\right) + \delta_{\lambda_1,3} \delta_{\lambda_3, 3} \frac{\dot{f_Q}^2}{Q^2}\right] \psi_n \left(u\left(z\right)\right)
-\end{equation}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Holographic proton structure functions $F^p_2$ and $F^p_L$}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-In the literature one finds the proton structure functions $F_2$ and $F_L$ defined in terms of the transverse and longitudinal total cross-sections of the process $\gamma^{*} p$
-\begin{align}
-&F_2\left(x, Q^2\right) = \frac{Q^2}{4 \pi^2 \alpha} \left(\sigma_T + \sigma_L\right) \\
-&F_L\left(x, Q^2\right) = \frac{Q^2}{4 \pi^2 \alpha} \sigma_L
-\end{align}
-Using the optical theorem and the last relations one finds the contribution of the holographic meson trajectory to the structure functions 
-\begin{align}
-&F_2\left(x, Q^2\right) = \sum_n \frac{{\rm Im} g_n }{4\pi^2 \alpha} Q^{2 j_n} x^{1-j_n} \int dz \frac{e^{-\left(j_n - 2 \right)A - \Phi}}{\Xi\left(z\right)} \left(f_Q^2 +\frac{\partial_z{f_Q}^2}{Q^2} \right) \psi_n\left(u\left(z\right)\right)\\
-&F_L\left(x, Q^2\right) = \sum_n \frac{{\rm Im} g_n }{4\pi^2 \alpha} Q^{2 j_n} x^{1-j_n} \int dz \frac{e^{-\left(j_n - 2 \right)A - \Phi}}{\Xi\left(z\right)} \frac{\partial_z{f_Q}^2}{Q^2} \psi_n\left(u\left(z\right)\right)
-\end{align}
-Changing to the u variable the above expressions become
-\begin{align}
-&F_2\left(x, Q^2\right) = \sum_n \frac{{\rm Im} g_n }{4\pi^2 \alpha} Q^{2 j_n} x^{1-j_n} \int du \frac{e^{-\left(j_n - 2 \right)A - \Phi}}{G\Xi\left(u\right)} \left(f_Q^2 +\frac{G^2\partial_u{f_Q}^2}{Q^2} \right) \psi_n\left(u\right)\\
-&F_L\left(x, Q^2\right) = \sum_n \frac{{\rm Im} g_n }{4\pi^2 \alpha} Q^{2 j_n} x^{1-j_n} \int du \frac{e^{-\left(j_n - 2 \right)A - \Phi}}{G\Xi\left(u\right)} \frac{G^2\partial_u{f_Q}^2}{Q^2} \psi_n\left(u\right)
-\end{align}
+The forward scattering amplitude for $\gamma^{*}p$ scattering is given by equation (\ref{eq:gp_forward_scattering_amp}). That equation was obtained summing the contributions of the transverse and longitudinal polarisations of the off-shell photon. In particular the term with $f_Q^2$ is the contribution from transverse polarisations while the term $\dot{f}_Q^2$ is the contribution for the longitudinal polarisation.
 
-Another possibility is instead of using the coupling of equation (\ref{eq:open_string_spin_J_coupling}) we use the one of equation (\ref{eq:spin_J_graviton_coupling}) for the upper part of the Witten diagram. The corresponding expressions are
-\begin{align}
-&F_2\left(x, Q^2\right) = \sum_n \frac{{\rm Im} g_n }{4\pi^2 \alpha} Q^{2 j_n} x^{1-j_n} \int dz \frac{e^{-\left(j_n - 2 \right)A }}{\Xi\left(z\right)}e^{-\frac{10}{3} \Phi} V_f w_s^2 G \left(f_Q^2 +\frac{\partial_z{f_Q}^2}{G^2Q^2} \right) \psi_n\left(u\left(z\right)\right)\\
-&F_L\left(x, Q^2\right) = \sum_n \frac{{\rm Im} g_n }{4\pi^2 \alpha} Q^{2 j_n} x^{1-j_n} \int dz \frac{e^{-\left(j_n - 2 \right)A }}{\Xi\left(z\right)}e^{-\frac{10}{3} \Phi} V_f w_s^2 G \frac{\partial_z{f_Q}^2}{G^2Q^2} \psi_n\left(u\left(z\right)\right)
-\end{align}
-or in terms of the u variable
-\begin{align}
-&F_2\left(x, Q^2\right) = \sum_n \frac{{\rm Im} g_n }{4\pi^2 \alpha} Q^{2 j_n} x^{1-j_n} \int du e^{-\left(j_n - 2 \right)A }\sqrt{e^{-\frac{10}{3} \Phi} V_f w_s^2} \left(f_Q^2 +\frac{\partial_u{f_Q}^2}{Q^2} \right) \psi_n\left(u\right)\\
-&F_L\left(x, Q^2\right) = \sum_n \frac{{\rm Im} g_n }{4\pi^2 \alpha} Q^{2 j_n} x^{1-j_n} \int du e^{-\left(j_n - 2 \right)A }\sqrt{e^{-\frac{10}{3} \Phi} V_f w_s^2} \frac{\partial_u{f_Q}^2}{Q^2} \psi_n\left(u\right)
-\end{align}
-These last two expressions are the ones I will use from now on to fit the DIS structure functions $F_2$ and $F_L$.
+%The holographic amplitude due to the exchange of spin J fields for $\gamma^* p$
+%\begin{equation}
+%\mathcal{A}_J = - k_J \bar{k}_J \int d^5X d^5 \bar{X} \sqrt{-g} \sqrt{-\bar{g}} e^{-\Phi -\bar{\Phi}} F^{(1)}_{- a} \partial_{-}^{J-2} F^{a (3)}_{\, \, \, -} \Pi^{- \cdots -, + \cdots +} \left(X, \bar{X}\right) \Upsilon^{(2)} \bar{\partial}^J_{+} \Upsilon^{(4)}
+%\end{equation}
+%Because $A_z = 0$ and $A_\mu = n_\mu f_Q e^{i k \cdot x}$, $F_{z\mu} = n_\mu \dot{f}_Q e^{i k \cdot x}$ and $F_{\mu\nu} = 2 i k_{[\mu}n_{\nu]} f_Q e^{i k \cdot x}$
+%the expression for the scattering amplitude due to spin J exchange is
+%\begin{align}
+%\mathcal{A}_J = - k_J \bar{k}_J s^J \int d^5X d^5\bar{X} \sqrt{-g} \sqrt{-\bar{g}} e^{- \Phi - \bar{\Phi}} e^{-2A} e^{-2J\left(A+\bar{A}\right)} &\left[ \left( \epsilon_{\lambda_1} \cdot \epsilon_{\lambda_3}\right) f_Q^2 \left(1-\delta_{\lambda_1,3}\right) \left(1-\delta_{\lambda_3,3}\right) +  \right. \notag \\
+%&\left. + \delta_{\lambda_1,3} \delta_{\lambda_3, 3} \frac{\dot{f_Q}^2}{Q^2}\right] |\upsilon_p|^2 e^{-i q_\perp \cdot l_\perp} \Pi_{+ \cdots +, - \cdots -} \left(X, \bar{X}\right)
+%\end{align}
+%Making the change of variable $w = x - \bar{x}$  and using the identity
+%\begin{equation}
+%\int d^2 l_\perp e^{- i q_\perp \cdot l_\perp}\int \frac{dw^+ dw^-}{2} \Pi_{+\cdots+, - \cdots -} \left(X, \bar{X}\right) = - \frac{i}{\left(-2\right)^J} e^{\left(J-1\right)\left(A+\bar{A}\right)} G_J \left(z, \bar{z}, t\right),
+%\end{equation}
+%the scattering amplitude can be rewritten as
+%\begin{align}
+%&\mathcal{A}_J = i V \frac{k_J \bar{k}_J}{2^J} s^J \int dz d\bar{z} e^{-\Phi -\bar{\Phi}} e^{-J\left(A+\bar{A}\right)} e^{4\left(A+\bar{A}\right)} e^{-2A} \times  \notag \\
+%&\left[ \left( \epsilon_{\lambda_1} \cdot \epsilon_{\lambda_3}\right) f_Q^2 \left(1-\delta_{\lambda_1,3}\right) \left(1-\delta_{\lambda_3,3}\right) + \delta_{\lambda_1,3} \delta_{\lambda_3, 3} \frac{\dot{f_Q}^2}{Q^2}\right]  |\upsilon_p|^2 G_J \left(z, \bar{z}, t\right)
+%\end{align}
+% where for the vector meson trajectory
+%\begin{equation}
+%G_J \left(z, \bar{z}, t \right)  = \left.\frac{1}{\sqrt{e^{-\frac{10}{3}\Phi} V_f w_s^2 e^A}}\right|_z  \left.\frac{1}{\sqrt{e^{-\frac{10}{3}\Phi} V_f w_s^2 e^A}}\right|_{\bar{z}} \, \sum_n \frac{\psi_n \left(u\left(z\right)\right){\psi_n \left(u\left(\bar{z}\right)\right)}^*}{t_n(J)-t}.
+%\end{equation}
+%Now we need to sum over all even spin J fields with $J \geqslant 2$ and then perform the deformation of the complex-J integral.
+%Defining
+%\begin{equation}
+%g_n\left(t\right) = - \frac{\pi}{2} \left[i + \cot\left(\frac{\pi j_n}{2^{j_n}}\right)\right] \frac{k_{j_n} \bar{k}_{j_n}}{2^{j_n}} \frac{d j_n}{dt} \int d\bar{z} \frac{e^{-\bar{\Phi}}e^{-\left(j_n-4\right)\bar{A}}}{\Xi\left(\bar{z}\right)} |\upsilon_p|^2  {\psi_n\left(u\left(z\right)\right)}^*,
+%\end{equation}
+%the scattering amplitude is given by
+%\begin{equation}
+%\mathcal{A}^{\lambda_1, \lambda_3} \left(s, t\right) = \sum_n g_n\left(t\right) s^{j_n} \int dz \frac{e^{-\Phi} e^{-\left(j_n-2\right)A}}{\Xi\left(z\right)} \left[ \left( \epsilon_{\lambda_1} \cdot \epsilon_{\lambda_3}\right) f_Q^2 \left(1-\delta_{\lambda_1,3}\right) \left(1-\delta_{\lambda_3,3}\right) + \delta_{\lambda_1,3} \delta_{\lambda_3, 3} \frac{\dot{f_Q}^2}{Q^2}\right] \psi_n \left(u\left(z\right)\right)
+%\end{equation}
 
-The structure function $F_2$ is related to the total cross-section $\sigma\left(\gamma p \rightarrow X\right)$ through
+The proton structure functions $F^p_2$ and $F^p_L$ are related to the transverse and longitudinal total cross-sections of the process $\gamma^{*} p$ by
+\begin{align}
+&F_2\left(x, Q^2\right) = \frac{Q^2}{4 \pi^2 \alpha} \left(\sigma_T^{\gamma^* p} + \sigma_L^{\gamma^* p} \right) \\
+&F_L\left(x, Q^2\right) = \frac{Q^2}{4 \pi^2 \alpha} \sigma_L^{\gamma^* p} 
+\end{align}
+Using the optical theorem and the last relations one finds the contribution of the holographic expressions to the structure functions are
+\begin{align}
+&F_2\left(x, Q^2\right) = \sum_n \frac{{\rm Im} g^{\gamma p}_n}{4 \pi^2 \alpha} \, Q^{2 j_n} x^{1-j_n}  \int du e^{-\left(j_n - 2 \right)A } e^{-\frac{10}{3} \Phi} V_f w_s^2  \left(f_Q^2 +\frac{\partial_u{f_Q}^2}{Q^2} \right) \, e^B \psi_n\left(u\right) \, \label{eq:hol_f2} , \\
+&F_L\left(x, Q^2\right) = \sum_n \frac{{\rm Im} g^{\gamma p}_n}{4 \pi^2 \alpha} \, Q^{2 j_n} x^{1-j_n}  \int du e^{-\left(j_n - 2 \right)A } e^{-\frac{10}{3} \Phi} V_f w_s^2 {\partial_u{f_Q}^2}{Q^2} \, e^B \psi_n\left(u\right) \, \label{eq:hol_fl} ,
+\end{align}
+where the definition of $g^{\gamma p}_n$ is the one of equation (\ref{eq:gp_couplings_def}). $B$ of course will depend on weather the spin J fields belong to the pomeron or meson trajectory.
+%\begin{align}
+%&F_2\left(x, Q^2\right) = \sum_n \frac{{\rm Im} g_n }{4\pi^2 \alpha} Q^{2 j_n} x^{1-j_n} \int dz \frac{e^{-\left(j_n - 2 \right)A - \Phi}}{\Xi\left(z\right)} \left(f_Q^2 +\frac{\partial_z{f_Q}^2}{Q^2} \right) \psi_n\left(u\left(z\right)\right)\\
+%&F_L\left(x, Q^2\right) = \sum_n \frac{{\rm Im} g_n }{4\pi^2 \alpha} Q^{2 j_n} x^{1-j_n} \int dz \frac{e^{-\left(j_n - 2 \right)A - \Phi}}{\Xi\left(z\right)} \frac{\partial_z{f_Q}^2}{Q^2} \psi_n\left(u\left(z\right)\right)
+%\end{align}
+%Changing to the u variable the above expressions become
+%\begin{align}
+%&F_2\left(x, Q^2\right) = \sum_n \frac{{\rm Im} g_n }{4\pi^2 \alpha} Q^{2 j_n} x^{1-j_n} \int du \frac{e^{-\left(j_n - 2 \right)A - \Phi}}{G\Xi\left(u\right)} \left(f_Q^2 +\frac{G^2\partial_u{f_Q}^2}{Q^2} \right) \psi_n\left(u\right)\\
+%&F_L\left(x, Q^2\right) = \sum_n \frac{{\rm Im} g_n }{4\pi^2 \alpha} Q^{2 j_n} x^{1-j_n} \int du \frac{e^{-\left(j_n - 2 \right)A - \Phi}}{G\Xi\left(u\right)} \frac{G^2\partial_u{f_Q}^2}{Q^2} \psi_n\left(u\right)
+%\end{align}
+
+%Another possibility is instead of using the coupling of equation (\ref{eq:open_string_spin_J_coupling}) we use the one of equation (\ref{eq:spin_J_graviton_coupling}) for the upper part of the Witten diagram. The corresponding expressions are
+%\begin{align}
+%&F_2\left(x, Q^2\right) = \sum_n \frac{{\rm Im} g_n }{4\pi^2 \alpha} Q^{2 j_n} x^{1-j_n} \int dz \frac{e^{-\left(j_n - 2 \right)A }}{\Xi\left(z\right)}e^{-\frac{10}{3} \Phi} V_f w_s^2 G \left(f_Q^2 +\frac{\partial_z{f_Q}^2}{G^2Q^2} \right) \psi_n\left(u\left(z\right)\right)\\
+%&F_L\left(x, Q^2\right) = \sum_n \frac{{\rm Im} g_n }{4\pi^2 \alpha} Q^{2 j_n} x^{1-j_n} \int dz \frac{e^{-\left(j_n - 2 \right)A }}{\Xi\left(z\right)}e^{-\frac{10}{3} \Phi} V_f w_s^2 G \frac{\partial_z{f_Q}^2}{G^2Q^2} \psi_n\left(u\left(z\right)\right)
+%\end{align}
+%or in terms of the u variable
+%\begin{align}
+%&F_2\left(x, Q^2\right) = \sum_n \frac{{\rm Im} g_n }{4\pi^2 \alpha} Q^{2 j_n} x^{1-j_n} \int du e^{-\left(j_n - 2 \right)A }\sqrt{e^{-\frac{10}{3} \Phi} V_f w_s^2} \left(f_Q^2 +\frac{\partial_u{f_Q}^2}{Q^2} \right) \psi_n\left(u\right)\\
+%&F_L\left(x, Q^2\right) = \sum_n \frac{{\rm Im} g_n }{4\pi^2 \alpha} Q^{2 j_n} x^{1-j_n} \int du e^{-\left(j_n - 2 \right)A }\sqrt{e^{-\frac{10}{3} \Phi} V_f w_s^2} \frac{\partial_u{f_Q}^2}{Q^2} \psi_n\left(u\right)
+%\end{align}
+%These last two expressions are the ones I will use from now on to fit the DIS structure functions $F_2$ and $F_L$.
+
+The structure function $F^p_2$ is, as expected, related to the total cross-section $\sigma\left(\gamma p \rightarrow X\right)$ through
 \begin{equation}
 \sigma\left(\gamma p \rightarrow X\right) = 4 \pi^2 \alpha \lim_{Q^2 \rightarrow 0} \frac{F_2\left(x, Q^2\right)}{Q^2}.
 \end{equation}
-In the limit of $Q^2 \rightarrow 0$
-\begin{equation}
-\lim_{Q\rightarrow 0} f_Q = 1 , \quad \lim_{Q\rightarrow 0} \frac{\dot{f}_Q}{Q} = 0
-\end{equation}
-and it follows that
-\begin{equation}
-\sigma\left(\gamma p \rightarrow X\right) = \sum_n {\rm Im} g_n \,  s^{j_n - 1} \int du e^{-\left(j_n - 2 \right)A }\sqrt{e^{-\frac{10}{3} \Phi} V_f w_s^2} \,  \psi_n\left(u\right).
-\end{equation}
+%In the limit of $Q^2 \rightarrow 0$
+%\begin{equation}
+%\lim_{Q\rightarrow 0} f_Q = 1 , \quad \lim_{Q\rightarrow 0} \frac{\dot{f}_Q}{Q} = 0
+%\end{equation}
+%and it follows that
+%\begin{equation}
+%\sigma\left(\gamma p \rightarrow X\right) = \sum_n {\rm Im} g_n \,  s^{j_n - 1} \int du e^{-\left(j_n - 2 \right)A }\sqrt{e^{-\frac{10}{3} \Phi} V_f w_s^2} \,  \psi_n\left(u\right).
+%\end{equation}
 
 
 \section{$\gamma^{*} \gamma$ processes}
 
-In this section we derive the holographic expressions for $F_2^\gamma$ and $\sigma\left(\gamma \gamma \rightarrow X\right)$ in the context of Holographic QCD in the Veneziano limit. Taking into account only pomeron exchange the expression for $F_2^\gamma$ is
+In this section we derive the holographic expressions for $F_2^\gamma$ and $\sigma\left(\gamma \gamma \rightarrow X\right)$ in the context of Holographic QCD in the Veneziano limit. We will consider the photon structure function $F^{\gamma}_2$ and the total cross-section $\sigma\left(\gamma \gamma \to X\right)$. Like in the case of the proton structure function $F_2^p$ the photon strucutre function $F_2^\gamma$ is related to the transverse and longitudinal total cross-sections of $\gamma^{*}\gamma$ scattering by
 \begin{equation}
-F_2^{\gamma \, {\rm pomeron}}\left(x, Q^2\right) = \sum_n \frac{{\rm Im} \, g_n}{4 \pi^2 \alpha} Q^{2 j_n} x^{1-jn} \int du e^{A(\frac{3}{2} - j_n)}  e^{-\frac{7}{3} \Phi}  V_f \left( \lambda, \tau \right) {w_s\left(\lambda \right)}^2  \left(  {f_Q}^2 + \frac{{\partial_u f_Q}^2}{Q^2}  \right) \psi_n \left(j_n, u\right)
-\end{equation}
-but the definition of the $g_n$s is
-\begin{equation}
-g_n = - \frac{\pi}{2} \frac{k^2_{j_n}}{2^{j_n}}  \left(i + \cot \frac{\pi j_n}{2} \right) \frac{d j_n}{dt}  \int du e^{A(\frac{3}{2} - j_n)}  e^{-\frac{7}{3} \Phi}  V_f \left( \lambda, \tau \right) {w_s\left(\lambda \right)}^2  \psi_n \left(j_n, u\right)^*
-\end{equation}
-The result of the contribution the meson exchange to $F_2^\gamma$ is the same as in $F_2^p$
-\begin{equation}
-F_2^{\gamma \, {\rm meson}}\left(x, Q^2\right) = \sum_n \frac{{\rm Im} g_n }{4\pi^2 \alpha} Q^{2 j_n} x^{1-j_n} \int du e^{-\left(j_n - 2 \right)A }\sqrt{e^{-\frac{10}{3} \Phi} V_f w_s^2} \left(f_Q^2 +\frac{\partial_u{f_Q}^2}{Q^2} \right) \psi_n\left(u\right)
-\end{equation}
-with the $g_n$s given by
-\begin{equation}
-g_n = - \frac{\pi}{2} \frac{k^2_{j_n}}{2^{j_n}}  \left(i + \cot \frac{\pi j_n}{2} \right) \frac{d j_n}{dt}  \int du e^{-\left(j_n - 2 \right)A }\sqrt{e^{-\frac{10}{3} \Phi} V_f w_s^2} \psi_n\left(u\right)
+F_2^\gamma = \frac{Q^2}{4 \pi^2 \alpha} \left( \sigma_T^{\gamma^* \gamma} + \sigma_L^{\gamma^* \gamma} \right)
 \end{equation}
 
-The total cross-section $\sigma\left(\gamma \gamma \rightarrow X\right)$ is related to the structure function $F^\gamma_2$ through
+The calculation of the forward scattering amplitude for $\gamma^{*}\gamma$ is the same as in $\gamma^{*} p$ scattering except that the external state in the Witten diagram of figure~\ref{fig:Witten_diagram_gg} is an on-shell photon. This means that the definition of $\rm{Im}^{\gamma \gamma}_n$ should be proportional to $k^2_{j_n}$ instead of $k_{j_n}\bar{k}_{j_n}$ and the integral appearing in it should be
 \begin{equation}
-\sigma\left(\gamma \gamma \rightarrow X\right) =  4 \pi^2 \alpha \lim_{Q^2 \rightarrow 0} \frac{F_2^\gamma}{Q^2}
+\int d\bar{u} e^{-\left(j_n - 2 \right) \bar{A} } e^{-\frac{10}{3} \bar{\Phi} } \bar{V}_{f}  \bar{w}_s^2  \, e^{\bar{B}} \psi_n\left(\bar{u}\right) \, .
 \end{equation}
-and hence the contributions of pomeron exchange and meson exchange to this observable are, respectively
+Then, the holographic expressions for $F_2^\gamma$ is
 \begin{align}
-&\sigma^{\rm pomeron}\left(\gamma \gamma \rightarrow X\right) =  \sum_n {\rm Im} \, g_n s^{jn-1} \int du e^{A(\frac{3}{2} - j_n)}  e^{-\frac{7}{3} \Phi}  V_f \left( \lambda, \tau \right) {w_s\left(\lambda \right)}^2  \psi_n \left(j_n, u\right) \\ 
-&\sigma^{\rm meson}\left(\gamma \gamma \rightarrow X\right) = \sum_n {\rm Im} g_n s^{j_n - 1} \int du e^{-\left(j_n - 2 \right)A }\sqrt{e^{-\frac{10}{3} \Phi} V_f w_s^2}  \psi_n\left(u\right)
+&F^{\gamma}_2\left(x, Q^2\right) = \sum_n \frac{{\rm Im} g^{\gamma \gamma}_n}{4 \pi^2 \alpha} \, Q^{2 j_n} x^{1-j_n}  \int du e^{-\left(j_n - 2 \right)A } e^{-\frac{10}{3} \Phi} V_f w_s^2  \left(f_Q^2 +\frac{\partial_u{f_Q}^2}{Q^2} \right) \, e^B \psi_n\left(u\right) \, \label{eq:hol_f2_gamma} , \\
 \end{align}
-Of course $\sigma\left(\gamma \gamma \rightarrow X\right) = \sigma^{\rm pomeron}\left(\gamma \gamma \rightarrow X\right) + \sigma^{\rm meson}\left(\gamma \gamma \rightarrow X\right)$.
+while the holographic expression for $\sigma\left(\gamma \gamma \to X\right)$ is (\ref{eq:sigma_gg_hol_gens}) and the definition of $g^{\gamma \gamma}_n$ is given by \ref{eq:gg_couplings_def}.
+
+%Taking into account only pomeron exchange the expression for $F_2^\gamma$ is
+%\begin{equation}
+%F_2^{\gamma \, {\rm pomeron}}\left(x, Q^2\right) = \sum_n \frac{{\rm Im} \, g_n}{4 \pi^2 \alpha} Q^{2 j_n} x^{1-jn} \int du e^{A(\frac{3}{2} - j_n)}  e^{-\frac{7}{3} \Phi}  V_f \left( \lambda, \tau \right) {w_s\left(\lambda \right)}^2  \left(  {f_Q}^2 + \frac{{\partial_u f_Q}^2}{Q^2}  \right) \psi_n \left(j_n, u\right)
+%\end{equation}
+%but the definition of the $g_n$s is
+%\begin{equation}
+%g_n = - \frac{\pi}{2} \frac{k^2_{j_n}}{2^{j_n}}  \left(i + \cot \frac{\pi j_n}{2} \right) \frac{d j_n}{dt}  \int du e^{A(\frac{3}{2} - j_n)}  e^{-\frac{7}{3} \Phi}  V_f \left( \lambda, \tau \right) {w_s\left(\lambda \right)}^2  \psi_n \left(j_n, u\right)^*
+%\end{equation}
+%The result of the contribution the meson exchange to $F_2^\gamma$ is the same as in $F_2^p$
+%\begin{equation}
+%F_2^{\gamma \, {\rm meson}}\left(x, Q^2\right) = \sum_n \frac{{\rm Im} g_n }{4\pi^2 \alpha} Q^{2 j_n} x^{1-j_n} \int du e^{-\left(j_n - 2 \right)A }\sqrt{e^{-\frac{10}{3} \Phi} V_f w_s^2} \left(f_Q^2 +\frac{\partial_u{f_Q}^2}{Q^2} \right) \psi_n\left(u\right)
+%\end{equation}
+%with the $g_n$s given by
+%\begin{equation}
+%g_n = - \frac{\pi}{2} \frac{k^2_{j_n}}{2^{j_n}}  \left(i + \cot \frac{\pi j_n}{2} \right) \frac{d j_n}{dt}  \int du e^{-\left(j_n - 2 \right)A }\sqrt{e^{-\frac{10}{3} \Phi} V_f w_s^2} \psi_n\left(u\right)
+%\end{equation}
+
+%The total cross-section $\sigma\left(\gamma \gamma \rightarrow X\right)$ is related to the structure function $F^\gamma_2$ through
+%\begin{equation}
+%\sigma\left(\gamma \gamma \rightarrow X\right) =  4 \pi^2 \alpha \lim_{Q^2 \rightarrow 0} \frac{F_2^\gamma}{Q^2}
+%\end{equation}
+%and hence the contributions of pomeron exchange and meson exchange to this observable are, respectively
+%\begin{align}
+%&\sigma^{\rm pomeron}\left(\gamma \gamma \rightarrow X\right) =  \sum_n {\rm Im} \, g_n s^{jn-1} \int du e^{A(\frac{3}{2} - j_n)}  e^{-\frac{7}{3} \Phi}  V_f \left( \lambda, \tau \right) {w_s\left(\lambda \right)}^2  \psi_n \left(j_n, u\right) \\ 
+%&\sigma^{\rm meson}\left(\gamma \gamma \rightarrow X\right) = \sum_n {\rm Im} g_n s^{j_n - 1} \int du e^{-\left(j_n - 2 \right)A }\sqrt{e^{-\frac{10}{3} \Phi} V_f w_s^2}  \psi_n\left(u\right)
+%\end{align}
+%Of course $\sigma\left(\gamma \gamma \rightarrow X\right) = \sigma^{\rm pomeron}\left(\gamma \gamma \rightarrow X\right) + \sigma^{\rm meson}\left(\gamma \gamma \rightarrow X\right)$.
 
 
 
