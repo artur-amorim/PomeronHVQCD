@@ -288,4 +288,23 @@ std::vector<T> exp(const std::vector<T> &x)
     return ans ;
 }
 ;
+
+template<class T>
+std::vector<T> pow(const std::vector<T> &x, const double a)
+{
+    /*
+        From a vector x and power a returns a vector whose entries are x[i]^a
+    */
+    if (x.size() == 0) 
+    {
+        std::cout << "No element to compute pow." << std::endl ;
+        throw "error";
+    }
+    const int n = x.size();
+    std::vector<T> ans(n);
+    for(int i = 0; i < n; i++) ans[i] = std::pow(x[i], a);
+    return ans ;
+
+}
+;
 #endif
