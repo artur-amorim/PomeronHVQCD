@@ -13,37 +13,37 @@ using namespace std;
 int main(int argc, char ** argv)
 {
     double coeff_g, coeff_m;
-    int coeff_index;
-    if (argc < 4)
+    int g_index, m_index;
+    if (argc < 5)
     {
         coeff_g = 10.6221; coeff_m = 5.58333;
-        coeff_index = 2;
+        g_index = 2; m_index = 2;
     }
     else
     {
         coeff_g = stod(argv[1]); coeff_m = stod(argv[2]);
-        coeff_index = stoi(argv[3]);
+        g_index = stoi(argv[3]); m_index = stoi(argv[4]);
     }
     cout << "Starting to hunt for the intercepts with:" << endl;
-    cout << "coeff_index: " << coeff_index << endl;
+    cout << "g_index: " << g_index << " m_index: " << m_index << endl;
     cout << "coeff_g: " << coeff_g << " coeff_m: " << coeff_m << endl;
 
     double mq = hvqcd().QuarkMass();
     // Compute Chebyschev matrices
-    chebSetN(1000);
+    chebSetN(400);
 
     // Setup gluon kernel
     vector<double> gluon_pars = {0, 0, 0, 0, 0, 0, 0};
     vector<double> meson_pars = {0, 0, 0, 0, 0, 0, 0};
-    gluon_pars[coeff_index] = coeff_g; meson_pars[coeff_index] = coeff_m;
+    gluon_pars[g_index] = coeff_g; meson_pars[m_index] = coeff_m;
     GluonKernel gluon(2, gluon_pars);
     MesonKernel meson(1, meson_pars);
 
-    function<double(vector<double>) > func = [&gluon, &meson, &gluon_pars, &meson_pars, coeff_index] (const vector<double> &x)
+    function<double(vector<double>) > func = [&gluon, &meson, &gluon_pars, &meson_pars, g_index, m_index] (const vector<double> &x)
     {
         // Compute Regge Trajectories
         cout << "coeff_g: " << x[0] << " coeff_m: " << x[1] << endl;
-        gluon_pars[coeff_index] = x[0]; meson_pars[coeff_index] = x[1];
+        gluon_pars[g_index] = x[0]; meson_pars[m_index] = x[1];
         gluon.computeReggeTrajectories(gluon_pars);
         meson.computeReggeTrajectories(meson_pars);
         // Compute the intercepts
@@ -67,7 +67,7 @@ int main(int argc, char ** argv)
     for(int i = 0; i < x.size(); i++) cout << x[i] << '\t';
     cout << endl;
     
-    gluon_pars[coeff_index] = x[0]; meson_pars[coeff_index] = x[1];
+    gluon_pars[g_index] = x[0]; meson_pars[m_index] = x[1];
     gluon.computeReggeTrajectories(gluon_pars);
     meson.computeReggeTrajectories(meson_pars);
 
