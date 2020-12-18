@@ -20,35 +20,37 @@ const vector<double> a4Masses = {1.967};
 
 int main(int argc, char ** argv)
 {
-    double invls, ag, bg, cg, dg, eg, fg;
-    double am, bm, cm, dm, em, fm;
+    double invls_g, ag, bg, cg, dg, eg, fg;
+    double invls_m, am, bm, cm, dm, em, fm;
     int N;
     string regge_traj_path;
-    if (argc < 16)
+    if (argc < 17)
     {
-        invls = 0; ag = 0; bg = 10.6221; cg = 0; dg = 0; eg = 0; fg = 0;
-        am = 0; bm = 5.58333; cm = 0; dm = 0; em = 0; fm = 0;
+        invls_g = 0; ag = 0; bg = 10.6221; cg = 0; dg = 0; eg = 0; fg = 0;
+        invls_m = 0; am = 0; bm = 5.58333; cm = 0; dm = 0; em = 0; fm = 0;
         N = 400;
         regge_traj_path = "regge_trajectories";
     }
     else
     {
-        invls = stod(argv[1]); ag = stod(argv[2]); bg = stod(argv[3]); cg = stod(argv[4]); dg = stod(argv[5]);
+        invls_g = stod(argv[1]); ag = stod(argv[2]); bg = stod(argv[3]); cg = stod(argv[4]); dg = stod(argv[5]);
         eg = stod(argv[6]); fg = stod(argv[7]);
-        am = stod(argv[8]); bm = stod(argv[9]); cm = stod(argv[10]); dm = stod(argv[11]);
-        em = stod(argv[12]); fm = stod(argv[13]);
-        N = stod(argv[14]); regge_traj_path = argv[15];
+        invls_m = stod(argv[8]); am = stod(argv[9]); bm = stod(argv[10]); cm = stod(argv[11]); dm = stod(argv[12]);
+        em = stod(argv[13]); fm = stod(argv[14]);
+        N = stod(argv[15]); regge_traj_path = argv[16];
     }
 
     cout << "Computing the gluon Regge trajectories with:" << endl;
-    cout << "invls: " << invls << " ag: " << ag << " bg: " << bg << " cg: " << cg << " dg: " << dg;
+    cout << "invls_g: " << invls_g << " ag: " << ag << " bg: " << bg << " cg: " << cg << " dg: " << dg;
     cout << " eg: " << eg <<  " fg: " << fg << endl;
-    cout << "am: " << am << " bm: " << bm << " cm: " << cm << " dm: " << dm;
+    cout << "invls_m: " << invls_m << " am: " << am << " bm: " << bm << " cm: " << cm << " dm: " << dm;
     cout << " em: " << em <<  " fm: " << fm << endl;
 
-    vector<double> gluon_pars = {invls, ag, bg, cg, dg, eg, fg};
+    double mq = hvqcd().QuarkMass();
+    
+    vector<double> gluon_pars = {invls_g, ag, bg, cg, dg, eg, fg};
     GluonKernel gluon(4, gluon_pars);
-    vector<double> meson_pars = {invls, am, bm, cm, dm, em, fm};
+    vector<double> meson_pars = {invls_m, am, bm, cm, dm, em, fm};
     MesonKernel meson(2, meson_pars);
 
     // initialise Chebyschev matrices

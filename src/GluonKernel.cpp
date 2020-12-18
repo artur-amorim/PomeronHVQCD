@@ -19,7 +19,7 @@ std::vector<double> GluonKernel::computePotential(const double J) const
     const double e = pars[5];
     const double f = pars[6];
     // model = HVQCD
-    std::vector<double> VSch = hvqcd().U2() + (J-2) * 2.0 * invls * invls * hvqcd().e2Astring() ;
+    std::vector<double> VSch = hvqcd().U2() + (J-2) * ( 2.0 * invls * invls * hvqcd().e2Astring() + (J + 2) * hvqcd().e2A() ) ;
     //std::vector<double> VSch = hvqcd().U2() + (J-2) * ( 2.0 * invls * invls * hvqcd().e2Astring() * (1.0 + f / hvqcd().l1_2()) + (J+2) * hvqcd().e2A()  + a ///* hvqcd().aF() + b * hvqcd().bF()  + c * hvqcd().cF() + d * hvqcd().dF() + e * hvqcd().eF()) ;
     // VSch's values are ordered from IR to UV
     // We want from UV to IR, so we reverse them
