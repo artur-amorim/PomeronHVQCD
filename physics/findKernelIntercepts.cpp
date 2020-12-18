@@ -30,7 +30,7 @@ int main(int argc, char ** argv)
 
     double mq = hvqcd().QuarkMass();
     // Compute Chebyschev matrices
-    chebSetN(400);
+    chebSetN(1000);
 
     // Setup gluon kernel
     vector<double> gluon_pars = {0, 0, 0, 0, 0, 0, 0};

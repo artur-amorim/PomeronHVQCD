@@ -1,3 +1,4 @@
+./execs/fitAllSigmaFixedKernel.exe 0.274482 11.1872 0 0 0 0 0 0 0 > fitAllSigmaKernelFixedInvls.txt
 ./execs/fitAllSigmaFixedKernel.exe -13.3221 -8.84064 1 0.00163542 0.0153645 0.00190979 6.71494 -81.4951 24.6697 > fitAllSigmaKernelFixedAs.txt
 ./execs/fitAllSigmaFixedKernel.exe 10.6221 6.53933 2 -0.000241862 -0.105668 0.0137332 -0.368672 -24.0912 33.3034 > fitAllSigmaKernelFixedBs.txt
 ./execs/fitAllSigmaFixedKernel.exe 1.0692 1.48022 3 0.00174508 -0.0168147 0.0267856 1.1206 -14.309 12.9914 > fitAllSigmaKernelFixedCs.txt
