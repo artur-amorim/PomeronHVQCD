@@ -20,7 +20,7 @@ std::vector<double> MesonKernel::computePotential(const double J) const
     const double e = pars[5];
     const double f = pars[6];
     // model = IHQCD
-    std::vector<double> VSch = hvqcd().U1() + (J*J-1) * hvqcd().e2A();
+    std::vector<double> VSch = hvqcd().U1() + (J*J-1 - (J - 1) * invls * invls ) * hvqcd().e2A();
     VSch = VSch + (J-1) * ( (1.0 + invls * invls) * pow(hvqcd().dAstring(), 2) - hvqcd().d2Astring() / pow(hvqcd().G(), 2) );
     //VSch = VSch + (J-1) * (a * hvqcd().aF() + b * hvqcd().bF() + c * hvqcd().cF() + d * hvqcd().dF() + e * hvqcd().eF());
     // VSch's values are ordered from IR to UV
