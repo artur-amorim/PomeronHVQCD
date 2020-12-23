@@ -136,6 +136,10 @@ add_executable(test_NelderMead.exe  tests/test_NelderMead.cpp)
 add_executable(test_U1NNMode.exe tests/test_U1NNMode.cpp)
 target_link_libraries(test_U1NNMode.exe hvqcd_lib blas armadillo)
 
+# Add test_schrodinger executable
+add_executable(test_Poly_Interp_assignment.exe  tests/test_Poly_Interp_assignment.cpp)
+target_link_libraries(test_Poly_Interp_assignment.exe armadillo hvqcd_lib)
+
 # Add DIS fit
 add_executable(fitDISHVQCD.exe physics/fitDISHVQCD.cpp)
 target_link_libraries(fitDISHVQCD.exe armadillo blas  hvqcd_lib)

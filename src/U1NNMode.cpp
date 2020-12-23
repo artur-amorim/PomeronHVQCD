@@ -21,39 +21,26 @@ extern"C"
     void appsln_ (double * X, double * Z, double * FSPACE, double * ISPACE);
 }
 
-std::vector<double> U1NNMode::u = {};
+std::vector<double> U1NNMode::z = {};
 Poly_Interp<double> U1NNMode::t1 = Poly_Interp<double>({},{},4);
 
 void setupU1NNcomputation()
 {
     // Get u
-    U1NNMode::u = hvqcdU1NNMode().u();
-    const int n = U1NNMode::u.size();
-    // t1Y = -( 1 + 2 dwdPhi dPhidA / w + dtaudA Vf(0,1)/Vf + dPhidA Vf(1,0)/Vf ) exp(A) / (G q)
+    U1NNMode::z = hvqcdU1NNMode().z();
+    const int n = U1NNMode::z.size();
+    // t1Y = dPhi/dz  - d Astring / dz
     std::vector<double> A = hvqcdU1NNMode().A();
     std::vector<double> q = hvqcdU1NNMode().q();
-    std::vector<double> Phis = hvqcdU1NNMode().Phi();
-    std::vector<double> taus = hvqcdU1NNMode().tau();
     std::vector<double> dPhidA = hvqcdU1NNMode().dPhi();
-    std::vector<double> dtaudA = hvqcdU1NNMode().dtaudA();
-    std::vector<double> G = hvqcdU1NNMode().G();
-    double a1 = hvqcdU1NNMode().get_a1(), a2 = hvqcdU1NNMode().get_a2();
-
-    double dwdPhi, w, dlogVfdPhi, dlogVfdtau;
+    std::vector<double> dAstringdz = hvqcdU1NNMode().dAstring();
     std::vector<double> t1Y(n);
-    for(int i = 0; i < n; i++)
-    {
-        w = hvqcdU1NNMode().w(Phis[i]); dwdPhi = hvqcdU1NNMode().dwdPhi(Phis[i]);
-        dlogVfdPhi =  hvqcdU1NNMode().dVf0dPhi(Phis[i]) / hvqcdU1NNMode().Vf0(Phis[i]);
-        dlogVfdtau =  -2*taus[i]*(-a1 + a2 + a1*a2*taus[i]*taus[i])/(1+a1*taus[i]*taus[i]);
-        // Compute t1Y
-        t1Y[i] = -(1+2*dwdPhi * dPhidA[i] / w + dtaudA[i] * dlogVfdtau + dPhidA[i] *  dlogVfdPhi) * std::exp(A[i]) / (G[i] * q[i]);
-    }
+    for(int i = 0; i < n; i++) t1Y[i] = std::exp(A[i]) * dPhidA[i] / q[i] - dAstringdz[i] ;
 
-    std::reverse(std::begin(U1NNMode::u), std::end(U1NNMode::u));
+    std::reverse(std::begin(U1NNMode::z), std::end(U1NNMode::z));
     std::reverse(std::begin(t1Y), std::end(t1Y));
 
-    U1NNMode::t1 = Poly_Interp<double>(U1NNMode::u, t1Y, 4);
+    U1NNMode::t1 = Poly_Interp<double>(U1NNMode::z, t1Y, 4);
 }
 
 U1NNMode::U1NNMode(const double qq2):
@@ -90,7 +77,7 @@ double U1NNMode::fQ(const double x) const
     /*
         Returns the value of fQ given x <= z.back(). If x > z.back() throw runtime_error
     */
-    if (x > u.back()) std::runtime_error("U1NNMode::fQ: x out of range");
+    if (x > z.back()) std::runtime_error("U1NNMode::fQ: x out of range");
     double * X = new double(x);
     double * Z = new double[2];
     appsln_(X, Z, FSPACE, ISPACE);
@@ -105,7 +92,7 @@ double U1NNMode::dfQ(const double x) const
     /*
         Returns the value of dfQ/du given x <= u.back(). If x > u.back() throw runtime_error
     */
-    if (x > u.back()) std::runtime_error("U1NNMode::dfQ: x out of range");
+    if (x > z.back()) std::runtime_error("U1NNMode::dfQ: x out of range");
     double * X = new double(x);
     double * Z = new double[2];
     appsln_(X, Z, FSPACE, ISPACE);
@@ -121,7 +108,7 @@ double U1NNMode::factor(const double x) const
     /*
         Returns the value of fQ^2 + (dfQ/du)^2/Q2 given x <= u.back(). If x > u.back() throw runtime_error
     */
-    if (x > u.back()) throw std::runtime_error("U1NNMode::factor: x is out of range");
+    if (x > z.back()) throw std::runtime_error("U1NNMode::factor: x is out of range");
     if (q2 < 1e-9) return 1;
     double * X = new double(x);
     double * Z = new double[2];
@@ -187,13 +174,13 @@ void U1NNMode::guess(double * X, double * Z, double * DMVAL)
 void U1NNMode::computeMode()
 {
     // Check if everything is ready to start the computation
-    if (U1NNMode::u.size() == 0) setupU1NNcomputation();
+    if (z.size() == 0) setupU1NNcomputation();
     // Create necessary variables
     int * NCOMP = new int(2);
     int * M = new int[2];
     M[0] = 1; M[1] = 1;
-    double * ALEFT = new double(u[0]);
-    double * ARIGHT = new double(u.back());
+    double * ALEFT = new double(z[0]);
+    double * ARIGHT = new double(z.back());
     double * Zeta = new double[2];
     Zeta[0] = *ALEFT; Zeta[1] = *ARIGHT;
     int * NOTOL = new int(2);
@@ -259,10 +246,10 @@ void U1NNMode::saveMode(std::string file_path) const
     myfile << "Q2:" << '\t' << q2 << std::endl;
     myfile << std::endl;
     // Write the values of u, fQ, dfQ and factor in the file
-    myfile << "u" << '\t' << "fQ" << '\t' << "dfQ/du" << '\t' << "fQ^2 + (dfQ/du)^2/Q2" << std::endl;
-    for(int i = 0; i < u.size(); i++)
+    myfile << "z" << '\t' << "fQ" << '\t' << "dfQ/dz" << '\t' << "fQ^2 + (dfQ/dz)^2/Q2" << std::endl;
+    for(int i = 0; i < z.size(); i++)
     {
-        myfile << u[i] << '\t' << fQ(u[i]) << '\t' << dfQ(u[i]) << '\t' << factor(u[i]) << std::endl;
+        myfile << z[i] << '\t' << fQ(z[i]) << '\t' << dfQ(z[i]) << '\t' << factor(z[i]) << std::endl;
     }
     // Close the file
     myfile.close();

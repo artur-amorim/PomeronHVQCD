@@ -20,7 +20,7 @@ class U1NNMode
         static void dg(int * I, double * Z, double * DG, double * PARS);
         static void guess(double * X, double * Z, double * DMVAL);
         // Static auxiliary variables to compute the mode profile
-        static std::vector<double> u;
+        static std::vector<double> z;
         static Poly_Interp<double> t1;
         static const int IFDIM = 5000;
         static const  int IIDIM = 5000;
