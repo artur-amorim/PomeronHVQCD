@@ -457,22 +457,18 @@ where $k_1$ and $k_2$ are the incoming proton momenta and $k_3$ and $k_4$ are th
 \subsection{Holographic scattering amplitudes}
 Before we start the computation of the forward scattering amplitudes we need to define the external states as well the interaction between them and the spin J fields that are exchanged in the Witten diagrams of figures~\ref{fig:Witten_diagram_gp},~\ref{fig:Witten_diagram_gamma_gamma} and~\ref{fig:Witten_diagram_pp}.
 
-An external photon is a source of the conserved current $\bar{\psi} \gamma^\mu \psi$, where the quark field $\psi$ comes from the open string sector. According to the gauge/gravity duality this field is dual to the nonnormalizable mode of a vector field in the bulk. In the context of this model the natural candidate is the linear combination of the $A^L$ and $A^R$ gauge fields
-\begin{align}
-V_M = \frac{A^L_M + A^R_M}{2} \,.
-\end{align}
-In the string frame the action of this field is
+An external photon is a source of the conserved current $\bar{\psi} \gamma^\mu \psi$, where the quark field $\psi$ comes from the open string sector. According to the gauge/gravity duality this field is dual to the nonnormalizable mode of a U(1) gauge field in the bulk. As usual, we assume this field comes from the open string sector and that it is minimally coupled to gravity. An effective action that satisfies these requirements is
 \begin{equation}
-S = - \frac{1}{4} M^3 N_c N_f \int d^5 X \sqrt{-g_s} e^{-\frac{10}{3} \Phi} V_f w_s^2 G F_{AB}\tilde{g}^{AC} \tilde{g}^{BD}F_{CD} \, ,
+S =  \int d^5 X \sqrt{-g_s} e^{- \Phi}  F_{AB} F^{AB} \, ,
 \label{eq:VM_new_action_string_frame}
 \end{equation}
-where $g_s$ is the determinant of the metric in the string frame, $\tilde{g}^{AB}$ is the inverse of $\tilde{g}_{AB} = g_{\rm{s} AB} +  k_s\left(\lambda\right) \partial_M \tau \partial_N \tau $, $k_s \left(\lambda\right) = \lambda^{4 / 3} k\left(\lambda\right) $ and $w_s \left(\lambda\right) = \lambda^{4 / 3} w\left(\lambda\right)$. Working on the gauge $V_z = 0$ and $\partial_\mu V^{\mu} = 0$ the vector field components describing a boundary plane wave solution with polarization $n_\mu$ take the form
+where $g_s$ is the determinant of the metric in the string frame. Working on the gauge $V_z = 0$ and $\partial_\mu V^{\mu} = 0$ the vector field components describing a boundary plane wave solution with polarization $n_\mu$ take the form
 \begin{equation}
 V_\mu \left(x, z\right) = n_\mu f_Q \left(z\right) e^{i k \cdot x} \, , \quad k^2 = Q^2 \, ,
 \end{equation}
 where $f_Q$ satisfies the equation
 \begin{equation}
-\frac{1}{V_f(\lambda, \tau) w(\lambda)^2 e^A G} \partial_z (V_f(\lambda, \tau) w(\lambda)^2 e^A G^{-1} \partial_z f_Q) - Q^2 f_Q = 0 \, \,
+\partial_z^2 f_Q + (\dot{A}_s - \dot{\Phi}) \partial_z f_Q - Q^2 f_Q = 0 \, ,
 \end{equation}
 subject to the boundary conditions $f_Q\left(0\right) = 1$ and $\partial_z f_Q \left( z \to \infty \right) = 0$.
 For the computation of the Witten diagrams that have photons as external states, it is convenient to know the field strength of a given mode
@@ -483,14 +479,15 @@ F_{\mu \nu} = 2 i k_{[ \mu} n_{\nu ]} f_Q (z) e^{i k \cdot x} \, , \quad F_{z \m
 
 For the proton external state we consider that it is dual to the normalizable mode of a bulk scalar field $\Upsilon\left(x, z\right) = e^{i P \cdot x} \upsilon\left(z\right)$ that represents an unpolarised proton. We will see that the contribution of the proton wavefunction to the scattering amplitudes is inside an integral that will be absorbed in the coupling constants and hence the precise details will not be important.
 
-The last ingredient of our model are the higher spin fields $h_{a_1 \cdots a_J}$ that will mediate the interaction between the external states in the considered scattering states. In this work we will consider bulk spin J fields that are dual to the spin J twist two operators made of the gluon field as well bulk spin J fields dual to the spin J twist two operators made of the quark bilinears. This extends the previous works~\cite{Ballon-Bayona:2015wra, ballon_bayona_unity_2017, Amorim:2018yod} where only the bulk fields dual to the gluon operators were considered. As discussed in appendix~\ref{appendix:b} we will consider that the coupling between the $U(1)$ gauge field and these spin J fields is given by
+The last ingredient of our model are the higher spin fields $h_{a_1 \cdots a_J}$ that will mediate the interaction between the external states in the considered scattering states. In this work we will consider bulk spin J fields that are dual to the spin J twist two operators made of the gluon field as well bulk spin J fields dual to the spin J twist two operators made of the quark bilinears. This extends the previous works~\cite{Ballon-Bayona:2015wra, ballon_bayona_unity_2017, Amorim:2018yod} where only the bulk fields dual to the gluon operators were considered. The coupling between the $U(1)$ gauge field and these spin J fields is given by the minimal coupling
 \begin{align}
-k_J \int d^5X \sqrt{-g_s} G e^{-\frac{10}{3} \Phi} V_f \left( \lambda, \tau \right) {w_s\left(\lambda \right)}^2  \tilde{g}^{AB} F^V_{A C} \nabla_{A_1} \dots \nabla_{A_{J-2}} F^V_{B D} h^{C D A_1 \dots A_{J-2}} \, ,
+k_J \int d^5X \sqrt{-g_s} e^{-\Phi} F_{B_1 \, A} \nabla_{B_2} \dots \nabla_{B_{J-1}} F^A_{B_J} h^{B_1 \dots B_J} \, ,
 \label{eq:gauge_field_spin_J_coupling}
 \end{align}
-while for the scalar field $\Upsilon$ dual to the proton state the coupling is
+since the higher spin field is in the closed string sector and the external fields are in the open sector.
+The scalar field $\Upsilon$ dual to the proton state the coupling is
 \begin{align}
-\bar{k}_J \int d^5 X \sqrt{-g_s} e^{-\Phi} \left( \Upsilon D_{b_1} \dots D_{b_J} \Upsilon \right) h^{b_1 \dots b_J} \, .
+\bar{k}_J \int d^5 X \sqrt{-g_s} e^{-\Phi} \left( \Upsilon \nabla_{B_1} \dots \nabla_{B_J} \Upsilon \right) h^{b_1 \dots b_J} \, .
 \label{eq:proton_spin_J_coupling}
 \end{align}
 
@@ -499,13 +496,13 @@ Below we assume that the spin J field has a propagator, without specifying its f
 
 Now we will show how to compute the forward scattering amplitude for the case of $\gamma p$ scattering. The calculations for $\gamma \gamma$ and $pp$ follow the same pattern but with different external states in the upper and / or lower parts of the corresponding Witten diagrams. For those cases we will simply present the results. In the Regge limit, the amplitude describing the spin J exchange between the incoming gauge field $V_A^{(1)} \sim  e^{i k_1 \cdot x}$ and scalar field $\Upsilon^{(2)} \sim  e^{i k_2 \cdot x}$ and outgoing gauge field $V_A^{(3)} \sim  e^{i k_3 \cdot x}$ and scalar field $\Upsilon^{(4)} \sim  e^{i k_4 \cdot x}$ can be written as
 \begin{align}
-&\mathcal{A}_J = k_J \bar{k}_J \int d^5 X \int d^5 \bar{X} \sqrt{-g_s} \sqrt{-\bar{g}_s} G e^{-\frac{10}{3} \Phi} V_f {w_s}^2 e^{-\bar{\Phi}}  \times \notag \\ 
-& \times \tilde{g}^{AB} F^{(1)}_{A - } (X) \partial_{-}^{J-2}F^{(3)}_{B -} (X) \Pi^{- \cdots -, + \cdots +}  \Upsilon^{(2)}(\bar{X}) \partial_{+}^J \Upsilon^{(4)}(\bar{X}) \, .
+&\mathcal{A}_J = k_J \bar{k}_J \int d^5 X \int d^5 \bar{X} \sqrt{-g_s} \sqrt{-\bar{g}_s} e^{-\Phi} e^{-\bar{\Phi}}  \times \notag \\ 
+& \times  F^{(1)}_{-A } (X) \partial_{-}^{J-2}F^{(3) \, A}_{-} (X) \Pi^{- \cdots -, + \cdots +}  \Upsilon^{(2)}(\bar{X}) \partial_{+}^J \Upsilon^{(4)}(\bar{X}) \, .
 \end{align}
 The tensor $\Pi^{A_1 \cdots A_J, B_1 \cdots B_J}$ is the propagator of the spin J field. Using the kinematics of equations~\ref{eq:gp_off_shell_photons_kinematics},~\ref{eq:gp_off_shell_protons_kinematics} and~\ref{eq:polarization vectors}, the expressions~\ref{eq:strength_tensor} and summing over the photon polarisations the amplitude takes the form
 \begin{align}
-  \mathcal{A}_J = k_J \bar{k}_J s^J & \int d^5X d^5 \bar{X} \sqrt{-g_s} \sqrt{-\bar{g}_s}  G e^{-\frac{10}{3}\Phi} V_f {w_s}^2 e^{-\bar{\Phi}} e^{-2 J \left(A+\bar{A}\right)}  e^{-2A}  \times \notag \\
-  &\times \left(  {f_Q}^2 + \frac{{\partial_z f_Q}^2}{Q^2 G^2}  \right) {\bar{\upsilon}}^2 e^{-i q_\perp \cdot \left( x_\perp - \bar{x}_\perp \right)} \Pi _{+\dots+,-\dots-}\left(X, \bar{X} \right) \, .
+  \mathcal{A}_J = k_J \bar{k}_J s^J & \int d^5X d^5 \bar{X} \sqrt{-g_s} \sqrt{-\bar{g}_s}  e^{ - \Phi -\bar{\Phi}} e^{-2 J \left(A+\bar{A}\right)}  e^{-2A}  \times \notag \\
+  &\times \left(  {f_Q}^2 + \frac{{\partial_z f_Q}^2}{Q^2}  \right) {\bar{\upsilon}}^2 e^{-i q_\perp \cdot \left( x_\perp - \bar{x}_\perp \right)} \Pi _{+\dots+,-\dots-}\left(X, \bar{X} \right) \, .
 \end{align}
 To make progress we make the change of variable $w = x - \bar{x}$ and use the identity
 \begin{align}
@@ -513,10 +510,9 @@ To make progress we make the change of variable $w = x - \bar{x}$ and use the id
 \label{eq:gJ_t_def}
 \end{align}
 that is valid both for spin J fields of the graviton Regge and meson trajectories. Defining $V = {\left(2 \pi\right)}^4 \delta^4\left( \sum k_i \right)$ we get
-\begin{align}
-  \mathcal{A}_J = - i V \frac{k_J \bar{k}_J}{2^J} s^J & \int dz d\bar{z} e^{2 A}e^{4 \bar{A}} G e^{-\frac{10}{3}\Phi} V_f {w_s}^2 e^{-\bar{\Phi}} e^{-J \left(A+\bar{A}\right)} \times \notag \\
- & \times \left(  {f_Q}^2 + \frac{{\partial_z f_Q}^2}{Q^2 G^2}  \right)  {\bar{\upsilon}}^2 G_J \left(z, \bar{z}, t\right) \, .
-\end{align}
+\begin{equation}
+  \mathcal{A}_J = - i V \frac{k_J \bar{k}_J}{2^J} s^J \int dz d\bar{z} e^{2 A}e^{4 \bar{A}} e^{ -\Phi -\bar{\Phi}} e^{-J \left(A+\bar{A}\right)} \left(  {f_Q}^2 + \frac{{\partial_z f_Q}^2}{Q^2}  \right)  {\bar{\upsilon}}^2 G_J \left(z, \bar{z}, t\right) \, .
+\end{equation}
 
 In the next chapter we will propose phenomenological equations of motion for the higher spin fields $h_{A_1 \cdots A_J}$ of both trajectories. It will be shown that the function $G_J \left(z, \bar{z}, t\right)$ admits a spectral decomposition associated to a Schrodinger potential that describes spin J glueballs or spin J mesons. In particular, this function can be written in terms of the eigenfunctions $\psi_n\left(J, z\right)$ and eigenvalues $t_n\left(J\right)$ of this Schrodinger potential in the following way
 \begin{align} 
@@ -530,7 +526,7 @@ In order to get the total amplitude we need to sum over even spin J fields with 
 \end{align}
 which requires analytic continuation of the amplitude for the spin J exchange to the complex J-plane. We assume that the J-plane integral can be deformed from the poles at even J, to the poles $J = j_n \left(t\right)$ defined by $t_n \left(J\right) = t$. The scattering domain of negative t contains these poles along the real axis for J < 2. The scattering amplitude for $t = 0$ is then
 \begin{align}
-&\mathcal{A} \left(s, 0 \right) = \sum_n g^{\gamma p}_n s^{j_n\left(0\right)} \int dz e^{A(2 - {j_n\left(0\right)})} G e^{-\frac{10}{3} \Phi}  V_f {w_s}^2  \left(  {f_Q}^2 + \frac{{\partial_z f_Q}^2}{Q^2 G^2}  \right) e^{B} \psi_n \left(j_n, z\right), \label{eq:gp_forward_scattering_amp} \\
+&\mathcal{A} \left(s, 0 \right) = \sum_n g^{\gamma p}_n s^{j_n\left(0\right)} \int dz e^{A(2 - {j_n\left(0\right)})} e^{-\Phi}  \left(  {f_Q}^2 + \frac{{\partial_z f_Q}^2}{Q^2}  \right) e^{B} \psi_n \left(j_n, z\right), \label{eq:gp_forward_scattering_amp} \\
 & g_n^{\gamma p} = \frac{\pi}{2} \frac{k_{j_n\left(0\right)} \bar{k}_{j_n\left(0\right)}}{2^{j_n\left(0\right)}}  \left(i + \cot \frac{\pi j_n\left(0\right)}{2} \right) \frac{d j_n}{dt} \int d\bar{z} e^{\bar{A}\left( 4 - j_n \right)} e^{-\bar{\Phi}}  {\bar{\upsilon}}^2 e^{\bar{B}}  {\psi\left(j_n, \bar{z}\right)}^{*} \, . \label{eq:gp_couplings_def}
 \end{align}
 In the limit of $Q^2 \rightarrow 0$
@@ -539,15 +535,14 @@ In the limit of $Q^2 \rightarrow 0$
 \end{equation}
 and it follows from the optical theorem that
 \begin{equation}
-\sigma\left(\gamma p \rightarrow X\right) = \sum_n {\rm Im} g^{\gamma p}_n \,  s^{j_n - 1} \int du e^{-\left(j_n - 2 \right)A } e^{-\frac{10}{3} \Phi} V_f w_s^2  \, e^B \psi_n\left(u\right) \, ,
+\sigma\left(\gamma p \rightarrow X\right) = \sum_n {\rm Im} g^{\gamma p}_n \,  s^{j_n - 1} \int dz e^{-\left(j_n - 2 \right)A } e^{-\Phi}  \, e^B \psi_n\left(z\right) \, .
 \label{eq:sigma_gp_hol_gens}
 \end{equation}
-where we have made the change of variable $d u = G d z$.
 
 As mentioned before the procedure to compute the holographic total cross-sections in this model is the same as the presented above. Hence, we finish this section by presenting the expressions for $\sigma\left(\gamma \gamma \to X\right)$ and $\sigma\left(p p \to X\right)$:
 \begin{align}
-&\sigma\left(\gamma \gamma \rightarrow X\right) =  \sum_n {\rm Im} \, g^{\gamma \gamma}_n s^{jn-1} \int du e^{-\left(j_n - 2 \right)A } e^{-\frac{10}{3} \Phi} V_f w_s^2  \, e^B \psi_n\left(u\right)  \, , \label{eq:sigma_gg_hol_gens}  \\
-&g^{\gamma \gamma}_n = \frac{\pi}{2} \frac{k^2_{j_n\left(0\right)}}{2^{j_n\left(0\right)}}  \left(i + \cot \frac{\pi j_n\left(0\right)}{2} \right) \frac{d j_n}{dt}  \int d\bar{u} e^{-\left(j_n - 2 \right)\bar{A} } e^{-\frac{10}{3} \bar{\Phi}} \bar{V_f} \bar{w_s}^2  \, e^{\bar{B}} {\psi_n\left(u\right)}^{*} \, , \label{eq:gg_couplings_def} \\
+&\sigma\left(\gamma \gamma \rightarrow X\right) =  \sum_n {\rm Im} \, g^{\gamma \gamma}_n s^{jn-1} \int dz e^{-\left(j_n - 2 \right)A } e^{-\Phi} \, e^B \psi_n\left(z\right)  \, , \label{eq:sigma_gg_hol_gens}  \\
+&g^{\gamma \gamma}_n = \frac{\pi}{2} \frac{k^2_{j_n\left(0\right)}}{2^{j_n\left(0\right)}}  \left(i + \cot \frac{\pi j_n\left(0\right)}{2} \right) \frac{d j_n}{dt}  \int d\bar{z} e^{-\left(j_n - 2 \right)\bar{A} } e^{-\bar{\Phi}}  \, e^{\bar{B}} {\psi_n\left(u\right)}^{*} \, , \label{eq:gg_couplings_def} \\
 & \sigma\left( p p \to X \right) = \sum_n {\rm Im} \, g^{p p}_n s^{jn-1}  \, , \label{eq:sigma_pp_hol_gens} \\
 &g^{p p}_n = \frac{\pi}{2} \frac{\bar{k}^2_{j_n\left(0\right)}}{2^{j_n\left(0\right)}}  \left(i + \cot \frac{\pi j_n\left(0\right)}{2} \right) \frac{d j_n}{dt} {\left| \int dz  e^{A\left( 4 - j_n \right)} e^{-\Phi}  {\bar{\upsilon}}^2 e^{B}  {\psi\left(j_n, z\right)} \right|}^2  \, \label{eq:pp_couplings_def} .
 \end{align}
@@ -1615,8 +1610,8 @@ The proton structure functions $F^p_2$ and $F^p_L$ are related to the transverse
 \end{align}
 Using the optical theorem and the last relations one finds the contribution of the holographic expressions to the structure functions are
 \begin{align}
-&F_2\left(x, Q^2\right) = \sum_n \frac{{\rm Im} g^{\gamma p}_n}{4 \pi^2 \alpha} \, Q^{2 j_n} x^{1-j_n}  \int du e^{-\left(j_n - 2 \right)A } e^{-\frac{10}{3} \Phi} V_f w_s^2  \left(f_Q^2 +\frac{\partial_u{f_Q}^2}{Q^2} \right) \, e^B \psi_n\left(u\right) \, \label{eq:hol_f2} , \\
-&F_L\left(x, Q^2\right) = \sum_n \frac{{\rm Im} g^{\gamma p}_n}{4 \pi^2 \alpha} \, Q^{2 j_n} x^{1-j_n}  \int du e^{-\left(j_n - 2 \right)A } e^{-\frac{10}{3} \Phi} V_f w_s^2 {\partial_u{f_Q}^2}{Q^2} \, e^B \psi_n\left(u\right) \, \label{eq:hol_fl} ,
+&F_2\left(x, Q^2\right) = \sum_n \frac{{\rm Im} g^{\gamma p}_n}{4 \pi^2 \alpha} \, Q^{2 j_n} x^{1-j_n}  \int dz e^{-\left(j_n - 2 \right)A } e^{-\Phi}  \left(f_Q^2 +\frac{\partial_z{f_Q}^2}{Q^2} \right) \, e^B \psi_n\left(z\right) \, \label{eq:hol_f2} , \\
+&F_L\left(x, Q^2\right) = \sum_n \frac{{\rm Im} g^{\gamma p}_n}{4 \pi^2 \alpha} \, Q^{2 j_n} x^{1-j_n}  \int dz e^{-\left(j_n - 2 \right)A } e^{-\Phi} \frac{\partial_z{f_Q}^2}{Q^2} \, e^B \psi_n\left(z\right) \, \label{eq:hol_fl} ,
 \end{align}
 where the definition of $g^{\gamma p}_n$ is the one of equation (\ref{eq:gp_couplings_def}). $B$ of course will depend on weather the spin J fields belong to the pomeron or meson trajectory.
 %\begin{align}
@@ -1664,11 +1659,11 @@ F_2^\gamma = \frac{Q^2}{4 \pi^2 \alpha} \left( \sigma_T^{\gamma^* \gamma} + \sig
 
 The calculation of the forward scattering amplitude for $\gamma^{*}\gamma$ is the same as in $\gamma^{*} p$ scattering except that the external state in the Witten diagram of figure~\ref{fig:Witten_diagram_gg} is an on-shell photon. This means that the definition of $\rm{Im}^{\gamma \gamma}_n$ should be proportional to $k^2_{j_n}$ instead of $k_{j_n}\bar{k}_{j_n}$ and the integral appearing in it should be
 \begin{equation}
-\int d\bar{u} e^{-\left(j_n - 2 \right) \bar{A} } e^{-\frac{10}{3} \bar{\Phi} } \bar{V}_{f}  \bar{w}_s^2  \, e^{\bar{B}} \psi_n\left(\bar{u}\right) \, .
+\int d\bar{z} e^{-\left(j_n - 2 \right) \bar{A} } e^{-\Phi}  \, e^{\bar{B}} \psi_n\left(\bar{z}\right) \, .
 \end{equation}
 Then, the holographic expressions for $F_2^\gamma$ is
 \begin{align}
-&F^{\gamma}_2\left(x, Q^2\right) = \sum_n \frac{{\rm Im} g^{\gamma \gamma}_n}{4 \pi^2 \alpha} \, Q^{2 j_n} x^{1-j_n}  \int du e^{-\left(j_n - 2 \right)A } e^{-\frac{10}{3} \Phi} V_f w_s^2  \left(f_Q^2 +\frac{\partial_u{f_Q}^2}{Q^2} \right) \, e^B \psi_n\left(u\right) \, \label{eq:hol_f2_gamma} ,
+&F^{\gamma}_2\left(x, Q^2\right) = \sum_n \frac{{\rm Im} g^{\gamma \gamma}_n}{4 \pi^2 \alpha} \, Q^{2 j_n} x^{1-j_n}  \int dz e^{-\left(j_n - 2 \right)A } e^{-\Phi} \left(f_Q^2 +\frac{\partial_z{f_Q}^2}{Q^2} \right) \, e^B \psi_n\left(z\right) \, \label{eq:hol_f2_gamma} ,
 \end{align}
 while the holographic expression for $\sigma\left(\gamma \gamma \to X\right)$ is (\ref{eq:sigma_gg_hol_gens}) and the definition of $g^{\gamma \gamma}_n$ is given by \ref{eq:gg_couplings_def}.
 
