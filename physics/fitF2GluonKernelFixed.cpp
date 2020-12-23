@@ -13,16 +13,15 @@ using namespace std;
 int main(int argc, char ** argv)
 {
     string f2_data_path;
-    double invls, ag, bg, cg, dg, eg, fg;
-    //invls = 0; ag = 0.774954; bg = -12.7148; cg = 3.52521; dg = -4.37674; eg = -0.997324; fg = 0;
-    invls = 0; ag = 0.788065; bg = -12.8544; cg = 3.62336; dg = -4.31717; eg = -1.02091; fg = 0;
+    double ag, bg, cg, dg, eg;
+    ag = 0; bg = 0; cg = 0; dg = 0; eg = 0.246201;
     double g1, g2, g3, g4;
     int N;
     if(argc < 7)
     {
         f2_data_path = "expdata/DIS/F2_data_Q2max_10.txt";
         // Default values for N = 400
-        g1 = -7.38451; g2 = 19.7027; g3 = -0.152453; g4 = 11.5501;
+        g1 = -0.213955; g2 = 1.55028; g3 = -3.24117; g4 = 15.9386;
         N = 400;
     }
     else
@@ -32,14 +31,14 @@ int main(int argc, char ** argv)
         N = stoi(argv[6]);
     }
     cout << "Starting the fit with" << endl;
-    cout << "invls: " << invls << " ag: " << ag << " bg: " << bg << " cg: " << cg << " dg: " << dg << " eg: " << eg << " fg: " << fg << endl;
+    cout << "ag: " << ag << " bg: " << bg << " cg: " << cg << " dg: " << dg << " eg: " << eg << endl;
     cout << "g1: " << g1 << " g2: " << g2 << " g3: " << g3 << " g4: " << g4 << endl;
 
     double mq = hvqcd().QuarkMass();
     F2 f2(f2_data_path);
 
     // Setup Gluon and Meson Kernels and GNs vector
-    GluonKernel gluon(4, {invls, ag, bg, cg, dg, eg, fg});
+    GluonKernel gluon(4, {0, ag, bg, cg, dg, eg, 0});
     vector<double> GNs = {g1, g2, g3, g4};
 
     // Setup HQCDP object

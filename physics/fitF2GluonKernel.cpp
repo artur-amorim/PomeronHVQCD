@@ -13,34 +13,34 @@ using namespace std;
 int main(int argc, char ** argv)
 {
     string f2_data_path;
-    double invls, ag, bg, cg, dg, eg, fg;
+    double ag, bg, cg, dg, eg;
     double g1, g2, g3, g4;
     int N;
-    if(argc < 14)
+    if(argc < 12)
     {
         f2_data_path = "expdata/DIS/F2_data_Q2max_10.txt";
         // Default values for N = 400
         //invls = 0.0439659; ag = 0.305626; bg = -10.1539; cg = 0.822607; dg = -4.85037; eg = -0.251665; fg = 10.0599;
-        invls = 0; ag = -0.788065; bg = 12.8544; cg = -3.62336; dg = 4.31717; eg = 1.02091; fg = 0;
-        g1 = -7.38451; g2 = 19.7027; g3 = -0.152453; g4 = 11.5501;
-        N = 800;
+        g1 = -0.213955; g2 = 1.55028; g3 = -3.24117; g4 = 15.9386;
+        g1 = 0; g2 = 0; g3 = 0; g4 = 0;
+        N = 400;
     }
     else
     {
         f2_data_path = argv[1];
-        invls = stod(argv[2]); ag = stod(argv[3]); bg = stod(argv[4]); cg = stod(argv[5]); dg = stod(argv[6]); eg = stod(argv[7]); fg = stod(argv[8]);
-        g1 = stod(argv[9]); g2 = stod(argv[10]); g3 = stod(argv[11]); g4 = stod(argv[12]);
-        N = stoi(argv[13]);
+        ag = stod(argv[2]); bg = stod(argv[3]); cg = stod(argv[4]); dg = stod(argv[5]); eg = stod(argv[6]);
+        g1 = stod(argv[7]); g2 = stod(argv[8]); g3 = stod(argv[9]); g4 = stod(argv[10]);
+        N = stoi(argv[11]);
     }
     cout << "Starting the fit with" << endl;
-    cout << "invls: " << invls << " ag: " << ag << " bg: " << bg << " cg: " << cg << " dg: " << dg << " eg: " << eg << " fg: " << fg << endl;
+    cout << "ag: " << ag << " bg: " << bg << " cg: " << cg << " dg: " << dg << " eg: " << eg << endl;
     cout << "g1: " << g1 << " g2: " << g2 << " g3: " << g3 << " g4: " << g4 << endl;
 
     double mq = hvqcd().QuarkMass();
     F2 f2(f2_data_path);
 
     // Setup Gluon and Meson Kernels and GNs vector
-    GluonKernel gluon(4, {invls, ag, bg, cg, dg, eg, fg});
+    GluonKernel gluon(4, {0, ag, bg, cg, dg, eg, 0});
     vector<double> GNs = {g1, g2, g3, g4};
 
     // Setup HQCDP object
