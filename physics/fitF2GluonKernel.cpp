@@ -21,8 +21,8 @@ int main(int argc, char ** argv)
         f2_data_path = "expdata/DIS/F2_data_Q2max_10.txt";
         // Default values for N = 400
         //invls = 0.0439659; ag = 0.305626; bg = -10.1539; cg = 0.822607; dg = -4.85037; eg = -0.251665; fg = 10.0599;
+        ag = 0; bg = 0; cg = 0; dg = 0; eg = 0.246201;
         g1 = -0.213955; g2 = 1.55028; g3 = -3.24117; g4 = 15.9386;
-        g1 = 0; g2 = 0; g3 = 0; g4 = 0;
         N = 400;
     }
     else
