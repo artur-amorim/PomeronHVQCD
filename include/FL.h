@@ -11,11 +11,5 @@ class FL : public DeepInelasticScattering
         double IzN(const std::vector<double> &kin, const Reggeon &reg);
 };
 
-class FLIzNIntegrand: public IzNIntegrand
-{
-    public:
-        FLIzNIntegrand(const Poly_Interp<double> &f1, const Poly_Interp<double> &f2, const U1NNMode &f3, const Poly_Interp<double> &f4);
-        double operator()(const double x);
-};
 
 #endif

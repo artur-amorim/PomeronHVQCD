@@ -22,8 +22,8 @@ class Process
     protected:
         virtual void copy(const Process &proc);
     protected:
-        static std::vector<double> u, z, Astring, Vfw2fac, MesonPotFac;
-        static Poly_Interp<double> potFactor;                                     // Interpolation function of e^{-7/3 \Phi} V_f w_s^2
+        static std::vector<double> u, z, Astring, GluonPotFac, MesonPotFac;
+        static Poly_Interp<double> GluonPotFactor;                                     // Interpolation function of e^{-7/3 \Phi} V_f w_s^2
         static Poly_Interp<double> MesonPotFactor;                                // Interpolation function of sqrt(e^(-10/3 \Phi) Vf w_s^2)
         static Poly_Interp<double> ufunc;                                         // Interpolation function of u(z)
     public:
