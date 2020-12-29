@@ -188,6 +188,10 @@ target_link_libraries(fitAllSigma.exe armadillo hvqcd_lib)
 add_executable(fitAllSigmaFixedKernel.exe physics/fitAllSigmaFixedKernel.cpp)
 target_link_libraries(fitAllSigmaFixedKernel.exe armadillo hvqcd_lib)
 
+# Add fitAllSigmaGluonKernelFixed
+add_executable(fitAllSigmaGluonKernelFixed.exe physics/fitAllSigmaGluonKernelFixed.cpp)
+target_link_libraries(fitAllSigmaGluonKernelFixed.exe armadillo hvqcd_lib)
+
 # Add findGs computation
 add_executable(findGs.exe physics/findGs.cpp)
 target_link_libraries(findGs.exe armadillo blas hvqcd_lib)
@@ -207,11 +211,20 @@ target_link_libraries(test_SigmaProtonProton.exe armadillo blas hvqcd_lib)
 add_executable(predictSigmaGammaGamma.exe physics/predictSigmaGammaGamma.cpp)
 target_link_libraries(predictSigmaGammaGamma.exe armadillo blas hvqcd_lib)
 
+add_executable(predictSigmaGammaGammaGluonKernel.exe physics/predictSigmaGammaGammaGluonKernel.cpp)
+target_link_libraries(predictSigmaGammaGammaGluonKernel.exe armadillo blas hvqcd_lib)
+
 add_executable(predictSigmaGammaProton.exe physics/predictSigmaGammaProton.cpp)
 target_link_libraries(predictSigmaGammaProton.exe armadillo blas hvqcd_lib)
 
+add_executable(predictSigmaGammaProtonGluonKernel.exe physics/predictSigmaGammaProtonGluonKernel.cpp)
+target_link_libraries(predictSigmaGammaProtonGluonKernel.exe armadillo blas hvqcd_lib)
+
 add_executable(predictSigmaProtonProton.exe physics/predictSigmaProtonProton.cpp)
 target_link_libraries(predictSigmaProtonProton.exe armadillo blas hvqcd_lib)
+
+add_executable(predictSigmaProtonProtonGluonKernel.exe physics/predictSigmaProtonProtonGluonKernel.cpp)
+target_link_libraries(predictSigmaProtonProtonGluonKernel.exe armadillo blas hvqcd_lib)
 
 add_executable(test_gauss_kronrod_boost.exe tests/test_gauss_kronrod_boost.cpp)
 
