@@ -24,17 +24,11 @@ int main(int argc, char ** argv)
     //string sigma_gp_path, sigma_gg_path, sigma_pp_path;
     if(argc < 10)
     {
-        // Default values for N = 400
-        coeff_g = 10.5297; coeff_m = 7.85023; coeff_index = 2;
-        k0g = 0.000923808; k1g = 0.0190831; k0m = -0.0017291;
-        kbar0g = 0.335811; kbar1g = 21.6018; kbar0m = -46.4023;
         cout << "Program usage: " + string(argv[0]) + " coeff_g coeff_m coeff_index k0g k1g k0m kbar0g kbar1g kbar0m " << endl;
-        cout << "Using default values." << endl;
+        return 0;
     }
     else
     {
-        //sigma_gg_path = argv[1];
-        //sigma_gp_path = argv[2]; sigma_pp_path = argv[3];
         coeff_g = stod(argv[1]); coeff_m = stod(argv[2]); coeff_index = stoi(argv[3]);
         k0g = stod(argv[4]); k1g = stod(argv[5]); k0m = stod(argv[6]);
         kbar0g = stod(argv[7]); kbar1g = stod(argv[8]); kbar0m = stod(argv[9]);
