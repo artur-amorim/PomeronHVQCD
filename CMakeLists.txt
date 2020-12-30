@@ -180,6 +180,9 @@ target_link_libraries(fitSigmaGammaProton.exe armadillo hvqcd_lib)
 add_executable(fitSigmaGammaGamma.exe physics/fitSigmaGammaGamma.cpp)
 target_link_libraries(fitSigmaGammaGamma.exe armadillo hvqcd_lib)
 
+add_executable(fitAllSigma4Gluon1Meson.exe physics/fitAllSigma4Gluon1Meson.cpp)
+target_link_libraries(fitAllSigma4Gluon1Meson.exe armadillo hvqcd_lib)
+
 # Add fitAllSigma
 add_executable(fitAllSigma.exe physics/fitAllSigma.cpp)
 target_link_libraries(fitAllSigma.exe armadillo hvqcd_lib)
