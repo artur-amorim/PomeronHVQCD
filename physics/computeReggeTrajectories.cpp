@@ -93,8 +93,15 @@ int main(int argc, char ** argv)
     meson_traj.open(regge_traj_path + "_meson.txt");
     gluon_traj << "j\tt1(j)\tt2(j)\tt3(j)\tt4(j)" << endl;
     meson_traj << "j\tt1(j)\tt2(j)\tt3(j)\tt4(j)" << endl;
+
+    vector<double> js(0);
+    vector<vector<double>> ts_gluon(4, vector<double>(0));
+    vector<vector<double>> ts_meson(4, vector<double>(0));
+
     for(double j = 0.1; j <= 4.1; j += 0.01)
     {
+        // Append value of j
+        js.push_back(j);
         // Compute the potentials
         Vgluon = gluon.computePotential(j);
         Vmeson = meson.computePotential(j);
@@ -103,14 +110,33 @@ int main(int argc, char ** argv)
         spec = computeSpectrum(z, Vgluon, 4);
         ts = spec.Es;
         gluon_traj << j << '\t' << ts[0] << '\t' << ts[1] << '\t' << ts[2] << '\t' << ts[3] << endl;
+        // Append the t values to ts_gluon
+        ts_gluon[0].push_back(ts[0]); ts_gluon[1].push_back(ts[1]); 
+        ts_gluon[2].push_back(ts[2]); ts_gluon[3].push_back(ts[3]);
+        
         // Compute the spectrum of the meson
         spec = computeSpectrum(u, Vmeson, 4);
         ts = spec.Es;
         meson_traj << j << '\t' << ts[0] << '\t' << ts[1] << '\t' << ts[2] << '\t' << ts[3] << endl;
+        // Append the t values to ts_meson
+        ts_meson[0].push_back(ts[0]); ts_meson[1].push_back(ts[1]); 
+        ts_meson[2].push_back(ts[2]); ts_meson[3].push_back(ts[3]);
         
     }
     gluon_traj.close();
     meson_traj.close();
+
+    // Compute the intercepts of the Pomeron and meson trajectories
+    Spline_Interp<double> gluon_traj_0(ts_gluon[0], js), gluon_traj_1(ts_gluon[1], js), gluon_traj_2(ts_gluon[2], js), gluon_traj_3(ts_gluon[3], js) ;
+    Spline_Interp<double> meson_traj_0(ts_meson[0], js), meson_traj_1(ts_meson[1], js), meson_traj_2(ts_meson[2], js), meson_traj_3(ts_meson[3], js) ;
+
+    const double j0g = gluon_traj_0.interp(0), j1g = gluon_traj_1.interp(0), j2g = gluon_traj_2.interp(0), j3g = gluon_traj_3.interp(0);
+    const double j0m = meson_traj_0.interp(0), j1m = meson_traj_1.interp(0), j2m = meson_traj_2.interp(0), j3m = meson_traj_3.interp(0);
+
+    cout << "Gluon Intercepts:" << endl;
+    cout << "j0g = " << j0g << " j1g = " << j1g << " j2g = " << j2g << " j3g = " << j3g << endl;
+    cout << "Meson Intercepts:" << endl;
+    cout << "j0m = " << j0m << " j1m = " << j1m << " j2m = " << j2m << " j3m = " << j3m << endl;
 
     return 0;
 }
