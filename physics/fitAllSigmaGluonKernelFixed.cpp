@@ -23,7 +23,7 @@ int main(int argc, char ** argv)
     //string sigma_gp_path, sigma_gg_path, sigma_pp_path;
     if(argc < 11)
     {
-        cout << "Program usage: " + string(argv[0]) + " coeff_g coeff_index k0g k1g k2g k3g kbar0g kbar1g kbar2g kbar3 g" << endl;
+        cout << "Program usage: " + string(argv[0]) + " coeff_g coeff_index k0g k1g k2g k3g kbar0g kbar1g kbar2g kbar3" << endl;
         return 0;
     }
     else
@@ -87,7 +87,8 @@ int main(int argc, char ** argv)
         cout << endl;
         for(int i = 0; i < kbars.size(); i++) cout << kbars[i] << " ";
         cout << endl;
-        //cout << "kg0: " << ks[0] << " kg1: " << ks[1] << " km0: " << ks[2] << " kbarg0: " << kbars[0] << " kbarg1: " << kbars[1] << " kbarm0: " << kbars[2] << endl;
+        cout << "kg0: " << ks[0] << " kg1: " << ks[1] << " kg2: " << ks[2] << " kg3: " << ks[3] << endl;
+        cout << "kbarg0: " << kbars[0] << " kbarg1: " << kbars[1] << " kbarg2: " << kbars[2] << " kbarg3: " << kbars[3] << endl;
         /*
             Now we need to compute the gn's according to the definition in the notes
         */
