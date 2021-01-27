@@ -183,6 +183,9 @@ target_link_libraries(fitSigmaGammaGamma.exe armadillo hvqcd_lib)
 add_executable(fitAllSigma4Gluon1Meson.exe physics/fitAllSigma4Gluon1Meson.cpp)
 target_link_libraries(fitAllSigma4Gluon1Meson.exe armadillo hvqcd_lib)
 
+add_executable(fitAllSigma3Gluon1Meson.exe physics/fitAllSigma3Gluon1Meson.cpp)
+target_link_libraries(fitAllSigma3Gluon1Meson.exe armadillo hvqcd_lib)
+
 # Add fitAllSigma
 add_executable(fitAllSigma.exe physics/fitAllSigma.cpp)
 target_link_libraries(fitAllSigma.exe armadillo hvqcd_lib)
@@ -217,17 +220,26 @@ target_link_libraries(predictSigmaGammaGamma.exe armadillo blas hvqcd_lib)
 add_executable(predictSigmaGammaGammaGluonKernel.exe physics/predictSigmaGammaGammaGluonKernel.cpp)
 target_link_libraries(predictSigmaGammaGammaGluonKernel.exe armadillo blas hvqcd_lib)
 
+add_executable(predictSigmaGammaGamma3Gluon1Meson.exe physics/predictSigmaGammaGamma3Gluon1Meson.cpp)
+target_link_libraries(predictSigmaGammaGamma3Gluon1Meson.exe armadillo hvqcd_lib)
+
 add_executable(predictSigmaGammaProton.exe physics/predictSigmaGammaProton.cpp)
 target_link_libraries(predictSigmaGammaProton.exe armadillo blas hvqcd_lib)
 
 add_executable(predictSigmaGammaProtonGluonKernel.exe physics/predictSigmaGammaProtonGluonKernel.cpp)
 target_link_libraries(predictSigmaGammaProtonGluonKernel.exe armadillo blas hvqcd_lib)
 
+add_executable(predictSigmaGammaProton3Gluon1Meson.exe physics/predictSigmaGammaProton3Gluon1Meson.cpp)
+target_link_libraries(predictSigmaGammaProton3Gluon1Meson.exe armadillo hvqcd_lib)
+
 add_executable(predictSigmaProtonProton.exe physics/predictSigmaProtonProton.cpp)
 target_link_libraries(predictSigmaProtonProton.exe armadillo blas hvqcd_lib)
 
 add_executable(predictSigmaProtonProtonGluonKernel.exe physics/predictSigmaProtonProtonGluonKernel.cpp)
 target_link_libraries(predictSigmaProtonProtonGluonKernel.exe armadillo blas hvqcd_lib)
+
+add_executable(predictSigmaProtonProton3Gluon1Meson.exe physics/predictSigmaProtonProton3Gluon1Meson.cpp)
+target_link_libraries(predictSigmaProtonProton3Gluon1Meson.exe armadillo hvqcd_lib)
 
 add_executable(test_gauss_kronrod_boost.exe tests/test_gauss_kronrod_boost.cpp)
 
