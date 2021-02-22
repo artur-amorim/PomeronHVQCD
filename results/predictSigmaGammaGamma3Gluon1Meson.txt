@@ -1,7 +1,7 @@
 Predicting sigma(gamma gamma -> X) with
 coeff_index: 5
-coeff_g: 0.246201 coeff_m: 1.71228
-Im_g0: 9.06059e-05 Im_g1: 0.00117935 Im_g2: 9.02101e-05 Im_m0: 0.000839771
+coeff_g: 0.246 coeff_m: 1.712
+Im_g0: 9.061e-05 Im_g1: 0.001179 Im_g2: 9.021e-05 Im_m0: 0.0008398
 Loading sigma data
 Loaded sigma(gamma gamma -> X) data.
 computing chebyshev matrices, N = 1000
@@ -11,7 +11,7 @@ Computing Reggeons of meson kernel.
 Computing sigma(gamma gamma -> hadrons) IzNBars
 Computing sigma(gamma gamma -> hadrons) IzNs
 Number of points: 39
-The sigma(gamma gamma -> hadrons) chi2 / points is 0.785328
-The sigma(gamma gamma -> hadrons) chi2 / Ndof is 0.900818
+The sigma(gamma gamma -> hadrons) chi2 / points is 0.773541
+The sigma(gamma gamma -> hadrons) chi2 / Ndof is 0.887297
 Predicting sigma(gamma gamma -> hadrons)
 Please introduce the path to save the predictions of sigma
