@@ -1,3 +1,3 @@
-./execs/predictSigmaGammaGamma3Gluon1Meson.exe 0.246201 1.71228 5 9.06059e-05 0.00117935 9.02101e-05 0.000839771 <<< 'sigma_gg_3gluon_1meson_pred.txt' > predictSigmaGammaGamma3Gluon1Meson.txt
-./execs/predictSigmaGammaProton3Gluon1Meson.exe 0.246201 1.71228 5 0.0232625 0.388046 0.0361803 0.295121 <<< 'sigma_gp_3gluon_1meson_pred.txt' > predictSigmaGammaProton3Gluon1Meson.txt
-./execs/predictSigmaProtonProton3Gluon1Meson.exe 0.246201 1.71228 5 0.820511 50.2786 14.2279 87.4558 <<< 'sigma_pp_3gluon_1meson_pred.txt' > predictSigmaProtonProton3Gluon1Meson.txt
+./execs/predictSigmaGammaGamma3Gluon1Meson.exe 0.246 1.712 5 9.061e-05 0.001179 9.021e-05 0.0008398 <<< 'sigma_gg_3gluon_1meson_pred.txt' > predictSigmaGammaGamma3Gluon1Meson.txt
+./execs/predictSigmaGammaProton3Gluon1Meson.exe 0.246 1.712 5 0.02326 0.3880 0.03618 0.2951 <<< 'sigma_gp_3gluon_1meson_pred.txt' > predictSigmaGammaProton3Gluon1Meson.txt
+./execs/predictSigmaProtonProton3Gluon1Meson.exe 0.246 1.712 5 0.8205 50.28 14.23 87.46 <<< 'sigma_pp_3gluon_1meson_pred.txt' > predictSigmaProtonProton3Gluon1Meson.txt
